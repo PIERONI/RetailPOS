@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="RetailPOS.Usercontrols.AddCategory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../Themes/BureauBlue.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBox Grid.Column="1" Height="32" HorizontalAlignment="Left" Margin="9,12,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,20,0,0" Name="textBlock1" Text="Category Name" VerticalAlignment="Top" Width="83" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="28,17,0,0" Name="textBlock2" Text="Category Description" VerticalAlignment="Top" Width="122" Grid.Row="1" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,10,0,0" Name="textBlock3" Text="Category Color" VerticalAlignment="Top" Width="83" Grid.Row="2" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,13,0,0" Name="textBlock4" Text="Sort Order" VerticalAlignment="Top" Width="83" Grid.Row="3" />
+        <TextBox Height="34" HorizontalAlignment="Left" Margin="9,7,0,0" Name="textBox2" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="1" />
+        <TextBox Height="32" HorizontalAlignment="Left" Margin="9,8,0,0" Name="textBox3" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2" />
+        <TextBox Height="32" HorizontalAlignment="Left" Margin="9,5,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="3" />
+        <Button Content="Cancel" Grid.Row="4" Height="38" HorizontalAlignment="Left" Margin="30,10,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
+        <Button Content="Submit" Height="38" HorizontalAlignment="Left" Margin="9,10,0,0" Name="button2" VerticalAlignment="Top" Width="104" Grid.Column="1" Grid.Row="4" />
+    </Grid>
+</UserControl>

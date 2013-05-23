@@ -11,18 +11,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using RetailPOS.Usercontrols;
 
-namespace RetailPOS
+namespace RetailPOS.Usercontrols
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : UserControl
     {
-       
-       
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
         }

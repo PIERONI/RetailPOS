@@ -30,7 +30,7 @@
             </WrapPanel>
     </ScrollViewer>
         <StackPanel Margin="291,0,0,0">
-            <Button Content="Category"  Height="52" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="button9" Width="75"  />
+            <Button Content="Category"  Height="52" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="button9" Width="75" Click="button9_Click" />
             <Button Content="Back"  Height="48" Margin="10,5,0,0" HorizontalAlignment="Left" Name="button10"  Width="75" />
             <Button Content="Show All" Height="47" Margin="10,5,0,0" Name="button12" Width="75" HorizontalAlignment="Left" />
         </StackPanel>

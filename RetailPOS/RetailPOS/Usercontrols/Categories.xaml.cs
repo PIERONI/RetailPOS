@@ -19,9 +19,20 @@ namespace RetailPOS.Usercontrols
     /// </summary>
     public partial class Categories : UserControl
     {
+       
+
+        public delegate void CallWindow();
+        public  event CallWindow OpenNewWin;
+
         public Categories()
         {
             InitializeComponent();
+        }
+
+        private void button9_Click(object sender, RoutedEventArgs e)
+        {
+            if (OpenNewWin != null)
+                OpenNewWin();
         }
     }
 }

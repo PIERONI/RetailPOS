@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ModelsDef>
+  
+  <!--根节点上面还可以指定所有模型的基类，默认为ModelBase-->
+  
+  <!--
+    MVVM实体模型定义文件
+    作者：陈希章
+    时间：2011年6月
+    说明：该文件是用来生成业务实体模型代码的，将结合t4模板生成。
+    反馈：ares@xizhang.com
+  -->
+
+  <!--
+    这里开始定义模型（下面是几个范例，你可以根据它们进行修改
+    规范：
+    1. 每个业务实体，定义一个Model元素，必须要有name（整个定义文件中，至少得有一个Model元素）
+    2. 每个实体至少要有一个属性:Property
+    3. 属性有三种定义方式
+       3.1 只提供name属性，则表示该Property为string类型
+       3.2 如果不是string类型，则需要指定type
+       3.3 如果是一个集合类型，则需要指定Collection, 并且此时就要指定collectionType
+  -->
+
+  <Model name="Customer">
+    <Property name="CustomerID"/>
+    <Property name="CompanyName"/>
+  </Model>
+
+  <Model name="Order">
+    <Property name="OrderID" type="int"/>
+    <Property name="OrderDate" type="DateTime"/>
+    <Property name="CustomerID"/>
+    <Property name="Items" type="Collection" collectionType="OrderItem"/>
+  </Model>
+
+  <Model name="OrderItem">
+    <Property name="OrderID" type="int"/>
+    <Property name="ProductName"/>
+    <Property name="UnitPrice" type="decimal"/>
+    <Property name="Quantity" type="int"/>
+  </Model>
+  
+  
+  
+  <!--
+    架构定义，这是为了提供智能提示（通常你不需要做任何修改）
+  -->
+  <xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ModelsDef">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="Model" minOccurs="1" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Property" minOccurs="1" maxOccurs="unbounded">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                    <xs:attribute name="type" type="systemTypes" default="string" />
+                    <xs:attribute name="collectionType" type="xs:string" use="optional" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attribute name="name" type="xs:string" use="required" />
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="baseClass" type="xs:string" default="ModelBase" />
+      </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="systemTypes">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="string"></xs:enumeration>
+        <xs:enumeration value="int"></xs:enumeration>
+        <xs:enumeration value="decimal"></xs:enumeration>
+        <xs:enumeration value="double"></xs:enumeration>
+        <xs:enumeration value="DateTime"></xs:enumeration>
+        <xs:enumeration value="Collection"></xs:enumeration>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:schema>
+</ModelsDef>

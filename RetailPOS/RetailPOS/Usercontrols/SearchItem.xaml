@@ -16,8 +16,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="101*"></ColumnDefinition>
-            <ColumnDefinition Width="199*"></ColumnDefinition>
-            
+            <ColumnDefinition Width="199*"></ColumnDefinition>            
         </Grid.ColumnDefinitions>
         <Label Content="Product :"  Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="lblProduct" VerticalAlignment="Top" Width="69" />
         <Label Content="Customer :" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="lblCustomer" VerticalAlignment="Top" Width="69" Grid.Row="1" />

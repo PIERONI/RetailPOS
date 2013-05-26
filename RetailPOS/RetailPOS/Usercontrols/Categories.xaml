@@ -4,35 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400">
+             d:DesignHeight="200" d:DesignWidth="500">
     <UserControl.Resources>
-        <ResourceDictionary Source="../Themes/BureauBlue.xaml"></ResourceDictionary>
+      
     </UserControl.Resources>
-    <Grid Width="417" Height="200">
-        <ScrollViewer Name="ScrollViewer1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="200" CanContentScroll="True" Margin="0,2,153,2">
-            <WrapPanel Background="AliceBlue" Orientation="Horizontal" Name="StackPanel1"   Height="Auto" Width="242" >
-                <Button Content="ABC" Height="53" Name="button11" HorizontalAlignment="Right" Width="79" />
-                <Button  Content="aaa" Height="53" HorizontalAlignment="Right" Name="button2" Width="79" />
-                <Button  Content="BBBV" Height="53" HorizontalAlignment="Right" Name="button3" Width="79" />
-                <Button Content="AAA" Height="53" HorizontalAlignment="Right" Name="button4" Width="79" />
-                <Button Content="RR" Height="53" HorizontalAlignment="Right"  Name="button5" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button6" Width="79" />
-                <Button Content="TTw" Height="53" HorizontalAlignment="Right"  Name="button7" Width="79" />
-                <Button Content="RR" Height="53" HorizontalAlignment="Left" Name="button8" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button61" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button621" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button6W1" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button631" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button641" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button6441" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button644D1" Width="79" />
-                
-            </WrapPanel>
-    </ScrollViewer>
-        <StackPanel Margin="291,0,0,0">
-            <Button Content="Category"  Height="52" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="button9" Width="75" Click="button9_Click" />
-            <Button Content="Back"  Height="48" Margin="10,5,0,0" HorizontalAlignment="Left" Name="button10"  Width="75" />
-            <Button Content="Show All" Height="47" Margin="10,5,0,0" Name="button12" Width="75" HorizontalAlignment="Left" />
+    <Grid Width="495" Height="200">
+        <ListBox Name="LstCategories" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,2,110,2">          
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>               
+                        <WrapPanel  Orientation="Horizontal"  Margin="0"   Height="Auto" Width="336" >                       
+                        </WrapPanel>        
+                   </ItemsPanelTemplate>
+                 </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Margin="1" Content="{Binding Name}" Height="53" Background="{Binding ColorName}" HorizontalAlignment="Right" Width="79" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Margin="400,0,0,0">
+            <Button Content="Category"  Height="52" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="btnCategory" Width="75" Click="btnCategory_Click" />
+            <Button Content="Back"  Height="48" Margin="10,5,0,0" HorizontalAlignment="Left" Name="btnBack"  Width="75" />
+            <Button Content="Show All" Height="47" Margin="10,5,0,0" Name="btnShowAll" Width="75" HorizontalAlignment="Left" />
         </StackPanel>
     </Grid>
 </UserControl>

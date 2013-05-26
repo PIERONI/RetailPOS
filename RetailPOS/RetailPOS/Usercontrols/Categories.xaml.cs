@@ -19,20 +19,49 @@ namespace RetailPOS.Usercontrols
     /// </summary>
     public partial class Categories : UserControl
     {
-       
-
         public delegate void CallWindow();
         public  event CallWindow OpenNewWin;
 
         public Categories()
         {
             InitializeComponent();
+            BindCategory();
+
         }
 
-        private void button9_Click(object sender, RoutedEventArgs e)
+        private void BindCategory()
+        {
+            var CategoryList = new List<Cateogory>();
+            CategoryList.Add(new Cateogory{ Name = "test" , ColorName = "Red" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
+            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
+
+            LstCategories.ItemsSource = CategoryList;
+        }
+
+        private void btnCategory_Click(object sender, RoutedEventArgs e)
         {
             if (OpenNewWin != null)
                 OpenNewWin();
         }
+    }
+
+    public class Cateogory
+    {
+        public string Name { get; set; }
+        public string ColorName { get; set; }
     }
 }

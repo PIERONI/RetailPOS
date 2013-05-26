@@ -4,32 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-              d:DesignHeight="200" d:DesignWidth="400">
+              d:DesignHeight="200" d:DesignWidth="490">
    
     <UserControl.Resources>
-        <ResourceDictionary Source="../Themes/BureauBlue.xaml"></ResourceDictionary>
+      
     </UserControl.Resources>
-    <Grid Width="360" Height="200">
-        <ScrollViewer Name="ScrollViewer1" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Height="200" CanContentScroll="True" Margin="0,2,12,2">
-            <WrapPanel Background="AliceBlue" Orientation="Horizontal" Name="StackPanel1"   Height="Auto" Width="371" >
-                <Button Content="ABC" Height="53" Name="button11" HorizontalAlignment="Right" Width="79" />
-                <Button  Content="aaa" Height="53" HorizontalAlignment="Right" Name="button2" Width="79" />
-                <Button  Content="BBBV" Height="53" HorizontalAlignment="Right" Name="button3" Width="79" />
-                <Button Content="AAA" Height="53" HorizontalAlignment="Right" Name="button4" Width="79" />
-                <Button Content="RR" Height="53" HorizontalAlignment="Right"  Name="button5" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button6" Width="79" />
-                <Button Content="TTw" Height="53" HorizontalAlignment="Right"  Name="button7" Width="79" />
-                <Button Content="RR" Height="53" HorizontalAlignment="Left" Name="button8" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button61" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button621" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button6W1" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button631" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button641" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button6441" Width="79" />
-                <Button Content="TT" Height="53" HorizontalAlignment="Right"  Name="button644D1" Width="79" />
+    <Grid Width="490" Height="200">
+        <ListBox Name="LstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel  Orientation="Horizontal"  Margin="0"   Height="Auto" Width="490" >
+                    </WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Margin="4" Content="{Binding Name}" Height="53" Background="{Binding ColorName}" HorizontalAlignment="Right" Width="79" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-            </WrapPanel>
-        </ScrollViewer>
-       
     </Grid>
 </UserControl>

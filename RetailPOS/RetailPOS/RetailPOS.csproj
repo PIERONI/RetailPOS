@@ -74,6 +74,7 @@
       <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductCategoryDTO.cs" />
+    <Compile Include="Models\ProductDTO.cs" />
     <Compile Include="View\Usercontrols\AddCategory.xaml.cs">
       <DependentUpon>AddCategory.xaml</DependentUpon>
     </Compile>

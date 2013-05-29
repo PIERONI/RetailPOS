@@ -22,7 +22,7 @@ namespace RetailPOS.View.Usercontrols
         public ShowProduct()
         {
             InitializeComponent();
-            BindProduct();
+           
         }
 
         private void BindProduct()

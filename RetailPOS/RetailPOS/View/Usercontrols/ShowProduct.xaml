@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-              d:DesignHeight="200" d:DesignWidth="490">
+              d:DesignHeight="200" d:DesignWidth="490" DataContext="{Binding Source={StaticResource Locator}, Path=CategoryVM}">
    
     <UserControl.Resources>
       
     </UserControl.Resources>
     <Grid Width="490" Height="200">
-        <ListBox Name="LstProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
+        <ListBox Name="LstProduct" ItemsSource="{Binding lstProduct}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel  Orientation="Horizontal"  Margin="0"   Height="Auto" Width="490" >
@@ -19,7 +19,7 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Margin="4" Content="{Binding Name}" Height="53" Background="{Binding ColorName}" HorizontalAlignment="Right" Width="79" />
+                    <Button Margin="4" Content="{Binding Name}" Height="53" Background="{Binding color}" HorizontalAlignment="Right" Width="79" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

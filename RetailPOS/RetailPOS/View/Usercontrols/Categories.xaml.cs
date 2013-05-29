@@ -25,13 +25,7 @@ namespace RetailPOS.View.Usercontrols
         public Categories()
         {
             InitializeComponent();
-            //BindCategory();
-
         }
-
-       
-
-        
     }
 
     public class Cateogory

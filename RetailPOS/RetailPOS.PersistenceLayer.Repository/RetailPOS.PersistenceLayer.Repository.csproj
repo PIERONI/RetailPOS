@@ -40,8 +40,147 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Entities\address.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\country.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\customer.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\customer_pay_card_details.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\customer_pay_cheque_details.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\customer_pay_history.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\customer_status.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\customer_type.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\department.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\designation.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\display_properties.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\email_history.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\email_templates.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\general_settings.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\locality.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\login_history.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\measure_unit.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\measure_unit_conversion.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\openid_server.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\orderchild.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ordermaster.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\POSEntities.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Entities\postcode.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\product.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\product_category.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\product_promotional_offer.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\product_purchase_history_child.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\product_purchase_history_master.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\product_status.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\promotional_offer.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\query.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\security_group.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\shop_info.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\shop_product.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\staff.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\staff_status.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\street.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\supplier.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\supplier_contact_person.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\town_city.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\warranty.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\working_record.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="Interfaces\IGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Entities\POSEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>POSEntities.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

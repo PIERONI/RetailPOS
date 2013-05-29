@@ -23,5 +23,15 @@ namespace RetailPOS.View.Usercontrols
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow loginWindow = new LoginWindow();
+
+            MainWindow newWindow = new MainWindow();
+            newWindow.Show();
+
+            loginWindow.Hide();
+        }
     }
 }

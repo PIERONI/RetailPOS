@@ -1,0 +1,9 @@
+﻿<Window x:Class="RetailPOS.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols"
+        Title="LoginWindow" Height="300" Width="500">
+    <Grid>
+        <Child:Login x:Name="login" HorizontalAlignment="Left"  Margin="20,0,0,0"></Child:Login>
+    </Grid>
+</Window>

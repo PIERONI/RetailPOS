@@ -1,0 +1,2849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="POSModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="POSModelStoreContainer">
+          <EntitySet Name="address" EntityType="POSModel.Store.address" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="country" EntityType="POSModel.Store.country" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer" EntityType="POSModel.Store.customer" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_pay_card_details" EntityType="POSModel.Store.customer_pay_card_details" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_pay_cheque_details" EntityType="POSModel.Store.customer_pay_cheque_details" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_pay_history" EntityType="POSModel.Store.customer_pay_history" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_status" EntityType="POSModel.Store.customer_status" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_type" EntityType="POSModel.Store.customer_type" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="department" EntityType="POSModel.Store.department" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="designation" EntityType="POSModel.Store.designation" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="display_properties" EntityType="POSModel.Store.display_properties" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="email_history" EntityType="POSModel.Store.email_history" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="email_templates" EntityType="POSModel.Store.email_templates" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="general_settings" EntityType="POSModel.Store.general_settings" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="locality" EntityType="POSModel.Store.locality" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="login_history" EntityType="POSModel.Store.login_history" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="measure_unit" EntityType="POSModel.Store.measure_unit" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="measure_unit_conversion" EntityType="POSModel.Store.measure_unit_conversion" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="openid_server" EntityType="POSModel.Store.openid_server" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="orderchild" EntityType="POSModel.Store.orderchild" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="ordermaster" EntityType="POSModel.Store.ordermaster" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="postcode" EntityType="POSModel.Store.postcode" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product" EntityType="POSModel.Store.product" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_category" EntityType="POSModel.Store.product_category" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_promotional_offer" EntityType="POSModel.Store.product_promotional_offer" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_purchase_history_child" EntityType="POSModel.Store.product_purchase_history_child" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_purchase_history_master" EntityType="POSModel.Store.product_purchase_history_master" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_status" EntityType="POSModel.Store.product_status" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="promotional_offer" EntityType="POSModel.Store.promotional_offer" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="queries" EntityType="POSModel.Store.queries" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="security_group" EntityType="POSModel.Store.security_group" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="shop_info" EntityType="POSModel.Store.shop_info" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="shop_product" EntityType="POSModel.Store.shop_product" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="staff" EntityType="POSModel.Store.staff" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="staff_status" EntityType="POSModel.Store.staff_status" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="street" EntityType="POSModel.Store.street" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="supplier" EntityType="POSModel.Store.supplier" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="supplier_contact_person" EntityType="POSModel.Store.supplier_contact_person" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="supplier_products" EntityType="POSModel.Store.supplier_products" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="town_city" EntityType="POSModel.Store.town_city" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="warranty" EntityType="POSModel.Store.warranty" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="working_record" EntityType="POSModel.Store.working_record" store:Type="Tables" Schema="webpos" />
+          <AssociationSet Name="address_ibfk_10" Association="POSModel.Store.address_ibfk_10">
+            <End Role="postcode" EntitySet="postcode" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_6" Association="POSModel.Store.address_ibfk_6">
+            <End Role="town_city" EntitySet="town_city" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_7" Association="POSModel.Store.address_ibfk_7">
+            <End Role="country" EntitySet="country" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_8" Association="POSModel.Store.address_ibfk_8">
+            <End Role="street" EntitySet="street" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_9" Association="POSModel.Store.address_ibfk_9">
+            <End Role="locality" EntitySet="locality" />
+            <End Role="address" EntitySet="address" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_3" Association="POSModel.Store.customer_ibfk_3">
+            <End Role="customer_type" EntitySet="customer_type" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_4" Association="POSModel.Store.customer_ibfk_4">
+            <End Role="address" EntitySet="address" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_5" Association="POSModel.Store.customer_ibfk_5">
+            <End Role="customer_status" EntitySet="customer_status" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_6" Association="POSModel.Store.customer_ibfk_6">
+            <End Role="openid_server" EntitySet="openid_server" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_card_details_ibfk_1" Association="POSModel.Store.customer_pay_card_details_ibfk_1">
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+            <End Role="customer_pay_card_details" EntitySet="customer_pay_card_details" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_cheque_details_ibfk_1" Association="POSModel.Store.customer_pay_cheque_details_ibfk_1">
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+            <End Role="customer_pay_cheque_details" EntitySet="customer_pay_cheque_details" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_history_ibfk_4" Association="POSModel.Store.customer_pay_history_ibfk_4">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_history_ibfk_5" Association="POSModel.Store.customer_pay_history_ibfk_5">
+            <End Role="ordermaster" EntitySet="ordermaster" />
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+          </AssociationSet>
+          <AssociationSet Name="display_properties_ibfk_1" Association="POSModel.Store.display_properties_ibfk_1">
+            <End Role="product" EntitySet="product" />
+            <End Role="display_properties" EntitySet="display_properties" />
+          </AssociationSet>
+          <AssociationSet Name="email_history_ibfk_1" Association="POSModel.Store.email_history_ibfk_1">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="email_history" EntitySet="email_history" />
+          </AssociationSet>
+          <AssociationSet Name="email_history_ibfk_2" Association="POSModel.Store.email_history_ibfk_2">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="email_history" EntitySet="email_history" />
+          </AssociationSet>
+          <AssociationSet Name="login_history_ibfk_2" Association="POSModel.Store.login_history_ibfk_2">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="login_history" EntitySet="login_history" />
+          </AssociationSet>
+          <AssociationSet Name="login_history_ibfk_3" Association="POSModel.Store.login_history_ibfk_3">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="login_history" EntitySet="login_history" />
+          </AssociationSet>
+          <AssociationSet Name="measure_unit_conversion_ibfk_1" Association="POSModel.Store.measure_unit_conversion_ibfk_1">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
+          </AssociationSet>
+          <AssociationSet Name="measure_unit_conversion_ibfk_2" Association="POSModel.Store.measure_unit_conversion_ibfk_2">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_1" Association="POSModel.Store.orderchild_ibfk_1">
+            <End Role="ordermaster" EntitySet="ordermaster" />
+            <End Role="orderchild" EntitySet="orderchild" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_2" Association="POSModel.Store.orderchild_ibfk_2">
+            <End Role="product" EntitySet="product" />
+            <End Role="orderchild" EntitySet="orderchild" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_3" Association="POSModel.Store.orderchild_ibfk_3">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="orderchild" EntitySet="orderchild" />
+          </AssociationSet>
+          <AssociationSet Name="ordermaster_ibfk_1" Association="POSModel.Store.ordermaster_ibfk_1">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="ordermaster" EntitySet="ordermaster" />
+          </AssociationSet>
+          <AssociationSet Name="ordermaster_ibfk_2" Association="POSModel.Store.ordermaster_ibfk_2">
+            <End Role="shop_info" EntitySet="shop_info" />
+            <End Role="ordermaster" EntitySet="ordermaster" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_child_ibfk_1" Association="POSModel.Store.product_purchase_history_child_ibfk_1">
+            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
+            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_child_ibfk_2" Association="POSModel.Store.product_purchase_history_child_ibfk_2">
+            <End Role="product" EntitySet="product" />
+            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_child_ibfk_3" Association="POSModel.Store.product_purchase_history_child_ibfk_3">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_master_ibfk_1" Association="POSModel.Store.product_purchase_history_master_ibfk_1">
+            <End Role="supplier" EntitySet="supplier" />
+            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_master_ibfk_2" Association="POSModel.Store.product_purchase_history_master_ibfk_2">
+            <End Role="shop_info" EntitySet="shop_info" />
+            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
+          </AssociationSet>
+          <AssociationSet Name="supplier_products_ibfk_1" Association="POSModel.Store.supplier_products_ibfk_1">
+            <End Role="supplier" EntitySet="supplier" />
+            <End Role="supplier_products" EntitySet="supplier_products" />
+          </AssociationSet>
+          <AssociationSet Name="supplier_products_ibfk_2" Association="POSModel.Store.supplier_products_ibfk_2">
+            <End Role="product" EntitySet="product" />
+            <End Role="supplier_products" EntitySet="supplier_products" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="building_name" Type="varchar" MaxLength="100" />
+          <Property Name="house_no" Type="varchar" MaxLength="100" />
+          <Property Name="street_id" Type="int" Nullable="false" />
+          <Property Name="locality_id" Type="bigint" />
+          <Property Name="town_city_id" Type="smallint" />
+          <Property Name="country_id" Type="smallint" />
+          <Property Name="postcode_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="type_id" Type="smallint" />
+          <Property Name="last_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="first_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="mobile" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="openid_id" Type="varchar" MaxLength="100" />
+          <Property Name="openid_server_id" Type="smallint" />
+          <Property Name="password" Type="varchar" MaxLength="40" />
+          <Property Name="status_id" Type="smallint" Nullable="false" />
+          <Property Name="credit_limit" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="payment_period" Type="smallint" Nullable="false" />
+          <Property Name="image_path" Type="varchar" MaxLength="255" />
+          <Property Name="address_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="customer_pay_card_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pay_history_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer_pay_cheque_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pay_history_id" Type="bigint" Nullable="false" />
+          <Property Name="bank_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="bank_branch" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="account_no" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="cheque_number" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="due_date" Type="date" Nullable="false" />
+          <Property Name="amount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="status" Type="enum" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer_pay_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="order_id" Type="bigint" />
+          <Property Name="pay_date" Type="datetime" Nullable="false" />
+          <Property Name="pay_type" Type="enum" />
+          <Property Name="pay_amount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="customer_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="customer_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="designation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="display_properties">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+          <Property Name="text_color" Type="varchar" Nullable="false" MaxLength="9" />
+          <Property Name="font_size" Type="smallint" Nullable="false" />
+          <Property Name="text_bold" Type="bool" Nullable="false" />
+          <Property Name="display_in_screen" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="email_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="send_date" Type="timestamp" Nullable="false" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="staff_id" Type="smallint" />
+          <Property Name="to_email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="subject" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="message" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="email_templates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="subject" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="from_email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="from_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="plain_msg" Type="text" Nullable="false" />
+          <Property Name="message" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="general_settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="value" Type="longtext" />
+          <Property Name="default" Type="varchar" MaxLength="255" />
+          <Property Name="group" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="type" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="locality">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="locality" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="login_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="staff_id" Type="smallint" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="login_date" Type="timestamp" Nullable="false" />
+          <Property Name="ip" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="host" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="measure_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="measure_unit_conversion">
+          <Key>
+            <PropertyRef Name="from_unit_id" />
+            <PropertyRef Name="to_unit_id" />
+          </Key>
+          <Property Name="from_unit_id" Type="smallint" Nullable="false" />
+          <Property Name="to_unit_id" Type="smallint" Nullable="false" />
+          <Property Name="conversion_rate" Type="decimal" Nullable="false" Precision="15" Scale="5" />
+        </EntityType>
+        <EntityType Name="openid_server">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="server" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="orderchild">
+          <Key>
+            <PropertyRef Name="order_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="order_id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+          <Property Name="quantity" Type="smallint" Nullable="false" />
+          <Property Name="measure_unit_id" Type="smallint" Nullable="false" />
+          <Property Name="amount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="discount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="ordermaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_no" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="order_no" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="order_date" Type="datetime" Nullable="false" />
+          <Property Name="customer_id" Type="int" />
+          <Property Name="shop_code" Type="varchar" MaxLength="10" />
+          <Property Name="payment_status" Type="enum" Nullable="false" />
+          <Property Name="sub_total" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="total_discount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="delivery_charge" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="grand_total" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="credit_amount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="payment_due_date" Type="date" />
+          <Property Name="print_receipt_copies" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="postcode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="postcode" Type="varchar" Nullable="false" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="barcode" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" Nullable="false" />
+          <Property Name="status_id" Type="smallint" Nullable="false" />
+          <Property Name="retail_price" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="wholesale_price" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tax_rate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="has_waranty" Type="bool" />
+          <Property Name="image_path" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="category_id" Type="smallint" />
+          <Property Name="size" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="weight" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="product_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" Nullable="false" />
+          <Property Name="color" Type="varchar" Nullable="false" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="product_promotional_offer">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="offer_id" />
+          </Key>
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+          <Property Name="offer_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_purchase_history_child">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="history_master_id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+          <Property Name="quantity" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="measure_unit_id" Type="smallint" Nullable="false" />
+          <Property Name="rate" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="discount_type" Type="set" Nullable="false" />
+          <Property Name="raw_discount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="discount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="product_purchase_history_master">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="purchase_date" Type="datetime" Nullable="false" />
+          <Property Name="supplier_id" Type="smallint" />
+          <Property Name="shop_code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="invoice_no" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="sub_total" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="discount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="grand_total" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="cash" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="credit" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="product_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="promotional_offer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" Nullable="false" />
+          <Property Name="start_date" Type="date" Nullable="false" />
+          <Property Name="end_date" Type="date" Nullable="false" />
+          <Property Name="purchase_quantity" Type="smallint" Nullable="false" />
+          <Property Name="offer_quantity" Type="smallint" />
+          <Property Name="offer_percentage" Type="decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="queries">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="query" Type="longtext" Nullable="false" />
+          <Property Name="query_date" Type="timestamp" Nullable="false" />
+          <Property Name="is_processed" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="security_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="permissions" Type="varchar" Nullable="false" MaxLength="5000" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="shop_info">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="phone" Type="varchar" Nullable="false" MaxLength="15" />
+          <Property Name="fax" Type="varchar" MaxLength="15" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="100" />
+          <Property Name="tax_rate" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="currency" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="address_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="shop_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="shop_code" />
+          </Key>
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+          <Property Name="shop_code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="stock_quantity" Type="decimal" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="measure_unit_id" Type="smallint" />
+          <Property Name="stock_last_updated" Type="timestamp" Nullable="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="last_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="first_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="dateofbirth" Type="date" Nullable="false" />
+          <Property Name="designation_id" Type="smallint" />
+          <Property Name="phone" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="mobile" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="hire_date" Type="date" Nullable="false" />
+          <Property Name="status_id" Type="smallint" Nullable="false" />
+          <Property Name="image_path" Type="varchar" MaxLength="255" />
+          <Property Name="department_id" Type="smallint" />
+          <Property Name="address_id" Type="bigint" />
+          <Property Name="openid_id" Type="varchar" MaxLength="100" />
+          <Property Name="openid_server_id" Type="smallint" />
+          <Property Name="password" Type="varchar" MaxLength="40" />
+          <Property Name="security_group_id" Type="smallint" />
+        </EntityType>
+        <EntityType Name="staff_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="description" Type="varchar" />
+        </EntityType>
+        <EntityType Name="street">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="street" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="mobile" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="address_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="supplier_contact_person">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="supplier_id" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="20" />
+          <Property Name="mobile" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="address_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="supplier_products">
+          <Key>
+            <PropertyRef Name="supplier_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="supplier_id" Type="smallint" Nullable="false" />
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="town_city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="town_city" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="warranty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="smallint" Nullable="false" />
+          <Property Name="serial_no" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="start_time" Type="datetime" Nullable="false" />
+          <Property Name="end_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="working_record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="in_time" Type="time" Nullable="false" />
+          <Property Name="out_time" Type="time" Nullable="false" />
+          <Property Name="total_hours" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="work_date" Type="date" Nullable="false" />
+          <Property Name="staff_id" Type="smallint" Nullable="false" />
+        </EntityType>
+        <Association Name="address_ibfk_10">
+          <End Role="postcode" Type="POSModel.Store.postcode" Multiplicity="1" />
+          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postcode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="postcode_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_6">
+          <End Role="town_city" Type="POSModel.Store.town_city" Multiplicity="0..1" />
+          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="town_city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="town_city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_7">
+          <End Role="country" Type="POSModel.Store.country" Multiplicity="0..1" />
+          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_8">
+          <End Role="street" Type="POSModel.Store.street" Multiplicity="1" />
+          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="street">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_9">
+          <End Role="locality" Type="POSModel.Store.locality" Multiplicity="0..1" />
+          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locality">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="locality_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_3">
+          <End Role="customer_type" Type="POSModel.Store.customer_type" Multiplicity="0..1" />
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_4">
+          <End Role="address" Type="POSModel.Store.address" Multiplicity="0..1" />
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_5">
+          <End Role="customer_status" Type="POSModel.Store.customer_status" Multiplicity="1" />
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_6">
+          <End Role="openid_server" Type="POSModel.Store.openid_server" Multiplicity="0..1" />
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="openid_server">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="openid_server_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_card_details_ibfk_1">
+          <End Role="customer_pay_history" Type="POSModel.Store.customer_pay_history" Multiplicity="1" />
+          <End Role="customer_pay_card_details" Type="POSModel.Store.customer_pay_card_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_pay_history">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_card_details">
+              <PropertyRef Name="pay_history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_cheque_details_ibfk_1">
+          <End Role="customer_pay_history" Type="POSModel.Store.customer_pay_history" Multiplicity="1" />
+          <End Role="customer_pay_cheque_details" Type="POSModel.Store.customer_pay_cheque_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_pay_history">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_cheque_details">
+              <PropertyRef Name="pay_history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_history_ibfk_4">
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="customer_pay_history" Type="POSModel.Store.customer_pay_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_history">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_history_ibfk_5">
+          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="0..1" />
+          <End Role="customer_pay_history" Type="POSModel.Store.customer_pay_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordermaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_history">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="display_properties_ibfk_1">
+          <End Role="product" Type="POSModel.Store.product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="display_properties" Type="POSModel.Store.display_properties" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="display_properties">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="email_history_ibfk_1">
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="email_history" Type="POSModel.Store.email_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_history">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="email_history_ibfk_2">
+          <End Role="staff" Type="POSModel.Store.staff" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="email_history" Type="POSModel.Store.email_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_history">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_history_ibfk_2">
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="login_history" Type="POSModel.Store.login_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login_history">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_history_ibfk_3">
+          <End Role="staff" Type="POSModel.Store.staff" Multiplicity="0..1" />
+          <End Role="login_history" Type="POSModel.Store.login_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login_history">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="measure_unit_conversion_ibfk_1">
+          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="measure_unit_conversion" Type="POSModel.Store.measure_unit_conversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="measure_unit_conversion">
+              <PropertyRef Name="from_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="measure_unit_conversion_ibfk_2">
+          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="measure_unit_conversion" Type="POSModel.Store.measure_unit_conversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="measure_unit_conversion">
+              <PropertyRef Name="to_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_1">
+          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="orderchild" Type="POSModel.Store.orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordermaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_2">
+          <End Role="product" Type="POSModel.Store.product" Multiplicity="1" />
+          <End Role="orderchild" Type="POSModel.Store.orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_3">
+          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1" />
+          <End Role="orderchild" Type="POSModel.Store.orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="measure_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordermaster_ibfk_1">
+          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1" />
+          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ordermaster">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordermaster_ibfk_2">
+          <End Role="shop_info" Type="POSModel.Store.shop_info" Multiplicity="0..1" />
+          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shop_info">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="ordermaster">
+              <PropertyRef Name="shop_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_child_ibfk_1">
+          <End Role="product_purchase_history_master" Type="POSModel.Store.product_purchase_history_master" Multiplicity="1" />
+          <End Role="product_purchase_history_child" Type="POSModel.Store.product_purchase_history_child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_purchase_history_master">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_child">
+              <PropertyRef Name="history_master_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_child_ibfk_2">
+          <End Role="product" Type="POSModel.Store.product" Multiplicity="1" />
+          <End Role="product_purchase_history_child" Type="POSModel.Store.product_purchase_history_child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_child">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_child_ibfk_3">
+          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1" />
+          <End Role="product_purchase_history_child" Type="POSModel.Store.product_purchase_history_child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_child">
+              <PropertyRef Name="measure_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_master_ibfk_1">
+          <End Role="supplier" Type="POSModel.Store.supplier" Multiplicity="0..1" />
+          <End Role="product_purchase_history_master" Type="POSModel.Store.product_purchase_history_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_master">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_master_ibfk_2">
+          <End Role="shop_info" Type="POSModel.Store.shop_info" Multiplicity="1" />
+          <End Role="product_purchase_history_master" Type="POSModel.Store.product_purchase_history_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shop_info">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="product_purchase_history_master">
+              <PropertyRef Name="shop_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="supplier_products_ibfk_1">
+          <End Role="supplier" Type="POSModel.Store.supplier" Multiplicity="1" />
+          <End Role="supplier_products" Type="POSModel.Store.supplier_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="supplier_products">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="supplier_products_ibfk_2">
+          <End Role="product" Type="POSModel.Store.product" Multiplicity="1" />
+          <End Role="supplier_products" Type="POSModel.Store.supplier_products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="supplier_products">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="posEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="addresses" EntityType="POSModel.address" />
+          <EntitySet Name="countries" EntityType="POSModel.country" />
+          <EntitySet Name="customers" EntityType="POSModel.customer" />
+          <EntitySet Name="customer_pay_card_details" EntityType="POSModel.customer_pay_card_details" />
+          <EntitySet Name="customer_pay_cheque_details" EntityType="POSModel.customer_pay_cheque_details" />
+          <EntitySet Name="customer_pay_history" EntityType="POSModel.customer_pay_history" />
+          <EntitySet Name="customer_status" EntityType="POSModel.customer_status" />
+          <EntitySet Name="customer_type" EntityType="POSModel.customer_type" />
+          <EntitySet Name="departments" EntityType="POSModel.department" />
+          <EntitySet Name="designations" EntityType="POSModel.designation" />
+          <EntitySet Name="display_properties" EntityType="POSModel.display_properties" />
+          <EntitySet Name="email_history" EntityType="POSModel.email_history" />
+          <EntitySet Name="email_templates" EntityType="POSModel.email_templates" />
+          <EntitySet Name="general_settings" EntityType="POSModel.general_settings" />
+          <EntitySet Name="localities" EntityType="POSModel.locality" />
+          <EntitySet Name="login_history" EntityType="POSModel.login_history" />
+          <EntitySet Name="measure_unit" EntityType="POSModel.measure_unit" />
+          <EntitySet Name="measure_unit_conversion" EntityType="POSModel.measure_unit_conversion" />
+          <EntitySet Name="openid_server" EntityType="POSModel.openid_server" />
+          <EntitySet Name="orderchilds" EntityType="POSModel.orderchild" />
+          <EntitySet Name="ordermasters" EntityType="POSModel.ordermaster" />
+          <EntitySet Name="postcodes" EntityType="POSModel.postcode" />
+          <EntitySet Name="products" EntityType="POSModel.product" />
+          <EntitySet Name="product_category" EntityType="POSModel.product_category" />
+          <EntitySet Name="product_promotional_offer" EntityType="POSModel.product_promotional_offer" />
+          <EntitySet Name="product_purchase_history_child" EntityType="POSModel.product_purchase_history_child" />
+          <EntitySet Name="product_purchase_history_master" EntityType="POSModel.product_purchase_history_master" />
+          <EntitySet Name="product_status" EntityType="POSModel.product_status" />
+          <EntitySet Name="promotional_offer" EntityType="POSModel.promotional_offer" />
+          <EntitySet Name="queries" EntityType="POSModel.query" />
+          <EntitySet Name="security_group" EntityType="POSModel.security_group" />
+          <EntitySet Name="shop_info" EntityType="POSModel.shop_info" />
+          <EntitySet Name="shop_product" EntityType="POSModel.shop_product" />
+          <EntitySet Name="staffs" EntityType="POSModel.staff" />
+          <EntitySet Name="staff_status" EntityType="POSModel.staff_status" />
+          <EntitySet Name="streets" EntityType="POSModel.street" />
+          <EntitySet Name="suppliers" EntityType="POSModel.supplier" />
+          <EntitySet Name="supplier_contact_person" EntityType="POSModel.supplier_contact_person" />
+          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
+          <EntitySet Name="warranties" EntityType="POSModel.warranty" />
+          <EntitySet Name="working_record" EntityType="POSModel.working_record" />
+          <AssociationSet Name="address_ibfk_10" Association="POSModel.address_ibfk_10">
+            <End Role="postcode" EntitySet="postcodes" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_6" Association="POSModel.address_ibfk_6">
+            <End Role="town_city" EntitySet="town_city" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_7" Association="POSModel.address_ibfk_7">
+            <End Role="country" EntitySet="countries" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_8" Association="POSModel.address_ibfk_8">
+            <End Role="street" EntitySet="streets" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_9" Association="POSModel.address_ibfk_9">
+            <End Role="locality" EntitySet="localities" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_4" Association="POSModel.customer_ibfk_4">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_3" Association="POSModel.customer_ibfk_3">
+            <End Role="customer_type" EntitySet="customer_type" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_5" Association="POSModel.customer_ibfk_5">
+            <End Role="customer_status" EntitySet="customer_status" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="customer_ibfk_6" Association="POSModel.customer_ibfk_6">
+            <End Role="openid_server" EntitySet="openid_server" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_history_ibfk_4" Association="POSModel.customer_pay_history_ibfk_4">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+          </AssociationSet>
+          <AssociationSet Name="email_history_ibfk_1" Association="POSModel.email_history_ibfk_1">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="email_history" EntitySet="email_history" />
+          </AssociationSet>
+          <AssociationSet Name="login_history_ibfk_2" Association="POSModel.login_history_ibfk_2">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="login_history" EntitySet="login_history" />
+          </AssociationSet>
+          <AssociationSet Name="ordermaster_ibfk_1" Association="POSModel.ordermaster_ibfk_1">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="ordermaster" EntitySet="ordermasters" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_card_details_ibfk_1" Association="POSModel.customer_pay_card_details_ibfk_1">
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+            <End Role="customer_pay_card_details" EntitySet="customer_pay_card_details" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_cheque_details_ibfk_1" Association="POSModel.customer_pay_cheque_details_ibfk_1">
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+            <End Role="customer_pay_cheque_details" EntitySet="customer_pay_cheque_details" />
+          </AssociationSet>
+          <AssociationSet Name="customer_pay_history_ibfk_5" Association="POSModel.customer_pay_history_ibfk_5">
+            <End Role="ordermaster" EntitySet="ordermasters" />
+            <End Role="customer_pay_history" EntitySet="customer_pay_history" />
+          </AssociationSet>
+          <AssociationSet Name="display_properties_ibfk_1" Association="POSModel.display_properties_ibfk_1">
+            <End Role="product" EntitySet="products" />
+            <End Role="display_properties" EntitySet="display_properties" />
+          </AssociationSet>
+          <AssociationSet Name="email_history_ibfk_2" Association="POSModel.email_history_ibfk_2">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="email_history" EntitySet="email_history" />
+          </AssociationSet>
+          <AssociationSet Name="login_history_ibfk_3" Association="POSModel.login_history_ibfk_3">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="login_history" EntitySet="login_history" />
+          </AssociationSet>
+          <AssociationSet Name="measure_unit_conversion_ibfk_1" Association="POSModel.measure_unit_conversion_ibfk_1">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
+          </AssociationSet>
+          <AssociationSet Name="measure_unit_conversion_ibfk_2" Association="POSModel.measure_unit_conversion_ibfk_2">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_3" Association="POSModel.orderchild_ibfk_3">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="orderchild" EntitySet="orderchilds" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_child_ibfk_3" Association="POSModel.product_purchase_history_child_ibfk_3">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_1" Association="POSModel.orderchild_ibfk_1">
+            <End Role="ordermaster" EntitySet="ordermasters" />
+            <End Role="orderchild" EntitySet="orderchilds" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_2" Association="POSModel.orderchild_ibfk_2">
+            <End Role="product" EntitySet="products" />
+            <End Role="orderchild" EntitySet="orderchilds" />
+          </AssociationSet>
+          <AssociationSet Name="ordermaster_ibfk_2" Association="POSModel.ordermaster_ibfk_2">
+            <End Role="shop_info" EntitySet="shop_info" />
+            <End Role="ordermaster" EntitySet="ordermasters" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_child_ibfk_2" Association="POSModel.product_purchase_history_child_ibfk_2">
+            <End Role="product" EntitySet="products" />
+            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_child_ibfk_1" Association="POSModel.product_purchase_history_child_ibfk_1">
+            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
+            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_master_ibfk_1" Association="POSModel.product_purchase_history_master_ibfk_1">
+            <End Role="supplier" EntitySet="suppliers" />
+            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
+          </AssociationSet>
+          <AssociationSet Name="product_purchase_history_master_ibfk_2" Association="POSModel.product_purchase_history_master_ibfk_2">
+            <End Role="shop_info" EntitySet="shop_info" />
+            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
+          </AssociationSet>
+          <AssociationSet Name="supplier_products" Association="POSModel.supplier_products">
+            <End Role="supplier" EntitySet="suppliers" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="building_name" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="house_no" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="street_id" Type="Int32" Nullable="false" />
+          <Property Name="locality_id" Type="Int64" />
+          <Property Name="town_city_id" Type="Int16" />
+          <Property Name="country_id" Type="Int16" />
+          <Property Name="postcode_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="postcode" Relationship="POSModel.address_ibfk_10" FromRole="address" ToRole="postcode" />
+          <NavigationProperty Name="town_city" Relationship="POSModel.address_ibfk_6" FromRole="address" ToRole="town_city" />
+          <NavigationProperty Name="country" Relationship="POSModel.address_ibfk_7" FromRole="address" ToRole="country" />
+          <NavigationProperty Name="street" Relationship="POSModel.address_ibfk_8" FromRole="address" ToRole="street" />
+          <NavigationProperty Name="locality" Relationship="POSModel.address_ibfk_9" FromRole="address" ToRole="locality" />
+          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_4" FromRole="address" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_7" FromRole="country" ToRole="address" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="type_id" Type="Int16" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="mobile" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="openid_id" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="openid_server_id" Type="Int16" />
+          <Property Name="password" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="status_id" Type="Int16" Nullable="false" />
+          <Property Name="credit_limit" Type="Decimal" Nullable="false" />
+          <Property Name="payment_period" Type="Int16" Nullable="false" />
+          <Property Name="image_path" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="address_id" Type="Int64" />
+          <NavigationProperty Name="address" Relationship="POSModel.customer_ibfk_4" FromRole="customer" ToRole="address" />
+          <NavigationProperty Name="customer_type" Relationship="POSModel.customer_ibfk_3" FromRole="customer" ToRole="customer_type" />
+          <NavigationProperty Name="customer_status" Relationship="POSModel.customer_ibfk_5" FromRole="customer" ToRole="customer_status" />
+          <NavigationProperty Name="openid_server" Relationship="POSModel.customer_ibfk_6" FromRole="customer" ToRole="openid_server" />
+          <NavigationProperty Name="customer_pay_history" Relationship="POSModel.customer_pay_history_ibfk_4" FromRole="customer" ToRole="customer_pay_history" />
+          <NavigationProperty Name="email_history" Relationship="POSModel.email_history_ibfk_1" FromRole="customer" ToRole="email_history" />
+          <NavigationProperty Name="login_history" Relationship="POSModel.login_history_ibfk_2" FromRole="customer" ToRole="login_history" />
+          <NavigationProperty Name="ordermasters" Relationship="POSModel.ordermaster_ibfk_1" FromRole="customer" ToRole="ordermaster" />
+        </EntityType>
+        <EntityType Name="customer_pay_card_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pay_history_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="customer_pay_history" Relationship="POSModel.customer_pay_card_details_ibfk_1" FromRole="customer_pay_card_details" ToRole="customer_pay_history" />
+        </EntityType>
+        <EntityType Name="customer_pay_cheque_details">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pay_history_id" Type="Int64" Nullable="false" />
+          <Property Name="bank_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="bank_branch" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="account_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="cheque_number" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="due_date" Type="DateTime" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="customer_pay_history" Relationship="POSModel.customer_pay_cheque_details_ibfk_1" FromRole="customer_pay_cheque_details" ToRole="customer_pay_history" />
+        </EntityType>
+        <EntityType Name="customer_pay_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="order_id" Type="Int64" />
+          <Property Name="pay_date" Type="DateTime" Nullable="false" />
+          <Property Name="pay_type" Type="String" MaxLength="65532" Unicode="false" FixedLength="false" />
+          <Property Name="pay_amount" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="POSModel.customer_pay_history_ibfk_4" FromRole="customer_pay_history" ToRole="customer" />
+          <NavigationProperty Name="customer_pay_card_details" Relationship="POSModel.customer_pay_card_details_ibfk_1" FromRole="customer_pay_history" ToRole="customer_pay_card_details" />
+          <NavigationProperty Name="customer_pay_cheque_details" Relationship="POSModel.customer_pay_cheque_details_ibfk_1" FromRole="customer_pay_history" ToRole="customer_pay_cheque_details" />
+          <NavigationProperty Name="ordermaster" Relationship="POSModel.customer_pay_history_ibfk_5" FromRole="customer_pay_history" ToRole="ordermaster" />
+        </EntityType>
+        <EntityType Name="customer_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_5" FromRole="customer_status" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="customer_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_3" FromRole="customer_type" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="designation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="display_properties">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int16" Nullable="false" />
+          <Property Name="text_color" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+          <Property Name="font_size" Type="Int16" Nullable="false" />
+          <Property Name="text_bold" Type="Boolean" Nullable="false" />
+          <Property Name="display_in_screen" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="POSModel.display_properties_ibfk_1" FromRole="display_properties" ToRole="product" />
+        </EntityType>
+        <EntityType Name="email_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="send_date" Type="DateTime" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="staff_id" Type="Int16" />
+          <Property Name="to_email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="subject" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="customer" Relationship="POSModel.email_history_ibfk_1" FromRole="email_history" ToRole="customer" />
+          <NavigationProperty Name="staff" Relationship="POSModel.email_history_ibfk_2" FromRole="email_history" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="email_templates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="subject" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="from_email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="from_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="plain_msg" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="message" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="general_settings">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="value" Type="String" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="default" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="group" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="locality">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="locality1" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_9" FromRole="locality" ToRole="address" />
+        </EntityType>
+        <EntityType Name="login_history">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="staff_id" Type="Int16" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="login_date" Type="DateTime" Nullable="false" />
+          <Property Name="ip" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="host" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="customer" Relationship="POSModel.login_history_ibfk_2" FromRole="login_history" ToRole="customer" />
+          <NavigationProperty Name="staff" Relationship="POSModel.login_history_ibfk_3" FromRole="login_history" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="measure_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="measure_unit_conversion" Relationship="POSModel.measure_unit_conversion_ibfk_1" FromRole="measure_unit" ToRole="measure_unit_conversion" />
+          <NavigationProperty Name="measure_unit_conversion1" Relationship="POSModel.measure_unit_conversion_ibfk_2" FromRole="measure_unit" ToRole="measure_unit_conversion" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_3" FromRole="measure_unit" ToRole="orderchild" />
+          <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_3" FromRole="measure_unit" ToRole="product_purchase_history_child" />
+        </EntityType>
+        <EntityType Name="measure_unit_conversion">
+          <Key>
+            <PropertyRef Name="from_unit_id" />
+            <PropertyRef Name="to_unit_id" />
+          </Key>
+          <Property Name="from_unit_id" Type="Int16" Nullable="false" />
+          <Property Name="to_unit_id" Type="Int16" Nullable="false" />
+          <Property Name="conversion_rate" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="measure_unit" Relationship="POSModel.measure_unit_conversion_ibfk_1" FromRole="measure_unit_conversion" ToRole="measure_unit" />
+          <NavigationProperty Name="measure_unit1" Relationship="POSModel.measure_unit_conversion_ibfk_2" FromRole="measure_unit_conversion" ToRole="measure_unit" />
+        </EntityType>
+        <EntityType Name="openid_server">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="server" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_6" FromRole="openid_server" ToRole="customer" />
+        </EntityType>
+        <EntityType Name="orderchild">
+          <Key>
+            <PropertyRef Name="order_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="order_id" Type="Int64" Nullable="false" />
+          <Property Name="product_id" Type="Int16" Nullable="false" />
+          <Property Name="quantity" Type="Int16" Nullable="false" />
+          <Property Name="measure_unit_id" Type="Int16" Nullable="false" />
+          <Property Name="amount" Type="Decimal" Nullable="false" />
+          <Property Name="discount" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="measure_unit" Relationship="POSModel.orderchild_ibfk_3" FromRole="orderchild" ToRole="measure_unit" />
+          <NavigationProperty Name="ordermaster" Relationship="POSModel.orderchild_ibfk_1" FromRole="orderchild" ToRole="ordermaster" />
+          <NavigationProperty Name="product" Relationship="POSModel.orderchild_ibfk_2" FromRole="orderchild" ToRole="product" />
+        </EntityType>
+        <EntityType Name="ordermaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticket_no" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="order_no" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" />
+          <Property Name="shop_code" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="payment_status" Type="String" Nullable="false" MaxLength="65532" Unicode="false" FixedLength="false" />
+          <Property Name="sub_total" Type="Decimal" Nullable="false" />
+          <Property Name="total_discount" Type="Decimal" Nullable="false" />
+          <Property Name="delivery_charge" Type="Decimal" Nullable="false" />
+          <Property Name="grand_total" Type="Decimal" Nullable="false" />
+          <Property Name="credit_amount" Type="Decimal" Nullable="false" />
+          <Property Name="payment_due_date" Type="DateTime" />
+          <Property Name="print_receipt_copies" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="customer" Relationship="POSModel.ordermaster_ibfk_1" FromRole="ordermaster" ToRole="customer" />
+          <NavigationProperty Name="customer_pay_history" Relationship="POSModel.customer_pay_history_ibfk_5" FromRole="ordermaster" ToRole="customer_pay_history" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_1" FromRole="ordermaster" ToRole="orderchild" />
+          <NavigationProperty Name="shop_info" Relationship="POSModel.ordermaster_ibfk_2" FromRole="ordermaster" ToRole="shop_info" />
+        </EntityType>
+        <EntityType Name="postcode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="postcode1" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_10" FromRole="postcode" ToRole="address" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="barcode" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="status_id" Type="Int16" Nullable="false" />
+          <Property Name="retail_price" Type="Decimal" />
+          <Property Name="wholesale_price" Type="Decimal" />
+          <Property Name="tax_rate" Type="Decimal" />
+          <Property Name="has_waranty" Type="Boolean" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="category_id" Type="Int16" />
+          <Property Name="size" Type="Decimal" />
+          <Property Name="weight" Type="Decimal" />
+          <NavigationProperty Name="display_properties" Relationship="POSModel.display_properties_ibfk_1" FromRole="product" ToRole="display_properties" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_2" FromRole="product" ToRole="orderchild" />
+          <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_2" FromRole="product" ToRole="product_purchase_history_child" />
+          <NavigationProperty Name="suppliers" Relationship="POSModel.supplier_products" FromRole="product" ToRole="supplier" />
+        </EntityType>
+        <EntityType Name="product_category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="9" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="product_promotional_offer">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="offer_id" />
+          </Key>
+          <Property Name="product_id" Type="Int16" Nullable="false" />
+          <Property Name="offer_id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_purchase_history_child">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="history_master_id" Type="Int64" Nullable="false" />
+          <Property Name="product_id" Type="Int16" Nullable="false" />
+          <Property Name="quantity" Type="Decimal" Nullable="false" />
+          <Property Name="measure_unit_id" Type="Int16" Nullable="false" />
+          <Property Name="rate" Type="Decimal" Nullable="false" />
+          <Property Name="discount_type" Type="String" Nullable="false" MaxLength="65531" Unicode="false" FixedLength="false" />
+          <Property Name="raw_discount" Type="Decimal" Nullable="false" />
+          <Property Name="discount" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="measure_unit" Relationship="POSModel.product_purchase_history_child_ibfk_3" FromRole="product_purchase_history_child" ToRole="measure_unit" />
+          <NavigationProperty Name="product" Relationship="POSModel.product_purchase_history_child_ibfk_2" FromRole="product_purchase_history_child" ToRole="product" />
+          <NavigationProperty Name="product_purchase_history_master" Relationship="POSModel.product_purchase_history_child_ibfk_1" FromRole="product_purchase_history_child" ToRole="product_purchase_history_master" />
+        </EntityType>
+        <EntityType Name="product_purchase_history_master">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchase_date" Type="DateTime" Nullable="false" />
+          <Property Name="supplier_id" Type="Int16" />
+          <Property Name="shop_code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="invoice_no" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="sub_total" Type="Decimal" Nullable="false" />
+          <Property Name="discount" Type="Decimal" Nullable="false" />
+          <Property Name="grand_total" Type="Decimal" Nullable="false" />
+          <Property Name="cash" Type="Decimal" Nullable="false" />
+          <Property Name="credit" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_1" FromRole="product_purchase_history_master" ToRole="product_purchase_history_child" />
+          <NavigationProperty Name="supplier" Relationship="POSModel.product_purchase_history_master_ibfk_1" FromRole="product_purchase_history_master" ToRole="supplier" />
+          <NavigationProperty Name="shop_info" Relationship="POSModel.product_purchase_history_master_ibfk_2" FromRole="product_purchase_history_master" ToRole="shop_info" />
+        </EntityType>
+        <EntityType Name="product_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="promotional_offer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" />
+          <Property Name="purchase_quantity" Type="Int16" Nullable="false" />
+          <Property Name="offer_quantity" Type="Int16" />
+          <Property Name="offer_percentage" Type="Decimal" />
+        </EntityType>
+        <EntityType Name="query">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="query1" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="query_date" Type="DateTime" Nullable="false" />
+          <Property Name="is_processed" Type="SByte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="security_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="permissions" Type="String" Nullable="false" MaxLength="5000" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="shop_info">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="fax" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="website" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="tax_rate" Type="Decimal" Nullable="false" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="address_id" Type="Int64" />
+          <NavigationProperty Name="ordermasters" Relationship="POSModel.ordermaster_ibfk_2" FromRole="shop_info" ToRole="ordermaster" />
+          <NavigationProperty Name="product_purchase_history_master" Relationship="POSModel.product_purchase_history_master_ibfk_2" FromRole="shop_info" ToRole="product_purchase_history_master" />
+        </EntityType>
+        <EntityType Name="shop_product">
+          <Key>
+            <PropertyRef Name="product_id" />
+            <PropertyRef Name="shop_code" />
+          </Key>
+          <Property Name="product_id" Type="Int16" Nullable="false" />
+          <Property Name="shop_code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="stock_quantity" Type="Decimal" Nullable="false" />
+          <Property Name="measure_unit_id" Type="Int16" />
+          <Property Name="stock_last_updated" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="dateofbirth" Type="DateTime" Nullable="false" />
+          <Property Name="designation_id" Type="Int16" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="hire_date" Type="DateTime" Nullable="false" />
+          <Property Name="status_id" Type="Int16" Nullable="false" />
+          <Property Name="image_path" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="department_id" Type="Int16" />
+          <Property Name="address_id" Type="Int64" />
+          <Property Name="openid_id" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="openid_server_id" Type="Int16" />
+          <Property Name="password" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="security_group_id" Type="Int16" />
+          <NavigationProperty Name="email_history" Relationship="POSModel.email_history_ibfk_2" FromRole="staff" ToRole="email_history" />
+          <NavigationProperty Name="login_history" Relationship="POSModel.login_history_ibfk_3" FromRole="staff" ToRole="login_history" />
+        </EntityType>
+        <EntityType Name="staff_status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="street">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street1" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_8" FromRole="street" ToRole="address" />
+        </EntityType>
+        <EntityType Name="supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="mobile" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="address_id" Type="Int64" />
+          <NavigationProperty Name="product_purchase_history_master" Relationship="POSModel.product_purchase_history_master_ibfk_1" FromRole="supplier" ToRole="product_purchase_history_master" />
+          <NavigationProperty Name="products" Relationship="POSModel.supplier_products" FromRole="supplier" ToRole="product" />
+        </EntityType>
+        <EntityType Name="supplier_contact_person">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supplier_id" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="mobile" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="address_id" Type="Int64" />
+        </EntityType>
+        <EntityType Name="town_city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="town_city1" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_6" FromRole="town_city" ToRole="address" />
+        </EntityType>
+        <EntityType Name="warranty">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int16" Nullable="false" />
+          <Property Name="serial_no" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="start_time" Type="DateTime" Nullable="false" />
+          <Property Name="end_time" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="working_record">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="in_time" Type="Time" Nullable="false" />
+          <Property Name="out_time" Type="Time" Nullable="false" />
+          <Property Name="total_hours" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="work_date" Type="DateTime" Nullable="false" />
+          <Property Name="staff_id" Type="Int16" Nullable="false" />
+        </EntityType>
+        <Association Name="address_ibfk_10">
+          <End Role="postcode" Type="POSModel.postcode" Multiplicity="1" />
+          <End Role="address" Type="POSModel.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postcode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="postcode_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_6">
+          <End Role="town_city" Type="POSModel.town_city" Multiplicity="0..1" />
+          <End Role="address" Type="POSModel.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="town_city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="town_city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_7">
+          <End Role="country" Type="POSModel.country" Multiplicity="0..1" />
+          <End Role="address" Type="POSModel.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_8">
+          <End Role="street" Type="POSModel.street" Multiplicity="1" />
+          <End Role="address" Type="POSModel.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="street">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_9">
+          <End Role="locality" Type="POSModel.locality" Multiplicity="0..1" />
+          <End Role="address" Type="POSModel.address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locality">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="locality_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_4">
+          <End Role="address" Type="POSModel.address" Multiplicity="0..1" />
+          <End Role="customer" Type="POSModel.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_3">
+          <End Role="customer_type" Type="POSModel.customer_type" Multiplicity="0..1" />
+          <End Role="customer" Type="POSModel.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_5">
+          <End Role="customer_status" Type="POSModel.customer_status" Multiplicity="1" />
+          <End Role="customer" Type="POSModel.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_ibfk_6">
+          <End Role="openid_server" Type="POSModel.openid_server" Multiplicity="0..1" />
+          <End Role="customer" Type="POSModel.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="openid_server">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="openid_server_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_history_ibfk_4">
+          <End Role="customer" Type="POSModel.customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="customer_pay_history" Type="POSModel.customer_pay_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_history">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="email_history_ibfk_1">
+          <End Role="customer" Type="POSModel.customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="email_history" Type="POSModel.email_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_history">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_history_ibfk_2">
+          <End Role="customer" Type="POSModel.customer" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="login_history" Type="POSModel.login_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login_history">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordermaster_ibfk_1">
+          <End Role="customer" Type="POSModel.customer" Multiplicity="0..1" />
+          <End Role="ordermaster" Type="POSModel.ordermaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ordermaster">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_card_details_ibfk_1">
+          <End Role="customer_pay_history" Type="POSModel.customer_pay_history" Multiplicity="1" />
+          <End Role="customer_pay_card_details" Type="POSModel.customer_pay_card_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_pay_history">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_card_details">
+              <PropertyRef Name="pay_history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_cheque_details_ibfk_1">
+          <End Role="customer_pay_history" Type="POSModel.customer_pay_history" Multiplicity="1" />
+          <End Role="customer_pay_cheque_details" Type="POSModel.customer_pay_cheque_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer_pay_history">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_cheque_details">
+              <PropertyRef Name="pay_history_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="customer_pay_history_ibfk_5">
+          <End Role="ordermaster" Type="POSModel.ordermaster" Multiplicity="0..1" />
+          <End Role="customer_pay_history" Type="POSModel.customer_pay_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordermaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer_pay_history">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="display_properties_ibfk_1">
+          <End Role="product" Type="POSModel.product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="display_properties" Type="POSModel.display_properties" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="display_properties">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="email_history_ibfk_2">
+          <End Role="staff" Type="POSModel.staff" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="email_history" Type="POSModel.email_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_history">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_history_ibfk_3">
+          <End Role="staff" Type="POSModel.staff" Multiplicity="0..1" />
+          <End Role="login_history" Type="POSModel.login_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login_history">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="measure_unit_conversion_ibfk_1">
+          <End Role="measure_unit" Type="POSModel.measure_unit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="measure_unit_conversion" Type="POSModel.measure_unit_conversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="measure_unit_conversion">
+              <PropertyRef Name="from_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="measure_unit_conversion_ibfk_2">
+          <End Role="measure_unit" Type="POSModel.measure_unit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="measure_unit_conversion" Type="POSModel.measure_unit_conversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="measure_unit_conversion">
+              <PropertyRef Name="to_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_3">
+          <End Role="measure_unit" Type="POSModel.measure_unit" Multiplicity="1" />
+          <End Role="orderchild" Type="POSModel.orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="measure_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_child_ibfk_3">
+          <End Role="measure_unit" Type="POSModel.measure_unit" Multiplicity="1" />
+          <End Role="product_purchase_history_child" Type="POSModel.product_purchase_history_child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_child">
+              <PropertyRef Name="measure_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_1">
+          <End Role="ordermaster" Type="POSModel.ordermaster" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="orderchild" Type="POSModel.orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordermaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_2">
+          <End Role="product" Type="POSModel.product" Multiplicity="1" />
+          <End Role="orderchild" Type="POSModel.orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordermaster_ibfk_2">
+          <End Role="shop_info" Type="POSModel.shop_info" Multiplicity="0..1" />
+          <End Role="ordermaster" Type="POSModel.ordermaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shop_info">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="ordermaster">
+              <PropertyRef Name="shop_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_child_ibfk_2">
+          <End Role="product" Type="POSModel.product" Multiplicity="1" />
+          <End Role="product_purchase_history_child" Type="POSModel.product_purchase_history_child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_child">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_child_ibfk_1">
+          <End Role="product_purchase_history_master" Type="POSModel.product_purchase_history_master" Multiplicity="1" />
+          <End Role="product_purchase_history_child" Type="POSModel.product_purchase_history_child" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product_purchase_history_master">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_child">
+              <PropertyRef Name="history_master_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_master_ibfk_1">
+          <End Role="supplier" Type="POSModel.supplier" Multiplicity="0..1" />
+          <End Role="product_purchase_history_master" Type="POSModel.product_purchase_history_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="product_purchase_history_master">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="product_purchase_history_master_ibfk_2">
+          <End Role="shop_info" Type="POSModel.shop_info" Multiplicity="1" />
+          <End Role="product_purchase_history_master" Type="POSModel.product_purchase_history_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shop_info">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="product_purchase_history_master">
+              <PropertyRef Name="shop_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="supplier_products">
+          <End Role="supplier" Type="POSModel.supplier" Multiplicity="*" />
+          <End Role="product" Type="POSModel.product" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POSModelStoreContainer" CdmEntityContainer="posEntities">
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="POSModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="building_name" ColumnName="building_name" />
+                <ScalarProperty Name="house_no" ColumnName="house_no" />
+                <ScalarProperty Name="street_id" ColumnName="street_id" />
+                <ScalarProperty Name="locality_id" ColumnName="locality_id" />
+                <ScalarProperty Name="town_city_id" ColumnName="town_city_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="postcode_id" ColumnName="postcode_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="countries">
+            <EntityTypeMapping TypeName="POSModel.country">
+              <MappingFragment StoreEntitySet="country">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="POSModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="openid_id" ColumnName="openid_id" />
+                <ScalarProperty Name="openid_server_id" ColumnName="openid_server_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+                <ScalarProperty Name="payment_period" ColumnName="payment_period" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer_pay_card_details">
+            <EntityTypeMapping TypeName="POSModel.customer_pay_card_details">
+              <MappingFragment StoreEntitySet="customer_pay_card_details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pay_history_id" ColumnName="pay_history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer_pay_cheque_details">
+            <EntityTypeMapping TypeName="POSModel.customer_pay_cheque_details">
+              <MappingFragment StoreEntitySet="customer_pay_cheque_details">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pay_history_id" ColumnName="pay_history_id" />
+                <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+                <ScalarProperty Name="bank_branch" ColumnName="bank_branch" />
+                <ScalarProperty Name="account_no" ColumnName="account_no" />
+                <ScalarProperty Name="cheque_number" ColumnName="cheque_number" />
+                <ScalarProperty Name="due_date" ColumnName="due_date" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer_pay_history">
+            <EntityTypeMapping TypeName="POSModel.customer_pay_history">
+              <MappingFragment StoreEntitySet="customer_pay_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="pay_date" ColumnName="pay_date" />
+                <ScalarProperty Name="pay_type" ColumnName="pay_type" />
+                <ScalarProperty Name="pay_amount" ColumnName="pay_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer_status">
+            <EntityTypeMapping TypeName="POSModel.customer_status">
+              <MappingFragment StoreEntitySet="customer_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customer_type">
+            <EntityTypeMapping TypeName="POSModel.customer_type">
+              <MappingFragment StoreEntitySet="customer_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="POSModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="designations">
+            <EntityTypeMapping TypeName="POSModel.designation">
+              <MappingFragment StoreEntitySet="designation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="display_properties">
+            <EntityTypeMapping TypeName="POSModel.display_properties">
+              <MappingFragment StoreEntitySet="display_properties">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="text_color" ColumnName="text_color" />
+                <ScalarProperty Name="font_size" ColumnName="font_size" />
+                <ScalarProperty Name="text_bold" ColumnName="text_bold" />
+                <ScalarProperty Name="display_in_screen" ColumnName="display_in_screen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="email_history">
+            <EntityTypeMapping TypeName="POSModel.email_history">
+              <MappingFragment StoreEntitySet="email_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="send_date" ColumnName="send_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="to_email" ColumnName="to_email" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="email_templates">
+            <EntityTypeMapping TypeName="POSModel.email_templates">
+              <MappingFragment StoreEntitySet="email_templates">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="from_email" ColumnName="from_email" />
+                <ScalarProperty Name="from_name" ColumnName="from_name" />
+                <ScalarProperty Name="plain_msg" ColumnName="plain_msg" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="general_settings">
+            <EntityTypeMapping TypeName="POSModel.general_settings">
+              <MappingFragment StoreEntitySet="general_settings">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="default" ColumnName="default" />
+                <ScalarProperty Name="group" ColumnName="group" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localities">
+            <EntityTypeMapping TypeName="POSModel.locality">
+              <MappingFragment StoreEntitySet="locality">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="locality1" ColumnName="locality" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="login_history">
+            <EntityTypeMapping TypeName="POSModel.login_history">
+              <MappingFragment StoreEntitySet="login_history">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="login_date" ColumnName="login_date" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="host" ColumnName="host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="measure_unit">
+            <EntityTypeMapping TypeName="POSModel.measure_unit">
+              <MappingFragment StoreEntitySet="measure_unit">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="measure_unit_conversion">
+            <EntityTypeMapping TypeName="POSModel.measure_unit_conversion">
+              <MappingFragment StoreEntitySet="measure_unit_conversion">
+                <ScalarProperty Name="from_unit_id" ColumnName="from_unit_id" />
+                <ScalarProperty Name="to_unit_id" ColumnName="to_unit_id" />
+                <ScalarProperty Name="conversion_rate" ColumnName="conversion_rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="openid_server">
+            <EntityTypeMapping TypeName="POSModel.openid_server">
+              <MappingFragment StoreEntitySet="openid_server">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="server" ColumnName="server" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orderchilds">
+            <EntityTypeMapping TypeName="POSModel.orderchild">
+              <MappingFragment StoreEntitySet="orderchild">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordermasters">
+            <EntityTypeMapping TypeName="POSModel.ordermaster">
+              <MappingFragment StoreEntitySet="ordermaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ticket_no" ColumnName="ticket_no" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="shop_code" ColumnName="shop_code" />
+                <ScalarProperty Name="payment_status" ColumnName="payment_status" />
+                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+                <ScalarProperty Name="total_discount" ColumnName="total_discount" />
+                <ScalarProperty Name="delivery_charge" ColumnName="delivery_charge" />
+                <ScalarProperty Name="grand_total" ColumnName="grand_total" />
+                <ScalarProperty Name="credit_amount" ColumnName="credit_amount" />
+                <ScalarProperty Name="payment_due_date" ColumnName="payment_due_date" />
+                <ScalarProperty Name="print_receipt_copies" ColumnName="print_receipt_copies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="postcodes">
+            <EntityTypeMapping TypeName="POSModel.postcode">
+              <MappingFragment StoreEntitySet="postcode">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="postcode1" ColumnName="postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="POSModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="retail_price" ColumnName="retail_price" />
+                <ScalarProperty Name="wholesale_price" ColumnName="wholesale_price" />
+                <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+                <ScalarProperty Name="has_waranty" ColumnName="has_waranty" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_category">
+            <EntityTypeMapping TypeName="POSModel.product_category">
+              <MappingFragment StoreEntitySet="product_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="color" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_promotional_offer">
+            <EntityTypeMapping TypeName="POSModel.product_promotional_offer">
+              <MappingFragment StoreEntitySet="product_promotional_offer">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="offer_id" ColumnName="offer_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_purchase_history_child">
+            <EntityTypeMapping TypeName="POSModel.product_purchase_history_child">
+              <MappingFragment StoreEntitySet="product_purchase_history_child">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="history_master_id" ColumnName="history_master_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="discount_type" ColumnName="discount_type" />
+                <ScalarProperty Name="raw_discount" ColumnName="raw_discount" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_purchase_history_master">
+            <EntityTypeMapping TypeName="POSModel.product_purchase_history_master">
+              <MappingFragment StoreEntitySet="product_purchase_history_master">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="purchase_date" ColumnName="purchase_date" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="shop_code" ColumnName="shop_code" />
+                <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+                <ScalarProperty Name="sub_total" ColumnName="sub_total" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="grand_total" ColumnName="grand_total" />
+                <ScalarProperty Name="cash" ColumnName="cash" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product_status">
+            <EntityTypeMapping TypeName="POSModel.product_status">
+              <MappingFragment StoreEntitySet="product_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="promotional_offer">
+            <EntityTypeMapping TypeName="POSModel.promotional_offer">
+              <MappingFragment StoreEntitySet="promotional_offer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="purchase_quantity" ColumnName="purchase_quantity" />
+                <ScalarProperty Name="offer_quantity" ColumnName="offer_quantity" />
+                <ScalarProperty Name="offer_percentage" ColumnName="offer_percentage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="queries">
+            <EntityTypeMapping TypeName="POSModel.query">
+              <MappingFragment StoreEntitySet="queries">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="query1" ColumnName="query" />
+                <ScalarProperty Name="query_date" ColumnName="query_date" />
+                <ScalarProperty Name="is_processed" ColumnName="is_processed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="security_group">
+            <EntityTypeMapping TypeName="POSModel.security_group">
+              <MappingFragment StoreEntitySet="security_group">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="permissions" ColumnName="permissions" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shop_info">
+            <EntityTypeMapping TypeName="POSModel.shop_info">
+              <MappingFragment StoreEntitySet="shop_info">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="tax_rate" ColumnName="tax_rate" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shop_product">
+            <EntityTypeMapping TypeName="POSModel.shop_product">
+              <MappingFragment StoreEntitySet="shop_product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="shop_code" ColumnName="shop_code" />
+                <ScalarProperty Name="stock_quantity" ColumnName="stock_quantity" />
+                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
+                <ScalarProperty Name="stock_last_updated" ColumnName="stock_last_updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="POSModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+                <ScalarProperty Name="designation_id" ColumnName="designation_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="hire_date" ColumnName="hire_date" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="openid_id" ColumnName="openid_id" />
+                <ScalarProperty Name="openid_server_id" ColumnName="openid_server_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="security_group_id" ColumnName="security_group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staff_status">
+            <EntityTypeMapping TypeName="POSModel.staff_status">
+              <MappingFragment StoreEntitySet="staff_status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="streets">
+            <EntityTypeMapping TypeName="POSModel.street">
+              <MappingFragment StoreEntitySet="street">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="street1" ColumnName="street" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="suppliers">
+            <EntityTypeMapping TypeName="POSModel.supplier">
+              <MappingFragment StoreEntitySet="supplier">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="supplier_contact_person">
+            <EntityTypeMapping TypeName="POSModel.supplier_contact_person">
+              <MappingFragment StoreEntitySet="supplier_contact_person">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="town_city">
+            <EntityTypeMapping TypeName="POSModel.town_city">
+              <MappingFragment StoreEntitySet="town_city">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="town_city1" ColumnName="town_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="warranties">
+            <EntityTypeMapping TypeName="POSModel.warranty">
+              <MappingFragment StoreEntitySet="warranty">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="serial_no" ColumnName="serial_no" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="working_record">
+            <EntityTypeMapping TypeName="POSModel.working_record">
+              <MappingFragment StoreEntitySet="working_record">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="in_time" ColumnName="in_time" />
+                <ScalarProperty Name="out_time" ColumnName="out_time" />
+                <ScalarProperty Name="total_hours" ColumnName="total_hours" />
+                <ScalarProperty Name="work_date" ColumnName="work_date" />
+                <ScalarProperty Name="staff_id" ColumnName="staff_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="supplier_products" TypeName="POSModel.supplier_products" StoreEntitySet="supplier_products">
+            <EndProperty Name="supplier">
+              <ScalarProperty Name="id" ColumnName="supplier_id" />
+            </EndProperty>
+            <EndProperty Name="product">
+              <ScalarProperty Name="id" ColumnName="product_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="POSEntities">
+        <EntityTypeShape EntityType="POSModel.address" Width="1.5" PointX="3" PointY="8.5" Height="3.7109993489583317" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.country" Width="1.5" PointX="0.75" PointY="9.5" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.customer" Width="1.5" PointX="5.25" PointY="7.5" Height="5.634013671875" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.customer_pay_card_details" Width="1.5" PointX="9.75" PointY="5.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.customer_pay_cheque_details" Width="1.5" PointX="9.75" PointY="13" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.customer_pay_history" Width="1.5" PointX="7.5" PointY="8.875" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.customer_status" Width="1.5" PointX="3" PointY="5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.customer_type" Width="1.5" PointX="3" PointY="13.5" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.department" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.designation" Width="1.5" PointX="7.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.display_properties" Width="1.5" PointX="9.75" PointY="28.875" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.email_history" Width="1.5" PointX="10.5" PointY="9" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.email_templates" Width="1.5" PointX="9.75" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.general_settings" Width="1.5" PointX="11.75" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.locality" Width="1.5" PointX="0.75" PointY="6" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.login_history" Width="1.5" PointX="7.5" PointY="5.125" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.measure_unit" Width="1.5" PointX="7.5" PointY="18.625" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.measure_unit_conversion" Width="1.5" PointX="9.75" PointY="25.875" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.openid_server" Width="1.5" PointX="3" PointY="16.125" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.orderchild" Width="1.5" PointX="9.75" PointY="17" Height="2.7494921875000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.ordermaster" Width="1.5" PointX="7.5" PointY="13.125" Height="4.4802050781249942" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.postcode" Width="1.5" PointX="0.75" PointY="12.375" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.product" Width="1.5" PointX="7.5" PointY="21.75" Height="4.2879036458333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.product_category" Width="1.5" PointX="11.75" PointY="4.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.product_promotional_offer" Width="1.5" PointX="12.75" PointY="7.75" Height="1.4033821614583246" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.product_purchase_history_child" Width="1.5" PointX="12.75" PointY="20.75" Height="3.3263964843750102" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.product_purchase_history_master" Width="1.5" PointX="10.5" PointY="21.25" Height="3.5186979166666674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.product_status" Width="1.5" PointX="12.75" PointY="10.75" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.promotional_offer" Width="1.5" PointX="13.75" PointY="0.75" Height="2.5571907552083246" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.query" Width="1.5" PointX="13.75" PointY="4.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.security_group" Width="1.5" PointX="11.75" PointY="13.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.shop_info" Width="1.5" PointX="5.25" PointY="14.75" Height="3.1340950520833388" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="13.75" PointY="13.75" Height="1.9802864583333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="5.25" PointY="1.875" Height="4.8648079427083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="14.75" PointY="7.75" Height="1.5956835937500102" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="0.75" PointY="14.75" Height="1.5956835937499978" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="5.25" PointY="22.625" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="15.75" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="0.75" PointY="17.125" Height="1.595683593749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="14.75" PointY="10.75" Height="1.9802864583333246" IsExpanded="true" />
+        <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="15.75" PointY="4.75" Height="2.1725878906250102" IsExpanded="true" />
+        <AssociationConnector Association="POSModel.address_ibfk_10" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="12.376152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="12.001152846153847" />
+          <ConnectorPoint PointX="2.625" PointY="12.587152195112179" />
+          <ConnectorPoint PointX="2.6285744349011209" PointY="12.583577760211057" />
+          <ConnectorPoint PointX="2.7464255650988787" PointY="12.4657266300133" />
+          <ConnectorPoint PointX="2.7535744349011209" PointY="12.458577760211057" />
+          <ConnectorPoint PointX="2.8714255650988787" PointY="12.3407266300133" />
+          <ConnectorPoint PointX="3.0011528461538459" PointY="12.210999348958332" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.address_ibfk_6" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="17.188460538461534" />
+          <ConnectorPoint PointX="2.8125" PointY="16.625960538461534" />
+          <ConnectorPoint PointX="2.8125" PointY="10.355499674479166" />
+          <ConnectorPoint PointX="3" PointY="10.355499674479166" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.address_ibfk_7" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="9.8652498372395829" />
+          <ConnectorPoint PointX="3" PointY="9.8652498372395829" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.address_ibfk_8" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="14.813460538461539" />
+          <ConnectorPoint PointX="2.6875" PointY="14.375960538461541" />
+          <ConnectorPoint PointX="2.6875" PointY="11.314501511718749" />
+          <ConnectorPoint PointX="2.7291666666666665" PointY="11.314501511718749" />
+          <ConnectorPoint PointX="2.8958333333333335" PointY="11.314501511718749" />
+          <ConnectorPoint PointX="3" PointY="11.314501511718749" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.address_ibfk_9" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.5956835937500031" />
+          <ConnectorPoint PointX="2.625" PointY="7.9706835937500031" />
+          <ConnectorPoint PointX="2.625" PointY="9.1513729186197921" />
+          <ConnectorPoint PointX="3" PointY="9.1513729186197921" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_ibfk_4" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="10.355499674479166" />
+          <ConnectorPoint PointX="5.25" PointY="10.355499674479166" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_ibfk_3" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.501152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="13.126152846153847" />
+          <ConnectorPoint PointX="4.875" PointY="13.510166518028846" />
+          <ConnectorPoint PointX="5.0035744349011209" PointY="13.381592083127723" />
+          <ConnectorPoint PointX="5.1214255650988791" PointY="13.263740952929966" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="13.134013671875" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_ibfk_5" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="6.7879850260416674" />
+          <ConnectorPoint PointX="4.875" PointY="7.1629850260416674" />
+          <ConnectorPoint PointX="4.875" PointY="8.8964978372395827" />
+          <ConnectorPoint PointX="5.25" PointY="8.8964978372395827" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_ibfk_6" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="16.188460538461534" />
+          <ConnectorPoint PointX="5.0625" PointY="15.625960538461534" />
+          <ConnectorPoint PointX="5.0625" PointY="11.776008673177085" />
+          <ConnectorPoint PointX="5.25" PointY="11.776008673177085" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_pay_history_ibfk_4" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="10.345896809895834" />
+          <ConnectorPoint PointX="7.5" PointY="10.345896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.email_history_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="8.1984955897435885" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="8.3651622564102563" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="9.8385416666666661" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="10.005208333333334" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="11.65625" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="11.65625" PointY="11.749492187500003" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.login_history_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="7.5" />
+          <ConnectorPoint PointX="7.125" PointY="7.125" />
+          <ConnectorPoint PointX="7.125" PointY="8.0571907552083388" />
+          <ConnectorPoint PointX="7.5" PointY="7.6821907552083388" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.ordermaster_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="13.134013671875" />
+          <ConnectorPoint PointX="7.125" PointY="13.509013671875" />
+          <ConnectorPoint PointX="7.125" PointY="12.748847153846153" />
+          <ConnectorPoint PointX="7.5011528461538459" PointY="13.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_pay_card_details_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="8.90625" />
+          <ConnectorPoint PointX="10.09375" PointY="8.90625" />
+          <ConnectorPoint PointX="10.09375" PointY="7.34568359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_pay_cheque_details_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="8.921875" />
+          <ConnectorPoint PointX="9.921875" PointY="8.921875" />
+          <ConnectorPoint PointX="9.921875" PointY="13" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.customer_pay_history_ibfk_5" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.2818289230769224" PointY="13.125" />
+          <ConnectorPoint PointX="8.2818289230769224" PointY="11.816793619791667" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.display_properties_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.25" PointY="26.037903645833325" />
+          <ConnectorPoint PointX="8.25" PointY="29.9612939453125" />
+          <ConnectorPoint PointX="9.75" PointY="29.9612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.email_history_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="3.9324446614583337" />
+          <ConnectorPoint PointX="11.5" PointY="3.9324446614583337" />
+          <ConnectorPoint PointX="11.5" PointY="9" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.login_history_ibfk_3" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="5.9324039713541694" />
+          <ConnectorPoint PointX="7.5" PointY="5.9324039713541694" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.9757692307692309" PointY="20.989889322916667" />
+          <ConnectorPoint PointX="9.375" PointY="21.389120092147436" />
+          <ConnectorPoint PointX="9.375" PointY="26.865143229166669" />
+          <ConnectorPoint PointX="9.75" PointY="26.865143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="20.933349861378204" />
+          <ConnectorPoint PointX="9.53125" PointY="21.464599861378204" />
+          <ConnectorPoint PointX="9.53125" PointY="26.865143229166669" />
+          <ConnectorPoint PointX="9.75" PointY="26.865143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.orderchild_ibfk_3" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.3541666666666661" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.5208333333333339" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.75" PointY="19.18724609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_3" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="20.28099559375" />
+          <ConnectorPoint PointX="9.3541666666666661" PointY="20.28099559375" />
+          <ConnectorPoint PointX="9.5208333333333339" PointY="20.28099559375" />
+          <ConnectorPoint PointX="11.166666666666666" PointY="20.28099559375" />
+          <ConnectorPoint PointX="11.333333333333334" PointY="20.28099559375" />
+          <ConnectorPoint PointX="13.5" PointY="20.28099559375" />
+          <ConnectorPoint PointX="13.5" PointY="20.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.orderchild_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="17.302602539062498" />
+          <ConnectorPoint PointX="9.75" PointY="17.302602539062498" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.orderchild_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="21.81230669230769" />
+          <ConnectorPoint PointX="9.4375" PointY="21.37480669230769" />
+          <ConnectorPoint PointX="9.4375" PointY="18.244924316406248" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="18.244924316406248" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="18.244924316406248" />
+          <ConnectorPoint PointX="9.75" PointY="18.244924316406248" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.ordermaster_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="16.177602539062498" />
+          <ConnectorPoint PointX="7.5" PointY="16.177602539062498" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="9" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="9.6145833333333339" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="13.5" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="13.5" PointY="24.07639648437501" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="12" PointY="22.663198242187505" />
+          <ConnectorPoint PointX="12.75" PointY="22.663198242187505" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_1" ManuallyRouted="false">
+          <ConnectorPoint PointX="6" PointY="22.625" />
+          <ConnectorPoint PointX="6" PointY="21.46875" />
+          <ConnectorPoint PointX="9.2602233589743559" PointY="21.46875" />
+          <ConnectorPoint PointX="9.4268900256410237" PointY="21.46875" />
+          <ConnectorPoint PointX="10.5" PointY="21.46875" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_2" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="17.06210079557291" />
+          <ConnectorPoint PointX="7.25" PointY="17.06210079557291" />
+          <ConnectorPoint PointX="7.25" PointY="17.855205078124996" />
+          <ConnectorPoint PointX="9.625" PointY="17.855205078124996" />
+          <ConnectorPoint PointX="9.625" PointY="19.999492187500003" />
+          <ConnectorPoint PointX="11.25" PointY="19.999492187500003" />
+          <ConnectorPoint PointX="11.25" PointY="21.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.supplier_products" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="23.903595377604169" />
+          <ConnectorPoint PointX="7.5" PointY="23.903595377604169" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

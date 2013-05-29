@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4a4dc28b-1d05-4be5-8ec1-88fb55b8ad25" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/RetailPOSService/RetailPOSService.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="062baa33-2d07-4e90-972a-0b7ba6d29bd7" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="27174f82-d4dc-43c2-9d70-3d4b0d85c718" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="e5d2bc0a-d58c-492a-8e47-472f36ab0910" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
+    <MetadataFile FileName="RetailPOS.CommonLayer.DataTransferObjects.xsd" MetadataType="Schema" ID="bbc8d758-841f-4e73-8d13-8e3868c08fe4" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

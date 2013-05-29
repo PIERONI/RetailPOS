@@ -40,7 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\ICategoryService.cs" />
+    <Compile Include="Admin\IProductService.cs" />
+    <Compile Include="Masters\IMasterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RetailPOS.CommonLayer.DataTransferObjects\RetailPOS.CommonLayer.DataTransferObjects.csproj">
+      <Project>{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}</Project>
+      <Name>RetailPOS.CommonLayer.DataTransferObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailPOS.PersistenceLayer.Repository\RetailPOS.PersistenceLayer.Repository.csproj">
+      <Project>{58CD5F66-8558-4B4A-8986-B8B6CEBF9219}</Project>
+      <Name>RetailPOS.PersistenceLayer.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -19,7 +19,7 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Margin="4" Content="{Binding Name}" Height="53" Background="{Binding color}" HorizontalAlignment="Right" Width="79" />
+                    <Button Margin="4" Content="{Binding Name}" Height="53" Background="{Binding Color}" HorizontalAlignment="Right" Width="79" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

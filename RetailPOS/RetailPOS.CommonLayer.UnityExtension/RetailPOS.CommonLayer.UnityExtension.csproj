@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RetailPOS.CommonLayer.UnityExtension</RootNamespace>
+    <AssemblyName>RetailPOS.CommonLayer.UnityExtension</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binaries\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RetailPOSUnityContainerExtension.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RetailPOS.BusinessLayer.ServiceImpl\RetailPOS.BusinessLayer.ServiceImpl.csproj">
+      <Project>{E8B7D637-FC5D-4A46-9FF5-228AF1CDD229}</Project>
+      <Name>RetailPOS.BusinessLayer.ServiceImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailPOS.BusinessLayer.Service\RetailPOS.BusinessLayer.Service.csproj">
+      <Project>{9FC1BCFC-2703-4287-AD46-CA4E2556B052}</Project>
+      <Name>RetailPOS.BusinessLayer.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailPOS.CommonLayer.Mapper\RetailPOS.CommonLayer.Mapper.csproj">
+      <Project>{AFAD7785-1BC2-40CD-B94E-BDDF11592768}</Project>
+      <Name>RetailPOS.CommonLayer.Mapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailPOS.CommonLayer.Unity\RetailPOS.CommonLayer.Unity.csproj">
+      <Project>{F69A1183-91E3-4834-9F70-854E9AA5C3D2}</Project>
+      <Name>RetailPOS.CommonLayer.Unity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailPOS.PersistenceLayer.EF\RetailPOS.PersistenceLayer.EF.csproj">
+      <Project>{D4269418-1681-475E-B985-BF5A5A08F184}</Project>
+      <Name>RetailPOS.PersistenceLayer.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RetailPOS.PersistenceLayer.Repository\RetailPOS.PersistenceLayer.Repository.csproj">
+      <Project>{58CD5F66-8558-4B4A-8986-B8B6CEBF9219}</Project>
+      <Name>RetailPOS.PersistenceLayer.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

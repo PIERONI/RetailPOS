@@ -17,6 +17,6 @@ namespace RetailPOS.CommonLayer.DataTransferObjects
         public string ImagePath { get; set; }
         public decimal Size { get; set; }
         public decimal Weight { get; set; }
-        public string color { get; set;  }
+        public string Color { get; set; }
     }
 }

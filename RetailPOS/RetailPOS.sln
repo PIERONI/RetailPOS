@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS", "RetailPOS\RetailPOS.csproj", "{D1231D58-C4FE-4085-A846-ED84DC820427}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A2FD4929-5B61-476E-82BC-3A646A703C26} = {A2FD4929-5B61-476E-82BC-3A646A703C26}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{CBA3494F-2E41-4B5D-938B-3D392B1BE4CE}"
 EndProject
@@ -14,6 +17,46 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.PersistenceLayer.Repository", "RetailPOS.PersistenceLayer.Repository\RetailPOS.PersistenceLayer.Repository.csproj", "{58CD5F66-8558-4B4A-8986-B8B6CEBF9219}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.PersistenceLayer.EF", "RetailPOS.PersistenceLayer.EF\RetailPOS.PersistenceLayer.EF.csproj", "{D4269418-1681-475E-B985-BF5A5A08F184}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonLayer", "CommonLayer", "{90DA0526-8D61-4BD1-BF9D-35D840617DD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.CommonLayer.DataTransferObjects", "RetailPOS.CommonLayer.DataTransferObjects\RetailPOS.CommonLayer.DataTransferObjects.csproj", "{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.CommonLayer.Mapper", "RetailPOS.CommonLayer.Mapper\RetailPOS.CommonLayer.Mapper.csproj", "{AFAD7785-1BC2-40CD-B94E-BDDF11592768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.CommonLayer.Unity", "RetailPOS.CommonLayer.Unity\RetailPOS.CommonLayer.Unity.csproj", "{F69A1183-91E3-4834-9F70-854E9AA5C3D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.CommonLayer.UnityExtension", "RetailPOS.CommonLayer.UnityExtension\RetailPOS.CommonLayer.UnityExtension.csproj", "{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI Layer", "UI Layer", "{553413C8-1282-4EAB-9E8E-6ACA53932259}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{62D20C5B-2454-45D4-820B-F87E33977D84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF Services", "WCF Services", "{FB2ED547-D65C-4C45-AF71-AD4B9FEC5923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.ServiceImplementation", "RetailPOS.ServiceImplementation\RetailPOS.ServiceImplementation.csproj", "{07900815-1E63-43E2-AD8A-526D395A16E2}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RetailPOSService", "http://localhost/RetailPOSService", "{A2FD4929-5B61-476E-82BC-3A646A703C26}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{9FC1BCFC-2703-4287-AD46-CA4E2556B052}|RetailPOS.BusinessLayer.Service.dll;{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}|RetailPOS.CommonLayer.DataTransferObjects.dll;{58CD5F66-8558-4B4A-8986-B8B6CEBF9219}|RetailPOS.PersistenceLayer.Repository.dll;{07900815-1E63-43E2-AD8A-526D395A16E2}|RetailPOS.ServiceImplementation.dll;{F69A1183-91E3-4834-9F70-854E9AA5C3D2}|RetailPOS.CommonLayer.Unity.dll;{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}|RetailPOS.CommonLayer.UnityExtension.dll;{E8B7D637-FC5D-4A46-9FF5-228AF1CDD229}|RetailPOS.BusinessLayer.ServiceImpl.dll;{AFAD7785-1BC2-40CD-B94E-BDDF11592768}|RetailPOS.CommonLayer.Mapper.dll;{D4269418-1681-475E-B985-BF5A5A08F184}|RetailPOS.PersistenceLayer.EF.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/RetailPOSService"
+		Debug.AspNetCompiler.PhysicalPath = "RetailPOSService\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\RetailPOSService\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/RetailPOSService"
+		Release.AspNetCompiler.PhysicalPath = "RetailPOSService\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\RetailPOSService\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "RetailPOSService\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,14 +118,82 @@ Global
 		{D4269418-1681-475E-B985-BF5A5A08F184}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D4269418-1681-475E-B985-BF5A5A08F184}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D4269418-1681-475E-B985-BF5A5A08F184}.Release|x86.ActiveCfg = Release|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}.Release|x86.ActiveCfg = Release|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768}.Release|x86.ActiveCfg = Release|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2}.Release|x86.ActiveCfg = Release|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{D1231D58-C4FE-4085-A846-ED84DC820427} = {553413C8-1282-4EAB-9E8E-6ACA53932259}
 		{9FC1BCFC-2703-4287-AD46-CA4E2556B052} = {CBA3494F-2E41-4B5D-938B-3D392B1BE4CE}
 		{E8B7D637-FC5D-4A46-9FF5-228AF1CDD229} = {CBA3494F-2E41-4B5D-938B-3D392B1BE4CE}
 		{58CD5F66-8558-4B4A-8986-B8B6CEBF9219} = {F1917760-2A39-46D6-9F56-5B27DC13E6E7}
 		{D4269418-1681-475E-B985-BF5A5A08F184} = {F1917760-2A39-46D6-9F56-5B27DC13E6E7}
+		{40ACC2CE-A54F-4CDB-97DE-B011C17C616C} = {90DA0526-8D61-4BD1-BF9D-35D840617DD9}
+		{AFAD7785-1BC2-40CD-B94E-BDDF11592768} = {90DA0526-8D61-4BD1-BF9D-35D840617DD9}
+		{F69A1183-91E3-4834-9F70-854E9AA5C3D2} = {90DA0526-8D61-4BD1-BF9D-35D840617DD9}
+		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8} = {90DA0526-8D61-4BD1-BF9D-35D840617DD9}
+		{FB2ED547-D65C-4C45-AF71-AD4B9FEC5923} = {62D20C5B-2454-45D4-820B-F87E33977D84}
+		{07900815-1E63-43E2-AD8A-526D395A16E2} = {FB2ED547-D65C-4C45-AF71-AD4B9FEC5923}
+		{A2FD4929-5B61-476E-82BC-3A646A703C26} = {FB2ED547-D65C-4C45-AF71-AD4B9FEC5923}
 	EndGlobalSection
 EndGlobal

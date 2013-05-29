@@ -24,28 +24,5 @@ namespace RetailPOS.View.Usercontrols
             InitializeComponent();
            
         }
-
-        private void BindProduct()
-        {
-            var CategoryList = new List<Cateogory>();
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Red" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Blue" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "Yellow" });
-            CategoryList.Add(new Cateogory { Name = "test", ColorName = "AliceBlue" });
-
-            LstProduct.ItemsSource = CategoryList;
-        }
     }
 }

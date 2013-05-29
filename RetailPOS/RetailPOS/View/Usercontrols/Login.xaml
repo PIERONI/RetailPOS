@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300">
     <UserControl.Resources>
-        <ResourceDictionary Source="../Themes/BureauBlue.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid Height="200">
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
         <ComboBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="18,26,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" />
         <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="77,21,0,0" Name="textBlock2" Text="Password :" VerticalAlignment="Top" Width="62" />
         <PasswordBox  Grid.Column="1" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="18,20,0,0" Name="txtPassword"  VerticalAlignment="Top" Width="120" />
-        <Button Content="Save" Grid.Column="1" Grid.Row="2" Height="35" HorizontalAlignment="Left" Margin="18,19,0,0" Name="button1" VerticalAlignment="Top" Width="85" />
-        <Button Content="Cancel" Height="35" HorizontalAlignment="Left" Margin="54,20,0,0" Name="button2" VerticalAlignment="Top" Width="85" Grid.Row="2" />
+        <Button Content="Login" Grid.Column="1" Grid.Row="2" Height="35" HorizontalAlignment="Left" Margin="18,19,0,0" Name="button1" VerticalAlignment="Top" Width="85" Click="button1_Click" />
+        <Button Content="Clear" Height="35" HorizontalAlignment="Left" Margin="54,20,0,0" Name="button2" VerticalAlignment="Top" Width="85" Grid.Row="2" />
     </Grid>
 </UserControl>

@@ -19,9 +19,6 @@
             <GroupBox Height="250"  Grid.Row="1" VerticalAlignment="Top" Background="AliceBlue" Header="Products">
                 <Child:ShowProduct HorizontalAlignment="Left" x:Name="prod"  Margin="20,0,0,0"></Child:ShowProduct>
             </GroupBox>
-
         </StackPanel>
-
-
     </Grid>
 </Window>

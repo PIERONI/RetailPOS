@@ -73,35 +73,33 @@
     <Compile Include="AddCategoryWindow.xaml.cs">
       <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelTemplate.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usercontrols\AddCategory.xaml.cs">
+    <Compile Include="Models\ProductCategoryDTO.cs" />
+    <Compile Include="View\Usercontrols\AddCategory.xaml.cs">
       <DependentUpon>AddCategory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\Categories.xaml.cs">
+    <Compile Include="View\Usercontrols\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\Login.xaml.cs">
+    <Compile Include="View\Usercontrols\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\MenuControl.xaml.cs">
+    <Compile Include="View\Usercontrols\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\MergeUserInfoSearch.xaml.cs">
+    <Compile Include="View\Usercontrols\MergeUserInfoSearch.xaml.cs">
       <DependentUpon>MergeUserInfoSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\SearchItem.xaml.cs">
+    <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\ShowProduct.xaml.cs">
+    <Compile Include="View\Usercontrols\ShowProduct.xaml.cs">
       <DependentUpon>ShowProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrols\UserInfo.xaml.cs">
+    <Compile Include="View\Usercontrols\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddCategoryViewModel.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="AddCategoryWindow.xaml">
@@ -120,11 +118,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Usercontrols\AddCategory.xaml">
+    <Page Include="View\Usercontrols\AddCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Usercontrols\Categories.xaml">
+    <Page Include="View\Usercontrols\Categories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,27 +154,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Usercontrols\Login.xaml">
+    <Page Include="View\Usercontrols\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Usercontrols\MenuControl.xaml">
+    <Page Include="View\Usercontrols\MenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Usercontrols\MergeUserInfoSearch.xaml">
+    <Page Include="View\Usercontrols\MergeUserInfoSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Usercontrols\SearchItem.xaml">
+    <Page Include="View\Usercontrols\SearchItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Usercontrols\ShowProduct.xaml">
+    <Page Include="View\Usercontrols\ShowProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Usercontrols\UserInfo.xaml">
+    <Page Include="View\Usercontrols\UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,10 +197,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Models\ModelTemplate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelTemplate.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -212,9 +206,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Models\ModelsDef.xml" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="MVVMLight.Nuget.Readme.txt" />
@@ -237,6 +228,7 @@
   <ItemGroup>
     <Resource Include="Images\settings.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

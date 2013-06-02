@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using RetailPOS.CommonLayer.DataTransferObjects;
-using System.Windows.Data;
 using GalaSoft.MvvmLight.Command;
 
 namespace RetailPOS.ViewModel
@@ -16,8 +11,7 @@ namespace RetailPOS.ViewModel
         #region Declare Public and private Data member
 
         public ObservableCollection<ProductCategoryDTO> lstCategories { get; private set; }
-        public ObservableCollection<ProductDTO> _lstProduct;
-        
+        public ObservableCollection<ProductDTO> _lstProduct;        
         public RelayCommand<ProductCategoryDTO> SelectProductCommand { get; private set; }
         
         public ObservableCollection<ProductDTO> lstProduct
@@ -36,10 +30,8 @@ namespace RetailPOS.ViewModel
 
         public CategoryViewModel()
         {
-            lstCategories = new ObservableCollection<ProductCategoryDTO>();
-            
-            AddCategories();
-            
+            lstCategories = new ObservableCollection<ProductCategoryDTO>();            
+            AddCategories();            
             SelectProductCommand = new RelayCommand<ProductCategoryDTO>(FillProducts);
         }
 

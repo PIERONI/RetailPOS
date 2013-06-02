@@ -9,18 +9,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RetailPOS.View
+namespace RetailPOS.View.Usercontrols
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for LoginLeftPanel.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class LoginLeftPanel : UserControl
     {
-        public LoginWindow()
+        public LoginLeftPanel()
         {
             InitializeComponent();
-        }        
+        }
     }
 }

@@ -11,12 +11,6 @@ namespace RetailPOS.ServiceImplementation
 {
     public partial class RetailPOSService
     {
-        public RetailPOSService()
-        {
-            CategoryService = RetailPOSUnityContainer.Resolve<ICategoryService>();
-            ProductService = RetailPOSUnityContainer.Resolve<IProductService>();
-        }
-
         #region Public Methods
 
         /// <summary>

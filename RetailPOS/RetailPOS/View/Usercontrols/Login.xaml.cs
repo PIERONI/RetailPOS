@@ -31,7 +31,12 @@ namespace RetailPOS.View.Usercontrols
             MainWindow newWindow = new MainWindow();
             newWindow.Show();
 
-            loginWindow.Hide();
+            loginWindow.Close();
+        }
+
+        private void Keyboard_AccessKeyPressed(object sender, AccessKeyPressedEventArgs e)
+        {
+
         }
     }
 }

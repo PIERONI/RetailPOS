@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <Border Style="{DynamicResource Border.Rounded.Floating}">
-            <StackPanel>
+            <StackPanel Name="ctrlStack">
                 <TextBox
                     Grid.Row="0"
                     x:Name="txtUserName"
@@ -35,19 +35,22 @@
                     Style="{DynamicResource PasswordBox.Rounded}"
                     />
                 <Button Margin="4" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=txtPassword}" Height="50"  HorizontalAlignment="Left" Width="150" />
+
+               
             </StackPanel>
         </Border>
-
         <WpfKb:FloatingTouchScreenKeyboard
             x:Name="Keyboard"
             IsOpen="True"
             Width="900"
             Height="400"
-            PlacementTarget="{Binding ElementName=LoginCtrl}"
-            Placement="Center"
-            AreAnimationsEnabled="False"           
-           >
            
-        </WpfKb:FloatingTouchScreenKeyboard>
+            PlacementTarget="{Binding ElementName=LoginCtrl}"
+            Placement="Center"        
+            AreAnimationsEnabled="False"           
+           />
+
+      
+
     </Grid>
 </UserControl>

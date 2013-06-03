@@ -3,12 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols"
         Title="LoginWindow" 
-         WindowState="Maximized" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="64" SizeToContent="WidthAndHeight">
-    <Window.Background>
-        <ImageBrush ImageSource="{DynamicResource Background.Default}" />
-    </Window.Background>
+         WindowState="Maximized" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  >
+    
     <DockPanel LastChildFill="True">
         <Child:LoginLeftPanel Width="200" x:Name="loginLeftPanel" DockPanel.Dock="Left"></Child:LoginLeftPanel> 
-        <Child:Login x:Name="login" Width="600" Height="AUTO" HorizontalAlignment="Center" ></Child:Login>
+        <Child:Login x:Name="login" Width="600" Height="AUTO" HorizontalAlignment="Stretch" ></Child:Login>
     </DockPanel>
 </Window>

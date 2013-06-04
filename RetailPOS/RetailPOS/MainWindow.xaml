@@ -12,7 +12,8 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-            <Child:MenuControl x:Name="MenuCtrl" HorizontalAlignment="Left"  Margin="20,0,0,0"></Child:MenuControl>
+            <Child:SearchItem x:Name="SearchCtrl" HorizontalAlignment="Left"  Margin="20,0,0,0"></Child:SearchItem>
+             <Child:MenuControl x:Name="MenuCtrl" HorizontalAlignment="Left"  Margin="20,0,0,0"></Child:MenuControl>
             <GroupBox Height="250" Grid.Row="0"  VerticalAlignment="Top" Background="AliceBlue"  Header="Categories">
                 <Child:Categories x:Name="cat" HorizontalAlignment="Left"  Margin="20,0,0,0"></Child:Categories>
             </GroupBox>

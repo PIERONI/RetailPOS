@@ -18,6 +18,7 @@ namespace RetailPOS.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<CategoryViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<SearchViewModel>();
         }
 
         /// <summary>
@@ -41,11 +42,27 @@ namespace RetailPOS.ViewModel
                 return ServiceLocator.Current.GetInstance<LoginViewModel>();
             }
         }
+
+
+        /// <summary>
+        /// Gets the search VM.
+        /// </summary>
+        /// <value>
+        /// The search VM.
+        /// </value>
+        public SearchViewModel SearchVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SearchViewModel>();
+            }
+        }
         
         public static void Cleanup()
         {  
             SimpleIoc.Default.Unregister<CategoryViewModel>();
             SimpleIoc.Default.Unregister<LoginViewModel>();
+            SimpleIoc.Default.Unregister<SearchViewModel>();
         }
     }
 }

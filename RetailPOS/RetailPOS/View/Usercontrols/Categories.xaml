@@ -26,7 +26,10 @@
         <StackPanel Margin="400,0,0,0">
             <Button Content="Category"   Height="52" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="btnCategory" Width="75"  />
             <Button Content="Back"  Height="48" Margin="10,5,0,0" HorizontalAlignment="Left" Name="btnBack"  Width="75" />
-            <Button Content="Show All" Height="47" Margin="10,5,0,0" Name="btnShowAll" Width="75" HorizontalAlignment="Left" />
+            <Button Content="Show All" Height="47" Margin="10,5,0,0" Name="btnShowAll" Width="75" HorizontalAlignment="Left"  />
         </StackPanel>
+        <Popup Name="myPopup" IsOpen="False" PlacementTarget="{Binding ElementName=btnShowAll}" StaysOpen="False" Opened="myPopup_Opened">
+            <Label Name="myLabel" Content="This is a popup!" Background="AliceBlue" Foreground="Blue"/>
+        </Popup>
     </Grid>
 </UserControl>

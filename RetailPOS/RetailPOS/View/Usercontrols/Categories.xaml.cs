@@ -19,13 +19,18 @@ namespace RetailPOS.View.Usercontrols
     /// </summary>
     public partial class Categories : UserControl
     {
-        public delegate void CallWindow();
-        public  event CallWindow OpenNewWin;
-
+       
         public Categories()
         {
             InitializeComponent();
         }
+
+        private void myPopup_Opened(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 
     public class Cateogory

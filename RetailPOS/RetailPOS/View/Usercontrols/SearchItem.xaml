@@ -4,26 +4,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="320">
+             d:DesignHeight="150" d:DesignWidth="320"
+            DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit">
     <UserControl.Resources>
-        <ResourceDictionary Source="../Themes/BureauBlue.xaml"></ResourceDictionary>
+        <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="101*"></ColumnDefinition>
-            <ColumnDefinition Width="199*"></ColumnDefinition>            
-        </Grid.ColumnDefinitions>
-        <Label Content="Product :"  Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="lblProduct" VerticalAlignment="Top" Width="69" />
-        <Label Content="Customer :" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="lblCustomer" VerticalAlignment="Top" Width="69" Grid.Row="1" />
-        <TextBox Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="11,12,0,0" Name="txtProduct" VerticalAlignment="Top" Width="187" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="11,10,0,0" Name="txtCustomer" VerticalAlignment="Top" Width="98" Grid.Column="1" Grid.Row="1" />
-        <Button Content="Search" Grid.Column="1" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="121,10,0,0" Name="btnSearch" VerticalAlignment="Top" Width="77" />
-        <Label Content="Loyalty Points:" Grid.Row="2" Height="28" HorizontalAlignment="Left" Margin="12,14,0,0" Name="label1" VerticalAlignment="Top" Width="78" />
-        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="11,15,0,0" Name="txtLoyaltyPoints" Text="" VerticalAlignment="Top" Grid.Column="1" />
-    </Grid>
+    <GroupBox Header="Search Box">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="101*"></ColumnDefinition>
+                <ColumnDefinition Width="199*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Content="Product :"  Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="lblProduct" VerticalAlignment="Top" Width="69" />
+            <Label Content="Customer :" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="lblCustomer" VerticalAlignment="Top" Width="69" Grid.Row="1" />
+
+            <Label Content="Loyalty Points:" Grid.Row="2" Height="28" HorizontalAlignment="Left" Margin="12,14,0,0" Name="label1" VerticalAlignment="Top" Width="78" />
+            <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="11,15,0,0" Name="txtLoyaltyPoints" Text="" VerticalAlignment="Top" Grid.Column="1" />
+            <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Margin="11,12,0,0" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearch}"                        
+                         IsTextCompletionEnabled="True"      
+                          ValueMemberPath="Product"        
+                         FilterMode="None" VerticalAlignment="Top" Width="189" Height="25" >
+
+                <toolkit:AutoCompleteBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Product}"></TextBlock>
+                    </DataTemplate>
+                </toolkit:AutoCompleteBox.ItemTemplate>
+
+            </toolkit:AutoCompleteBox>
+            <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,12,0,0" Name="autoCompleteTxtCustomer"  ItemsSource="{Binding lstSearch}"
+                         Text="{Binding CustomerName, Mode=TwoWay}"
+                         IsTextCompletionEnabled="True"
+                         ValueMemberPath="CustomerName"
+                         FilterMode="None" VerticalAlignment="Top" Width="189" Grid.Column="1" Grid.Row="1" >
+                <toolkit:AutoCompleteBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CustomerName}"></TextBlock>
+                    </DataTemplate>
+                </toolkit:AutoCompleteBox.ItemTemplate>
+            </toolkit:AutoCompleteBox>
+        </Grid>
+    </GroupBox>
+    
+  
 </UserControl>

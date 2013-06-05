@@ -1,9 +1,7 @@
 ﻿#region Using directives
 
 using System.Collections.Generic;
-using RetailPOS.BusinessLayer.Service.Admin;
-using RetailPOS.CommonLayer.DataTransferObjects;
-using RetailPOS.CommonLayer.Unity;
+using RetailPOS.CommonLayer.DataTransferObjects.Category;
 
 #endregion
 

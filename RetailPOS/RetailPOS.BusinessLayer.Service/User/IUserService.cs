@@ -1,4 +1,4 @@
-﻿namespace RetailPOS.BusinessLayer.Service.Users
+﻿namespace RetailPOS.BusinessLayer.Service.User
 {
     public interface IUserService
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RetailPOS.CommonLayer.DataTransferObjects
+namespace RetailPOS.CommonLayer.DataTransferObjects.Product
 {
     public class ProductDTO : BaseDTO
     {

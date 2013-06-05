@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
 
 namespace RetailPOS.ViewModel
 {
@@ -12,7 +12,9 @@ namespace RetailPOS.ViewModel
     {
        #region Declare Public and private Data member
 
-       public List<Search> lstSearch { get; private set; }
+       public List<ProductDTO> lstSearchProduct { get; private set; }
+       //public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+
        private RelayCommand _openFirstPopupCommand;
        private bool _firstPopupIsOpen;
 
@@ -40,8 +42,9 @@ namespace RetailPOS.ViewModel
        /// </summary>
        public SearchViewModel()
        {
-           lstSearch = new List<Search>();
-           FillListSearch();
+           lstSearchProduct = new List<ProductDTO>();
+           //lstSearchCustomer = new List<CustomerDTO>();
+           GetSearchAttributes();
        }
 
        /// <summary>
@@ -55,18 +58,15 @@ namespace RetailPOS.ViewModel
        /// <summary>
        /// Fills the list search.
        /// </summary>       
-       private void FillListSearch()
+       private void GetSearchAttributes()
        {
-           lstSearch.Add(new Search { CustomerName = "Anil" , Product = "test" });
-           lstSearch.Add(new Search { CustomerName = "Bob", Product = "test1" });
-           lstSearch.Add(new Search { CustomerName = "Cat", Product = "abc" });
+           lstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
+                                                                   select item).ToList();
+
+           //lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomer()
+             //                                                        select item).ToList();
        }
+
        #endregion
     }
-
-   public class Search
-   {
-       public string Product { get; set; }
-       public string CustomerName { get; set; }
-   }
 }

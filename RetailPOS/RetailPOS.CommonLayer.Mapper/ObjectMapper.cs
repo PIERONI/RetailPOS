@@ -6,9 +6,11 @@
 
 #region Using directives
 
-using RetailPOS.CommonLayer.DataTransferObjects;
-using RetailPOS.PersistenceLayer.Repository.Entities;
+using RetailPOS.CommonLayer.DataTransferObjects.Category;
 using RetailPOS.CommonLayer.DataTransferObjects.Customer;
+using RetailPOS.CommonLayer.DataTransferObjects.Product;
+using RetailPOS.CommonLayer.DataTransferObjects.User;
+using RetailPOS.PersistenceLayer.Repository.Entities;
 
 #endregion
 

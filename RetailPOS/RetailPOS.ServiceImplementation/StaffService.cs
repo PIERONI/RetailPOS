@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using RetailPOS.CommonLayer.DataTransferObjects;
+using RetailPOS.CommonLayer.DataTransferObjects.User;
 
 namespace RetailPOS.ServiceImplementation
 {

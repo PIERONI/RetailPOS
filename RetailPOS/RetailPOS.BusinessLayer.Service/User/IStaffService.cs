@@ -1,11 +1,11 @@
 ﻿#region Using directives
 
 using System.Collections.Generic;
-using RetailPOS.CommonLayer.DataTransferObjects;
+using RetailPOS.CommonLayer.DataTransferObjects.User;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.Service.Users
+namespace RetailPOS.BusinessLayer.Service.User
 {
     public interface IStaffService
     {

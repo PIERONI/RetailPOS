@@ -118,13 +118,13 @@
     </Compile>
     <Compile Include="Core\AppConstants.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\RetailPOSService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
@@ -281,9 +281,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.ProductCategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -293,11 +290,23 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RetailPOSService\service.wsdl" />
-    <None Include="Service References\RetailPOSService\service.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService.wsdl" />
+    <None Include="Service References\RetailPOSService\RetailPOSService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\service1.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService5.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -351,7 +360,16 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\AbstractBlue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utility\" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Service References\RetailPOSService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RetailPOSService\RetailPOSService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\RetailPOSService\configuration91.svcinfo" />
@@ -364,12 +382,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\AbstractBlue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utility\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

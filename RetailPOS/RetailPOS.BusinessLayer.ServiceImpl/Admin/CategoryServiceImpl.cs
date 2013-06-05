@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using RetailPOS.BusinessLayer.Service.Admin;
-using RetailPOS.CommonLayer.DataTransferObjects;
+using RetailPOS.CommonLayer.DataTransferObjects.Category;
 using RetailPOS.CommonLayer.Mapper;
 
 #endregion

@@ -6,7 +6,7 @@ using RetailPOS.PersistenceLayer.Repository.Interfaces;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.ServiceImpl.Users
+namespace RetailPOS.BusinessLayer.ServiceImpl.User
 {
     public class UserBaseService
     {

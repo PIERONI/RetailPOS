@@ -2,13 +2,12 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using RetailPOS.BusinessLayer.Service.Users;
-using RetailPOS.CommonLayer.DataTransferObjects;
-using RetailPOS.CommonLayer.Mapper;
+using RetailPOS.BusinessLayer.Service.User;
+using RetailPOS.CommonLayer.DataTransferObjects.User;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.ServiceImpl.Users
+namespace RetailPOS.BusinessLayer.ServiceImpl.User
 {
     public class StaffServiceImpl : UserBaseService, IStaffService
     {

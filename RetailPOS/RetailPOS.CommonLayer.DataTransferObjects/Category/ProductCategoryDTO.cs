@@ -1,4 +1,4 @@
-﻿namespace RetailPOS.CommonLayer.DataTransferObjects
+﻿namespace RetailPOS.CommonLayer.DataTransferObjects.Category
 {
     public class ProductCategoryDTO : BaseDTO
     {

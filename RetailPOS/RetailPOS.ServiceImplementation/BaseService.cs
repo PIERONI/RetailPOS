@@ -2,10 +2,11 @@
 
 using Microsoft.Practices.Unity;
 using RetailPOS.BusinessLayer.Service.Admin;
+using RetailPOS.BusinessLayer.Service.Customer;
 using RetailPOS.BusinessLayer.Service.Masters;
+using RetailPOS.BusinessLayer.Service.User;
 using RetailPOS.CommonLayer.Unity;
 using RetailPOS.ServiceImplementation.ServiceContracts;
-using RetailPOS.BusinessLayer.Service.Users;
 
 #endregion
 
@@ -19,6 +20,7 @@ namespace RetailPOS.ServiceImplementation
             ProductService = RetailPOSUnityContainer.Resolve<IProductService>();
             StaffService = RetailPOSUnityContainer.Resolve<IStaffService>();
             UserService = RetailPOSUnityContainer.Resolve<IUserService>();
+            CustomerService = RetailPOSUnityContainer.Resolve<ICustomerService>();
         }
 
         /// <summary>
@@ -56,6 +58,15 @@ namespace RetailPOS.ServiceImplementation
         /// </value>
         [Dependency]
         public IUserService UserService { get; set; }
+
+        /// <summary>
+        /// Gets or sets the customer service.
+        /// </summary>
+        /// <value>
+        /// The customer service.
+        /// </value>
+        [Dependency]
+        public ICustomerService CustomerService { get; set; }
 
         /// <summary>
         /// Gets or sets the master service.

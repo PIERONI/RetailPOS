@@ -48,10 +48,10 @@
     <Compile Include="Admin\ProductServiceImpl.cs" />
     <Compile Include="Customer\CustomerBaseService.cs" />
     <Compile Include="Customer\CustomerServiceImpl.cs" />
-    <Compile Include="Users\UserBaseService.cs" />
-    <Compile Include="Users\StaffServiceImpl.cs" />
+    <Compile Include="User\UserBaseService.cs" />
+    <Compile Include="User\StaffServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users\UserServiceImpl.cs" />
+    <Compile Include="User\UserServiceImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RetailPOS.BusinessLayer.Service\RetailPOS.BusinessLayer.Service.csproj">

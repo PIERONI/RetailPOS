@@ -42,11 +42,11 @@
   <ItemGroup>
     <Compile Include="BaseDTO.cs" />
     <Compile Include="Customer\CustomerDTO.cs" />
-    <Compile Include="ProductCategoryDTO.cs" />
-    <Compile Include="ProductDTO.cs" />
+    <Compile Include="Category\ProductCategoryDTO.cs" />
+    <Compile Include="Product\ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaffDTO.cs" />
-    <Compile Include="UserDTO.cs" />
+    <Compile Include="User\StaffDTO.cs" />
+    <Compile Include="User\UserDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

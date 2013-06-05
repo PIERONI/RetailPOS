@@ -1,4 +1,4 @@
-﻿namespace RetailPOS.CommonLayer.DataTransferObjects
+﻿namespace RetailPOS.CommonLayer.DataTransferObjects.User
 {
     public class UserDTO : BaseDTO
     {

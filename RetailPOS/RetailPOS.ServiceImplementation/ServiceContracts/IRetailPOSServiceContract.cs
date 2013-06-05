@@ -1,9 +1,13 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ServiceModel;
-using RetailPOS.CommonLayer.DataTransferObjects;
+using RetailPOS.CommonLayer.DataTransferObjects.Category;
+using RetailPOS.CommonLayer.DataTransferObjects.Customer;
+using RetailPOS.CommonLayer.DataTransferObjects.Product;
+using RetailPOS.CommonLayer.DataTransferObjects.User;
+
+#endregion
 
 namespace RetailPOS.ServiceImplementation.ServiceContracts
 {
@@ -38,6 +42,16 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
 
         [OperationContract]
         bool ValidateUserCredentials(string userName, string password);
+
+        #endregion
+
+        #region Customers
+
+        /// <summary>
+        /// Get all customers
+        /// </summary>
+        /// <returns>returns list of all active customers present in database</returns>
+        IList<CustomerDTO> GetAllCustomers();
 
         #endregion
     }

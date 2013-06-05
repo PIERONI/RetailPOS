@@ -5,15 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:loc="clr-namespace:RetailPOS.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="500"  DataContext="{Binding Source={StaticResource Locator}, Path=CategoryVM}">
+             d:DesignHeight="140" d:DesignWidth="480"  DataContext="{Binding Source={StaticResource Locator}, Path=CategoryVM}"
+              xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls">
     <UserControl.Resources>
-       
+        <ControlTemplate TargetType="{x:Type Button}" x:Key="ImageButtonTemplate">
+            <Grid>
+                <Image Source="../../Images/close-icon.png"  Width="{TemplateBinding Width}"  Height="{TemplateBinding Height}"  />
+            </Grid>
+        </ControlTemplate>
+        <Style TargetType="{x:Type Button}" x:Key="ImageButton">
+            <Setter Property="Template" Value="{StaticResource ImageButtonTemplate}"/>
+        </Style>
     </UserControl.Resources>
-    <Grid Width="495" Height="200">
-        <ListBox  Name="LstCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,2,110,2">          
+    <Grid Width="480" Height="140">
+        <ListBox  Name="LstCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,2,100,2">          
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>               
-                        <WrapPanel  Orientation="Horizontal"  Margin="0"   Height="Auto" Width="336" >                       
+                        <WrapPanel  Orientation="Horizontal"  Margin="0"   Height="Auto" Width="335" >                       
                         </WrapPanel>        
                    </ItemsPanelTemplate>
                  </ListBox.ItemsPanel>
@@ -23,13 +31,36 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Margin="400,0,0,0">
-            <Button Content="Category"   Height="52" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="btnCategory" Width="75"  />
-            <Button Content="Back"  Height="48" Margin="10,5,0,0" HorizontalAlignment="Left" Name="btnBack"  Width="75" />
-            <Button Content="Show All" Height="47" Margin="10,5,0,0" Name="btnShowAll" Width="75" HorizontalAlignment="Left"  />
+        <StackPanel Margin="390,0,0,0">
+            <Button Content="Category"   Height="40" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="btnCategory" Width="75"  />
+            <Button Content="Back"  Height="40" Margin="10,5,0,0" Command="{Binding RefershListBoxCommand}" HorizontalAlignment="Left" Name="btnBack"  Width="75" />
+            <Button Content="Show All" Height="40" Margin="10,5,0,0" Name="btnShowAll" Width="75"  Command="{Binding OpenFirstPopupCommand}" HorizontalAlignment="Left"  />
         </StackPanel>
-        <Popup Name="myPopup" IsOpen="False" PlacementTarget="{Binding ElementName=btnShowAll}" StaysOpen="False" Opened="myPopup_Opened">
-            <Label Name="myLabel" Content="This is a popup!" Background="AliceBlue" Foreground="Blue"/>
-        </Popup>
+        <my:ModalDialogPopup IsOpen="{Binding FirstPopupIsOpen, Mode=TwoWay}" Title="Categories" ShowCancelButton="False"  ShowOKButton="False">          
+            <my:ModalDialogPopup.HostedContent>               
+                <ContentControl>                    
+                    <Grid>                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>                          
+                        </Grid.RowDefinitions>                  
+                    <Grid Grid.Row="1" Height="auto" Width="1000">
+                        <ListBox  Name="lstAllCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto" Width="1000" >
+                                    </WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Margin="1"  Content="{Binding Name}" Command="{Binding DataContext.SelectProductCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right"  Width="79" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                    </Grid>
+                </ContentControl>
+            </my:ModalDialogPopup.HostedContent>
+        </my:ModalDialogPopup>
     </Grid>
 </UserControl>

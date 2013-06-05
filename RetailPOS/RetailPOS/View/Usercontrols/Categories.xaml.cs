@@ -18,24 +18,12 @@ namespace RetailPOS.View.Usercontrols
     /// Interaction logic for Categories.xaml
     /// </summary>
     public partial class Categories : UserControl
-    {
-       
+    {       
         public Categories()
         {
             InitializeComponent();
-        }
-
-        private void myPopup_Opened(object sender, EventArgs e)
-        {
-
-        }
-
-       
+        }      
     }
 
-    public class Cateogory
-    {
-        public string Name { get; set; }
-        public string ColorName { get; set; }
-    }
+    
 }

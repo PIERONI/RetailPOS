@@ -19,6 +19,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<CategoryViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
+            SimpleIoc.Default.Register<UserInfoViewModel>();
         }
 
         /// <summary>
@@ -57,12 +58,27 @@ namespace RetailPOS.ViewModel
                 return ServiceLocator.Current.GetInstance<SearchViewModel>();
             }
         }
+
+        /// <summary>
+        /// Gets the user info VM.
+        /// </summary>
+        /// <value>
+        /// The user info VM.
+        /// </value>
+        public UserInfoViewModel UserInfoVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<UserInfoViewModel>();
+            }
+        }
         
         public static void Cleanup()
         {  
             SimpleIoc.Default.Unregister<CategoryViewModel>();
             SimpleIoc.Default.Unregister<LoginViewModel>();
             SimpleIoc.Default.Unregister<SearchViewModel>();
+            SimpleIoc.Default.Unregister<UserInfoViewModel>();
         }
     }
 }

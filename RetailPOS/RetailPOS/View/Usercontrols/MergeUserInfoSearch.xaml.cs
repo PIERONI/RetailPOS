@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RetailPOS.Usercontrols
+namespace RetailPOS.View.Usercontrols
 {
     /// <summary>
     /// Interaction logic for MergeUserInfoSearch.xaml

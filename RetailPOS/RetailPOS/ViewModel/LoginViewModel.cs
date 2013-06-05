@@ -105,7 +105,7 @@ namespace RetailPOS.ViewModel
                 MessageVisibility = Visibility.Visible;
                 var MW = new MainWindow();
                 MW.Show();
-
+                LoginWindow._LoginWindow.Close();
                 
             }
         }

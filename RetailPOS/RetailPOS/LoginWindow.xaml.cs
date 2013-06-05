@@ -18,8 +18,15 @@ namespace RetailPOS.View
     /// </summary>
     public partial class LoginWindow : Window
     {
+        public static LoginWindow _LoginWindow
+        {
+            get;
+            set;
+        }
+
         public LoginWindow()
         {
+            _LoginWindow = this;
             InitializeComponent();
         }        
     }

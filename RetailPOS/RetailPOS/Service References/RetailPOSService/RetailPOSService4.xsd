@@ -3,6 +3,7 @@
   <xs:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Category" />
   <xs:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
   <xs:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" />
+  <xs:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
   <xs:element name="GetCategories">
     <xs:complexType>
       <xs:sequence />
@@ -65,6 +66,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ValidateUserCredentialsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCustomers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCustomersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetAllCustomersResult" nillable="true" type="q5:ArrayOfCustomerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

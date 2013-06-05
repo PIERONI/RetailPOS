@@ -8,6 +8,7 @@
       <xsd:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" />
       <xsd:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
       <xsd:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" />
+      <xsd:import schemaLocation="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IRetailPOSServiceContract_GetCategories_InputMessage">
@@ -40,6 +41,12 @@
   <wsdl:message name="IRetailPOSServiceContract_ValidateUserCredentials_OutputMessage">
     <wsdl:part name="parameters" element="tns:ValidateUserCredentialsResponse" />
   </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetAllCustomers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomers" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetAllCustomers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRetailPOSServiceContract">
     <wsdl:operation name="GetCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetCategories" message="tns:IRetailPOSServiceContract_GetCategories_InputMessage" />
@@ -60,6 +67,10 @@
     <wsdl:operation name="ValidateUserCredentials">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentials" message="tns:IRetailPOSServiceContract_ValidateUserCredentials_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentialsResponse" message="tns:IRetailPOSServiceContract_ValidateUserCredentials_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomers" message="tns:IRetailPOSServiceContract_GetAllCustomers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomersResponse" message="tns:IRetailPOSServiceContract_GetAllCustomers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRetailPOSServiceContract" type="tns:IRetailPOSServiceContract">
@@ -102,6 +113,15 @@
     </wsdl:operation>
     <wsdl:operation name="ValidateUserCredentials">
       <soap:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomers">
+      <soap:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

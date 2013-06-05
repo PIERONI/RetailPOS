@@ -90,6 +90,7 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         "")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StaffDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductCategoryDTO))]
@@ -114,6 +115,254 @@ namespace RetailPOS.RetailPOSService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Customer")]
+    [System.SerializableAttribute()]
+    public partial class CustomerDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long Address_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Credit_LimitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string First_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Image_PathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Last_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MobileField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OpenId_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OpenId_Server_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Payment_PeriodField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Status_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Type_IdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Address_Id {
+            get {
+                return this.Address_IdField;
+            }
+            set {
+                if ((this.Address_IdField.Equals(value) != true)) {
+                    this.Address_IdField = value;
+                    this.RaisePropertyChanged("Address_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Credit_Limit {
+            get {
+                return this.Credit_LimitField;
+            }
+            set {
+                if ((this.Credit_LimitField.Equals(value) != true)) {
+                    this.Credit_LimitField = value;
+                    this.RaisePropertyChanged("Credit_Limit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string First_Name {
+            get {
+                return this.First_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.First_NameField, value) != true)) {
+                    this.First_NameField = value;
+                    this.RaisePropertyChanged("First_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Image_Path {
+            get {
+                return this.Image_PathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Image_PathField, value) != true)) {
+                    this.Image_PathField = value;
+                    this.RaisePropertyChanged("Image_Path");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Last_Name {
+            get {
+                return this.Last_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Last_NameField, value) != true)) {
+                    this.Last_NameField = value;
+                    this.RaisePropertyChanged("Last_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mobile {
+            get {
+                return this.MobileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MobileField, value) != true)) {
+                    this.MobileField = value;
+                    this.RaisePropertyChanged("Mobile");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OpenId_Id {
+            get {
+                return this.OpenId_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OpenId_IdField, value) != true)) {
+                    this.OpenId_IdField = value;
+                    this.RaisePropertyChanged("OpenId_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OpenId_Server_Id {
+            get {
+                return this.OpenId_Server_IdField;
+            }
+            set {
+                if ((this.OpenId_Server_IdField.Equals(value) != true)) {
+                    this.OpenId_Server_IdField = value;
+                    this.RaisePropertyChanged("OpenId_Server_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Payment_Period {
+            get {
+                return this.Payment_PeriodField;
+            }
+            set {
+                if ((this.Payment_PeriodField.Equals(value) != true)) {
+                    this.Payment_PeriodField = value;
+                    this.RaisePropertyChanged("Payment_Period");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phone {
+            get {
+                return this.PhoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneField, value) != true)) {
+                    this.PhoneField = value;
+                    this.RaisePropertyChanged("Phone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Status_Id {
+            get {
+                return this.Status_IdField;
+            }
+            set {
+                if ((this.Status_IdField.Equals(value) != true)) {
+                    this.Status_IdField = value;
+                    this.RaisePropertyChanged("Status_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Type_Id {
+            get {
+                return this.Type_IdField;
+            }
+            set {
+                if ((this.Type_IdField.Equals(value) != true)) {
+                    this.Type_IdField = value;
+                    this.RaisePropertyChanged("Type_Id");
+                }
             }
         }
     }
@@ -680,6 +929,9 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentials", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentialsResponse")]
         bool ValidateUserCredentials(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomers", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomersResponse")]
+        RetailPOS.RetailPOSService.CustomerDTO[] GetAllCustomers();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -727,6 +979,10 @@ namespace RetailPOS.RetailPOSService {
         
         public bool ValidateUserCredentials(string userName, string password) {
             return base.Channel.ValidateUserCredentials(userName, password);
+        }
+        
+        public RetailPOS.RetailPOSService.CustomerDTO[] GetAllCustomers() {
+            return base.Channel.GetAllCustomers();
         }
     }
 }

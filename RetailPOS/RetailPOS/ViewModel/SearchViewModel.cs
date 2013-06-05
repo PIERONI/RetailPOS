@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿#region Using directives
+
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
@@ -13,7 +17,7 @@ namespace RetailPOS.ViewModel
        #region Declare Public and private Data member
 
        public List<ProductDTO> lstSearchProduct { get; private set; }
-       //public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+       public IList<CustomerDTO> lstSearchCustomer { get; private set; }
 
        private RelayCommand _openFirstPopupCommand;
        private bool _firstPopupIsOpen;
@@ -43,7 +47,8 @@ namespace RetailPOS.ViewModel
        public SearchViewModel()
        {
            lstSearchProduct = new List<ProductDTO>();
-           //lstSearchCustomer = new List<CustomerDTO>();
+           lstSearchCustomer = new List<CustomerDTO>();
+           
            GetSearchAttributes();
        }
 
@@ -63,8 +68,8 @@ namespace RetailPOS.ViewModel
            lstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
                                                                    select item).ToList();
 
-           //lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomer()
-             //                                                        select item).ToList();
+           lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
+                                                                     select item).ToList();
        }
 
        #endregion

@@ -51,6 +51,7 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// Get all customers
         /// </summary>
         /// <returns>returns list of all active customers present in database</returns>
+        [OperationContract]
         IList<CustomerDTO> GetAllCustomers();
 
         #endregion

@@ -281,6 +281,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CustomerDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.ProductCategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -307,6 +310,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOSService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService6.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

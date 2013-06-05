@@ -22,6 +22,7 @@
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="RetailPOSService.wsdl" MetadataType="Wsdl" ID="ec621f88-e314-436f-8c50-f4de6def82f5" SourceId="1" SourceUrl="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?wsdl" />
+    <MetadataFile FileName="RetailPOSService6.xsd" MetadataType="Schema" ID="3761c275-54bd-4575-8c5a-786fb5ba039d" SourceId="1" SourceUrl="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd6" />
     <MetadataFile FileName="RetailPOSService.xsd" MetadataType="Schema" ID="dcbe102b-0c5c-4f83-b633-9f8c07497a1b" SourceId="1" SourceUrl="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd5" />
     <MetadataFile FileName="RetailPOSService.disco" MetadataType="Disco" ID="d61aca0c-9320-4a2d-afb2-057c97ca813d" SourceId="1" SourceUrl="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?disco" />
     <MetadataFile FileName="RetailPOSService1.xsd" MetadataType="Schema" ID="ca7f5bcb-eb54-4463-8f6c-1dc24b783187" SourceId="1" SourceUrl="http://rashi.corporate.thoughtworks.com/RetailPOSService/RetailPOSService.svc?xsd=xsd3" />

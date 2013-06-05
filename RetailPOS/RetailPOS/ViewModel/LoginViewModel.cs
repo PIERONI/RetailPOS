@@ -78,6 +78,9 @@ namespace RetailPOS.ViewModel
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginViewModel"/> class.
+        /// </summary>
         public LoginViewModel()
         {
             MessageVisibility = Visibility.Hidden;

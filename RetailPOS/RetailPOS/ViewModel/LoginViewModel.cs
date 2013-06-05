@@ -6,6 +6,7 @@ using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
 using System.Windows;
+using RetailPOS.View;
 
 namespace RetailPOS.ViewModel
 {
@@ -102,6 +103,10 @@ namespace RetailPOS.ViewModel
             if (!isUserValidate)
             {
                 MessageVisibility = Visibility.Visible;
+                var MW = new MainWindow();
+                MW.Show();
+
+                
             }
         }
 

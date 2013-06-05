@@ -13,9 +13,9 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
     public class CategoryServiceImpl : AdminBaseService, ICategoryService
     {
         /// <summary>
-        /// 
+        /// Get Categories from database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returns list of product categories</returns>
         IList<ProductCategoryDTO> ICategoryService.GetCategories()
         {
             IList<ProductCategoryDTO> lstCategories = new List<ProductCategoryDTO>();

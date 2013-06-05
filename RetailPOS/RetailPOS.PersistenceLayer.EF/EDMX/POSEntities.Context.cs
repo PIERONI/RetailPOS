@@ -240,12 +240,6 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<shop_product> _shop_product;
     
-        public ObjectSet<staff> staffs
-        {
-            get { return _staffs  ?? (_staffs = CreateObjectSet<staff>("staffs")); }
-        }
-        private ObjectSet<staff> _staffs;
-    
         public ObjectSet<staff_status> staff_status
         {
             get { return _staff_status  ?? (_staff_status = CreateObjectSet<staff_status>("staff_status")); }
@@ -287,6 +281,18 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _working_record  ?? (_working_record = CreateObjectSet<working_record>("working_record")); }
         }
         private ObjectSet<working_record> _working_record;
+    
+        public ObjectSet<user> users
+        {
+            get { return _users  ?? (_users = CreateObjectSet<user>("users")); }
+        }
+        private ObjectSet<user> _users;
+    
+        public ObjectSet<staff> staffs
+        {
+            get { return _staffs  ?? (_staffs = CreateObjectSet<staff>("staffs")); }
+        }
+        private ObjectSet<staff> _staffs;
 
         #endregion
     }

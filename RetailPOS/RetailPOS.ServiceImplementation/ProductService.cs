@@ -21,6 +21,15 @@ namespace RetailPOS.ServiceImplementation
             return ProductService.GetProductByCategory(categoryId);
         }
 
+        /// <summary>
+        /// Products: This service implementation class is used to get all products from repository
+        /// </summary>
+        /// <returns>returns list of all products present in database</returns>
+        public IList<ProductDTO> GetAllProducts()
+        {
+            return ProductService.GetAllProducts();
+        }
+
         #endregion
     }
 }

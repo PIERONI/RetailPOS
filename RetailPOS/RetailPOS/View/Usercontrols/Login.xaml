@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:WpfKb="clr-namespace:WpfKb.Controls;assembly=WpfKb"
-            
              mc:Ignorable="d" 
               x:Name="LoginCtrl"
              Width="Auto" Height="Auto"
@@ -13,30 +12,25 @@
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml">            
         </ResourceDictionary>  
     </UserControl.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
-
         <Border Style="{DynamicResource Border.Rounded.Floating}">
             <StackPanel Name="ctrlStack">
                 <TextBox
                     Grid.Row="0"
                     x:Name="txtUserName"
-                    Text="{Binding userName,Mode=TwoWay}" 
-                    IsEnabled="{Binding isEnabled, Mode=TwoWay}"
-                    Style="{DynamicResource TextBox.Rounded}"
-                    />
+                    Text="{Binding FullName,Mode=TwoWay}" 
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Style="{DynamicResource TextBox.Rounded}" />
                 <PasswordBox
                     Grid.Row="1"
                     x:Name="txtPassword"                    
-                    Style="{DynamicResource PasswordBox.Rounded}"
-                    />
+                    Style="{DynamicResource PasswordBox.Rounded}" />
                 <Button Margin="4" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=txtPassword}" Height="50"  HorizontalAlignment="Left" Width="150" />
-
-               
+                <Label Grid.Row="2" x:Name="lblMessage" Visibility="{Binding MessageVisibility}" Content="Invalid User Credntials" FontWeight="Bold" Foreground="Red" />
             </StackPanel>
         </Border>
         <WpfKb:FloatingTouchScreenKeyboard
@@ -44,13 +38,7 @@
             IsOpen="True"
             Width="700"
             Height="400"
-           
             PlacementTarget="{Binding ElementName=LoginCtrl}"
-            Placement="Center"        
-            AreAnimationsEnabled="False"           
-           />
-
-      
-
+            Placement="Center" AreAnimationsEnabled="False" />
     </Grid>
 </UserControl>

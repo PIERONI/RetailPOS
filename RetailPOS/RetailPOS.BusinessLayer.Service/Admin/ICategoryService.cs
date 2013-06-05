@@ -1,17 +1,18 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using RetailPOS.CommonLayer.DataTransferObjects;
+
+#endregion
 
 namespace RetailPOS.BusinessLayer.Service.Admin
 {
     public interface ICategoryService
     {
         /// <summary>
-        /// 
+        /// Get Categories from database 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returns list of product categories</returns>
         IList<ProductCategoryDTO> GetCategories();
     }
 }

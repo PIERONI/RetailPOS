@@ -46,6 +46,7 @@
           <EntitySet Name="supplier_contact_person" EntityType="POSModel.Store.supplier_contact_person" store:Type="Tables" Schema="webpos" />
           <EntitySet Name="supplier_products" EntityType="POSModel.Store.supplier_products" store:Type="Tables" Schema="webpos" />
           <EntitySet Name="town_city" EntityType="POSModel.Store.town_city" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="users" EntityType="POSModel.Store.users" store:Type="Tables" Schema="webpos" />
           <EntitySet Name="warranty" EntityType="POSModel.Store.warranty" store:Type="Tables" Schema="webpos" />
           <EntitySet Name="working_record" EntityType="POSModel.Store.working_record" store:Type="Tables" Schema="webpos" />
           <AssociationSet Name="address_ibfk_10" Association="POSModel.Store.address_ibfk_10">
@@ -111,6 +112,10 @@
           <AssociationSet Name="email_history_ibfk_2" Association="POSModel.Store.email_history_ibfk_2">
             <End Role="staff" EntitySet="staff" />
             <End Role="email_history" EntitySet="email_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Users" Association="POSModel.Store.FK_Staff_Users">
+            <End Role="users" EntitySet="users" />
+            <End Role="staff" EntitySet="staff" />
           </AssociationSet>
           <AssociationSet Name="login_history_ibfk_2" Association="POSModel.Store.login_history_ibfk_2">
             <End Role="customer" EntitySet="customer" />
@@ -541,6 +546,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" />
           <Property Name="code" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="last_name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="first_name" Type="varchar" Nullable="false" MaxLength="100" />
@@ -611,6 +617,15 @@
           </Key>
           <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="town_city" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bool" />
         </EntityType>
         <EntityType Name="warranty">
           <Key>
@@ -830,6 +845,18 @@
             </Principal>
             <Dependent Role="email_history">
               <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Users">
+          <End Role="users" Type="POSModel.Store.users" Multiplicity="0..1" />
+          <End Role="staff" Type="POSModel.Store.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1071,7 +1098,6 @@
           <EntitySet Name="security_group" EntityType="POSModel.security_group" />
           <EntitySet Name="shop_info" EntityType="POSModel.shop_info" />
           <EntitySet Name="shop_product" EntityType="POSModel.shop_product" />
-          <EntitySet Name="staffs" EntityType="POSModel.staff" />
           <EntitySet Name="staff_status" EntityType="POSModel.staff_status" />
           <EntitySet Name="streets" EntityType="POSModel.street" />
           <EntitySet Name="suppliers" EntityType="POSModel.supplier" />
@@ -1147,14 +1173,6 @@
             <End Role="product" EntitySet="products" />
             <End Role="display_properties" EntitySet="display_properties" />
           </AssociationSet>
-          <AssociationSet Name="email_history_ibfk_2" Association="POSModel.email_history_ibfk_2">
-            <End Role="staff" EntitySet="staffs" />
-            <End Role="email_history" EntitySet="email_history" />
-          </AssociationSet>
-          <AssociationSet Name="login_history_ibfk_3" Association="POSModel.login_history_ibfk_3">
-            <End Role="staff" EntitySet="staffs" />
-            <End Role="login_history" EntitySet="login_history" />
-          </AssociationSet>
           <AssociationSet Name="measure_unit_conversion_ibfk_1" Association="POSModel.measure_unit_conversion_ibfk_1">
             <End Role="measure_unit" EntitySet="measure_unit" />
             <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
@@ -1202,6 +1220,20 @@
           <AssociationSet Name="supplier_products" Association="POSModel.supplier_products">
             <End Role="supplier" EntitySet="suppliers" />
             <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <EntitySet Name="users" EntityType="POSModel.user" />
+          <EntitySet Name="staffs" EntityType="POSModel.staff" />
+          <AssociationSet Name="email_history_ibfk_2" Association="POSModel.email_history_ibfk_2">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="email_history" EntitySet="email_history" />
+          </AssociationSet>
+          <AssociationSet Name="login_history_ibfk_3" Association="POSModel.login_history_ibfk_3">
+            <End Role="staff" EntitySet="staffs" />
+            <End Role="login_history" EntitySet="login_history" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Users" Association="POSModel.FK_Staff_Users">
+            <End Role="user" EntitySet="users" />
+            <End Role="staff" EntitySet="staffs" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="address">
@@ -1619,31 +1651,6 @@
           <Property Name="measure_unit_id" Type="Int16" />
           <Property Name="stock_last_updated" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="staff">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="dateofbirth" Type="DateTime" Nullable="false" />
-          <Property Name="designation_id" Type="Int16" />
-          <Property Name="phone" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="mobile" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="hire_date" Type="DateTime" Nullable="false" />
-          <Property Name="status_id" Type="Int16" Nullable="false" />
-          <Property Name="image_path" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="department_id" Type="Int16" />
-          <Property Name="address_id" Type="Int64" />
-          <Property Name="openid_id" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="openid_server_id" Type="Int16" />
-          <Property Name="password" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="security_group_id" Type="Int16" />
-          <NavigationProperty Name="email_history" Relationship="POSModel.email_history_ibfk_2" FromRole="staff" ToRole="email_history" />
-          <NavigationProperty Name="login_history" Relationship="POSModel.login_history_ibfk_3" FromRole="staff" ToRole="login_history" />
-        </EntityType>
         <EntityType Name="staff_status">
           <Key>
             <PropertyRef Name="id" />
@@ -1926,32 +1933,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="email_history_ibfk_2">
-          <End Role="staff" Type="POSModel.staff" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="email_history" Type="POSModel.email_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="email_history">
-              <PropertyRef Name="staff_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="login_history_ibfk_3">
-          <End Role="staff" Type="POSModel.staff" Multiplicity="0..1" />
-          <End Role="login_history" Type="POSModel.login_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="login_history">
-              <PropertyRef Name="staff_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="measure_unit_conversion_ibfk_1">
           <End Role="measure_unit" Type="POSModel.measure_unit" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2093,6 +2074,79 @@
         <Association Name="supplier_products">
           <End Role="supplier" Type="POSModel.supplier" Multiplicity="*" />
           <End Role="product" Type="POSModel.product" Multiplicity="*" />
+        </Association>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" />
+          <NavigationProperty Name="staffs" Relationship="POSModel.FK_Staff_Users" FromRole="user" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="String" Name="code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="last_name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="first_name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="dateofbirth" Nullable="false" />
+          <Property Type="Int16" Name="designation_id" />
+          <Property Type="String" Name="phone" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="mobile" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="hire_date" Nullable="false" />
+          <Property Type="Int16" Name="status_id" Nullable="false" />
+          <Property Type="String" Name="image_path" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="department_id" />
+          <Property Type="Int64" Name="address_id" />
+          <Property Type="String" Name="openid_id" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="openid_server_id" />
+          <Property Type="String" Name="password" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="security_group_id" />
+          <NavigationProperty Name="email_history" Relationship="POSModel.email_history_ibfk_2" FromRole="staff" ToRole="email_history" />
+          <NavigationProperty Name="login_history" Relationship="POSModel.login_history_ibfk_3" FromRole="staff" ToRole="login_history" />
+          <NavigationProperty Name="user" Relationship="POSModel.FK_Staff_Users" FromRole="staff" ToRole="user" />
+        </EntityType>
+        <Association Name="email_history_ibfk_2">
+          <End Type="POSModel.staff" Role="staff" Multiplicity="0..1" />
+          <End Type="POSModel.email_history" Role="email_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="email_history">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="login_history_ibfk_3">
+          <End Type="POSModel.staff" Role="staff" Multiplicity="0..1" />
+          <End Type="POSModel.login_history" Role="login_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="login_history">
+              <PropertyRef Name="staff_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Users">
+          <End Type="POSModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="POSModel.staff" Role="staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -2488,30 +2542,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="staffs">
-            <EntityTypeMapping TypeName="POSModel.staff">
-              <MappingFragment StoreEntitySet="staff">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
-                <ScalarProperty Name="designation_id" ColumnName="designation_id" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="hire_date" ColumnName="hire_date" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="image_path" ColumnName="image_path" />
-                <ScalarProperty Name="department_id" ColumnName="department_id" />
-                <ScalarProperty Name="address_id" ColumnName="address_id" />
-                <ScalarProperty Name="openid_id" ColumnName="openid_id" />
-                <ScalarProperty Name="openid_server_id" ColumnName="openid_server_id" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="security_group_id" ColumnName="security_group_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="staff_status">
             <EntityTypeMapping TypeName="POSModel.staff_status">
               <MappingFragment StoreEntitySet="staff_status">
@@ -2593,6 +2623,41 @@
               <ScalarProperty Name="id" ColumnName="product_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="POSModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staffs">
+            <EntityTypeMapping TypeName="POSModel.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="security_group_id" ColumnName="security_group_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="openid_server_id" ColumnName="openid_server_id" />
+                <ScalarProperty Name="openid_id" ColumnName="openid_id" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="hire_date" ColumnName="hire_date" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="designation_id" ColumnName="designation_id" />
+                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -2648,7 +2713,6 @@
         <EntityTypeShape EntityType="POSModel.security_group" Width="1.5" PointX="11.75" PointY="13.75" Height="1.7879850260416674" IsExpanded="true" />
         <EntityTypeShape EntityType="POSModel.shop_info" Width="1.5" PointX="5.25" PointY="14.75" Height="3.1340950520833388" IsExpanded="true" />
         <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="13.75" PointY="13.75" Height="1.9802864583333246" IsExpanded="true" />
-        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="5.25" PointY="1.875" Height="4.8648079427083388" IsExpanded="true" />
         <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="14.75" PointY="7.75" Height="1.5956835937500102" IsExpanded="true" />
         <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="0.75" PointY="14.75" Height="1.5956835937499978" IsExpanded="true" />
         <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="5.25" PointY="22.625" Height="2.5571907552083388" IsExpanded="true" />
@@ -2703,10 +2767,9 @@
           <ConnectorPoint PointX="5.2511528461538459" PointY="13.134013671875" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_5" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="6.7879850260416674" />
-          <ConnectorPoint PointX="4.875" PointY="7.1629850260416674" />
-          <ConnectorPoint PointX="4.875" PointY="8.8964978372395827" />
-          <ConnectorPoint PointX="5.25" PointY="8.8964978372395827" />
+          <ConnectorPoint PointX="4.5" PointY="5.8939925130208337" />
+          <ConnectorPoint PointX="6" PointY="5.8939925130208337" />
+          <ConnectorPoint PointX="6" PointY="7.5" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_6" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="16.188460538461534" />
@@ -2722,16 +2785,19 @@
           <ConnectorPoint PointX="6.75" PointY="12.408396809895834" />
           <ConnectorPoint PointX="8.1984955897435885" PointY="12.408396809895834" />
           <ConnectorPoint PointX="8.3651622564102563" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="12.408396809895834" />
           <ConnectorPoint PointX="9.8385416666666661" PointY="12.408396809895834" />
           <ConnectorPoint PointX="10.005208333333334" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="11.416666666666666" PointY="12.408396809895834" />
+          <ConnectorPoint PointX="11.583333333333334" PointY="12.408396809895834" />
           <ConnectorPoint PointX="11.65625" PointY="12.408396809895834" />
-          <ConnectorPoint PointX="11.65625" PointY="11.749492187500003" />
+          <ConnectorPoint PointX="11.65625" PointY="11.7494921875" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.login_history_ibfk_2" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="7.5" />
-          <ConnectorPoint PointX="7.125" PointY="7.125" />
-          <ConnectorPoint PointX="7.125" PointY="8.0571907552083388" />
-          <ConnectorPoint PointX="7.5" PointY="7.6821907552083388" />
+          <ConnectorPoint PointX="6.4062525" PointY="7.5" />
+          <ConnectorPoint PointX="6.4062525" PointY="6.6657437565104161" />
+          <ConnectorPoint PointX="7.5" PointY="6.6657437565104161" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.ordermaster_ibfk_1" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="13.134013671875" />
@@ -2740,13 +2806,17 @@
           <ConnectorPoint PointX="7.5011528461538459" PointY="13.125" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_pay_card_details_ibfk_1" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="8.90625" />
-          <ConnectorPoint PointX="10.09375" PointY="8.90625" />
+          <ConnectorPoint PointX="9" PointY="11.7182421875" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="11.7182421875" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="11.7182421875" />
+          <ConnectorPoint PointX="10.09375" PointY="11.7182421875" />
           <ConnectorPoint PointX="10.09375" PointY="7.34568359375" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_pay_cheque_details_ibfk_1" ManuallyRouted="false">
-          <ConnectorPoint PointX="9" PointY="8.921875" />
-          <ConnectorPoint PointX="9.921875" PointY="8.921875" />
+          <ConnectorPoint PointX="9" PointY="11.7494946875" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="11.7494946875" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="11.7494946875" />
+          <ConnectorPoint PointX="9.921875" PointY="11.7494946875" />
           <ConnectorPoint PointX="9.921875" PointY="13" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_pay_history_ibfk_5" ManuallyRouted="false">
@@ -2758,29 +2828,26 @@
           <ConnectorPoint PointX="8.25" PointY="29.9612939453125" />
           <ConnectorPoint PointX="9.75" PointY="29.9612939453125" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.email_history_ibfk_2" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="3.9324446614583337" />
-          <ConnectorPoint PointX="11.5" PointY="3.9324446614583337" />
-          <ConnectorPoint PointX="11.5" PointY="9" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.login_history_ibfk_3" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="5.9324039713541694" />
-          <ConnectorPoint PointX="7.5" PointY="5.9324039713541694" />
-        </AssociationConnector>
         <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_1" ManuallyRouted="false">
           <ConnectorPoint PointX="8.9757692307692309" PointY="20.989889322916667" />
+          <ConnectorPoint PointX="9.1910744349011217" PointY="21.205194527048558" />
+          <ConnectorPoint PointX="9.3089255650988783" PointY="21.323045657246315" />
           <ConnectorPoint PointX="9.375" PointY="21.389120092147436" />
           <ConnectorPoint PointX="9.375" PointY="26.865143229166669" />
           <ConnectorPoint PointX="9.75" PointY="26.865143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_2" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="20.933349861378204" />
+          <ConnectorPoint PointX="9.1910744349011217" PointY="21.124424296279326" />
+          <ConnectorPoint PointX="9.3089255650988783" PointY="21.242275426477082" />
           <ConnectorPoint PointX="9.53125" PointY="21.464599861378204" />
           <ConnectorPoint PointX="9.53125" PointY="26.865143229166669" />
           <ConnectorPoint PointX="9.75" PointY="26.865143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.orderchild_ibfk_3" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="19.18724609375" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="19.18724609375" />
           <ConnectorPoint PointX="9.3541666666666661" PointY="19.18724609375" />
           <ConnectorPoint PointX="9.5208333333333339" PointY="19.18724609375" />
           <ConnectorPoint PointX="9.5416666666666661" PointY="19.18724609375" />
@@ -2789,19 +2856,27 @@
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_3" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="20.28099559375" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="20.28099559375" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="20.28099559375" />
           <ConnectorPoint PointX="9.3541666666666661" PointY="20.28099559375" />
           <ConnectorPoint PointX="9.5208333333333339" PointY="20.28099559375" />
           <ConnectorPoint PointX="11.166666666666666" PointY="20.28099559375" />
           <ConnectorPoint PointX="11.333333333333334" PointY="20.28099559375" />
+          <ConnectorPoint PointX="12.447916666666666" PointY="20.28099559375" />
+          <ConnectorPoint PointX="12.614583333333334" PointY="20.28099559375" />
           <ConnectorPoint PointX="13.5" PointY="20.28099559375" />
           <ConnectorPoint PointX="13.5" PointY="20.75" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.orderchild_ibfk_1" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="17.302602539062498" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="17.302602539062498" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="17.302602539062498" />
           <ConnectorPoint PointX="9.75" PointY="17.302602539062498" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.orderchild_ibfk_2" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="21.81230669230769" />
+          <ConnectorPoint PointX="9.19107443490112" PointY="21.621232257406568" />
+          <ConnectorPoint PointX="9.3089255650988783" PointY="21.503381127208812" />
           <ConnectorPoint PointX="9.4375" PointY="21.37480669230769" />
           <ConnectorPoint PointX="9.4375" PointY="18.244924316406248" />
           <ConnectorPoint PointX="9.5416666666666661" PointY="18.244924316406248" />
@@ -2814,19 +2889,23 @@
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_2" ManuallyRouted="false">
           <ConnectorPoint PointX="9" PointY="25.321848958333334" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="25.321848958333334" />
           <ConnectorPoint PointX="9.6145833333333339" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="12.447916666666666" PointY="25.321848958333334" />
+          <ConnectorPoint PointX="12.614583333333334" PointY="25.321848958333334" />
           <ConnectorPoint PointX="13.5" PointY="25.321848958333334" />
           <ConnectorPoint PointX="13.5" PointY="24.07639648437501" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_1" ManuallyRouted="false">
           <ConnectorPoint PointX="12" PointY="22.663198242187505" />
+          <ConnectorPoint PointX="12.447916666666666" PointY="22.663198242187505" />
+          <ConnectorPoint PointX="12.614583333333334" PointY="22.663198242187505" />
           <ConnectorPoint PointX="12.75" PointY="22.663198242187505" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_1" ManuallyRouted="false">
           <ConnectorPoint PointX="6" PointY="22.625" />
           <ConnectorPoint PointX="6" PointY="21.46875" />
-          <ConnectorPoint PointX="9.2602233589743559" PointY="21.46875" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="21.46875" />
           <ConnectorPoint PointX="9.4268900256410237" PointY="21.46875" />
           <ConnectorPoint PointX="10.5" PointY="21.46875" />
         </AssociationConnector>
@@ -2834,6 +2913,8 @@
           <ConnectorPoint PointX="6.75" PointY="17.06210079557291" />
           <ConnectorPoint PointX="7.25" PointY="17.06210079557291" />
           <ConnectorPoint PointX="7.25" PointY="17.855205078124996" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="17.855205078124996" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="17.855205078124996" />
           <ConnectorPoint PointX="9.625" PointY="17.855205078124996" />
           <ConnectorPoint PointX="9.625" PointY="19.999492187500003" />
           <ConnectorPoint PointX="11.25" PointY="19.999492187500003" />
@@ -2842,6 +2923,35 @@
         <AssociationConnector Association="POSModel.supplier_products" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="23.903595377604169" />
           <ConnectorPoint PointX="7.5" PointY="23.903595377604169" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="POSModel.user" Width="1.5" PointX="12.375" PointY="16.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="14.625" PointY="25.125" Height="5.2494108072916674" />
+        <AssociationConnector Association="POSModel.email_history_ibfk_2" >
+          <ConnectorPoint PointX="15.375" PointY="25.125" />
+          <ConnectorPoint PointX="15.375" PointY="15.980286458333325" />
+          <ConnectorPoint PointX="11.5" PointY="15.980286458333325" />
+          <ConnectorPoint PointX="11.5" PointY="11.9994921875" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="11.9994921875" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="11.9994921875" />
+          <ConnectorPoint PointX="12.25" PointY="11.9994921875" />
+          <ConnectorPoint PointX="12.25" PointY="10.37474609375" />
+          <ConnectorPoint PointX="12" PointY="10.37474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.login_history_ibfk_3" >
+          <ConnectorPoint PointX="14.625" PointY="27.848129382812502" />
+          <ConnectorPoint PointX="11.5" PointY="27.848129382812502" />
+          <ConnectorPoint PointX="11.5" PointY="25.625" />
+          <ConnectorPoint PointX="9.6145833333333339" PointY="25.625" />
+          <ConnectorPoint PointX="9.2916666666666661" PointY="25.625" />
+          <ConnectorPoint PointX="9.25" PointY="25.625" />
+          <ConnectorPoint PointX="9.25" PointY="8.0571907552083317" />
+          <ConnectorPoint PointX="8.25" PointY="8.0571907552083317" />
+          <ConnectorPoint PointX="8.25" PointY="7.6821907552083326" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.FK_Staff_Users" >
+          <ConnectorPoint PointX="12.53125" PointY="18.730286458333335" />
+          <ConnectorPoint PointX="12.53125" PointY="26.553736670572924" />
+          <ConnectorPoint PointX="14.625" PointY="26.553736670572924" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

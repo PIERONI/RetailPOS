@@ -42,8 +42,11 @@
   <ItemGroup>
     <Compile Include="Admin\ICategoryService.cs" />
     <Compile Include="Admin\IProductService.cs" />
+    <Compile Include="Customer\ICustomerService.cs" />
     <Compile Include="Masters\IMasterService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\IStaffService.cs" />
+    <Compile Include="Users\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RetailPOS.CommonLayer.DataTransferObjects\RetailPOS.CommonLayer.DataTransferObjects.csproj">

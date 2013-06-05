@@ -25,6 +25,31 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
+        public virtual Nullable<int> UserId
+        {
+            get { return _userId; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_userId != value)
+                    {
+                        if (user != null && user.Id != value)
+                        {
+                            user = null;
+                        }
+                        _userId = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
+        }
+        private Nullable<int> _userId;
+    
         public virtual string code
         {
             get;
@@ -193,9 +218,50 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<login_history> _login_history;
+    
+        public virtual user user
+        {
+            get { return _user; }
+            set
+            {
+                if (!ReferenceEquals(_user, value))
+                {
+                    var previousValue = _user;
+                    _user = value;
+                    Fixupuser(previousValue);
+                }
+            }
+        }
+        private user _user;
 
         #endregion
         #region Association Fixup
+    
+        private bool _settingFK = false;
+    
+        private void Fixupuser(user previousValue)
+        {
+            if (previousValue != null && previousValue.staffs.Contains(this))
+            {
+                previousValue.staffs.Remove(this);
+            }
+    
+            if (user != null)
+            {
+                if (!user.staffs.Contains(this))
+                {
+                    user.staffs.Add(this);
+                }
+                if (UserId != user.Id)
+                {
+                    UserId = user.Id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                UserId = null;
+            }
+        }
     
         private void Fixupemail_history(object sender, NotifyCollectionChangedEventArgs e)
         {

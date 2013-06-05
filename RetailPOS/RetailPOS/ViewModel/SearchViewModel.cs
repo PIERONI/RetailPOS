@@ -15,6 +15,7 @@ namespace RetailPOS.ViewModel
        public List<Search> lstSearch { get; private set; }
        private RelayCommand _openFirstPopupCommand;
        private bool _firstPopupIsOpen;
+
        public RelayCommand OpenFirstPopupCommand
        {
            get { return _openFirstPopupCommand ?? (_openFirstPopupCommand = new RelayCommand(OpenFirstPopupClick)); }
@@ -29,6 +30,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("FirstPopupIsOpen");
            }
        }
+
        #endregion
 
        #region Deaclare Constructor
@@ -49,8 +51,6 @@ namespace RetailPOS.ViewModel
        {
            FirstPopupIsOpen = true;
        }
-
-
 
        /// <summary>
        /// Fills the list search.

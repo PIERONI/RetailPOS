@@ -8,6 +8,10 @@ using RetailPOS.PersistenceLayer.EF.Impl;
 using RetailPOS.PersistenceLayer.Repository.Interfaces;
 using RetailPOS.BusinessLayer.ServiceImpl.Admin;
 using RetailPOS.BusinessLayer.Service.Admin;
+using RetailPOS.BusinessLayer.ServiceImpl.Users;
+using RetailPOS.BusinessLayer.Service.Users;
+using RetailPOS.BusinessLayer.ServiceImpl.Customer;
+using RetailPOS.BusinessLayer.Service.Customer;
 
 #endregion
 
@@ -37,8 +41,30 @@ namespace RetailPOS.CommonLayer.UnityExtension
         {
             #region Registration of Persistence Layer Repository Classes
 
+            #region Category Services
+
             RetailPOSUnityContainer.Register<ICategoryService, CategoryServiceImpl>();
+
+            #endregion
+
+            #region Product Services
+
             RetailPOSUnityContainer.Register<IProductService, ProductServiceImpl>();
+
+            #endregion
+
+            #region User Services
+
+            RetailPOSUnityContainer.Register<IStaffService, StaffServiceImpl>();
+            RetailPOSUnityContainer.Register<IUserService, UserServiceImpl>();
+
+            #endregion
+
+            #region Customer Services
+
+            RetailPOSUnityContainer.Register<ICustomerService, CustomerServiceImpl>();
+            
+            #endregion
 
             #endregion
         }

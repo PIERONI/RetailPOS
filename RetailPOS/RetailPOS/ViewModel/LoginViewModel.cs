@@ -1,107 +1,129 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
-using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Command;
 using System.Windows.Controls;
-
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
+using System.Windows;
 
 namespace RetailPOS.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
         #region Declare Public and private Data member
-        public ObservableCollection<userDTO> lstUsers { get; private set; }
-        public RelayCommand<userDTO> SelectUserCommand { get; private set; }
+
+        public ObservableCollection<StaffDTO> lstUsers { get; private set; }
+        public RelayCommand<StaffDTO> SelectUserCommand { get; private set; }
         public RelayCommand <object> LoginCommand { get; private set; }
+
+        private string _fullName;
         private string _userName;
-        private string _uPassword;
+        private string _password;
         private bool _isEnabled;
-        public string userName
+        private Visibility _messageVisibility;
+            
+        #endregion
+
+        #region Public Properties
+
+        public string FullName
+        {
+            get { return _fullName; }
+            set
+            {
+                _fullName = value;
+                RaisePropertyChanged("FullName");
+            }
+        }
+
+        public string UserName
         {
             get { return _userName; }
-            set
-            {
-                _userName = value;
-                RaisePropertyChanged("userName");
-            }
+            set { _userName = value; }
         }
 
-        public string uPassword
+        public string Password
         {
-            get { return _uPassword; }
+            get { return _password; }
             set
             {
-                _uPassword = value;
-                RaisePropertyChanged("uPassword");
+                _password = value;
+                RaisePropertyChanged("Password");
             }
         }
 
-        public bool isEnabled
+        public bool IsEnabled
         {
             get { return _isEnabled; }
             set
             {
                 _isEnabled = value;
-                RaisePropertyChanged("isEnabled");
+                RaisePropertyChanged("IsEnabled");
             }
         }
+
+        public Visibility MessageVisibility
+        {
+            get { return _messageVisibility ; }
+            set 
+            { 
+                _messageVisibility = value;
+                RaisePropertyChanged("MessageVisibility");
+            }
+        }
+
         #endregion
 
         #region Constructor
+
         public LoginViewModel()
         {
-            lstUsers = new ObservableCollection<userDTO>();
-            FillUsers();
-            SelectUserCommand = new RelayCommand<userDTO>(SelectedUserName);
-            LoginCommand = new RelayCommand<object>(CheckUserExists);
-           
-        }       
-        #endregion
+            MessageVisibility = Visibility.Hidden;
+            lstUsers = new ObservableCollection<StaffDTO>();
+            GetUsers();
 
+            SelectUserCommand = new RelayCommand<StaffDTO>(SelectedUserName);
+            LoginCommand = new RelayCommand<object>(ValidateUserCredentials);
+        }
+
+        #endregion
 
         /// <summary>
         /// Checks the user exists.
         /// </summary>
-        private void CheckUserExists(object obj)
+        private void ValidateUserCredentials(object passwordDetails)
         {
-            var passwordBox = obj as PasswordBox;
-            uPassword = passwordBox.Password;
+            var passwordBox = passwordDetails as PasswordBox;
+            Password = passwordBox.Password;
 
-            // to do check user
+            bool isUserValidate = ServiceFactory.ServiceClient.ValidateUserCredentials(UserName, Password);
+            
+            if (!isUserValidate)
+            {
+                MessageVisibility = Visibility.Visible;
+            }
         }
-       
 
         /// <summary>
         /// Selecteds the name of the user.
         /// </summary>
         /// <param name="userDT">The user DT.</param>
-        private void SelectedUserName(userDTO userDT)
+        private void SelectedUserName(StaffDTO userDetails)
         {
-            userName = userDT.UserName == "others" ? string.Empty : userDT.UserName;
-            isEnabled = userDT.UserName == "others" ? true : false; 
-              
+            FullName = userDetails.FullName == AppConstants.OTHER_USER_TYPE ? string.Empty : userDetails.FullName;
+            UserName = userDetails.UserName;
+            IsEnabled = userDetails.FullName == AppConstants.OTHER_USER_TYPE ? true : false;
         }
 
         /// <summary>
-        /// Fills the users.
+        /// Get the users.
         /// </summary>
-        private void FillUsers()
+        private void GetUsers()
         {
-            lstUsers.Add(new userDTO { UserId = 1, UserName = "mark taylor" });
-            lstUsers.Add(new userDTO { UserId = 2, UserName = "Jim Taylor" });
-            lstUsers.Add(new userDTO { UserId = 3, UserName = "Tom Hank" });
-            lstUsers.Add(new userDTO { UserId = 4, UserName = "others" });
+            lstUsers = new ObservableCollection<StaffDTO>(from item in ServiceFactory.ServiceClient.GetStaffDetails()
+                                                          select item);
+            lstUsers.Add(new StaffDTO { FullName = AppConstants.OTHER_USER_TYPE });
         }
-       
-    }
-
-    public class userDTO
-    {
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-
     }
 }

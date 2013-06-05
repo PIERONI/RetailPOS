@@ -1,6 +1,6 @@
 ﻿namespace RetailPOS.CommonLayer.DataTransferObjects
 {
-    public class ProductCategoryDTO
+    public class ProductCategoryDTO : BaseDTO
     {
         public short Id { get; set; }
         public string Name { get; set; }

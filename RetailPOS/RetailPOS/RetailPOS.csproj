@@ -70,10 +70,16 @@
       <HintPath>..\Binaries\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,7 +104,9 @@
     <Reference Include="WpfLab.Controls">
       <HintPath>..\Binaries\WpfLab.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -108,6 +116,8 @@
     <Compile Include="AddCategoryWindow.xaml.cs">
       <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\AppConstants.cs" />
+    <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="Service References\RetailPOSService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -274,6 +284,15 @@
     <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.ProductCategoryDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.ProductDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\service.wsdl" />
     <None Include="Service References\RetailPOSService\service.xsd">
       <SubType>Designer</SubType>
@@ -329,12 +348,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RetailPOS.CommonLayer.DataTransferObjects\RetailPOS.CommonLayer.DataTransferObjects.csproj">
-      <Project>{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}</Project>
-      <Name>RetailPOS.CommonLayer.DataTransferObjects</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
@@ -357,9 +370,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utility\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\close-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

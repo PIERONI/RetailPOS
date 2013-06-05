@@ -2,7 +2,7 @@
 
 namespace RetailPOS.CommonLayer.DataTransferObjects
 {
-    public class ProductDTO
+    public class ProductDTO : BaseDTO
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }

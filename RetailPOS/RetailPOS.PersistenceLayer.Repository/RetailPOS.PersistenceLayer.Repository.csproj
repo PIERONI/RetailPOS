@@ -162,6 +162,9 @@
     <Compile Include="Entities\town_city.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\user.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\warranty.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>

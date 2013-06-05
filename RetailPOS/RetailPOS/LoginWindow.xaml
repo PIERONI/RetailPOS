@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols"
-        Title="LoginWindow" 
-         WindowState="Maximized" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  >
+        Title="LoginWindow" Height="768" Width="1024"
+         mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  >
     
     <DockPanel LastChildFill="True">
         <Child:LoginLeftPanel Width="200" x:Name="loginLeftPanel" DockPanel.Dock="Left"></Child:LoginLeftPanel> 

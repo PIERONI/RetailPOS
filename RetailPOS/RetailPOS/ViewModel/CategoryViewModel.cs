@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using GalaSoft.MvvmLight;
-using System.Collections.ObjectModel;
-using RetailPOS.CommonLayer.DataTransferObjects;
 using GalaSoft.MvvmLight.Command;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
 
 namespace RetailPOS.ViewModel
 {
@@ -100,8 +101,7 @@ namespace RetailPOS.ViewModel
         {
             try
             {
-                RetailPOSService.RetailPOSServiceContractClient serviceClient = new RetailPOSService.RetailPOSServiceContractClient();
-                lstCategories = new ObservableCollection<ProductCategoryDTO>(from item in serviceClient.GetCategories()
+                lstCategories = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
                                                                              select item);
             }
             catch

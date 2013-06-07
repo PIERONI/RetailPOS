@@ -20,6 +20,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<SearchViewModel>();
             SimpleIoc.Default.Register<UserInfoViewModel>();
+            SimpleIoc.Default.Register<ProductGridViewModel>();
         }
 
         /// <summary>
@@ -72,6 +73,20 @@ namespace RetailPOS.ViewModel
                 return ServiceLocator.Current.GetInstance<UserInfoViewModel>();
             }
         }
+
+        /// <summary>
+        /// Gets the product grid VM.
+        /// </summary>
+        /// <value>
+        /// The product grid VM.
+        /// </value>
+        public ProductGridViewModel ProductGridVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ProductGridViewModel>();
+            }
+        }
         
         public static void Cleanup()
         {  
@@ -79,6 +94,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<LoginViewModel>();
             SimpleIoc.Default.Unregister<SearchViewModel>();
             SimpleIoc.Default.Unregister<UserInfoViewModel>();
+            SimpleIoc.Default.Unregister<ProductGridViewModel>();
         }
     }
 }

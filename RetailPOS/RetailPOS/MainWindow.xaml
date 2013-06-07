@@ -11,7 +11,7 @@
             <ColumnDefinition ></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Margin="0,0,486,0">
+        <StackPanel Orientation="Vertical" Grid.Column="0">
             <Child:MergeUserInfoSearch x:Name="UserInfo" HorizontalAlignment="Left"  Margin="1,0,0,0" Width="513"></Child:MergeUserInfoSearch>
              <Child:MenuControl x:Name="MenuCtrl" HorizontalAlignment="Left"  Margin="1,0,0,0" Width="510"></Child:MenuControl>
             <GroupBox Height="159" Margin="8 0 0 0" HorizontalAlignment="Left"  VerticalAlignment="Top" Background="AliceBlue"  Header="Categories" Width="499">
@@ -20,6 +20,10 @@
             <GroupBox Height="250" Margin="5 0 0 0" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Background="AliceBlue" Header="Products">
                 <Child:ShowProduct HorizontalAlignment="Left" x:Name="prod"  Margin="1,0,0,0"></Child:ShowProduct>
             </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <Child:RightPanelHeaderControl x:Name="RightPanelHeader" HorizontalAlignment="Left" Margin="3,0,0,0" Width="513"></Child:RightPanelHeaderControl>
+            <Child:ProductGridControl x:Name="ProductGrid" HorizontalAlignment="Left"  Margin="3,0,0,0" Width="513"></Child:ProductGridControl>
         </StackPanel>
     </Grid>
 </Window>

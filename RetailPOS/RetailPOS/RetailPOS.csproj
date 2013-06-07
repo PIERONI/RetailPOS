@@ -127,6 +127,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ProductGridViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="View\Usercontrols\AddCategory.xaml.cs">
@@ -146,6 +147,12 @@
     </Compile>
     <Compile Include="View\Usercontrols\MergeUserInfoSearch.xaml.cs">
       <DependentUpon>MergeUserInfoSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\ProductGridControl.xaml.cs">
+      <DependentUpon>ProductGridControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\RightPanelHeaderControl.xaml.cs">
+      <DependentUpon>RightPanelHeaderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
@@ -237,6 +244,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\MergeUserInfoSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\ProductGridControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\RightPanelHeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -388,6 +403,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\logoff-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

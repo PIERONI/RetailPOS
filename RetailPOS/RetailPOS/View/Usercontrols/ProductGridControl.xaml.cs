@@ -12,23 +12,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
-namespace RetailPOS
+namespace RetailPOS.View.Usercontrols
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProductGridControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProductGridControl : UserControl
     {
-        public static MainWindow _MainWindow
+        public ProductGridControl()
         {
-            get;
-            set;
-        }
-       
-        public MainWindow()
-        {
-            _MainWindow = this;
             InitializeComponent();
         }
     }

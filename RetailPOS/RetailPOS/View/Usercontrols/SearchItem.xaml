@@ -30,9 +30,37 @@
                                      IsTextCompletionEnabled="True" 
                                      FilterMode="StartsWithOrdinal"
                                      ValueMemberPath="Name" VerticalAlignment="Top" Width="177" Height="25" >
-                <toolkit:AutoCompleteBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"></TextBlock>
+               <toolkit:AutoCompleteBox.ItemTemplate>                   
+                   <DataTemplate>
+                        <Grid Background="#DFF0D8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding BarCode}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="350"></TextBlock>
+                            <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
+                                <TextBlock Text="Name: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding  Name}" Foreground="#47896B" ></TextBlock>
+                                <TextBlock Text="Category: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Name}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Status: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding StatusId}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Size: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Size}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Weight: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Weight}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Retail: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding RetailPrice}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="WholeSale: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding WholesalePrice}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Tax Rate: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding TaxRate}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Warranty: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding HasWarranty}" Foreground="#47896B"></TextBlock>
+                               
+
+                            </WrapPanel>
+                        </Grid>
                     </DataTemplate>
                 </toolkit:AutoCompleteBox.ItemTemplate>
             </toolkit:AutoCompleteBox>
@@ -43,7 +71,26 @@
                           FilterMode="StartsWithOrdinal" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" >
                 <toolkit:AutoCompleteBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding First_Name}"></TextBlock>
+                        <Grid Background="#DFF0D8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="350"></TextBlock>
+                            <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
+                                <TextBlock Text="Type: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
+                                <TextBlock Text="First Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding First_Name}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Last_Name}" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Email: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="" Foreground="#47896B"></TextBlock>
+                                <TextBlock Text="Credit Limit: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding Credit_Limit}" Foreground="#47896B"></TextBlock>
+                            </WrapPanel>
+                        </Grid>
+                       
                     </DataTemplate>
                 </toolkit:AutoCompleteBox.ItemTemplate>
             </toolkit:AutoCompleteBox>

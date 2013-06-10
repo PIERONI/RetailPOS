@@ -62,7 +62,7 @@ namespace RetailPOS.ViewModel
 
        /// <summary>
        /// Fills the list search.
-       /// </summary>       
+       /// </summary>
        private void GetSearchAttributes()
        {
            lstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()

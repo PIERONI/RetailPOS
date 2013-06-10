@@ -17,7 +17,7 @@
                 <DockPanel>
                     <Image Source="../../Images/delete-file-icon.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
-                       <Bold>Delet Order</Bold>
+                       <Bold>Delete Order</Bold>
                     </TextBlock>
                 </DockPanel>
             </Button>

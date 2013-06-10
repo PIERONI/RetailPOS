@@ -154,6 +154,9 @@
     <Compile Include="View\Usercontrols\RightPanelHeaderControl.xaml.cs">
       <DependentUpon>RightPanelHeaderControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Usercontrols\RightPanelSettings.xaml.cs">
+      <DependentUpon>RightPanelSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
     </Compile>
@@ -252,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\RightPanelHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\RightPanelSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -409,6 +416,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\logoff-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bulk-icon.png" />
+    <Resource Include="Images\delete-file-icon.png" />
+    <Resource Include="Images\discount-icon.png" />
+    <Resource Include="Images\edit-delete-icon.png" />
+    <Resource Include="Images\print-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

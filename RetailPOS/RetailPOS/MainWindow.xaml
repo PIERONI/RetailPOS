@@ -23,8 +23,9 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1">
             <Child:RightPanelHeaderControl x:Name="RightPanelHeader" HorizontalAlignment="Left" Margin="3,0,0,0" Width="513"></Child:RightPanelHeaderControl>
-            <Child:ProductGridControl x:Name="ProductGrid" HorizontalAlignment="Left"  Margin="3,0,0,0" Width="513"></Child:ProductGridControl>
+            <Child:ProductGridControl x:Name="ProductGrid" HorizontalAlignment="Left"  Margin="3,0,0,0" Width="513" Height="205"></Child:ProductGridControl>
             <Child:RightPanelSettings x:Name="RightPanel" HorizontalAlignment="Left"  Margin="3,0,0,0" Width="500"></Child:RightPanelSettings>
+            <Child:RightPanelPaymentDetail x:Name="RightPanelPaymentDetail" HorizontalAlignment="Left"  Margin="3,0,0,0" Width="513"></Child:RightPanelPaymentDetail>
         </StackPanel>
     </Grid>
 </Window>

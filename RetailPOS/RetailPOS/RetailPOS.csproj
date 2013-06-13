@@ -154,6 +154,9 @@
     <Compile Include="View\Usercontrols\RightPanelHeaderControl.xaml.cs">
       <DependentUpon>RightPanelHeaderControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Usercontrols\RightPanelPaymentDetail.xaml.cs">
+      <DependentUpon>RightPanelPaymentDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Usercontrols\RightPanelSettings.xaml.cs">
       <DependentUpon>RightPanelSettings.xaml</DependentUpon>
     </Compile>
@@ -255,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\RightPanelHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\RightPanelPaymentDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -423,6 +430,25 @@
     <Resource Include="Images\discount-icon.png" />
     <Resource Include="Images\edit-delete-icon.png" />
     <Resource Include="Images\print-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\export-icon.png" />
+    <Resource Include="Images\money-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cash-icon.png" />
+    <Resource Include="Images\credit-cards-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\edit-clear-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\discount1-icon.png" />
+    <Resource Include="Images\money1-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cancel-icon.png" />
+    <Resource Include="Images\save-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

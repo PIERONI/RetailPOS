@@ -25,7 +25,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Margin="390,0,0,0">
-            <Button Content="Category"   Height="40" Margin="10,5,0,0" HorizontalAlignment="Left"  Name="btnCategory" Width="75"  />
+            <Button Content="Category"   Height="40" Margin="10,5,0,0" Command="{Binding OpenLooseCatPopupCommand}" HorizontalAlignment="Left"  Name="btnCategory" Width="75"  />
             <Button Content="Back"  Height="40" Margin="10,5,0,0" Command="{Binding RefershListBoxCommand}" HorizontalAlignment="Left" Name="btnBack"  Width="75" />
             <Button Content="Show All" Height="40" Margin="10,5,0,0" Name="btnShowAll" Width="75"  Command="{Binding OpenFirstPopupCommand}" HorizontalAlignment="Left"  />
         </StackPanel>
@@ -51,6 +51,32 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </Grid>
+                    </Grid>
+                </ContentControl>
+            </my:ModalDialogPopup.HostedContent>
+        </my:ModalDialogPopup>
+        <my:ModalDialogPopup IsOpen="{Binding OpenLooseCatPopupIsOpen, Mode=TwoWay}" Title="Categories" ShowCancelButton="False"  ShowOKButton="False">
+            <my:ModalDialogPopup.HostedContent>
+                <ContentControl>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1" Height="auto" Width="1000">
+                            <ListBox  Name="lstLooseCategories" ItemsSource="{Binding lstLooseCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto" Width="1000" >
+                                        </WrapPanel>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="1"  Content="{Binding Name}" Command="{Binding DataContext.SelectProductCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right"  Width="79" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
                     </Grid>
                 </ContentControl>
             </my:ModalDialogPopup.HostedContent>

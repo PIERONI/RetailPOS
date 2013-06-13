@@ -16,7 +16,10 @@ namespace RetailPOS.ViewModel
         public RelayCommand<ProductCategoryDTO> SelectProductCommand { get; private set; }
         private bool _firstPopupIsOpen;
         public  RelayCommand OpenFirstPopupCommand { get; private set; }
+        private bool _OpenLooseCatPopupIsOpen;
+        public RelayCommand OpenLooseCatPopupCommand { get; private set; }
         public RelayCommand RefershListBoxCommand { get; private set; }
+        public ObservableCollection<ProductCategoryDTO> lstLooseCategories { get; private set; }
 
         public ObservableCollection<ProductCategoryDTO> lstCategories
         {
@@ -38,6 +41,16 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public bool OpenLooseCatPopupIsOpen
+        {
+            get { return _OpenLooseCatPopupIsOpen; }
+            set
+            {
+                _OpenLooseCatPopupIsOpen = value;
+                RaisePropertyChanged("OpenLooseCatPopupIsOpen");
+            }
+        }
+
         public bool FirstPopupIsOpen
         {
             get { return _firstPopupIsOpen; }
@@ -54,17 +67,30 @@ namespace RetailPOS.ViewModel
 
         public CategoryViewModel()
         {
-            lstCategories = new ObservableCollection<ProductCategoryDTO>();            
-            AddCategories();            
+            lstCategories = new ObservableCollection<ProductCategoryDTO>();
+            lstLooseCategories = new ObservableCollection<ProductCategoryDTO>();
+            AddCategories();
+            AddLooseCategories();
             SelectProductCommand = new RelayCommand<ProductCategoryDTO>(FillProducts);
             OpenFirstPopupCommand = new RelayCommand(OpenFirstPopupClick);
+            OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
             RefershListBoxCommand = new RelayCommand(RefereshListBox);
         }
+
+       
 
         #endregion
 
         #region Private Methods
 
+        /// <summary>
+        /// Adds the loose categories.
+        /// </summary>
+        private void AddLooseCategories()
+        {
+            lstLooseCategories = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
+                                                                         select item);
+        }
 
         /// <summary>
         /// Refereshes the list box.
@@ -73,6 +99,7 @@ namespace RetailPOS.ViewModel
         {
             lstCategories.Clear();
             AddCategories();
+
         }
 
         /// <summary>
@@ -92,6 +119,14 @@ namespace RetailPOS.ViewModel
         private void OpenFirstPopupClick()
         {
             FirstPopupIsOpen = true;
+        }
+
+        /// <summary>
+        /// Opens the loose cat popup click.
+        /// </summary>
+        private void OpenLooseCatPopupClick()
+        {
+            OpenLooseCatPopupIsOpen = true;
         }
 
         /// <summary>

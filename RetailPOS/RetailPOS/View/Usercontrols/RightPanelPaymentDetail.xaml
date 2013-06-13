@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:WpfKb="clr-namespace:WpfKb.Controls;assembly=WpfKb"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="513">
+             d:DesignHeight="400" d:DesignWidth="509">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>

@@ -10,6 +10,7 @@ namespace RetailPOS.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>
@@ -44,7 +45,6 @@ namespace RetailPOS.ViewModel
                 return ServiceLocator.Current.GetInstance<LoginViewModel>();
             }
         }
-
 
         /// <summary>
         /// Gets the search VM.
@@ -87,7 +87,10 @@ namespace RetailPOS.ViewModel
                 return ServiceLocator.Current.GetInstance<ProductGridViewModel>();
             }
         }
-        
+
+        /// <summary>
+        /// Cleanups this instance.
+        /// </summary>
         public static void Cleanup()
         {  
             SimpleIoc.Default.Unregister<CategoryViewModel>();

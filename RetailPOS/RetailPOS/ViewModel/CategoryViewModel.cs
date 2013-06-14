@@ -64,7 +64,9 @@ namespace RetailPOS.ViewModel
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CategoryViewModel"/> class.
+        /// </summary>
         public CategoryViewModel()
         {
             lstCategories = new ObservableCollection<ProductCategoryDTO>();
@@ -76,9 +78,6 @@ namespace RetailPOS.ViewModel
             OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
             RefershListBoxCommand = new RelayCommand(RefereshListBox);
         }
-
-       
-
         #endregion
 
         #region Private Methods

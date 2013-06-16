@@ -21,13 +21,13 @@ namespace RetailPOS.ViewModel
 
        public List<ProductDTO> lstSearchProduct { get; private set; }
        public IList<CustomerDTO> lstSearchCustomer { get; private set; }
-       
+     
        private string _customerName;
        private string _mobileNumber;
        private string _customerBalance;
        private Visibility _isVisibleCustomerInfo;
+       private CustomerDTO _selectedCustomer;
        private CustomerDTO _customer;
-
 
        public Visibility isVisibleCustomerInfo
        {
@@ -42,6 +42,21 @@ namespace RetailPOS.ViewModel
            }
        }
 
+       public CustomerDTO SelectedCustomer
+       {
+           get
+           {
+               return _selectedCustomer;
+           }
+           set
+           {
+               _selectedCustomer = value;
+               BindCustomer();
+           }
+           
+       }
+
+
        public CustomerDTO Customer
        {
            get
@@ -51,9 +66,18 @@ namespace RetailPOS.ViewModel
            set
            {
                _customer = value;
-               RaisePropertyChanged("Customer");
-               BindCustomer();
+              
+               if (Customer == null)
+               {
+                   SelectedCustomer = null;
+               }
+               if (SelectedCustomer == null && Customer !=null)
+               {
+                   SelectedCustomer = Customer;
+               }
+               
            }
+
        }
 
        public string CustomerName
@@ -132,6 +156,11 @@ namespace RetailPOS.ViewModel
            //customerCollection.CurrentChanged += new System.EventHandler(customerCollection_CurrentChanged);
        }
 
+       //void customerCollection_CurrentChanged(object sender, System.EventArgs e)
+       //{
+           
+       //}
+
        
 
        /// <summary>
@@ -159,18 +188,25 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void BindCustomer()
        {
-           if (Customer == null)
+           if (SelectedCustomer == null)
            {
                isVisibleCustomerInfo = Visibility.Collapsed;
                return;
            }
 
+          
            isVisibleCustomerInfo = Visibility.Visible;
-           CustomerName = Customer.First_Name + " " + Customer.Last_Name;
-           CustomerBalance = Customer.Credit_Limit.ToString();
-           MobileNumber = Customer.Mobile;
+           CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
+           CustomerBalance = SelectedCustomer.Credit_Limit.ToString();
+           MobileNumber = SelectedCustomer.Mobile;
+
+           
        }
 
        #endregion
+
+
+
+      
     }
 }

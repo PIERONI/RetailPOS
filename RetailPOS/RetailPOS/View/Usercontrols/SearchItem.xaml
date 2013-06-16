@@ -28,7 +28,6 @@
             <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Margin="11,8,0,0"  Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchProduct}"                        
                          Text="{Binding Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="True" 
-                                     
                                      FilterMode="StartsWithOrdinal"
                                      ValueMemberPath="Name" VerticalAlignment="Top" Width="177" Height="25" >
                <toolkit:AutoCompleteBox.ItemTemplate>                   
@@ -66,11 +65,10 @@
                 </toolkit:AutoCompleteBox.ItemTemplate>
             </toolkit:AutoCompleteBox>
             <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding lstSearchCustomer}"
-                         Text="{Binding First_Name, Mode=TwoWay}"
-                         SelectedItem="{Binding Customer, Mode= TwoWay}"            
-                         IsTextCompletionEnabled="True"
+                         SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"            
+                         IsTextCompletionEnabled="False"
                          ValueMemberPath="First_Name"
-                          FilterMode="StartsWithOrdinal" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" >
+                          FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" >
                 <toolkit:AutoCompleteBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Background="#DFF0D8">

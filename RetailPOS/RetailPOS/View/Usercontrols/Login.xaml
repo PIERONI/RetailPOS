@@ -39,6 +39,6 @@
             Width="700"
             Height="400"
             PlacementTarget="{Binding ElementName=LoginCtrl}"
-            Placement="Center" AreAnimationsEnabled="False" />
+            Placement="Center" />
     </Grid>
 </UserControl>

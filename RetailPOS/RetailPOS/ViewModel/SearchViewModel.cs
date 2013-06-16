@@ -152,14 +152,10 @@ namespace RetailPOS.ViewModel
            
            GetSearchAttributes();
            isVisibleCustomerInfo = Visibility.Collapsed;
-           //customerCollection = CollectionViewSource.GetDefaultView(lstSearchCustomer);
-           //customerCollection.CurrentChanged += new System.EventHandler(customerCollection_CurrentChanged);
+          
        }
 
-       //void customerCollection_CurrentChanged(object sender, System.EventArgs e)
-       //{
-           
-       //}
+      
 
        
 

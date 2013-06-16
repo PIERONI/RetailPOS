@@ -70,8 +70,8 @@ namespace RetailPOS.ViewModel
             lstProductDetails.Add(new ProductDetails { Id = 4, ProductName = "Coke Diet plus vitamins", ProductQuantity = 1, Amount = 55.23, Rate = 1.79 });
             lstProductDetails.Add(new ProductDetails { Id = 5, ProductName = "Coke Diet plus vitamins", ProductQuantity = 1, Amount = 55.23, Rate = 1.79 });
 
-            var rate = lstProductDetails.Select(u => u.Rate).Sum();
-            Total = "Total : " + rate.ToString(); 
+            var amount = lstProductDetails.Select(u => u.Amount).Sum();
+            Total = "Total : " + amount.ToString(); 
 
         }
 

@@ -25,9 +25,10 @@
 
             <Label Content="Loyalty Points:" Grid.Row="2" Height="28" HorizontalAlignment="Left" Margin="2,14,0,0" Name="label1" VerticalAlignment="Top" Width="78" />
             <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="11,15,0,0" Name="txtLoyaltyPoints" Text="" VerticalAlignment="Top" Grid.Column="1" />
-            <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchProduct}"                        
+            <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Margin="11,8,0,0"  Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchProduct}"                        
                          Text="{Binding Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="True" 
+                                     
                                      FilterMode="StartsWithOrdinal"
                                      ValueMemberPath="Name" VerticalAlignment="Top" Width="177" Height="25" >
                <toolkit:AutoCompleteBox.ItemTemplate>                   
@@ -66,6 +67,7 @@
             </toolkit:AutoCompleteBox>
             <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding lstSearchCustomer}"
                          Text="{Binding First_Name, Mode=TwoWay}"
+                         SelectedItem="{Binding Customer, Mode= TwoWay}"            
                          IsTextCompletionEnabled="True"
                          ValueMemberPath="First_Name"
                           FilterMode="StartsWithOrdinal" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" >

@@ -14,8 +14,9 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0">
-            <TextBlock Height="36" TextBlock.FontWeight="Bold" TextBlock.TextAlignment="Left" Background="Aquamarine" FontSize="28" TextBlock.Foreground="Red" Name="textBlock1" Margin="0 3 0 0" Text="{Binding Total}" />
-            <CheckBox Content="Warranty Column" Height="19" Name="ChkWarranty" Margin="0 5 0 0" />
+            <TextBlock Height="28" TextBlock.FontWeight="Bold" TextBlock.TextAlignment="Left" Background="Aquamarine" FontSize="22" TextBlock.Foreground="Red" Name="textBlock1" Margin="0 3 0 0" Text="{Binding Total}" />
+            <TextBlock Height="28" TextBlock.FontWeight="Bold" TextBlock.TextAlignment="Left" Background="Aquamarine" FontSize="22" TextBlock.Foreground="Red"  Margin="0 3 0 0" Text="{Binding Total}" />
+
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="1">
             <Button Height="45" Margin="45 10 0 0"  HorizontalAlignment="Right" Width="85" Command="{Binding LogOutCommand}" >

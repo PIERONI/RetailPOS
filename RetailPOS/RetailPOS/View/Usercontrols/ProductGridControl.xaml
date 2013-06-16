@@ -15,8 +15,7 @@
                 <DataGridTextColumn Binding="{Binding Path=ProductName}" Header="Products"  Width="300"/>
                 <DataGridTextColumn Binding="{Binding Path=ProductQuantity}" Header="Qty." Width="50" />
                 <DataGridTextColumn Binding="{Binding Path=Rate}" Header="Rate" />
-                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" />
-               
+                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" />               
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

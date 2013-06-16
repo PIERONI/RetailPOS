@@ -7,6 +7,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
+using System.ComponentModel;
+using System.Windows.Data;
+using System.Windows;
 
 #endregion
 
@@ -18,6 +21,80 @@ namespace RetailPOS.ViewModel
 
        public List<ProductDTO> lstSearchProduct { get; private set; }
        public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+       
+       private string _customerName;
+       private string _mobileNumber;
+       private string _customerBalance;
+       private Visibility _isVisibleCustomerInfo;
+       private CustomerDTO _customer;
+
+
+       public Visibility isVisibleCustomerInfo
+       {
+           get
+           {
+               return _isVisibleCustomerInfo;
+           }
+           set
+           {
+               _isVisibleCustomerInfo = value;
+               RaisePropertyChanged("isVisibleCustomerInfo");
+           }
+       }
+
+       public CustomerDTO Customer
+       {
+           get
+           {
+               return _customer;
+           }
+           set
+           {
+               _customer = value;
+               RaisePropertyChanged("Customer");
+               BindCustomer();
+           }
+       }
+
+       public string CustomerName
+       {
+           get
+           {
+               return _customerName;
+           }
+           set
+           {
+               _customerName = value;
+               RaisePropertyChanged("CustomerName");              
+           }
+       }
+
+       public string MobileNumber
+       {
+           get
+           {
+               return _mobileNumber;
+           }
+           set
+           {
+               _mobileNumber = value;
+               RaisePropertyChanged("MobileNumber");
+               
+           }
+       }
+
+       public string CustomerBalance
+       {
+           get
+           {
+               return _customerBalance;
+           }
+           set
+           {
+               _customerBalance = value;
+               RaisePropertyChanged("CustomerBalance");             
+           }
+       }      
 
        private RelayCommand _openFirstPopupCommand;
        private bool _firstPopupIsOpen;
@@ -50,7 +127,12 @@ namespace RetailPOS.ViewModel
            lstSearchCustomer = new List<CustomerDTO>();
            
            GetSearchAttributes();
+           isVisibleCustomerInfo = Visibility.Collapsed;
+           //customerCollection = CollectionViewSource.GetDefaultView(lstSearchCustomer);
+           //customerCollection.CurrentChanged += new System.EventHandler(customerCollection_CurrentChanged);
        }
+
+       
 
        /// <summary>
        /// Opens the first popup click.
@@ -70,6 +152,23 @@ namespace RetailPOS.ViewModel
 
            lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                      select item).ToList();
+       }
+
+       /// <summary>
+       /// Binds the customer.
+       /// </summary>
+       private void BindCustomer()
+       {
+           if (Customer == null)
+           {
+               isVisibleCustomerInfo = Visibility.Collapsed;
+               return;
+           }
+
+           isVisibleCustomerInfo = Visibility.Visible;
+           CustomerName = Customer.First_Name + " " + Customer.Last_Name;
+           CustomerBalance = Customer.Credit_Limit.ToString();
+           MobileNumber = Customer.Mobile;
        }
 
        #endregion

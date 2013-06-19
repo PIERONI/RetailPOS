@@ -9,7 +9,7 @@
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DataGrid VerticalScrollBarVisibility="Auto" CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="310" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="480" >
+        <DataGrid VerticalScrollBarVisibility="Auto" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="310" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="480" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="" />
                 <DataGridTextColumn Binding="{Binding Path=ProductName}" Header="Products"  Width="300"/>

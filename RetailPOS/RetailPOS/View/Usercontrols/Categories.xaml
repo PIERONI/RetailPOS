@@ -29,7 +29,7 @@
             <Button Content="Back"  Height="40" Margin="10,5,0,0" Command="{Binding RefershListBoxCommand}" HorizontalAlignment="Left" Name="btnBack"  Width="75" />
             <Button Content="Show All" Height="40" Margin="10,5,0,0" Name="btnShowAll" Width="75"  Command="{Binding OpenFirstPopupCommand}" HorizontalAlignment="Left"  />
         </StackPanel>
-        <my:ModalDialogPopup IsOpen="{Binding FirstPopupIsOpen, Mode=TwoWay}" Title="Categories" ShowCancelButton="False"  ShowOKButton="False">          
+        <my:ModalDialogPopup IsOpen="{Binding FirstPopupIsOpen, Mode=TwoWay}" Title="Categories" ShowCancelButton="False" ShowOKButton="False">          
             <my:ModalDialogPopup.HostedContent>               
                 <ContentControl>                    
                     <Grid>                        
@@ -37,10 +37,10 @@
                             <RowDefinition></RowDefinition>                          
                         </Grid.RowDefinitions>                  
                     <Grid Grid.Row="1" Height="auto" Width="1000">
-                        <ListBox  Name="lstAllCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
+                            <ListBox  Name="lstAllCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto" Width="1000" >
+                                    <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto">
                                     </WrapPanel>
                                 </ItemsPanelTemplate>
                             </ListBox.ItemsPanel>
@@ -66,7 +66,7 @@
                             <ListBox  Name="lstLooseCategories" ItemsSource="{Binding lstLooseCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto" Width="1000" >
+                                        <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto" Width="900" >
                                         </WrapPanel>
                                     </ItemsPanelTemplate>
                                 </ListBox.ItemsPanel>

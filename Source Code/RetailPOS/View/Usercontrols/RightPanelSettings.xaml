@@ -37,7 +37,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="0"  HorizontalAlignment="Right" Width="95" >
+            <Button Height="53" Margin="0"  HorizontalAlignment="Right" Width="95" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Command="{Binding DeleteSelectedItem}">
                 <DockPanel>
                     <Image Source="../../Images/edit-delete-icon.png" Width="28" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="0 0 0 0" Width="55">

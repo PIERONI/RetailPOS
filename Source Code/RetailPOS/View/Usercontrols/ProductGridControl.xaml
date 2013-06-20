@@ -4,12 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:helpers="clr-namespace:RetailPOS.Utility"
              d:DesignHeight="300" Width="Auto"  DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DataGrid VerticalScrollBarVisibility="Auto" IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="310" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="480" >
+        <DataGrid  helpers:RowDoubleClickHandler.MethodName="" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="200" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="480"  >
+           
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="" />
                 <DataGridTextColumn Binding="{Binding Path=ProductName}" Header="Products"  Width="300"/>

@@ -127,6 +127,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Utility\ClsProductUtility.cs" />
+    <Compile Include="Utility\RowDoubleClickHandler.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />

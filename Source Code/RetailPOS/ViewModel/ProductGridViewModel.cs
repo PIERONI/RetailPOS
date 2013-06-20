@@ -16,9 +16,25 @@ namespace RetailPOS.ViewModel
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand LogOutCommand { get; private set; }
         private ICollectionView _productCollection;
+        private ProductDetails _product;
         private string _total;
         public RelayCommand<object> SelectProductCommand { get; private set; }
+        public RelayCommand ClearProduct { get; private set; }
+        public RelayCommand DeleteSelectedItem { get; private set; }
         public static ClsProductUtility Product { get; set; }
+
+        public ProductDetails SelectedProduct
+        {
+            get
+            {
+                return _product;
+            }
+            set
+            {
+                _product = value;
+                RaisePropertyChanged("SelectedProduct");
+            }
+        }
 
         public string Total
         {
@@ -42,18 +58,29 @@ namespace RetailPOS.ViewModel
             lstProductDetails = new ObservableCollection<ProductDetails>();
             ExitCommand = new RelayCommand(CloseApplication);
             LogOutCommand = new RelayCommand(LogoutApplication);
-           // BindProductDetails();
-
+            ClearProduct = new RelayCommand(ClearGridProduct);
             SelectProductCommand = new RelayCommand<object>(BindProductDetails);
+            DeleteSelectedItem = new RelayCommand(DeleteItem);          
+        }
 
-             _productCollection = CollectionViewSource.GetDefaultView(lstProductDetails);
-             _productCollection.CurrentChanged += new System.EventHandler(_productCollection_CurrentChanged);
+
+        private void DeleteItem()
+        {
+            if (SelectedProduct != null)
+                lstProductDetails.Remove(SelectedProduct);
+        }
+
+        private void ClearGridProduct()
+        {
+            lstProductDetails.Clear(); 
         }
 
         void _productCollection_CurrentChanged(object sender, System.EventArgs e)
         {
            
         }
+
+
 
         private void LogoutApplication()
         {
@@ -77,8 +104,6 @@ namespace RetailPOS.ViewModel
         /// <exception cref="System.NotImplementedException"></exception>
         private void BindProductDetails(object product)
         {
-
-
             lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice) });
             var amount = lstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();

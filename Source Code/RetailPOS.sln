@@ -2,9 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS", "RetailPOS\RetailPOS.csproj", "{D1231D58-C4FE-4085-A846-ED84DC820427}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A2FD4929-5B61-476E-82BC-3A646A703C26} = {A2FD4929-5B61-476E-82BC-3A646A703C26}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLayer", "BusinessLayer", "{CBA3494F-2E41-4B5D-938B-3D392B1BE4CE}"
 EndProject
@@ -36,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WCF Services", "WCF Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailPOS.ServiceImplementation", "RetailPOS.ServiceImplementation\RetailPOS.ServiceImplementation.csproj", "{07900815-1E63-43E2-AD8A-526D395A16E2}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RetailPOSService", "http://localhost/RetailPOSService", "{A2FD4929-5B61-476E-82BC-3A646A703C26}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RetailPOSService", "http://localhost/RetailPOSService", "{2AD8F0B9-277F-4906-B73A-4936F40877C7}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "false"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
@@ -168,16 +165,16 @@ Global
 		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{07900815-1E63-43E2-AD8A-526D395A16E2}.Release|x86.ActiveCfg = Release|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{A2FD4929-5B61-476E-82BC-3A646A703C26}.Release|x86.ActiveCfg = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7}.Release|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,6 +191,6 @@ Global
 		{8FE510DC-3307-492E-AC1A-C939D7D5D7D8} = {90DA0526-8D61-4BD1-BF9D-35D840617DD9}
 		{FB2ED547-D65C-4C45-AF71-AD4B9FEC5923} = {62D20C5B-2454-45D4-820B-F87E33977D84}
 		{07900815-1E63-43E2-AD8A-526D395A16E2} = {FB2ED547-D65C-4C45-AF71-AD4B9FEC5923}
-		{A2FD4929-5B61-476E-82BC-3A646A703C26} = {FB2ED547-D65C-4C45-AF71-AD4B9FEC5923}
+		{2AD8F0B9-277F-4906-B73A-4936F40877C7} = {FB2ED547-D65C-4C45-AF71-AD4B9FEC5923}
 	EndGlobalSection
 EndGlobal

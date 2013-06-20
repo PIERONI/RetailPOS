@@ -41,7 +41,11 @@ namespace RetailPOS.ViewModel
         public string UserName
         {
             get { return _userName; }
-            set { _userName = value; }
+            set 
+            {
+                _userName = value;
+                RaisePropertyChanged("UserName");
+            }
         }
 
         public string Password
@@ -51,16 +55,6 @@ namespace RetailPOS.ViewModel
             {
                 _password = value;
                 RaisePropertyChanged("Password");
-            }
-        }
-
-        public bool IsEnabled
-        {
-            get { return _isEnabled; }
-            set
-            {
-                _isEnabled = value;
-                RaisePropertyChanged("IsEnabled");
             }
         }
 
@@ -106,10 +100,18 @@ namespace RetailPOS.ViewModel
             if (!isUserValidate)
             {
                 MessageVisibility = Visibility.Visible;
-                var MW = new MainWindow();
-                MW.Show();
-                LoginWindow._LoginWindow.Close();
+            }
+            else
+            {
+                ////Sets the message visibility as hidden
+                MessageVisibility = Visibility.Hidden;
                 
+                ////Opens up main window
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+
+                ////Closes login window
+                LoginWindow._LoginWindow.Close();
             }
         }
 
@@ -119,9 +121,7 @@ namespace RetailPOS.ViewModel
         /// <param name="userDT">The user DT.</param>
         private void SelectedUserName(StaffDTO userDetails)
         {
-            FullName = userDetails.FullName == AppConstants.OTHER_USER_TYPE ? string.Empty : userDetails.FullName;
             UserName = userDetails.UserName;
-            IsEnabled = userDetails.FullName == AppConstants.OTHER_USER_TYPE ? true : false;
         }
 
         /// <summary>
@@ -131,7 +131,6 @@ namespace RetailPOS.ViewModel
         {
             lstUsers = new ObservableCollection<StaffDTO>(from item in ServiceFactory.ServiceClient.GetStaffDetails()
                                                           select item);
-            lstUsers.Add(new StaffDTO { FullName = AppConstants.OTHER_USER_TYPE });
         }
     }
 }

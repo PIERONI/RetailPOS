@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\account.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\address.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
@@ -47,15 +50,6 @@
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\customer.cs">
-      <DependentUpon>POSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\customer_pay_card_details.cs">
-      <DependentUpon>POSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\customer_pay_cheque_details.cs">
-      <DependentUpon>POSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\customer_pay_history.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\customer_status.cs">
@@ -82,6 +76,15 @@
     <Compile Include="Entities\general_settings.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\invoice.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\invoicecredit.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\invoiceitem.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\locality.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
@@ -101,6 +104,9 @@
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ordermaster.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\payment_gateways.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\POSEntities.cs">
@@ -160,9 +166,6 @@
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\town_city.cs">
-      <DependentUpon>POSEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\user.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\warranty.cs">

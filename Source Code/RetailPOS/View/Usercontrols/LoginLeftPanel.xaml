@@ -15,7 +15,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Expander Header="Username" IsExpanded="True">
-            <ListBox Name="LstProduct" ItemsSource="{Binding lstUsers}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
+            <ListBox Name="LstUsers" ItemsSource="{Binding lstUsers}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
                <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Button Margin="4" Content="{Binding FullName}" CommandParameter="{Binding}"  Command="{Binding DataContext.SelectUserCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Height="30"  HorizontalAlignment="Center" Width="300" />

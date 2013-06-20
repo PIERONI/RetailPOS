@@ -15,7 +15,7 @@ using System.Collections.Specialized;
 
 namespace RetailPOS.PersistenceLayer.Repository.Entities
 {
-    public partial class ordermaster : EntityBase
+    public partial class invoiceitem : EntityBase
     {
         #region Primitive Properties
     
@@ -25,69 +25,7 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual string order_no
-        {
-            get;
-            set;
-        }
-    
-        public virtual System.DateTime order_date
-        {
-            get;
-            set;
-        }
-    
-        public virtual Nullable<int> customer_id
-        {
-            get { return _customer_id; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_customer_id != value)
-                    {
-                        if (customer != null && customer.id != value)
-                        {
-                            customer = null;
-                        }
-                        _customer_id = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
-        }
-        private Nullable<int> _customer_id;
-    
-        public virtual string shop_code
-        {
-            get { return _shop_code; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_shop_code != value)
-                    {
-                        if (shop_info != null && shop_info.code != value)
-                        {
-                            shop_info = null;
-                        }
-                        _shop_code = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
-        }
-        private string _shop_code;
-    
-        public virtual Nullable<long> invoice_id
+        public virtual long invoice_id
         {
             get { return _invoice_id; }
             set
@@ -110,9 +48,77 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                 }
             }
         }
-        private Nullable<long> _invoice_id;
+        private long _invoice_id;
     
-        public virtual short print_receipt_copies
+        public virtual int customer_id
+        {
+            get { return _customer_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_customer_id != value)
+                    {
+                        if (customer != null && customer.id != value)
+                        {
+                            customer = null;
+                        }
+                        _customer_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
+        }
+        private int _customer_id;
+    
+        public virtual string type
+        {
+            get;
+            set;
+        }
+    
+        public virtual Nullable<long> relid
+        {
+            get { return _relid; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_relid != value)
+                    {
+                        if (invoiceitem1 != null && invoiceitem1.id != value)
+                        {
+                            invoiceitem1 = null;
+                        }
+                        _relid = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
+        }
+        private Nullable<long> _relid;
+    
+        public virtual string description
+        {
+            get;
+            set;
+        }
+    
+        public virtual decimal amount
+        {
+            get;
+            set;
+        }
+    
+        public virtual int taxed
         {
             get;
             set;
@@ -151,52 +157,52 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private invoice _invoice;
     
-        public virtual ICollection<orderchild> orderchilds
+        public virtual ICollection<invoiceitem> invoiceitems1
         {
             get
             {
-                if (_orderchilds == null)
+                if (_invoiceitems1 == null)
                 {
-                    var newCollection = new FixupCollection<orderchild>();
-                    newCollection.CollectionChanged += Fixuporderchilds;
-                    _orderchilds = newCollection;
+                    var newCollection = new FixupCollection<invoiceitem>();
+                    newCollection.CollectionChanged += Fixupinvoiceitems1;
+                    _invoiceitems1 = newCollection;
                 }
-                return _orderchilds;
+                return _invoiceitems1;
             }
             set
             {
-                if (!ReferenceEquals(_orderchilds, value))
+                if (!ReferenceEquals(_invoiceitems1, value))
                 {
-                    var previousValue = _orderchilds as FixupCollection<orderchild>;
+                    var previousValue = _invoiceitems1 as FixupCollection<invoiceitem>;
                     if (previousValue != null)
                     {
-                        previousValue.CollectionChanged -= Fixuporderchilds;
+                        previousValue.CollectionChanged -= Fixupinvoiceitems1;
                     }
-                    _orderchilds = value;
-                    var newValue = value as FixupCollection<orderchild>;
+                    _invoiceitems1 = value;
+                    var newValue = value as FixupCollection<invoiceitem>;
                     if (newValue != null)
                     {
-                        newValue.CollectionChanged += Fixuporderchilds;
+                        newValue.CollectionChanged += Fixupinvoiceitems1;
                     }
                 }
             }
         }
-        private ICollection<orderchild> _orderchilds;
+        private ICollection<invoiceitem> _invoiceitems1;
     
-        public virtual shop_info shop_info
+        public virtual invoiceitem invoiceitem1
         {
-            get { return _shop_info; }
+            get { return _invoiceitem1; }
             set
             {
-                if (!ReferenceEquals(_shop_info, value))
+                if (!ReferenceEquals(_invoiceitem1, value))
                 {
-                    var previousValue = _shop_info;
-                    _shop_info = value;
-                    Fixupshop_info(previousValue);
+                    var previousValue = _invoiceitem1;
+                    _invoiceitem1 = value;
+                    Fixupinvoiceitem1(previousValue);
                 }
             }
         }
-        private shop_info _shop_info;
+        private invoiceitem _invoiceitem1;
 
         #endregion
         #region Association Fixup
@@ -205,93 +211,85 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         private void Fixupcustomer(customer previousValue)
         {
-            if (previousValue != null && previousValue.ordermasters.Contains(this))
+            if (previousValue != null && previousValue.invoiceitems.Contains(this))
             {
-                previousValue.ordermasters.Remove(this);
+                previousValue.invoiceitems.Remove(this);
             }
     
             if (customer != null)
             {
-                if (!customer.ordermasters.Contains(this))
+                if (!customer.invoiceitems.Contains(this))
                 {
-                    customer.ordermasters.Add(this);
+                    customer.invoiceitems.Add(this);
                 }
                 if (customer_id != customer.id)
                 {
                     customer_id = customer.id;
                 }
             }
-            else if (!_settingFK)
-            {
-                customer_id = null;
-            }
         }
     
         private void Fixupinvoice(invoice previousValue)
         {
-            if (previousValue != null && previousValue.ordermasters.Contains(this))
+            if (previousValue != null && previousValue.invoiceitems.Contains(this))
             {
-                previousValue.ordermasters.Remove(this);
+                previousValue.invoiceitems.Remove(this);
             }
     
             if (invoice != null)
             {
-                if (!invoice.ordermasters.Contains(this))
+                if (!invoice.invoiceitems.Contains(this))
                 {
-                    invoice.ordermasters.Add(this);
+                    invoice.invoiceitems.Add(this);
                 }
                 if (invoice_id != invoice.id)
                 {
                     invoice_id = invoice.id;
                 }
             }
-            else if (!_settingFK)
-            {
-                invoice_id = null;
-            }
         }
     
-        private void Fixupshop_info(shop_info previousValue)
+        private void Fixupinvoiceitem1(invoiceitem previousValue)
         {
-            if (previousValue != null && previousValue.ordermasters.Contains(this))
+            if (previousValue != null && previousValue.invoiceitems1.Contains(this))
             {
-                previousValue.ordermasters.Remove(this);
+                previousValue.invoiceitems1.Remove(this);
             }
     
-            if (shop_info != null)
+            if (invoiceitem1 != null)
             {
-                if (!shop_info.ordermasters.Contains(this))
+                if (!invoiceitem1.invoiceitems1.Contains(this))
                 {
-                    shop_info.ordermasters.Add(this);
+                    invoiceitem1.invoiceitems1.Add(this);
                 }
-                if (shop_code != shop_info.code)
+                if (relid != invoiceitem1.id)
                 {
-                    shop_code = shop_info.code;
+                    relid = invoiceitem1.id;
                 }
             }
             else if (!_settingFK)
             {
-                shop_code = null;
+                relid = null;
             }
         }
     
-        private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
+        private void Fixupinvoiceitems1(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
-                foreach (orderchild item in e.NewItems)
+                foreach (invoiceitem item in e.NewItems)
                 {
-                    item.ordermaster = this;
+                    item.invoiceitem1 = this;
                 }
             }
     
             if (e.OldItems != null)
             {
-                foreach (orderchild item in e.OldItems)
+                foreach (invoiceitem item in e.OldItems)
                 {
-                    if (ReferenceEquals(item.ordermaster, this))
+                    if (ReferenceEquals(item.invoiceitem1, this))
                     {
-                        item.ordermaster = null;
+                        item.invoiceitem1 = null;
                     }
                 }
             }

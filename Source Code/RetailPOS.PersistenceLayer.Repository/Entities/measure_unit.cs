@@ -167,6 +167,70 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<product_purchase_history_child> _product_purchase_history_child;
+    
+        public virtual ICollection<promotional_offer> promotional_offer
+        {
+            get
+            {
+                if (_promotional_offer == null)
+                {
+                    var newCollection = new FixupCollection<promotional_offer>();
+                    newCollection.CollectionChanged += Fixuppromotional_offer;
+                    _promotional_offer = newCollection;
+                }
+                return _promotional_offer;
+            }
+            set
+            {
+                if (!ReferenceEquals(_promotional_offer, value))
+                {
+                    var previousValue = _promotional_offer as FixupCollection<promotional_offer>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuppromotional_offer;
+                    }
+                    _promotional_offer = value;
+                    var newValue = value as FixupCollection<promotional_offer>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuppromotional_offer;
+                    }
+                }
+            }
+        }
+        private ICollection<promotional_offer> _promotional_offer;
+    
+        public virtual ICollection<promotional_offer> promotional_offer1
+        {
+            get
+            {
+                if (_promotional_offer1 == null)
+                {
+                    var newCollection = new FixupCollection<promotional_offer>();
+                    newCollection.CollectionChanged += Fixuppromotional_offer1;
+                    _promotional_offer1 = newCollection;
+                }
+                return _promotional_offer1;
+            }
+            set
+            {
+                if (!ReferenceEquals(_promotional_offer1, value))
+                {
+                    var previousValue = _promotional_offer1 as FixupCollection<promotional_offer>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuppromotional_offer1;
+                    }
+                    _promotional_offer1 = value;
+                    var newValue = value as FixupCollection<promotional_offer>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuppromotional_offer1;
+                    }
+                }
+            }
+        }
+        private ICollection<promotional_offer> _promotional_offer1;
 
         #endregion
         #region Association Fixup
@@ -254,6 +318,50 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                     if (ReferenceEquals(item.measure_unit, this))
                     {
                         item.measure_unit = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuppromotional_offer(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (promotional_offer item in e.NewItems)
+                {
+                    item.measure_unit = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (promotional_offer item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit, this))
+                    {
+                        item.measure_unit = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuppromotional_offer1(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (promotional_offer item in e.NewItems)
+                {
+                    item.measure_unit1 = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (promotional_offer item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit1, this))
+                    {
+                        item.measure_unit1 = null;
                     }
                 }
             }

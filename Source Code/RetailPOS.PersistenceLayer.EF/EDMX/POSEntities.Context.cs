@@ -42,6 +42,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
     
         #region ObjectSet Properties
     
+        public ObjectSet<account> accounts
+        {
+            get { return _accounts  ?? (_accounts = CreateObjectSet<account>("accounts")); }
+        }
+        private ObjectSet<account> _accounts;
+    
         public ObjectSet<address> addresses
         {
             get { return _addresses  ?? (_addresses = CreateObjectSet<address>("addresses")); }
@@ -59,24 +65,6 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _customers  ?? (_customers = CreateObjectSet<customer>("customers")); }
         }
         private ObjectSet<customer> _customers;
-    
-        public ObjectSet<customer_pay_card_details> customer_pay_card_details
-        {
-            get { return _customer_pay_card_details  ?? (_customer_pay_card_details = CreateObjectSet<customer_pay_card_details>("customer_pay_card_details")); }
-        }
-        private ObjectSet<customer_pay_card_details> _customer_pay_card_details;
-    
-        public ObjectSet<customer_pay_cheque_details> customer_pay_cheque_details
-        {
-            get { return _customer_pay_cheque_details  ?? (_customer_pay_cheque_details = CreateObjectSet<customer_pay_cheque_details>("customer_pay_cheque_details")); }
-        }
-        private ObjectSet<customer_pay_cheque_details> _customer_pay_cheque_details;
-    
-        public ObjectSet<customer_pay_history> customer_pay_history
-        {
-            get { return _customer_pay_history  ?? (_customer_pay_history = CreateObjectSet<customer_pay_history>("customer_pay_history")); }
-        }
-        private ObjectSet<customer_pay_history> _customer_pay_history;
     
         public ObjectSet<customer_status> customer_status
         {
@@ -126,6 +114,24 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<general_settings> _general_settings;
     
+        public ObjectSet<invoicecredit> invoicecredits
+        {
+            get { return _invoicecredits  ?? (_invoicecredits = CreateObjectSet<invoicecredit>("invoicecredits")); }
+        }
+        private ObjectSet<invoicecredit> _invoicecredits;
+    
+        public ObjectSet<invoiceitem> invoiceitems
+        {
+            get { return _invoiceitems  ?? (_invoiceitems = CreateObjectSet<invoiceitem>("invoiceitems")); }
+        }
+        private ObjectSet<invoiceitem> _invoiceitems;
+    
+        public ObjectSet<invoice> invoices
+        {
+            get { return _invoices  ?? (_invoices = CreateObjectSet<invoice>("invoices")); }
+        }
+        private ObjectSet<invoice> _invoices;
+    
         public ObjectSet<locality> localities
         {
             get { return _localities  ?? (_localities = CreateObjectSet<locality>("localities")); }
@@ -167,6 +173,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _ordermasters  ?? (_ordermasters = CreateObjectSet<ordermaster>("ordermasters")); }
         }
         private ObjectSet<ordermaster> _ordermasters;
+    
+        public ObjectSet<payment_gateways> payment_gateways
+        {
+            get { return _payment_gateways  ?? (_payment_gateways = CreateObjectSet<payment_gateways>("payment_gateways")); }
+        }
+        private ObjectSet<payment_gateways> _payment_gateways;
     
         public ObjectSet<postcode> postcodes
         {
@@ -240,6 +252,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<shop_product> _shop_product;
     
+        public ObjectSet<staff> staffs
+        {
+            get { return _staffs  ?? (_staffs = CreateObjectSet<staff>("staffs")); }
+        }
+        private ObjectSet<staff> _staffs;
+    
         public ObjectSet<staff_status> staff_status
         {
             get { return _staff_status  ?? (_staff_status = CreateObjectSet<staff_status>("staff_status")); }
@@ -281,18 +299,6 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _working_record  ?? (_working_record = CreateObjectSet<working_record>("working_record")); }
         }
         private ObjectSet<working_record> _working_record;
-    
-        public ObjectSet<user> users
-        {
-            get { return _users  ?? (_users = CreateObjectSet<user>("users")); }
-        }
-        private ObjectSet<user> _users;
-    
-        public ObjectSet<staff> staffs
-        {
-            get { return _staffs  ?? (_staffs = CreateObjectSet<staff>("staffs")); }
-        }
-        private ObjectSet<staff> _staffs;
 
         #endregion
     }

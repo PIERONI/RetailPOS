@@ -27,9 +27,15 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
             return entitySet;
         }
 
-        private ObjectContext GetObjectContext()
+        /// <summary>
+        /// Returns the active object context
+        /// </summary>
+        public ObjectContext ObjectContext
         {
-            return Activator.CreateInstance<RetailPOS.PersistenceLayer.EF.EDMX.posEntities>();
+            get
+            {
+                return ObjectContextManager.GetObjectContext();
+            }
         }
 
         /// <summary>
@@ -38,8 +44,8 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns records count</returns>
         public int Count()
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Count();
+            IQueryable<TEntity> queryBase = ObjectContext.CreateObjectSet<TEntity>();
+            return queryBase.Count();
         }
 
         /// <summary>
@@ -50,8 +56,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns count</returns>
         public int Count(string includeTableName, Expression<Func<TEntity, bool>> lambdaExpression)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Include(includeTableName).Count(lambdaExpression);
+            return ObjectContext.CreateObjectSet<TEntity>().Include(includeTableName).Count(lambdaExpression);
         }
 
         /// <summary>
@@ -61,8 +66,8 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns count</returns>
         public int Count(Expression<Func<TEntity, bool>> lambdaExpression)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Count(lambdaExpression);
+            IQueryable<TEntity> queryBase = ObjectContext.CreateObjectSet<TEntity>();
+            return queryBase.Count(lambdaExpression);
         }
 
         ///<summary>
@@ -72,19 +77,17 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         public bool Delete(TEntity entity)
         {
             object originalItem = null;
-            ObjectContext edmxObject = GetObjectContext();
+            EntityKey key = ObjectContext.CreateEntityKey(GetBase<TEntity>(ObjectContext).Name.ToString(), entity);
 
-            EntityKey key = edmxObject.CreateEntityKey(GetBase<TEntity>(edmxObject).Name.ToString(), entity);
-
-            if (edmxObject.TryGetObjectByKey(key, out originalItem))
+            if (ObjectContext.TryGetObjectByKey(key, out originalItem))
             {
-                edmxObject.ObjectStateManager.GetObjectStateEntry(key).Delete();
-                edmxObject.SaveChanges();
+                ObjectContext.ObjectStateManager.GetObjectStateEntry(key).Delete();
+                ObjectContext.SaveChanges();
             }
             else
             {
-                edmxObject.DeleteObject(key);
-                edmxObject.SaveChanges();
+                ObjectContext.DeleteObject(key);
+                ObjectContext.SaveChanges();
             }
             return true;
         }
@@ -94,9 +97,8 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// </summary>
         /// <returns>returns list of entities</returns>
         public IQueryable<TEntity> GetList()
-        {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>();
+        {   
+            return ObjectContext.CreateObjectSet<TEntity>();
         }
 
         /// <summary>
@@ -106,8 +108,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns list of entity</returns>
         public IQueryable<TEntity> GetList(string includeTableName)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Include(includeTableName);
+            return ObjectContext.CreateObjectSet<TEntity>().Include(includeTableName);
         }
 
         /// <summary>
@@ -118,8 +119,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns list of entities</returns>
         public IQueryable<TEntity> GetList(string includeTableName, Expression<Func<TEntity, bool>> lambdaExpression)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Include(includeTableName).Where(lambdaExpression);
+            return ObjectContext.CreateObjectSet<TEntity>().Include(includeTableName).Where(lambdaExpression);
         }
 
         /// <summary>
@@ -129,8 +129,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns list of entities</returns>
         public IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> lambdaExpression)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Where(lambdaExpression);
+            return ObjectContext.CreateObjectSet<TEntity>().Where(lambdaExpression);
         }
 
         /// <summary>
@@ -143,15 +142,13 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// </returns>
         public IQueryable<TEntity> GetList(Expression<Func<TEntity, bool>> lambdaExpression, Expression<Func<TEntity, int>> orderByexpr, bool orderByDesc = false)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            
             if (orderByDesc)
             {
-                return edmxObject.CreateObjectSet<TEntity>().Where(lambdaExpression).OrderByDescending(orderByexpr);
+                return ObjectContext.CreateObjectSet<TEntity>().Where(lambdaExpression).OrderByDescending(orderByexpr);
             }
             else
             {
-                return edmxObject.CreateObjectSet<TEntity>().Where(lambdaExpression).OrderBy(orderByexpr);
+                return ObjectContext.CreateObjectSet<TEntity>().Where(lambdaExpression).OrderBy(orderByexpr);
             }
         }
 
@@ -161,8 +158,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>returns single entity</returns>
         public TEntity GetSingle()
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().FirstOrDefault();
+            return ObjectContext.CreateObjectSet<TEntity>().FirstOrDefault();
         }
 
         /// <summary>
@@ -173,8 +169,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns></returns>
         public TEntity GetSingle(string includeTableName, Expression<Func<TEntity, bool>> lambdaExpression)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Include(includeTableName).Where(lambdaExpression).FirstOrDefault();
+            return ObjectContext.CreateObjectSet<TEntity>().Include(includeTableName).Where(lambdaExpression).FirstOrDefault();
         }
 
         /// <summary>
@@ -184,8 +179,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>A single record that matches the specified criteria</returns>
         public TEntity GetSingle(Expression<Func<TEntity, bool>> whereCondition)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Where(whereCondition).FirstOrDefault();
+            return ObjectContext.CreateObjectSet<TEntity>().Where(whereCondition).FirstOrDefault();
         }
 
         /// <summary>
@@ -195,8 +189,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns>The loaded entity</returns>
         public TEntity Load(Expression<Func<TEntity, bool>> whereCondition)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Where(whereCondition).FirstOrDefault();
+            return ObjectContext.CreateObjectSet<TEntity>().Where(whereCondition).FirstOrDefault();
         }
 
         /// <summary>
@@ -206,8 +199,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns></returns>
         public IQueryable<TEntity> LoadList(Expression<Func<TEntity, bool>> whereCondition)
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.CreateObjectSet<TEntity>().Where(whereCondition);
+            return ObjectContext.CreateObjectSet<TEntity>().Where(whereCondition);
         }
 
         ///<summary>
@@ -216,10 +208,8 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <param name="entity">The entity to save</param>
         public bool Save(TEntity entity)
         {
-            ObjectContext edmxObject = GetObjectContext();
-
-            edmxObject.AddObject(GetBase<TEntity>(edmxObject).Name, entity);
-            edmxObject.SaveChanges();
+            ObjectContext.AddObject(GetBase<TEntity>(ObjectContext).Name, entity);
+            ObjectContext.SaveChanges();
             return true;
         }
 
@@ -229,8 +219,7 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns></returns>
         public int SaveChanges()
         {
-            ObjectContext edmxObject = GetObjectContext();
-            return edmxObject.SaveChanges(SaveOptions.DetectChangesBeforeSave);
+            return ObjectContext.SaveChanges(SaveOptions.DetectChangesBeforeSave);
         }
 
         /// <summary>
@@ -240,14 +229,13 @@ namespace RetailPOS.PersistenceLayer.EF.Impl
         /// <returns></returns>
         public bool Update(TEntity entity)
         {
-            ObjectContext edmxObject = GetObjectContext();
-
             object originalItem = null;
-            EntityKey key = edmxObject.CreateEntityKey(GetBase<TEntity>(edmxObject).Name, entity);
-            if (edmxObject.TryGetObjectByKey(key, out originalItem))
+            EntityKey key = ObjectContext.CreateEntityKey(GetBase<TEntity>(ObjectContext).Name, entity);
+
+            if (ObjectContext.TryGetObjectByKey(key, out originalItem))
             {
-                edmxObject.ApplyCurrentValues(key.EntitySetName, entity);
-                edmxObject.SaveChanges(SaveOptions.DetectChangesBeforeSave);
+                ObjectContext.ApplyCurrentValues(key.EntitySetName, entity);
+                ObjectContext.SaveChanges(SaveOptions.DetectChangesBeforeSave);
             }
             return true;
         }

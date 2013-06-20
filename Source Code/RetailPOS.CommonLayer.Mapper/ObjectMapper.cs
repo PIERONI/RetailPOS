@@ -29,9 +29,6 @@ namespace RetailPOS.CommonLayer.Mapper
             AutoMapper.Mapper.CreateMap<staff, StaffDTO>();
             AutoMapper.Mapper.CreateMap<StaffDTO, staff>();
 
-            AutoMapper.Mapper.CreateMap<user, UserDTO>();
-            AutoMapper.Mapper.CreateMap<UserDTO, user>();
-
             AutoMapper.Mapper.CreateMap<customer, CustomerDTO>();
             AutoMapper.Mapper.CreateMap<CustomerDTO, customer>();
         }

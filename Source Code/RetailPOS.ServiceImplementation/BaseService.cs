@@ -1,5 +1,6 @@
 ﻿#region Using directives
 
+using System.ServiceModel.Activation;
 using Microsoft.Practices.Unity;
 using RetailPOS.BusinessLayer.Service.Admin;
 using RetailPOS.BusinessLayer.Service.Customer;
@@ -12,6 +13,7 @@ using RetailPOS.ServiceImplementation.ServiceContracts;
 
 namespace RetailPOS.ServiceImplementation
 {
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public partial class RetailPOSService : IRetailPOSServiceContract
     {
         public RetailPOSService()

@@ -11,7 +11,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.User;
 
 namespace RetailPOS.ServiceImplementation.ServiceContracts
 {
-    [ServiceContract]
+    [ServiceContract(SessionMode = SessionMode.Required)]
     interface IRetailPOSServiceContract
     {
         #region Categories

@@ -86,6 +86,12 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
+        public virtual decimal balance
+        {
+            get;
+            set;
+        }
+    
         public virtual string openid_id
         {
             get;
@@ -160,6 +166,12 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
+        public virtual string gateway
+        {
+            get;
+            set;
+        }
+    
         public virtual string image_path
         {
             get;
@@ -193,6 +205,38 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
 
         #endregion
         #region Navigation Properties
+    
+        public virtual ICollection<account> accounts
+        {
+            get
+            {
+                if (_accounts == null)
+                {
+                    var newCollection = new FixupCollection<account>();
+                    newCollection.CollectionChanged += Fixupaccounts;
+                    _accounts = newCollection;
+                }
+                return _accounts;
+            }
+            set
+            {
+                if (!ReferenceEquals(_accounts, value))
+                {
+                    var previousValue = _accounts as FixupCollection<account>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupaccounts;
+                    }
+                    _accounts = value;
+                    var newValue = value as FixupCollection<account>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupaccounts;
+                    }
+                }
+            }
+        }
+        private ICollection<account> _accounts;
     
         public virtual address address
         {
@@ -254,38 +298,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private openid_server _openid_server;
     
-        public virtual ICollection<customer_pay_history> customer_pay_history
-        {
-            get
-            {
-                if (_customer_pay_history == null)
-                {
-                    var newCollection = new FixupCollection<customer_pay_history>();
-                    newCollection.CollectionChanged += Fixupcustomer_pay_history;
-                    _customer_pay_history = newCollection;
-                }
-                return _customer_pay_history;
-            }
-            set
-            {
-                if (!ReferenceEquals(_customer_pay_history, value))
-                {
-                    var previousValue = _customer_pay_history as FixupCollection<customer_pay_history>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixupcustomer_pay_history;
-                    }
-                    _customer_pay_history = value;
-                    var newValue = value as FixupCollection<customer_pay_history>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixupcustomer_pay_history;
-                    }
-                }
-            }
-        }
-        private ICollection<customer_pay_history> _customer_pay_history;
-    
         public virtual ICollection<email_history> email_history
         {
             get
@@ -317,6 +329,102 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<email_history> _email_history;
+    
+        public virtual ICollection<invoicecredit> invoicecredits
+        {
+            get
+            {
+                if (_invoicecredits == null)
+                {
+                    var newCollection = new FixupCollection<invoicecredit>();
+                    newCollection.CollectionChanged += Fixupinvoicecredits;
+                    _invoicecredits = newCollection;
+                }
+                return _invoicecredits;
+            }
+            set
+            {
+                if (!ReferenceEquals(_invoicecredits, value))
+                {
+                    var previousValue = _invoicecredits as FixupCollection<invoicecredit>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupinvoicecredits;
+                    }
+                    _invoicecredits = value;
+                    var newValue = value as FixupCollection<invoicecredit>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupinvoicecredits;
+                    }
+                }
+            }
+        }
+        private ICollection<invoicecredit> _invoicecredits;
+    
+        public virtual ICollection<invoiceitem> invoiceitems
+        {
+            get
+            {
+                if (_invoiceitems == null)
+                {
+                    var newCollection = new FixupCollection<invoiceitem>();
+                    newCollection.CollectionChanged += Fixupinvoiceitems;
+                    _invoiceitems = newCollection;
+                }
+                return _invoiceitems;
+            }
+            set
+            {
+                if (!ReferenceEquals(_invoiceitems, value))
+                {
+                    var previousValue = _invoiceitems as FixupCollection<invoiceitem>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupinvoiceitems;
+                    }
+                    _invoiceitems = value;
+                    var newValue = value as FixupCollection<invoiceitem>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupinvoiceitems;
+                    }
+                }
+            }
+        }
+        private ICollection<invoiceitem> _invoiceitems;
+    
+        public virtual ICollection<invoice> invoices
+        {
+            get
+            {
+                if (_invoices == null)
+                {
+                    var newCollection = new FixupCollection<invoice>();
+                    newCollection.CollectionChanged += Fixupinvoices;
+                    _invoices = newCollection;
+                }
+                return _invoices;
+            }
+            set
+            {
+                if (!ReferenceEquals(_invoices, value))
+                {
+                    var previousValue = _invoices as FixupCollection<invoice>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupinvoices;
+                    }
+                    _invoices = value;
+                    var newValue = value as FixupCollection<invoice>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupinvoices;
+                    }
+                }
+            }
+        }
+        private ICollection<invoice> _invoices;
     
         public virtual ICollection<login_history> login_history
         {
@@ -479,11 +587,11 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
     
-        private void Fixupcustomer_pay_history(object sender, NotifyCollectionChangedEventArgs e)
+        private void Fixupaccounts(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
-                foreach (customer_pay_history item in e.NewItems)
+                foreach (account item in e.NewItems)
                 {
                     item.customer = this;
                 }
@@ -491,7 +599,7 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
             if (e.OldItems != null)
             {
-                foreach (customer_pay_history item in e.OldItems)
+                foreach (account item in e.OldItems)
                 {
                     if (ReferenceEquals(item.customer, this))
                     {
@@ -514,6 +622,72 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             if (e.OldItems != null)
             {
                 foreach (email_history item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.customer, this))
+                    {
+                        item.customer = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupinvoicecredits(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (invoicecredit item in e.NewItems)
+                {
+                    item.customer = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (invoicecredit item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.customer, this))
+                    {
+                        item.customer = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupinvoiceitems(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (invoiceitem item in e.NewItems)
+                {
+                    item.customer = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (invoiceitem item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.customer, this))
+                    {
+                        item.customer = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupinvoices(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (invoice item in e.NewItems)
+                {
+                    item.customer = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (invoice item in e.OldItems)
                 {
                     if (ReferenceEquals(item.customer, this))
                     {

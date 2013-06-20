@@ -82,7 +82,7 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual decimal discount
+        public virtual int taxed
         {
             get;
             set;

@@ -53,11 +53,11 @@
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight.Extras.WPF4, Version=4.1.24.16313, Culture=neutral, PublicKeyToken=1673db7d5906b0ad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\RetailPOS\RetailPOS\packages\MvvmLightLibs.4.1.27.0\lib\net40\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
+      <HintPath>..\Binaries\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
     </Reference>
     <Reference Include="GalaSoft.MvvmLight.WPF4, Version=4.1.24.16313, Culture=neutral, PublicKeyToken=63eb5c012e0b3c1c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\RetailPOS\RetailPOS\packages\MvvmLightLibs.4.1.27.0\lib\net40\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+      <HintPath>..\Binaries\GalaSoft.MvvmLight.WPF4.dll</HintPath>
     </Reference>
     <Reference Include="InputSimulator">
       <HintPath>..\Binaries\InputSimulator.dll</HintPath>
@@ -323,26 +323,26 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService.wsdl" />
-    <None Include="Service References\RetailPOSService\RetailPOSService.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService1.wsdl" />
+    <None Include="Service References\RetailPOSService\RetailPOSService7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService1.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService71.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService2.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService72.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService3.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService73.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService4.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService74.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService5.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService75.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService6.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService76.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -398,12 +398,11 @@
   <ItemGroup>
     <Resource Include="Resources\AbstractBlue.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\RetailPOSService\" />
+    <None Include="Service References\RetailPOSService\RetailPOSService1.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RetailPOSService\RetailPOSService.disco" />
+    <WCFMetadataStorage Include="Service References\RetailPOSService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\RetailPOSService\configuration91.svcinfo" />

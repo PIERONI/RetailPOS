@@ -21,7 +21,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.User
                                            select new StaffDTO
                                            {
                                                FullName = item.first_name + " " + item.last_name,
-                                               UserName = item.user == null ? string.Empty : item.user.UserName
+                                               UserName = item.username
                                            }).ToList();
 
             return lstUserName;

@@ -14,9 +14,9 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.User
         /// <returns>returns boolean value indicating whether user credentials are verified or not</returns>
         bool IUserService.ValidateUserCredentials(string userName, string password)
         {
-            UserDTO userDetails = new UserDTO();
-            ObjectMapper.Map(base.UserRepository.GetSingle(item => item.UserName == userName
-                && item.Password == password), userDetails);
+            StaffDTO userDetails = new StaffDTO();
+            ObjectMapper.Map(base.StaffRepository.GetSingle(item => item.username == userName
+                && item.password == password), userDetails);
 
             bool result = userDetails.Id > 0 ? true : false;
             return result;

@@ -302,7 +302,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.ProductCategoryDTO.datasource" />
     <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.ProductCategoryDTO1.datasource" />

@@ -130,6 +130,7 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\ClsProductUtility.cs" />
+    <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\RowDoubleClickHandler.cs" />
     <Compile Include="Utility\SelectedItemBehaviour.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -171,6 +172,9 @@
     </Compile>
     <Compile Include="View\Usercontrols\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\ShopSetting.xaml.cs">
+      <DependentUpon>ShopSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\ShowProduct.xaml.cs">
       <DependentUpon>ShowProduct.xaml</DependentUpon>
@@ -287,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\ShopSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,6 +6,7 @@ using RetailPOS.View;
 using System.ComponentModel;
 using System.Windows.Data;
 using RetailPOS.Utility;
+using System.Collections.Generic;
 
 namespace RetailPOS.ViewModel
 {
@@ -14,6 +15,7 @@ namespace RetailPOS.ViewModel
         #region Declare Public and private Data member
 
         private ObservableCollection<ProductDetails> _ProductDetials;
+        public static List<int> listSelectItem { get; set; }
         public ObservableCollection<ProductDetails> lstProductDetails
         {
             get { return _ProductDetials; }
@@ -29,8 +31,6 @@ namespace RetailPOS.ViewModel
         public RelayCommand DeleteSelectedItem { get; private set; }
         public static ClsProductUtility Product { get; set; }
         bool IsRefersh { get; set; }
-       
-
        
 
         public ProductDetails SelectedProduct
@@ -53,14 +53,10 @@ namespace RetailPOS.ViewModel
         {
 
             if (SelectedProduct == null) return;
-            SelectedProduct.IsSelected = true;
-            var found = SelectedProduct;
-            int i = lstProductDetails.IndexOf(found);
-            
-            lstProductDetails[i] =  SelectedProduct;
+            listSelectItem.Add(SelectedProduct.Id);
 
-            if (IsRefersh)
-                CollectionViewSource.GetDefaultView(this.lstProductDetails).Refresh();       
+            (from item in lstProductDetails select item).Update(item => item.IsSelected = (from selectedItems in listSelectItem select true).ToObservableCollection();
+                            
         }
 
         public string Total
@@ -130,7 +126,23 @@ namespace RetailPOS.ViewModel
         /// <exception cref="System.NotImplementedException"></exception>
         private void BindProductDetails(object product)
         {
-            lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice)});
+            var IsExist = lstProductDetails.Where(u => u.Id == ClsProductUtility.Id).FirstOrDefault();
+
+            if (IsExist == null)
+            {
+                lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Rate = 3, Amount = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice) });
+            }
+            else
+            {
+                var found = lstProductDetails.FirstOrDefault(x => x.Id == ClsProductUtility.Id);
+                int i = lstProductDetails.IndexOf(found);
+                var quantity = ClsProductUtility.ProductQuantity + found.ProductQuantity;
+                lstProductDetails[i].ProductQuantity = quantity;
+
+                lstProductDetails[i].Amount = found.Rate * quantity;
+                CollectionViewSource.GetDefaultView(this.lstProductDetails).Refresh();
+            }
+            //lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice)});
             var amount = lstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();
 
@@ -143,7 +155,7 @@ namespace RetailPOS.ViewModel
    {
        public int Id { get; set; }
        public string ProductName { get; set; }
-       public double ProductQuantity { get; set; }
+       public decimal ProductQuantity { get; set; }
        public decimal Rate { get; set; }
        public decimal Amount { get; set; }
        private bool _isSelected;

@@ -15,9 +15,9 @@
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0">
             <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" >
                 <DockPanel>
-                    <Image Source="../../Images/delete-file-icon.png" Width="35" />
+                    <Image Source="../../Images/color-set-icon.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
-                       <Bold>Delete Order</Bold>
+                       <Bold>Set Aside Order</Bold>
                     </TextBlock>
                 </DockPanel>
             </Button>

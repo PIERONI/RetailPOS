@@ -10,8 +10,13 @@
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DataGrid  helpers:RowDoubleClickHandler.MethodName="" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="200" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="480"  >
-           
+        <DataGrid helpers:RowDoubleClickHandler.MethodName=""   SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="200" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="480"  >
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                   
+                </Style>
+            </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="" />
                 <DataGridTextColumn Binding="{Binding Path=ProductName}" Header="Products"  Width="300"/>

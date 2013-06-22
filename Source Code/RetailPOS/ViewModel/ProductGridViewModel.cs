@@ -12,7 +12,13 @@ namespace RetailPOS.ViewModel
     public class ProductGridViewModel : ViewModelBase
     {
         #region Declare Public and private Data member
-        public ObservableCollection<ProductDetails> lstProductDetails { get; private set; }
+
+        private ObservableCollection<ProductDetails> _ProductDetials;
+        public ObservableCollection<ProductDetails> lstProductDetails
+        {
+            get { return _ProductDetials; }
+            set { _ProductDetials = value; RaisePropertyChanged("lstProductDetails"); }
+        }
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand LogOutCommand { get; private set; }
         private ICollectionView _productCollection;
@@ -22,18 +28,39 @@ namespace RetailPOS.ViewModel
         public RelayCommand ClearProduct { get; private set; }
         public RelayCommand DeleteSelectedItem { get; private set; }
         public static ClsProductUtility Product { get; set; }
+        bool IsRefersh { get; set; }
+       
+
+       
 
         public ProductDetails SelectedProduct
         {
             get
             {
+                IsRefersh = false;
                 return _product;
             }
             set
             {
                 _product = value;
+                IsRefersh = true;
                 RaisePropertyChanged("SelectedProduct");
+                UpdateProduct();
             }
+        }
+
+        private void UpdateProduct()
+        {
+
+            if (SelectedProduct == null) return;
+            SelectedProduct.IsSelected = true;
+            var found = SelectedProduct;
+            int i = lstProductDetails.IndexOf(found);
+            
+            lstProductDetails[i] =  SelectedProduct;
+
+            if (IsRefersh)
+                CollectionViewSource.GetDefaultView(this.lstProductDetails).Refresh();       
         }
 
         public string Total
@@ -77,7 +104,6 @@ namespace RetailPOS.ViewModel
 
         void _productCollection_CurrentChanged(object sender, System.EventArgs e)
         {
-           
         }
 
 
@@ -104,7 +130,7 @@ namespace RetailPOS.ViewModel
         /// <exception cref="System.NotImplementedException"></exception>
         private void BindProductDetails(object product)
         {
-            lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice) });
+            lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice)});
             var amount = lstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();
 
@@ -113,12 +139,26 @@ namespace RetailPOS.ViewModel
 
     }
 
-   public class ProductDetails
+    public class ProductDetails : ViewModelBase
    {
        public int Id { get; set; }
        public string ProductName { get; set; }
        public double ProductQuantity { get; set; }
        public decimal Rate { get; set; }
        public decimal Amount { get; set; }
+       private bool _isSelected;
+       public bool IsSelected
+       {
+           get
+           {
+               return _isSelected;
+           }
+           set
+           {
+               _isSelected = value;
+               RaisePropertyChanged("IsSelected");
+           }
+       }
+       
    }
 }

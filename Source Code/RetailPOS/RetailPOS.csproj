@@ -126,8 +126,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utility\ClsProductUtility.cs" />
     <Compile Include="Utility\RowDoubleClickHandler.cs" />
+    <Compile Include="Utility\SelectedItemBehaviour.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
@@ -164,6 +168,9 @@
     </Compile>
     <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\ShowProduct.xaml.cs">
       <DependentUpon>ShowProduct.xaml</DependentUpon>
@@ -202,6 +209,10 @@
     <Page Include="Resources\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\AddCategory.xaml">
       <SubType>Designer</SubType>
@@ -272,6 +283,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\SearchItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -450,6 +465,9 @@
   <ItemGroup>
     <Resource Include="Images\cancel-icon.png" />
     <Resource Include="Images\save-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\color-set-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

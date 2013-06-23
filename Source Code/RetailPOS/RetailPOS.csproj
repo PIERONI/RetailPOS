@@ -107,6 +107,9 @@
     <Reference Include="WPFToolkit">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>C:\Users\sairam\Downloads\ExtendedWPFToolkit_Binaries\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -129,13 +132,19 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShopSettingWindow.xaml.cs">
+      <DependentUpon>ShopSettingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utility\ClsProductUtility.cs" />
     <Compile Include="Utility\ExtensionMethods.cs" />
+    <Compile Include="Utility\MaskedTextBoxBehaviour.cs" />
     <Compile Include="Utility\RowDoubleClickHandler.cs" />
     <Compile Include="Utility\SelectedItemBehaviour.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\SettingViewModel.cs" />
+    <Compile Include="ViewModel\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="View\Usercontrols\AddCategory.xaml.cs">
       <DependentUpon>AddCategory.xaml</DependentUpon>
@@ -169,6 +178,9 @@
     </Compile>
     <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\SettingHeader.xaml.cs">
+      <DependentUpon>SettingHeader.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -215,6 +227,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShopSettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -287,6 +303,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\SearchItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\SettingHeader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -476,6 +496,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\color-set-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\sign-back-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\home-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

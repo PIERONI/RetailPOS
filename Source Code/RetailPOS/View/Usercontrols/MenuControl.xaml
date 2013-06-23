@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="507"
-             xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls">
+             xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls"
+              DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
     
     <UserControl.Resources>     
             <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>       
@@ -47,7 +48,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="95" >
+            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="95"  Command="{Binding OpenSettingWindowCmd}">
                 <DockPanel>
                     <Image Source="../../Images/settings.png" Width="34" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">

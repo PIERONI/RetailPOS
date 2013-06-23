@@ -22,6 +22,23 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<SearchViewModel>();
             SimpleIoc.Default.Register<UserInfoViewModel>();
             SimpleIoc.Default.Register<ProductGridViewModel>();
+            SimpleIoc.Default.Register<SettingViewModel>();
+            SimpleIoc.Default.Register<ShopSettingViewModel>();
+
+        }
+
+        /// <summary>
+        /// Gets the setting VM.
+        /// </summary>
+        /// <value>
+        /// The setting VM.
+        /// </value>
+        public SettingViewModel SettingVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SettingViewModel>();
+            }
         }
 
         /// <summary>
@@ -89,6 +106,21 @@ namespace RetailPOS.ViewModel
         }
 
         /// <summary>
+        /// Gets the shop setting VM.
+        /// </summary>
+        /// <value>
+        /// The shop setting VM.
+        /// </value>
+        public ShopSettingViewModel ShopSettingVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ShopSettingViewModel>();
+            }
+        }
+
+
+        /// <summary>
         /// Cleanups this instance.
         /// </summary>
         public static void Cleanup()
@@ -98,6 +130,8 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<SearchViewModel>();
             SimpleIoc.Default.Unregister<UserInfoViewModel>();
             SimpleIoc.Default.Unregister<ProductGridViewModel>();
+            SimpleIoc.Default.Unregister<SettingViewModel>();
+            SimpleIoc.Default.Unregister<ShopSettingViewModel>();
         }
     }
 }

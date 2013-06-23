@@ -119,6 +119,9 @@
     <Compile Include="AddCategoryWindow.xaml.cs">
       <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CategorySettingWindow.xaml.cs">
+      <DependentUpon>CategorySettingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\AppConstants.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="LoginWindow.xaml.cs">
@@ -199,6 +202,10 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="AddCategoryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CategorySettingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

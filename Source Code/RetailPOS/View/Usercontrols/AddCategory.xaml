@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+             d:DesignHeight="300" d:DesignWidth="400" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -15,21 +16,23 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <TextBox Grid.Column="1" Height="32" HorizontalAlignment="Left" Margin="9,12,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" />
-        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,20,0,0" Name="textBlock1" Text="Category Name" VerticalAlignment="Top" Width="83" />
-        <TextBlock Height="24" HorizontalAlignment="Left" Margin="28,17,0,0" Name="textBlock2" Text="Category Description" VerticalAlignment="Top" Width="122" Grid.Row="1" />
-        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,10,0,0" Name="textBlock3" Text="Category Color" VerticalAlignment="Top" Width="83" Grid.Row="2" />
-        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,13,0,0" Name="textBlock4" Text="Sort Order" VerticalAlignment="Top" Width="83" Grid.Row="3" />
-        <TextBox Height="34" HorizontalAlignment="Left" Margin="9,7,0,0" Name="textBox2" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="1" />
-        <xctk:ColorPicker SelectedColor="{Binding SelectedColor,Mode=TwoWay}" ShowAvailableColors="True" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Margin="10,14,0,0" Name="colorPicker1" VerticalAlignment="Top" Width="119" />
-        <TextBox Height="32" HorizontalAlignment="Left" Margin="9,5,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="3" />
-        <Button Content="Cancel" Grid.Row="4" Height="38" HorizontalAlignment="Left" Margin="30,10,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
-        <Button Content="Save" Height="38" HorizontalAlignment="Left" Margin="9,10,0,0" Name="button2" VerticalAlignment="Top" Width="104" Grid.Column="1" Grid.Row="4" />
+        <ctrl:SettingHeader Grid.Row="0" Grid.ColumnSpan="2" x:Name="header" ></ctrl:SettingHeader>
+        <TextBox Grid.Column="1" Height="32" HorizontalAlignment="Left" Margin="11,11,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" Grid.Row="1" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="77,13,0,0"  TextAlignment="Right" Text="Category Name :" FontWeight="Bold" VerticalAlignment="Top" Width="115" Grid.Row="1" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,18,0,0" TextAlignment="Right"  Text="Category Description :" FontWeight="Bold" VerticalAlignment="Top" Width="146" Grid.Row="2" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="88,13,0,0" TextAlignment="Right"  Text="Category Color :"  FontWeight="Bold" VerticalAlignment="Top" Width="104" Grid.Row="3" />
+        <TextBlock Height="24" HorizontalAlignment="Left" Margin="98,9,0,0" TextAlignment="Right" Text="Sort Order :"  FontWeight="Bold" VerticalAlignment="Top" Width="94" Grid.Row="4" />
+        <TextBox Height="34" HorizontalAlignment="Left" Margin="9,8,0,0"  VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2" />
+        <xctk:ColorPicker ShowDropDownButton="True" DisplayColorAndName="True"  SelectedColor="{Binding SelectedColor,Mode=TwoWay}" ShowAvailableColors="True" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Margin="11,15,0,0" Name="colorPicker1" VerticalAlignment="Top" Width="119" />
+        <TextBox Height="32" HorizontalAlignment="Left" Margin="10,9,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="4" />
+        <Button Content="Cancel" Grid.Row="5" Height="38" HorizontalAlignment="Left" Margin="77,0,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
+        <Button Content="Save" Height="38" HorizontalAlignment="Left" Margin="10,0,0,0" Name="button2" VerticalAlignment="Top" Width="104" Grid.Column="1" Grid.Row="5" />
         
     </Grid>
 </UserControl>

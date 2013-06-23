@@ -18,8 +18,11 @@ namespace RetailPOS
     /// </summary>
     public partial class AddCategoryWindow : Window
     {
+       
+
         public AddCategoryWindow()
         {
+           
             InitializeComponent();
         }
     }

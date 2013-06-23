@@ -7,7 +7,7 @@
              d:DesignHeight="400" d:DesignWidth="400"
              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
              DataContext="{Binding Source={StaticResource Locator}, Path=ShopSettingVM}"
-             xmlns:Utility="clr-namespace:RetailPOS.Utility">
+             xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -48,8 +48,9 @@
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Row="1"  MaxLength="15" Height="32" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True"  Grid.Row="2"  MaxLength="15" Height="32" Text="{Binding Fax}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumerichyphenOnly="True" Grid.Row="3"  MaxLength="50" Height="32" Text="{Binding Email}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" MaxLength="100" Height="32" Text="{Binding Website}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Grid.Row="4" MaxLength="100" Height="32" Text="{Binding Website}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
                     <TextBox Grid.Column="1" Grid.Row="5" Height="32" Text="{Binding Address}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                   
                 </Grid>
             </TabItem>
             <TabItem Header="Tax Or Rate Setting" Name="tabTaxSetting">
@@ -72,7 +73,8 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" MaxLength="15" Text="{Binding Rate}" Grid.Row="1" Height="32" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="139" />
+                    <xctk:CalculatorUpDown Text="{Binding Rate}" Grid.Column="1"  Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="13,13,0,0" Name="autoSelectTextBox1" VerticalAlignment="Top" Width="141" />
+                   
                 </Grid>
             </TabItem>
             <TabItem Header="Database Backup Setting" Name="tabDataBaseSetting">

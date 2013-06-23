@@ -19,7 +19,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="30" Canvas.Right="1" Margin="5" HorizontalAlignment="Right" Width="98" >
+            <Button Height="30" Canvas.Right="1" Margin="5" Command="{Binding BackToMainWin}" HorizontalAlignment="Right" Width="98" >
                 <DockPanel>
                     <Image Source="../../Images/home-icon.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">

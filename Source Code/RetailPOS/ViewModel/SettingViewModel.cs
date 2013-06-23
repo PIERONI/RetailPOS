@@ -33,10 +33,21 @@ namespace RetailPOS.ViewModel
 
        }
 
+       /// <summary>
+       /// Opens the main window.
+       /// </summary>
        private void OpenMainWindow()
        {
            MainWindow MW = new MainWindow();
            MW.Show();
+           CheckForSettingWinClose();
+       }
+
+       /// <summary>
+       /// Checks for setting win close.
+       /// </summary>
+       private void CheckForSettingWinClose()
+       {
            if (ShopSettingWindow._ShopSettingWindow != null)
                ShopSettingWindow._ShopSettingWindow.Close();
            if (CategorySettingWindow._AddCategoryWindow != null)
@@ -52,8 +63,6 @@ namespace RetailPOS.ViewModel
            ACW.Show();
            Settings.SettingWindow.Close();
        }
-
-
 
        /// <summary>
        /// Opens the shop setting window.
@@ -73,11 +82,7 @@ namespace RetailPOS.ViewModel
        {
            Settings.SettingWindow = new Settings();
            Settings.SettingWindow.Show();
-           if (ShopSettingWindow._ShopSettingWindow != null)
-               ShopSettingWindow._ShopSettingWindow.Close();
-           if (CategorySettingWindow._AddCategoryWindow != null)
-               CategorySettingWindow._AddCategoryWindow.Close();
-
+           CheckForSettingWinClose();
 
        }
 

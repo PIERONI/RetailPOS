@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="400" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols">
+             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
+             xmlns:Utility="clr-namespace:RetailPOS.Utility">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -23,14 +24,14 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <ctrl:SettingHeader Grid.Row="0" Grid.ColumnSpan="2" x:Name="header" ></ctrl:SettingHeader>
-        <TextBox Grid.Column="1" Height="32" HorizontalAlignment="Left" Margin="11,11,0,0" Name="textBox1" VerticalAlignment="Top" Width="120" Grid.Row="1" />
+        <TextBox Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True" Grid.Column="1" Height="32" HorizontalAlignment="Left" Margin="11,11,0,0" Name="textBox1" VerticalAlignment="Top" Width="152" Grid.Row="1" />
         <TextBlock Height="24" HorizontalAlignment="Left" Margin="77,13,0,0"  TextAlignment="Right" Text="Category Name :" FontWeight="Bold" VerticalAlignment="Top" Width="115" Grid.Row="1" />
         <TextBlock Height="24" HorizontalAlignment="Left" Margin="46,18,0,0" TextAlignment="Right"  Text="Category Description :" FontWeight="Bold" VerticalAlignment="Top" Width="146" Grid.Row="2" />
         <TextBlock Height="24" HorizontalAlignment="Left" Margin="88,13,0,0" TextAlignment="Right"  Text="Category Color :"  FontWeight="Bold" VerticalAlignment="Top" Width="104" Grid.Row="3" />
         <TextBlock Height="24" HorizontalAlignment="Left" Margin="98,9,0,0" TextAlignment="Right" Text="Sort Order :"  FontWeight="Bold" VerticalAlignment="Top" Width="94" Grid.Row="4" />
-        <TextBox Height="34" HorizontalAlignment="Left" Margin="9,8,0,0"  VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="2" />
-        <xctk:ColorPicker ShowDropDownButton="True" DisplayColorAndName="True"  SelectedColor="{Binding SelectedColor,Mode=TwoWay}" ShowAvailableColors="True" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Margin="11,15,0,0" Name="colorPicker1" VerticalAlignment="Top" Width="119" />
-        <TextBox Height="32" HorizontalAlignment="Left" Margin="10,9,0,0" Name="textBox4" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="4" />
+        <TextBox Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Height="34" HorizontalAlignment="Left" Margin="9,8,0,0"  VerticalAlignment="Top" Width="154" Grid.Column="1" Grid.Row="2" />
+        <xctk:ColorPicker ShowDropDownButton="True" DisplayColorAndName="True"  SelectedColor="{Binding SelectedColor,Mode=TwoWay}" ShowAvailableColors="True" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Margin="11,15,0,0" Name="colorPicker1" VerticalAlignment="Top" Width="152" />
+        <TextBox Height="32" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" MaxLength="3" HorizontalAlignment="Left" Margin="10,9,0,0" Name="textBox4" VerticalAlignment="Top" Width="153" Grid.Column="1" Grid.Row="4" />
         <Button Content="Cancel" Grid.Row="5" Height="38" HorizontalAlignment="Left" Margin="77,0,0,0" Name="button1" VerticalAlignment="Top" Width="104" />
         <Button Content="Save" Height="38" HorizontalAlignment="Left" Margin="10,0,0,0" Name="button2" VerticalAlignment="Top" Width="104" Grid.Column="1" Grid.Row="5" />
         

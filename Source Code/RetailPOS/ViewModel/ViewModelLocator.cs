@@ -24,6 +24,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<ProductGridViewModel>();
             SimpleIoc.Default.Register<SettingViewModel>();
             SimpleIoc.Default.Register<ShopSettingViewModel>();
+            SimpleIoc.Default.Register<RightPanelPaymentDetailViewModel>();
 
         }
 
@@ -119,6 +120,14 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public RightPanelPaymentDetailViewModel RightPanelPaymentDetailVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<RightPanelPaymentDetailViewModel>();
+            }
+        }
+
 
         /// <summary>
         /// Cleanups this instance.
@@ -132,6 +141,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<ProductGridViewModel>();
             SimpleIoc.Default.Unregister<SettingViewModel>();
             SimpleIoc.Default.Unregister<ShopSettingViewModel>();
+            SimpleIoc.Default.Unregister<RightPanelPaymentDetailViewModel>();
         }
     }
 }

@@ -4,7 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:WpfKb="clr-namespace:WpfKb.Controls;assembly=WpfKb"
+             DataContext="{Binding Source={StaticResource Locator}, Path=RightPanelPaymentDetailVM}"
              mc:Ignorable="d" 
+              xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls"
+              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              d:DesignHeight="400" d:DesignWidth="509">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
@@ -39,13 +42,61 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="5 3 0 0"  HorizontalAlignment="left" Width="104" >
+            <Button Height="53" Margin="5 3 0 0"  HorizontalAlignment="left" Width="104"  Command="{Binding OpenPayEntryBalancePopUp}" >
                 <DockPanel>
                    <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="0 0 0 0">
                       <Bold>Payment Entry</Bold>
                     </TextBlock>
                 </DockPanel>
             </Button>
+
+            <my:ModalDialogPopup IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}" Title="Payment Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False">
+                <my:ModalDialogPopup.HostedContent>
+                    <ContentControl>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                              
+                            </Grid.RowDefinitions>
+                            <Label Content="First Name: " HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="0" Grid.Row="0"></Label>
+
+
+                            <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}" Margin="11,8,0,0"  Name="autoCompleteTxtFirstName"  ItemsSource="{Binding lstSearchCustomer}"                        
+                        
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="First_Name" VerticalAlignment="Top" Width="177" Height="25" >
+                                <toolkit:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="#DFF0D8">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                               
+                                            </Grid.RowDefinitions>
+                                            
+                                            <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
+                                                <TextBlock Text="Name: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding  First_Name}" Foreground="#47896B" ></TextBlock>
+                                                <TextBlock Text="Credit: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding  Credit_Limit}" Foreground="#47896B" ></TextBlock>
+                                              
+                                             
+                                            </WrapPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </toolkit:AutoCompleteBox.ItemTemplate>
+                            </toolkit:AutoCompleteBox>
+                         
+                          
+                        </Grid>
+                    </ContentControl>
+                </my:ModalDialogPopup.HostedContent>
+            </my:ModalDialogPopup>
+            
         </StackPanel>
         <GroupBox Grid.Column="1" Header="Payment Details" Margin="11,0,0,0">
             <Grid>

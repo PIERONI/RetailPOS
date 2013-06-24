@@ -146,6 +146,7 @@
     <Compile Include="Utility\SelectedItemBehaviour.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
+    <Compile Include="ViewModel\RightPanelPaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
     <Compile Include="ViewModel\ShopSettingViewModel.cs" />

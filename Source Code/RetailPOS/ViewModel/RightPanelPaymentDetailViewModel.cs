@@ -30,6 +30,10 @@ namespace RetailPOS.ViewModel
         private CustomerDTO _customer;
         private Visibility _isVisibleCustomerInfo;
         private string _customerName;
+        private string _customerName1;
+        private string _Mobile;
+        private string _Email;
+        private string _Balance;
         
         #endregion
 
@@ -120,6 +124,55 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public string CustomerName1
+        {
+            get { return _customerName1; }
+            set
+            {
+                _customerName1 = value;
+                RaisePropertyChanged("CustomerName1");
+            }
+        }
+
+        public string Mobile
+        {
+            get
+            {
+                return _Mobile;
+            }
+            set
+            {
+                _Mobile = value;
+                RaisePropertyChanged("Mobile");
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                _Email = value;
+                RaisePropertyChanged("Email");
+            }
+        }
+
+        public string Balance
+        {
+            get
+            {
+                return _Balance;
+            }
+            set
+            {
+                _Balance = value;
+                RaisePropertyChanged("Balance");
+            }
+        }
+
         public RightPanelPaymentDetailViewModel()
         {
             OpenPayEntryBalancePopUp = new RelayCommand(OpenProductPopupClick);
@@ -131,7 +184,17 @@ namespace RetailPOS.ViewModel
 
         private void OpenProductPopupClick()
         {
+         
             IsProductPopupOpen = true;
+            
+                
+            CustomerName = null;
+            CustomerBalance = null;
+            CustomerName1 = null;
+            Mobile = null;
+            Email = null;
+            Balance = null;
+
         }
 
         /// <summary>
@@ -147,6 +210,12 @@ namespace RetailPOS.ViewModel
             isVisibleCustomerInfo = Visibility.Visible;
             CustomerName = SelectedCustomer.First_Name;
             CustomerBalance = SelectedCustomer.Credit_Limit.ToString();
+            CustomerName1 = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
+            Mobile = SelectedCustomer.Mobile;
+            Email = SelectedCustomer.Email;
+            Balance = SelectedCustomer.Credit_Limit.ToString();
+            
+
         }
     }
 }

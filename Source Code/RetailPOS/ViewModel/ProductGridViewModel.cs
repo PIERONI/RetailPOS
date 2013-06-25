@@ -14,6 +14,18 @@ namespace RetailPOS.ViewModel
     {
         #region Declare Public and private Data member
 
+        //private bool _IsProductPopupOpen;
+        //public bool IsProductPopupOpen
+        //{
+        //    get { return _IsProductPopupOpen; }
+        //    set
+        //    {
+        //        _IsProductPopupOpen = value;
+        //        RaisePropertyChanged("IsProductPopupOpen");
+        //    }
+        //}
+
+
         private ObservableCollection<ProductDetails> _ProductDetials;
         public static List<int> listSelectItem { get; set; }
         public ObservableCollection<ProductDetails> lstProductDetails
@@ -84,7 +96,9 @@ namespace RetailPOS.ViewModel
             LogOutCommand = new RelayCommand(LogoutApplication);
             ClearProduct = new RelayCommand(ClearGridProduct);
             SelectProductCommand = new RelayCommand<object>(BindProductDetails);
-            DeleteSelectedItem = new RelayCommand(DeleteItem);          
+            DeleteSelectedItem = new RelayCommand(DeleteItem);
+           
+         
         }
 
 
@@ -146,6 +160,7 @@ namespace RetailPOS.ViewModel
             //lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice)});
             var amount = lstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();
+            //IsProductPopupOpen = false;          
 
         }
 

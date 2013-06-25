@@ -379,25 +379,25 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOSService1.wsdl" />
+    <None Include="Service References\RetailPOSService\RetailPOSService10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService13.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOSService7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService71.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService72.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService73.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService74.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService75.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService76.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService9.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -454,9 +454,6 @@
     <Resource Include="Resources\AbstractBlue.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RetailPOSService\RetailPOSService1.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Service References\RetailPOSService\" />
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +508,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\home-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RetailPOSService\RetailPOSService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

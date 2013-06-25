@@ -17,5 +17,6 @@
         public int Payment_Period { get; set; }
         public string Image_Path { get; set; }
         public long Address_Id { get; set; }
+        public string Email { get; set; }
     }
 }

@@ -79,7 +79,7 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="350"></TextBlock>
                                 <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
-                                    <TextBlock Text="Type: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                    <TextBlock Text="Type: "  Foreground="#47896B"  Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                     <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
                                     <TextBlock Text="First Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                     <TextBlock Text="{Binding First_Name}" Foreground="#47896B"></TextBlock>

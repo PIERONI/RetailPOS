@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Height="300" d:DesignWidth="320" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
+            Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -50,12 +50,12 @@
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Category</Bold></TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right">
+            <Button Height="53" Width="98" Margin="3" Command="{Binding OpenProductWindowCmd}"  HorizontalAlignment="Right">
                 <DockPanel>
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Product</Bold></TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right">
+            <Button Height="53" Width="98" Margin="3" Command="{Binding OpenCustomerCmd}"  HorizontalAlignment="Right">
                 <DockPanel>
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Customer</Bold></TextBlock>
                 </DockPanel>

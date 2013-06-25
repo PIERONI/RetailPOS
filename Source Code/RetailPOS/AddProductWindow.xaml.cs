@@ -14,11 +14,10 @@ using System.Windows.Shapes;
 namespace RetailPOS
 {
     /// <summary>
-    /// Interaction logic for AddCategoryWindow.xaml
+    /// Interaction logic for AddProductWindow.xaml
     /// </summary>
-    public partial class AddCategoryWindow : Window
+    public partial class AddProductWindow : Window
     {
-
         /// <summary>
         /// Gets or sets the _ add category window.
         /// </summary>
@@ -31,13 +30,8 @@ namespace RetailPOS
             set;
         }
 
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AddCategoryWindow"/> class.
-        /// </summary>
-        public AddCategoryWindow()
+        public AddProductWindow()
         {
-            _AddCategoryWindow  = this;
             InitializeComponent();
         }
     }

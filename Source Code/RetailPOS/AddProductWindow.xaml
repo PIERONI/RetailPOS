@@ -1,11 +1,10 @@
-﻿<Window x:Class="RetailPOS.AddCategoryWindow"
+﻿<Window x:Class="RetailPOS.AddProductWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        
-        Title="AddCategoryWindow" Height="300" Width="420"  ResizeMode="NoResize"
+        Title="AddProductWindow"   ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols">
     <Grid>
-        <Child:AddCategory x:Name="test"></Child:AddCategory>
+        <Child:AddProduct x:Name="AddProduct"></Child:AddProduct>
     </Grid>
 </Window>

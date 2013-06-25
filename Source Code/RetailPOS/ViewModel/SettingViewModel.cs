@@ -16,6 +16,8 @@ namespace RetailPOS.ViewModel
        public RelayCommand OpenShopSettingCmd { get; private set; }
        public RelayCommand OpenCategorySettingCmd { get; private set; }
        public RelayCommand BackToMainWin { get; private set; }
+       public RelayCommand OpenCustomerCmd { get; private set; }
+       public RelayCommand OpenProductWindowCmd { get; private set; }
       
        #endregion
 
@@ -30,7 +32,27 @@ namespace RetailPOS.ViewModel
            OpenShopSettingCmd = new RelayCommand(OpenShopSettingWindow);
            OpenCategorySettingCmd = new RelayCommand(OpenCategoryWindow);
            BackToMainWin = new RelayCommand(OpenMainWindow);
+           OpenCustomerCmd = new RelayCommand(OpenCustomerWindow);
+           OpenProductWindowCmd = new RelayCommand(OpenProduct);
 
+       }
+
+       /// <summary>
+       /// Opens the product.
+       /// </summary>
+       private void OpenProduct()
+       {
+
+       }
+
+       /// <summary>
+       /// Opens the customer window.
+       /// </summary>
+       private void OpenCustomerWindow()
+       {
+           CustomerWindow Cw = new CustomerWindow();
+           Cw.Show();
+           Settings.SettingWindow.Close();
        }
 
        /// <summary>
@@ -52,6 +74,8 @@ namespace RetailPOS.ViewModel
                ShopSettingWindow._ShopSettingWindow.Close();
            if (CategorySettingWindow._AddCategoryWindow != null)
                CategorySettingWindow._AddCategoryWindow.Close();
+           if (CustomerWindow._CustomerWindow != null)
+               CustomerWindow._CustomerWindow.Close();
        }
 
        /// <summary>

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
 
 namespace RetailPOS.ViewModel
 {
-    class AddCategoryViewModel : ViewModelBase
+  public  class AddCategoryViewModel : ViewModelBase
     {
         /// <summary>
         /// The _staff name

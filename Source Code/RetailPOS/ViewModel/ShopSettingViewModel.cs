@@ -5,6 +5,7 @@ using System.Text;
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Command;
+using System.Windows;
 
 namespace RetailPOS.ViewModel
 {
@@ -19,10 +20,23 @@ namespace RetailPOS.ViewModel
        private string _website;
        private string _address;
        private decimal _rate;
+       private Visibility _Visible;
        private CurrencyModel _selectedCurrency;
        public RelayCommand SaveShopSetting { get; private set; }
-       public RelayCommand CancelShopSetting { get; private set; } 
-
+       public RelayCommand CancelShopSetting { get; private set; }
+       public RelayCommand <int> IsScheduledCheck { get; set; }
+       public Visibility VisibleTimePicker
+       {
+           get
+           {
+               return _Visible;
+           }
+           set
+           {
+               _Visible = value;
+               RaisePropertyChanged("VisibleTimePicker");
+           }
+        }
 
 
        public string ShopName
@@ -110,6 +124,17 @@ namespace RetailPOS.ViewModel
            AddCurrency();
            SaveShopSetting = new RelayCommand(SaveSetting);
            CancelShopSetting = new RelayCommand(CancelSetting);
+           IsScheduledCheck = new RelayCommand<int>(ShowTimer);
+           VisibleTimePicker = Visibility.Collapsed;
+       }
+
+       /// <summary>
+       /// Shows the timer.
+       /// </summary>
+       /// <param name="Obj">The obj.</param>
+       private void ShowTimer(int Obj)
+       {
+           VisibleTimePicker = Obj == 0 ? Visibility.Collapsed : Visibility.Visible;
        }
 
        /// <summary>

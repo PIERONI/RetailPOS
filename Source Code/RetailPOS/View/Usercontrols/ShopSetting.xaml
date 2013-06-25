@@ -88,10 +88,13 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <StackPanel Margin="10" Grid.Row="0" Orientation="Horizontal">
-                        <RadioButton GroupName="BackUp"  Command="{Binding}" Foreground="Black"  Content="Back Up Now" TextBlock.FontSize="14" FontWeight="Bold">                        
+                        <RadioButton GroupName="BackUp" Command="{Binding IsScheduledCheck}" Name="BckUpNow" CommandParameter="0" Foreground="Black"  Content="Back Up Now" TextBlock.FontSize="14" FontWeight="Bold">                        
                     </RadioButton>
-                        <RadioButton GroupName="BackUp" Command="{Binding}" Foreground="Black" Margin="20 0 0 0"  Content="Schedule A Backup" TextBlock.FontSize="14" FontWeight="Bold">
+                        <RadioButton GroupName="BackUp" Command="{Binding IsScheduledCheck}"  Name="BckUpNowScheduled"  CommandParameter="1" Foreground="Black" Margin="20 0 0 0"  Content="Schedule A Backup" TextBlock.FontSize="14" FontWeight="Bold">
                     </RadioButton>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+                        <xctk:TimePicker Name="timePicker1" Visibility="{Binding VisibleTimePicker}"  Background="Blue" Width="96" />
                     </StackPanel>
                 </Grid>
             </TabItem>

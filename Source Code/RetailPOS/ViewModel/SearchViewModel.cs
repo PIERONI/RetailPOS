@@ -38,6 +38,8 @@ namespace RetailPOS.ViewModel
        private string _productDescription;
        private int _id;
 
+
+
        public int Id
        {
            get

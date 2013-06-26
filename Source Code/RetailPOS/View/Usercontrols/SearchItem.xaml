@@ -12,7 +12,11 @@
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <GroupBox Header="Search Box" Height="129" Width="Auto">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="276*" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Search Box" Height="129" Width="Auto" Grid.ColumnSpan="2" Margin="0,10">
             <Grid Height="109" Width="274">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -98,7 +102,7 @@
                 
             </Grid>
         </GroupBox>
-        <my:ModalDialogPopup Width="auto" MaxWidth="500"  IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}"  Title="Product" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False">
+        <my:ModalDialogPopup Width="auto" MaxWidth="500"  IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}" Title="Product" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
             <my:ModalDialogPopup.HostedContent>
                 <ContentControl>
                     <Grid>

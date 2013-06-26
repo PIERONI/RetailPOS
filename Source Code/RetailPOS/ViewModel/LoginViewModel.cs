@@ -129,7 +129,7 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void GetUsers()
         {
-            lstUsers = new ObservableCollection<StaffDTO>(from item in ServiceFactory.ServiceClient.GetStaffDetails()
+           lstUsers = new ObservableCollection<StaffDTO>(from item in ServiceFactory.ServiceClient.GetStaffDetails()
                                                           select item);
         }
     }

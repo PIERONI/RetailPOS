@@ -4,17 +4,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
             Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
     <UserControl.Resources>
-        <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
+      
+            <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+      
+
     </UserControl.Resources>
+   
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="139"></RowDefinition>
+            <RowDefinition Height="589*"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Height="30" Margin="5"  HorizontalAlignment="Left" Width="98" Command="{Binding BackToMainWindow}">
                 <DockPanel>
                     <Image Source="../../Images/sign-back-icon.png" Width="35" />
@@ -24,8 +29,8 @@
                 </DockPanel>
             </Button>
         </StackPanel>
-        <GridSplitter Height="5" Grid.Row="1" Background="AliceBlue"></GridSplitter>
-        <WrapPanel Grid.Row="1" FlowDirection="LeftToRight" Height="300">
+        
+        <WrapPanel Grid.Row="1" FlowDirection="LeftToRight" Margin="3,3,3,61">
             <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" Command="{Binding OpenShopSettingCmd}">
                 <DockPanel>                   
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
@@ -65,6 +70,17 @@
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Waste Management</Bold></TextBlock>
                 </DockPanel>
             </Button>
-        </WrapPanel>   
+        </WrapPanel>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
+
+            <ctrl:AddCategory x:Name="ctrlAddCategory" Visibility="{Binding ElementName=MainSettingWindow, 
+                                          Path=IsCategoryVisible,
+                                          Mode=TwoWay,
+                                          UpdateSourceTrigger=PropertyChanged}" Margin="20" Width="422"></ctrl:AddCategory>
+            <ctrl:AddCustomer x:Name="ctrlAddCustomer" Visibility="Collapsed" Margin="20" Width="422"></ctrl:AddCustomer>
+            <ctrl:AddProduct x:Name="ctrlAddProduct" Visibility="Collapsed" Margin="20" Width="422"></ctrl:AddProduct>
+            <ctrl:ShopSetting x:Name="ctrlShopSetting" Visibility="Collapsed" Margin="20" Width="422"></ctrl:ShopSetting>
+
+        </StackPanel>
     </Grid>
 </UserControl>

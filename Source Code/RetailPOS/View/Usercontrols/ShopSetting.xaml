@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="450"
-             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
+             
              DataContext="{Binding Source={StaticResource Locator}, Path=ShopSettingVM}"
              xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.Resources>
@@ -13,12 +13,12 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
+           
             <RowDefinition Height="550*" />
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <ctrl:SettingHeader Grid.Row="0" x:Name="header" ></ctrl:SettingHeader>
-        <TabControl Margin="3,3,0,0" Grid.Row="1"  HorizontalAlignment="Left" Name="tabCtrlSetting" VerticalAlignment="Top" Width="439" Grid.RowSpan="2">
+       
+        <TabControl Margin="3,3,0,0" Grid.Row="0"  HorizontalAlignment="Left" Name="tabCtrlSetting" VerticalAlignment="Top" Width="439" Grid.RowSpan="2">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>

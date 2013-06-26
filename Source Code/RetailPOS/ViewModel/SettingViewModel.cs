@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Windows;
 
 namespace RetailPOS.ViewModel
 {
@@ -18,7 +19,62 @@ namespace RetailPOS.ViewModel
        public RelayCommand BackToMainWin { get; private set; }
        public RelayCommand OpenCustomerCmd { get; private set; }
        public RelayCommand OpenProductWindowCmd { get; private set; }
+       private Visibility _isCategoryVisible;
+       private Visibility _isCustomerVisible;
+       private Visibility _isProductVisible;
+       private Visibility _isShopSettingVisible;
       
+       public Visibility IsCategoryVisible
+       {
+           get
+           {
+               return _isCategoryVisible;
+           }
+           set
+           {
+               _isCategoryVisible = value;
+               RaisePropertyChanged("IsCategoryVisible");
+           }
+       }
+
+       public Visibility IsCustomerVisible
+       {
+           get
+           {
+               return _isCustomerVisible;
+           }
+           set
+           {
+               _isCustomerVisible = value;
+               RaisePropertyChanged("IsCustomerVisible");
+           }
+       }
+
+       public Visibility IsProductVisible
+       {
+           get
+           {
+               return _isProductVisible;
+           }
+           set
+           {
+               _isProductVisible = value;
+               RaisePropertyChanged("IsProductVisible");
+           }
+       }
+
+       public Visibility IsShopSettingVisible
+       {
+           get
+           {
+               return _isShopSettingVisible;
+           }
+           set
+           {
+               _isShopSettingVisible = value;
+               RaisePropertyChanged("IsShopSettingVisible");
+           }
+       }
        #endregion
 
        /// <summary>
@@ -34,7 +90,19 @@ namespace RetailPOS.ViewModel
            BackToMainWin = new RelayCommand(OpenMainWindow);
            OpenCustomerCmd = new RelayCommand(OpenCustomerWindow);
            OpenProductWindowCmd = new RelayCommand(OpenProduct);
+           HideSettings();
 
+       }
+
+       /// <summary>
+       /// Hides the settings.
+       /// </summary>
+       private void HideSettings()
+       {
+           IsProductVisible = Visibility.Collapsed;
+           IsShopSettingVisible = Visibility.Collapsed;
+           IsCategoryVisible = Visibility.Collapsed;
+           IsCustomerVisible = Visibility.Collapsed;
        }
 
        /// <summary>
@@ -42,20 +110,20 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenProduct()
        {
-           AddProductWindow Apw = new AddProductWindow();
-           Apw.Show();
-           Settings.SettingWindow.Close();
-
+           IsProductVisible = Visibility.Visible;
+           
        }
 
+      
+
+
+      
        /// <summary>
        /// Opens the customer window.
        /// </summary>
        private void OpenCustomerWindow()
        {
-           CustomerWindow Cw = new CustomerWindow();
-           Cw.Show();
-           Settings.SettingWindow.Close();
+          
        }
 
        /// <summary>
@@ -63,9 +131,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenMainWindow()
        {
-           MainWindow MW = new MainWindow();
-           MW.Show();
-           CheckForSettingWinClose();
+         
        }
 
        /// <summary>
@@ -73,12 +139,6 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void CheckForSettingWinClose()
        {
-           if (ShopSettingWindow._ShopSettingWindow != null)
-               ShopSettingWindow._ShopSettingWindow.Close();
-           if (CategorySettingWindow._AddCategoryWindow != null)
-               CategorySettingWindow._AddCategoryWindow.Close();
-           if (CustomerWindow._CustomerWindow != null)
-               CustomerWindow._CustomerWindow.Close();
        }
 
        /// <summary>
@@ -86,9 +146,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenCategoryWindow()
        {
-           CategorySettingWindow ACW = new CategorySettingWindow();
-           ACW.Show();
-           Settings.SettingWindow.Close();
+          
        }
 
        /// <summary>
@@ -96,9 +154,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenShopSettingWindow()
        {
-           ShopSettingWindow Ssw = new ShopSettingWindow();
-           Ssw.Show();
-           Settings.SettingWindow.Close();
+           
 
        }
 
@@ -119,9 +175,7 @@ namespace RetailPOS.ViewModel
        private void BackToMain()
        {
            
-           MainWindow MW = new MainWindow();
-           MW.Show();
-           Settings.SettingWindow.Close();
+         
        }
 
        /// <summary>
@@ -129,8 +183,8 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenSettingWindow()
        {
-           Settings.SettingWindow = new Settings();
-           Settings.SettingWindow.Show();
+           Settings set = new Settings();
+           set.Show();
            MainWindow._MainWindow.Close();
 
        }

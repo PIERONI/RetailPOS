@@ -4,7 +4,9 @@
         Title="Settings" Height="768" Width="1024"
         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Name="MainSettingWindow"
+>
     <Grid>
         <Child:Settings x:Name="setting"></Child:Settings>
     </Grid>

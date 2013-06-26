@@ -13,12 +13,12 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
+            
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <ctrl:SettingHeader Grid.Row="0" x:Name="header" ></ctrl:SettingHeader>
-        <TabControl Margin="3" Grid.Row="1" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="415">
+       
+        <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="415">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>

@@ -118,7 +118,7 @@
                         <Label Content="Product Code: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="1"></Label>
                         <Label Content="Price : " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="2"></Label>
                         <Label Content="Quantity: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="3"></Label>
-                        <Label Content="Description: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="4"></Label>
+                        <Label Content="Description: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="100" Grid.Column="0" Grid.Row="4"></Label>
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductName}" Grid.Column="1" Grid.Row="0" ></TextBlock>
                         <TextBlock HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductCode}" Grid.Column="1" Grid.Row="1" ></TextBlock>
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductPrice}" Grid.Column="1" Grid.Row="2" ></TextBlock>

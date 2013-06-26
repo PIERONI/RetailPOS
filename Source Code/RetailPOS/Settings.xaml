@@ -6,6 +6,6 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Child:Settings x:Name="setting" Height="400"></Child:Settings>
+        <Child:Settings x:Name="setting"></Child:Settings>
     </Grid>
 </Window>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="400"
+             d:DesignHeight="600" d:DesignWidth="450"
              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
              DataContext="{Binding Source={StaticResource Locator}, Path=ShopSettingVM}"
              xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
@@ -14,17 +14,22 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="550*" />
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <ctrl:SettingHeader Grid.Row="0" x:Name="header" ></ctrl:SettingHeader>
-        <TabControl Margin="3" Grid.Row="1" Height="300" HorizontalAlignment="Left" Name="tabCtrlSetting" VerticalAlignment="Top" Width="390">
+        <TabControl Margin="3,3,0,0" Grid.Row="1"  HorizontalAlignment="Left" Name="tabCtrlSetting" VerticalAlignment="Top" Width="439" Grid.RowSpan="2">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
             <TabItem Header="Shop Setting" Name="tabShopSetting">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -33,24 +38,34 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition >                            
+                        <ColumnDefinition  Width="150">                            
                         </ColumnDefinition>
-                        <ColumnDefinition>                            
+                        <ColumnDefinition Width="*">                            
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Shop Name :" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="25,13,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Phone :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBlock Text="Fax :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
-                    <TextBlock Text="Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-                    <TextBlock Text="Web Site :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
-                    <TextBlock Text="Address :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True" Grid.Row="0" MaxLength="255" Height="32" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Row="1"  MaxLength="15" Height="32" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True"  Grid.Row="2"  MaxLength="15" Height="32" Text="{Binding Fax}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumerichyphenOnly="True" Grid.Row="3"  MaxLength="50" Height="32" Text="{Binding Email}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Grid.Row="4" MaxLength="100" Height="32" Text="{Binding Website}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Grid.Row="5" Height="32" Text="{Binding Address}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                   
+                    <TextBlock Text="Shop Name :" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="25,13,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Left" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Phone :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="1" />
+                    <TextBlock Text="Fax :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="2" />
+                    <TextBlock Text="Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="3" />
+                    <TextBlock Text="Web Site :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="4" />
+                    <TextBlock Text="Address1 :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="5" />
+                    <TextBlock Text="Address2 :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="6" />
+                    <TextBlock Text="Address3 :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="7" />
+                    <TextBlock Text="City/Town :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="8" />
+                    <TextBlock Text="Country :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="9" />
+                    <TextBlock Text="Zip code :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="10" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True" Grid.Row="0" MaxLength="255" Height="32" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Row="1"  MaxLength="15" Height="32" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True"  Grid.Row="2"  MaxLength="15" Height="32" Text="{Binding Fax}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumerichyphenOnly="True" Grid.Row="3"  MaxLength="50" Height="32" Text="{Binding Email}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="4" MaxLength="100" Height="32" Text="{Binding Website}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="5" Height="32" Text="{Binding Address}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="6" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="7" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="8" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="9" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <TextBox Grid.Column="1" Grid.Row="10" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+
                 </Grid>
             </TabItem>
             <TabItem Header="Tax Or Rate Setting" Name="tabTaxSetting">
@@ -99,8 +114,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Canvas Grid.Row="2">
-            <Button Height="30" Margin="1" Canvas.Left="1" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
+        <Canvas Grid.Row="3">
+            <Button Height="30" Margin="1" Canvas.Left="132" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14"   HorizontalAlignment="Center" Width="75" >
                 <DockPanel>
                     <Image Source="../../Images/save-icon.png" Width="16" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
@@ -108,7 +123,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="30" Canvas.Right="1" Margin="2" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
+            <Button Height="30" Canvas.Right="120" Margin="2" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Center" Width="75" >
                 <DockPanel>
                     <Image Source="../../Images/cancel-icon.png" Width="12" Height="29" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">

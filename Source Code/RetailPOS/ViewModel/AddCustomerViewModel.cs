@@ -7,14 +7,17 @@ namespace RetailPOS.ViewModel
    public class AddCustomerViewModel : ViewModelBase
     {
        #region Declare Public and private Data member
+
        public ObservableCollection<CStatusModel> lstStatus { get; private set; }
        public ObservableCollection<CTypeModel> lstype { get; private set; }
        public ObservableCollection<CPaymentGatewayModel> lstPaymentGateway { get; private set; }
        public ObservableCollection<COpenIDModel> lstOpenId { get; private set; }
+
        private CTypeModel _selectedType;
        private COpenIDModel _selectedOpenId;
        private CPaymentGatewayModel _selectedGateway;
        private CStatusModel _selectedStatus;
+       
        private string _customerCode;
        private string _firstName;
        private string _lastName;
@@ -40,7 +43,6 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("CustomerCode");
            }
        }
-
 
        public string FirstName
        {
@@ -79,9 +81,7 @@ namespace RetailPOS.ViewModel
                _password = value;
                RaisePropertyChanged("Password");
            }
-
        }
-
 
        public string Phone
        {
@@ -96,7 +96,6 @@ namespace RetailPOS.ViewModel
            }
        }
 
-
        public string Mobile
        {
            get
@@ -110,7 +109,6 @@ namespace RetailPOS.ViewModel
            }
        }
 
-
        public decimal Balance
        {
            get
@@ -123,7 +121,6 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("Balance");
            }
        }
-
 
        public string Address
        {
@@ -242,7 +239,6 @@ namespace RetailPOS.ViewModel
            }
        }
 
-
        #endregion
 
        /// <summary>
@@ -275,34 +271,29 @@ namespace RetailPOS.ViewModel
            lstOpenId.Add(new COpenIDModel { Id = 0, Name = "Yahoo" });
            lstOpenId.Add(new COpenIDModel { Id = 1, Name = "Google" });
        }
-
     }
 
    public class CStatusModel
    {
        public int StatusId{ get; set; }
        public String StatusName { get; set; }
-
    }
 
    public class CTypeModel
    {
        public int TypeId { get; set; }
        public String TypeName { get; set; }
-
    }
 
    public class CPaymentGatewayModel
    {
        public int Id { get; set; }
        public String GatewayName { get; set; }
-
    }
 
    public class COpenIDModel
    {
        public int Id { get; set; }
        public String Name { get; set; }
-
    }
 }

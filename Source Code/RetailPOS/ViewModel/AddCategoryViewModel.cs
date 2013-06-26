@@ -19,12 +19,10 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private string _selectedColor;
 
-
         /// <summary>
         /// The _sort order
         /// </summary>
         private int _sortOrder;
-
 
         /// <summary>
         /// Gets or sets the name of the category.
@@ -42,7 +40,6 @@ namespace RetailPOS.ViewModel
             }
         }
 
-
         /// <summary>
         /// Gets or sets the category description.
         /// </summary>
@@ -58,7 +55,6 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("CategoryDescription");
             }
         }
-
 
         /// <summary>
         /// Gets or sets the color of the selected.
@@ -95,10 +91,8 @@ namespace RetailPOS.ViewModel
             }
         }
 
-
         public AddCategoryViewModel()
         {
-
         }
     }
 }

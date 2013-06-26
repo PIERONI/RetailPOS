@@ -42,6 +42,9 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenProduct()
        {
+           AddProductWindow Apw = new AddProductWindow();
+           Apw.Show();
+           Settings.SettingWindow.Close();
 
        }
 

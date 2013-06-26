@@ -63,13 +63,10 @@ namespace RetailPOS.ViewModel
 
         private void UpdateProduct()
         {
-
             if (SelectedProduct == null) return;
             listSelectItem.Add(SelectedProduct.Id);
 
             //(from item in lstProductDetails select item).Update(item => item.IsSelected = (from selectedItems in listSelectItem join item1 in lstProductDetails
-                                                                                          // where selectedItems. select true)).ToObservableCollection();
-                            
         }
 
         public string Total

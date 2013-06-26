@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace RetailPOS.CommonLayer.DataTransferObjects.Master
+﻿namespace RetailPOS.CommonLayer.DataTransferObjects.Master
 {
-    class CountryDTO
+    public class CountryDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

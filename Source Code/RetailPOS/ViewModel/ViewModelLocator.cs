@@ -1,4 +1,3 @@
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 
@@ -25,7 +24,8 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<SettingViewModel>();
             SimpleIoc.Default.Register<ShopSettingViewModel>();
             SimpleIoc.Default.Register<RightPanelPaymentDetailViewModel>();
-
+            SimpleIoc.Default.Register<AddCustomerViewModel>();
+            SimpleIoc.Default.Register<AddProductViewModel>();
         }
 
         /// <summary>
@@ -120,6 +120,12 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the shop Right Panel Payment Detail View Model.
+        /// </summary>
+        /// <value>
+        /// The shop setting VM.
+        /// </value>
         public RightPanelPaymentDetailViewModel RightPanelPaymentDetailVM
         {
             get
@@ -128,6 +134,33 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the shop Add Customer View Model.
+        /// </summary>
+        /// <value>
+        /// The shop setting VM.
+        /// </value>
+        public AddCustomerViewModel CustomerVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddCustomerViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the shop setting Add Product View Model.
+        /// </summary>
+        /// <value>
+        /// The Add Product View Model.
+        /// </value>
+        public AddProductViewModel ProductVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddProductViewModel>();
+            }
+        }
 
         /// <summary>
         /// Cleanups this instance.
@@ -142,6 +175,8 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<SettingViewModel>();
             SimpleIoc.Default.Unregister<ShopSettingViewModel>();
             SimpleIoc.Default.Unregister<RightPanelPaymentDetailViewModel>();
+            SimpleIoc.Default.Register<AddCustomerViewModel>();
+            SimpleIoc.Default.Register<AddProductViewModel>();
         }
     }
 }

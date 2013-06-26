@@ -1,31 +1,28 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
-using RetailPOS.Utility;
 
+#endregion
 
 namespace RetailPOS.ViewModel
 {    
     public class RightPanelPaymentDetailViewModel : ViewModelBase
     {
-
         #region Declare Public and private Data member
 
         public IList<CustomerDTO> lstSearchCustomer { get; private set; }
-
         public RelayCommand OpenPayEntryBalancePopUp { get; private set; }
         public RelayCommand OpenCardEntryBalancePopUp { get; private set; }
         public RelayCommand SelectCardCommand { get; private set; }
        
-        // private ProductDTO _ShowPopup;
-        private bool _IsProductPopupOpen;
+        private bool _isPaymentEntryPopupOpen;
         private bool _IsCardPopupOpen;
         private string _customerBalance;
 
@@ -40,7 +37,10 @@ namespace RetailPOS.ViewModel
         private int _CardAmount;
         private int _PaidAmount;
         
-        #endregion        
+        #endregion
+
+        #region Public Properties
+
         public string CustomerBalance
         {
             get
@@ -53,6 +53,7 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("CustomerBalance");
             }
         }
+
         public CustomerDTO SelectedCustomer
         {
             get
@@ -64,8 +65,8 @@ namespace RetailPOS.ViewModel
                 _selectedCustomer = value;
                 BindCustomer();
             }
-
         }
+
         public CustomerDTO Customer
         {
             get
@@ -84,18 +85,16 @@ namespace RetailPOS.ViewModel
                 {
                     SelectedCustomer = Customer;
                 }
-
             }
-
         }
-        public bool IsProductPopupOpen
+
+        public bool IsPaymentEntryPopupOpen
         {
-            get { return _IsProductPopupOpen; }
+            get { return _isPaymentEntryPopupOpen; }
             set
-            {
-                
-                _IsProductPopupOpen = value;
-                RaisePropertyChanged("IsProductPopupOpen");
+            {   
+                _isPaymentEntryPopupOpen = value;
+                RaisePropertyChanged("IsPaymentEntryPopupOpen");
             }
         }
 
@@ -183,6 +182,7 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("Balance");
             }
         }
+
         public int CardAmount
         {
             get { return _CardAmount; }
@@ -192,6 +192,7 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("CardAmount");
             }
         }
+
         public int PaidAmount
         {
             get { return _PaidAmount; }
@@ -201,12 +202,14 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("PaidAmount");
             }
         }
-            
 
+        #endregion
+
+        #region Constructor
 
         public RightPanelPaymentDetailViewModel()
         {
-            OpenPayEntryBalancePopUp = new RelayCommand(OpenProductPopupClick);
+            OpenPayEntryBalancePopUp = new RelayCommand(OpenPayEntryBalancePopUpClick);
             OpenCardEntryBalancePopUp = new RelayCommand(OpenCardPopupclick);
             SelectCardCommand = new RelayCommand(BindCardAmount);
             lstSearchCustomer = new List<CustomerDTO>();
@@ -215,18 +218,18 @@ namespace RetailPOS.ViewModel
                                                                       select item).ToList();
         }
 
-        private void OpenProductPopupClick()
+        #endregion
+
+        private void OpenPayEntryBalancePopUpClick()
         {
-         
-            IsProductPopupOpen = true;           
-                
+            _isPaymentEntryPopupOpen = true;           
+
             CustomerName = null;
             CustomerBalance = null;
             CustomerName1 = null;
             Mobile = null;
             Email = null;
             Balance = null;
-
         }
 
         private void OpenCardPopupclick()
@@ -244,6 +247,7 @@ namespace RetailPOS.ViewModel
                 isVisibleCustomerInfo = Visibility.Collapsed;
                 return;
             }
+
             isVisibleCustomerInfo = Visibility.Visible;
             CustomerName = SelectedCustomer.First_Name;
             CustomerBalance = SelectedCustomer.Credit_Limit.ToString();
@@ -251,17 +255,13 @@ namespace RetailPOS.ViewModel
             Mobile = SelectedCustomer.Mobile;
             Email = SelectedCustomer.Email;
             Balance = SelectedCustomer.Credit_Limit.ToString();
-            
-
         }
+
         private void BindCardAmount()
         {
-            PaidAmount = PaidAmount+CardAmount;
+            PaidAmount = PaidAmount + CardAmount;
             IsCardPopupOpen = false;
             CardAmount = 0;
-
         }
-
-       
     }
 }

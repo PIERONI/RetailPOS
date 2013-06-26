@@ -1,8 +1,8 @@
 ﻿namespace RetailPOS.CommonLayer.DataTransferObjects.Master
 {
-    public class StreetDTO : BaseDTO
+    public class TownCityDTO : BaseDTO
     {
         public int Id { get; set; }
-        public string Street { get; set; }
+        public string Town_City { get; set; }
     }
 }

@@ -48,7 +48,7 @@
     <Compile Include="Master\LocalityDTO.cs" />
     <Compile Include="Master\PostCodeDTO.cs" />
     <Compile Include="Master\StreetDTO.cs" />
-    <Compile Include="Master\Town_CityDTO.cs" />
+    <Compile Include="Master\TownCityDTO.cs" />
     <Compile Include="Product\ProductDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\ShopDTO.cs" />

@@ -74,8 +74,65 @@
                                     </Grid.RowDefinitions>
                                     <Label Content="Customer Name: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="0"></Label>
                                     <Label Content="Mobile No: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="1"></Label>
-                                    <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="150" Height="25" Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="0" ></TextBox>
-                                    <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="150" Height="25"  Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="1" ></TextBox>
+
+                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="11,8,0,0" Text="{Binding CustomerName}" Name="autoCompleteTxtName"  ItemsSource="{Binding lstSearchCustomer}"                        
+                        SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="First_Name" VerticalAlignment="Top" Width="150" Height="25" >
+                                        <toolkit:AutoCompleteBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="#DFF0D8">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="180" ></TextBlock>
+                                                    <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="180">
+                                                        <TextBlock Text="Type: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
+                                                        <TextBlock Text="First Name: "  Foreground="#47896B" FontWeight="Bold"  Margin="10 0 0 0"></TextBlock>
+                                                        <TextBlock Text="{Binding  First_Name}" Foreground="#47896B" ></TextBlock>
+                                                        <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding Last_Name}" Foreground="#47896B"></TextBlock>
+                                                        <TextBlock Text="Email: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding Email}" Foreground="#47896B"></TextBlock>
+                                                        <TextBlock Text="Mobile No: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding  Mobile}" Foreground="#47896B" ></TextBlock>
+                                                    </WrapPanel>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </toolkit:AutoCompleteBox.ItemTemplate>
+                                    </toolkit:AutoCompleteBox>
+                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1"  Margin="11,8,0,0" Text="{Binding Mobile}"  Name="autoCompleteTxtMobile"  ItemsSource="{Binding lstSearchCustomer}"                        
+                        SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Mobile" VerticalAlignment="Top" Width="150" Height="25" >
+                                        <toolkit:AutoCompleteBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Background="#DFF0D8">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition></RowDefinition>
+                                                        <RowDefinition></RowDefinition>
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="180" ></TextBlock>
+                                                    <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="180">
+                                                        <TextBlock Text="Type: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
+                                                        <TextBlock Text="First Name: "  Foreground="#47896B" FontWeight="Bold"  Margin="10 0 0 0"></TextBlock>
+                                                        <TextBlock Text="{Binding  First_Name}" Foreground="#47896B" ></TextBlock>
+                                                        <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding Last_Name}" Foreground="#47896B"></TextBlock>
+                                                        <TextBlock Text="Email: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding Email}" Foreground="#47896B"></TextBlock>
+                                                        <TextBlock Text="Mobile No: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
+                                                        <TextBlock Text="{Binding  Credit_Limit}" Foreground="#47896B" ></TextBlock>
+                                                    </WrapPanel>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </toolkit:AutoCompleteBox.ItemTemplate>
+                                    </toolkit:AutoCompleteBox>
                                     <StackPanel Grid.ColumnSpan="2" Grid.Row="2"  Margin="12,12,0,0">
                                         <Button  Content="Select Customer" Command="{Binding}" Width="200" Height="40">
                                         </Button>

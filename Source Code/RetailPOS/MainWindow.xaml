@@ -17,7 +17,7 @@
             <GroupBox Height="159" Margin="8 0 0 0" HorizontalAlignment="Left"  VerticalAlignment="Top" Background="AliceBlue"  Header="Categories" Width="499">
                 <Child:Categories  x:Name="cat" HorizontalAlignment="Left"  Margin="1,0,0,0" ></Child:Categories>
             </GroupBox>
-            <GroupBox Height="250" Margin="5 0 0 0" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Background="AliceBlue" Header="Products">
+            <GroupBox Height="360" Margin="5 0 0 0" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Background="AliceBlue" Header="Products">
                 <Child:ShowProduct HorizontalAlignment="Left" x:Name="prod"  Margin="1,0,0,0"></Child:ShowProduct>
             </GroupBox>
         </StackPanel>

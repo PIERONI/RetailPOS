@@ -9,7 +9,7 @@
     <UserControl.Resources>
       
     </UserControl.Resources>
-    <Grid Width="490" Height="200">
+    <Grid Width="490" Height="360">
         <ListBox Name="LstProduct" ItemsSource="{Binding lstProduct}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>

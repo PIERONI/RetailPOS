@@ -13,7 +13,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0">
-            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" >
+            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="98" >
                 <DockPanel>
                     <Image Source="../../Images/color-set-icon.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
@@ -29,7 +29,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="95" >
+            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="95" >
                 <DockPanel>
                     <Image Source="../../Images/discount-icon.png" Width="37" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="0 0 0 0">
@@ -45,7 +45,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="95" >
+            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" >
                 <DockPanel>
                     <Image Source="../../Images/print-icon.png" Width="34" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">

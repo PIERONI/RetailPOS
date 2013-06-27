@@ -13,14 +13,14 @@
     <Grid Width="480" Height="140">
         <ListBox  Name="LstCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,2,100,2">          
                 <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>               
-                        <WrapPanel  Orientation="Horizontal"  Margin="0"   Height="Auto" Width="335" >                       
+                    <ItemsPanelTemplate>
+                    <WrapPanel  Orientation="Horizontal"  Margin="0,2,100,2"   Height="Auto" Width="335" >                       
                         </WrapPanel>        
                    </ItemsPanelTemplate>
                  </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Margin="1"  Content="{Binding Name}" Command="{Binding DataContext.SelectProductCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right"  Width="79" />
+                    <Button Margin="0"  Content="{Binding Name}" Command="{Binding DataContext.SelectProductCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right"  Width="79" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

@@ -90,8 +90,8 @@ namespace RetailPOS.ViewModel
            BackToMainWin = new RelayCommand(OpenMainWindow);
            OpenCustomerCmd = new RelayCommand(OpenCustomerWindow);
            OpenProductWindowCmd = new RelayCommand(OpenProduct);
-           HideSettings();
 
+           HideSettings();
        }
 
        /// <summary>
@@ -99,24 +99,18 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void HideSettings()
        {
-           IsProductVisible = Visibility.Collapsed;
-           IsShopSettingVisible = Visibility.Collapsed;
-           IsCategoryVisible = Visibility.Collapsed;
-           IsCustomerVisible = Visibility.Collapsed;
+           IsProductVisible = Visibility.Hidden;
+           IsShopSettingVisible = Visibility.Hidden;
+           IsCategoryVisible = Visibility.Hidden;
+           IsCustomerVisible = Visibility.Hidden;
        }
 
        /// <summary>
        /// Opens the product.
-       /// </summary>
        private void OpenProduct()
        {
            IsProductVisible = Visibility.Visible;
-           
        }
-
-      
-
-
       
        /// <summary>
        /// Opens the customer window.
@@ -146,7 +140,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenCategoryWindow()
        {
-          
+           IsCategoryVisible = Visibility.Visible;
        }
 
        /// <summary>

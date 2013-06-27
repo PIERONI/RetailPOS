@@ -18,6 +18,7 @@ namespace RetailPOS.ViewModel
         #region Declare Public and private Data member
 
         public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+
         public RelayCommand OpenPayEntryBalancePopUp { get; private set; }
         public RelayCommand OpenCardEntryBalancePopUp { get; private set; }
         public RelayCommand SelectCardCommand { get; private set; }
@@ -222,7 +223,7 @@ namespace RetailPOS.ViewModel
 
         private void OpenPayEntryBalancePopUpClick()
         {
-            _isPaymentEntryPopupOpen = true;           
+            IsPaymentEntryPopupOpen = true;           
 
             CustomerName = null;
             CustomerBalance = null;

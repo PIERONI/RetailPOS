@@ -14,6 +14,7 @@
           <xs:element minOccurs="0" name="Address_Id" type="xs:long" />
           <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Credit_Limit" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="First_Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
           <xs:element minOccurs="0" name="Image_Path" nillable="true" type="xs:string" />

@@ -7,12 +7,8 @@
              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
             Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
     <UserControl.Resources>
-      
             <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
-      
-
-    </UserControl.Resources>
-   
+      </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
@@ -72,13 +68,12 @@
             </Button>
         </WrapPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-
             <ctrl:AddCategory x:Name="ctrlAddCategory" Visibility="{Binding ElementName=MainSettingWindow, 
                                           Path=IsCategoryVisible,
                                           Mode=TwoWay,
                                           UpdateSourceTrigger=PropertyChanged}" Margin="20" Width="422"></ctrl:AddCategory>
             <ctrl:AddCustomer x:Name="ctrlAddCustomer" Visibility="Collapsed" Margin="20" Width="422"></ctrl:AddCustomer>
-            <ctrl:AddProduct x:Name="ctrlAddProduct" Visibility="Collapsed" Margin="20" Width="422"></ctrl:AddProduct>
+            <ctrl:AddProduct x:Name="ctrlAddProduct" Visibility="{Binding IsProductVisible}" Margin="20" Width="422"></ctrl:AddProduct>
             <ctrl:ShopSetting x:Name="ctrlShopSetting" Visibility="Collapsed" Margin="20" Width="422"></ctrl:ShopSetting>
 
         </StackPanel>

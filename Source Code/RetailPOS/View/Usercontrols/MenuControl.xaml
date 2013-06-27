@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="507"
+              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls"
+             DataContext="{Binding Source={StaticResource Locator},Path=MenuControlVM}"
              >
     
     <UserControl.Resources>     
@@ -24,14 +26,69 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="1"  HorizontalAlignment="Right" Width="95" >
+            <Button Height="53" Margin="1"  HorizontalAlignment="Right" Width="95" Command="{Binding OpenOrderPopup}" >
                 <DockPanel>
                     <Image Source="../../Images/open.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">
                       <Bold>Open Order</Bold>
                     </TextBlock>
+                    <my:ModalDialogPopup Width="auto"  IsOpen="{Binding IsOrderPopupOpen, Mode=TwoWay}" Title="Open Order Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+                        <my:ModalDialogPopup.HostedContent>
+                            <ContentControl>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="300"></ColumnDefinition>
+                                       
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                       
+                                    </Grid.RowDefinitions>
+                                  
+                                    <StackPanel Grid.ColumnSpan="2" Grid.Row="0"  Margin="12,12,0,0">
+                                        <Button  Content="Set Aside Orders" Command="{Binding OpenSetAsideOrderPopup}" Width="200" Height="40">                                           
+                                        </Button>
+                                        
+                                    </StackPanel>
+                                    <StackPanel Grid.ColumnSpan="2" Grid.Row="1"  Margin="12,12,0,0">
+                                        <Button CommandParameter="{Binding}" Content="Orders In Queue" Command="{Binding}" Width="200" Height="40">
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </ContentControl>
+                        </my:ModalDialogPopup.HostedContent>
+                    </my:ModalDialogPopup>
+                    <my:ModalDialogPopup Width="auto" IsOpen="{Binding IsSetAsidePopupOpen, Mode=TwoWay}" Title="Enter Customer Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+                        <my:ModalDialogPopup.HostedContent>
+                            <ContentControl>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  Width="auto"></ColumnDefinition>
+                                        <ColumnDefinition  Width="auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Content="Customer Name: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="0"></Label>
+                                    <Label Content="Mobile No: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="1"></Label>
+                                    <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="150" Height="25" Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="0" ></TextBox>
+                                    <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="150" Height="25"  Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="1" ></TextBox>
+                                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2"  Margin="12,12,0,0">
+                                        <Button  Content="Select Customer" Command="{Binding}" Width="200" Height="40">
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </ContentControl>
+                        </my:ModalDialogPopup.HostedContent>
+                    </my:ModalDialogPopup>
                 </DockPanel>
+               
             </Button>
+
+
             <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="95" >
                 <DockPanel>
                     <Image Source="../../Images/money.png" Width="37" />

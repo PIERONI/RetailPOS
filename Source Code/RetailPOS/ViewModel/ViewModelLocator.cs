@@ -26,6 +26,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<RightPanelPaymentDetailViewModel>();
             SimpleIoc.Default.Register<AddCustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
+            SimpleIoc.Default.Register<MenuControlViewModel>();
         }
 
         /// <summary>
@@ -162,6 +163,14 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public MenuControlViewModel MenuControlVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MenuControlViewModel>();
+            }
+        }
+
         /// <summary>
         /// Cleanups this instance.
         /// </summary>
@@ -177,6 +186,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<RightPanelPaymentDetailViewModel>();
             SimpleIoc.Default.Register<AddCustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
+            SimpleIoc.Default.Register<MenuControlViewModel>();
         }
     }
 }

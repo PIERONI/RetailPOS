@@ -71,7 +71,7 @@
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCustomerVisible}"
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddCustomer x:Name="ctrlAddCustomer" Visibility="Collapsed" Margin="20" Width="422"></ctrl:AddCustomer>
+            <ctrl:AddCustomer x:Name="ctrlAddCustomer"  Margin="20" Width="422"></ctrl:AddCustomer>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsProductVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
@@ -79,7 +79,7 @@
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsShopSettingVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:ShopSetting x:Name="ctrlShopSetting" Visibility="Collapsed" Margin="20" Width="422"></ctrl:ShopSetting>
+            <ctrl:ShopSetting x:Name="ctrlShopSetting"  Margin="20" Width="422"></ctrl:ShopSetting>
         </StackPanel>
     </Grid>
 </UserControl>

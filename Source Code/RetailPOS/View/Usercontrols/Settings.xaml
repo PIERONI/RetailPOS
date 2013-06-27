@@ -25,7 +25,6 @@
                 </DockPanel>
             </Button>
         </StackPanel>
-        
         <WrapPanel Grid.Row="1" FlowDirection="LeftToRight" Margin="3,3,3,61">
             <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" Command="{Binding OpenShopSettingCmd}">
                 <DockPanel>                   
@@ -67,15 +66,20 @@
                 </DockPanel>
             </Button>
         </WrapPanel>
-        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddCategory x:Name="ctrlAddCategory" Visibility="{Binding ElementName=MainSettingWindow, 
-                                          Path=IsCategoryVisible,
-                                          Mode=TwoWay,
-                                          UpdateSourceTrigger=PropertyChanged}" Margin="20" Width="422"></ctrl:AddCategory>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCategoryVisible}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
+            <ctrl:AddCategory x:Name="ctrlAddCategory" Margin="20" Width="422"></ctrl:AddCategory>
+        </StackPanel>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCustomerVisible}"
+                    Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
             <ctrl:AddCustomer x:Name="ctrlAddCustomer" Visibility="Collapsed" Margin="20" Width="422"></ctrl:AddCustomer>
-            <ctrl:AddProduct x:Name="ctrlAddProduct" Visibility="{Binding IsProductVisible}" Margin="20" Width="422"></ctrl:AddProduct>
+        </StackPanel>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsProductVisible}" 
+                    Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
+            <ctrl:AddProduct x:Name="ctrlAddProduct" Margin="20" Width="422"></ctrl:AddProduct>
+        </StackPanel>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsShopSettingVisible}" 
+                    Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
             <ctrl:ShopSetting x:Name="ctrlShopSetting" Visibility="Collapsed" Margin="20" Width="422"></ctrl:ShopSetting>
-
         </StackPanel>
     </Grid>
 </UserControl>

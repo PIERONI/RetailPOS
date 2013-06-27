@@ -11,19 +11,24 @@ namespace RetailPOS.ViewModel
    public class SettingViewModel : ViewModelBase
    {
        #region Declare Public and Private Data member
-       public RelayCommand OpenSettingWindowCmd { get; private set; }
-       public RelayCommand BackToMainWindow { get; private set; }
-       public RelayCommand <Object>  BackToSettingWindow { get; private set; }
-       public RelayCommand OpenShopSettingCmd { get; private set; }
-       public RelayCommand OpenCategorySettingCmd { get; private set; }
-       public RelayCommand BackToMainWin { get; private set; }
-       public RelayCommand OpenCustomerCmd { get; private set; }
-       public RelayCommand OpenProductWindowCmd { get; private set; }
+       
        private Visibility _isCategoryVisible;
        private Visibility _isCustomerVisible;
        private Visibility _isProductVisible;
        private Visibility _isShopSettingVisible;
-      
+
+       #endregion
+
+       #region Public Properties
+
+       public RelayCommand OpenShopSettingCmd { get; private set; }
+       public RelayCommand OpenCategorySettingCmd { get; private set; }
+       public RelayCommand OpenCustomerCmd { get; private set; }
+       public RelayCommand OpenProductWindowCmd { get; private set; }
+
+       public RelayCommand OpenSettingWindowCmd { get; private set; }
+       public RelayCommand BackToMainWindow { get; private set; }
+
        public Visibility IsCategoryVisible
        {
            get
@@ -82,16 +87,15 @@ namespace RetailPOS.ViewModel
        /// </summary>
        public SettingViewModel()
        {
+           HideSettings();
+
            OpenSettingWindowCmd = new RelayCommand(OpenSettingWindow);
-           BackToMainWindow = new RelayCommand(BackToMain);
-           BackToSettingWindow = new RelayCommand<Object>(BackToSetting);
            OpenShopSettingCmd = new RelayCommand(OpenShopSettingWindow);
            OpenCategorySettingCmd = new RelayCommand(OpenCategoryWindow);
-           BackToMainWin = new RelayCommand(OpenMainWindow);
            OpenCustomerCmd = new RelayCommand(OpenCustomerWindow);
            OpenProductWindowCmd = new RelayCommand(OpenProduct);
 
-           HideSettings();
+           BackToMainWindow = new RelayCommand(OpenMainWindow);
        }
 
        /// <summary>
@@ -99,16 +103,19 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void HideSettings()
        {
-           IsProductVisible = Visibility.Hidden;
-           IsShopSettingVisible = Visibility.Hidden;
-           IsCategoryVisible = Visibility.Hidden;
-           IsCustomerVisible = Visibility.Hidden;
+           IsProductVisible = Visibility.Collapsed;
+           IsShopSettingVisible = Visibility.Collapsed;
+           IsCategoryVisible = Visibility.Collapsed;
+           IsCustomerVisible = Visibility.Collapsed;
        }
 
        /// <summary>
        /// Opens the product.
        private void OpenProduct()
        {
+           ////Hide Previous opened settings tab
+           HideSettings();
+
            IsProductVisible = Visibility.Visible;
        }
       
@@ -117,7 +124,10 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenCustomerWindow()
        {
-          
+           ////Hide Previous opened settings tab
+           HideSettings();
+
+           IsCustomerVisible = Visibility.Visible;
        }
 
        /// <summary>
@@ -140,6 +150,9 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenCategoryWindow()
        {
+           ////Hide Previous opened settings tab
+           HideSettings();
+
            IsCategoryVisible = Visibility.Visible;
        }
 
@@ -148,28 +161,10 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenShopSettingWindow()
        {
-           
+           ////Hide Previous opened settings tab
+           HideSettings();
 
-       }
-
-       /// <summary>
-       /// Backs to setting.
-       /// </summary>
-       private void BackToSetting(Object obj)
-       {
-           Settings.SettingWindow = new Settings();
-           Settings.SettingWindow.Show();
-           CheckForSettingWinClose();
-
-       }
-
-       /// <summary>
-       /// Backs to main.
-       /// </summary>
-       private void BackToMain()
-       {
-           
-         
+           IsShopSettingVisible = Visibility.Visible;
        }
 
        /// <summary>
@@ -180,7 +175,6 @@ namespace RetailPOS.ViewModel
            Settings set = new Settings();
            set.Show();
            MainWindow._MainWindow.Close();
-
        }
     }
 }

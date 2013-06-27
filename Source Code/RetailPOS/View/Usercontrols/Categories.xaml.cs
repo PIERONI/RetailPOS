@@ -24,6 +24,4 @@ namespace RetailPOS.View.Usercontrols
             InitializeComponent();
         }      
     }
-
-    
 }

@@ -40,7 +40,7 @@ namespace RetailPOS.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<SettingViewModel>();
-            }           
+            }
         }
 
         /// <summary>

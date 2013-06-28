@@ -48,6 +48,8 @@
     <Compile Include="Admin\ProductServiceImpl.cs" />
     <Compile Include="Customer\CustomerBaseService.cs" />
     <Compile Include="Customer\CustomerServiceImpl.cs" />
+    <Compile Include="Setting\SettingBaseService.cs" />
+    <Compile Include="Setting\ShopSettingServiceImpl.cs" />
     <Compile Include="User\UserBaseService.cs" />
     <Compile Include="User\StaffServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

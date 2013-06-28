@@ -6,6 +6,8 @@ using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
 
 namespace RetailPOS.ViewModel
 {
@@ -150,7 +152,16 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void SaveSetting()
        {
+           ShopSettingDTO shopSettingDetails = new ShopSettingDTO();
+           shopSettingDetails.Name = ShopName;
+           shopSettingDetails.Phone = Phone;
+           shopSettingDetails.Fax = Fax;
+           shopSettingDetails.Email = Email;
+           shopSettingDetails.Website = Website;
+           shopSettingDetails.AddressId = Convert.ToInt16(Address); 
 
+
+           ServiceFactory.ServiceClient.SaveShopSetting(shopSettingDetails);
        }
 
        private void AddCurrency()

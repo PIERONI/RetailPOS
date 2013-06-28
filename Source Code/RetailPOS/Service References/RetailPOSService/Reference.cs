@@ -91,6 +91,7 @@ namespace RetailPOS.RetailPOSService {
         "")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StaffDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ShopSettingDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductCategoryDTO))]
@@ -426,6 +427,158 @@ namespace RetailPOS.RetailPOSService {
                 if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
                     this.UserNameField = value;
                     this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ShopSettingDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Settings")]
+    [System.SerializableAttribute()]
+    public partial class ShopSettingDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AddressIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrencyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PhoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Tax_rateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebsiteField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AddressId {
+            get {
+                return this.AddressIdField;
+            }
+            set {
+                if ((this.AddressIdField.Equals(value) != true)) {
+                    this.AddressIdField = value;
+                    this.RaisePropertyChanged("AddressId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Currency {
+            get {
+                return this.CurrencyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrencyField, value) != true)) {
+                    this.CurrencyField = value;
+                    this.RaisePropertyChanged("Currency");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fax {
+            get {
+                return this.FaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FaxField, value) != true)) {
+                    this.FaxField = value;
+                    this.RaisePropertyChanged("Fax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Phone {
+            get {
+                return this.PhoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PhoneField, value) != true)) {
+                    this.PhoneField = value;
+                    this.RaisePropertyChanged("Phone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Tax_rate {
+            get {
+                return this.Tax_rateField;
+            }
+            set {
+                if ((this.Tax_rateField.Equals(value) != true)) {
+                    this.Tax_rateField = value;
+                    this.RaisePropertyChanged("Tax_rate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Website {
+            get {
+                return this.WebsiteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebsiteField, value) != true)) {
+                    this.WebsiteField = value;
+                    this.RaisePropertyChanged("Website");
                 }
             }
         }
@@ -948,6 +1101,9 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomers", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomersResponse")]
         RetailPOS.RetailPOSService.CustomerDTO[] GetAllCustomers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveShopSetting", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveShopSettingResponse")]
+        bool SaveShopSetting(RetailPOS.RetailPOSService.ShopSettingDTO shopSettingDetails);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -999,6 +1155,10 @@ namespace RetailPOS.RetailPOSService {
         
         public RetailPOS.RetailPOSService.CustomerDTO[] GetAllCustomers() {
             return base.Channel.GetAllCustomers();
+        }
+        
+        public bool SaveShopSetting(RetailPOS.RetailPOSService.ShopSettingDTO shopSettingDetails) {
+            return base.Channel.SaveShopSetting(shopSettingDetails);
         }
     }
 }

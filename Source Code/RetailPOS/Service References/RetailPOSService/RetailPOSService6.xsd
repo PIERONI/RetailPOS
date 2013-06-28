@@ -4,6 +4,7 @@
   <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
   <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" />
   <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
+  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" />
   <xs:element name="GetCategories">
     <xs:complexType>
       <xs:sequence />
@@ -78,6 +79,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetAllCustomersResult" nillable="true" type="q5:ArrayOfCustomerDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveShopSetting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" minOccurs="0" name="shopSettingDetails" nillable="true" type="q6:ShopSettingDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveShopSettingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveShopSettingResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

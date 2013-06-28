@@ -6,6 +6,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Category;
 using RetailPOS.CommonLayer.DataTransferObjects.Customer;
 using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
+using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 
 #endregion
 
@@ -53,6 +54,18 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// <returns>returns list of all active customers present in database</returns>
         [OperationContract]
         IList<CustomerDTO> GetAllCustomers();
+
+        #endregion
+
+        #region Settings
+
+        [OperationContract]
+        /// <summary>
+        /// Save Shop setting details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Shopsetting object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        bool SaveShopSetting(ShopSettingDTO shopSettingDetails);
 
         #endregion
     }

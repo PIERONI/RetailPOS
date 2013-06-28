@@ -51,6 +51,7 @@
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContracts\IRetailPOSServiceContract.cs" />
+    <Compile Include="SettingService.cs" />
     <Compile Include="StaffService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>

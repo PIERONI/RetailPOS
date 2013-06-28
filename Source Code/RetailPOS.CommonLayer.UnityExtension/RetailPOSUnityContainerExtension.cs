@@ -11,6 +11,8 @@ using RetailPOS.PersistenceLayer.EF.Impl;
 using RetailPOS.PersistenceLayer.Repository.Interfaces;
 using RetailPOS.BusinessLayer.Service.User;
 using RetailPOS.BusinessLayer.ServiceImpl.User;
+using RetailPOS.BusinessLayer.Service.Setting;
+using RetailPOS.BusinessLayer.ServiceImpl.Setting;
 
 #endregion
 
@@ -63,6 +65,12 @@ namespace RetailPOS.CommonLayer.UnityExtension
 
             RetailPOSUnityContainer.Register<ICustomerService, CustomerServiceImpl>();
             
+            #endregion
+
+            #region Shop Setting Services
+            
+            RetailPOSUnityContainer.Register<ISettingService, ShopSettingServiceImpl>();
+
             #endregion
 
             #endregion

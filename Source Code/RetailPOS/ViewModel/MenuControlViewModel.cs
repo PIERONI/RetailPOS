@@ -16,33 +16,32 @@ namespace RetailPOS.ViewModel
         public MenuControlViewModel()
         {
             OpenOrderPopup = new RelayCommand(OpeOrderPopup);
-            OpenSetAsideOrderPopup = new RelayCommand(OpenSetAsideOrderpopup);
+            OpenSetAsideOrderPopup = new RelayCommand(OpenSetAsideOrderpopupClick);
             lstSearchCustomer = new List<CustomerDTO>();
             lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                       select item).ToList();
+            Clear = new RelayCommand(ClearText);
         }
 
+        #region Declare Public and private Data member
         public IList<CustomerDTO> lstSearchCustomer { get; private set; }
         public RelayCommand OpenOrderPopup { get; private set; }
+        public RelayCommand Clear
+        {
+            get;
+            private set;
+        }
+
         public RelayCommand OpenSetAsideOrderPopup { get; private set; }
         private bool _IsOrderPopupOpen;
         private Visibility _isVisibleCustomerInfo;
         private string _Mobile;
         private bool _IsSetAsideOrderPopupOpen;
-        private CustomerDTO _customer;
-        private CustomerDTO _selectedCustomer;
-        private string _customerName1;
+        private CustomerDTO _customer;       
+        private CustomerDTO _selectedCustomer;        
         private string _customerName;
-
-        public string CustomerName1
-        {
-            get { return _customerName1; }
-            set
-            {
-                _customerName1 = value;
-                RaisePropertyChanged("CustomerName1");
-            }
-        }
+        #endregion      
+        #region Public Properties
 
         public string CustomerName
         {
@@ -69,7 +68,7 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("isVisibleCustomerInfo");
             }
         }
-        public string Mobile
+        public string CustomerMobile
         {
             get
             {
@@ -78,7 +77,7 @@ namespace RetailPOS.ViewModel
             set
             {
                 _Mobile = value;
-                RaisePropertyChanged("Mobile");
+                RaisePropertyChanged("CustomerMobile");
             }
         }
         public CustomerDTO SelectedCustomer
@@ -113,7 +112,7 @@ namespace RetailPOS.ViewModel
                     SelectedCustomer = Customer;
                 }
             }
-        }
+        }     
 
         public bool IsOrderPopupOpen
         {
@@ -134,15 +133,18 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("IsSetAsidePopupOpen");
             }
         }
+        #endregion
+
         private void OpeOrderPopup()
         {
             IsOrderPopupOpen=true;
         }
-        private void OpenSetAsideOrderpopup()
+
+        private void OpenSetAsideOrderpopupClick()
         {
             IsOrderPopupOpen = false;
             IsSetAsidePopupOpen = true;
-            Mobile = null;
+            CustomerMobile = null;
             CustomerName = null;
         }
 
@@ -154,9 +156,15 @@ namespace RetailPOS.ViewModel
                 return;
             }
             isVisibleCustomerInfo = Visibility.Visible;
-            Mobile = SelectedCustomer.Mobile;
-            CustomerName = SelectedCustomer.First_Name;
-            //CustomerName1 = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
-        }   
+            CustomerMobile = SelectedCustomer.Mobile;
+            CustomerName = SelectedCustomer.First_Name;            
+        }
+
+        private void ClearText()
+        {
+            Customer = null;
+            CustomerMobile = string.Empty;
+            CustomerName = string.Empty;
+        }
     }
 }

@@ -104,7 +104,7 @@
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1"  Margin="11,8,0,0" Text="{Binding Mobile}"  Name="autoCompleteTxtMobile"  ItemsSource="{Binding lstSearchCustomer}"                        
+                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1"  Margin="11,8,0,0" Text="{Binding CustomerMobile}"  Name="autoCompleteTxtMobile"  ItemsSource="{Binding lstSearchCustomer}"                        
                         SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -127,16 +127,17 @@
                                                         <TextBlock Text="Email: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                         <TextBlock Text="{Binding Email}" Foreground="#47896B"></TextBlock>
                                                         <TextBlock Text="Mobile No: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
-                                                        <TextBlock Text="{Binding  Credit_Limit}" Foreground="#47896B" ></TextBlock>
+                                                        <TextBlock Text="{Binding  Mobile}" Foreground="#47896B" ></TextBlock>
                                                     </WrapPanel>
                                                 </Grid>
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <StackPanel Grid.ColumnSpan="2" Grid.Row="2"  Margin="12,12,0,0">
-                                        <Button  Content="Select Customer" Command="{Binding}" Width="200" Height="40">
+
+                                    <Button  Content="Select Customer" Command="{Binding}" Width="100" Height="40" Grid.Row="2"  HorizontalAlignment="Left" Margin="35,12,0,0" Grid.Column="0"> </Button>
+                                    <Button  Content="Clear" Command="{Binding Clear}" Width="100" Height="40" Grid.Row="2"  Margin="25,12,0,0"  HorizontalAlignment="Left" Grid.Column="1">
                                         </Button>
-                                    </StackPanel>
+                                 
                                 </Grid>
                             </ContentControl>
                         </my:ModalDialogPopup.HostedContent>

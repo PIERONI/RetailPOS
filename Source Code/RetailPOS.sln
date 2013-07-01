@@ -39,7 +39,6 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RetailPOSService", "http://localhost/RetailPOSService", "{AD3DCA6C-73A9-42E4-B0AE-6A1CA2903BC0}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		ProjectReferences = "{07900815-1E63-43E2-AD8A-526D395A16E2}|RetailPOS.ServiceImplementation.dll;{9FC1BCFC-2703-4287-AD46-CA4E2556B052}|RetailPOS.BusinessLayer.Service.dll;{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}|RetailPOS.CommonLayer.DataTransferObjects.dll;{58CD5F66-8558-4B4A-8986-B8B6CEBF9219}|RetailPOS.PersistenceLayer.Repository.dll;{F69A1183-91E3-4834-9F70-854E9AA5C3D2}|RetailPOS.CommonLayer.Unity.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/RetailPOSService"
 		Debug.AspNetCompiler.PhysicalPath = "RetailPOSService\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\RetailPOSService\"

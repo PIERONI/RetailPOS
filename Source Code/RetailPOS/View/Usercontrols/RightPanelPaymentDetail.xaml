@@ -47,6 +47,7 @@
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="0 0 0 0">
                       <Bold>Payment Entry</Bold>
                     </TextBlock>
+                    
                 </DockPanel>
             </Button>
             <!--Payment Entry Pop up-->

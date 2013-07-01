@@ -12,6 +12,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
 using RetailPOS.PersistenceLayer.Repository.Entities;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
+using RetailPOS.CommonLayer.DataTransferObjects.Master;
 
 #endregion
 
@@ -36,6 +37,8 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps ShopSetting object with shop_info object
             AutoMapper.Mapper.CreateMap<shop_info, ShopSettingDTO>();
             AutoMapper.Mapper.CreateMap<ShopSettingDTO, shop_info>();
+
+            CreateMapObjectForMasters();
         }
 
         #region Map Object
@@ -43,6 +46,13 @@ namespace RetailPOS.CommonLayer.Mapper
         public static void Map<T, U>(T sourceObject, U destObject)
         {
             AutoMapper.Mapper.Map(sourceObject, destObject);
+        }
+
+        private void CreateMapObjectForMasters()
+        {
+            ////Maps CountryDTO object with country object
+            AutoMapper.Mapper.CreateMap<country, CountryDTO>();
+            AutoMapper.Mapper.CreateMap<CountryDTO, country>();
         }
 
         #endregion

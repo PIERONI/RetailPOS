@@ -7,6 +7,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Customer;
 using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
+using RetailPOS.CommonLayer.DataTransferObjects.Master;
 
 #endregion
 
@@ -59,13 +60,24 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
 
         #region Settings
 
-        [OperationContract]
         /// <summary>
         /// Save Shop setting details in database
         /// </summary>
         /// <param name="shopSettingDetails">Shopsetting object to be saved</param>
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        [OperationContract]
         bool SaveShopSetting(ShopSettingDTO shopSettingDetails);
+
+        #endregion
+
+        #region Masters
+
+        /// <summary>
+        /// Retrieves available country details from database
+        /// </summary>
+        /// <returns>returns list of country else empty list</returns>
+        [OperationContract]
+        IList<CountryDTO> GetCountryDetails();
 
         #endregion
     }

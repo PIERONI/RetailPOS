@@ -1,18 +1,20 @@
-﻿#region Using directives
-
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using RetailPOS.CommonLayer.DataTransferObjects.Master;
 
-#endregion
-
-namespace RetailPOS.BusinessLayer.Service.Masters
+namespace RetailPOS.ServiceImplementation
 {
-    public interface IMasterService
+    public partial class RetailPOSService
     {
         /// <summary>
         /// Retrieves available country details from database
         /// </summary>
         /// <returns>returns list of country else empty list</returns>
-        IList<CountryDTO> GetCountryDetails();
+        public IList<CountryDTO> GetCountryDetails()
+        {
+            return MasterService.GetCountryDetails();
+        }
     }
 }

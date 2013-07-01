@@ -187,6 +187,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<AddCustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
             SimpleIoc.Default.Register<MenuControlViewModel>();
+            
         }
     }
 }

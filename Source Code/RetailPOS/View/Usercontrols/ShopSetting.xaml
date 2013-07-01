@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="450"
-             
              DataContext="{Binding Source={StaticResource Locator}, Path=ShopSettingVM}"
              xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.Resources>
@@ -63,8 +62,13 @@
                     <TextBox Grid.Column="1" Grid.Row="6" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
                     <TextBox Grid.Column="1" Grid.Row="7" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
                     <TextBox Grid.Column="1" Grid.Row="8" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
-                    
-                    <TextBox Grid.Column="1" Grid.Row="9" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
+                    <ComboBox ItemsSource="{Binding LstCountry}" SelectedValuePath="Name" SelectedItem="{Binding SelectedCountry,Mode=TwoWay}" Grid.Row="9" Grid.Column="1" Height="31" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="200" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <TextBox Grid.Column="1" Grid.Row="10" Height="32"  HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="200" />
 
                 </Grid>

@@ -25,6 +25,7 @@ namespace RetailPOS.ServiceImplementation
             UserService = RetailPOSUnityContainer.Resolve<IUserService>();
             CustomerService = RetailPOSUnityContainer.Resolve<ICustomerService>();
             SettingService = RetailPOSUnityContainer.Resolve<ISettingService>();
+            MasterService = RetailPOSUnityContainer.Resolve<IMasterService>();
         }
 
         /// <summary>

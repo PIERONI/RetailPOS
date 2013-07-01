@@ -48,6 +48,7 @@
     <Compile Include="BaseService.cs" />
     <Compile Include="CategoryService.cs" />
     <Compile Include="CustomerService.cs" />
+    <Compile Include="MasterService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceContracts\IRetailPOSServiceContract.cs" />

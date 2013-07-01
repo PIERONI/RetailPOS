@@ -14,7 +14,10 @@ namespace RetailPOS.ViewModel
    public class ShopSettingViewModel : ViewModelBase
    {
        #region Declare Public and Private Memebers
+
        public ObservableCollection<CurrencyModel> LstCurrency { get; private set; }
+       public ObservableCollection<CountryDTO> LstCountry { get; private set; }
+
        private string _shopName;
        private string _phone;
        private string _fax;
@@ -22,11 +25,16 @@ namespace RetailPOS.ViewModel
        private string _website;
        private string _address;
        private decimal _rate;
+
        private Visibility _Visible;
        private CurrencyModel _selectedCurrency;
+       private CountryDTO _selectedCountry;
+       public ShopSettingDTO shopSettingDetails { get; set; }
+
        public RelayCommand SaveShopSetting { get; private set; }
        public RelayCommand CancelShopSetting { get; private set; }
        public RelayCommand <int> IsScheduledCheck { get; set; }
+
        public Visibility VisibleTimePicker
        {
            get
@@ -40,7 +48,6 @@ namespace RetailPOS.ViewModel
            }
         }
 
-
        public string ShopName
        {
            get { return _shopName; }
@@ -50,6 +57,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("ShopName");
            }
        }
+
        public string Phone
        {
            get { return _phone; }
@@ -59,6 +67,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("Phone");
            }
        }
+
        public string Fax
        {
            get { return _fax; }
@@ -68,6 +77,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("Fax");
            }
        }
+
        public string Email
        {
            get { return _email; }
@@ -87,6 +97,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("Website");
            }
        }
+
        public string Address
        {
            get { return _address; }
@@ -96,6 +107,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("Address");
            }
        }
+
        public decimal Rate
        {
            get { return _rate; }
@@ -105,6 +117,7 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("Rate");
            }
        }
+
        public CurrencyModel SelectedCurrency
        {
            get { return _selectedCurrency; }
@@ -113,7 +126,17 @@ namespace RetailPOS.ViewModel
                _selectedCurrency = value;
                RaisePropertyChanged("SelectedCurrency");
            }
-       }     
+       }
+
+       public CountryDTO SelectedCountry
+       {
+           get { return _selectedCountry; }
+           set
+           {
+               _selectedCountry = value;
+               RaisePropertyChanged("SelectedCountry");
+           }
+       }  
 
        #endregion
 
@@ -123,7 +146,11 @@ namespace RetailPOS.ViewModel
        public ShopSettingViewModel()
        {
            LstCurrency = new ObservableCollection<CurrencyModel>();
+           LstCountry = new ObservableCollection<CountryDTO>();
+
            AddCurrency();
+           GetCountryDetails();
+
            SaveShopSetting = new RelayCommand(SaveSetting);
            CancelShopSetting = new RelayCommand(CancelSetting);
            IsScheduledCheck = new RelayCommand<int>(ShowTimer);
@@ -151,6 +178,11 @@ namespace RetailPOS.ViewModel
        /// Saves the setting.
        /// </summary>
        private void SaveSetting()
+       {                  
+           ServiceFactory.ServiceClient.SaveShopSetting(shopSettingDetails);
+       }
+
+       private ShopSettingDTO InitializeShopSettingDetails()
        {
            ShopSettingDTO shopSettingDetails = new ShopSettingDTO();
            shopSettingDetails.Name = ShopName;
@@ -158,10 +190,24 @@ namespace RetailPOS.ViewModel
            shopSettingDetails.Fax = Fax;
            shopSettingDetails.Email = Email;
            shopSettingDetails.Website = Website;
-           shopSettingDetails.AddressId = Convert.ToInt16(Address); 
+           shopSettingDetails.Tax_rate = Convert.ToDecimal(Rate);
+           shopSettingDetails.Currency = Convert.ToInt16(SelectedCurrency.CurrencyId);
+           shopSettingDetails.Address = InitializeAddressDetails();
+           return shopSettingDetails;
+       }
 
+       private AddressDTO InitializeAddressDetails()
+       {
+           AddressDTO addressDetails = new AddressDTO();
+           addressDetails.Id = 0;
+           //addressDetails.Building_name=
 
-           ServiceFactory.ServiceClient.SaveShopSetting(shopSettingDetails);
+           return addressDetails;
+       }
+
+       private void GetCountryDetails()
+       {
+           LstCountry = new ObservableCollection<CountryDTO>(ServiceFactory.ServiceClient.GetCountryDetails());
        }
 
        private void AddCurrency()
@@ -171,13 +217,15 @@ namespace RetailPOS.ViewModel
            LstCurrency.Add(new CurrencyModel { CurrencyId = 3, CurrencyName = "USD" });
            LstCurrency.Add(new CurrencyModel { CurrencyId = 4, CurrencyName = "SHD" });
        }
-
-    }
+   }
 
    public class CurrencyModel
    {
        public int CurrencyId { get; set; }
        public string CurrencyName { get; set; }
+   }
 
+   public class AddressModel
+   {
    }
 }

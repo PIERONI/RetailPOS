@@ -30,6 +30,7 @@
     <MetadataFile FileName="RetailPOSService4.xsd" MetadataType="Schema" ID="68e81cb9-50d5-4ba6-b666-6dae87f91111" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd4" />
     <MetadataFile FileName="RetailPOSService5.xsd" MetadataType="Schema" ID="64782651-005a-4f26-b115-571f01bc0715" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd3" />
     <MetadataFile FileName="RetailPOSService6.xsd" MetadataType="Schema" ID="f473f09d-b487-480e-a764-fe4ddc8a5d2b" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd6" />
+    <MetadataFile FileName="RetailPOSService8.xsd" MetadataType="Schema" ID="13f560a3-5ac8-4dcc-9f8d-c67d1632f830" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd8" />
     <MetadataFile FileName="RetailPOSService7.xsd" MetadataType="Schema" ID="1e015918-d15f-4881-b700-8eaae37bcb22" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>

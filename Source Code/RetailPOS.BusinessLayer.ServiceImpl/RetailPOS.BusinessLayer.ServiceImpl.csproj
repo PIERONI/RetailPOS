@@ -48,6 +48,8 @@
     <Compile Include="Admin\ProductServiceImpl.cs" />
     <Compile Include="Customer\CustomerBaseService.cs" />
     <Compile Include="Customer\CustomerServiceImpl.cs" />
+    <Compile Include="Masters\CountryServiceImpl.cs" />
+    <Compile Include="Masters\MasterBaseService.cs" />
     <Compile Include="Setting\SettingBaseService.cs" />
     <Compile Include="Setting\ShopSettingServiceImpl.cs" />
     <Compile Include="User\UserBaseService.cs" />
@@ -73,9 +75,7 @@
       <Name>RetailPOS.PersistenceLayer.Repository</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Masters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

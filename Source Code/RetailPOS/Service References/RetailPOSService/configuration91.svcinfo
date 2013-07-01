@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="dH5tkFSkeIc1Oz5WvZSKSuahMyI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="B0JgX/UKSKhM5qb6nOiKHIAfWg0=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IRetailPOSServiceContract1">
+    <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_IRetailPOSServiceContract">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IRetailPOSServiceContract1</serializedValue>
+          <serializedValue>WSHttpBinding_IRetailPOSServiceContract</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>00:01:00</serializedValue>
@@ -127,7 +127,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_IRetailPOSServiceContract1" contract="RetailPOSService.IRetailPOSServiceContract" bindingType="wsHttpBinding" address="http://localhost/RetailPOSService/RetailPOSService.svc" bindingConfiguration="WSHttpBinding_IRetailPOSServiceContract1">
+    <endpoint name="WSHttpBinding_IRetailPOSServiceContract" contract="RetailPOSService.IRetailPOSServiceContract" bindingType="wsHttpBinding" address="http://localhost/RetailPOSService/RetailPOSService.svc" bindingConfiguration="WSHttpBinding_IRetailPOSServiceContract">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost/RetailPOSService/RetailPOSService.svc</serializedValue>
@@ -139,7 +139,7 @@
           <serializedValue>wsHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IRetailPOSServiceContract1</serializedValue>
+          <serializedValue>WSHttpBinding_IRetailPOSServiceContract</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>RetailPOSService.IRetailPOSServiceContract</serializedValue>
@@ -202,7 +202,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WSHttpBinding_IRetailPOSServiceContract1</serializedValue>
+          <serializedValue>WSHttpBinding_IRetailPOSServiceContract</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

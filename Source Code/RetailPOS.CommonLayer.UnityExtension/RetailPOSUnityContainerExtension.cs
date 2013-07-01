@@ -3,16 +3,18 @@
 using Microsoft.Practices.Unity;
 using RetailPOS.BusinessLayer.Service.Admin;
 using RetailPOS.BusinessLayer.Service.Customer;
+using RetailPOS.BusinessLayer.Service.Masters;
+using RetailPOS.BusinessLayer.Service.Setting;
+using RetailPOS.BusinessLayer.Service.User;
 using RetailPOS.BusinessLayer.ServiceImpl.Admin;
 using RetailPOS.BusinessLayer.ServiceImpl.Customer;
+using RetailPOS.BusinessLayer.ServiceImpl.Masters;
+using RetailPOS.BusinessLayer.ServiceImpl.Setting;
+using RetailPOS.BusinessLayer.ServiceImpl.User;
 using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.CommonLayer.Unity;
 using RetailPOS.PersistenceLayer.EF.Impl;
 using RetailPOS.PersistenceLayer.Repository.Interfaces;
-using RetailPOS.BusinessLayer.Service.User;
-using RetailPOS.BusinessLayer.ServiceImpl.User;
-using RetailPOS.BusinessLayer.Service.Setting;
-using RetailPOS.BusinessLayer.ServiceImpl.Setting;
 
 #endregion
 
@@ -69,7 +71,13 @@ namespace RetailPOS.CommonLayer.UnityExtension
 
             #region Shop Setting Services
             
-            RetailPOSUnityContainer.Register<ISettingService, ShopSettingServiceImpl>();
+            RetailPOSUnityContainer.Register<ISettingService, SettingServiceImpl>();
+
+            #endregion
+            
+            #region Master Services
+
+            RetailPOSUnityContainer.Register<IMasterService, MasterServiceImpl>();
 
             #endregion
 

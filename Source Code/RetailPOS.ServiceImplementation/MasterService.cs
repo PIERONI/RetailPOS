@@ -16,5 +16,14 @@ namespace RetailPOS.ServiceImplementation
         {
             return MasterService.GetCountryDetails();
         }
+
+        /// <summary>
+        /// Retrieves available TownCity details from database
+        /// </summary>
+        /// <returns>returns list of TownCity else empty list</returns>
+        public IList<TownCityDTO> GetTownCityDetails(int countryID)
+        {
+            return MasterService.GetTownCityDetail(countryID);
+        }
     }
 }

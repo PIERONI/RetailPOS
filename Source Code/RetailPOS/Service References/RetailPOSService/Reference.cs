@@ -96,6 +96,7 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CountryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.TownCityDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductCategoryDTO))]
     public partial class BaseDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1274,6 +1275,62 @@ namespace RetailPOS.RetailPOSService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TownCityDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Master")]
+    [System.SerializableAttribute()]
+    public partial class TownCityDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Town_CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int countryIDField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Town_City {
+            get {
+                return this.Town_CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Town_CityField, value) != true)) {
+                    this.Town_CityField = value;
+                    this.RaisePropertyChanged("Town_City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int countryID {
+            get {
+                return this.countryIDField;
+            }
+            set {
+                if ((this.countryIDField.Equals(value) != true)) {
+                    this.countryIDField = value;
+                    this.RaisePropertyChanged("countryID");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RetailPOSService.IRetailPOSServiceContract", SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IRetailPOSServiceContract {
@@ -1301,6 +1358,9 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetailsResponse")]
         RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetailsResponse")]
+        RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1360,6 +1420,10 @@ namespace RetailPOS.RetailPOSService {
         
         public RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails() {
             return base.Channel.GetCountryDetails();
+        }
+        
+        public RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryID) {
+            return base.Channel.GetTownCityDetails(countryID);
         }
     }
 }

@@ -692,7 +692,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="town_city" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="towncity" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CountryId" Type="smallint" />
         </EntityType>
         <EntityType Name="warranty">
           <Key>
@@ -1242,7 +1243,6 @@
           <EntitySet Name="streets" EntityType="POSModel.street" />
           <EntitySet Name="suppliers" EntityType="POSModel.supplier" />
           <EntitySet Name="supplier_contact_person" EntityType="POSModel.supplier_contact_person" />
-          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
           <EntitySet Name="warranties" EntityType="POSModel.warranty" />
           <EntitySet Name="working_record" EntityType="POSModel.working_record" />
           <AssociationSet Name="accounts_ibfk_1" Association="POSModel.accounts_ibfk_1">
@@ -1255,10 +1255,6 @@
           </AssociationSet>
           <AssociationSet Name="address_ibfk_10" Association="POSModel.address_ibfk_10">
             <End Role="postcode" EntitySet="postcodes" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_6" Association="POSModel.address_ibfk_6">
-            <End Role="town_city" EntitySet="town_city" />
             <End Role="address" EntitySet="addresses" />
           </AssociationSet>
           <AssociationSet Name="address_ibfk_7" Association="POSModel.address_ibfk_7">
@@ -1397,6 +1393,11 @@
             <End Role="supplier" EntitySet="suppliers" />
             <End Role="product" EntitySet="products" />
           </AssociationSet>
+          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
+          <AssociationSet Name="address_ibfk_6" Association="POSModel.address_ibfk_6">
+            <End Role="town_city" EntitySet="town_city" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="account">
           <Key>
@@ -1427,11 +1428,11 @@
           <Property Type="Int16" Name="country_id" />
           <Property Type="Int32" Name="postcode_id" Nullable="false" />
           <NavigationProperty Name="postcode" Relationship="POSModel.address_ibfk_10" FromRole="address" ToRole="postcode" />
-          <NavigationProperty Name="town_city" Relationship="POSModel.address_ibfk_6" FromRole="address" ToRole="town_city" />
           <NavigationProperty Name="country" Relationship="POSModel.address_ibfk_7" FromRole="address" ToRole="country" />
           <NavigationProperty Name="street" Relationship="POSModel.address_ibfk_8" FromRole="address" ToRole="street" />
           <NavigationProperty Name="locality" Relationship="POSModel.address_ibfk_9" FromRole="address" ToRole="locality" />
           <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_4" FromRole="address" ToRole="customer" />
+          <NavigationProperty Name="town_city" Relationship="POSModel.address_ibfk_6" FromRole="address" ToRole="town_city" />
         </EntityType>
         <EntityType Name="country">
           <Key>
@@ -1935,14 +1936,6 @@
           <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="address_id" />
         </EntityType>
-        <EntityType Name="town_city">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="town_city1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_6" FromRole="town_city" ToRole="address" />
-        </EntityType>
         <EntityType Name="warranty">
           <Key>
             <PropertyRef Name="id" />
@@ -1997,18 +1990,6 @@
             </Principal>
             <Dependent Role="address">
               <PropertyRef Name="postcode_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_6">
-          <End Type="POSModel.town_city" Role="town_city" Multiplicity="0..1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="town_city_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2411,6 +2392,27 @@
         <Association Name="supplier_products">
           <End Type="POSModel.supplier" Role="supplier" Multiplicity="*" />
           <End Type="POSModel.product" Role="product" Multiplicity="*" />
+        </Association>
+        <EntityType Name="town_city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="towncity" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="CountryId" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_6" FromRole="town_city" ToRole="address" />
+        </EntityType>
+        <Association Name="address_ibfk_6">
+          <End Type="POSModel.town_city" Role="town_city" Multiplicity="0..1" />
+          <End Type="POSModel.address" Role="address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="town_city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="town_city_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -2913,14 +2915,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="town_city">
-            <EntityTypeMapping TypeName="POSModel.town_city">
-              <MappingFragment StoreEntitySet="town_city">
-                <ScalarProperty Name="town_city1" ColumnName="town_city" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="warranties">
             <EntityTypeMapping TypeName="POSModel.warranty">
               <MappingFragment StoreEntitySet="warranty">
@@ -2952,6 +2946,15 @@
               <ScalarProperty Name="id" ColumnName="supplier_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="town_city">
+            <EntityTypeMapping TypeName="POSModel.town_city">
+              <MappingFragment StoreEntitySet="town_city">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="towncity" ColumnName="towncity" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3014,7 +3017,6 @@
         <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="0.75" PointY="18.5" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="7.5" PointY="33.75" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="14.75" PointY="3.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="0.75" PointY="20.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="14.75" PointY="7.75" Height="1.980286458333353" />
         <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="14.75" PointY="10.75" Height="2.1725878906249818" />
         <AssociationConnector Association="POSModel.accounts_ibfk_1" >
@@ -3024,8 +3026,8 @@
           <ConnectorPoint PointX="6.2864595833333334" PointY="21.415345052083325" />
           <ConnectorPoint PointX="6.5260454166666664" PointY="21.415345052083325" />
           <ConnectorPoint PointX="6.6927120833333325" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="9.6145833333333339" PointY="21.415345052083325" />
+          <ConnectorPoint PointX="9.3333333333333321" PointY="21.415345052083325" />
+          <ConnectorPoint PointX="9.6145833333333321" PointY="21.415345052083325" />
           <ConnectorPoint PointX="9.75" PointY="21.415345052083325" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.accounts_ibfk_2" >
@@ -3037,42 +3039,32 @@
           <ConnectorPoint PointX="9.75" PointY="20.551420526041667" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.address_ibfk_10" >
-          <ConnectorPoint PointX="2.25" PointY="16.126152846153843" />
-          <ConnectorPoint PointX="2.625" PointY="15.751152846153843" />
-          <ConnectorPoint PointX="2.625" PointY="16.337152195112171" />
-          <ConnectorPoint PointX="2.6285744349011209" PointY="16.33357776021105" />
-          <ConnectorPoint PointX="2.7464255650988787" PointY="16.215726630013293" />
-          <ConnectorPoint PointX="2.7535744349011209" PointY="16.20857776021105" />
-          <ConnectorPoint PointX="2.8714255650988787" PointY="16.090726630013293" />
-          <ConnectorPoint PointX="3.0011528461538459" PointY="15.960999348958325" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_6" >
-          <ConnectorPoint PointX="2.25" PointY="20.813460538461534" />
-          <ConnectorPoint PointX="2.8125" PointY="20.250960538461534" />
-          <ConnectorPoint PointX="2.8125" PointY="14.105499674479162" />
-          <ConnectorPoint PointX="3" PointY="14.105499674479162" />
+          <ConnectorPoint PointX="2.25" PointY="16.188460538461534" />
+          <ConnectorPoint PointX="2.5660744349011204" PointY="15.872386103560412" />
+          <ConnectorPoint PointX="2.6839255650988791" PointY="15.754534973362656" />
+          <ConnectorPoint PointX="2.8125" PointY="15.625960538461534" />
+          <ConnectorPoint PointX="2.8125" PointY="16.149652195112179" />
+          <ConnectorPoint PointX="3.0011528461538441" PointY="15.960999348958334" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.address_ibfk_7" >
-          <ConnectorPoint PointX="2.25" PointY="13.615249837239581" />
-          <ConnectorPoint PointX="3" PointY="13.615249837239581" />
+          <ConnectorPoint PointX="2.25" PointY="14.047841796874991" />
+          <ConnectorPoint PointX="3" PointY="14.047841796874991" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.address_ibfk_8" >
-          <ConnectorPoint PointX="2.25" PointY="18.563460538461534" />
-          <ConnectorPoint PointX="2.6875" PointY="18.125960538461534" />
-          <ConnectorPoint PointX="2.6875" PointY="15.064501511718738" />
-          <ConnectorPoint PointX="2.7291666666666665" PointY="15.064501511718738" />
-          <ConnectorPoint PointX="2.8958333333333335" PointY="15.064501511718738" />
-          <ConnectorPoint PointX="3" PointY="15.064501511718738" />
+          <ConnectorPoint PointX="2.25" PointY="18.501152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="18.126152846153843" />
+          <ConnectorPoint PointX="2.625" PointY="15.035672572916663" />
+          <ConnectorPoint PointX="3" PointY="15.035672572916663" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.address_ibfk_9" >
           <ConnectorPoint PointX="2.2499999999999996" PointY="11.345683593749982" />
           <ConnectorPoint PointX="2.625" PointY="11.720683593749982" />
-          <ConnectorPoint PointX="2.625" PointY="12.901372918619796" />
-          <ConnectorPoint PointX="3" PointY="12.901372918619796" />
+          <ConnectorPoint PointX="2.625" PointY="13.117668898437493" />
+          <ConnectorPoint PointX="3" PointY="13.117668898437493" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_4" >
-          <ConnectorPoint PointX="4.5" PointY="14.105499674479162" />
-          <ConnectorPoint PointX="5.25" PointY="14.105499674479162" />
+          <ConnectorPoint PointX="4.5" PointY="14.105499674479166" />
+          <ConnectorPoint PointX="5.25" PointY="14.105499674479166" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_3" >
           <ConnectorPoint PointX="4.5" PointY="18.223005429687547" />
@@ -3103,6 +3095,8 @@
           <ConnectorPoint PointX="6.75" PointY="12.406121046874944" />
           <ConnectorPoint PointX="7.25" PointY="12.406121046874944" />
           <ConnectorPoint PointX="7.25" PointY="15.749492187499982" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="15.749492187499982" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="15.749492187499982" />
           <ConnectorPoint PointX="9.5" PointY="15.749492187499982" />
           <ConnectorPoint PointX="9.5" PointY="19.134095052083353" />
           <ConnectorPoint PointX="11.541666666666666" PointY="19.134095052083353" />
@@ -3113,8 +3107,8 @@
         <AssociationConnector Association="POSModel.invoiceitems_ibfk_2" >
           <ConnectorPoint PointX="6.6093787499999994" PointY="17.345520833333325" />
           <ConnectorPoint PointX="6.6093787499999994" PointY="24.71875" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="24.71875" />
-          <ConnectorPoint PointX="9.6145833333333339" PointY="24.71875" />
+          <ConnectorPoint PointX="9.3333333333333321" PointY="24.71875" />
+          <ConnectorPoint PointX="9.6145833333333321" PointY="24.71875" />
           <ConnectorPoint PointX="9.75" PointY="24.71875" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoices_ibfk_1" >
@@ -3130,6 +3124,8 @@
         </AssociationConnector>
         <AssociationConnector Association="POSModel.ordermaster_ibfk_1" >
           <ConnectorPoint PointX="6.75" PointY="16.21875" />
+          <ConnectorPoint PointX="6.916666666666667" PointY="16.21875" />
+          <ConnectorPoint PointX="7.083333333333333" PointY="16.21875" />
           <ConnectorPoint PointX="9.4166666666666661" PointY="16.21875" />
           <ConnectorPoint PointX="9.5833333333333339" PointY="16.21875" />
           <ConnectorPoint PointX="9.75" PointY="16.21875" />
@@ -3255,6 +3251,30 @@
         <AssociationConnector Association="POSModel.supplier_products" >
           <ConnectorPoint PointX="9" PointY="35.059847877604156" />
           <ConnectorPoint PointX="9.75" PointY="35.059847877604156" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="14.375" PointY="13.875" Height="1.7879850260416674" />
+        <AssociationConnector Association="POSModel.address_ibfk_6" >
+          <ConnectorPoint PointX="14.375" PointY="14.997345377604162" />
+          <ConnectorPoint PointX="12.583333333333334" PointY="14.997345377604162" />
+          <ConnectorPoint PointX="12.416666666666666" PointY="14.997345377604162" />
+          <ConnectorPoint PointX="9.25" PointY="14.997345377604162" />
+          <ConnectorPoint PointX="9.25" PointY="15.874492187499982" />
+          <ConnectorPoint PointX="7" PointY="15.874492187499982" />
+          <ConnectorPoint PointX="7" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.6927120833333325" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.5260454166666664" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.2864595833333334" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.1197929166666674" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="5.6770808333333331" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="5.5104141666666671" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="4.75" PointY="17.595520833333325" />
+          <ConnectorPoint PointX="4.75" PointY="16.210999348958332" />
+          <ConnectorPoint PointX="3.7818284230769219" PointY="16.210999348958332" />
+          <ConnectorPoint PointX="3.7818284230769219" PointY="15.960999348958334" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

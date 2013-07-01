@@ -17,6 +17,8 @@ namespace RetailPOS.ViewModel
 
        public ObservableCollection<CurrencyModel> LstCurrency { get; private set; }
        public ObservableCollection<CountryDTO> LstCountry { get; private set; }
+       public ObservableCollection<TownCityDTO> LstTownCity { get; private set; }
+       
 
        private string _shopName;
        private string _phone;
@@ -25,10 +27,12 @@ namespace RetailPOS.ViewModel
        private string _website;
        private string _address;
        private decimal _rate;
+       
 
        private Visibility _Visible;
        private CurrencyModel _selectedCurrency;
        private CountryDTO _selectedCountry;
+       private TownCityDTO _selectedTownCity;
        public ShopSettingDTO shopSettingDetails { get; set; }
 
        public RelayCommand SaveShopSetting { get; private set; }
@@ -115,8 +119,11 @@ namespace RetailPOS.ViewModel
            {
                _rate = value;
                RaisePropertyChanged("Rate");
+
            }
        }
+
+     
 
        public CurrencyModel SelectedCurrency
        {
@@ -135,8 +142,20 @@ namespace RetailPOS.ViewModel
            {
                _selectedCountry = value;
                RaisePropertyChanged("SelectedCountry");
+
+               GetTownByContryId(_selectedCountry.Id);
            }
-       }  
+       }
+
+       public TownCityDTO SelectedTownCity
+       {
+           get { return _selectedTownCity; }
+           set
+           {
+               _selectedTownCity = value;
+               RaisePropertyChanged("SelectedTownCity");
+           }
+       }
 
        #endregion
 
@@ -208,6 +227,11 @@ namespace RetailPOS.ViewModel
        private void GetCountryDetails()
        {
            LstCountry = new ObservableCollection<CountryDTO>(ServiceFactory.ServiceClient.GetCountryDetails());
+       }
+
+       private void GetTownByContryId(int countryId)
+       {
+           LstTownCity = new ObservableCollection<TownCityDTO>(ServiceFactory.ServiceClient.GetTownCityDetails(countryId));
        }
 
        private void AddCurrency()

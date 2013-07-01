@@ -20,7 +20,6 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Masters
         {
             IList<CountryDTO> lstCountry = new List<CountryDTO>();
             ObjectMapper.Map(base.CountryRepository.GetList(), lstCountry);
-
             return lstCountry;
         }
     }

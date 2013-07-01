@@ -14,5 +14,12 @@ namespace RetailPOS.BusinessLayer.Service.Masters
         /// </summary>
         /// <returns>returns list of country else empty list</returns>
         IList<CountryDTO> GetCountryDetails();
+
+        /// <summary>
+        /// Retrieves available Town/City details from database
+        /// </summary>
+        /// <returns>returns list of Town/City else empty list</returns>
+        IList<TownCityDTO> GetTownCityDetail(int countryID);
+
     }
 }

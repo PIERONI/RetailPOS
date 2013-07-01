@@ -79,6 +79,13 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<CountryDTO> GetCountryDetails();
 
+        /// <summary>
+        /// Retrieves available TownCity details from database
+        /// </summary>
+        /// <returns>returns list of TownCity else empty list</returns>
+        [OperationContract]
+        IList<TownCityDTO> GetTownCityDetails(int countryID);
+
         #endregion
     }
 }

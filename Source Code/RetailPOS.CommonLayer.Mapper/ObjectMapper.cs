@@ -53,6 +53,10 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps CountryDTO object with country object
             AutoMapper.Mapper.CreateMap<country, CountryDTO>();
             AutoMapper.Mapper.CreateMap<CountryDTO, country>();
+
+            ////Maps TownCityDTO object with town_city object
+            AutoMapper.Mapper.CreateMap<town_city, TownCityDTO>();
+            AutoMapper.Mapper.CreateMap<TownCityDTO, town_city>();
         }
 
         #endregion

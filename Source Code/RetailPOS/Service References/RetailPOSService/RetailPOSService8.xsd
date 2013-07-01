@@ -35,4 +35,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CountryDTO" nillable="true" type="tns:CountryDTO" />
+  <xs:complexType name="ArrayOfTownCityDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TownCityDTO" nillable="true" type="tns:TownCityDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTownCityDTO" nillable="true" type="tns:ArrayOfTownCityDTO" />
+  <xs:complexType name="TownCityDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Town_City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="countryID" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TownCityDTO" nillable="true" type="tns:TownCityDTO" />
 </xs:schema>

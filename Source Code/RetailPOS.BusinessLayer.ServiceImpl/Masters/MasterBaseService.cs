@@ -16,5 +16,13 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Masters
             get;
             set;
         }
+
+        [Dependency]
+        public IGenericRepository<town_city> TownCityRepository
+        {
+            get;
+            set;
+        }
+
     }
 }

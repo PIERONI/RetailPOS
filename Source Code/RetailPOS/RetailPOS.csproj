@@ -456,6 +456,9 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.TownCityDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOSService.wsdl" />
     <None Include="Service References\RetailPOSService\RetailPOSService.xsd">
       <SubType>Designer</SubType>

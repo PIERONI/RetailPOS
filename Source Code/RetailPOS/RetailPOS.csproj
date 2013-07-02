@@ -447,6 +447,9 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CustomerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PostCodeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.ProductCategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

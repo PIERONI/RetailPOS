@@ -30,6 +30,23 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             get;
             set;
         }
+    
+        public virtual short towncityid
+        {
+            get { return _towncityid; }
+            set
+            {
+                if (_towncityid != value)
+                {
+                    if (town_city != null && town_city.id != value)
+                    {
+                        town_city = null;
+                    }
+                    _towncityid = value;
+                }
+            }
+        }
+        private short _towncityid;
 
         #endregion
         #region Navigation Properties
@@ -65,9 +82,44 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<address> _addresses;
+    
+        public virtual town_city town_city
+        {
+            get { return _town_city; }
+            set
+            {
+                if (!ReferenceEquals(_town_city, value))
+                {
+                    var previousValue = _town_city;
+                    _town_city = value;
+                    Fixuptown_city(previousValue);
+                }
+            }
+        }
+        private town_city _town_city;
 
         #endregion
         #region Association Fixup
+    
+        private void Fixuptown_city(town_city previousValue)
+        {
+            if (previousValue != null && previousValue.postcodes.Contains(this))
+            {
+                previousValue.postcodes.Remove(this);
+            }
+    
+            if (town_city != null)
+            {
+                if (!town_city.postcodes.Contains(this))
+                {
+                    town_city.postcodes.Add(this);
+                }
+                if (towncityid != town_city.id)
+                {
+                    towncityid = town_city.id;
+                }
+            }
+        }
     
         private void Fixupaddresses(object sender, NotifyCollectionChangedEventArgs e)
         {

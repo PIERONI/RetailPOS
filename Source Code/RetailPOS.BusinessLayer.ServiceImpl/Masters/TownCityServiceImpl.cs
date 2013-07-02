@@ -18,7 +18,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Masters
         IList<TownCityDTO> IMasterService.GetTownCityDetail(int countryID)
         {
             IList<TownCityDTO> lstTownCity = new List<TownCityDTO>();
-            ObjectMapper.Map(base.TownCityRepository.GetList(item => item.CountryId == countryID), lstTownCity);
+            ObjectMapper.Map(base.TownCityRepository.GetList(item => item.CountryID == countryID), lstTownCity);
             return lstTownCity;
         }
     }

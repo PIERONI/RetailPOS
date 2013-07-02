@@ -127,6 +127,12 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
+        public virtual string apikey
+        {
+            get;
+            set;
+        }
+    
         public virtual Nullable<short> security_group_id
         {
             get;

@@ -282,6 +282,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<supplier_contact_person> _supplier_contact_person;
     
+        public ObjectSet<town_city> town_city
+        {
+            get { return _town_city  ?? (_town_city = CreateObjectSet<town_city>("town_city")); }
+        }
+        private ObjectSet<town_city> _town_city;
+    
         public ObjectSet<warranty> warranties
         {
             get { return _warranties  ?? (_warranties = CreateObjectSet<warranty>("warranties")); }
@@ -293,12 +299,6 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _working_record  ?? (_working_record = CreateObjectSet<working_record>("working_record")); }
         }
         private ObjectSet<working_record> _working_record;
-    
-        public ObjectSet<town_city> town_city
-        {
-            get { return _town_city  ?? (_town_city = CreateObjectSet<town_city>("town_city")); }
-        }
-        private ObjectSet<town_city> _town_city;
 
         #endregion
     }

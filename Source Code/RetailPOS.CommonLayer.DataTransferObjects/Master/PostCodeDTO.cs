@@ -4,5 +4,6 @@
     {
         public int Id { get; set; }
         public string PostCode { get; set; }
+        public short TownCityId { get; set; }
     }
 }

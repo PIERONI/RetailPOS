@@ -25,17 +25,28 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual string towncity
+        public virtual string town_city1
         {
             get;
             set;
         }
     
-        public virtual Nullable<short> CountryId
+        public virtual short CountryID
         {
-            get;
-            set;
+            get { return _countryID; }
+            set
+            {
+                if (_countryID != value)
+                {
+                    if (country != null && country.id != value)
+                    {
+                        country = null;
+                    }
+                    _countryID = value;
+                }
+            }
         }
+        private short _countryID;
 
         #endregion
         #region Navigation Properties
@@ -71,9 +82,76 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<address> _addresses;
+    
+        public virtual country country
+        {
+            get { return _country; }
+            set
+            {
+                if (!ReferenceEquals(_country, value))
+                {
+                    var previousValue = _country;
+                    _country = value;
+                    Fixupcountry(previousValue);
+                }
+            }
+        }
+        private country _country;
+    
+        public virtual ICollection<postcode> postcodes
+        {
+            get
+            {
+                if (_postcodes == null)
+                {
+                    var newCollection = new FixupCollection<postcode>();
+                    newCollection.CollectionChanged += Fixuppostcodes;
+                    _postcodes = newCollection;
+                }
+                return _postcodes;
+            }
+            set
+            {
+                if (!ReferenceEquals(_postcodes, value))
+                {
+                    var previousValue = _postcodes as FixupCollection<postcode>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuppostcodes;
+                    }
+                    _postcodes = value;
+                    var newValue = value as FixupCollection<postcode>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuppostcodes;
+                    }
+                }
+            }
+        }
+        private ICollection<postcode> _postcodes;
 
         #endregion
         #region Association Fixup
+    
+        private void Fixupcountry(country previousValue)
+        {
+            if (previousValue != null && previousValue.town_city.Contains(this))
+            {
+                previousValue.town_city.Remove(this);
+            }
+    
+            if (country != null)
+            {
+                if (!country.town_city.Contains(this))
+                {
+                    country.town_city.Add(this);
+                }
+                if (CountryID != country.id)
+                {
+                    CountryID = country.id;
+                }
+            }
+        }
     
         private void Fixupaddresses(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -88,6 +166,28 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             if (e.OldItems != null)
             {
                 foreach (address item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.town_city, this))
+                    {
+                        item.town_city = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuppostcodes(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (postcode item in e.NewItems)
+                {
+                    item.town_city = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (postcode item in e.OldItems)
                 {
                     if (ReferenceEquals(item.town_city, this))
                     {

@@ -57,6 +57,10 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps TownCityDTO object with town_city object
             AutoMapper.Mapper.CreateMap<town_city, TownCityDTO>();
             AutoMapper.Mapper.CreateMap<TownCityDTO, town_city>();
+
+            ////Maps PostCodeDTO object with postcode object
+            AutoMapper.Mapper.CreateMap<postcode, PostCodeDTO>();
+            AutoMapper.Mapper.CreateMap<PostCodeDTO, postcode>();
         }
 
         #endregion

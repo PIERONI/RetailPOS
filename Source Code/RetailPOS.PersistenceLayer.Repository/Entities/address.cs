@@ -180,6 +180,21 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private postcode _postcode;
     
+        public virtual town_city town_city
+        {
+            get { return _town_city; }
+            set
+            {
+                if (!ReferenceEquals(_town_city, value))
+                {
+                    var previousValue = _town_city;
+                    _town_city = value;
+                    Fixuptown_city(previousValue);
+                }
+            }
+        }
+        private town_city _town_city;
+    
         public virtual country country
         {
             get { return _country; }
@@ -256,21 +271,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<customer> _customers;
-    
-        public virtual town_city town_city
-        {
-            get { return _town_city; }
-            set
-            {
-                if (!ReferenceEquals(_town_city, value))
-                {
-                    var previousValue = _town_city;
-                    _town_city = value;
-                    Fixuptown_city(previousValue);
-                }
-            }
-        }
-        private town_city _town_city;
 
         #endregion
         #region Association Fixup
@@ -294,6 +294,30 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                 {
                     postcode_id = postcode.id;
                 }
+            }
+        }
+    
+        private void Fixuptown_city(town_city previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (town_city != null)
+            {
+                if (!town_city.addresses.Contains(this))
+                {
+                    town_city.addresses.Add(this);
+                }
+                if (town_city_id != town_city.id)
+                {
+                    town_city_id = town_city.id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                town_city_id = null;
             }
         }
     
@@ -362,30 +386,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             else if (!_settingFK)
             {
                 locality_id = null;
-            }
-        }
-    
-        private void Fixuptown_city(town_city previousValue)
-        {
-            if (previousValue != null && previousValue.addresses.Contains(this))
-            {
-                previousValue.addresses.Remove(this);
-            }
-    
-            if (town_city != null)
-            {
-                if (!town_city.addresses.Contains(this))
-                {
-                    town_city.addresses.Add(this);
-                }
-                if (town_city_id != town_city.id)
-                {
-                    town_city_id = town_city.id;
-                }
-            }
-            else if (!_settingFK)
-            {
-                town_city_id = null;
             }
         }
     

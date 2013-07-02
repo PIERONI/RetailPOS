@@ -97,6 +97,7 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CountryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.TownCityDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PostCodeDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductCategoryDTO))]
     public partial class BaseDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -1331,6 +1332,62 @@ namespace RetailPOS.RetailPOSService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PostCodeDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Master")]
+    [System.SerializableAttribute()]
+    public partial class PostCodeDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PostCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short TownCityIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PostCode {
+            get {
+                return this.PostCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PostCodeField, value) != true)) {
+                    this.PostCodeField = value;
+                    this.RaisePropertyChanged("PostCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short TownCityId {
+            get {
+                return this.TownCityIdField;
+            }
+            set {
+                if ((this.TownCityIdField.Equals(value) != true)) {
+                    this.TownCityIdField = value;
+                    this.RaisePropertyChanged("TownCityId");
+                }
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RetailPOSService.IRetailPOSServiceContract", SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IRetailPOSServiceContract {
@@ -1361,6 +1418,9 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetailsResponse")]
         RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailResponse")]
+        RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetail(int towncityID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1424,6 +1484,10 @@ namespace RetailPOS.RetailPOSService {
         
         public RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryID) {
             return base.Channel.GetTownCityDetails(countryID);
+        }
+        
+        public RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetail(int towncityID) {
+            return base.Channel.GetPostalCodeDetail(towncityID);
         }
     }
 }

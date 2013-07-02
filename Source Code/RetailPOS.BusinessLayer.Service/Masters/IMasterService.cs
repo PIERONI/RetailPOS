@@ -21,5 +21,12 @@ namespace RetailPOS.BusinessLayer.Service.Masters
         /// <returns>returns list of Town/City else empty list</returns>
         IList<TownCityDTO> GetTownCityDetail(int countryID);
 
+
+        /// <summary>
+        /// Retrieves available PostalCode details from database
+        /// </summary>
+        /// <returns>returns list of PostalCode else empty list</returns>
+        IList<PostCodeDTO> GetPostalCodeDetail(int towncityID);                    
+
     }
 }

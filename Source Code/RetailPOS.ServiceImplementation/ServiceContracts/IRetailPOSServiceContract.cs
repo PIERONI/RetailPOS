@@ -86,6 +86,13 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<TownCityDTO> GetTownCityDetails(int countryID);
 
+        /// <summary>
+        /// Retrieves available Postalcode details from database
+        /// </summary>
+        /// <returns>returns list of Postalcode else empty list</returns>
+        [OperationContract]
+        IList<PostCodeDTO> GetPostalCodeDetail(int towncityID);
+
         #endregion
     }
 }

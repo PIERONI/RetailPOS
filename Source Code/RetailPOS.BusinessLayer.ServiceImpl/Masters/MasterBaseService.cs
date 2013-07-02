@@ -24,5 +24,12 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Masters
             set;
         }
 
+        [Dependency]
+        public IGenericRepository<postcode> PostalCodeRepositoer
+        {
+            get;
+            set;
+        }
+
     }
 }

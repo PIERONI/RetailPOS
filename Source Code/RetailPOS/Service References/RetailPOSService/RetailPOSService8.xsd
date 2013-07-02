@@ -53,4 +53,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="TownCityDTO" nillable="true" type="tns:TownCityDTO" />
+  <xs:complexType name="ArrayOfPostCodeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PostCodeDTO" nillable="true" type="tns:PostCodeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPostCodeDTO" nillable="true" type="tns:ArrayOfPostCodeDTO" />
+  <xs:complexType name="PostCodeDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q4:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TownCityId" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PostCodeDTO" nillable="true" type="tns:PostCodeDTO" />
 </xs:schema>

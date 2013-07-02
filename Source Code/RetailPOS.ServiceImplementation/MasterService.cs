@@ -25,5 +25,15 @@ namespace RetailPOS.ServiceImplementation
         {
             return MasterService.GetTownCityDetail(countryID);
         }
+
+        /// <summary>
+        /// Retrieves available Postalcode details from database
+        /// </summary>
+        /// <returns>returns list of Postalcode else empty list</returns>
+        public IList<PostCodeDTO> GetPostalCodeDetail(int towncityID)
+        {
+            return MasterService.GetPostalCodeDetail(towncityID);
+        }
     }
+    
 }

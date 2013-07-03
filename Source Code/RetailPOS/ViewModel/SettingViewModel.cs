@@ -150,7 +150,9 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenMainWindow()
        {
-         
+           MainWindow MW = new MainWindow();
+           MW.Show();
+           Settings.SettingWindow.Close();
        }
 
        /// <summary>

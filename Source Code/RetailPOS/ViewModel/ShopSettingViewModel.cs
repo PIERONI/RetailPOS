@@ -18,8 +18,8 @@ namespace RetailPOS.ViewModel
         #region Declare Public and Private Memebers
 
         public ObservableCollection<CountryDTO> LstCountry { get; private set; }
-        public ObservableCollection<TownCityDTO> LstTownCity { get; private set; }
-        public ObservableCollection<PostCodeDTO> LstPostalCode { get; private set; }
+      
+       
 
         public RelayCommand SaveShopSetting { get; private set; }
         public RelayCommand CancelShopSetting { get; private set; }
@@ -32,12 +32,41 @@ namespace RetailPOS.ViewModel
         private string _website;
         private string _address;
         private decimal _rate;
-
+        private ObservableCollection<TownCityDTO> _lstTownCity;
+        private ObservableCollection<PostCodeDTO> _lstPostalCode;
         private Visibility _Visible;
         private CountryDTO _selectedCountry;
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
         public ShopSettingDTO shopSettingDetails { get; set; }
+
+
+        public ObservableCollection<PostCodeDTO> LstPostalCode
+        {
+            get
+            {
+                return _lstPostalCode;
+            }
+            set
+            {
+                _lstPostalCode = value;
+                RaisePropertyChanged("LstPostalCode");
+            }
+        }
+
+        public ObservableCollection<TownCityDTO> LstTownCity 
+        {
+            get
+            {
+                return _lstTownCity;
+            }
+            set
+            {
+                _lstTownCity = value;
+                RaisePropertyChanged("LstTownCity");
+            }
+
+        }
         
         public Visibility VisibleTimePicker
         {
@@ -133,8 +162,7 @@ namespace RetailPOS.ViewModel
             {
                 _selectedCountry = value;
                 RaisePropertyChanged("SelectedCountry");
-
-                GetTownByContryId();
+                if(SelectedCountry!=null) GetTownByContryId();
             }
         }
 
@@ -145,7 +173,8 @@ namespace RetailPOS.ViewModel
             {
                 _selectedTownCity = value;
                 RaisePropertyChanged("SelectedTownCity");
-                //GetPostalCodeByTownCityId(_selectedTownCity.Id);
+
+                if(SelectedTownCity!=null)  GetPostalCodeByTownCityId(_selectedTownCity.Id);
             }
         }
 
@@ -235,7 +264,7 @@ namespace RetailPOS.ViewModel
             ////Gets Cities based on selected country
             LstTownCity = new ObservableCollection<TownCityDTO>(ServiceFactory.ServiceClient.GetTownCityDetails(SelectedCountry.Id));
 
-            CollectionViewSource.GetDefaultView(this.LstTownCity).Refresh();
+            //CollectionViewSource.GetDefaultView(this.LstTownCity).Refresh();
 
             if (LstTownCity.Count > 0)
             {

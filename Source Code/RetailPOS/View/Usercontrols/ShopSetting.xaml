@@ -19,7 +19,7 @@
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
             <TabItem Header="Shop Setting" Name="tabShopSetting">
-                <Grid>
+                <Grid Margin="0 10 0 0 ">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>

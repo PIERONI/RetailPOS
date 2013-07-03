@@ -30,6 +30,15 @@ namespace RetailPOS.ServiceImplementation
             return ProductService.GetAllProducts();
         }
 
+        /// <summary>
+        /// Get all Commonly Used Products
+        /// </summary>
+        /// <returns>returns list of all Commonly Used  products present in database</returns>
+        public IList<ProductDTO> GetCommonProduct()
+        {
+            return ProductService.GetCommonProduct();
+        }
+
         #endregion
     }
 }

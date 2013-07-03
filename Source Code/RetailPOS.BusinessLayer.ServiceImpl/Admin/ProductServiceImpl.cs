@@ -30,5 +30,16 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
             ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 1).ToList(), lstProducts);
             return lstProducts;
         }
+
+        /// <summary>
+        /// Get all Commonly Used Products
+        /// </summary>
+        /// <returns>returns list of all Commonly Used  products present in database</returns>
+        IList<ProductDTO> IProductService.GetCommonProduct()
+        {
+            IList<ProductDTO> lstProducts = new List<ProductDTO>();
+            ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 7).ToList(), lstProducts);
+            return lstProducts;
+        }
     }
 }

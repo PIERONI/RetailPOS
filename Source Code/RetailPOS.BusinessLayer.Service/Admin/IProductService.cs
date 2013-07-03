@@ -20,5 +20,11 @@ namespace RetailPOS.BusinessLayer.Service.Admin
         /// </summary>
         /// <returns>returns list of all products present in database</returns>
         IList<ProductDTO> GetAllProducts();
+
+        /// <summary>
+        /// Get all Commonly Used Products
+        /// </summary>
+        /// <returns>returns list of all Commonly Used  products present in database</returns>
+        IList<ProductDTO> GetCommonProduct();
     }
 }

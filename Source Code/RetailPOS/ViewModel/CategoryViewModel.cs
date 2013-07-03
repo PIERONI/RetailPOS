@@ -10,9 +10,10 @@ namespace RetailPOS.ViewModel
     public class CategoryViewModel : ViewModelBase
     {
         #region Declare Public and private Data member
-        private ObservableCollection<ProductCategoryDTO> _lstCategories;
-        
-        public ObservableCollection<ProductDTO> _lstProduct;        
+
+        private ObservableCollection<ProductCategoryDTO> _lstCategories;        
+        private ObservableCollection<ProductDTO> _lstProduct;        
+
         public RelayCommand<ProductCategoryDTO> SelectProductCommand { get; private set; }
         private bool _firstPopupIsOpen;
         public  RelayCommand OpenFirstPopupCommand { get; private set; }
@@ -68,11 +69,16 @@ namespace RetailPOS.ViewModel
         /// Initializes a new instance of the <see cref="CategoryViewModel"/> class.
         /// </summary>
         public CategoryViewModel()
-        {
+        {           
             lstCategories = new ObservableCollection<ProductCategoryDTO>();
             lstLooseCategories = new ObservableCollection<ProductCategoryDTO>();
+            lstProduct = new ObservableCollection<ProductDTO>();
+            
             AddCategories();
             AddLooseCategories();
+            FillCommonProducts();
+
+
             SelectProductCommand = new RelayCommand<ProductCategoryDTO>(FillProducts);
             OpenFirstPopupCommand = new RelayCommand(OpenFirstPopupClick);
             OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
@@ -107,9 +113,18 @@ namespace RetailPOS.ViewModel
         /// <param name="productCategory">The product category.</param>
         private void FillProducts(ProductCategoryDTO productCategory)
         {
-            RetailPOSService.RetailPOSServiceContractClient serviceClient = new RetailPOSService.RetailPOSServiceContractClient();
-            lstProduct = new ObservableCollection<ProductDTO>(from item in serviceClient.GetProductByCategory(productCategory.Id)
+            lstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetProductByCategory(productCategory.Id)
                                                                          select item);
+        }
+
+        /// <summary>
+        /// Get all Commonly Used Products
+        /// </summary>
+        /// <returns>returns list of all Commonly Used  products present in database</returns>
+        private void FillCommonProducts()
+        {
+            lstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetCommonProduct() 
+                                                                          select item);
         }
 
         /// <summary>

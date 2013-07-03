@@ -35,6 +35,13 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<ProductDTO> GetAllProducts();
 
+        /// <summary>
+        /// Get all Commonly Used Products
+        /// </summary>
+        /// <returns>returns list of all Commonly Used  products present in database</returns>
+        [OperationContract]
+        IList<ProductDTO> GetCommonProduct();
+
         #endregion
 
         #region Users

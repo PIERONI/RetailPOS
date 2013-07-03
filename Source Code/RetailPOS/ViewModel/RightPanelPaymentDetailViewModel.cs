@@ -18,18 +18,18 @@ namespace RetailPOS.ViewModel
         #region Declare Public and private Data member
 
         public IList<CustomerDTO> lstSearchCustomer { get; private set; }
-
         public RelayCommand OpenPayEntryBalancePopUp { get; private set; }
         public RelayCommand OpenCardEntryBalancePopUp { get; private set; }
         public RelayCommand SelectCardCommand { get; private set; }
        
         private bool _isPaymentEntryPopupOpen;
         private bool _IsCardPopupOpen;
-        private string _customerBalance;
-
+        
         private CustomerDTO _selectedCustomer;
         private CustomerDTO _customer;
         private Visibility _isVisibleCustomerInfo;
+
+        private string _customerBalance;
         private string _customerName;
         private string _customerName1;
         private string _Mobile;

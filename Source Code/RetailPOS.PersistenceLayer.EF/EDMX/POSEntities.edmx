@@ -3054,7 +3054,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="POSEntities" ZoomLevel="64">
+      <Diagram Name="POSEntities" ZoomLevel="95">
         <EntityTypeShape EntityType="POSModel.account" Width="1.5" PointX="14.25" PointY="23.625" Height="3.1340950520833388" />
         <EntityTypeShape EntityType="POSModel.address" Width="1.5" PointX="7.5" PointY="16.125" Height="3.710999348958353" />
         <EntityTypeShape EntityType="POSModel.country" Width="1.5" PointX="0.75" PointY="14.75" Height="1.7879850260416674" />

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
+﻿#region Using directives
+
+using System;
 using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Command;
 using System.Windows;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
+using System.Windows.Data;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
@@ -19,6 +21,9 @@ namespace RetailPOS.ViewModel
         public ObservableCollection<TownCityDTO> LstTownCity { get; private set; }
         public ObservableCollection<PostCodeDTO> LstPostalCode { get; private set; }
 
+        public RelayCommand SaveShopSetting { get; private set; }
+        public RelayCommand CancelShopSetting { get; private set; }
+        public RelayCommand<int> IsScheduledCheck { get; set; }
 
         private string _shopName;
         private string _phone;
@@ -28,17 +33,12 @@ namespace RetailPOS.ViewModel
         private string _address;
         private decimal _rate;
 
-
         private Visibility _Visible;
         private CountryDTO _selectedCountry;
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
         public ShopSettingDTO shopSettingDetails { get; set; }
-
-        public RelayCommand SaveShopSetting { get; private set; }
-        public RelayCommand CancelShopSetting { get; private set; }
-        public RelayCommand<int> IsScheduledCheck { get; set; }
-
+        
         public Visibility VisibleTimePicker
         {
             get
@@ -123,18 +123,18 @@ namespace RetailPOS.ViewModel
             }
         }
 
-
-
-
-
         public CountryDTO SelectedCountry
         {
-            get { return _selectedCountry; }
+            get
+            {   
+                return _selectedCountry;
+            }
             set
             {
                 _selectedCountry = value;
                 RaisePropertyChanged("SelectedCountry");
-                GetTownByContryId(_selectedCountry.Id);
+
+                GetTownByContryId();
             }
         }
 
@@ -145,7 +145,7 @@ namespace RetailPOS.ViewModel
             {
                 _selectedTownCity = value;
                 RaisePropertyChanged("SelectedTownCity");
-                GetPostalCodeByTownCityId(_selectedTownCity.Id);
+                //GetPostalCodeByTownCityId(_selectedTownCity.Id);
             }
         }
 
@@ -166,10 +166,12 @@ namespace RetailPOS.ViewModel
         /// </summary>
         public ShopSettingViewModel()
         {
-
             LstCountry = new ObservableCollection<CountryDTO>();
-            LstPostalCode = new ObservableCollection<PostCodeDTO>();            
+            LstTownCity = new ObservableCollection<TownCityDTO>();
+            LstPostalCode = new ObservableCollection<PostCodeDTO>();
+
             GetCountryDetails();
+            
             SaveShopSetting = new RelayCommand(SaveSetting);
             CancelShopSetting = new RelayCommand(CancelSetting);
             IsScheduledCheck = new RelayCommand<int>(ShowTimer);
@@ -228,9 +230,17 @@ namespace RetailPOS.ViewModel
             LstCountry = new ObservableCollection<CountryDTO>(ServiceFactory.ServiceClient.GetCountryDetails());
         }
 
-        private void GetTownByContryId(int countryId)
-        {
-            LstTownCity = new ObservableCollection<TownCityDTO>(ServiceFactory.ServiceClient.GetTownCityDetails(countryId));
+        private void GetTownByContryId()
+        {   
+            ////Gets Cities based on selected country
+            LstTownCity = new ObservableCollection<TownCityDTO>(ServiceFactory.ServiceClient.GetTownCityDetails(SelectedCountry.Id));
+
+            CollectionViewSource.GetDefaultView(this.LstTownCity).Refresh();
+
+            if (LstTownCity.Count > 0)
+            {
+                SelectedTownCity = LstTownCity[0];
+            }
         }
 
         private void GetPostalCodeByTownCityId(int towncityId)
@@ -239,13 +249,13 @@ namespace RetailPOS.ViewModel
         }
     }
 
-   public class CurrencyModel
-   {
-       public int CurrencyId { get; set; }
-       public string CurrencyName { get; set; }
-   }
+    public class CurrencyModel
+    {
+        public int CurrencyId { get; set; }
+        public string CurrencyName { get; set; }
+    }
 
-   public class AddressModel
-   {
-   }
+    public class AddressModel
+    {
+    }
 }

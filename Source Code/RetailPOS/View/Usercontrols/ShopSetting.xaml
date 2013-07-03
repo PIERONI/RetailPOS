@@ -10,11 +10,10 @@
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid Height="400">
-        <Grid.RowDefinitions>           
+        <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-       
         <TabControl Margin="3" Grid.Row="0" Height="350"  HorizontalAlignment="Left" Name="tabCtrlSetting" VerticalAlignment="Top" Width="465" Grid.RowSpan="2">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
@@ -27,13 +26,12 @@
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>                       
-                        
+                        <RowDefinition Height="35"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition>                            
+                        <ColumnDefinition>
                         </ColumnDefinition>
-                        <ColumnDefinition>                            
+                        <ColumnDefinition>
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Shop Code :" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
@@ -78,21 +76,9 @@
                     <TextBox Grid.Column="1" Grid.Row="2" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
                     <TextBlock Text="House Number:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
                     <TextBlock Text="Country:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-                    <ComboBox Grid.Row="3" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <ComboBox Grid.Row="3" ItemsSource="{Binding LstCountry}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedCountry,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" />
                     <TextBlock Text="City Area/District:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
-                    <ComboBox Grid.Row="4" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstTownCity}" DisplayMemberPath="Town_City1" SelectedValuePath="Id" SelectedItem="{Binding SelectedTownCity, Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" />
                     <TextBlock Text="City/Town/Village:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
                     <ComboBox Grid.Row="5" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
                         <ComboBox.ItemTemplate>
@@ -120,7 +106,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Tax Or Rate Setting" Name="tabTaxSetting">
-                 <Grid>
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="50"></RowDefinition>
@@ -147,10 +133,10 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <StackPanel Margin="10" Grid.Row="0" Orientation="Horizontal">
-                        <RadioButton GroupName="BackUp" Command="{Binding IsScheduledCheck}" Name="BckUpNow" CommandParameter="0" Foreground="Black"  Content="Back Up Now" TextBlock.FontSize="14" FontWeight="Bold">                        
-                    </RadioButton>
+                        <RadioButton GroupName="BackUp" Command="{Binding IsScheduledCheck}" Name="BckUpNow" CommandParameter="0" Foreground="Black"  Content="Back Up Now" TextBlock.FontSize="14" FontWeight="Bold">
+                        </RadioButton>
                         <RadioButton GroupName="BackUp" Command="{Binding IsScheduledCheck}"  Name="BckUpNowScheduled"  CommandParameter="1" Foreground="Black" Margin="20 0 0 0"  Content="Schedule A Backup" TextBlock.FontSize="14" FontWeight="Bold">
-                    </RadioButton>
+                        </RadioButton>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
                         <xctk:TimePicker Name="timePicker1" Visibility="{Binding VisibleTimePicker}"  Background="Blue" Width="96" />

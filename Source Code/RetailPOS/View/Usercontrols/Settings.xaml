@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
+             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"             
             Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
     <UserControl.Resources>
             <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
@@ -65,6 +65,11 @@
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Waste Management</Bold></TextBlock>
                 </DockPanel>
             </Button>
+            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right">
+                <DockPanel>
+                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>View/Search Promotional Offers</Bold></TextBlock>
+                </DockPanel>
+            </Button>
         </WrapPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCategoryVisible}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
             <ctrl:AddCategory x:Name="ctrlAddCategory" Margin="15" Width="522"></ctrl:AddCategory>
@@ -80,6 +85,10 @@
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsShopSettingVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
             <ctrl:ShopSetting x:Name="ctrlShopSetting"  Margin="15" Width="522"></ctrl:ShopSetting>
+        </StackPanel>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsSearchPromotionalOfferVisible}"
+                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
+            <ctrl:SearchPromotionalOffer x:Name="ctrlSearchPromotionalOffer" Margin="15" Width="522"></ctrl:SearchPromotionalOffer>
         </StackPanel>
     </Grid>
 </UserControl>

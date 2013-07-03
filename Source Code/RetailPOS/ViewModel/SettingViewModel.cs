@@ -16,7 +16,7 @@ namespace RetailPOS.ViewModel
        private Visibility _isCustomerVisible;
        private Visibility _isProductVisible;
        private Visibility _isShopSettingVisible;
-
+       private Visibility _issearchPromotionalOfferVisible;
        #endregion
 
        #region Public Properties
@@ -25,9 +25,9 @@ namespace RetailPOS.ViewModel
        public RelayCommand OpenCategorySettingCmd { get; private set; }
        public RelayCommand OpenCustomerCmd { get; private set; }
        public RelayCommand OpenProductWindowCmd { get; private set; }
-
        public RelayCommand OpenSettingWindowCmd { get; private set; }
        public RelayCommand BackToMainWindow { get; private set; }
+       public RelayCommand OpenSearchPromotionalOffer { get; private set; }
 
        public Visibility IsCategoryVisible
        {
@@ -80,6 +80,19 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("IsShopSettingVisible");
            }
        }
+
+       public Visibility IsSearchPromotionalOfferVisible
+       {
+           get
+           {
+               return _issearchPromotionalOfferVisible;
+           }
+           set
+           {
+               _issearchPromotionalOfferVisible = value;
+               RaisePropertyChanged("IsSearchPromotionalOfferVisible");
+           }
+       }
        #endregion
 
        /// <summary>
@@ -94,6 +107,7 @@ namespace RetailPOS.ViewModel
            OpenCategorySettingCmd = new RelayCommand(OpenCategoryWindow);
            OpenCustomerCmd = new RelayCommand(OpenCustomerWindow);
            OpenProductWindowCmd = new RelayCommand(OpenProduct);
+           OpenSearchPromotionalOffer = new RelayCommand(OpenSearchPromotionalWindow);
 
            BackToMainWindow = new RelayCommand(OpenMainWindow);
        }
@@ -103,6 +117,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void HideSettings()
        {
+           IsSearchPromotionalOfferVisible = Visibility.Collapsed;
            IsProductVisible = Visibility.Collapsed;
            IsShopSettingVisible = Visibility.Collapsed;
            IsCategoryVisible = Visibility.Collapsed;
@@ -175,6 +190,14 @@ namespace RetailPOS.ViewModel
            Settings set = new Settings();
            set.Show();
            MainWindow._MainWindow.Close();
+       }
+       /// <summary>
+       /// Opens the SearchpromotionalOffer window.
+       /// </summary>
+       private void OpenSearchPromotionalWindow()
+       {
+           HideSettings();
+           IsSearchPromotionalOfferVisible = Visibility.Visible;
        }
     }
 }

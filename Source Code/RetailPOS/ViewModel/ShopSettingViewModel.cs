@@ -41,6 +41,8 @@ namespace RetailPOS.ViewModel
         public ShopSettingDTO shopSettingDetails { get; set; }
 
 
+      
+
         public ObservableCollection<PostCodeDTO> LstPostalCode
         {
             get

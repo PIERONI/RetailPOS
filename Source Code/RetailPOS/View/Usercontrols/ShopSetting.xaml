@@ -88,13 +88,8 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <TextBlock Text="Postal Code:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
-                    <ComboBox Grid.Row="6" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <ComboBox Grid.Row="6" ItemsSource="{Binding LstPostalCode}" DisplayMemberPath="PostCode" SelectedValuePath="Id" SelectedItem="{Binding SelectedPostalCode, Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" />
+                    
                     <TextBlock Text="Street:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
                     <ComboBox Grid.Row="7" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
                         <ComboBox.ItemTemplate>

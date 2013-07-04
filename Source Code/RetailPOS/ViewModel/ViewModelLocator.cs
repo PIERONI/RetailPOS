@@ -26,6 +26,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<AddCustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
             SimpleIoc.Default.Register<MenuControlViewModel>();
+            SimpleIoc.Default.Register<WasteManagementViewModel>();
         }
 
         /// <summary>
@@ -171,6 +172,20 @@ namespace RetailPOS.ViewModel
         }
 
         /// <summary>
+        /// Gets the Wastemanagement View Model.
+        /// </summary>
+        /// <value>
+        /// The Was Viewtemanagement Model.
+        /// </value>
+        public WasteManagementViewModel WasteManagementVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<WasteManagementViewModel>();
+            }
+        }
+
+        /// <summary>
         /// Cleanups this instance.
         /// </summary>
         public static void Cleanup()
@@ -185,7 +200,8 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<RightPanelPaymentDetailViewModel>();
             SimpleIoc.Default.Register<AddCustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
-            SimpleIoc.Default.Register<MenuControlViewModel>();            
+            SimpleIoc.Default.Register<MenuControlViewModel>();
+            SimpleIoc.Default.Register<WasteManagementViewModel>();
         }
     }
 }

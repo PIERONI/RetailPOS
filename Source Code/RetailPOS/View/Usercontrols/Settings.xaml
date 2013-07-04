@@ -60,7 +60,7 @@
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Customer</Bold></TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right">
+            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right" Command="{Binding OpenWasteManegment}">
                 <DockPanel>
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Waste Management</Bold></TextBlock>
                 </DockPanel>
@@ -98,6 +98,10 @@
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsSearchPurchaseHistoryVisible}"
                      Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
             <ctrl:SearchPurchaseHistory x:Name="ctrlSearchPurchaseHistory" Margin="15" Width="722"></ctrl:SearchPurchaseHistory>
+        </StackPanel>
+        <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsWastemengmentVisible}"
+                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
+            <ctrl:WasteManagement x:Name="ctrlOpenWasteManagent" Margin="15" Width="722"></ctrl:WasteManagement>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -18,6 +18,7 @@ namespace RetailPOS.ViewModel
        private Visibility _isShopSettingVisible;
        private Visibility _issearchPromotionalOfferVisible;
        private Visibility _issearchPurchaseHistory;
+       private Visibility _isWasteManegementVisible;
        #endregion
 
        #region Public Properties
@@ -30,6 +31,7 @@ namespace RetailPOS.ViewModel
        public RelayCommand BackToMainWindow { get; private set; }
        public RelayCommand OpenSearchPromotionalOffer { get; private set; }
        public RelayCommand OpenSearchPurchaseHistory { get; private set; }
+       public RelayCommand OpenWasteManegment { get; private set; }
 
        public Visibility IsCategoryVisible
        {
@@ -108,6 +110,19 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("IsSearchPurchaseHistoryVisible");
            }
        }
+
+       public Visibility IsWastemengmentVisible
+       {
+           get
+           {
+               return _isWasteManegementVisible;
+           }
+           set
+           {
+               _isWasteManegementVisible = value;
+               RaisePropertyChanged("IsWastemengmentVisible");
+           }
+       }       
        #endregion
 
        /// <summary>
@@ -116,7 +131,7 @@ namespace RetailPOS.ViewModel
        public SettingViewModel()
        {
            HideSettings();
-
+           OpenWasteManegment = new RelayCommand(Openwastemanagement);
            OpenSettingWindowCmd = new RelayCommand(OpenSettingWindow);
            OpenShopSettingCmd = new RelayCommand(OpenShopSettingWindow);
            OpenCategorySettingCmd = new RelayCommand(OpenCategoryWindow);
@@ -133,6 +148,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void HideSettings()
        {
+           IsWastemengmentVisible = Visibility.Collapsed;
            IsSearchPromotionalOfferVisible = Visibility.Collapsed;
            IsProductVisible = Visibility.Collapsed;
            IsShopSettingVisible = Visibility.Collapsed;
@@ -223,6 +239,12 @@ namespace RetailPOS.ViewModel
        {
            HideSettings();
            IsSearchPurchaseHistoryVisible = Visibility.Visible;
+       }
+
+       private void Openwastemanagement()
+       {
+           HideSettings();
+           IsWastemengmentVisible = Visibility.Visible;
        }
     }
 }

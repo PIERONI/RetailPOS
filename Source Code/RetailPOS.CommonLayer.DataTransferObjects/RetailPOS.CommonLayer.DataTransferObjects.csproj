@@ -50,10 +50,12 @@
     <Compile Include="Master\StreetDTO.cs" />
     <Compile Include="Master\TownCityDTO.cs" />
     <Compile Include="Product\ProductDTO.cs" />
+    <Compile Include="PromotionalOffer\PromotionalOfferDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\ShopSettingDTO.cs" />
     <Compile Include="User\StaffDTO.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

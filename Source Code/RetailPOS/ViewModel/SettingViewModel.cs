@@ -17,6 +17,7 @@ namespace RetailPOS.ViewModel
        private Visibility _isProductVisible;
        private Visibility _isShopSettingVisible;
        private Visibility _issearchPromotionalOfferVisible;
+       private Visibility _issearchPurchaseHistory;
        #endregion
 
        #region Public Properties
@@ -28,6 +29,7 @@ namespace RetailPOS.ViewModel
        public RelayCommand OpenSettingWindowCmd { get; private set; }
        public RelayCommand BackToMainWindow { get; private set; }
        public RelayCommand OpenSearchPromotionalOffer { get; private set; }
+       public RelayCommand OpenSearchPurchaseHistory { get; private set; }
 
        public Visibility IsCategoryVisible
        {
@@ -93,6 +95,19 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("IsSearchPromotionalOfferVisible");
            }
        }
+
+       public Visibility IsSearchPurchaseHistoryVisible
+       {
+           get
+           {
+               return _issearchPurchaseHistory;
+           }
+           set
+           {
+               _issearchPurchaseHistory = value;
+               RaisePropertyChanged("IsSearchPurchaseHistoryVisible");
+           }
+       }
        #endregion
 
        /// <summary>
@@ -108,6 +123,7 @@ namespace RetailPOS.ViewModel
            OpenCustomerCmd = new RelayCommand(OpenCustomerWindow);
            OpenProductWindowCmd = new RelayCommand(OpenProduct);
            OpenSearchPromotionalOffer = new RelayCommand(OpenSearchPromotionalWindow);
+           OpenSearchPurchaseHistory = new RelayCommand(OpenSearchPurchasehistory);
 
            BackToMainWindow = new RelayCommand(OpenMainWindow);
        }
@@ -122,6 +138,7 @@ namespace RetailPOS.ViewModel
            IsShopSettingVisible = Visibility.Collapsed;
            IsCategoryVisible = Visibility.Collapsed;
            IsCustomerVisible = Visibility.Collapsed;
+           IsSearchPurchaseHistoryVisible = Visibility.Collapsed;
        }
 
        /// <summary>
@@ -200,6 +217,12 @@ namespace RetailPOS.ViewModel
        {
            HideSettings();
            IsSearchPromotionalOfferVisible = Visibility.Visible;
+       }
+
+       private void OpenSearchPurchasehistory()
+       {
+           HideSettings();
+           IsSearchPurchaseHistoryVisible = Visibility.Visible;
        }
     }
 }

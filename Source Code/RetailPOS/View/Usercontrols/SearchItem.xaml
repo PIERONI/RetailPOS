@@ -98,8 +98,6 @@
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-
-                
             </Grid>
         </GroupBox>
         <my:ModalDialogPopup Width="auto" MaxWidth="500"  IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}" Title="Product" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
@@ -135,7 +133,6 @@
                                     <CommandBinding Command="Save"></CommandBinding>
                                 </Button.CommandBindings>
                             </Button>
-                            
                         </StackPanel> 
                     </Grid>
                 </ContentControl>

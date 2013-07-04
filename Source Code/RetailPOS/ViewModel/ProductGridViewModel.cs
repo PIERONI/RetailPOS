@@ -1,12 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using RetailPOS.View;
-using System.ComponentModel;
-using System.Windows.Data;
 using RetailPOS.Utility;
-using System.Collections.Generic;
+using RetailPOS.View;
 
 namespace RetailPOS.ViewModel
 {
@@ -14,37 +14,28 @@ namespace RetailPOS.ViewModel
     {
         #region Declare Public and private Data member
 
-        //private bool _IsProductPopupOpen;
-        //public bool IsProductPopupOpen
-        //{
-        //    get { return _IsProductPopupOpen; }
-        //    set
-        //    {
-        //        _IsProductPopupOpen = value;
-        //        RaisePropertyChanged("IsProductPopupOpen");
-        //    }
-        //}
-
-
         private ObservableCollection<ProductDetails> _ProductDetials;
         public static List<int> listSelectItem { get; set; }
+        
         public ObservableCollection<ProductDetails> lstProductDetails
         {
             get { return _ProductDetials; }
             set { _ProductDetials = value; RaisePropertyChanged("lstProductDetails"); }
         }
+        
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand LogOutCommand { get; private set; }
-        private ICollectionView _productCollection;
-        private ProductDetails _product;
-        private string _total;
         public RelayCommand<object> SelectProductCommand { get; private set; }
         public RelayCommand ClearProduct { get; private set; }
         public RelayCommand DeleteSelectedItem { get; private set; }
+
+        private ICollectionView _productCollection;
+        private ProductDetails _product;
+        private string _total;
+        
         public static ClsProductUtility Product { get; set; }
         bool IsRefersh { get; set; }
        
-
         public ProductDetails SelectedProduct
         {
             get
@@ -94,15 +85,14 @@ namespace RetailPOS.ViewModel
             ClearProduct = new RelayCommand(ClearGridProduct);
             SelectProductCommand = new RelayCommand<object>(BindProductDetails);
             DeleteSelectedItem = new RelayCommand(DeleteItem);
-           
-         
         }
-
 
         private void DeleteItem()
         {
             if (SelectedProduct != null)
+            {
                 lstProductDetails.Remove(SelectedProduct);
+            }
         }
 
         private void ClearGridProduct()
@@ -114,11 +104,8 @@ namespace RetailPOS.ViewModel
         {
         }
 
-
-
         private void LogoutApplication()
-        {
-           
+        {  
             var loginWindow = new LoginWindow();
             loginWindow.Show();
             MainWindow._MainWindow.Close();
@@ -157,11 +144,9 @@ namespace RetailPOS.ViewModel
             //lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice)});
             var amount = lstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();
-            //IsProductPopupOpen = false;          
 
+            Mediator.NotifyColleagues("ClosePopUpWindow", false);
         }
-
-
     }
 
     public class ProductDetails : ViewModelBase
@@ -172,7 +157,8 @@ namespace RetailPOS.ViewModel
        public decimal Rate { get; set; }
        public decimal Amount { get; set; }
        private bool _isSelected;
-       public bool IsSelected
+       
+        public bool IsSelected
        {
            get
            {
@@ -183,7 +169,6 @@ namespace RetailPOS.ViewModel
                _isSelected = value;
                RaisePropertyChanged("IsSelected");
            }
-       }
-       
+       }      
    }
 }

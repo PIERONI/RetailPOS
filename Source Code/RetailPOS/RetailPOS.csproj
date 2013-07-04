@@ -184,11 +184,11 @@
     <Compile Include="Utility\ClsProductUtility.cs" />
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\MaskedTextBoxBehaviour.cs" />
+    <Compile Include="Utility\Mediator.cs" />
     <Compile Include="Utility\RowDoubleClickHandler.cs" />
     <Compile Include="Utility\SelectedItemBehaviour.cs" />
     <Compile Include="ViewModel\AddCustomerViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
-    <Compile Include="ViewModel\AddressDTO.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MenuControlViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />

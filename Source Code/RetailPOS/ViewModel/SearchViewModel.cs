@@ -21,6 +21,7 @@ namespace RetailPOS.ViewModel
 
        public List<ProductDTO> lstSearchProduct { get; private set; }
        public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+       
        private bool _IsProductPopupOpen;
      
        private string _customerName;
@@ -37,8 +38,6 @@ namespace RetailPOS.ViewModel
        private int _productQuantity;
        private string _productDescription;
        private int _id;
-
-
 
        public int Id
        {
@@ -123,7 +122,6 @@ namespace RetailPOS.ViewModel
            }
        }
 
-
        public Visibility isVisibleCustomerInfo
        {
            get
@@ -147,8 +145,7 @@ namespace RetailPOS.ViewModel
            {
                _selectedCustomer = value;
                BindCustomer();
-           }
-           
+           }           
        }
 
        public bool IsProductPopupOpen
@@ -179,9 +176,7 @@ namespace RetailPOS.ViewModel
                {
                    SelectedCustomer = Customer;
                }
-               
            }
-
        }
 
        public ProductDTO SelectedProduct
@@ -211,7 +206,6 @@ namespace RetailPOS.ViewModel
                {
                    IsProductPopupOpen = true;
                    SelectedProduct = Product;
-
                }
            }
        }
@@ -239,7 +233,6 @@ namespace RetailPOS.ViewModel
            {
                _mobileNumber = value;
                RaisePropertyChanged("MobileNumber");
-               
            }
        }
 
@@ -267,10 +260,11 @@ namespace RetailPOS.ViewModel
        {
            lstSearchProduct = new List<ProductDTO>();
            lstSearchCustomer = new List<CustomerDTO>();
-           
+
+           Mediator.Register("ClosePopUpWindow", CloseProductPopUpWindow);
+
            GetSearchAttributes();
-           isVisibleCustomerInfo = Visibility.Collapsed;
-          
+           isVisibleCustomerInfo = Visibility.Collapsed;          
        }  
 
        /// <summary>
@@ -283,6 +277,11 @@ namespace RetailPOS.ViewModel
 
            lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                      select item).ToList();
+       }
+
+       private void CloseProductPopUpWindow(object args)
+       {
+           IsProductPopupOpen = false;
        }
 
        /// <summary>
@@ -316,9 +315,5 @@ namespace RetailPOS.ViewModel
        }
 
        #endregion
-
-
-
-      
     }
 }

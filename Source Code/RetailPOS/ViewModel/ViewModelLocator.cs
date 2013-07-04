@@ -9,7 +9,6 @@ namespace RetailPOS.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
-
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>

@@ -65,9 +65,9 @@
                     <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Waste Management</Bold></TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right">
+            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right" Command="{Binding OpenSearchPromotionalOffer}">
                 <DockPanel>
-                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>View/Search Promotional Offers</Bold></TextBlock>
+                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Promotional Offers</Bold></TextBlock>
                 </DockPanel>
             </Button>
         </WrapPanel>
@@ -88,7 +88,7 @@
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsSearchPromotionalOfferVisible}"
                      Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:SearchPromotionalOffer x:Name="ctrlSearchPromotionalOffer" Margin="15" Width="522"></ctrl:SearchPromotionalOffer>
+            <ctrl:SearchPromotionalOffer x:Name="ctrlSearchPromotionalOffer" Margin="15" Width="722"></ctrl:SearchPromotionalOffer>
         </StackPanel>
     </Grid>
 </UserControl>

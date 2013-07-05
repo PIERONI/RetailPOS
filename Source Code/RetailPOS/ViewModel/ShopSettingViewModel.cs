@@ -19,11 +19,12 @@ namespace RetailPOS.ViewModel
 
         public ObservableCollection<CountryDTO> LstCountry { get; private set; }
       
-       
-
         public RelayCommand SaveShopSetting { get; private set; }
         public RelayCommand CancelShopSetting { get; private set; }
         public RelayCommand<int> IsScheduledCheck { get; set; }
+
+        private ObservableCollection<TownCityDTO> _lstTownCity;
+        private ObservableCollection<PostCodeDTO> _lstPostalCode;
 
         private string _shopName;
         private string _phone;
@@ -32,16 +33,16 @@ namespace RetailPOS.ViewModel
         private string _website;
         private string _address;
         private decimal _rate;
-        private ObservableCollection<TownCityDTO> _lstTownCity;
-        private ObservableCollection<PostCodeDTO> _lstPostalCode;
+
         private Visibility _Visible;
         private CountryDTO _selectedCountry;
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
         public ShopSettingDTO shopSettingDetails { get; set; }
 
+        #endregion
 
-      
+        #region Public Properties
 
         public ObservableCollection<PostCodeDTO> LstPostalCode
         {
@@ -164,7 +165,11 @@ namespace RetailPOS.ViewModel
             {
                 _selectedCountry = value;
                 RaisePropertyChanged("SelectedCountry");
-                if(SelectedCountry!=null) GetTownByContryId();
+
+                if(SelectedCountry!=null) 
+                {
+                    GetTownByContryId();
+                }
             }
         }
 
@@ -176,7 +181,10 @@ namespace RetailPOS.ViewModel
                 _selectedTownCity = value;
                 RaisePropertyChanged("SelectedTownCity");
 
-                if(SelectedTownCity!=null)  GetPostalCodeByTownCityId(_selectedTownCity.Id);
+                if(SelectedTownCity!=null)  
+                {
+                    GetPostalCodeByTownCityId(_selectedTownCity.Id);
+                }
             }
         }
 
@@ -191,6 +199,8 @@ namespace RetailPOS.ViewModel
         }
 
         #endregion
+
+        #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopSettingViewModel"/> class.
@@ -208,6 +218,10 @@ namespace RetailPOS.ViewModel
             IsScheduledCheck = new RelayCommand<int>(ShowTimer);
             VisibleTimePicker = Visibility.Collapsed;
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Shows the timer.
@@ -266,8 +280,6 @@ namespace RetailPOS.ViewModel
             ////Gets Cities based on selected country
             LstTownCity = new ObservableCollection<TownCityDTO>(ServiceFactory.ServiceClient.GetTownCityDetails(SelectedCountry.Id));
 
-            //CollectionViewSource.GetDefaultView(this.LstTownCity).Refresh();
-
             if (LstTownCity.Count > 0)
             {
                 SelectedTownCity = LstTownCity[0];
@@ -278,15 +290,7 @@ namespace RetailPOS.ViewModel
         {
             LstPostalCode = new ObservableCollection<PostCodeDTO>(ServiceFactory.ServiceClient.GetPostalCodeDetail(towncityId));
         }
-    }
 
-    public class CurrencyModel
-    {
-        public int CurrencyId { get; set; }
-        public string CurrencyName { get; set; }
-    }
-
-    public class AddressModel
-    {
+        #endregion
     }
 }

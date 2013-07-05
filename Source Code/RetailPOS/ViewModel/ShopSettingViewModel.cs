@@ -25,7 +25,7 @@ namespace RetailPOS.ViewModel
 
         private ObservableCollection<TownCityDTO> _lstTownCity;
         private ObservableCollection<PostCodeDTO> _lstPostalCode;
-
+        
         private string _shopName;
         private string _phone;
         private string _fax;

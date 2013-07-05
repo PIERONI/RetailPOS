@@ -481,35 +481,35 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.TownCityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService1.wsdl" />
+    <None Include="Service References\RetailPOSService\RetailPOSService.wsdl" />
+    <None Include="Service References\RetailPOSService\RetailPOSService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService8.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOSService9.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService91.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService92.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService93.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService94.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService95.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService96.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService97.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService98.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService99.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -610,6 +610,9 @@
     <WCFMetadataStorage Include="Service References\RetailPOSService\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\RetailPOSService\RetailPOSService.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\RetailPOSService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -620,9 +623,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RetailPOSService\RetailPOSService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

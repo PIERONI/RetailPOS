@@ -1,8 +1,12 @@
-﻿using System;
+﻿#region Using directives
+
+using System;
+
+#endregion
 
 namespace RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer
 {
-   public  class PromotionalOfferDTO:BaseDTO
+    public class PromotionalOfferDTO : BaseDTO
     {
         public long Id { get; set; }
         public string Name { get; set; }

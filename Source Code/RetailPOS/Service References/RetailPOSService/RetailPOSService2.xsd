@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Category" />
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" />
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" />
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" />
-  <xs:import schemaLocation="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Category" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" />
+  <xs:import schemaLocation="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer" />
   <xs:element name="GetCategories">
     <xs:complexType>
       <xs:sequence />

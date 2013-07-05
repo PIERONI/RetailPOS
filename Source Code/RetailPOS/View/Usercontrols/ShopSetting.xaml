@@ -35,17 +35,17 @@
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Shop Code :" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBox Grid.Column="1"  Grid.Row="0" MaxLength="255" Height="25" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1"  Grid.Row="0" MaxLength="255" Height="25" Text="{Binding Code}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
                     <TextBlock Text="Shop Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBox Grid.Column="1" MaxLength="255" Height="25" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" Grid.Row="1" />
+                    <TextBox Grid.Column="1" MaxLength="255" Height="25" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" Grid.Row="1" />
                     <TextBlock Text="Telephone No:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
                     <TextBlock Text="Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
                     <TextBlock Text="Fax:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
                     <TextBlock Text="Website:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="35,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
-                    <TextBox Grid.Column="1"  Grid.Row="2" MaxLength="255" Height="25" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1"  Grid.Row="3" MaxLength="255" Height="25" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Grid.Row="4" MaxLength="255" Height="25" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Grid.Row="5" MaxLength="255" Height="25" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1"  Grid.Row="2" MaxLength="255" Height="25" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1"  Grid.Row="3" MaxLength="255" Height="25" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Grid.Row="4" MaxLength="255" Height="25" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Grid.Row="5" MaxLength="255" Height="25" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
                 </Grid>
             </TabItem>
             <TabItem Header="Shop Address Info" Name="tabShopAddressSetting">

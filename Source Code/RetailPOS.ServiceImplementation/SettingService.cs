@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RetailPOS.CommonLayer.DataTransferObjects.Settings;
+﻿using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 
 namespace RetailPOS.ServiceImplementation
 {

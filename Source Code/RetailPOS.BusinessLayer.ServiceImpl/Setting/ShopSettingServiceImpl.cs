@@ -17,7 +17,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
             shop_info shopSettingEntity = new shop_info();
             ObjectMapper.Map(shopSettingDetails, shopSettingEntity);
 
-            return base.ShopSettingRepository.Save(shopSettingEntity);
+            return ShopSettingRepository.Save(shopSettingEntity);
         }
     }
 }

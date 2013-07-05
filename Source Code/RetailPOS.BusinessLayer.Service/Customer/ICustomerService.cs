@@ -14,5 +14,11 @@ namespace RetailPOS.BusinessLayer.Service.Customer
         /// </summary>
         /// <returns>returns list of all customers present in database</returns>
         IList<CustomerDTO> GetAllCustomers();
+
+        ///// <summary>
+        ///// Get all customers
+        ///// </summary>
+        ///// <returns>returns list of all customers present in database</returns>
+        //IList<CustomerDTO> SaveCustomerDetails();
     }
 }

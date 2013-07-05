@@ -1,27 +1,32 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using RetailPOS.RetailPOSService;
-using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
+using System.Linq;
+using GalaSoft.MvvmLight;
 using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
     public class PromotionalOfferViewModel : ViewModelBase
     {
         #region Declare Public and private Data member
+
         public IList<PromotionalOfferDTO> lstSearchPromotionalOffer { get; private set; }
        
         #endregion
 
-        #region DeclareCunstructor
+        #region Declare Constructor
+
         public PromotionalOfferViewModel()
         {
             lstSearchPromotionalOffer = new List<PromotionalOfferDTO>();
             GetPromotionalOfer();
         }
+
         #endregion
 
         private void GetPromotionalOfer()
@@ -29,6 +34,5 @@ namespace RetailPOS.ViewModel
             lstSearchPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(from item in ServiceFactory.ServiceClient.GetPromotionalOfferDetail()
                                                                                       select item).ToList();
         }
-
     }
 }

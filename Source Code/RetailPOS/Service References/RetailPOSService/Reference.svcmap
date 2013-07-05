@@ -21,17 +21,18 @@
     <MetadataSource Address="http://localhost/RetailPOSService/RetailPOSService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RetailPOSService.xsd" MetadataType="Schema" ID="de1cf316-7504-4da7-84ec-e7d79b924915" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd8" />
-    <MetadataFile FileName="RetailPOSService1.xsd" MetadataType="Schema" ID="dde9e0f1-934f-4fda-9c2f-b21bf150e20d" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd3" />
-    <MetadataFile FileName="RetailPOSService.wsdl" MetadataType="Wsdl" ID="673d3e67-6c14-4074-87e3-1bc997e92f81" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?wsdl" />
-    <MetadataFile FileName="RetailPOSService2.xsd" MetadataType="Schema" ID="974922fa-ec36-4fbe-b8ae-30daeecd1847" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd0" />
-    <MetadataFile FileName="RetailPOSService3.xsd" MetadataType="Schema" ID="e9aab2d7-5bb2-4a3e-bc67-7f3f2a8d800f" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd1" />
-    <MetadataFile FileName="RetailPOSService4.xsd" MetadataType="Schema" ID="37d235db-5f21-4185-b057-f5bfd200e4c8" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd2" />
-    <MetadataFile FileName="RetailPOSService5.xsd" MetadataType="Schema" ID="636a1eed-3ee7-4e6c-b287-1faf05721ee8" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd5" />
-    <MetadataFile FileName="RetailPOSService6.xsd" MetadataType="Schema" ID="7ef1366a-2e85-4849-b170-7f71611d3c13" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd6" />
-    <MetadataFile FileName="RetailPOSService7.xsd" MetadataType="Schema" ID="27a9db1d-cf37-4541-b961-5fdfd7f21933" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd7" />
-    <MetadataFile FileName="RetailPOSService.disco" MetadataType="Disco" ID="6ced3b45-597c-4041-8207-8b2d6d3ce165" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?disco" />
-    <MetadataFile FileName="RetailPOSService8.xsd" MetadataType="Schema" ID="a0a9f355-cfd8-400f-94a1-3a9b5a7b0db8" SourceId="1" SourceUrl="http://logiciellsd102/RetailPOSService/RetailPOSService.svc?xsd=xsd4" />
+    <MetadataFile FileName="RetailPOSService9.xsd" MetadataType="Schema" ID="7420b297-df31-4ee6-9786-db3b0d696c97" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RetailPOSService1.wsdl" MetadataType="Wsdl" ID="020100af-812d-4d51-9c9b-6781b3f7a3f1" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?wsdl" />
+    <MetadataFile FileName="RetailPOSService91.xsd" MetadataType="Schema" ID="ebac067b-5125-49c0-8921-9d5488735586" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd5" />
+    <MetadataFile FileName="RetailPOSService1.disco" MetadataType="Disco" ID="6ad99085-c8be-45be-9fe5-c67fa476c1b7" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?disco" />
+    <MetadataFile FileName="RetailPOSService92.xsd" MetadataType="Schema" ID="6a4beb40-f86e-4774-b6e2-32c4e643732b" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd7" />
+    <MetadataFile FileName="RetailPOSService93.xsd" MetadataType="Schema" ID="b2f67b3f-625c-4c31-a9d1-e89779738277" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd9" />
+    <MetadataFile FileName="RetailPOSService94.xsd" MetadataType="Schema" ID="fd9d8d42-2830-4b9c-be58-8bfafafd5400" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RetailPOSService95.xsd" MetadataType="Schema" ID="533c33f6-add3-4e46-b4b0-6aaf59f152c4" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd4" />
+    <MetadataFile FileName="RetailPOSService96.xsd" MetadataType="Schema" ID="fd7d9e58-1eb8-4983-92a0-85cab78e4478" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd3" />
+    <MetadataFile FileName="RetailPOSService97.xsd" MetadataType="Schema" ID="1e03ff85-5553-4287-b215-4ad6b9d5a4ec" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd6" />
+    <MetadataFile FileName="RetailPOSService98.xsd" MetadataType="Schema" ID="0aa7095c-f8c9-4297-8ac6-af78aa9fa8f3" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd8" />
+    <MetadataFile FileName="RetailPOSService99.xsd" MetadataType="Schema" ID="e81e5b87-7639-4ea3-be60-27b7c886b117" SourceId="1" SourceUrl="http://logiciellsd103/RetailPOSService/RetailPOSService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

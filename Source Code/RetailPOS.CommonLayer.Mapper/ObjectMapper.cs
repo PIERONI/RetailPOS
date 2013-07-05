@@ -13,6 +13,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.User;
 using RetailPOS.PersistenceLayer.Repository.Entities;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.Master;
+using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
 
 #endregion
 
@@ -37,6 +38,10 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps ShopSetting object with shop_info object
             AutoMapper.Mapper.CreateMap<shop_info, ShopSettingDTO>();
             AutoMapper.Mapper.CreateMap<ShopSettingDTO, shop_info>();
+
+            //Maps PromotionalOffer with promotioal_offer.cs
+            AutoMapper.Mapper.CreateMap<promotional_offer, PromotionalOfferDTO>();
+            AutoMapper.Mapper.CreateMap<PromotionalOfferDTO, promotional_offer>();
 
             CreateMapObjectForMasters();
         }

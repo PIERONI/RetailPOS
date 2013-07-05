@@ -15,6 +15,8 @@ using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.CommonLayer.Unity;
 using RetailPOS.PersistenceLayer.EF.Impl;
 using RetailPOS.PersistenceLayer.Repository.Interfaces;
+using RetailPOS.BusinessLayer.Service.PromotionalOffer;
+using RetailPOS.BusinessLayer.ServiceImpl.PromotionalOffer;
 
 #endregion
 
@@ -80,6 +82,10 @@ namespace RetailPOS.CommonLayer.UnityExtension
             RetailPOSUnityContainer.Register<IMasterService, MasterServiceImpl>();
 
             #endregion
+
+            #region PromotionalOffer
+            RetailPOSUnityContainer.Register<IPromotionalOfferService, PromotionalOfferServiceImpl>();
+#endregion
 
             #endregion
         }

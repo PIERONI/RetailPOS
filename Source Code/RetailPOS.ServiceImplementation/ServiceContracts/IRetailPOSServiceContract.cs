@@ -8,6 +8,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.Master;
+using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
 
 #endregion
 
@@ -41,6 +42,8 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// <returns>returns list of all Commonly Used  products present in database</returns>
         [OperationContract]
         IList<ProductDTO> GetCommonProduct();
+
+        
 
         #endregion
 
@@ -100,6 +103,16 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<PostCodeDTO> GetPostalCodeDetail(int towncityID);
 
+        #endregion
+
+        #region PromotionalOffer
+        /// <summary>
+        /// Retrieves available PromotionalOffer details from database
+        /// </summary>
+        /// <returns>returns list of PromotioanlOffer else empty list</returns>
+        [OperationContract]
+        IList<PromotionalOfferDTO> GetPromotionalOfferDetail();       
+        
         #endregion
     }
 }

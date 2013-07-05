@@ -192,6 +192,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MenuControlViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
+    <Compile Include="ViewModel\PromotionalOfferViewModel.cs" />
     <Compile Include="ViewModel\RightPanelPaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
@@ -471,38 +472,44 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.ProductDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PromotionalOfferDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.TownCityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService.wsdl" />
-    <None Include="Service References\RetailPOSService\RetailPOSService.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService1.wsdl" />
+    <None Include="Service References\RetailPOSService\RetailPOSService9.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService1.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService91.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService2.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService92.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService3.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService93.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService4.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService94.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService5.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService95.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService6.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService96.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService7.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService97.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService8.xsd">
+    <None Include="Service References\RetailPOSService\RetailPOSService98.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOSService99.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -603,9 +610,6 @@
     <WCFMetadataStorage Include="Service References\RetailPOSService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RetailPOSService\RetailPOSService.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\RetailPOSService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -616,6 +620,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\RetailPOSService\RetailPOSService1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

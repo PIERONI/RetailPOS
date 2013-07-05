@@ -9,6 +9,7 @@ using RetailPOS.BusinessLayer.Service.User;
 using RetailPOS.CommonLayer.Unity;
 using RetailPOS.ServiceImplementation.ServiceContracts;
 using RetailPOS.BusinessLayer.Service.Setting;
+using RetailPOS.BusinessLayer.Service.PromotionalOffer;
 
 #endregion
 
@@ -26,6 +27,7 @@ namespace RetailPOS.ServiceImplementation
             CustomerService = RetailPOSUnityContainer.Resolve<ICustomerService>();
             SettingService = RetailPOSUnityContainer.Resolve<ISettingService>();
             MasterService = RetailPOSUnityContainer.Resolve<IMasterService>();
+            PromotionalOfferService = RetailPOSUnityContainer.Resolve<IPromotionalOfferService>();
         }
 
         /// <summary>
@@ -90,5 +92,14 @@ namespace RetailPOS.ServiceImplementation
         /// </value>
         [Dependency]
         public IMasterService MasterService { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PromotionalOffer service.
+        /// </summary>
+        /// <value>
+        /// The PromotionalOffer service.
+        /// </value>
+        [Dependency]
+        public IPromotionalOfferService PromotionalOfferService { get; set; }
     }
 }

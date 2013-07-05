@@ -1,11 +1,14 @@
-﻿<UserControl x:Class="RetailPOS.View.Usercontrols.SearchPromotionalOffer"
+﻿<UserControl xmlns:my1="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"  x:Class="RetailPOS.View.Usercontrols.SearchPromotionalOffer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"           
-                xmlns:Utility="clr-namespace:RetailPOS.Utility"
-              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+             xmlns:Utility="clr-namespace:RetailPOS.Utility"
+             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             DataContext="{Binding Source={StaticResource Locator}, Path=PromotionalOfferVM}"
+             xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -35,23 +38,25 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
                         <TextBlock Text="Duration" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="30,11,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
-                        <ComboBox ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="141">
-                            <ComboBox.ItemTemplate>
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchPromotionalOffer}"                        
+                         Text="{Binding Name, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Name" >
+                            <toolkit:AutoCompleteBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding TypeName}"></TextBlock>
+                                    <Grid Background="#DFF0D8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>                                           
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                    </Grid>
                                 </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <ComboBox Grid.Row="1" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" >
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding TypeName}"></TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                        <TextBox Grid.Column="2" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="13,9,0,0"  VerticalAlignment="Top" Width="147" />
-                        <TextBox Grid.Column="2"  Grid.Row="1" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="13,8,0,0"  VerticalAlignment="Top" Width="147" />
-                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                            </toolkit:AutoCompleteBox.ItemTemplate>
+                        </toolkit:AutoCompleteBox>
+                        <my1:Calendar Grid.Row="1" Grid.Column="1"></my1:Calendar>
+                        <Calendar  Grid.Row="1" Grid.Column="2" ></Calendar>
+                            <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
                             <DockPanel>
                                 <Image Source="../../Images/save-icon.png" Width="16" />
                                 <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
@@ -61,16 +66,15 @@
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstSearchPromotionalOffer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Path=Id}" Header="" Visibility="Hidden" Width="
-                                                    
+                                <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="                                                    
                                                     *"/>
-                                <DataGridTextColumn Binding="{Binding Path=ProductName}" Header="Name" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=ProductQuantity}" Header="Duration" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Rate}" Header="PurchaseQuantity" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="OfferQuantity"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="OfferPercentage"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*" />
+                                <DataGridTextColumn Binding="{Binding  Path=Duration}" Header="Duration" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Purchase_Quantity}" Header="PurchaseQuantity" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=offer_quantity}" Header="OfferQuantity"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="OfferPercentage"  Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

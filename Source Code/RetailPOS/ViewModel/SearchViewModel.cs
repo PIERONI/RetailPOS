@@ -264,7 +264,7 @@ namespace RetailPOS.ViewModel
            Mediator.Register("ClosePopUpWindow", CloseProductPopUpWindow);
 
            GetSearchAttributes();
-           isVisibleCustomerInfo = Visibility.Collapsed;          
+           isVisibleCustomerInfo = Visibility.Collapsed;
        }  
 
        /// <summary>

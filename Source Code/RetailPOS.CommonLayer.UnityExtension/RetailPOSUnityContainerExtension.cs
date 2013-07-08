@@ -76,12 +76,6 @@ namespace RetailPOS.CommonLayer.UnityExtension
             RetailPOSUnityContainer.Register<ISettingService, SettingServiceImpl>();
 
             #endregion
-
-            #region CustomerDetail Setting Services
-
-            RetailPOSUnityContainer.Register<ISettingService, CustomerServiceImpl>();
-
-            #endregion
             
             #region Master Services
 

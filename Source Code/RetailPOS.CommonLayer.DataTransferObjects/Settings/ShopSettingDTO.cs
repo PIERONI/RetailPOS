@@ -16,7 +16,7 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Settings
         public string Website { get; set; }
         public decimal Tax_rate { get; set; }
         public string  Currency { get; set; }
-        public int AddressId { get; set; }
+        public Nullable<long> Address_Id { get; set; }
         public AddressDTO Address { get; set; }
     }
 }

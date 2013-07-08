@@ -6,13 +6,13 @@
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q1:BaseDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="Building_name" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Country_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Country_Id" nillable="true" type="xs:short" />
           <xs:element minOccurs="0" name="House_No" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
-          <xs:element minOccurs="0" name="Locality_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Locality_Id" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="PostCode_Id" type="xs:int" />
           <xs:element minOccurs="0" name="Street_Id" type="xs:int" />
-          <xs:element minOccurs="0" name="Town_City_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Town_City_Id" nillable="true" type="xs:short" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -28,7 +28,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q2:BaseDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:short" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
@@ -45,7 +45,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:BaseDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:short" />
           <xs:element minOccurs="0" name="Town_City1" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="countryID" type="xs:int" />
         </xs:sequence>

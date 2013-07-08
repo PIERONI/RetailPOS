@@ -7,7 +7,7 @@
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q1:BaseDTO">
         <xs:sequence>
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="Address" nillable="true" type="q2:AddressDTO" />
-          <xs:element minOccurs="0" name="AddressId" type="xs:int" />
+          <xs:element minOccurs="0" name="Address_Id" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />

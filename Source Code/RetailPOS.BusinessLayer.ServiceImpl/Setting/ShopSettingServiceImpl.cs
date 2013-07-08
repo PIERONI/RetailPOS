@@ -1,8 +1,12 @@
-﻿using RetailPOS.BusinessLayer.Service.Setting;
+﻿#region Using directives
+
+using RetailPOS.BusinessLayer.Service.Setting;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.PersistenceLayer.Repository.Entities;
 using RetailPOS.CommonLayer.DataTransferObjects.Customer;
+
+#endregion
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
 {
@@ -19,7 +23,5 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
             ObjectMapper.Map(shopSettingDetails, shopSettingEntity);
             return ShopSettingRepository.Save(shopSettingEntity);
         }
-
-       
     }
 }

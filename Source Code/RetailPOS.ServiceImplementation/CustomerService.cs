@@ -13,5 +13,33 @@ namespace RetailPOS.ServiceImplementation
         {
             return CustomerService.GetAllCustomers();
         }
+
+        /// Save Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        /// <summary>
+        public bool SaveCustomerDetail(CustomerDTO customerDetails)
+        {
+            return CustomerService.SaveCustomerDetail(customerDetails);
+        }
+
+        /// <summary>
+        /// Get customer status from database
+        /// </summary>
+        /// <returns>returns list of all customer status present in database else empty list</returns>
+        public IList<CustomerStatusDTO> GetCustomerStatus()
+        {
+            return CustomerService.GetCustomerStatus();
+        }
+
+        /// <summary>
+        /// Get customer types from database
+        /// </summary>
+        /// <returns>returns list of all customer types present in database</returns>
+        public IList<CustomerTypeDTO> GetCustomerTypes()
+        {
+            return CustomerService.GetCustomerTypes();
+        }
     }
 }

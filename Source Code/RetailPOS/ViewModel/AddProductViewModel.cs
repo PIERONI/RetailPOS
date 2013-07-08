@@ -11,9 +11,10 @@ namespace RetailPOS.ViewModel
     public class AddProductViewModel : ViewModelBase
     {
         #region Declare Public and private Data member
-        public ObservableCollection<CStatusModel> lstStatus { get; private set; }
+
+        //public ObservableCollection<CStatusModel> lstStatus { get; private set; }
         private ObservableCollection<ProductCategoryDTO> _lstCategories;
-        private CStatusModel _selectedStatus;  
+        //private CStatusModel _selectedStatus;  
         private ProductCategoryDTO _selectedCategory;
         private string _barCode;
         private string _productName;
@@ -105,18 +106,18 @@ namespace RetailPOS.ViewModel
         }
 
 
-        public CStatusModel SelectedStatus
-        {
-            get
-            {
-                return _selectedStatus;
-            }
-            set
-            {
-                _selectedStatus = value;
-                RaisePropertyChanged("SelectedStatus");
-            }
-        }
+        //public CStatusModel SelectedStatus
+        //{
+        //    get
+        //    {
+        //        return _selectedStatus;
+        //    }
+        //    set
+        //    {
+        //        _selectedStatus = value;
+        //        RaisePropertyChanged("SelectedStatus");
+        //    }
+        //}
 
         public string ProductDescription
         {
@@ -180,7 +181,7 @@ namespace RetailPOS.ViewModel
 
         public AddProductViewModel()
         {
-            lstStatus = new ObservableCollection<CStatusModel>();
+            //lstStatus = new ObservableCollection<CStatusModel>();
             lstCategories = new ObservableCollection<ProductCategoryDTO>();
 
             BindStatus();
@@ -188,9 +189,6 @@ namespace RetailPOS.ViewModel
 
         private void BindStatus()
         {
-            lstStatus.Add(new CStatusModel { StatusId = 0, StatusName = "Active" });
-            lstStatus.Add(new CStatusModel { StatusId = 1, StatusName = "Deactive" });
-
         }
 
         private void AddCategories()

@@ -367,10 +367,10 @@ namespace RetailPOS.ViewModel
                 Building_name = BuildingName,
                 House_No = HouseNo,
                 Country_Id = SelectedCountry.Id,
+                Town_City_Id = SelectedTownCity.Id,
                 Locality_Id = SelectedLocality.Id,
-                PostCode_Id = SelectedPostalCode.Id,
                 Street_Id = SelectedStreet.Id,
-                Town_City_Id = SelectedTownCity.Id
+                PostCode_Id = SelectedPostalCode.Id
             };
         }
 

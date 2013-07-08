@@ -66,6 +66,28 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<CustomerDTO> GetAllCustomers();
 
+        /// Save Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        /// <summary>
+        [OperationContract]
+        bool SaveCustomerDetail(CustomerDTO customerDetails);
+
+        /// <summary>
+        /// Get customer status from database
+        /// </summary>
+        /// <returns>returns list of all customer status present in database else empty list</returns>
+        [OperationContract]
+        IList<CustomerStatusDTO> GetCustomerStatus();
+
+        /// <summary>
+        /// Get customer types from database
+        /// </summary>
+        /// <returns>returns list of all customer types present in database</returns>
+        [OperationContract]
+        IList<CustomerTypeDTO> GetCustomerTypes();
+
         #endregion
 
         #region Settings
@@ -77,14 +99,6 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         [OperationContract]
         bool SaveShopSetting(ShopSettingDTO shopSettingDetails);
-
-        /// Save Customer details in database
-        /// </summary>
-        /// <param name="shopSettingDetails">Customer object to be saved</param>
-        /// <returns>returns boolean value indicating if the records are saved in database</returns>
-        /// <summary>
-        [OperationContract]
-        bool SaveCustomerDetail(CustomerDTO customerDetails);
 
         #endregion
 

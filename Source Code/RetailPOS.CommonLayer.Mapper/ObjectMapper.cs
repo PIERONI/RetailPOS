@@ -32,18 +32,11 @@ namespace RetailPOS.CommonLayer.Mapper
             AutoMapper.Mapper.CreateMap<staff, StaffDTO>();
             AutoMapper.Mapper.CreateMap<StaffDTO, staff>();
 
-            AutoMapper.Mapper.CreateMap<customer, CustomerDTO>();
-            AutoMapper.Mapper.CreateMap<CustomerDTO, customer>();
+            MapObjectForCustomers();
 
-            ////Maps ShopSetting object with shop_info object
-            AutoMapper.Mapper.CreateMap<shop_info, ShopSettingDTO>();
-            AutoMapper.Mapper.CreateMap<ShopSettingDTO, shop_info>();
+            MapObjectForSettings();
 
-            //Maps PromotionalOffer with promotioal_offer.cs
-            AutoMapper.Mapper.CreateMap<promotional_offer, PromotionalOfferDTO>();
-            AutoMapper.Mapper.CreateMap<PromotionalOfferDTO, promotional_offer>();
-
-            CreateMapObjectForMasters();
+            MapObjectForMasters();
         }
 
         #region Map Object
@@ -53,7 +46,31 @@ namespace RetailPOS.CommonLayer.Mapper
             AutoMapper.Mapper.Map(sourceObject, destObject);
         }
 
-        private void CreateMapObjectForMasters()
+        private void MapObjectForSettings()
+        {
+            ////Maps ShopSetting object with shop_info object
+            AutoMapper.Mapper.CreateMap<shop_info, ShopSettingDTO>();
+            AutoMapper.Mapper.CreateMap<ShopSettingDTO, shop_info>();
+
+            //Maps PromotionalOffer with promotioal_offer.cs
+            AutoMapper.Mapper.CreateMap<promotional_offer, PromotionalOfferDTO>();
+            AutoMapper.Mapper.CreateMap<PromotionalOfferDTO, promotional_offer>();
+        }
+
+        private void MapObjectForCustomers()
+        {
+            AutoMapper.Mapper.CreateMap<customer, CustomerDTO>();
+            AutoMapper.Mapper.CreateMap<CustomerDTO, customer>();
+
+            AutoMapper.Mapper.CreateMap<customer_status, CustomerStatusDTO>();
+            AutoMapper.Mapper.CreateMap<CustomerStatusDTO, customer_status>();
+
+            AutoMapper.Mapper.CreateMap<customer_type, CustomerTypeDTO>();
+            AutoMapper.Mapper.CreateMap<CustomerTypeDTO, customer_type>();
+
+        }
+
+        private void MapObjectForMasters()
         {
             ////Maps CountryDTO object with country object
             AutoMapper.Mapper.CreateMap<country, CountryDTO>();
@@ -74,6 +91,10 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps PostCodeDTO object with postcode object
             AutoMapper.Mapper.CreateMap<postcode, PostCodeDTO>();
             AutoMapper.Mapper.CreateMap<PostCodeDTO, postcode>();
+
+            ////Maps PostCodeDTO object with address object
+            AutoMapper.Mapper.CreateMap<address, AddressDTO>();
+            AutoMapper.Mapper.CreateMap<AddressDTO, address>();
         }
 
         #endregion

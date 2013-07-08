@@ -13,7 +13,7 @@
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q1:BaseDTO">
         <xs:sequence>
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="Address" nillable="true" type="q2:AddressDTO" />
-          <xs:element minOccurs="0" name="Address_Id" type="xs:long" />
+          <xs:element minOccurs="0" name="Address_Id" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Credit_Limit" type="xs:decimal" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -23,15 +23,51 @@
           <xs:element minOccurs="0" name="Last_Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="OpenId_Id" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="OpenId_Server_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="OpenId_Server_Id" nillable="true" type="xs:short" />
           <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Payment_Period" type="xs:int" />
           <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Status_Id" type="xs:int" />
-          <xs:element minOccurs="0" name="Type_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Type_Id" nillable="true" type="xs:short" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="CustomerDTO" nillable="true" type="tns:CustomerDTO" />
+  <xs:complexType name="ArrayOfCustomerStatusDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerStatusDTO" nillable="true" type="tns:CustomerStatusDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomerStatusDTO" nillable="true" type="tns:ArrayOfCustomerStatusDTO" />
+  <xs:complexType name="CustomerStatusDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:short" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerStatusDTO" nillable="true" type="tns:CustomerStatusDTO" />
+  <xs:complexType name="ArrayOfCustomerTypeDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerTypeDTO" nillable="true" type="tns:CustomerTypeDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomerTypeDTO" nillable="true" type="tns:ArrayOfCustomerTypeDTO" />
+  <xs:complexType name="CustomerTypeDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q4:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:short" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CustomerTypeDTO" nillable="true" type="tns:CustomerTypeDTO" />
 </xs:schema>

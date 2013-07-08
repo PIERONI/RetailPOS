@@ -15,5 +15,17 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
         /// </summary>
         [Dependency]
         public IGenericRepository<customer> CustomerRepository { get; set; }
+
+        // <summary>
+        /// Property to inject the persistence layer implementation class for customer type
+        /// </summary>
+        [Dependency]
+        public IGenericRepository<customer_type> CustomerTypeRepository { get; set; }
+
+        // <summary>
+        /// Property to inject the persistence layer implementation class for customer status
+        /// </summary>
+        [Dependency]
+        public IGenericRepository<customer_status> CustomerStatusRepository { get; set; }
     }
 }

@@ -491,6 +491,12 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CustomerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CustomerStatusDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CustomerTypeDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.LocalityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

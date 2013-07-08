@@ -5,12 +5,13 @@ using System.Linq;
 using RetailPOS.BusinessLayer.Service.Customer;
 using RetailPOS.CommonLayer.DataTransferObjects.Customer;
 using RetailPOS.CommonLayer.Mapper;
+using RetailPOS.PersistenceLayer.Repository.Entities;
 
 #endregion
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
 {
-    public partial class CustomerServiceImpl : CustomerBaseService, ICustomerService
+    public class CustomerServiceImpl : CustomerBaseService, ICustomerService
     {
         /// <summary>
         /// Get all customers
@@ -20,7 +21,45 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
         {
             IList<CustomerDTO> lstCustomers = new List<CustomerDTO>();
             ObjectMapper.Map(base.CustomerRepository.GetList(item => item.status_id == 10).ToList(), lstCustomers);
+
             return lstCustomers;
+        }
+
+        /// Save Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        /// <summary>
+        bool ICustomerService.SaveCustomerDetail(CustomerDTO customerDetails)
+        {
+            customer customerEntity = new customer();
+
+            ObjectMapper.Map(customerDetails, customerEntity);
+            return CustomerRepository.Save(customerEntity);
+        }
+
+        /// <summary>
+        /// Get customer status from database
+        /// </summary>
+        /// <returns>returns list of all customer status present in database else empty list</returns>
+        IList<CustomerStatusDTO> ICustomerService.GetCustomerStatus()
+        {
+            IList<CustomerStatusDTO> lstCustomerStatus = new List<CustomerStatusDTO>();
+            ObjectMapper.Map(base.CustomerStatusRepository.GetList().ToList(), lstCustomerStatus);
+
+            return lstCustomerStatus;
+        }
+
+        /// <summary>
+        /// Get customer types from database
+        /// </summary>
+        /// <returns>returns list of all customer types present in database</returns>
+        IList<CustomerTypeDTO> ICustomerService.GetCustomerTypes()
+        {
+            IList<CustomerTypeDTO> lstCustomerType = new List<CustomerTypeDTO>();
+            ObjectMapper.Map(base.CustomerTypeRepository.GetList().ToList(), lstCustomerType);
+
+            return lstCustomerType;
         }
     }
 }

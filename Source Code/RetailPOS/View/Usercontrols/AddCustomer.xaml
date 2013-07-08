@@ -12,11 +12,11 @@
     </UserControl.Resources>
     <Grid  Height="400">
         <Grid.RowDefinitions>
-            
+
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-       
+
         <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="465">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
@@ -32,11 +32,6 @@
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                       
-                     
-
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition >
@@ -51,31 +46,15 @@
                     <TextBlock Text="Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
                     <TextBlock Text="Phone :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,7,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
                     <TextBlock Text="Mobile:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
-                    <TextBlock Text="Balance:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
-                   
-                    <TextBlock Text="Status:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="8" />
-                  
+                    <TextBlock Text="Status:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True" Grid.Row="0" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <ComboBox Grid.Row="1" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringOnly="True"  Grid.Row="2"  MaxLength="15" Height="25" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringOnly="True" Grid.Row="3"  MaxLength="50" Height="25" Text="{Binding LastName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Grid.Row="4" MaxLength="100" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" Text="{Binding Email}"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Row="5" Height="25" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <ComboBox Grid.Row="1" ItemsSource="{Binding LstType}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True"  Grid.Row="2"  MaxLength="15" Height="25" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True" Grid.Row="3"  MaxLength="50" Height="25" Text="{Binding LastName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsEmailOnly="True" Grid.Row="4" MaxLength="100" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" Text="{Binding Email}"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumerichyphenOnly="True" Grid.Row="5" Height="25" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Row="6" Height="25" Text="{Binding Mobile}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Grid.Row="7" Height="25" Text="{Binding CreditLimit}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <ComboBox Grid.Row="8" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <ComboBox Grid.Row="7" ItemsSource="{Binding LstStatus}" DisplayMemberPath="Status" SelectedValuePath="Id" SelectedItem="{Binding SelectedStatus,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
                 </Grid>
             </TabItem>
             <TabItem Header="Customer Address info">
@@ -101,77 +80,36 @@
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="Address" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="0" />
-                    <TextBlock Text="House Name:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBox Grid.Column="1"  Grid.Row="1" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Grid.Row="2" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBlock Text="House Number:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
+                    <TextBlock Text="Building Name:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Row="1" MaxLength="255" Height="25" Text="{Binding BuildingName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Row="2" MaxLength="255" Height="25" Text="{Binding HouseNo}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBlock Text="House Number:" FontSize="14" Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
                     <TextBlock Text="Country:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-                    <ComboBox Grid.Row="3" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBlock Text="City Area/District:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
-                    <ComboBox Grid.Row="4" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBlock Text="City/Town/Village:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
-                    <ComboBox Grid.Row="5" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBlock Text="Postal Code:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
-                    <ComboBox Grid.Row="6" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBlock Text="Street:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
-                    <ComboBox Grid.Row="7" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <ComboBox Grid.Row="3" ItemsSource="{Binding LstCountry}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding SelectedCountry,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="City/Town/Village:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
+                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstTownCity}" DisplayMemberPath="Town_City1" SelectedValuePath="Id" SelectedItem="{Binding SelectedTownCity,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />                    
+                    <TextBlock Text="City Area/District:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
+                    <ComboBox Grid.Row="5" ItemsSource="{Binding LstLocality}" DisplayMemberPath="Locality1" SelectedValuePath="Id" SelectedItem="{Binding SelectedLocality,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="Street:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
+                    <ComboBox Grid.Row="6" ItemsSource="{Binding LstStreet}" DisplayMemberPath="Street1" SelectedValuePath="Id" SelectedItem="{Binding SelectedStreet,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="Postal Code:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
+                    <ComboBox Grid.Row="7" ItemsSource="{Binding LstPostalCode}" DisplayMemberPath="PostCode1" SelectedValuePath="Id" SelectedItem="{Binding SelectedPostalCode,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
                 </Grid>
             </TabItem>
             <TabItem Header="Open Account">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
-                        <RowDefinition Height="38"></RowDefinition>
                         <RowDefinition Height="232*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ComboBox ItemsSource="{Binding lstOpenId}" SelectedValuePath="Name" SelectedItem="{Binding SelectedOpenId,Mode=TwoWay}"  Height="25" HorizontalAlignment="Left" Margin="46,15,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Name}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBox Width="150" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True" Grid.Column="1"  Height="30" Text="{Binding OpenId}" Margin="8,10,45,10"></TextBox>
-                    <TextBlock Text="Customer Pic :" TextAlignment="Right" FontWeight="Bold" FontSize="15" Width="150" Foreground="Black" Grid.Row="1" Margin="26,9,26,4"></TextBlock>
-                    <TextBox Height="25" HorizontalAlignment="Left" Margin="8,9,0,0" Name="FileNameTextBox" Text="{Binding FilePath}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="130" />
-
-                    <Button Content="Browse" Height="32" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Margin="0,3,50,0"  Name="button1" VerticalAlignment="Top" Width="57"  />
+                    <TextBlock Text="Customer Pic :" TextAlignment="Right" FontWeight="Bold" FontSize="15" Width="150" Foreground="Black" Grid.Row="0" Margin="26,9,26,4"/>
+                    <TextBox Height="25" HorizontalAlignment="Left" Margin="8,9,0,0" Name="FileNameTextBox" Text="{Binding FilePath}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Width="130" />
+                    <Button Content="Browse" Height="32" HorizontalAlignment="Center" Margin="0,42,50,0" VerticalAlignment="Top" Width="57" Grid.ColumnSpan="2" Grid.Row="2" />
                     <Image Grid.Row="2" Height="120" HorizontalAlignment="Left" Margin="102,0,0,88" Name="imgUploaded" Stretch="Fill" VerticalAlignment="Bottom" Width="200" Grid.ColumnSpan="2" />
-
                 </Grid>
             </TabItem>
             <TabItem Header="Payment Details">
@@ -183,35 +121,16 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition ></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Payment Gateway:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="25,13,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Payment Period:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBlock Text="Credit Limit:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
-                    <TextBlock Text="Status:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-                    <ComboBox Grid.Column="1" ItemsSource="{Binding lstStatus}" SelectedValuePath="StatusName" SelectedItem="{Binding SelectedStatus,Mode=TwoWay}"  Height="25" HorizontalAlignment="Left" Margin="15,11,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding StatusName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <xctk:DateTimePicker Text="{Binding PaymentPeriod}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="15,1,0,0" Name="dateTimePicker1"  Width="148" Height="25" />
-                    <TextBox Text="{Binding CreditLimit}" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Width="150" Grid.Column="1" Grid.Row="2" Height="30" Margin="15,0,55,0"></TextBox>
-                    <ComboBox Grid.Column="1" Grid.Row="3" ItemsSource="{Binding lstPaymentGateway}" SelectedValuePath="GatewayName" SelectedItem="{Binding SelectedGateway,Mode=TwoWay}"  Height="25" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding GatewayName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
+                    <TextBlock Text="Payment Period:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="0" />
+                    <TextBlock Text="Credit Limit:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
+                    <TextBox Text="{Binding PaymentPeriod}" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="15,1,0,0" Width="150" Height="30" />
+                    <TextBox Text="{Binding CreditLimit}" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Width="150" Grid.Column="1" Grid.Row="1" Height="30" Margin="8,1,55,0"/>
                 </Grid>
             </TabItem>
         </TabControl>
         <Canvas Grid.Row="2">
-            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveCustomerDetail}" TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
+            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveCustomer}" TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
                 <DockPanel>
                     <Image Source="../../Images/save-icon.png" Width="16" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">

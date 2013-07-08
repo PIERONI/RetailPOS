@@ -226,6 +226,7 @@ namespace RetailPOS.ViewModel
            set.Show();
            MainWindow._MainWindow.Close();
        }
+
        /// <summary>
        /// Opens the SearchpromotionalOffer window.
        /// </summary>

@@ -165,36 +165,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         #endregion
         #region Navigation Properties
     
-        public virtual postcode postcode
-        {
-            get { return _postcode; }
-            set
-            {
-                if (!ReferenceEquals(_postcode, value))
-                {
-                    var previousValue = _postcode;
-                    _postcode = value;
-                    Fixuppostcode(previousValue);
-                }
-            }
-        }
-        private postcode _postcode;
-    
-        public virtual town_city town_city
-        {
-            get { return _town_city; }
-            set
-            {
-                if (!ReferenceEquals(_town_city, value))
-                {
-                    var previousValue = _town_city;
-                    _town_city = value;
-                    Fixuptown_city(previousValue);
-                }
-            }
-        }
-        private town_city _town_city;
-    
         public virtual country country
         {
             get { return _country; }
@@ -209,36 +179,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private country _country;
-    
-        public virtual street street
-        {
-            get { return _street; }
-            set
-            {
-                if (!ReferenceEquals(_street, value))
-                {
-                    var previousValue = _street;
-                    _street = value;
-                    Fixupstreet(previousValue);
-                }
-            }
-        }
-        private street _street;
-    
-        public virtual locality locality
-        {
-            get { return _locality; }
-            set
-            {
-                if (!ReferenceEquals(_locality, value))
-                {
-                    var previousValue = _locality;
-                    _locality = value;
-                    Fixuplocality(previousValue);
-                }
-            }
-        }
-        private locality _locality;
     
         public virtual ICollection<customer> customers
         {
@@ -271,11 +211,95 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<customer> _customers;
+    
+        public virtual postcode postcode
+        {
+            get { return _postcode; }
+            set
+            {
+                if (!ReferenceEquals(_postcode, value))
+                {
+                    var previousValue = _postcode;
+                    _postcode = value;
+                    Fixuppostcode(previousValue);
+                }
+            }
+        }
+        private postcode _postcode;
+    
+        public virtual town_city town_city
+        {
+            get { return _town_city; }
+            set
+            {
+                if (!ReferenceEquals(_town_city, value))
+                {
+                    var previousValue = _town_city;
+                    _town_city = value;
+                    Fixuptown_city(previousValue);
+                }
+            }
+        }
+        private town_city _town_city;
+    
+        public virtual street street
+        {
+            get { return _street; }
+            set
+            {
+                if (!ReferenceEquals(_street, value))
+                {
+                    var previousValue = _street;
+                    _street = value;
+                    Fixupstreet(previousValue);
+                }
+            }
+        }
+        private street _street;
+    
+        public virtual locality locality
+        {
+            get { return _locality; }
+            set
+            {
+                if (!ReferenceEquals(_locality, value))
+                {
+                    var previousValue = _locality;
+                    _locality = value;
+                    Fixuplocality(previousValue);
+                }
+            }
+        }
+        private locality _locality;
 
         #endregion
         #region Association Fixup
     
         private bool _settingFK = false;
+    
+        private void Fixupcountry(country previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (country != null)
+            {
+                if (!country.addresses.Contains(this))
+                {
+                    country.addresses.Add(this);
+                }
+                if (country_id != country.id)
+                {
+                    country_id = country.id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                country_id = null;
+            }
+        }
     
         private void Fixuppostcode(postcode previousValue)
         {
@@ -318,30 +342,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             else if (!_settingFK)
             {
                 town_city_id = null;
-            }
-        }
-    
-        private void Fixupcountry(country previousValue)
-        {
-            if (previousValue != null && previousValue.addresses.Contains(this))
-            {
-                previousValue.addresses.Remove(this);
-            }
-    
-            if (country != null)
-            {
-                if (!country.addresses.Contains(this))
-                {
-                    country.addresses.Add(this);
-                }
-                if (country_id != country.id)
-                {
-                    country_id = country.id;
-                }
-            }
-            else if (!_settingFK)
-            {
-                country_id = null;
             }
         }
     

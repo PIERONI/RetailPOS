@@ -94,14 +94,28 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// </summary>
         /// <returns>returns list of TownCity else empty list</returns>
         [OperationContract]
-        IList<TownCityDTO> GetTownCityDetails(int countryID);
+        IList<TownCityDTO> GetTownCityDetails(int countryId);
+
+        /// <summary>
+        /// Retrieves available Locality details from database
+        /// </summary>
+        /// <returns>returns list of Locality else empty list</returns>
+        [OperationContract]
+        IList<LocalityDTO> GetLocalityDetails(int townCityId);
+
+        /// <summary>
+        /// Retrieves available Street details from database
+        /// </summary>
+        /// <returns>returns list of Street else empty list</returns>
+        [OperationContract]
+        IList<StreetDTO> GetStreetDetails(int localityId);
 
         /// <summary>
         /// Retrieves available Postalcode details from database
         /// </summary>
         /// <returns>returns list of Postalcode else empty list</returns>
         [OperationContract]
-        IList<PostCodeDTO> GetPostalCodeDetail(int towncityID);
+        IList<PostCodeDTO> GetPostalCodeDetails(int localityId);
 
         #endregion
 

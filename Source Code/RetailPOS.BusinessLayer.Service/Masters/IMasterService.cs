@@ -19,14 +19,24 @@ namespace RetailPOS.BusinessLayer.Service.Masters
         /// Retrieves available Town/City details from database
         /// </summary>
         /// <returns>returns list of Town/City else empty list</returns>
-        IList<TownCityDTO> GetTownCityDetail(int countryID);
+        IList<TownCityDTO> GetTownCityDetails(int countryId);
 
+        /// <summary>
+        /// Retrieves available Locality details from database
+        /// </summary>
+        /// <returns>returns list of Locality else empty list</returns>
+        IList<LocalityDTO> GetLocalityDetails(int townCityId);
+
+        /// <summary>
+        /// Retrieves available Streets details from database
+        /// </summary>
+        /// <returns>returns list of Locality else empty list</returns>
+        IList<StreetDTO> GetStreetDetails(int localityId);
 
         /// <summary>
         /// Retrieves available PostalCode details from database
         /// </summary>
         /// <returns>returns list of PostalCode else empty list</returns>
-        IList<PostCodeDTO> GetPostalCodeDetail(int towncityID);                    
-
+        IList<PostCodeDTO> GetPostalCodeDetails(int localityId);
     }
 }

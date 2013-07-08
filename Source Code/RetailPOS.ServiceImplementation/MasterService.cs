@@ -1,8 +1,9 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using RetailPOS.CommonLayer.DataTransferObjects.Master;
+
+#endregion
 
 namespace RetailPOS.ServiceImplementation
 {
@@ -21,19 +22,36 @@ namespace RetailPOS.ServiceImplementation
         /// Retrieves available TownCity details from database
         /// </summary>
         /// <returns>returns list of TownCity else empty list</returns>
-        public IList<TownCityDTO> GetTownCityDetails(int countryID)
+        public IList<TownCityDTO> GetTownCityDetails(int countryId)
         {
-            return MasterService.GetTownCityDetail(countryID);
+            return MasterService.GetTownCityDetails(countryId);
+        }
+
+        /// <summary>
+        /// Retrieves available TownCity details from database
+        /// </summary>
+        /// <returns>returns list of TownCity else empty list</returns>
+        public IList<LocalityDTO> GetLocalityDetails(int localityId)
+        {
+            return MasterService.GetLocalityDetails(localityId);
+        }
+
+        /// <summary>
+        /// Retrieves available TownCity details from database
+        /// </summary>
+        /// <returns>returns list of TownCity else empty list</returns>
+        public IList<StreetDTO> GetStreetDetails(int localityId)
+        {
+            return MasterService.GetStreetDetails(localityId);
         }
 
         /// <summary>
         /// Retrieves available Postalcode details from database
         /// </summary>
         /// <returns>returns list of Postalcode else empty list</returns>
-        public IList<PostCodeDTO> GetPostalCodeDetail(int towncityID)
+        public IList<PostCodeDTO> GetPostalCodeDetails(int localityId)
         {
-            return MasterService.GetPostalCodeDetail(towncityID);
+            return MasterService.GetPostalCodeDetails(localityId);
         }
     }
-    
 }

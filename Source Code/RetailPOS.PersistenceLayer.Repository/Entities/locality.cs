@@ -25,6 +25,12 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
+        public virtual Nullable<int> TownCityId
+        {
+            get;
+            set;
+        }
+    
         public virtual string locality1
         {
             get;

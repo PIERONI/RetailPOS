@@ -101,10 +101,6 @@
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\Binaries\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Web, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Binaries\MySql.Web.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
@@ -449,9 +445,17 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.Category.ProductCategoryDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.Customer.CustomerDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.Master.CountryDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.Master.PostCodeDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.Master.TownCityDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.Product.ProductDTO.datasource" />
     <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.ProductCategoryDTO.datasource" />
     <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.ProductCategoryDTO1.datasource" />
     <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.ProductDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer.PromotionalOfferDTO.datasource" />
+    <None Include="Properties\DataSources\RetailPOS.CommonLayer.DataTransferObjects.User.StaffDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -461,6 +465,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CustomerDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.LocalityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PostCodeDTO.datasource">
@@ -476,6 +483,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StreetDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.TownCityDTO.datasource">
@@ -623,12 +633,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RetailPOS.CommonLayer.DataTransferObjects\RetailPOS.CommonLayer.DataTransferObjects.csproj">
-      <Project>{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}</Project>
-      <Name>RetailPOS.CommonLayer.DataTransferObjects</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

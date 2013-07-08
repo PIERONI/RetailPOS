@@ -19,7 +19,7 @@ namespace RetailPOS.ServiceImplementation
         {
             return PromotionalOfferService.GetPromotionalOfferDetail();
         }
-        #endregion
 
+        #endregion
     }
 }

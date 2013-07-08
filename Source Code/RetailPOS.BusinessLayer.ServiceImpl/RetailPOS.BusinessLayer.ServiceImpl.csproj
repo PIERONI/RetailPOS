@@ -50,8 +50,10 @@
     <Compile Include="Customer\CustomerBaseService.cs" />
     <Compile Include="Customer\CustomerServiceImpl.cs" />
     <Compile Include="Masters\CountryServiceImpl.cs" />
+    <Compile Include="Masters\LocalityServiceImpl.cs" />
     <Compile Include="Masters\MasterBaseService.cs" />
     <Compile Include="Masters\PostalCodeServiceImpl.cs" />
+    <Compile Include="Masters\StreetServiceImpl.cs" />
     <Compile Include="Masters\TownCityServiceImpl.cs" />
     <Compile Include="PromotionalOffer\PromotionalBaseService.cs" />
     <Compile Include="PromotionalOffer\PromotionalOfferServiceImpl.cs" />

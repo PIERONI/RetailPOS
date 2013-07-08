@@ -25,28 +25,28 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual string postcode1
+        public virtual short LocalityId
         {
-            get;
-            set;
-        }
-    
-        public virtual short towncityid
-        {
-            get { return _towncityid; }
+            get { return _localityId; }
             set
             {
-                if (_towncityid != value)
+                if (_localityId != value)
                 {
                     if (town_city != null && town_city.id != value)
                     {
                         town_city = null;
                     }
-                    _towncityid = value;
+                    _localityId = value;
                 }
             }
         }
-        private short _towncityid;
+        private short _localityId;
+    
+        public virtual string postcode1
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Navigation Properties
@@ -114,9 +114,9 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                 {
                     town_city.postcodes.Add(this);
                 }
-                if (towncityid != town_city.id)
+                if (LocalityId != town_city.id)
                 {
-                    towncityid = town_city.id;
+                    LocalityId = town_city.id;
                 }
             }
         }

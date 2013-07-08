@@ -476,7 +476,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetail_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetLocalityDetails_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -495,7 +495,83 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetail_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetLocalityDetails_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetStreetDetails_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetStreetDetails_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetails_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetails_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -626,11 +702,23 @@
   <wsdl:message name="IRetailPOSServiceContract_GetTownCityDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTownCityDetailsResponse" />
   </wsdl:message>
-  <wsdl:message name="IRetailPOSServiceContract_GetPostalCodeDetail_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPostalCodeDetail" />
+  <wsdl:message name="IRetailPOSServiceContract_GetLocalityDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalityDetails" />
   </wsdl:message>
-  <wsdl:message name="IRetailPOSServiceContract_GetPostalCodeDetail_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPostalCodeDetailResponse" />
+  <wsdl:message name="IRetailPOSServiceContract_GetLocalityDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalityDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetStreetDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStreetDetails" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetStreetDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStreetDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetPostalCodeDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostalCodeDetails" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetPostalCodeDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostalCodeDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IRetailPOSServiceContract_GetPromotionalOfferDetail_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPromotionalOfferDetail" />
@@ -679,9 +767,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetails" message="tns:IRetailPOSServiceContract_GetTownCityDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetailsResponse" message="tns:IRetailPOSServiceContract_GetTownCityDetails_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPostalCodeDetail">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetail" message="tns:IRetailPOSServiceContract_GetPostalCodeDetail_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailResponse" message="tns:IRetailPOSServiceContract_GetPostalCodeDetail_OutputMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetLocalityDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetails" message="tns:IRetailPOSServiceContract_GetLocalityDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetailsResponse" message="tns:IRetailPOSServiceContract_GetLocalityDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetStreetDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetails" message="tns:IRetailPOSServiceContract_GetStreetDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetailsResponse" message="tns:IRetailPOSServiceContract_GetStreetDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPostalCodeDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetails" message="tns:IRetailPOSServiceContract_GetPostalCodeDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailsResponse" message="tns:IRetailPOSServiceContract_GetPostalCodeDetails_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPromotionalOfferDetail">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail" message="tns:IRetailPOSServiceContract_GetPromotionalOfferDetail_InputMessage" />
@@ -801,14 +897,36 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostalCodeDetail">
-      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetail" style="document" />
+    <wsdl:operation name="GetLocalityDetails">
+      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetails" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetail_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetLocalityDetails_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetail_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetLocalityDetails_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStreetDetails">
+      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetails" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetStreetDetails_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetStreetDetails_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostalCodeDetails">
+      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetails" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetails_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetails_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

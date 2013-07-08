@@ -25,28 +25,17 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual string town_city1
+        public virtual short CountryId
         {
             get;
             set;
         }
     
-        public virtual short CountryID
+        public virtual string town_city1
         {
-            get { return _countryID; }
-            set
-            {
-                if (_countryID != value)
-                {
-                    if (country != null && country.id != value)
-                    {
-                        country = null;
-                    }
-                    _countryID = value;
-                }
-            }
+            get;
+            set;
         }
-        private short _countryID;
 
         #endregion
         #region Navigation Properties
@@ -83,21 +72,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private ICollection<address> _addresses;
     
-        public virtual country country
-        {
-            get { return _country; }
-            set
-            {
-                if (!ReferenceEquals(_country, value))
-                {
-                    var previousValue = _country;
-                    _country = value;
-                    Fixupcountry(previousValue);
-                }
-            }
-        }
-        private country _country;
-    
         public virtual ICollection<postcode> postcodes
         {
             get
@@ -132,26 +106,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
 
         #endregion
         #region Association Fixup
-    
-        private void Fixupcountry(country previousValue)
-        {
-            if (previousValue != null && previousValue.town_city.Contains(this))
-            {
-                previousValue.town_city.Remove(this);
-            }
-    
-            if (country != null)
-            {
-                if (!country.town_city.Contains(this))
-                {
-                    country.town_city.Add(this);
-                }
-                if (CountryID != country.id)
-                {
-                    CountryID = country.id;
-                }
-            }
-        }
     
         private void Fixupaddresses(object sender, NotifyCollectionChangedEventArgs e)
         {

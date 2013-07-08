@@ -93,6 +93,7 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.AddressDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CountryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.TownCityDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StreetDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PostCodeDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PromotionalOfferDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StaffDTO))]
@@ -359,6 +360,46 @@ namespace RetailPOS.RetailPOSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StreetDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Master")]
+    [System.SerializableAttribute()]
+    public partial class StreetDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Street1Field;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Street1 {
+            get {
+                return this.Street1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Street1Field, value) != true)) {
+                    this.Street1Field = value;
+                    this.RaisePropertyChanged("Street1");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PostCodeDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         ".Master")]
     [System.SerializableAttribute()]
@@ -368,7 +409,7 @@ namespace RetailPOS.RetailPOSService {
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PostCodeField;
+        private string PostCode1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short TownCityIdField;
@@ -387,14 +428,14 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string PostCode {
+        public string PostCode1 {
             get {
-                return this.PostCodeField;
+                return this.PostCode1Field;
             }
             set {
-                if ((object.ReferenceEquals(this.PostCodeField, value) != true)) {
-                    this.PostCodeField = value;
-                    this.RaisePropertyChanged("PostCode");
+                if ((object.ReferenceEquals(this.PostCode1Field, value) != true)) {
+                    this.PostCode1Field = value;
+                    this.RaisePropertyChanged("PostCode1");
                 }
             }
         }
@@ -1573,6 +1614,68 @@ namespace RetailPOS.RetailPOSService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LocalityDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Master")]
+    [System.SerializableAttribute()]
+    public partial class LocalityDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Locality1Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Locality1 {
+            get {
+                return this.Locality1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Locality1Field, value) != true)) {
+                    this.Locality1Field = value;
+                    this.RaisePropertyChanged("Locality1");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RetailPOSService.IRetailPOSServiceContract", SessionMode=System.ServiceModel.SessionMode.Required)]
     public interface IRetailPOSServiceContract {
@@ -1605,10 +1708,16 @@ namespace RetailPOS.RetailPOSService {
         RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetailsResponse")]
-        RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryID);
+        RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailResponse")]
-        RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetail(int towncityID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetailsResponse")]
+        RetailPOS.RetailPOSService.LocalityDTO[] GetLocalityDetails(int townCityId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetailsResponse")]
+        RetailPOS.RetailPOSService.StreetDTO[] GetStreetDetails(int localityId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailsResponse")]
+        RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetails(int localityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetailResponse")]
         RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail();
@@ -1677,12 +1786,20 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.GetCountryDetails();
         }
         
-        public RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryID) {
-            return base.Channel.GetTownCityDetails(countryID);
+        public RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryId) {
+            return base.Channel.GetTownCityDetails(countryId);
         }
         
-        public RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetail(int towncityID) {
-            return base.Channel.GetPostalCodeDetail(towncityID);
+        public RetailPOS.RetailPOSService.LocalityDTO[] GetLocalityDetails(int townCityId) {
+            return base.Channel.GetLocalityDetails(townCityId);
+        }
+        
+        public RetailPOS.RetailPOSService.StreetDTO[] GetStreetDetails(int localityId) {
+            return base.Channel.GetStreetDetails(localityId);
+        }
+        
+        public RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetails(int localityId) {
+            return base.Channel.GetPostalCodeDetails(localityId);
         }
         
         public RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail() {

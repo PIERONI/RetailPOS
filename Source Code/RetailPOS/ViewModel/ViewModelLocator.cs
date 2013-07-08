@@ -218,6 +218,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<MenuControlViewModel>();
             SimpleIoc.Default.Register<WasteManagementViewModel>();
             SimpleIoc.Default.Register<PromotionalOfferViewModel>();
+            SimpleIoc.Default.Register<MenuControlViewModel>();            
         }
     }
 }

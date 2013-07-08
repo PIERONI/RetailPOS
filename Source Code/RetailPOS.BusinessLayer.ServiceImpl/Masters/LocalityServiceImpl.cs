@@ -12,13 +12,13 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Masters
     public partial class MasterServiceImpl
     {
         /// <summary>
-        /// Retrieves available Town/City details from database
+        /// Retrieves available Locality details from database
         /// </summary>
-        /// <returns>returns list of Town/City else empty list</returns>
-        IList<TownCityDTO> IMasterService.GetTownCityDetails(int countryId)
+        /// <returns>returns list of Locality else empty list</returns>
+        IList<LocalityDTO> IMasterService.GetLocalityDetails(int townCityId)
         {
-            IList<TownCityDTO> lstTownCity = new List<TownCityDTO>();
-            ObjectMapper.Map(base.TownCityRepository.GetList(item => item.CountryId == countryId), lstTownCity);
+            IList<LocalityDTO> lstTownCity = new List<LocalityDTO>();
+            ObjectMapper.Map(base.LocalityRepository.GetList(item => item.TownCityId == townCityId), lstTownCity);
             return lstTownCity;
         }
     }

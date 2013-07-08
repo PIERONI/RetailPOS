@@ -3,7 +3,7 @@
     public class PostCodeDTO : BaseDTO
     {
         public int Id { get; set; }
-        public string PostCode { get; set; }
         public short TownCityId { get; set; }
+        public string PostCode1 { get; set; }
     }
 }

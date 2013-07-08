@@ -217,10 +217,6 @@
             <End Role="product" EntitySet="product" />
             <End Role="supplier_products" EntitySet="supplier_products" />
           </AssociationSet>
-          <AssociationSet Name="TownCity_Country_FK" Association="POSModel.Store.TownCity_Country_FK">
-            <End Role="country" EntitySet="country" />
-            <End Role="town_city" EntitySet="town_city" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="accounts">
           <Key>
@@ -412,6 +408,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TownCityId" Type="int" />
           <Property Name="locality" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="login_history">
@@ -493,8 +490,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LocalityId" Type="smallint" Nullable="false" />
           <Property Name="postcode" Type="varchar" Nullable="false" MaxLength="8" />
-          <Property Name="towncityid" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -664,6 +661,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LocalityId" Type="int" />
           <Property Name="street" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="supplier">
@@ -702,8 +700,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="smallint" Nullable="false" />
           <Property Name="town_city" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="CountryID" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="warranty">
           <Key>
@@ -1112,7 +1110,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="postcode">
-              <PropertyRef Name="towncityid" />
+              <PropertyRef Name="LocalityId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1224,18 +1222,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="TownCity_Country_FK">
-          <End Role="country" Type="POSModel.Store.country" Multiplicity="1" />
-          <End Role="town_city" Type="POSModel.Store.town_city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="country">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="town_city">
-              <PropertyRef Name="CountryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -1256,7 +1242,6 @@
           <EntitySet Name="invoicecredits" EntityType="POSModel.invoicecredit" />
           <EntitySet Name="invoiceitems" EntityType="POSModel.invoiceitem" />
           <EntitySet Name="invoices" EntityType="POSModel.invoice" />
-          <EntitySet Name="localities" EntityType="POSModel.locality" />
           <EntitySet Name="login_history" EntityType="POSModel.login_history" />
           <EntitySet Name="measure_unit" EntityType="POSModel.measure_unit" />
           <EntitySet Name="measure_unit_conversion" EntityType="POSModel.measure_unit_conversion" />
@@ -1264,7 +1249,6 @@
           <EntitySet Name="orderchilds" EntityType="POSModel.orderchild" />
           <EntitySet Name="ordermasters" EntityType="POSModel.ordermaster" />
           <EntitySet Name="payment_gateways" EntityType="POSModel.payment_gateways" />
-          <EntitySet Name="postcodes" EntityType="POSModel.postcode" />
           <EntitySet Name="products" EntityType="POSModel.product" />
           <EntitySet Name="product_category" EntityType="POSModel.product_category" />
           <EntitySet Name="product_promotional_offer" EntityType="POSModel.product_promotional_offer" />
@@ -1278,10 +1262,8 @@
           <EntitySet Name="shop_product" EntityType="POSModel.shop_product" />
           <EntitySet Name="staffs" EntityType="POSModel.staff" />
           <EntitySet Name="staff_status" EntityType="POSModel.staff_status" />
-          <EntitySet Name="streets" EntityType="POSModel.street" />
           <EntitySet Name="suppliers" EntityType="POSModel.supplier" />
           <EntitySet Name="supplier_contact_person" EntityType="POSModel.supplier_contact_person" />
-          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
           <EntitySet Name="warranties" EntityType="POSModel.warranty" />
           <EntitySet Name="working_record" EntityType="POSModel.working_record" />
           <AssociationSet Name="accounts_ibfk_1" Association="POSModel.accounts_ibfk_1">
@@ -1292,33 +1274,13 @@
             <End Role="invoice" EntitySet="invoices" />
             <End Role="account" EntitySet="accounts" />
           </AssociationSet>
-          <AssociationSet Name="address_ibfk_10" Association="POSModel.address_ibfk_10">
-            <End Role="postcode" EntitySet="postcodes" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_6" Association="POSModel.address_ibfk_6">
-            <End Role="town_city" EntitySet="town_city" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
           <AssociationSet Name="address_ibfk_7" Association="POSModel.address_ibfk_7">
             <End Role="country" EntitySet="countries" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_8" Association="POSModel.address_ibfk_8">
-            <End Role="street" EntitySet="streets" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_9" Association="POSModel.address_ibfk_9">
-            <End Role="locality" EntitySet="localities" />
             <End Role="address" EntitySet="addresses" />
           </AssociationSet>
           <AssociationSet Name="customer_ibfk_4" Association="POSModel.customer_ibfk_4">
             <End Role="address" EntitySet="addresses" />
             <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="TownCity_Country_FK" Association="POSModel.TownCity_Country_FK">
-            <End Role="country" EntitySet="countries" />
-            <End Role="town_city" EntitySet="town_city" />
           </AssociationSet>
           <AssociationSet Name="customer_ibfk_3" Association="POSModel.customer_ibfk_3">
             <End Role="customer_type" EntitySet="customer_type" />
@@ -1420,10 +1382,6 @@
             <End Role="shop_info" EntitySet="shop_info" />
             <End Role="ordermaster" EntitySet="ordermasters" />
           </AssociationSet>
-          <AssociationSet Name="PostalCode_TownCity_FK" Association="POSModel.PostalCode_TownCity_FK">
-            <End Role="town_city" EntitySet="town_city" />
-            <End Role="postcode" EntitySet="postcodes" />
-          </AssociationSet>
           <AssociationSet Name="product_purchase_history_child_ibfk_2" Association="POSModel.product_purchase_history_child_ibfk_2">
             <End Role="product" EntitySet="products" />
             <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
@@ -1443,6 +1401,30 @@
           <AssociationSet Name="supplier_products" Association="POSModel.supplier_products">
             <End Role="supplier" EntitySet="suppliers" />
             <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <EntitySet Name="postcodes" EntityType="POSModel.postcode" />
+          <EntitySet Name="streets" EntityType="POSModel.street" />
+          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
+          <AssociationSet Name="address_ibfk_10" Association="POSModel.address_ibfk_10">
+            <End Role="postcode" EntitySet="postcodes" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_6" Association="POSModel.address_ibfk_6">
+            <End Role="town_city" EntitySet="town_city" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="address_ibfk_8" Association="POSModel.address_ibfk_8">
+            <End Role="street" EntitySet="streets" />
+            <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="PostalCode_TownCity_FK" Association="POSModel.PostalCode_TownCity_FK">
+            <End Role="town_city" EntitySet="town_city" />
+            <End Role="postcode" EntitySet="postcodes" />
+          </AssociationSet>
+          <EntitySet Name="localities" EntityType="POSModel.locality" />
+          <AssociationSet Name="address_ibfk_9" Association="POSModel.address_ibfk_9">
+            <End Role="locality" EntitySet="localities" />
+            <End Role="address" EntitySet="addresses" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="account">
@@ -1473,12 +1455,12 @@
           <Property Type="Int16" Name="town_city_id" />
           <Property Type="Int16" Name="country_id" />
           <Property Type="Int32" Name="postcode_id" Nullable="false" />
+          <NavigationProperty Name="country" Relationship="POSModel.address_ibfk_7" FromRole="address" ToRole="country" />
+          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_4" FromRole="address" ToRole="customer" />
           <NavigationProperty Name="postcode" Relationship="POSModel.address_ibfk_10" FromRole="address" ToRole="postcode" />
           <NavigationProperty Name="town_city" Relationship="POSModel.address_ibfk_6" FromRole="address" ToRole="town_city" />
-          <NavigationProperty Name="country" Relationship="POSModel.address_ibfk_7" FromRole="address" ToRole="country" />
           <NavigationProperty Name="street" Relationship="POSModel.address_ibfk_8" FromRole="address" ToRole="street" />
           <NavigationProperty Name="locality" Relationship="POSModel.address_ibfk_9" FromRole="address" ToRole="locality" />
-          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_4" FromRole="address" ToRole="customer" />
         </EntityType>
         <EntityType Name="country">
           <Key>
@@ -1487,7 +1469,6 @@
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_7" FromRole="country" ToRole="address" />
-          <NavigationProperty Name="town_city" Relationship="POSModel.TownCity_Country_FK" FromRole="country" ToRole="town_city" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -1667,14 +1648,6 @@
           <NavigationProperty Name="invoiceitems" Relationship="POSModel.invoiceitems_ibfk_4" FromRole="invoice" ToRole="invoiceitem" />
           <NavigationProperty Name="ordermasters" Relationship="POSModel.ordermaster_ibfk_3" FromRole="invoice" ToRole="ordermaster" />
         </EntityType>
-        <EntityType Name="locality">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="locality1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_9" FromRole="locality" ToRole="address" />
-        </EntityType>
         <EntityType Name="login_history">
           <Key>
             <PropertyRef Name="id" />
@@ -1763,16 +1736,6 @@
           <Property Type="String" Name="setting" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="value" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="sortorder" Nullable="false" />
-        </EntityType>
-        <EntityType Name="postcode">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="postcode1" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Type="Int16" Name="towncityid" Nullable="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_10" FromRole="postcode" ToRole="address" />
-          <NavigationProperty Name="town_city" Relationship="POSModel.PostalCode_TownCity_FK" FromRole="postcode" ToRole="town_city" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -1953,14 +1916,6 @@
           <Property Type="String" Name="status" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="street">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="street1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_8" FromRole="street" ToRole="address" />
-        </EntityType>
         <EntityType Name="supplier">
           <Key>
             <PropertyRef Name="id" />
@@ -1985,17 +1940,6 @@
           <Property Type="String" Name="mobile" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="address_id" />
-        </EntityType>
-        <EntityType Name="town_city">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="town_city1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int16" Name="CountryID" Nullable="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_6" FromRole="town_city" ToRole="address" />
-          <NavigationProperty Name="country" Relationship="POSModel.TownCity_Country_FK" FromRole="town_city" ToRole="country" />
-          <NavigationProperty Name="postcodes" Relationship="POSModel.PostalCode_TownCity_FK" FromRole="town_city" ToRole="postcode" />
         </EntityType>
         <EntityType Name="warranty">
           <Key>
@@ -2042,30 +1986,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="address_ibfk_10">
-          <End Type="POSModel.postcode" Role="postcode" Multiplicity="1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="postcode">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="postcode_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_6">
-          <End Type="POSModel.town_city" Role="town_city" Multiplicity="0..1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="town_city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="address_ibfk_7">
           <End Type="POSModel.country" Role="country" Multiplicity="0..1" />
           <End Type="POSModel.address" Role="address" Multiplicity="*" />
@@ -2078,30 +1998,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="address_ibfk_8">
-          <End Type="POSModel.street" Role="street" Multiplicity="1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="street">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="street_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_9">
-          <End Type="POSModel.locality" Role="locality" Multiplicity="0..1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="locality">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="locality_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="customer_ibfk_4">
           <End Type="POSModel.address" Role="address" Multiplicity="0..1" />
           <End Type="POSModel.customer" Role="customer" Multiplicity="*" />
@@ -2111,18 +2007,6 @@
             </Principal>
             <Dependent Role="customer">
               <PropertyRef Name="address_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="TownCity_Country_FK">
-          <End Type="POSModel.country" Role="country" Multiplicity="1" />
-          <End Type="POSModel.town_city" Role="town_city" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="country">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="town_city">
-              <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2426,18 +2310,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="PostalCode_TownCity_FK">
-          <End Type="POSModel.town_city" Role="town_city" Multiplicity="1" />
-          <End Type="POSModel.postcode" Role="postcode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="postcode">
-              <PropertyRef Name="towncityid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="product_purchase_history_child_ibfk_2">
           <End Type="POSModel.product" Role="product" Multiplicity="1" />
           <End Type="POSModel.product_purchase_history_child" Role="product_purchase_history_child" Multiplicity="*" />
@@ -2489,6 +2361,104 @@
         <Association Name="supplier_products">
           <End Type="POSModel.supplier" Role="supplier" Multiplicity="*" />
           <End Type="POSModel.product" Role="product" Multiplicity="*" />
+        </Association>
+        <EntityType Name="postcode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="LocalityId" Nullable="false" />
+          <Property Type="String" Name="postcode1" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_10" FromRole="postcode" ToRole="address" />
+          <NavigationProperty Name="town_city" Relationship="POSModel.PostalCode_TownCity_FK" FromRole="postcode" ToRole="town_city" />
+        </EntityType>
+        <EntityType Name="street">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="LocalityId" />
+          <Property Type="String" Name="street1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_8" FromRole="street" ToRole="address" />
+        </EntityType>
+        <EntityType Name="town_city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int16" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="town_city1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_6" FromRole="town_city" ToRole="address" />
+          <NavigationProperty Name="postcodes" Relationship="POSModel.PostalCode_TownCity_FK" FromRole="town_city" ToRole="postcode" />
+        </EntityType>
+        <Association Name="address_ibfk_10">
+          <End Type="POSModel.postcode" Role="postcode" Multiplicity="1" />
+          <End Type="POSModel.address" Role="address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postcode">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="postcode_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_6">
+          <End Type="POSModel.town_city" Role="town_city" Multiplicity="0..1" />
+          <End Type="POSModel.address" Role="address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="town_city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="town_city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="address_ibfk_8">
+          <End Type="POSModel.street" Role="street" Multiplicity="1" />
+          <End Type="POSModel.address" Role="address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="street">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="street_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PostalCode_TownCity_FK">
+          <End Type="POSModel.town_city" Role="town_city" Multiplicity="1" />
+          <End Type="POSModel.postcode" Role="postcode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="town_city">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="postcode">
+              <PropertyRef Name="LocalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="locality">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TownCityId" />
+          <Property Type="String" Name="locality1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_9" FromRole="locality" ToRole="address" />
+        </EntityType>
+        <Association Name="address_ibfk_9">
+          <End Type="POSModel.locality" Role="locality" Multiplicity="0..1" />
+          <End Type="POSModel.address" Role="address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locality">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="address">
+              <PropertyRef Name="locality_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -2696,14 +2666,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="localities">
-            <EntityTypeMapping TypeName="POSModel.locality">
-              <MappingFragment StoreEntitySet="locality">
-                <ScalarProperty Name="locality1" ColumnName="locality" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="login_history">
             <EntityTypeMapping TypeName="POSModel.login_history">
               <MappingFragment StoreEntitySet="login_history">
@@ -2774,15 +2736,6 @@
                 <ScalarProperty Name="value" ColumnName="value" />
                 <ScalarProperty Name="setting" ColumnName="setting" />
                 <ScalarProperty Name="gateway" ColumnName="gateway" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="postcodes">
-            <EntityTypeMapping TypeName="POSModel.postcode">
-              <MappingFragment StoreEntitySet="postcode">
-                <ScalarProperty Name="towncityid" ColumnName="towncityid" />
-                <ScalarProperty Name="postcode1" ColumnName="postcode" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2960,14 +2913,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="streets">
-            <EntityTypeMapping TypeName="POSModel.street">
-              <MappingFragment StoreEntitySet="street">
-                <ScalarProperty Name="street1" ColumnName="street" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="suppliers">
             <EntityTypeMapping TypeName="POSModel.supplier">
               <MappingFragment StoreEntitySet="supplier">
@@ -2989,15 +2934,6 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="town_city">
-            <EntityTypeMapping TypeName="POSModel.town_city">
-              <MappingFragment StoreEntitySet="town_city">
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="town_city1" ColumnName="town_city" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3033,6 +2969,42 @@
               <ScalarProperty Name="id" ColumnName="supplier_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="postcodes">
+            <EntityTypeMapping TypeName="POSModel.postcode">
+              <MappingFragment StoreEntitySet="postcode">
+                <ScalarProperty Name="postcode1" ColumnName="postcode" />
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="streets">
+            <EntityTypeMapping TypeName="POSModel.street">
+              <MappingFragment StoreEntitySet="street">
+                <ScalarProperty Name="street1" ColumnName="street" />
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="town_city">
+            <EntityTypeMapping TypeName="POSModel.town_city">
+              <MappingFragment StoreEntitySet="town_city">
+                <ScalarProperty Name="town_city1" ColumnName="town_city" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="localities">
+            <EntityTypeMapping TypeName="POSModel.locality">
+              <MappingFragment StoreEntitySet="locality">
+                <ScalarProperty Name="locality1" ColumnName="locality" />
+                <ScalarProperty Name="TownCityId" ColumnName="TownCityId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3070,7 +3042,6 @@
         <EntityTypeShape EntityType="POSModel.invoicecredit" Width="1.5" PointX="17.25" PointY="24" Height="2.557190755208353" />
         <EntityTypeShape EntityType="POSModel.invoiceitem" Width="1.5" PointX="14.25" PointY="27.625" Height="3.3263964843749818" />
         <EntityTypeShape EntityType="POSModel.invoice" Width="1.5" PointX="12" PointY="29.75" Height="6.018616536458353" />
-        <EntityTypeShape EntityType="POSModel.locality" Width="1.5" PointX="5.25" PointY="16" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="POSModel.login_history" Width="1.5" PointX="15" PointY="15.75" Height="2.557190755208353" />
         <EntityTypeShape EntityType="POSModel.measure_unit" Width="1.5" PointX="14.25" PointY="6.375" Height="2.7494921874999818" />
         <EntityTypeShape EntityType="POSModel.measure_unit_conversion" Width="1.5" PointX="16.5" PointY="4.75" Height="1.980286458333353" />
@@ -3078,7 +3049,6 @@
         <EntityTypeShape EntityType="POSModel.orderchild" Width="1.5" PointX="16.5" PointY="19.875" Height="2.7494921874999818" />
         <EntityTypeShape EntityType="POSModel.ordermaster" Width="1.5" PointX="14.25" PointY="19.625" Height="3.134095052083353" />
         <EntityTypeShape EntityType="POSModel.payment_gateways" Width="1.5" PointX="4.75" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.postcode" Width="1.5" PointX="5.25" PointY="19.125" Height="1.980286458333353" />
         <EntityTypeShape EntityType="POSModel.product" Width="1.5" PointX="14.25" PointY="36.875" Height="4.287903645833353" />
         <EntityTypeShape EntityType="POSModel.product_category" Width="1.5" PointX="4.75" PointY="3.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="POSModel.product_promotional_offer" Width="1.5" PointX="6.75" PointY="0.75" Height="1.403382161458353" />
@@ -3092,10 +3062,8 @@
         <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="0.75" PointY="7.75" Height="1.980286458333353" />
         <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="12.75" PointY="10.375" Height="5.2494108072916674" />
         <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="8.75" PointY="0.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="5.25" PointY="22.375" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="12" PointY="37.75" Height="2.557190755208353" />
         <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="8.75" PointY="3.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="3" PointY="19" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="8.75" PointY="7.75" Height="1.980286458333353" />
         <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="2.75" PointY="9.75" Height="2.1725878906249818" />
         <AssociationConnector Association="POSModel.accounts_ibfk_1" >
@@ -3117,41 +3085,16 @@
           <ConnectorPoint PointX="14.03125" PointY="24.426420526041682" />
           <ConnectorPoint PointX="14.25" PointY="24.426420526041682" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_10" >
-          <ConnectorPoint PointX="6.75" PointY="19.480499674479177" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="19.480499674479177" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="19.480499674479177" />
-          <ConnectorPoint PointX="7.5" PointY="19.480499674479177" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_6" >
-          <ConnectorPoint PointX="4.5" PointY="19.03125" />
-          <ConnectorPoint PointX="7.041666666666667" PointY="19.03125" />
-          <ConnectorPoint PointX="7.208333333333333" PointY="19.03125" />
-          <ConnectorPoint PointX="7.5" PointY="19.03125" />
-        </AssociationConnector>
         <AssociationConnector Association="POSModel.address_ibfk_7" >
-          <ConnectorPoint PointX="2.25" PointY="15.34375" />
-          <ConnectorPoint PointX="8.25" PointY="15.34375" />
+          <ConnectorPoint PointX="2.25" PointY="15.4374995" />
+          <ConnectorPoint PointX="6.760416666666667" PointY="15.4374995" />
+          <ConnectorPoint PointX="6.927083333333333" PointY="15.4374995" />
+          <ConnectorPoint PointX="8.25" PointY="15.4374995" />
           <ConnectorPoint PointX="8.25" PointY="16.125" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_8" >
-          <ConnectorPoint PointX="6.75" PointY="22.376152846153843" />
-          <ConnectorPoint PointX="7.125" PointY="22.001152846153843" />
-          <ConnectorPoint PointX="7.125" PointY="17.546872999999948" />
-          <ConnectorPoint PointX="7.5" PointY="17.546872999999948" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_9" >
-          <ConnectorPoint PointX="6.75" PointY="16.773436499999974" />
-          <ConnectorPoint PointX="7.5" PointY="16.773436499999974" />
-        </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_4" >
-          <ConnectorPoint PointX="9" PointY="17.980499674479177" />
-          <ConnectorPoint PointX="9.75" PointY="17.980499674479177" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.TownCity_Country_FK" >
-          <ConnectorPoint PointX="1.5" PointY="16.537985026041667" />
-          <ConnectorPoint PointX="1.5" PointY="20.086293945312491" />
-          <ConnectorPoint PointX="3" PointY="20.086293945312491" />
+          <ConnectorPoint PointX="9" PointY="17.980499674479169" />
+          <ConnectorPoint PointX="9.75" PointY="17.980499674479169" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_3" >
           <ConnectorPoint PointX="9" PointY="22.223005429687419" />
@@ -3293,10 +3236,6 @@
           <ConnectorPoint PointX="13.958333333333334" PointY="22.170884789062541" />
           <ConnectorPoint PointX="14.25" PointY="22.170884789062541" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.PostalCode_TownCity_FK" >
-          <ConnectorPoint PointX="4.5" PointY="20.115143229166677" />
-          <ConnectorPoint PointX="5.25" PointY="20.115143229166677" />
-        </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_2" >
           <ConnectorPoint PointX="15.75" PointY="40.636495768229167" />
           <ConnectorPoint PointX="20.25" PointY="40.636495768229167" />
@@ -3326,6 +3265,33 @@
         <AssociationConnector Association="POSModel.supplier_products" >
           <ConnectorPoint PointX="13.5" PointY="39.05984787760417" />
           <ConnectorPoint PointX="14.25" PointY="39.05984787760417" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="POSModel.postcode" Width="1.5" PointX="5.25" PointY="16.875" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="5.25" PointY="19.625" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="3" PointY="17" Height="1.9802864583333246" />
+        <AssociationConnector Association="POSModel.address_ibfk_10" >
+          <ConnectorPoint PointX="6.75" PointY="17.865143229166662" />
+          <ConnectorPoint PointX="7.5" PointY="17.865143229166662" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.address_ibfk_6" >
+          <ConnectorPoint PointX="4.5" PointY="18.949036458333325" />
+          <ConnectorPoint PointX="7.5" PointY="18.949036458333325" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.address_ibfk_8" >
+          <ConnectorPoint PointX="6.75" PointY="19.626152846153843" />
+          <ConnectorPoint PointX="7.125" PointY="19.251152846153843" />
+          <ConnectorPoint PointX="7.125" PointY="20.212152195112186" />
+          <ConnectorPoint PointX="7.5011528461538495" PointY="19.835999348958335" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.PostalCode_TownCity_FK" >
+          <ConnectorPoint PointX="4.5" PointY="17.927643229166662" />
+          <ConnectorPoint PointX="5.25" PointY="17.927643229166662" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="POSModel.locality" Width="1.5" PointX="5.375" PointY="9.875" Height="1.7879850260416674" />
+        <AssociationConnector Association="POSModel.address_ibfk_9" >
+          <ConnectorPoint PointX="6.84375" PointY="11.662985026041667" />
+          <ConnectorPoint PointX="6.84375" PointY="16.46875" />
+          <ConnectorPoint PointX="7.5" PointY="16.46875" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

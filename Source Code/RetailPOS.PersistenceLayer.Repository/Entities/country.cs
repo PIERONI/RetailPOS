@@ -65,38 +65,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<address> _addresses;
-    
-        public virtual ICollection<town_city> town_city
-        {
-            get
-            {
-                if (_town_city == null)
-                {
-                    var newCollection = new FixupCollection<town_city>();
-                    newCollection.CollectionChanged += Fixuptown_city;
-                    _town_city = newCollection;
-                }
-                return _town_city;
-            }
-            set
-            {
-                if (!ReferenceEquals(_town_city, value))
-                {
-                    var previousValue = _town_city as FixupCollection<town_city>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixuptown_city;
-                    }
-                    _town_city = value;
-                    var newValue = value as FixupCollection<town_city>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixuptown_city;
-                    }
-                }
-            }
-        }
-        private ICollection<town_city> _town_city;
 
         #endregion
         #region Association Fixup
@@ -114,28 +82,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             if (e.OldItems != null)
             {
                 foreach (address item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.country, this))
-                    {
-                        item.country = null;
-                    }
-                }
-            }
-        }
-    
-        private void Fixuptown_city(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (town_city item in e.NewItems)
-                {
-                    item.country = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (town_city item in e.OldItems)
                 {
                     if (ReferenceEquals(item.country, this))
                     {

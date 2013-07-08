@@ -3,6 +3,6 @@
     public class StreetDTO : BaseDTO
     {
         public int Id { get; set; }
-        public string Street { get; set; }
+        public string Street1 { get; set; }
     }
 }

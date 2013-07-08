@@ -3,6 +3,6 @@
     public class LocalityDTO
     {
         public int Id { get; set; }
-        public string Locality { get; set; }
+        public string Locality1 { get; set; }
     }
 }

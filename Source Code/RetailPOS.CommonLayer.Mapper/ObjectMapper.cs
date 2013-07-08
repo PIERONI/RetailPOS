@@ -26,8 +26,7 @@ namespace RetailPOS.CommonLayer.Mapper
             AutoMapper.Mapper.CreateMap<ProductCategoryDTO, product_category>();
             AutoMapper.Mapper.CreateMap<product_category, ProductCategoryDTO>();
 
-            AutoMapper.Mapper.CreateMap<product, ProductDTO>();
-            AutoMapper.Mapper.CreateMap<ProductDTO, product>();
+            MapObjectForProducts();
 
             AutoMapper.Mapper.CreateMap<staff, StaffDTO>();
             AutoMapper.Mapper.CreateMap<StaffDTO, staff>();
@@ -44,6 +43,17 @@ namespace RetailPOS.CommonLayer.Mapper
         public static void Map<T, U>(T sourceObject, U destObject)
         {
             AutoMapper.Mapper.Map(sourceObject, destObject);
+        }
+
+        private void MapObjectForProducts()
+        {
+            ////Maps ProductDTO object with product object
+            AutoMapper.Mapper.CreateMap<product, ProductDTO>();
+            AutoMapper.Mapper.CreateMap<ProductDTO, product>();
+
+            ////Maps ProductStatusDTO object with product_status object
+            AutoMapper.Mapper.CreateMap<product_status, ProductStatusDTO>();
+            AutoMapper.Mapper.CreateMap<ProductStatusDTO, product_status>();
         }
 
         private void MapObjectForSettings()

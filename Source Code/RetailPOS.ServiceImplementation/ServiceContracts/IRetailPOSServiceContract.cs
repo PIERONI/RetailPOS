@@ -22,6 +22,14 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<ProductCategoryDTO> GetCategories();
 
+        /// <summary>
+        /// Save Category details in database
+        /// </summary>
+        /// <param name="categoryDetails">Category details to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        [OperationContract]
+        bool SaveCategoryDetails(ProductCategoryDTO categoryDetails);
+
         #endregion
 
         #region Products
@@ -43,7 +51,20 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<ProductDTO> GetCommonProduct();
 
-        
+        /// <summary>
+        /// Get product status from database
+        /// </summary>
+        /// <returns>returns list of all status present in database for product, else empty list</returns>
+        [OperationContract]
+        IList<ProductStatusDTO> GetProductStatus();
+
+        /// <summary>
+        /// Save Product details in database
+        /// </summary>
+        /// <param name="productDetails">Product details to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        [OperationContract]
+        bool SaveProductDetails(ProductDTO productDetails);
 
         #endregion
 

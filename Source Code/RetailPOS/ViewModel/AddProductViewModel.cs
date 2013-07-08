@@ -1,162 +1,46 @@
-﻿using GalaSoft.MvvmLight;
-using System.Collections.ObjectModel;
-using RetailPOS.RetailPOSService;
-using RetailPOS.Core;
-using System.Linq;
-using System;
+﻿#region Using directives
 
+using System.Collections.ObjectModel;
+using System.Linq;
+using GalaSoft.MvvmLight;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
+using System.Windows;
+using GalaSoft.MvvmLight.Command;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
     public class AddProductViewModel : ViewModelBase
     {
-        #region Declare Public and private Data member
+        #region Declare Public and Private Data member
 
-        //public ObservableCollection<CStatusModel> lstStatus { get; private set; }
-        private ObservableCollection<ProductCategoryDTO> _lstCategories;
-        //private CStatusModel _selectedStatus;  
+        public ObservableCollection<ProductStatusDTO> LstStatus { get; private set; }
+        public ObservableCollection<ProductCategoryDTO> LstCategories { get; private set; }
+
+        public RelayCommand SaveProduct { get; set; }
+        public RelayCommand CancelProductSetting { get; set; }
+        
         private ProductCategoryDTO _selectedCategory;
         private string _barCode;
-        private string _productName;
-        private string _productDescription;
+        private string _name;
+        private string _description;
+        private ProductStatusDTO _selectedStatus;
         private decimal _retailPrice;
         private decimal _wholePrice;
+        private decimal _purchasePrice;
         private decimal _taxRate;
-        private bool _isWarranty;
+        private bool _hasWarranty;
+        private bool _isProductSoldLoose;
+        private Visibility _setVisibilityForLooseItems;
         private decimal _size;
         private decimal _weight;
         private string _imagePath;
 
-        public decimal RetailPrice
-        {
-            get
-            {
-                return _retailPrice;
-            }
-            set
-            {
-                _retailPrice = value;
-                RaisePropertyChanged("RetailPrice");
-            }
-        }
+        #endregion
 
-        public decimal WholeSalePrice
-        {
-            get
-            {
-                return _wholePrice;
-            }
-            set
-            {
-                _wholePrice = value;
-                RaisePropertyChanged("WholeSalePrice");
-            }
-        }
-
-        public bool IsWarranty
-        {
-            get
-            {
-                return _isWarranty;
-            }
-            set
-            {
-                _isWarranty = value;
-                RaisePropertyChanged("IsWarranty");
-            }
-        }
-
-        public decimal Size
-        {
-            get
-            {
-                return _size;
-            }
-            set
-            {
-                _size = value;
-                RaisePropertyChanged("Size");
-            }
-        }
-
-        public decimal Weight
-        {
-            get
-            {
-                return _weight;
-            }
-            set
-            {
-                _weight = value;
-                RaisePropertyChanged("Weight");
-            }
-        }
-
-        public string ProductImage
-        {
-            get
-            {
-                return _imagePath;
-            }
-            set
-            {
-                _imagePath = value;
-                RaisePropertyChanged("ProductImage");
-            }
-        }
-
-
-        //public CStatusModel SelectedStatus
-        //{
-        //    get
-        //    {
-        //        return _selectedStatus;
-        //    }
-        //    set
-        //    {
-        //        _selectedStatus = value;
-        //        RaisePropertyChanged("SelectedStatus");
-        //    }
-        //}
-
-        public string ProductDescription
-        {
-            get
-            {
-                return _productDescription;
-            }
-            set
-            {
-                _productDescription = value;
-                RaisePropertyChanged("ProductDescription");
-            }
-        }
-
-        public string ProductName
-        {
-            get
-            {
-                return _productName;
-            }
-            set
-            {
-                _productName = value;
-                RaisePropertyChanged("ProductName");
-            }
-        }
-
-        public string BarCode
-        {
-            get
-            {
-                return _barCode;
-            }
-            set
-            {
-                _barCode = value;
-                RaisePropertyChanged("BarCode");
-            }
-        }
+        #region Public Properties
 
         public ProductCategoryDTO SelectedCategory
         {
@@ -167,43 +51,242 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("SelectedCategory");
             }
         }
-        public ObservableCollection<ProductCategoryDTO> lstCategories
+
+        public string BarCode
         {
-            get { return _lstCategories; }
+            get { return _barCode; }
             set
             {
-                _lstCategories = value;
-                RaisePropertyChanged("lstCategories");
+                _barCode = value;
+                RaisePropertyChanged("BarCode");
             }
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                RaisePropertyChanged("Description");
+            }
+        }
+
+        public ProductStatusDTO SelectedStatus
+        {
+            get { return _selectedStatus; }
+            set
+            {
+                _selectedStatus = value;
+                RaisePropertyChanged("SelectedStatus");
+            }
+        }
+
+        public decimal RetailPrice
+        {
+            get { return _retailPrice; }
+            set
+            {
+                _retailPrice = value;
+                RaisePropertyChanged("RetailPrice");
+            }
+        }
+
+        public decimal WholeSalePrice
+        {
+            get { return _wholePrice; }
+            set
+            {
+                _wholePrice = value;
+                RaisePropertyChanged("WholeSalePrice");
+            }
+        }
+
+        public decimal PurchasePrice
+        {
+            get { return _purchasePrice; }
+            set
+            {
+                _purchasePrice = value;
+                RaisePropertyChanged("PurchasePrice");
+            }
+        }
+
+        public decimal TaxRate
+        {
+            get { return _taxRate; }
+            set
+            {
+                _taxRate = value;
+                RaisePropertyChanged("TaxRate");
+            }
+        }
+
+        public bool HasWarranty
+        {
+            get { return _hasWarranty; }
+            set
+            {
+                _hasWarranty = value;
+                RaisePropertyChanged("HasWarranty");
+            }
+        }
+
+        public Visibility SetVisibilityForLooseItems
+        {
+            get { return _setVisibilityForLooseItems; }
+            set
+            {
+                _setVisibilityForLooseItems = value;
+                RaisePropertyChanged("SetVisibilityForLooseItems");
+            }
+        }
+
+        public bool IsProductSoldLoose
+        {
+            get { return _isProductSoldLoose; }
+            set
+            {
+                _isProductSoldLoose = value;
+                RaisePropertyChanged("IsProductSoldLoose");
+
+                if (IsProductSoldLoose)
+                {
+                    SetVisibilityForLooseItems = Visibility.Visible;
+                }
+                else
+                {
+                    ////Hide attributes for all the items sold in loose quantity
+                    HideAttributesForLooseItems();
+                }
+            }
+        }
+
+        public decimal Size
+        {
+            get { return _size; }
+            set
+            {
+                _size = value;
+                RaisePropertyChanged("Size");
+            }
+        }
+
+        public decimal Weight
+        {
+            get { return _weight; }
+            set
+            {
+                _weight = value;
+                RaisePropertyChanged("Weight");
+            }
+        }
+
+        public string ProductImage
+        {
+            get { return _imagePath; }
+            set
+            {
+                _imagePath = value;
+                RaisePropertyChanged("ProductImage");
+            }
+        }
+        
+        #endregion
+
+        #region Public Constructor
+
+        public AddProductViewModel()
+        {
+            LstStatus = new ObservableCollection<ProductStatusDTO>();
+            LstCategories = new ObservableCollection<ProductCategoryDTO>();
+
+            ////Hide attributes for all the items sold in loose quantity
+            ////This is default setting, which will be overriden once
+            ////user checks the checkbox on screen.
+            HideAttributesForLooseItems();
+
+            ////Get Product status from database
+            GetProductStatus();
+
+            ////Get all active Product categories from database
+            GetCategories();
+
+            SaveProduct = new RelayCommand(SaveProductSetting);
+            CancelProductSetting = new RelayCommand(CancelSetting);
         }
 
         #endregion
 
-        public AddProductViewModel()
-        {
-            //lstStatus = new ObservableCollection<CStatusModel>();
-            lstCategories = new ObservableCollection<ProductCategoryDTO>();
+        #region Private Methods
 
-            BindStatus();
+        private void SaveProductSetting()
+        {
+            var productDetails = InitializeProductDetails();
+            ServiceFactory.ServiceClient.SaveProductDetails(productDetails);
         }
 
-        private void BindStatus()
+        private ProductDTO InitializeProductDetails()
         {
-        }
-
-        private void AddCategories()
-        {
-            try
+            return new ProductDTO
             {
-                lstCategories = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
-                                                                             select item);
-            }
-            catch
-            {
-                throw;
-            }
+                CategoryId = SelectedCategory.Id,
+                BarCode = BarCode,
+                Name = Name,
+                Description = Description,
+                StatusId = SelectedStatus.Id,
+                RetailPrice = RetailPrice,
+                WholesalePrice = WholeSalePrice,
+                PurchasePrice = PurchasePrice,
+                TaxRate = TaxRate,
+                HasWarranty = HasWarranty,
+                Size = Size,
+                Weight = Weight,
+                ImagePath = "Test"
+            };
         }
+
+        private void CancelSetting()
+        {
+            AddProductViewModel viewModel = new AddProductViewModel();
+        }
+
+        /// <summary>
+        /// Hide attributes for all the items sold in loose quantity
+        /// </summary>
+        private void HideAttributesForLooseItems()
+        {
+            SetVisibilityForLooseItems = Visibility.Hidden;
+        }
+
+        /// <summary>
+        ///Get Product status from database
+        /// </summary>
+        private void GetProductStatus()
+        {
+            LstStatus = new ObservableCollection<ProductStatusDTO>(from item in ServiceFactory.ServiceClient.GetProductStatus()
+                                                                   select item);
+        }
+
+        /// <summary>
+        /// Get all active Product Categories from database
+        /// </summary>
+        private void GetCategories()
+        {
+            LstCategories = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
+                                                                         select item);
+        }
+
+        #endregion
     }
-
-   
 }

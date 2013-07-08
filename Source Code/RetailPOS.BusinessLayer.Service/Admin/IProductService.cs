@@ -26,5 +26,18 @@ namespace RetailPOS.BusinessLayer.Service.Admin
         /// </summary>
         /// <returns>returns list of all Commonly Used  products present in database</returns>
         IList<ProductDTO> GetCommonProduct();
+
+        /// <summary>
+        /// Get product status from database
+        /// </summary>
+        /// <returns>returns list of all status present in database for product, else empty list</returns>
+        IList<ProductStatusDTO> GetProductStatus();
+
+        /// <summary>
+        /// Save Product details in database
+        /// </summary>
+        /// <param name="productDetails">Product details to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        bool SaveProductDetails(ProductDTO productDetails);
     }
 }

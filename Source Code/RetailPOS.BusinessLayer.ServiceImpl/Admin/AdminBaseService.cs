@@ -24,6 +24,12 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
         [Dependency]
         public IGenericRepository<product> ProductRepository { get; set; }
 
+        /// <summary>
+        /// Property to inject the persistence layer implementation class for product status
+        /// </summary>
+        [Dependency]
+        public IGenericRepository<product_status> ProductStatusRepository { get; set; }
+        
         #endregion
     }
 }

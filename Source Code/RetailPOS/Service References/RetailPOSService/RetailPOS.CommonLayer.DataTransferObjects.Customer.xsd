@@ -42,12 +42,8 @@
   <xs:element name="ArrayOfCustomerStatusDTO" nillable="true" type="tns:ArrayOfCustomerStatusDTO" />
   <xs:complexType name="CustomerStatusDTO">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:BaseDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Id" type="xs:short" />
-          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-        </xs:sequence>
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:StatusDTO">
+        <xs:sequence />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

@@ -28,6 +28,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<MenuControlViewModel>();
             SimpleIoc.Default.Register<WasteManagementViewModel>();
             SimpleIoc.Default.Register<PromotionalOfferViewModel>();
+            SimpleIoc.Default.Register<AddCategoryViewModel>();
         }
 
         /// <summary>
@@ -176,7 +177,7 @@ namespace RetailPOS.ViewModel
         /// Gets the Wastemanagement View Model.
         /// </summary>
         /// <value>
-        /// The Was Viewtemanagement Model.
+        /// The Waste Management view model.
         /// </value>
         public WasteManagementViewModel WasteManagementVM
         {
@@ -190,13 +191,27 @@ namespace RetailPOS.ViewModel
         /// Gets the PromotionalOffer View Model.
         /// </summary>
         /// <value>
-        /// The Was PromotionalOffer Model.
+        /// The PromotionalOffer view model.
         /// </value>
         public PromotionalOfferViewModel PromotionalOfferVM
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<PromotionalOfferViewModel>();
+            }
+        }
+
+        /// <summary>
+        /// Gets the Add Category View Model.
+        /// </summary>
+        /// <value>
+        /// The Add Category view model.
+        /// </value>
+        public AddCategoryViewModel AddCategoryVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<AddCategoryViewModel>();
             }
         }
 
@@ -218,7 +233,8 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<MenuControlViewModel>();
             SimpleIoc.Default.Register<WasteManagementViewModel>();
             SimpleIoc.Default.Register<PromotionalOfferViewModel>();
-            SimpleIoc.Default.Register<MenuControlViewModel>();            
+            SimpleIoc.Default.Register<MenuControlViewModel>();
+            SimpleIoc.Default.Register<AddProductViewModel>();
         }
     }
 }

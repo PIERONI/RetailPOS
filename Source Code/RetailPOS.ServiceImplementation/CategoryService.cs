@@ -21,6 +21,16 @@ namespace RetailPOS.ServiceImplementation
             return CategoryService.GetCategories();
         }
 
+        /// <summary>
+        /// Save Category details in database
+        /// </summary>
+        /// <param name="categoryDetails">Category details to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        public bool SaveCategoryDetails(ProductCategoryDTO categoryDetails)
+        {
+            return CategoryService.SaveCategoryDetails(categoryDetails);
+        }
+
         #endregion
     }
 }

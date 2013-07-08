@@ -12,11 +12,9 @@
     </UserControl.Resources>
     <Grid  Height="400">
         <Grid.RowDefinitions>
-
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-
         <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="465">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
@@ -39,7 +37,7 @@
                         <ColumnDefinition>
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Customer Code:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="25,13,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Code:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="25,13,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
                     <TextBlock Text="Type :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
                     <TextBlock Text="First Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
                     <TextBlock Text="Last Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
@@ -138,7 +136,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="30" Canvas.Right="192" Margin="2" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
+            <Button Height="30" Canvas.Right="192" Margin="2" Command="{Binding CancelCustomerSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
                 <DockPanel>
                     <Image Source="../../Images/cancel-icon.png" Width="12" Height="29" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">

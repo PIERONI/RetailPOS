@@ -90,11 +90,13 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         "")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StatusDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductStatusDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerStatusDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StaffDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.AddressDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerStatusDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerTypeDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CountryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.TownCityDTO))]
@@ -130,6 +132,80 @@ namespace RetailPOS.RetailPOSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StatusDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        "")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductStatusDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerStatusDTO))]
+    public partial class StatusDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ProductStatusDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Product")]
+    [System.SerializableAttribute()]
+    public partial class ProductStatusDTO : RetailPOS.RetailPOSService.StatusDTO {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerStatusDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Customer")]
+    [System.SerializableAttribute()]
+    public partial class CustomerStatusDTO : RetailPOS.RetailPOSService.StatusDTO {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ProductDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         ".Product")]
     [System.SerializableAttribute()]
@@ -139,16 +215,13 @@ namespace RetailPOS.RetailPOSService {
         private string BarCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ColorField;
+        private System.Nullable<short> CategoryIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool HasWarrantyField;
+        private System.Nullable<bool> HasWarrantyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
@@ -160,10 +233,13 @@ namespace RetailPOS.RetailPOSService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PurchasePriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> RetailPriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal SizeField;
+        private System.Nullable<decimal> SizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int StatusIdField;
@@ -172,7 +248,7 @@ namespace RetailPOS.RetailPOSService {
         private System.Nullable<decimal> TaxRateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal WeightField;
+        private System.Nullable<decimal> WeightField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> WholesalePriceField;
@@ -191,7 +267,7 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryId {
+        public System.Nullable<short> CategoryId {
             get {
                 return this.CategoryIdField;
             }
@@ -199,19 +275,6 @@ namespace RetailPOS.RetailPOSService {
                 if ((this.CategoryIdField.Equals(value) != true)) {
                     this.CategoryIdField = value;
                     this.RaisePropertyChanged("CategoryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Color {
-            get {
-                return this.ColorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ColorField, value) != true)) {
-                    this.ColorField = value;
-                    this.RaisePropertyChanged("Color");
                 }
             }
         }
@@ -230,7 +293,7 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool HasWarranty {
+        public System.Nullable<bool> HasWarranty {
             get {
                 return this.HasWarrantyField;
             }
@@ -282,6 +345,19 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> PurchasePrice {
+            get {
+                return this.PurchasePriceField;
+            }
+            set {
+                if ((this.PurchasePriceField.Equals(value) != true)) {
+                    this.PurchasePriceField = value;
+                    this.RaisePropertyChanged("PurchasePrice");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<decimal> RetailPrice {
             get {
                 return this.RetailPriceField;
@@ -295,7 +371,7 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Size {
+        public System.Nullable<decimal> Size {
             get {
                 return this.SizeField;
             }
@@ -334,7 +410,7 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Weight {
+        public System.Nullable<decimal> Weight {
             get {
                 return this.WeightField;
             }
@@ -1090,62 +1166,6 @@ namespace RetailPOS.RetailPOSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CustomerStatusDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
-        ".Customer")]
-    [System.SerializableAttribute()]
-    public partial class CustomerStatusDTO : RetailPOS.RetailPOSService.BaseDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private short IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StatusField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public short Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Status {
-            get {
-                return this.StatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CustomerTypeDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         ".Customer")]
     [System.SerializableAttribute()]
@@ -1813,6 +1833,9 @@ namespace RetailPOS.RetailPOSService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCategories", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCategoriesResponse")]
         RetailPOS.RetailPOSService.ProductCategoryDTO[] GetCategories();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveCategoryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveCategoryDetailsResponse")]
+        bool SaveCategoryDetails(RetailPOS.RetailPOSService.ProductCategoryDTO categoryDetails);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetProductByCategory", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetProductByCategoryResponse")]
         RetailPOS.RetailPOSService.ProductDTO[] GetProductByCategory(int categoryId);
         
@@ -1821,6 +1844,12 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCommonProduct", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCommonProductResponse")]
         RetailPOS.RetailPOSService.ProductDTO[] GetCommonProduct();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetProductStatus", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetProductStatusResponse")]
+        RetailPOS.RetailPOSService.ProductStatusDTO[] GetProductStatus();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveProductDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveProductDetailsResponse")]
+        bool SaveProductDetails(RetailPOS.RetailPOSService.ProductDTO productDetails);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetStaffDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetStaffDetailsResponse")]
         RetailPOS.RetailPOSService.StaffDTO[] GetStaffDetails();
@@ -1893,6 +1922,10 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.GetCategories();
         }
         
+        public bool SaveCategoryDetails(RetailPOS.RetailPOSService.ProductCategoryDTO categoryDetails) {
+            return base.Channel.SaveCategoryDetails(categoryDetails);
+        }
+        
         public RetailPOS.RetailPOSService.ProductDTO[] GetProductByCategory(int categoryId) {
             return base.Channel.GetProductByCategory(categoryId);
         }
@@ -1903,6 +1936,14 @@ namespace RetailPOS.RetailPOSService {
         
         public RetailPOS.RetailPOSService.ProductDTO[] GetCommonProduct() {
             return base.Channel.GetCommonProduct();
+        }
+        
+        public RetailPOS.RetailPOSService.ProductStatusDTO[] GetProductStatus() {
+            return base.Channel.GetProductStatus();
+        }
+        
+        public bool SaveProductDetails(RetailPOS.RetailPOSService.ProductDTO productDetails) {
+            return base.Channel.SaveProductDetails(productDetails);
         }
         
         public RetailPOS.RetailPOSService.StaffDTO[] GetStaffDetails() {

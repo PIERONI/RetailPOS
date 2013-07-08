@@ -4,4 +4,16 @@
     <xs:sequence />
   </xs:complexType>
   <xs:element name="BaseDTO" nillable="true" type="tns:BaseDTO" />
+  <xs:complexType name="StatusDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:short" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StatusDTO" nillable="true" type="tns:StatusDTO" />
 </xs:schema>

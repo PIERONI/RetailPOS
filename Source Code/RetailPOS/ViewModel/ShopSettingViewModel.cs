@@ -331,7 +331,7 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void CancelSetting()
         {
-            ShopSettingViewModel vm = new ShopSettingViewModel();
+            ShopSettingViewModel viewModel = new ShopSettingViewModel();
         }
 
         /// <summary>

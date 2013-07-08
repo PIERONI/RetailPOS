@@ -1,18 +1,30 @@
-﻿using GalaSoft.MvvmLight;
+﻿#region Using directives
+
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using RetailPOS.RetailPOSService;
+using RetailPOS.Core;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
-  public  class AddCategoryViewModel : ViewModelBase
+    public class AddCategoryViewModel : ViewModelBase
     {
+        #region Declare Public and Private Data member
+
+        public RelayCommand SaveCategory { get; private set; }
+        public RelayCommand CancelCategorySetting { get; private set; }
+
         /// <summary>
         /// The _staff name
         /// </summary>
-        private string _categoryName;
+        private string _name;
 
         /// <summary>
         /// The _order no
         /// </summary>
-        private string _categoryDescription;
+        private string _description;
 
         /// <summary>
         /// The _date time
@@ -24,19 +36,23 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private int _sortOrder;
 
+        #endregion
+
+        #region Public Properties
+
         /// <summary>
-        /// Gets or sets the name of the category.
+        /// Gets or sets name of the category.
         /// </summary>
         /// <value>
         /// The name of the category.
         /// </value>
-        public string CategoryName
+        public string Name
         {
-            get { return _categoryName; }
+            get { return _name; }
             set
             {
-                _categoryName = value;
-                RaisePropertyChanged("CategoryName");
+                _name = value;
+                RaisePropertyChanged("Name");
             }
         }
 
@@ -46,21 +62,21 @@ namespace RetailPOS.ViewModel
         /// <value>
         /// The category description.
         /// </value>
-        public string CategoryDescription
+        public string Description
         {
-            get { return _categoryDescription; }
+            get { return _description; }
             set
             {
-                _categoryDescription = value;
-                RaisePropertyChanged("CategoryDescription");
+                _description = value;
+                RaisePropertyChanged("Description");
             }
         }
 
         /// <summary>
-        /// Gets or sets the color of the selected.
+        /// Gets or sets the selected color.
         /// </summary>
         /// <value>
-        /// The color of the selected.
+        /// The selected color.
         /// </value>
         public string SelectedColor
         {
@@ -91,8 +107,51 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        #endregion
+
+        #region Constructor
+
         public AddCategoryViewModel()
         {
+            SaveCategory = new RelayCommand(SaveCategorySetting);
+            CancelCategorySetting = new RelayCommand(CancelSetting);
         }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Save category deatils in database
+        /// </summary>
+        private void SaveCategorySetting()
+        {
+            var categoryDetails = InitializeCategoryDetails();
+            ServiceFactory.ServiceClient.SaveCategoryDetails(categoryDetails);
+        }
+
+        /// <summary>
+        /// Initializes Category details with values from controls
+        /// </summary>
+        /// <returns></returns>
+        private ProductCategoryDTO InitializeCategoryDetails()
+        {
+            return new ProductCategoryDTO
+            {
+                Name = Name,
+                Description = Description,
+                Color = SelectedColor
+            };
+        }
+
+        /// <summary>
+        /// Cancels the current operation
+        /// </summary>
+        private void CancelSetting()
+        {
+            AddCategoryViewModel viewModel = new AddCategoryViewModel();
+        }
+
+        #endregion
     }
 }

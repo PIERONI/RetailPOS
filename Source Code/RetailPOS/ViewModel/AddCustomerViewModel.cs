@@ -1,21 +1,25 @@
-﻿using System;
-using GalaSoft.MvvmLight;
+﻿#region Using directives
+
 using System.Collections.ObjectModel;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using RetailPOS.RetailPOSService;
 using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
     public class AddCustomerViewModel : ViewModelBase
     {
-        #region Declare Public and private Data member
+        #region Declare Public and Private Data member
 
         public ObservableCollection<CustomerStatusDTO> LstStatus { get; private set; }
         public ObservableCollection<CustomerTypeDTO> LstType { get; private set; }
         public ObservableCollection<CountryDTO> LstCountry { get; private set; }
 
         public RelayCommand SaveCustomer { get; set; }
+        public RelayCommand CancelCustomerSetting { get; set; }
 
         private ObservableCollection<TownCityDTO> _lstTownCity;
         private ObservableCollection<LocalityDTO> _lstLocality;
@@ -42,6 +46,10 @@ namespace RetailPOS.ViewModel
         private CountryDTO _selectedCountry;
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
+
+        #endregion
+
+        #region Public Properties
 
         public string CustomerCode
         {
@@ -312,6 +320,8 @@ namespace RetailPOS.ViewModel
 
         #endregion
 
+        #region Constructor
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AddCustomerViewModel"/> class.
         /// </summary>
@@ -331,6 +341,16 @@ namespace RetailPOS.ViewModel
             BindLists();
 
             SaveCustomer = new RelayCommand(SaveCustomerDetail);
+            CancelCustomerSetting = new RelayCommand(CancelSetting);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void CancelSetting()
+        {
+            AddCustomerViewModel viewModel = new AddCustomerViewModel();
         }
 
         /// <summary>
@@ -475,5 +495,7 @@ namespace RetailPOS.ViewModel
                 SelectedType = LstType[0];
             }
         }
+
+        #endregion
     }
 }

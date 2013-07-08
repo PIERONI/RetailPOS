@@ -19,6 +19,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SaveCategoryDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Category" minOccurs="0" name="categoryDetails" nillable="true" type="q2:ProductCategoryDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveCategoryDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveCategoryDetailsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetProductByCategory">
     <xs:complexType>
       <xs:sequence>
@@ -29,7 +43,7 @@
   <xs:element name="GetProductByCategoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetProductByCategoryResult" nillable="true" type="q2:ArrayOfProductDTO" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetProductByCategoryResult" nillable="true" type="q3:ArrayOfProductDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -41,7 +55,7 @@
   <xs:element name="GetAllProductsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetAllProductsResult" nillable="true" type="q3:ArrayOfProductDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetAllProductsResult" nillable="true" type="q4:ArrayOfProductDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -53,7 +67,33 @@
   <xs:element name="GetCommonProductResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetCommonProductResult" nillable="true" type="q4:ArrayOfProductDTO" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetCommonProductResult" nillable="true" type="q5:ArrayOfProductDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProductStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="GetProductStatusResult" nillable="true" type="q6:ArrayOfProductStatusDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveProductDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="productDetails" nillable="true" type="q7:ProductDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveProductDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveProductDetailsResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -65,7 +105,7 @@
   <xs:element name="GetStaffDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" minOccurs="0" name="GetStaffDetailsResult" nillable="true" type="q5:ArrayOfStaffDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.User" minOccurs="0" name="GetStaffDetailsResult" nillable="true" type="q8:ArrayOfStaffDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -92,14 +132,14 @@
   <xs:element name="GetAllCustomersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetAllCustomersResult" nillable="true" type="q6:ArrayOfCustomerDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetAllCustomersResult" nillable="true" type="q9:ArrayOfCustomerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveCustomerDetail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="customerDetails" nillable="true" type="q7:CustomerDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="customerDetails" nillable="true" type="q10:CustomerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -118,7 +158,7 @@
   <xs:element name="GetCustomerStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetCustomerStatusResult" nillable="true" type="q8:ArrayOfCustomerStatusDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetCustomerStatusResult" nillable="true" type="q11:ArrayOfCustomerStatusDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -130,14 +170,14 @@
   <xs:element name="GetCustomerTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetCustomerTypesResult" nillable="true" type="q9:ArrayOfCustomerTypeDTO" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="GetCustomerTypesResult" nillable="true" type="q12:ArrayOfCustomerTypeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SaveShopSetting">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" minOccurs="0" name="shopSettingDetails" nillable="true" type="q10:ShopSettingDTO" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" minOccurs="0" name="shopSettingDetails" nillable="true" type="q13:ShopSettingDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -156,7 +196,7 @@
   <xs:element name="GetCountryDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetCountryDetailsResult" nillable="true" type="q11:ArrayOfCountryDTO" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetCountryDetailsResult" nillable="true" type="q14:ArrayOfCountryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -170,7 +210,7 @@
   <xs:element name="GetTownCityDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetTownCityDetailsResult" nillable="true" type="q12:ArrayOfTownCityDTO" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetTownCityDetailsResult" nillable="true" type="q15:ArrayOfTownCityDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -184,7 +224,7 @@
   <xs:element name="GetLocalityDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetLocalityDetailsResult" nillable="true" type="q13:ArrayOfLocalityDTO" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetLocalityDetailsResult" nillable="true" type="q16:ArrayOfLocalityDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -198,7 +238,7 @@
   <xs:element name="GetStreetDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetStreetDetailsResult" nillable="true" type="q14:ArrayOfStreetDTO" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetStreetDetailsResult" nillable="true" type="q17:ArrayOfStreetDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -212,7 +252,7 @@
   <xs:element name="GetPostalCodeDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetPostalCodeDetailsResult" nillable="true" type="q15:ArrayOfPostCodeDTO" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetPostalCodeDetailsResult" nillable="true" type="q18:ArrayOfPostCodeDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -224,7 +264,7 @@
   <xs:element name="GetPromotionalOfferDetailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer" minOccurs="0" name="GetPromotionalOfferDetailResult" nillable="true" type="q16:ArrayOfPromotionalOfferDTO" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer" minOccurs="0" name="GetPromotionalOfferDetailResult" nillable="true" type="q19:ArrayOfPromotionalOfferDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

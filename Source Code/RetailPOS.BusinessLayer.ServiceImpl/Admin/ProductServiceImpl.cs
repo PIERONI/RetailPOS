@@ -1,8 +1,13 @@
-﻿using System.Collections.Generic;
+﻿#region Using directives
+
+using System.Collections.Generic;
 using System.Linq;
 using RetailPOS.BusinessLayer.Service.Admin;
 using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.Mapper;
+using RetailPOS.PersistenceLayer.Repository.Entities;
+
+#endregion
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
 {
@@ -16,6 +21,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
         IList<ProductDTO> IProductService.GetProductByCategory(int categoryId)
         {
             IList<ProductDTO> lstProducts = new List<ProductDTO>();
+            
             ObjectMapper.Map(base.ProductRepository.GetList(item => item.category_id == categoryId).ToList(), lstProducts);
             return lstProducts;
         }
@@ -27,6 +33,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
         IList<ProductDTO> IProductService.GetAllProducts()
         {
             IList<ProductDTO> lstProducts = new List<ProductDTO>();
+
             ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 1).ToList(), lstProducts);
             return lstProducts;
         }
@@ -38,8 +45,34 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
         IList<ProductDTO> IProductService.GetCommonProduct()
         {
             IList<ProductDTO> lstProducts = new List<ProductDTO>();
+
             ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 7).ToList(), lstProducts);
             return lstProducts;
+        }
+
+        /// <summary>
+        /// Get product status from database
+        /// </summary>
+        /// <returns>returns list of all status present in database for product, else empty list</returns>
+        IList<ProductStatusDTO> IProductService.GetProductStatus()
+        {
+            IList<ProductStatusDTO> lstProductStatus = new List<ProductStatusDTO>();
+
+            ObjectMapper.Map(base.ProductStatusRepository.GetList().ToList(), lstProductStatus);
+            return lstProductStatus;
+        }
+
+        /// <summary>
+        /// Save Product details in database
+        /// </summary>
+        /// <param name="productDetails">Product details to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        bool IProductService.SaveProductDetails(ProductDTO productDetails)
+        {
+            product productEntity = new product();
+
+            ObjectMapper.Map(productDetails, productEntity);
+            return ProductRepository.Save(productEntity);
         }
     }
 }

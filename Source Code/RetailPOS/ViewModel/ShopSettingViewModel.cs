@@ -355,7 +355,6 @@ namespace RetailPOS.ViewModel
                 Website = Website,
                 Tax_rate = Convert.ToDecimal(TaxRate),
                 Currency = Curreny,
-
                 Address = InitializeAddressDetails()
             };
         }

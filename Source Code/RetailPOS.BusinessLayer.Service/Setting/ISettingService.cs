@@ -1,4 +1,6 @@
 ﻿using RetailPOS.CommonLayer.DataTransferObjects.Settings;
+using RetailPOS.CommonLayer.DataTransferObjects.Customer;
+using System.Collections.Generic;
 
 namespace RetailPOS.BusinessLayer.Service.Setting
 {
@@ -10,5 +12,11 @@ namespace RetailPOS.BusinessLayer.Service.Setting
         /// <param name="shopSettingDetails">Shopsetting object to be saved</param>
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         bool SaveShopSetting(ShopSettingDTO shopSettingDetails);
+        /// <summary>
+        /// Save Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        bool SaveCustomerDetail(CustomerDTO customerDetails);
     }
 }

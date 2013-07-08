@@ -15,5 +15,11 @@ namespace RetailPOS.View.Usercontrols
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+      
     }
 }

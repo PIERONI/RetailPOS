@@ -2,6 +2,7 @@
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.PersistenceLayer.Repository.Entities;
+using RetailPOS.CommonLayer.DataTransferObjects.Customer;
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
 {
@@ -16,8 +17,9 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
         {
             shop_info shopSettingEntity = new shop_info();
             ObjectMapper.Map(shopSettingDetails, shopSettingEntity);
-
             return ShopSettingRepository.Save(shopSettingEntity);
         }
+
+       
     }
 }

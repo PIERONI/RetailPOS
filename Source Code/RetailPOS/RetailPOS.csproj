@@ -461,6 +461,30 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Category.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Customer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Master.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Product.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Settings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.User.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.CountryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -491,35 +515,11 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.TownCityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService.wsdl" />
-    <None Include="Service References\RetailPOSService\RetailPOSService.xsd">
+    <None Include="Service References\RetailPOSService\service.wsdl" />
+    <None Include="Service References\RetailPOSService\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RetailPOSService\RetailPOSService9.xsd">
+    <None Include="Service References\RetailPOSService\service1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -618,9 +618,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\RetailPOSService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\RetailPOSService\RetailPOSService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\RetailPOSService\configuration91.svcinfo" />

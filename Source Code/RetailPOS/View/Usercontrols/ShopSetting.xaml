@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"             
              DataContext="{Binding Source={StaticResource Locator}, Path=ShopSettingVM}"
-             xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+             xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -127,7 +127,7 @@
             </TabItem>
         </TabControl>
         <Canvas Grid.Row="3">
-            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14"   HorizontalAlignment="Center" Width="75" >
+            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14"   HorizontalAlignment="Center" Width="75">
                 <DockPanel>
                     <Image Source="../../Images/save-icon.png" Width="16" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">

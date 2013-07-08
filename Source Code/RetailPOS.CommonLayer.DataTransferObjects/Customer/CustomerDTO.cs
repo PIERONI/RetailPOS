@@ -1,4 +1,5 @@
-﻿namespace RetailPOS.CommonLayer.DataTransferObjects.Customer
+﻿using RetailPOS.CommonLayer.DataTransferObjects.Master;
+namespace RetailPOS.CommonLayer.DataTransferObjects.Customer
 {
     public class CustomerDTO : BaseDTO
     {
@@ -18,5 +19,6 @@
         public string Image_Path { get; set; }
         public long Address_Id { get; set; }
         public string Email { get; set; }
+        public AddressDTO Address { get; set; }
     }
 }

@@ -78,6 +78,14 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         bool SaveShopSetting(ShopSettingDTO shopSettingDetails);
 
+        /// Save Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        /// <summary>
+        [OperationContract]
+        bool SaveCustomerDetail(CustomerDTO customerDetails);
+
         #endregion
 
         #region Masters

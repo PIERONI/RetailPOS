@@ -27,17 +27,28 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.PromotionalOffer
                                    {
                                        Id = item.id,
                                        Name = item.name,
-                                       Start_Date=item.start_date,
+                                       Start_Date = item.start_date,
                                        End_Date = item.end_date,
-                                       Purchase_Quantity =item.purchase_quantity,
-                                       offer_quantity=item.offer_quantity,
-                                       offer_percentage=item.offer_percentage
+                                       Purchase_Quantity = item.purchase_quantity,
+                                       offer_quantity = item.offer_quantity,
+                                       offer_percentage = item.offer_percentage
                                    }).ToList();
 
             (from item in lstPromotionalOffer select item).Update(
                 item => item.Duration = item.End_Date.Subtract(item.Start_Date).TotalDays);
-          
-            return lstPromotionalOffer;
+                 return lstPromotionalOffer;
         }
+          
+
+        /// <summary>
+        /// Get all promotional Offer
+        /// </summary>
+        /// <returns>returns list of all promotional Offer present in database</returns>    
+        //IList<PromotionalOfferDTO> IPromotionalOfferService.GetPromotionalOfferDetail()
+        //{
+        //    IList<PromotionalOfferDTO> lstPromotionalOffer = new List<PromotionalOfferDTO>();
+        //    ObjectMapper.Map(base.PromotionalOfferRepository.GetList().ToList(), lstPromotionalOffer);
+        //   
+        //}
     }
 }

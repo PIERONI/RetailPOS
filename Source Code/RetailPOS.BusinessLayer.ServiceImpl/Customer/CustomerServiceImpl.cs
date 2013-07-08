@@ -10,7 +10,7 @@ using RetailPOS.CommonLayer.Mapper;
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
 {
-    public class CustomerServiceImpl : CustomerBaseService, ICustomerService
+    public partial class CustomerServiceImpl : CustomerBaseService, ICustomerService
     {
         /// <summary>
         /// Get all customers

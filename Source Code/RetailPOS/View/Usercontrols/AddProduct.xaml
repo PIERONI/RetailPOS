@@ -1,12 +1,16 @@
-﻿<UserControl x:Class="RetailPOS.View.Usercontrols.AddProduct"
+﻿<UserControl 
+     xmlns:my1="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+    x:Class="RetailPOS.View.Usercontrols.AddProduct"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Utility="clr-namespace:RetailPOS.Utility"
-              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             DataContext="{Binding Source={StaticResource Locator}, Path=ProductVM}">
+              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols"
+              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             DataContext="{Binding Source={StaticResource Locator}, Path=ProductVM}" xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -15,7 +19,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="480" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="415">
+        <TabControl Margin="3" Grid.Row="0" Height="480" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="715">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
@@ -81,6 +85,63 @@
                     </StackPanel>
                     <Image Grid.Row="1" Height="242" HorizontalAlignment="Left" Margin="26,0,0,20" Name="imgUploaded" Stretch="Fill" VerticalAlignment="Bottom" Width="341" />
                 </Grid>
+            </TabItem>
+            <TabItem Header="View/Search Products">
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height=" 40"></RowDefinition>
+                            <RowDefinition Height=" 60"></RowDefinition>
+                            <RowDefinition Height="180*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="192*"></ColumnDefinition>
+                            <ColumnDefinition Width="185*"></ColumnDefinition>
+                            <ColumnDefinition Width="328*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Product Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
+                        <TextBlock Text="Duration" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="30,11,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchPromotionalOffer}"                        
+                         Text="{Binding Name, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Name" >
+                            <toolkit:AutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#DFF0D8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </toolkit:AutoCompleteBox.ItemTemplate>
+                        </toolkit:AutoCompleteBox>
+                        <my1:Calendar Grid.Row="1" Grid.Column="1"></my1:Calendar>
+                        <Calendar  Grid.Row="1" Grid.Column="2" ></Calendar>
+                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                            <DockPanel>
+                                <Image Source="../../Images/save-icon.png" Width="16" />
+                                <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
+                      <Bold>Search</Bold>
+                                </TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </Grid>
+                    <Grid>
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstSearchPromotionalOffer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*" />
+                                <DataGridTextColumn Binding="{Binding  Path=Duration}" Header="Duration" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Purchase_Quantity}" Header="PurchaseQuantity" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=offer_quantity}" Header="OfferQuantity"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="OfferPercentage"  Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </StackPanel>
             </TabItem>
         </TabControl>
         <Canvas Grid.Row="1">

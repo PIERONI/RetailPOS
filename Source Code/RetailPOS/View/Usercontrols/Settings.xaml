@@ -65,19 +65,19 @@
             </Button>
         </WrapPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCategoryVisible}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddCategory x:Name="ctrlAddCategory" Margin="15" Width="522"></ctrl:AddCategory>
+            <ctrl:AddCategory x:Name="ctrlAddCategory" Margin="15" Width="722"></ctrl:AddCategory>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCustomerVisible}"
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddCustomer x:Name="ctrlAddCustomer"  Margin="15" Width="522"></ctrl:AddCustomer>
+            <ctrl:AddCustomer x:Name="ctrlAddCustomer"  Margin="15" Width="722"></ctrl:AddCustomer>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsProductVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddProduct x:Name="ctrlAddProduct" Margin="15" Width="522"></ctrl:AddProduct>
+            <ctrl:AddProduct x:Name="ctrlAddProduct" Margin="15" Width="722"></ctrl:AddProduct>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsShopSettingVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:ShopSetting x:Name="ctrlShopSetting"  Margin="15" Width="522"></ctrl:ShopSetting>
+            <ctrl:ShopSetting x:Name="ctrlShopSetting"  Margin="15" Width="722"></ctrl:ShopSetting>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsSearchPromotionalOfferVisible}"
                      Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >

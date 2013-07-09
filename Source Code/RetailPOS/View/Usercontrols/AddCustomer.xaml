@@ -6,7 +6,9 @@
              mc:Ignorable="d"             
               xmlns:Utility="clr-namespace:RetailPOS.Utility"
               xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-              DataContext="{Binding Source={StaticResource Locator}, Path=CustomerVM}">
+              DataContext="{Binding Source={StaticResource Locator}, Path=CustomerVM}"
+              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             xmlns:my1="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit">
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -15,7 +17,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="465">
+        <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="715">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
@@ -125,6 +127,61 @@
                     <TextBox Text="{Binding PaymentPeriod}" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="15,1,0,0" Width="150" Height="30" />
                     <TextBox Text="{Binding CreditLimit}" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Width="150" Grid.Column="1" Grid.Row="1" Height="30" Margin="8,1,55,0"/>
                 </Grid>
+            </TabItem>
+            <TabItem Header="View/Search Customer">
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height=" 40"></RowDefinition>
+                            <RowDefinition Height=" 60"></RowDefinition>
+                            <RowDefinition Height="180*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="192*"></ColumnDefinition>
+                            <ColumnDefinition Width="185*"></ColumnDefinition>
+                            <ColumnDefinition Width="328*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Customer Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchPromotionalOffer}"                        
+                         Text="{Binding Name, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Name" >
+                            <toolkit:AutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#DFF0D8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </toolkit:AutoCompleteBox.ItemTemplate>
+                        </toolkit:AutoCompleteBox>
+                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                            <DockPanel>
+                                <Image Source="../../Images/save-icon.png" Width="16" />
+                                <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
+                      <Bold>Search</Bold>
+                                </TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </Grid>
+                    <Grid>
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstSearchPromotionalOffer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="First Name" Width="*" />
+                                <DataGridTextColumn Binding="{Binding  Path=Duration}" Header="Last Name" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Purchase_Quantity}" Header="Mobile" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=offer_quantity}" Header="Email"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="Balance"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="Credit Limit"  Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </StackPanel>
             </TabItem>
         </TabControl>
         <Canvas Grid.Row="2">

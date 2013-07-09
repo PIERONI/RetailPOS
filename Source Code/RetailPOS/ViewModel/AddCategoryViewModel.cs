@@ -4,6 +4,10 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.RetailPOSService;
 using RetailPOS.Core;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 #endregion
 
@@ -15,6 +19,8 @@ namespace RetailPOS.ViewModel
 
         public RelayCommand SaveCategory { get; private set; }
         public RelayCommand CancelCategorySetting { get; private set; }
+
+        private IList<ProductCategoryDTO> _lstSearchCategoryName { get; set; }
 
         /// <summary>
         /// The _staff name
@@ -35,10 +41,27 @@ namespace RetailPOS.ViewModel
         /// The _sort order
         /// </summary>
         private int _sortOrder;
+        private ProductCategoryDTO _categname;
 
         #endregion
 
         #region Public Properties
+
+        /// <summary>
+        /// Gets or sets list of categories for search items
+        /// </summary>
+        /// <value>
+        /// The list of categories.
+        /// </value>
+        public IList<ProductCategoryDTO> LstSearchCategoryName
+        {
+            get { return _lstSearchCategoryName; }
+            set
+            {
+                _lstSearchCategoryName = value;
+                RaisePropertyChanged("LstSearchCategoryName");
+            }
+        }
 
         /// <summary>
         /// Gets or sets name of the category.
@@ -107,6 +130,22 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public ProductCategoryDTO SelectedCategoryName
+        {
+            get { return _categname; }
+            set
+            {
+                _categname = value;
+                RaisePropertyChanged("SelectedCategoryName");
+
+                if (SelectedCategoryName != null)
+                {
+                    GetSearchAttributes(SelectedCategoryName.Name);
+                    
+                }
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -114,7 +153,9 @@ namespace RetailPOS.ViewModel
         public AddCategoryViewModel()
         {
             SaveCategory = new RelayCommand(SaveCategorySetting);
-            CancelCategorySetting = new RelayCommand(CancelSetting);
+            CancelCategorySetting = new RelayCommand(CancelSetting);            
+            LstSearchCategoryName=new List<ProductCategoryDTO>();
+            GetSearchAttributes(string.Empty);  
         }
 
         #endregion
@@ -149,7 +190,24 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void CancelSetting()
         {
-            AddCategoryViewModel viewModel = new AddCategoryViewModel();
+            Name = string.Empty;
+            GetSearchAttributes(string.Empty);  
+            //AddCategoryViewModel viewModel = new AddCategoryViewModel();
+        }
+
+        /// <summary>
+        /// Search the current operation
+        /// </summary>
+        private void GetSearchAttributes(string categoryName)
+        {
+            LstSearchCategoryName = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
+                                                                      select item).ToList();
+            LstSearchCategoryName = LstSearchCategoryName.Where(item => (categoryName == "" || categoryName == null ? item.Name == item.Name : item.Name == categoryName)).ToList();
+
+            //if (!string.IsNullOrEmpty(categoryName))
+            //{
+            //    LstSearchCategoryName = LstSearchCategoryName.Where(item => item.Name.Contains(categoryName)).ToList();
+            //}
         }
 
         #endregion

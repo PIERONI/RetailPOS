@@ -103,6 +103,7 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StreetDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PostCodeDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ShopSettingDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.WasteManagementDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PromotionalOfferDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductCategoryDTO))]
     public partial class BaseDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1582,6 +1583,78 @@ namespace RetailPOS.RetailPOSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WasteManagementDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Settings")]
+    [System.SerializableAttribute()]
+    public partial class WasteManagementDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> WeightField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ProductId {
+            get {
+                return this.ProductIdField;
+            }
+            set {
+                if ((this.ProductIdField.Equals(value) != true)) {
+                    this.ProductIdField = value;
+                    this.RaisePropertyChanged("ProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Weight {
+            get {
+                return this.WeightField;
+            }
+            set {
+                if ((this.WeightField.Equals(value) != true)) {
+                    this.WeightField = value;
+                    this.RaisePropertyChanged("Weight");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PromotionalOfferDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         ".PromotionalOffer")]
     [System.SerializableAttribute()]
@@ -1872,6 +1945,12 @@ namespace RetailPOS.RetailPOSService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveShopSetting", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveShopSettingResponse")]
         bool SaveShopSetting(RetailPOS.RetailPOSService.ShopSettingDTO shopSettingDetails);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetailResponse")]
+        RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagement", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagementResponse")]
+        bool SaveWasteManagement(RetailPOS.RetailPOSService.WasteManagementDTO wasteManagementDetails);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetailsResponse")]
         RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails();
         
@@ -1886,9 +1965,6 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailsResponse")]
         RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetails(int localityId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetailResponse")]
-        RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1974,6 +2050,14 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.SaveShopSetting(shopSettingDetails);
         }
         
+        public RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail() {
+            return base.Channel.GetPromotionalOfferDetail();
+        }
+        
+        public bool SaveWasteManagement(RetailPOS.RetailPOSService.WasteManagementDTO wasteManagementDetails) {
+            return base.Channel.SaveWasteManagement(wasteManagementDetails);
+        }
+        
         public RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails() {
             return base.Channel.GetCountryDetails();
         }
@@ -1992,10 +2076,6 @@ namespace RetailPOS.RetailPOSService {
         
         public RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetails(int localityId) {
             return base.Channel.GetPostalCodeDetails(localityId);
-        }
-        
-        public RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail() {
-            return base.Channel.GetPromotionalOfferDetail();
         }
     }
 }

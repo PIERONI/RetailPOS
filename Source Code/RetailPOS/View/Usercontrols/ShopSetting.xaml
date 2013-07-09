@@ -127,7 +127,7 @@
             </TabItem>
         </TabControl>
         <Canvas Grid.Row="3">
-            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14"   HorizontalAlignment="Center" Width="75">
+            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Center" Width="75">
                 <DockPanel>
                     <Image Source="../../Images/save-icon.png" Width="16" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
@@ -135,7 +135,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="30" Canvas.Right="192" Margin="2" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Center" Width="75" >
+            <Button Height="30" Canvas.Right="192" Margin="2" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14" HorizontalAlignment="Center" Width="75" >
                 <DockPanel>
                     <Image Source="../../Images/cancel-icon.png" Width="12" Height="29" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">

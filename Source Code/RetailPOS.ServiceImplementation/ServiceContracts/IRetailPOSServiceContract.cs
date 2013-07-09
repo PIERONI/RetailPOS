@@ -121,6 +121,21 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         bool SaveShopSetting(ShopSettingDTO shopSettingDetails);
 
+        /// <summary>
+        /// Retrieves available PromotionalOffer details from database
+        /// </summary>
+        /// <returns>returns list of PromotioanlOffer else empty list</returns>
+        [OperationContract]
+        IList<PromotionalOfferDTO> GetPromotionalOfferDetail();
+
+        /// <summary>
+        /// Save Waste management setting in database
+        /// </summary>
+        /// <param name="wasteManagementDetails">Waste Management setting object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        [OperationContract]
+        bool SaveWasteManagement(WasteManagementDTO wasteManagementDetails);
+
         #endregion
 
         #region Masters
@@ -162,14 +177,5 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
 
         #endregion
 
-        #region PromotionalOffer
-        /// <summary>
-        /// Retrieves available PromotionalOffer details from database
-        /// </summary>
-        /// <returns>returns list of PromotioanlOffer else empty list</returns>
-        [OperationContract]
-        IList<PromotionalOfferDTO> GetPromotionalOfferDetail();       
-        
-        #endregion
     }
 }

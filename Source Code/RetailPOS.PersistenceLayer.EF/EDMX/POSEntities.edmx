@@ -56,6 +56,7 @@
           <EntitySet Name="supplier_products" EntityType="POSModel.Store.supplier_products" store:Type="Tables" Schema="zadmin_webpos" />
           <EntitySet Name="town_city" EntityType="POSModel.Store.town_city" store:Type="Tables" Schema="zadmin_webpos" />
           <EntitySet Name="warranty" EntityType="POSModel.Store.warranty" store:Type="Tables" Schema="zadmin_webpos" />
+          <EntitySet Name="WasteManagement" EntityType="POSModel.Store.WasteManagement" store:Type="Tables" Schema="zadmin_webpos" />
           <EntitySet Name="working_record" EntityType="POSModel.Store.working_record" store:Type="Tables" Schema="zadmin_webpos" />
           <AssociationSet Name="accounts_ibfk_1" Association="POSModel.Store.accounts_ibfk_1">
             <End Role="customer" EntitySet="customer" />
@@ -712,6 +713,15 @@
           <Property Name="serial_no" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="start_time" Type="datetime" Nullable="false" />
           <Property Name="end_time" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WasteManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="decimal" Scale="2" />
         </EntityType>
         <EntityType Name="working_record">
           <Key>
@@ -1426,6 +1436,7 @@
             <End Role="locality" EntitySet="localities" />
             <End Role="address" EntitySet="addresses" />
           </AssociationSet>
+          <EntitySet Name="WasteManagements" EntityType="POSModel.WasteManagement" />
         </EntityContainer>
         <EntityType Name="account">
           <Key>
@@ -2460,6 +2471,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="WasteManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Decimal" Name="Weight" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3005,6 +3025,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="WasteManagements">
+            <EntityTypeMapping TypeName="POSModel.WasteManagement">
+              <MappingFragment StoreEntitySet="WasteManagement">
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3293,6 +3323,7 @@
           <ConnectorPoint PointX="6.84375" PointY="16.46875" />
           <ConnectorPoint PointX="7.5" PointY="16.46875" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="POSModel.WasteManagement" Width="1.5" PointX="11.375" PointY="0.75" Height="1.7879850260416674" />
       </Diagram>
     </Diagrams>
   </Designer>

@@ -12,8 +12,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="139"></RowDefinition>
-            <RowDefinition Height="589*"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Height="30" Margin="5"  HorizontalAlignment="Left" Width="98" Command="{Binding BackToMainWindow}">
@@ -25,24 +25,12 @@
                 </DockPanel>
             </Button>
         </StackPanel>
-        <WrapPanel Grid.Row="1" FlowDirection="LeftToRight" Margin="3,3,3,61">
+        <WrapPanel Grid.Row="1" FlowDirection="LeftToRight" Margin="3,3,3,0" Height="75" VerticalAlignment="Top">
             <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" Command="{Binding OpenShopSettingCmd}">
                 <DockPanel>                   
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
                        <Bold>Shop Settings</Bold>
                     </TextBlock>
-                </DockPanel>
-            </Button>
-           <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="98" >
-            <DockPanel>
-                <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
-                       <Bold>Back Office Settings</Bold>
-                </TextBlock>
-            </DockPanel>
-            </Button>
-            <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right">
-                <DockPanel>
-                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Other Settings</Bold></TextBlock>
                 </DockPanel>
             </Button>
             <Button Height="53" Width="98" Margin="3" Command="{Binding OpenCategorySettingCmd}" HorizontalAlignment="Right">
@@ -93,7 +81,7 @@
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsSearchPromotionalOfferVisible}"
                      Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:SearchPromotionalOffer x:Name="ctrlSearchPromotionalOffer" Margin="15" Width="722"></ctrl:SearchPromotionalOffer>
+            <ctrl:PromotionalOffer x:Name="ctrlSearchPromotionalOffer" Margin="15" Width="722"></ctrl:PromotionalOffer>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsSearchPurchaseHistoryVisible}"
                      Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >

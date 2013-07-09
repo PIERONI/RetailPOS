@@ -62,9 +62,13 @@ namespace RetailPOS.CommonLayer.Mapper
             AutoMapper.Mapper.CreateMap<shop_info, ShopSettingDTO>();
             AutoMapper.Mapper.CreateMap<ShopSettingDTO, shop_info>();
 
-            //Maps PromotionalOffer with promotioal_offer.cs
+            //Maps PromotionalOffer object with promotioal_offer object
             AutoMapper.Mapper.CreateMap<promotional_offer, PromotionalOfferDTO>();
             AutoMapper.Mapper.CreateMap<PromotionalOfferDTO, promotional_offer>();
+
+            //Maps WasteManagement object with WasteManagementDTO object
+            AutoMapper.Mapper.CreateMap<WasteManagement, WasteManagementDTO>();
+            AutoMapper.Mapper.CreateMap<WasteManagementDTO, WasteManagement>();
         }
 
         private void MapObjectForCustomers()

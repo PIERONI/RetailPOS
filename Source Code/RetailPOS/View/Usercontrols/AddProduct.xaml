@@ -10,12 +10,12 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
-    <Grid Height="525">
+    <Grid Height="530">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="525" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="415">
+        <TabControl Margin="3" Grid.Row="0" Height="480" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="415">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
@@ -83,7 +83,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Canvas Grid.Row="3">
+        <Canvas Grid.Row="1">
             <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveProduct}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" >
                 <DockPanel>
                     <Image Source="../../Images/save-icon.png" Width="16" />

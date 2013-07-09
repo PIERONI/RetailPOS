@@ -171,6 +171,9 @@
     <Compile Include="Entities\warranty.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\WasteManagement.cs">
+      <DependentUpon>POSEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\working_record.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>

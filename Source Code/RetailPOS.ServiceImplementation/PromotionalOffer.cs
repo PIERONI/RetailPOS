@@ -1,8 +1,9 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
+
+#endregion
 
 namespace RetailPOS.ServiceImplementation
 {
@@ -17,7 +18,7 @@ namespace RetailPOS.ServiceImplementation
         /// <remarks></remarks>
         public IList<PromotionalOfferDTO> GetPromotionalOfferDetail()
         {
-            return PromotionalOfferService.GetPromotionalOfferDetail();
+            return SettingService.GetPromotionalOfferDetail();
         }
 
         #endregion

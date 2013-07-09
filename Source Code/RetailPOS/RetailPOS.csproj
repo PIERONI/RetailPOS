@@ -234,8 +234,8 @@
     <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\SearchPromotionalOffer.xaml.cs">
-      <DependentUpon>SearchPromotionalOffer.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\PromotionalOffer.xaml.cs">
+      <DependentUpon>PromotionalOffer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\SearchPurchaseHistory.xaml.cs">
       <DependentUpon>SearchPurchaseHistory.xaml</DependentUpon>
@@ -390,7 +390,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\SearchPromotionalOffer.xaml">
+    <Page Include="View\Usercontrols\PromotionalOffer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

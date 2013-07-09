@@ -299,6 +299,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _localities  ?? (_localities = CreateObjectSet<locality>("localities")); }
         }
         private ObjectSet<locality> _localities;
+    
+        public ObjectSet<WasteManagement> WasteManagements
+        {
+            get { return _wasteManagements  ?? (_wasteManagements = CreateObjectSet<WasteManagement>("WasteManagements")); }
+        }
+        private ObjectSet<WasteManagement> _wasteManagements;
 
         #endregion
     }

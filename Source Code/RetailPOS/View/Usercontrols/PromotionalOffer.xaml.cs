@@ -17,9 +17,9 @@ namespace RetailPOS.View.Usercontrols
     /// <summary>
     /// Interaction logic for SearchPromotionalOffer.xaml
     /// </summary>
-    public partial class SearchPromotionalOffer : UserControl
+    public partial class PromotionalOffer : UserControl
     {
-        public SearchPromotionalOffer()
+        public PromotionalOffer()
         {
             InitializeComponent();
         }

@@ -628,6 +628,82 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_SaveWasteManagement_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_SaveWasteManagement_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetCountryDetails_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -818,44 +894,6 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_Input_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_output_policy">
-    <wsp:ExactlyOne>
-      <wsp:All>
-        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
-          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
-        </sp:SignedParts>
-        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <sp:Body />
-        </sp:EncryptedParts>
-      </wsp:All>
-    </wsp:ExactlyOne>
-  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
@@ -954,6 +992,18 @@
   <wsdl:message name="IRetailPOSServiceContract_SaveShopSetting_OutputMessage">
     <wsdl:part name="parameters" element="tns:SaveShopSettingResponse" />
   </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetPromotionalOfferDetail_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionalOfferDetail" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_GetPromotionalOfferDetail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionalOfferDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_SaveWasteManagement_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWasteManagement" />
+  </wsdl:message>
+  <wsdl:message name="IRetailPOSServiceContract_SaveWasteManagement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWasteManagementResponse" />
+  </wsdl:message>
   <wsdl:message name="IRetailPOSServiceContract_GetCountryDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCountryDetails" />
   </wsdl:message>
@@ -983,12 +1033,6 @@
   </wsdl:message>
   <wsdl:message name="IRetailPOSServiceContract_GetPostalCodeDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPostalCodeDetailsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRetailPOSServiceContract_GetPromotionalOfferDetail_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPromotionalOfferDetail" />
-  </wsdl:message>
-  <wsdl:message name="IRetailPOSServiceContract_GetPromotionalOfferDetail_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPromotionalOfferDetailResponse" />
   </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IRetailPOSServiceContract">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetCategories">
@@ -1047,6 +1091,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/SaveShopSetting" message="tns:IRetailPOSServiceContract_SaveShopSetting_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/SaveShopSettingResponse" message="tns:IRetailPOSServiceContract_SaveShopSetting_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPromotionalOfferDetail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail" message="tns:IRetailPOSServiceContract_GetPromotionalOfferDetail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetailResponse" message="tns:IRetailPOSServiceContract_GetPromotionalOfferDetail_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SaveWasteManagement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagement" message="tns:IRetailPOSServiceContract_SaveWasteManagement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagementResponse" message="tns:IRetailPOSServiceContract_SaveWasteManagement_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetCountryDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetails" message="tns:IRetailPOSServiceContract_GetCountryDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetailsResponse" message="tns:IRetailPOSServiceContract_GetCountryDetails_OutputMessage" />
@@ -1066,10 +1118,6 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPostalCodeDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetails" message="tns:IRetailPOSServiceContract_GetPostalCodeDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailsResponse" message="tns:IRetailPOSServiceContract_GetPostalCodeDetails_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetPromotionalOfferDetail">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail" message="tns:IRetailPOSServiceContract_GetPromotionalOfferDetail_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetailResponse" message="tns:IRetailPOSServiceContract_GetPromotionalOfferDetail_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IRetailPOSServiceContract" type="tns:IRetailPOSServiceContract">
@@ -1229,6 +1277,28 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPromotionalOfferDetail">
+      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveWasteManagement">
+      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagement" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_SaveWasteManagement_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_SaveWasteManagement_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCountryDetails">
       <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetails" style="document" />
       <wsdl:input>
@@ -1281,17 +1351,6 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPostalCodeDetails_output_policy" />
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetPromotionalOfferDetail">
-      <soap12:operation soapAction="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail" style="document" />
-      <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_Input_policy" />
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IRetailPOSServiceContract_GetPromotionalOfferDetail_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

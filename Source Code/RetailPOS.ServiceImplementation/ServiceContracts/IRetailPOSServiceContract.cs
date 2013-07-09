@@ -136,6 +136,14 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         bool SaveWasteManagement(WasteManagementDTO wasteManagementDetails);
 
+        /// <summary>
+        /// Save Promotional offer details in database
+        /// </summary>
+        /// <param name="promitonalOfferDetails">Promotional offer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        [OperationContract]
+        bool SavePromotionalOffer(PromotionalOfferDTO promotionalOfferDetails);
+
         #endregion
 
         #region Masters

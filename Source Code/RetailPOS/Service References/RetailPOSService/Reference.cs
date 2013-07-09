@@ -98,11 +98,11 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.AddressDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CustomerTypeDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.MeasureUnitDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.CountryDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.TownCityDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.StreetDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PostCodeDTO))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.MeasureUnitDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ShopSettingDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.WasteManagementDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PromotionalOfferDTO))]
@@ -1224,6 +1224,62 @@ namespace RetailPOS.RetailPOSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MeasureUnitDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Master")]
+    [System.SerializableAttribute()]
+    public partial class MeasureUnitDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CountryDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         ".Master")]
     [System.SerializableAttribute()]
@@ -1409,62 +1465,6 @@ namespace RetailPOS.RetailPOSService {
                 if ((this.TownCityIdField.Equals(value) != true)) {
                     this.TownCityIdField = value;
                     this.RaisePropertyChanged("TownCityId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MeasureUnitDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
-        ".Master")]
-    [System.SerializableAttribute()]
-    public partial class MeasureUnitDTO : RetailPOS.RetailPOSService.BaseDTO {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string NameField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NameField, value) != true)) {
-                    this.NameField = value;
-                    this.RaisePropertyChanged("Name");
                 }
             }
         }
@@ -1718,6 +1718,9 @@ namespace RetailPOS.RetailPOSService {
     public partial class PromotionalOfferDTO : RetailPOS.RetailPOSService.BaseDTO {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DateDurationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1730,7 +1733,31 @@ namespace RetailPOS.RetailPOSService {
         private long IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RetailPOS.RetailPOSService.MeasureUnitDTO Measure_UnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private RetailPOS.RetailPOSService.MeasureUnitDTO Measure_Unit1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OfferQuantityWithUnitField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> Offer_PercentageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> Offer_QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<short> Oqty_MuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Pqty_MuField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PurchaseQuantityWithUnitField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Purchase_QuantityField;
@@ -1738,17 +1765,18 @@ namespace RetailPOS.RetailPOSService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime Start_DateField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> offer_percentageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> offer_quantityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int oqty_muField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int pqty_muField;
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DateDuration {
+            get {
+                return this.DateDurationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DateDurationField, value) != true)) {
+                    this.DateDurationField = value;
+                    this.RaisePropertyChanged("DateDuration");
+                }
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Description {
@@ -1803,6 +1831,32 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public RetailPOS.RetailPOSService.MeasureUnitDTO Measure_Unit {
+            get {
+                return this.Measure_UnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Measure_UnitField, value) != true)) {
+                    this.Measure_UnitField = value;
+                    this.RaisePropertyChanged("Measure_Unit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public RetailPOS.RetailPOSService.MeasureUnitDTO Measure_Unit1 {
+            get {
+                return this.Measure_Unit1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Measure_Unit1Field, value) != true)) {
+                    this.Measure_Unit1Field = value;
+                    this.RaisePropertyChanged("Measure_Unit1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name {
             get {
                 return this.NameField;
@@ -1811,6 +1865,84 @@ namespace RetailPOS.RetailPOSService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OfferQuantityWithUnit {
+            get {
+                return this.OfferQuantityWithUnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OfferQuantityWithUnitField, value) != true)) {
+                    this.OfferQuantityWithUnitField = value;
+                    this.RaisePropertyChanged("OfferQuantityWithUnit");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Offer_Percentage {
+            get {
+                return this.Offer_PercentageField;
+            }
+            set {
+                if ((this.Offer_PercentageField.Equals(value) != true)) {
+                    this.Offer_PercentageField = value;
+                    this.RaisePropertyChanged("Offer_Percentage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Offer_Quantity {
+            get {
+                return this.Offer_QuantityField;
+            }
+            set {
+                if ((this.Offer_QuantityField.Equals(value) != true)) {
+                    this.Offer_QuantityField = value;
+                    this.RaisePropertyChanged("Offer_Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<short> Oqty_Mu {
+            get {
+                return this.Oqty_MuField;
+            }
+            set {
+                if ((this.Oqty_MuField.Equals(value) != true)) {
+                    this.Oqty_MuField = value;
+                    this.RaisePropertyChanged("Oqty_Mu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Pqty_Mu {
+            get {
+                return this.Pqty_MuField;
+            }
+            set {
+                if ((this.Pqty_MuField.Equals(value) != true)) {
+                    this.Pqty_MuField = value;
+                    this.RaisePropertyChanged("Pqty_Mu");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PurchaseQuantityWithUnit {
+            get {
+                return this.PurchaseQuantityWithUnitField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PurchaseQuantityWithUnitField, value) != true)) {
+                    this.PurchaseQuantityWithUnitField = value;
+                    this.RaisePropertyChanged("PurchaseQuantityWithUnit");
                 }
             }
         }
@@ -1837,58 +1969,6 @@ namespace RetailPOS.RetailPOSService {
                 if ((this.Start_DateField.Equals(value) != true)) {
                     this.Start_DateField = value;
                     this.RaisePropertyChanged("Start_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> offer_percentage {
-            get {
-                return this.offer_percentageField;
-            }
-            set {
-                if ((this.offer_percentageField.Equals(value) != true)) {
-                    this.offer_percentageField = value;
-                    this.RaisePropertyChanged("offer_percentage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> offer_quantity {
-            get {
-                return this.offer_quantityField;
-            }
-            set {
-                if ((this.offer_quantityField.Equals(value) != true)) {
-                    this.offer_quantityField = value;
-                    this.RaisePropertyChanged("offer_quantity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int oqty_mu {
-            get {
-                return this.oqty_muField;
-            }
-            set {
-                if ((this.oqty_muField.Equals(value) != true)) {
-                    this.oqty_muField = value;
-                    this.RaisePropertyChanged("oqty_mu");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int pqty_mu {
-            get {
-                return this.pqty_muField;
-            }
-            set {
-                if ((this.pqty_muField.Equals(value) != true)) {
-                    this.pqty_muField = value;
-                    this.RaisePropertyChanged("pqty_mu");
                 }
             }
         }
@@ -2008,6 +2088,9 @@ namespace RetailPOS.RetailPOSService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagement", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagementResponse")]
         bool SaveWasteManagement(RetailPOS.RetailPOSService.WasteManagementDTO wasteManagementDetails);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SavePromotionalOffer", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SavePromotionalOfferResponse")]
+        bool SavePromotionalOffer(RetailPOS.RetailPOSService.PromotionalOfferDTO promotionalOfferDetails);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetailsResponse")]
         RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails();
         
@@ -2116,6 +2199,10 @@ namespace RetailPOS.RetailPOSService {
         
         public bool SaveWasteManagement(RetailPOS.RetailPOSService.WasteManagementDTO wasteManagementDetails) {
             return base.Channel.SaveWasteManagement(wasteManagementDetails);
+        }
+        
+        public bool SavePromotionalOffer(RetailPOS.RetailPOSService.PromotionalOfferDTO promotionalOfferDetails) {
+            return base.Channel.SavePromotionalOffer(promotionalOfferDetails);
         }
         
         public RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails() {

@@ -7,6 +7,7 @@ using RetailPOS.BusinessLayer.ServiceImpl.Setting;
 using RetailPOS.CommonLayer.CommonLibrary;
 using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
 using RetailPOS.CommonLayer.Mapper;
+using RetailPOS.PersistenceLayer.Repository.Entities;
 
 #endregion
 
@@ -21,23 +22,20 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
         IList<PromotionalOfferDTO> ISettingService.GetPromotionalOfferDetail()
         {
             IList<PromotionalOfferDTO> lstPromotionalOffer = new List<PromotionalOfferDTO>();
-            ObjectMapper.Map(base.PromotionalOfferRepository.GetList(), lstPromotionalOffer);
-
-            (from item in lstPromotionalOffer select item).Update(
-                item => item.Duration = item.End_Date.Subtract(item.Start_Date).TotalDays);
-            
+            ObjectMapper.Map(base.PromotionalOfferRepository.GetList().ToList(), lstPromotionalOffer);
             return lstPromotionalOffer;
         } 
-
+        
         /// <summary>
-        /// Get all promotional Offer
+        /// Save Promotional offer details in database
         /// </summary>
-        /// <returns>returns list of all promotional Offer present in database</returns>    
-        //IList<PromotionalOfferDTO> IPromotionalOfferService.GetPromotionalOfferDetail()
-        //{
-        //    IList<PromotionalOfferDTO> lstPromotionalOffer = new List<PromotionalOfferDTO>();
-        //    ObjectMapper.Map(base.PromotionalOfferRepository.GetList().ToList(), lstPromotionalOffer);
-        //   
-        //}
+        /// <param name="promitonalOfferDetails">Promotional offer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        bool ISettingService.SavePromotionalOffer(PromotionalOfferDTO promotionalOfferDetails)
+        {
+            promotional_offer promotionalOfferEntity = new promotional_offer();
+            ObjectMapper.Map(promotionalOfferDetails, promotionalOfferEntity);
+            return PromotionalOfferRepository.Save(promotionalOfferEntity);
+        }
     }
 }

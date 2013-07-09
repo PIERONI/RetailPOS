@@ -109,6 +109,10 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps PostCodeDTO object with address object
             AutoMapper.Mapper.CreateMap<address, AddressDTO>();
             AutoMapper.Mapper.CreateMap<AddressDTO, address>();
+
+            ////Maps PostCodeDTO object with address object
+            AutoMapper.Mapper.CreateMap<measure_unit, MeasureUnitDTO>();
+            AutoMapper.Mapper.CreateMap<MeasureUnitDTO, measure_unit>();
         }
 
         #endregion

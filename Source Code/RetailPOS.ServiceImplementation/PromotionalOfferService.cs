@@ -9,8 +9,6 @@ namespace RetailPOS.ServiceImplementation
 {
     public partial class RetailPOSService
     {
-        #region Public Methods
-
         /// <summary>
         /// Products: This service implementation class is used to get the promoional offert list  from repository
         /// </summary>
@@ -21,6 +19,14 @@ namespace RetailPOS.ServiceImplementation
             return SettingService.GetPromotionalOfferDetail();
         }
 
-        #endregion
+        /// <summary>
+        /// Save Promotional offer details in database
+        /// </summary>
+        /// <param name="promitonalOfferDetails">Promotional offer object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        public bool SavePromotionalOffer(PromotionalOfferDTO promotionalOfferDetails)
+        {
+            return SettingService.SavePromotionalOffer(promotionalOfferDetails);
+        }
     }
 }

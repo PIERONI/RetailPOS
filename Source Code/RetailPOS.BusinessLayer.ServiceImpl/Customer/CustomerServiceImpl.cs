@@ -20,7 +20,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
         IList<CustomerDTO> ICustomerService.GetAllCustomers()
         {
             IList<CustomerDTO> lstCustomers = new List<CustomerDTO>();
-            ObjectMapper.Map(base.CustomerRepository.GetList(item => item.status_id == 10).ToList(), lstCustomers);
+            ObjectMapper.Map(base.CustomerRepository.GetList(item => item.status_id == 1).ToList(), lstCustomers);
 
             return lstCustomers;
         }

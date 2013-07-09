@@ -29,6 +29,7 @@
           <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Status_Id" type="xs:int" />
           <xs:element minOccurs="0" name="Type_Id" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="balance" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

@@ -5,6 +5,8 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
+using System.Collections.Generic;
+using System.Linq;
 
 #endregion
 
@@ -20,6 +22,7 @@ namespace RetailPOS.ViewModel
 
         public RelayCommand SaveCustomer { get; set; }
         public RelayCommand CancelCustomerSetting { get; set; }
+        public RelayCommand CancelSearchCustomer { get; private set; }
 
         private ObservableCollection<TownCityDTO> _lstTownCity;
         private ObservableCollection<LocalityDTO> _lstLocality;
@@ -28,6 +31,7 @@ namespace RetailPOS.ViewModel
 
         private CustomerTypeDTO _selectedType;
         private CustomerStatusDTO _selectedStatus;
+        private IList<CustomerDTO> _lstSearchCustomer;
 
         private string _customerCode;
         private string _firstName;
@@ -46,6 +50,7 @@ namespace RetailPOS.ViewModel
         private CountryDTO _selectedCountry;
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
+        private CustomerDTO _customerName;
 
         #endregion
 
@@ -318,6 +323,43 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets or sets list of customer for search items
+        /// </summary>
+        /// <value>
+        /// The list of customer.
+        /// </value>
+        public IList<CustomerDTO> LstSearchCustomer
+        {
+            get { return _lstSearchCustomer; }
+            set
+            {
+                _lstSearchCustomer = value;
+                RaisePropertyChanged("LstSearchCustomer");
+            }
+        }
+
+        /// <summary>
+        ///Bind the data grid according to selected customer from autoextender
+        /// </summary>
+        /// <value>
+        /// The List of customerdetail.
+        /// </value>
+        public CustomerDTO SelectedCustomerName
+        {
+            get { return _customerName; }
+            set
+            {
+                _customerName = value;
+                RaisePropertyChanged("SelectedCategoryName");
+
+                if (SelectedCustomerName != null)
+                {
+                    GetCustomer(SelectedCustomerName.First_Name);
+
+                }
+            }
+        }
         #endregion
 
         #region Constructor
@@ -334,14 +376,16 @@ namespace RetailPOS.ViewModel
             LstLocality = new ObservableCollection<LocalityDTO>();
             LstStreet = new ObservableCollection<StreetDTO>();
             LstPostalCode = new ObservableCollection<PostCodeDTO>();
+            LstSearchCustomer = new List<CustomerDTO>();
 
             ////Get all active country details
             GetCountryDetails();
-
             BindLists();
 
             SaveCustomer = new RelayCommand(SaveCustomerDetail);
             CancelCustomerSetting = new RelayCommand(CancelSetting);
+            GetCustomer(string.Empty);
+            CancelSearchCustomer = new RelayCommand(CancelCustomer);
         }
 
         #endregion
@@ -351,6 +395,16 @@ namespace RetailPOS.ViewModel
         private void CancelSetting()
         {
             AddCustomerViewModel viewModel = new AddCustomerViewModel();
+        }
+
+        /// <summary>
+        /// Cancel Customer for Search/view customer
+        /// </summary>
+        private void CancelCustomer()
+        {
+            FirstName = string.Empty;
+            GetCustomer(string.Empty);
+            //AddCategoryViewModel viewModel = new AddCategoryViewModel();
         }
 
         /// <summary>
@@ -494,6 +548,21 @@ namespace RetailPOS.ViewModel
             {
                 SelectedType = LstType[0];
             }
+        }
+
+        /// <summary>
+        /// Get available customer from database
+        /// </summary>
+        private void GetCustomer(string customername)
+        {
+            LstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
+                                                                                 select item).ToList();
+            LstSearchCustomer = LstSearchCustomer.Where(item => (customername == "" || customername == null ? item.First_Name == item.First_Name : item.First_Name == customername)).ToList();
+
+            //if (!string.IsNullOrEmpty(categoryName))
+            //{
+            //    LstSearchCategoryName = LstSearchCategoryName.Where(item => item.Name.Contains(categoryName)).ToList();
+            //}
         }
 
         #endregion

@@ -143,41 +143,46 @@
                             <ColumnDefinition Width="328*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Customer Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
-                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchPromotionalOffer}"                        
-                         Text="{Binding Name, Mode=TwoWay}" 
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding LstSearchCustomer}" SelectedItem="{Binding SelectedCustomerName,Mode=TwoWay}"                        
+                         Text="{Binding First_Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
-                                     ValueMemberPath="Name" >
+                                     ValueMemberPath="First_Name" >
                             <toolkit:AutoCompleteBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Background="#DFF0D8">
                                         <Grid.RowDefinitions>
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                       
+                                        <WrapPanel Grid.Row="0" Margin="0 3 0 0"  Width="350">
+                                            <TextBlock Grid.Row="0" Text="{Binding First_Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                            <TextBlock Grid.Row="0" Text="{Binding Last_Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                            <TextBlock Grid.Row="0" Text="{Binding Mobile}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                        </WrapPanel>
                                     </Grid>
                                 </DataTemplate>
                             </toolkit:AutoCompleteBox.ItemTemplate>
                         </toolkit:AutoCompleteBox>
-                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding CancelSearchCustomer}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
                             <DockPanel>
                                 <Image Source="../../Images/save-icon.png" Width="16" />
                                 <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
-                      <Bold>Search</Bold>
+                      <Bold>Cancel</Bold>
                                 </TextBlock>
                             </DockPanel>
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstSearchPromotionalOffer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCustomer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="First Name" Width="*" />
-                                <DataGridTextColumn Binding="{Binding  Path=Duration}" Header="Last Name" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Purchase_Quantity}" Header="Mobile" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=offer_quantity}" Header="Email"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="Balance"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="Credit Limit"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=First_Name}" Header="First Name" Width="*" />
+                                <DataGridTextColumn Binding="{Binding  Path=Last_Name}" Header="Last Name" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Mobile}" Header="Mobile" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=Email}" Header="Email"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=balance}" Header="Balance"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Credit_Limit}" Header="Credit Limit"  Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

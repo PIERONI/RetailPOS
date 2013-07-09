@@ -130,6 +130,12 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        /// <summary>
+        ///Bind the data grid according to selected category from autoextender
+        /// </summary>
+        /// <value>
+        /// The List of category.
+        /// </value>
         public ProductCategoryDTO SelectedCategoryName
         {
             get { return _categname; }

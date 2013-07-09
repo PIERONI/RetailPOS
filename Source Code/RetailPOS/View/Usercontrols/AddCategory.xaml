@@ -87,7 +87,7 @@
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCategoryName}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="715" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCategoryName}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="715">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=id}" Header="Id" Visibility="Hidden" Width="*"/>
                                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Category Name" Width="*" />

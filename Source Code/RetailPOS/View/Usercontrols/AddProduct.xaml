@@ -101,8 +101,7 @@
                             <ColumnDefinition Width="328*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Product Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
-                        <TextBlock Text="Duration" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="30,11,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
-                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchPromotionalOffer}"                        
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding SearchProductList}" SelectedItem="{Binding SelectedProductName,Mode=TwoWay}"                       
                          Text="{Binding Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -118,26 +117,24 @@
                                 </DataTemplate>
                             </toolkit:AutoCompleteBox.ItemTemplate>
                         </toolkit:AutoCompleteBox>
-                        <my1:Calendar Grid.Row="1" Grid.Column="1"></my1:Calendar>
-                        <Calendar  Grid.Row="1" Grid.Column="2" ></Calendar>
-                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding CancelProduct}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
                             <DockPanel>
                                 <Image Source="../../Images/save-icon.png" Width="16" />
                                 <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
-                      <Bold>Search</Bold>
+                      <Bold>Cancel</Bold>
                                 </TextBlock>
                             </DockPanel>
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstSearchPromotionalOffer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding SearchProductList}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*" />
-                                <DataGridTextColumn Binding="{Binding  Path=Duration}" Header="Duration" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Purchase_Quantity}" Header="PurchaseQuantity" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=offer_quantity}" Header="OfferQuantity"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=offer_percentage}" Header="OfferPercentage"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Id}" Header="Id" Visibility="Hidden" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=BarCode}" Header="Bar Code" Width="*" />
+                                <DataGridTextColumn Binding="{Binding  Path=Name}" Header="Product Name" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Description}" Header="Description" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=RetailPrice}" Header="RetailPrice"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=WholesalePrice}" Header="Wholesale Price"  Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

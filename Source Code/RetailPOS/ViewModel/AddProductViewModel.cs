@@ -7,6 +7,7 @@ using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
+using System.Collections.Generic;
 
 #endregion
 
@@ -21,8 +22,10 @@ namespace RetailPOS.ViewModel
 
         public RelayCommand SaveProduct { get; set; }
         public RelayCommand CancelProductSetting { get; set; }
+        public RelayCommand CancelProduct { get; set; }
         
         private ProductCategoryDTO _selectedCategory;
+        private IList<ProductDTO> _lstSearchProduct;
         private string _barCode;
         private string _name;
         private string _description;
@@ -37,6 +40,7 @@ namespace RetailPOS.ViewModel
         private decimal _size;
         private decimal _weight;
         private string _imagePath;
+        private ProductDTO _productName;
 
         #endregion
 
@@ -201,6 +205,59 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("ProductImage");
             }
         }
+
+        /// <summary>
+        /// binding the datagrid after produc selectiont
+        /// </summary>
+        ///<value>
+        ///Returns product detail
+        /// </value>
+        public ProductDTO SelectProductSetail
+        {
+
+            get { return _productName; }
+            set
+            {
+                _productName = value;
+                RaisePropertyChanged("SelectProductSetail");
+
+                if (SelectProductSetail != null)
+                {
+
+                    GetProducts(SelectProductSetail.Name);
+
+                }
+            }
+        }
+        /// <summary>
+        /// Search for product by product name
+        /// </summary>
+        ///<value>
+        ///Returns product detail
+        /// </value>
+        public IList<ProductDTO> SearchProductList
+        {
+            get { return _lstSearchProduct; }
+            set
+            {
+                _lstSearchProduct = value;
+                RaisePropertyChanged("SearchProductList");
+            }
+        }
+
+        public ProductDTO SelectedProductName
+        {
+            get { return _productName; }
+            set
+            {
+                _productName = value;
+                RaisePropertyChanged("SelectedProductName");
+                if (SelectedProductName != null)
+                {
+                    GetProducts(SelectedProductName.Name);
+                }
+            }
+        }
         
         #endregion
 
@@ -224,6 +281,10 @@ namespace RetailPOS.ViewModel
 
             SaveProduct = new RelayCommand(SaveProductSetting);
             CancelProductSetting = new RelayCommand(CancelSetting);
+            ///Get all products
+            SearchProductList = new List<ProductDTO>();
+            GetProducts(string.Empty);
+            CancelProduct = new RelayCommand(CamcelProducts);
         }
 
         #endregion
@@ -285,6 +346,24 @@ namespace RetailPOS.ViewModel
         {
             LstCategories = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
                                                                          select item);
+        }
+
+        ///Get all product by name
+        private void GetProducts(string productName)
+        {
+            SearchProductList = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
+                                                                     select item).ToList();
+            SearchProductList = SearchProductList.Where(item => (productName == "" || productName == null ? item.Name == item.Name : item.Name == productName)).ToList();
+
+        }
+
+        private void CamcelProducts()
+        {
+            {
+                Name = string.Empty;
+                GetProducts(string.Empty);
+                //AddCategoryViewModel viewModel = new AddCategoryViewModel();
+            }
         }
 
         #endregion

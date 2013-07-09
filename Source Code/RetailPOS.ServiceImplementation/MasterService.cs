@@ -53,5 +53,14 @@ namespace RetailPOS.ServiceImplementation
         {
             return MasterService.GetPostalCodeDetails(localityId);
         }
+
+        /// <summary>
+        /// Retrieves available Measure unit details from database
+        /// </summary>
+        /// <returns>returns list of Measure unit else empty list</returns>
+        public IList<MeasureUnitDTO> GetMeasureUnitDetails()
+        {
+            return MasterService.GetMeasureUnitDetails();
+        }
     }
 }

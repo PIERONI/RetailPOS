@@ -52,6 +52,7 @@
     <Compile Include="Masters\CountryServiceImpl.cs" />
     <Compile Include="Masters\LocalityServiceImpl.cs" />
     <Compile Include="Masters\MasterBaseService.cs" />
+    <Compile Include="Masters\MeasureUnitServiceImpl.cs" />
     <Compile Include="Masters\PostalCodeServiceImpl.cs" />
     <Compile Include="Masters\StreetServiceImpl.cs" />
     <Compile Include="Masters\TownCityServiceImpl.cs" />

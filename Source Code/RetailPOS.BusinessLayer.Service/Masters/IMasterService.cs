@@ -38,5 +38,11 @@ namespace RetailPOS.BusinessLayer.Service.Masters
         /// </summary>
         /// <returns>returns list of PostalCode else empty list</returns>
         IList<PostCodeDTO> GetPostalCodeDetails(int localityId);
+
+        /// <summary>
+        /// Retrieves available Measure unit details from database
+        /// </summary>
+        /// <returns>returns list of Measure unit else empty list</returns>
+        IList<MeasureUnitDTO> GetMeasureUnitDetails();
     }
 }

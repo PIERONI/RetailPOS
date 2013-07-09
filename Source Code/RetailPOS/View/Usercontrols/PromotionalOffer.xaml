@@ -100,12 +100,14 @@
                         <TextBlock Text="Purchase Quantity:" Grid.Row="3" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
                         <TextBlock Text="Offer Quantity:" Grid.Row="4" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
                         <TextBlock Text="Offer Percentage:" Grid.Row="5" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                        <TextBox Grid.Column="1" Grid.Row="0"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="147" />
-                        <TextBox Grid.Column="1" Grid.Row="1"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="147" />
-                        <TextBox Grid.Column="1" Grid.Row="2"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="147" />
-                        <TextBox Grid.Column="1" Grid.Row="3"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="147" />
-                        <TextBox Grid.Column="1" Grid.Row="4"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="147" />
-                        <TextBox Grid.Column="1" Grid.Row="5"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="147" />
+                        <ComboBox Grid.Row="0" ItemsSource="{Binding LstCategories}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedCategory,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,0,0,5" Width="168" />
+                        <TextBox Grid.Column="1" Grid.Row="1"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="168" />
+                        <TextBox Grid.Column="1" Grid.Row="2"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="168" />
+                        <TextBox Grid.Column="1" Grid.Row="3"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="80" />
+                        <ComboBox Grid.Row="3" ItemsSource="{Binding LstMeasurementUnit}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedUnit,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="105,0,0,5" Width="78" />
+                        <TextBox Grid.Column="1" Grid.Row="4"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="80" />
+                        <ComboBox Grid.Row="4" ItemsSource="{Binding LstMeasurementUnit}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedUnit,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="105,0,0,5" Width="78" />
+                        <TextBox Grid.Column="1" Grid.Row="5"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,5,0,0"  VerticalAlignment="Top" Width="168" />
                         <Button Grid.Column="0" Grid.Row="6" Height="30" Canvas.Right="143" Margin="0,0,25,0" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Right" Width="75" >
                             <DockPanel>
                                 <Image Source="../../Images/save-icon.png" Width="16" />

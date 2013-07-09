@@ -12,7 +12,7 @@ using RetailPOS.CommonLayer.Mapper;
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
 {
-    public partial class SettingServiceImpl : SettingBaseService, ISettingService
+    public partial class SettingServiceImpl
     {
         /// <summary>        
         /// Retrieves available PromotionalOffer details from database

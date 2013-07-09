@@ -500,6 +500,9 @@
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.LocalityDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.MeasureUnitDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PostCodeDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

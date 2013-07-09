@@ -282,4 +282,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetMeasureUnitDetails">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMeasureUnitDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetMeasureUnitDetailsResult" nillable="true" type="q21:ArrayOfMeasureUnitDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

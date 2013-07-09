@@ -48,6 +48,7 @@
     <Compile Include="Master\CountryDTO.cs" />
     <Compile Include="Customer\CustomerStatusDTO.cs" />
     <Compile Include="Master\LocalityDTO.cs" />
+    <Compile Include="Master\MeasureUnitDTO.cs" />
     <Compile Include="Master\PostCodeDTO.cs" />
     <Compile Include="Master\StreetDTO.cs" />
     <Compile Include="Master\TownCityDTO.cs" />

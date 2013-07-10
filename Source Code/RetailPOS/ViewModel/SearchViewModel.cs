@@ -279,7 +279,7 @@ namespace RetailPOS.ViewModel
            SelectedProduct.Quantity = ProductQuantity;
            ProductDescription = SelectedProduct.Description;
 
-           Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
+          // Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
        }
 
        #endregion

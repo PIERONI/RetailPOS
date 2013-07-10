@@ -4,6 +4,8 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
+using System.Collections.Generic;
+using RetailPOS.Utility;
 
 namespace RetailPOS.ViewModel
 {
@@ -20,13 +22,11 @@ namespace RetailPOS.ViewModel
         private bool _OpenLooseCatPopupIsOpen;
         public RelayCommand OpenLooseCatPopupCommand { get; private set; }
         public RelayCommand RefershListBoxCommand { get; private set; }
-        /// <summary>
-        /// To open the product popup
-        /// </summary>
-        public RelayCommand<ProductDTO> ShowProduct { get; set; }
+     
+        public IList<ProductDTO> LstSearchProduct { get; private set; }
 
         private bool _IsProductPopupOpen;
-        private ProductDTO _product;
+      
         private ProductDTO _selectedProduct;
 
 
@@ -158,44 +158,26 @@ namespace RetailPOS.ViewModel
             lstCategories = new ObservableCollection<ProductCategoryDTO>();
             lstLooseCategories = new ObservableCollection<ProductCategoryDTO>();
             lstProduct = new ObservableCollection<ProductDTO>();
+              LstSearchProduct = new List<ProductDTO>();
             
             AddCategories();
             AddLooseCategories();
             FillCommonProducts();
+            GetSearchAttributes();
+            
 
 
             SelectProductCommand = new RelayCommand<ProductCategoryDTO>(FillProducts);
             OpenFirstPopupCommand = new RelayCommand(OpenFirstPopupClick);
             OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
             RefershListBoxCommand = new RelayCommand(RefereshListBox);
-            ShowProduct = new RelayCommand<ProductDTO>(OpenProductPopUp);
+            ShowProduct = new RelayCommand(OpenProductPopUp);
+        
         }
 
-        public ProductDTO Product
-        {
-            get { return _product; }
-            set
-            {
-                _product = value;
+       
 
-                if (Product != null)
-                {
-                   //IsProductPopupOpen = true;
-                    SelectedProduct = Product;
-                }
-            }
-        }
-
-        public ProductDTO SelectedProduct
-        {
-            get { return _selectedProduct; }
-            set
-            {
-                _selectedProduct = value;
-
-                BindProduct();
-            }
-        }
+       
 
 
         public bool IsProductPopupOpen
@@ -283,6 +265,66 @@ namespace RetailPOS.ViewModel
             }
         }
 
+       
+      
+
+        /// <summary>
+        /// Fills the list search.
+        /// </summary>
+        private void GetSearchAttributes()
+        {
+            LstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
+                                                                    select item).ToList();
+
+        }
+
+        #endregion
+
+        #region ShowProduct.xmal
+
+        private ProductDTO _product;
+
+        /// <summary>
+        /// To open the product popup
+        /// </summary>
+        public RelayCommand ShowProduct { get;private set; }
+
+        public ProductDTO Product
+        {
+            get { return _product; }
+            set
+            {
+                _product = value;
+
+                //if (Product != null)
+                //{
+                //    //IsProductPopupOpen = true;
+                //    SelectedProduct = Product;
+                //}
+            }
+        }
+
+        public ProductDTO SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                _selectedProduct = value;
+                RaisePropertyChanged("SelectedProduct");
+                
+                    BindProduct();
+                
+            }
+        }
+
+        private void OpenProductPopUp()
+        {           
+                                                       
+            IsProductPopupOpen = true;
+           //SelectedProduct = Product;
+          
+        }
+
         private void BindProduct()
         {
             Id = SelectedProduct.Id;
@@ -292,17 +334,8 @@ namespace RetailPOS.ViewModel
             SelectedProduct.Quantity = ProductQuantity;
             ProductDescription = SelectedProduct.Description;
 
-           // Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
+            Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
         }
-
-        private void OpenProductPopUp(ProductDTO Product)
-        {
-           lstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
-                                                            select item);
-            IsProductPopupOpen = true;
-
-        }
-
 
 
         #endregion

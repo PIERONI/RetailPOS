@@ -171,8 +171,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
+    <Compile Include="SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShopSettingWindow.xaml.cs">
       <DependentUpon>ShopSettingWindow.xaml</DependentUpon>
@@ -194,71 +194,68 @@
     <Compile Include="ViewModel\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="ViewModel\WasteManagementViewModel.cs" />
-    <Compile Include="View\Usercontrols\Category.xaml.cs">
+    <Compile Include="View\Usercontrols\Settings\Category.xaml.cs">
       <DependentUpon>Category.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\Customer.xaml.cs">
+    <Compile Include="View\Usercontrols\Settings\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\AddProduct.xaml.cs">
-      <DependentUpon>AddProduct.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\Settings\Product.xaml.cs">
+      <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\Categories.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\Login\UserLogin.xaml.cs">
+      <DependentUpon>UserLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\LoginLeftPanel.xaml.cs">
+    <Compile Include="View\Usercontrols\Login\LoginLeftPanel.xaml.cs">
       <DependentUpon>LoginLeftPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\MenuControl.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\MenuControl.xaml.cs">
       <DependentUpon>MenuControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\MergeUserInfoSearch.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\MergeUserInfoSearch.xaml.cs">
       <DependentUpon>MergeUserInfoSearch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\ProductGridControl.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\ProductGridControl.xaml.cs">
       <DependentUpon>ProductGridControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\RightPanelHeaderControl.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\RightPanelHeaderControl.xaml.cs">
       <DependentUpon>RightPanelHeaderControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\RightPanelPaymentDetail.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\RightPanelPaymentDetail.xaml.cs">
       <DependentUpon>RightPanelPaymentDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\RightPanelSettings.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\RightPanelSettings.xaml.cs">
       <DependentUpon>RightPanelSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\SearchItem.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\SearchItem.xaml.cs">
       <DependentUpon>SearchItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\PromotionalOffer.xaml.cs">
+    <Compile Include="View\Usercontrols\Settings\PromotionalOffer.xaml.cs">
       <DependentUpon>PromotionalOffer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\SearchPurchaseHistory.xaml.cs">
-      <DependentUpon>SearchPurchaseHistory.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\Settings\PurchaseHistory.xaml.cs">
+      <DependentUpon>PurchaseHistory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\SettingHeader.xaml.cs">
-      <DependentUpon>SettingHeader.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\Settings\SystemSettings.xaml.cs">
+      <DependentUpon>SystemSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\Settings.xaml.cs">
-      <DependentUpon>Settings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Usercontrols\ShopSetting.xaml.cs">
+    <Compile Include="View\Usercontrols\Settings\ShopSetting.xaml.cs">
       <DependentUpon>ShopSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\ShowProduct.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\ShowProduct.xaml.cs">
       <DependentUpon>ShowProduct.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\UserInfo.xaml.cs">
+    <Compile Include="View\Usercontrols\MainWindow\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddCategoryViewModel.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="View\Usercontrols\WasteManagement.xaml.cs">
+    <Compile Include="View\Usercontrols\Settings\WasteManagement.xaml.cs">
       <DependentUpon>WasteManagement.xaml</DependentUpon>
     </Compile>
     <Page Include="AddCategoryWindow.xaml">
@@ -301,7 +298,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Settings.xaml">
+    <Page Include="SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,19 +306,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\Category.xaml">
+    <Page Include="View\Usercontrols\Settings\Category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\Customer.xaml">
+    <Page Include="View\Usercontrols\Settings\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\AddProduct.xaml">
+    <Page Include="View\Usercontrols\Settings\Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\Categories.xaml">
+    <Page Include="View\Usercontrols\MainWindow\Categories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -353,71 +350,67 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Usercontrols\Login.xaml">
+    <Page Include="View\Usercontrols\Login\UserLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\LoginLeftPanel.xaml">
+    <Page Include="View\Usercontrols\Login\LoginLeftPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\MenuControl.xaml">
+    <Page Include="View\Usercontrols\MainWindow\MenuControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\MergeUserInfoSearch.xaml">
+    <Page Include="View\Usercontrols\MainWindow\MergeUserInfoSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\ProductGridControl.xaml">
+    <Page Include="View\Usercontrols\MainWindow\ProductGridControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\RightPanelHeaderControl.xaml">
+    <Page Include="View\Usercontrols\MainWindow\RightPanelHeaderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\RightPanelPaymentDetail.xaml">
+    <Page Include="View\Usercontrols\MainWindow\RightPanelPaymentDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\RightPanelSettings.xaml">
+    <Page Include="View\Usercontrols\MainWindow\RightPanelSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\SearchItem.xaml">
+    <Page Include="View\Usercontrols\MainWindow\SearchItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\PromotionalOffer.xaml">
+    <Page Include="View\Usercontrols\Settings\PromotionalOffer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\SearchPurchaseHistory.xaml">
+    <Page Include="View\Usercontrols\Settings\PurchaseHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\SettingHeader.xaml">
+    <Page Include="View\Usercontrols\Settings\SystemSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\Settings.xaml">
+    <Page Include="View\Usercontrols\Settings\ShopSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\ShopSetting.xaml">
+    <Page Include="View\Usercontrols\MainWindow\ShowProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\ShowProduct.xaml">
+    <Page Include="View\Usercontrols\MainWindow\UserInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\UserInfo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Usercontrols\WasteManagement.xaml">
+    <Page Include="View\Usercontrols\Settings\WasteManagement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

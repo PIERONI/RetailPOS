@@ -4,7 +4,7 @@
         Title="CustomerWindow" Height="480" Width="420"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols">
+        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.Settings">
     <Grid>
         <Child:Customer x:Name="Child"></Child:Customer>
     </Grid>

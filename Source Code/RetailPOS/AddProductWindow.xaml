@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AddProductWindow"   ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" Width="450" Height="490"
-        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols">
+        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.Settings">
     <Grid>
-        <Child:AddProduct x:Name="AddProduct"></Child:AddProduct>
+        <Child:Product x:Name="Product"></Child:Product>
     </Grid>
 </Window>

@@ -4,7 +4,7 @@
         
         Title="AddCategoryWindow" Height="300" Width="420"  ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols">
+        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.Settings">
     <Grid>
         <Child:Category x:Name="test"></Child:Category>
     </Grid>

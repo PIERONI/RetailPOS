@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="RetailPOS.View.Usercontrols.Login.UserLogin"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:WpfKb="clr-namespace:WpfKb.Controls;assembly=WpfKb"
+             mc:Ignorable="d" 
+             x:Name="LoginCtrl"
+             Width="Auto" Height="Auto"
+             DataContext="{Binding Source={StaticResource Locator}, Path=LoginVM}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../../../Themes/BureauBlue.xaml">
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Style="{DynamicResource Border.Rounded.Floating}">
+            <StackPanel Name="ctrlStack">
+                <TextBox
+                    Grid.Row="0"
+                    x:Name="txtUserName"
+                    Text="{Binding UserName,Mode=TwoWay}"
+                    Style="{DynamicResource TextBox.Rounded}" />
+                <PasswordBox
+                    Grid.Row="1"
+                    x:Name="txtPassword"                    
+                    Style="{DynamicResource PasswordBox.Rounded}" />
+                <Button Margin="4" Content="Login" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=txtPassword}" Height="50"  HorizontalAlignment="Left" Width="150" />
+                <Label Grid.Row="2" x:Name="lblMessage" Visibility="{Binding MessageVisibility}" Content="Invalid User Credntials" FontWeight="Bold" Foreground="Red" />
+            </StackPanel>
+        </Border>
+        <WpfKb:FloatingTouchScreenKeyboard
+            x:Name="Keyboard"
+            IsOpen="True"
+            Width="700"
+            Height="400"
+            PlacementTarget="{Binding ElementName=LoginCtrl}"
+            Placement="Center" AreAnimationsEnabled="False" />
+    </Grid>
+</UserControl>

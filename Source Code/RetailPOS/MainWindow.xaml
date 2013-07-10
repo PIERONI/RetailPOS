@@ -1,7 +1,7 @@
 ﻿<Window x:Class="RetailPOS.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols"
+        xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.MainWindow"
         Title="MainWindow" Height="768" Width="1024"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.RowDefinitions>

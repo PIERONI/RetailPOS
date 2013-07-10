@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ShopSettingWindow" Height="600" Width="430"  ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols">
+         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.Settings">
     <Grid>
         <Child:ShopSetting x:Name="ShopSetting"></Child:ShopSetting>
     </Grid>

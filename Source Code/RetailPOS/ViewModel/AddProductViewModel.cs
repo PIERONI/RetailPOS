@@ -240,19 +240,19 @@ namespace RetailPOS.ViewModel
         {
             return new ProductDTO
             {
-                CategoryId = SelectedCategory.Id,
+                Category_Id = SelectedCategory.Id,
                 BarCode = BarCode,
                 Name = Name,
                 Description = Description,
-                StatusId = SelectedStatus.Id,
-                RetailPrice = RetailPrice,
-                WholesalePrice = WholeSalePrice,
+                Status_Id = SelectedStatus.Id,
+                Retail_Price = RetailPrice,
+                Wholesale_Price = WholeSalePrice,
                 PurchasePrice = PurchasePrice,
-                TaxRate = TaxRate,
-                HasWarranty = HasWarranty,
+                Tax_Rate = TaxRate,
+                Has_Warranty = HasWarranty,
                 Size = Size,
                 Weight = Weight,
-                ImagePath = "Test"
+                Image_Path = "Test"
             };
         }
 

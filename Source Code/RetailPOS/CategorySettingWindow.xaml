@@ -6,6 +6,6 @@
         WindowStartupLocation="CenterScreen"
         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols">
     <Grid>
-        <Child:AddCategory x:Name="addCategory"></Child:AddCategory>
+        <Child:Category x:Name="addCategory"></Child:Category>
     </Grid>
 </Window>

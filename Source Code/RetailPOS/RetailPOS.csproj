@@ -177,13 +177,12 @@
     <Compile Include="ShopSettingWindow.xaml.cs">
       <DependentUpon>ShopSettingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utility\ClsProductUtility.cs" />
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\MaskedTextBoxBehaviour.cs" />
     <Compile Include="Utility\Mediator.cs" />
     <Compile Include="Utility\RowDoubleClickHandler.cs" />
     <Compile Include="Utility\SelectedItemBehaviour.cs" />
-    <Compile Include="ViewModel\AddCustomerViewModel.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MenuControlViewModel.cs" />
@@ -195,11 +194,11 @@
     <Compile Include="ViewModel\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="ViewModel\WasteManagementViewModel.cs" />
-    <Compile Include="View\Usercontrols\AddCategory.xaml.cs">
-      <DependentUpon>AddCategory.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\Category.xaml.cs">
+      <DependentUpon>Category.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\AddCustomer.xaml.cs">
-      <DependentUpon>AddCustomer.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\Customer.xaml.cs">
+      <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\AddProduct.xaml.cs">
       <DependentUpon>AddProduct.xaml</DependentUpon>
@@ -310,11 +309,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\AddCategory.xaml">
+    <Page Include="View\Usercontrols\Category.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\AddCustomer.xaml">
+    <Page Include="View\Usercontrols\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

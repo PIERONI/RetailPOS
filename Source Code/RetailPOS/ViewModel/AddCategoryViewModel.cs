@@ -147,7 +147,6 @@ namespace RetailPOS.ViewModel
                 if (SelectedCategoryName != null)
                 {
                     GetSearchAttributes(SelectedCategoryName.Name);
-                    
                 }
             }
         }
@@ -158,9 +157,11 @@ namespace RetailPOS.ViewModel
 
         public AddCategoryViewModel()
         {
+            LstSearchCategoryName = new List<ProductCategoryDTO>();
+
             SaveCategory = new RelayCommand(SaveCategorySetting);
             CancelCategorySetting = new RelayCommand(CancelSetting);            
-            LstSearchCategoryName=new List<ProductCategoryDTO>();
+            
             GetSearchAttributes(string.Empty);  
         }
 

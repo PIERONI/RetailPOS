@@ -34,7 +34,8 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
         {
             IList<ProductDTO> lstProducts = new List<ProductDTO>();
 
-            ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 1).ToList(), lstProducts);
+            ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 1 
+                || item.status_id == 7).ToList(), lstProducts);
             return lstProducts;
         }
 

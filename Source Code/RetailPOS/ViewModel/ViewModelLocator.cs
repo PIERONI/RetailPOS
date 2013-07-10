@@ -23,7 +23,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<SettingViewModel>();
             SimpleIoc.Default.Register<ShopSettingViewModel>();
             SimpleIoc.Default.Register<RightPanelPaymentDetailViewModel>();
-            SimpleIoc.Default.Register<AddCustomerViewModel>();
+            SimpleIoc.Default.Register<CustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
             SimpleIoc.Default.Register<MenuControlViewModel>();
             SimpleIoc.Default.Register<WasteManagementViewModel>();
@@ -143,11 +143,11 @@ namespace RetailPOS.ViewModel
         /// <value>
         /// The shop setting VM.
         /// </value>
-        public AddCustomerViewModel CustomerVM
+        public CustomerViewModel CustomerVM
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<AddCustomerViewModel>();
+                return ServiceLocator.Current.GetInstance<CustomerViewModel>();
             }
         }
 
@@ -228,7 +228,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<SettingViewModel>();
             SimpleIoc.Default.Unregister<ShopSettingViewModel>();
             SimpleIoc.Default.Unregister<RightPanelPaymentDetailViewModel>();
-            SimpleIoc.Default.Register<AddCustomerViewModel>();
+            SimpleIoc.Default.Register<CustomerViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
             SimpleIoc.Default.Register<MenuControlViewModel>();
             SimpleIoc.Default.Register<WasteManagementViewModel>();

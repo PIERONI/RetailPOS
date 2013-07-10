@@ -32,7 +32,7 @@
 
                 <Label Content="Loyalty Points:" Grid.Row="2" Height="28" HorizontalAlignment="Left" Margin="2,14,0,0" Name="label1" VerticalAlignment="Top" Width="78" />
                 <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="11,15,0,0" Name="txtLoyaltyPoints" Text="" VerticalAlignment="Top" Grid.Column="1" />
-                <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" SelectedItem="{Binding Product,Mode=TwoWay}" Margin="11,8,0,0"  Name="autoCompleteTxtProduct"  ItemsSource="{Binding lstSearchProduct}"                        
+                <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" SelectedItem="{Binding Product, Mode=TwoWay}" Margin="11,8,0,0"  Name="autoCompleteTxtProduct"  ItemsSource="{Binding LstSearchProduct}"                        
                          Text="{Binding Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -57,21 +57,20 @@
                                     <TextBlock Text="Weight: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
                                     <TextBlock Text="{Binding Weight}" Foreground="#47896B"></TextBlock>
                                     <TextBlock Text="Retail: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
-                                    <TextBlock Text="{Binding RetailPrice}" Foreground="#47896B"></TextBlock>
+                                    <TextBlock Text="{Binding Retail_Price}" Foreground="#47896B"></TextBlock>
                                     <TextBlock Text="WholeSale: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
-                                    <TextBlock Text="{Binding WholesalePrice}" Foreground="#47896B"></TextBlock>
+                                    <TextBlock Text="{Binding Wholesale_Price}" Foreground="#47896B"></TextBlock>
                                     <TextBlock Text="Tax Rate: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
-                                    <TextBlock Text="{Binding TaxRate}" Foreground="#47896B"></TextBlock>
+                                    <TextBlock Text="{Binding Tax_Rate}" Foreground="#47896B"></TextBlock>
                                     <TextBlock Text="Warranty: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
-                                    <TextBlock Text="{Binding HasWarranty}" Foreground="#47896B"></TextBlock>
+                                    <TextBlock Text="{Binding Has_Warranty}" Foreground="#47896B"></TextBlock>
                                 </WrapPanel>
                             </Grid>
                         </DataTemplate>
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
-                <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding lstSearchCustomer}"
-                         SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"            
-                         IsTextCompletionEnabled="False"
+                <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
+                         SelectedItem="{Binding Customer, Mode=TwoWay,UpdateSourceTrigger=Default}" IsTextCompletionEnabled="False"
                          ValueMemberPath="First_Name"
                           FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
@@ -125,15 +124,15 @@
                         <TextBlock HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductCode}" Grid.Column="1" Grid.Row="1" ></TextBlock>
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductPrice}" Grid.Column="1" Grid.Row="2" ></TextBlock>
                         <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="3" ></TextBox>
-                        <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductDescription}" Grid.Column="1" Grid.Row="4" ></TextBlock>                        
+                        <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductDescription}" Grid.Column="1" Grid.Row="4" ></TextBlock>
                         <TextBlock Visibility="Collapsed" Text="{Binding Id}" Name="HiddenTxtProductId" ></TextBlock>
                         <StackPanel Grid.ColumnSpan="2" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"  Margin="12,12,0,0">
-                            <Button CommandParameter="{Binding}" Content="Add Product" Command="{Binding SelectProductCommand}" Width="200" Height="40">
+                            <Button CommandParameter="{Binding ElementName=SelectedProduct}" Content="Add Product" Command="{Binding SelectProductCommand}" Width="200" Height="40">
                                 <Button.CommandBindings>
                                     <CommandBinding Command="Save"></CommandBinding>
                                 </Button.CommandBindings>
                             </Button>
-                        </StackPanel> 
+                        </StackPanel>
                     </Grid>
                 </ContentControl>
             </my:ModalDialogPopup.HostedContent>

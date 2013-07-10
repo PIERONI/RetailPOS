@@ -11,20 +11,23 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q1:BaseDTO">
         <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="BarCode" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="CategoryId" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="Category_Id" nillable="true" type="xs:short" />
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="HasWarranty" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Has_Warranty" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
-          <xs:element minOccurs="0" name="ImagePath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Image_Path" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PurchasePrice" nillable="true" type="xs:decimal" />
-          <xs:element minOccurs="0" name="RetailPrice" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="Retail_Price" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Size" nillable="true" type="xs:decimal" />
-          <xs:element minOccurs="0" name="StatusId" type="xs:int" />
-          <xs:element minOccurs="0" name="TaxRate" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Status_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Tax_Rate" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:decimal" />
-          <xs:element minOccurs="0" name="WholesalePrice" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Wholesale_Price" nillable="true" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

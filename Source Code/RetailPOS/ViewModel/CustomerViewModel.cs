@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace RetailPOS.ViewModel
 {
-    public class AddCustomerViewModel : ViewModelBase
+    public class CustomerViewModel : ViewModelBase
     {
         #region Declare Public and Private Data member
 
@@ -365,9 +365,9 @@ namespace RetailPOS.ViewModel
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AddCustomerViewModel"/> class.
+        /// Initializes a new instance of the <see cref="CustomerViewModel"/> class.
         /// </summary>
-        public AddCustomerViewModel()
+        public CustomerViewModel()
         {
             LstStatus = new ObservableCollection<CustomerStatusDTO>();
             LstType = new ObservableCollection<CustomerTypeDTO>();
@@ -394,7 +394,7 @@ namespace RetailPOS.ViewModel
 
         private void CancelSetting()
         {
-            AddCustomerViewModel viewModel = new AddCustomerViewModel();
+            CustomerViewModel viewModel = new CustomerViewModel();
         }
 
         /// <summary>

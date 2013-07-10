@@ -3,11 +3,11 @@
 namespace RetailPOS.View.Usercontrols
 {
     /// <summary>
-    /// Interaction logic for ProductGridControl.xaml
+    /// Interaction logic for AddCategory.xaml
     /// </summary>
-    public partial class ProductGridControl : UserControl
+    public partial class Category : UserControl
     {
-        public ProductGridControl()
+        public Category()
         {
             InitializeComponent();
         }

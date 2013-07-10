@@ -17,10 +17,10 @@ namespace RetailPOS.ViewModel
 {
    public class SearchViewModel : ViewModelBase
     {
-       #region Declare Public and private Data member
+       #region Declare Public and Private Data member
 
-       public List<ProductDTO> lstSearchProduct { get; private set; }
-       public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+       public List<ProductDTO> LstSearchProduct { get; private set; }
+       public IList<CustomerDTO> LstSearchCustomer { get; private set; }
        
        private bool _IsProductPopupOpen;
      
@@ -28,10 +28,12 @@ namespace RetailPOS.ViewModel
        private string _mobileNumber;
        private string _customerBalance;
        private Visibility _isVisibleCustomerInfo;
+       
        private CustomerDTO _selectedCustomer;
        private CustomerDTO _customer;
        private ProductDTO _product;
        private ProductDTO _selectedProduct;
+       
        private string _productName;
        private string _productCode;
        private decimal _productPrice;
@@ -39,12 +41,13 @@ namespace RetailPOS.ViewModel
        private string _productDescription;
        private int _id;
 
+       #endregion
+
+       #region Public Properties
+
        public int Id
        {
-           get
-           {
-               return _id;
-           }
+           get { return _id; }
            set
            {
                _id = value;
@@ -54,10 +57,7 @@ namespace RetailPOS.ViewModel
 
        public string ProductName
        {
-           get
-           {
-               return _productName;
-           }
+           get { return _productName; }
            set
            {
                _productName = value;
@@ -67,10 +67,7 @@ namespace RetailPOS.ViewModel
 
        public string ProductCode
        {
-           get
-           {
-               return _productCode;
-           }
+           get { return _productCode; }
            set
            {
                _productCode = value;
@@ -80,10 +77,7 @@ namespace RetailPOS.ViewModel
 
        public decimal ProductPrice
        {
-           get
-           {
-               return _productPrice;
-           }
+           get { return _productPrice; }
            set
            {
                _productPrice = value;
@@ -93,28 +87,22 @@ namespace RetailPOS.ViewModel
 
        public int ProductQuantity
        {
-           get
-           {
-               return _productQuantity;
-           }
+           get { return _productQuantity; }
            set
            {
                _productQuantity = value;
                RaisePropertyChanged("ProductQuantity");
+
                if (ProductQuantity > 0)
                {
                    BindProduct();
-                   
                }
            }
        }
 
        public string ProductDescription
        {
-           get
-           {
-               return _productDescription;
-           }
+           get { return _productDescription; }
            set
            {
                _productDescription = value;
@@ -124,10 +112,7 @@ namespace RetailPOS.ViewModel
 
        public Visibility isVisibleCustomerInfo
        {
-           get
-           {
-               return _isVisibleCustomerInfo;
-           }
+           get { return _isVisibleCustomerInfo; }
            set
            {
                _isVisibleCustomerInfo = value;
@@ -137,15 +122,12 @@ namespace RetailPOS.ViewModel
 
        public CustomerDTO SelectedCustomer
        {
-           get
-           {
-               return _selectedCustomer;
-           }
+           get { return _selectedCustomer; }
            set
            {
                _selectedCustomer = value;
                BindCustomer();
-           }           
+           }
        }
 
        public bool IsProductPopupOpen
@@ -160,19 +142,17 @@ namespace RetailPOS.ViewModel
 
        public CustomerDTO Customer
        {
-           get
-           {
-               return _customer;
-           }
+           get { return _customer; }
            set
            {
                _customer = value;
-              
+
                if (Customer == null)
                {
                    SelectedCustomer = null;
                }
-               if (SelectedCustomer == null && Customer !=null)
+
+               if (SelectedCustomer == null && Customer != null)
                {
                    SelectedCustomer = Customer;
                }
@@ -181,28 +161,23 @@ namespace RetailPOS.ViewModel
 
        public ProductDTO SelectedProduct
        {
-           get
-           {
-               return _selectedProduct;
-           }
+           get { return _selectedProduct; }
            set
            {
                _selectedProduct = value;
-               ProductQuantity = 0;
+               
                BindProduct();
            }
        }
 
        public ProductDTO Product
        {
-           get
-           {
-               return _product;
-           }
+           get { return _product; }
            set
            {
                _product = value;
-               if (Product != null )
+
+               if (Product != null)
                {
                    IsProductPopupOpen = true;
                    SelectedProduct = Product;
@@ -212,23 +187,17 @@ namespace RetailPOS.ViewModel
 
        public string CustomerName
        {
-           get
-           {
-               return _customerName;
-           }
+           get { return _customerName; }
            set
            {
                _customerName = value;
-               RaisePropertyChanged("CustomerName");              
+               RaisePropertyChanged("CustomerName");
            }
        }
 
        public string MobileNumber
        {
-           get
-           {
-               return _mobileNumber;
-           }
+           get { return _mobileNumber; }
            set
            {
                _mobileNumber = value;
@@ -238,16 +207,13 @@ namespace RetailPOS.ViewModel
 
        public string CustomerBalance
        {
-           get
-           {
-               return _customerBalance;
-           }
+           get { return _customerBalance; }
            set
            {
                _customerBalance = value;
-               RaisePropertyChanged("CustomerBalance");             
+               RaisePropertyChanged("CustomerBalance");
            }
-       }   
+       }
 
        #endregion
 
@@ -258,8 +224,8 @@ namespace RetailPOS.ViewModel
        /// </summary>
        public SearchViewModel()
        {
-           lstSearchProduct = new List<ProductDTO>();
-           lstSearchCustomer = new List<CustomerDTO>();
+           LstSearchProduct = new List<ProductDTO>();
+           LstSearchCustomer = new List<CustomerDTO>();
 
            Mediator.Register("ClosePopUpWindow", CloseProductPopUpWindow);
 
@@ -272,10 +238,10 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void GetSearchAttributes()
        {
-           lstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
+           LstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
                                                                    select item).ToList();
 
-           lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
+           LstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                      select item).ToList();
        }
 
@@ -306,12 +272,14 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void BindProduct()
        {
-           ClsProductUtility.ProductName = ProductName = SelectedProduct.Name;
-           ClsProductUtility.ProductCode = ProductCode = SelectedProduct.BarCode;
-           ClsProductUtility.ProductPrice = ProductPrice = SelectedProduct.WholesalePrice.HasValue ? SelectedProduct.WholesalePrice.Value : 0;
-           ClsProductUtility.ProductQuantity = ProductQuantity;
-           ClsProductUtility.ProductDescription = ProductDescription = SelectedProduct.Description;
-           ClsProductUtility.Id = SelectedProduct.Id;           
+           Id = SelectedProduct.Id;
+           ProductName = SelectedProduct.Name;
+           ProductCode = SelectedProduct.BarCode;
+           ProductPrice = SelectedProduct.Retail_Price.HasValue ? SelectedProduct.Retail_Price.Value : 0;
+           SelectedProduct.Quantity = ProductQuantity;
+           ProductDescription = SelectedProduct.Description;
+
+           Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
        }
 
        #endregion

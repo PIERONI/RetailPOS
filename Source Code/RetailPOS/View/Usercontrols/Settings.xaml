@@ -65,11 +65,11 @@
             </Button>
         </WrapPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCategoryVisible}" Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddCategory x:Name="ctrlAddCategory" Margin="15" Width="722"></ctrl:AddCategory>
+            <ctrl:Category x:Name="ctrlAddCategory" Margin="15" Width="722"></ctrl:Category>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCustomerVisible}"
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:AddCustomer x:Name="ctrlAddCustomer"  Margin="15" Width="722"></ctrl:AddCustomer>
+            <ctrl:Customer x:Name="ctrlAddCustomer"  Margin="15" Width="722"></ctrl:Customer>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsProductVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >

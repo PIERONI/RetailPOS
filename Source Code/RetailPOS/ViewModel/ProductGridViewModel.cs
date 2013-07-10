@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#region Using directives
+
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -7,6 +9,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Utility;
 using RetailPOS.View;
+using RetailPOS.RetailPOSService;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
@@ -14,15 +19,9 @@ namespace RetailPOS.ViewModel
     {
         #region Declare Public and private Data member
 
-        private ObservableCollection<ProductDetails> _ProductDetials;
-        public static List<int> listSelectItem { get; set; }
-        
-        public ObservableCollection<ProductDetails> lstProductDetails
-        {
-            get { return _ProductDetials; }
-            set { _ProductDetials = value; RaisePropertyChanged("lstProductDetails"); }
-        }
-        
+        private ObservableCollection<ProductDTO> _productDetails;
+        public static List<int> LstSelectedItem { get; set; }
+
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand LogOutCommand { get; private set; }
         public RelayCommand<object> SelectProductCommand { get; private set; }
@@ -30,24 +29,41 @@ namespace RetailPOS.ViewModel
         public RelayCommand DeleteSelectedItem { get; private set; }
 
         private ICollectionView _productCollection;
-        private ProductDetails _product;
+        private ProductDTO _selectedProduct;
         private string _total;
         
-        public static ClsProductUtility Product { get; set; }
+        //public static ClsProductUtility Product { get; set; }
         bool IsRefersh { get; set; }
-       
-        public ProductDetails SelectedProduct
+
+        #endregion
+
+        #region Public Properties
+
+        public ObservableCollection<ProductDTO> LstProductDetails
+        {
+            get { return _productDetails; }
+            set
+            {
+                _productDetails = value;
+                RaisePropertyChanged("LstProductDetails");
+            }
+        }
+
+        public ProductDTO CurrentProduct { get; set; }
+
+        public ProductDTO SelectedProduct
         {
             get
             {
                 IsRefersh = false;
-                return _product;
+                return _selectedProduct;
             }
             set
             {
-                _product = value;
+                _selectedProduct = value;
                 IsRefersh = true;
                 RaisePropertyChanged("SelectedProduct");
+
                 UpdateProduct();
             }
         }
@@ -55,31 +71,34 @@ namespace RetailPOS.ViewModel
         private void UpdateProduct()
         {
             if (SelectedProduct == null) return;
-            listSelectItem.Add(SelectedProduct.Id);
+            //listSelectItem.Add(SelectedProduct.Id);
 
             //(from item in lstProductDetails select item).Update(item => item.IsSelected = (from selectedItems in listSelectItem join item1 in lstProductDetails
         }
 
         public string Total
         {
-            get
-            {
-                return _total;
-            }
+            get { return _total; }
             set
             {
                 _total = value;
                 RaisePropertyChanged("Total");
             }
         }
+
         #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductGridViewModel"/> class.
         /// </summary>
         public ProductGridViewModel()
         {
-            lstProductDetails = new ObservableCollection<ProductDetails>();
+            LstProductDetails = new ObservableCollection<ProductDTO>();
+
+            Mediator.Register("SetSelectedProduct", SetSelectedProduct);
+
             ExitCommand = new RelayCommand(CloseApplication);
             LogOutCommand = new RelayCommand(LogoutApplication);
             ClearProduct = new RelayCommand(ClearGridProduct);
@@ -87,17 +106,22 @@ namespace RetailPOS.ViewModel
             DeleteSelectedItem = new RelayCommand(DeleteItem);
         }
 
+        private void SetSelectedProduct(object args)
+        {
+            CurrentProduct = (ProductDTO)args;
+        }
+
         private void DeleteItem()
         {
             if (SelectedProduct != null)
             {
-                lstProductDetails.Remove(SelectedProduct);
+                LstProductDetails.Remove(SelectedProduct);
             }
         }
 
         private void ClearGridProduct()
         {
-            lstProductDetails.Clear(); 
+            LstProductDetails.Clear(); 
         }
 
         void _productCollection_CurrentChanged(object sender, System.EventArgs e)
@@ -125,50 +149,36 @@ namespace RetailPOS.ViewModel
         /// <exception cref="System.NotImplementedException"></exception>
         private void BindProductDetails(object product)
         {
-            var IsExist = lstProductDetails.Where(u => u.Id == ClsProductUtility.Id).FirstOrDefault();
+            var isExist = LstProductDetails.Where(u => u.Id == CurrentProduct.Id).FirstOrDefault();
 
-            if (IsExist == null)
+            if (isExist == null)
             {
-                lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Rate = 3, Amount = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice) });
+                LstProductDetails.Add(new ProductDTO 
+                {
+                    Id = CurrentProduct.Id,
+                    Name = CurrentProduct.Name,
+                    Quantity = CurrentProduct.Quantity,
+                    Retail_Price = CurrentProduct.Retail_Price,
+                    Amount = (CurrentProduct.Quantity * CurrentProduct.Retail_Price)
+                });
             }
             else
             {
-                var found = lstProductDetails.FirstOrDefault(x => x.Id == ClsProductUtility.Id);
-                int i = lstProductDetails.IndexOf(found);
-                var quantity = ClsProductUtility.ProductQuantity + found.ProductQuantity;
-                lstProductDetails[i].ProductQuantity = quantity;
+                var found = LstProductDetails.FirstOrDefault(x => x.Id == CurrentProduct.Id);
+                int i = LstProductDetails.IndexOf(found);
+                var quantity = CurrentProduct.Quantity + found.Quantity;
+                LstProductDetails[i].Quantity = quantity;
 
-                lstProductDetails[i].Amount = found.Rate * quantity;
-                CollectionViewSource.GetDefaultView(this.lstProductDetails).Refresh();
+                LstProductDetails[i].Amount = found.Retail_Price * quantity;
+                CollectionViewSource.GetDefaultView(this.LstProductDetails).Refresh();
             }
-            //lstProductDetails.Add(new ProductDetails { Id = ClsProductUtility.Id, ProductName = ClsProductUtility.ProductName, ProductQuantity = ClsProductUtility.ProductQuantity, Amount = ClsProductUtility.ProductPrice, Rate = (ClsProductUtility.ProductQuantity * ClsProductUtility.ProductPrice)});
-            var amount = lstProductDetails.Select(u => u.Amount).Sum();
+            
+            var amount = LstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();
 
             Mediator.NotifyColleagues("ClosePopUpWindow", false);
         }
-    }
 
-    public class ProductDetails : ViewModelBase
-   {
-       public int Id { get; set; }
-       public string ProductName { get; set; }
-       public decimal ProductQuantity { get; set; }
-       public decimal Rate { get; set; }
-       public decimal Amount { get; set; }
-       private bool _isSelected;
-       
-        public bool IsSelected
-       {
-           get
-           {
-               return _isSelected;
-           }
-           set
-           {
-               _isSelected = value;
-               RaisePropertyChanged("IsSelected");
-           }
-       }      
-   }
+        #endregion
+    }
 }

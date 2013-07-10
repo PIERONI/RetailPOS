@@ -133,8 +133,8 @@
                                 <DataGridTextColumn Binding="{Binding Path=BarCode}" Header="Bar Code" Width="*" />
                                 <DataGridTextColumn Binding="{Binding  Path=Name}" Header="Product Name" Width="*"/>
                                 <DataGridTextColumn Binding="{Binding Path=Description}" Header="Description" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=RetailPrice}" Header="RetailPrice"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=WholesalePrice}" Header="Wholesale Price"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Retail_Price}" Header="Retail Price"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Wholesale_Price}" Header="Wholesale Price"  Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

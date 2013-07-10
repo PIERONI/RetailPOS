@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-              d:DesignHeight="200" d:DesignWidth="490" DataContext="{Binding Source={StaticResource Locator}, Path=CategoryVM}">
+              d:DesignHeight="200" d:DesignWidth="490" DataContext="{Binding Source={StaticResource Locator}, Path=CategoryVM}"
+              xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls">
    
     <UserControl.Resources>
       
@@ -19,10 +20,49 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Margin="1" Content="{Binding Name}" Height="53" Background="{Binding Color}" HorizontalAlignment="Right" Width="79" />
+                    <Button Margin="1" Content="{Binding Name}" Height="53" Background="{Binding Color}" HorizontalAlignment="Right" Width="79" Command="{Binding DataContext.Product,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <my:ModalDialogPopup Width="auto" MaxWidth="500"  IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}" Title="Product" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+            <my:ModalDialogPopup.HostedContent>
+                <ContentControl>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="90"></ColumnDefinition>
+                            <ColumnDefinition  Width="200"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Content="Product Name: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="0"></Label>
+                        <Label Content="Product Code: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="1"></Label>
+                        <Label Content="Price : " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="2"></Label>
+                        <Label Content="Quantity: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Grid.Column="0" Grid.Row="3"></Label>
+                        <Label Content="Description: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="100" Grid.Column="0" Grid.Row="4"></Label>
+                        <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductName}" Grid.Column="1" Grid.Row="0" ></TextBlock>
+                        <TextBlock HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductCode}" Grid.Column="1" Grid.Row="1" ></TextBlock>
+                        <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductPrice}" Grid.Column="1" Grid.Row="2" ></TextBlock>
+                        <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="3" ></TextBox>
+                        <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductDescription}" Grid.Column="1" Grid.Row="4" ></TextBlock>
+                        <TextBlock Visibility="Collapsed" Text="{Binding Id}" Name="HiddenTxtProductId" ></TextBlock>
+                        <StackPanel Grid.ColumnSpan="2" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"  Margin="12,12,0,0">
+                            <Button CommandParameter="{Binding ElementName=SelectedProduct}" Content="Add Product" Command="{Binding SelectProductCommand}" Width="200" Height="40">
+                                <Button.CommandBindings>
+                                    <CommandBinding Command="Save"></CommandBinding>
+                                </Button.CommandBindings>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </ContentControl>
+            </my:ModalDialogPopup.HostedContent>
+        </my:ModalDialogPopup>
     </Grid>
+    
 </UserControl>

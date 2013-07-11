@@ -1,5 +1,6 @@
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using RetailPOS.ViewModel.MainWindow;
 
 namespace RetailPOS.ViewModel
 {
@@ -29,6 +30,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<WasteManagementViewModel>();
             SimpleIoc.Default.Register<PromotionalOfferViewModel>();
             SimpleIoc.Default.Register<AddCategoryViewModel>();
+            SimpleIoc.Default.Register<ShowProductViewModel>();
         }
 
         /// <summary>
@@ -216,6 +218,20 @@ namespace RetailPOS.ViewModel
         }
 
         /// <summary>
+        /// Gets the Show Product View Model.
+        /// </summary>
+        /// <value>
+        /// The Show Product view model.
+        /// </value>
+        public ShowProductViewModel ShowProductVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<ShowProductViewModel>();
+            }
+        }
+
+        /// <summary>
         /// Cleanups this instance.
         /// </summary>
         public static void Cleanup()
@@ -235,6 +251,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<PromotionalOfferViewModel>();
             SimpleIoc.Default.Register<MenuControlViewModel>();
             SimpleIoc.Default.Register<AddProductViewModel>();
+            SimpleIoc.Default.Register<ShowProductViewModel>();
         }
     }
 }

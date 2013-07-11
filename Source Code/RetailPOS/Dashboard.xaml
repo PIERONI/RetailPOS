@@ -1,4 +1,4 @@
-﻿<Window x:Class="RetailPOS.MainWindow"
+﻿<Window x:Class="RetailPOS.Dashboard"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.MainWindow"
@@ -18,7 +18,7 @@
                 <Child:Categories  x:Name="cat" HorizontalAlignment="Left"  Margin="1,0,0,0" ></Child:Categories>
             </GroupBox>
             <GroupBox Height="360" Margin="5 0 0 0" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Background="AliceBlue" Header="Products">
-                <Child:ShowProduct HorizontalAlignment="Left" x:Name="prod"  Margin="1,0,0,0"></Child:ShowProduct>
+                <Child:Products HorizontalAlignment="Left" x:Name="prod"  Margin="1,0,0,0"></Child:Products>
             </GroupBox>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1">

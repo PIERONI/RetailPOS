@@ -107,7 +107,7 @@ namespace RetailPOS.ViewModel
                 MessageVisibility = Visibility.Hidden;
                 
                 ////Opens up main window
-                var mainWindow = new MainWindow();
+                var mainWindow = new Dashboard();
                 mainWindow.Show();
 
                 ////Closes login window

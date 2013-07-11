@@ -95,7 +95,8 @@ namespace RetailPOS.ViewModel
 
                if (ProductQuantity > 0)
                {
-                   BindProduct();
+                   SelectedProduct.Quantity = ProductQuantity;
+                   Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
                }
            }
        }
@@ -165,7 +166,6 @@ namespace RetailPOS.ViewModel
            set
            {
                _selectedProduct = value;
-               
                BindProduct();
            }
        }
@@ -276,10 +276,8 @@ namespace RetailPOS.ViewModel
            ProductName = SelectedProduct.Name;
            ProductCode = SelectedProduct.BarCode;
            ProductPrice = SelectedProduct.Retail_Price.HasValue ? SelectedProduct.Retail_Price.Value : 0;
-           SelectedProduct.Quantity = ProductQuantity;
+           SelectedProduct.Quantity = ProductQuantity = 0;
            ProductDescription = SelectedProduct.Description;
-
-          // Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
        }
 
        #endregion

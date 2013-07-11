@@ -13,33 +13,39 @@ namespace RetailPOS.ViewModel
     {
         #region Declare Public and private Data member
 
-        private ObservableCollection<ProductCategoryDTO> _lstCategories;        
-        private ObservableCollection<ProductDTO> _lstProduct;        
-
-        public RelayCommand<ProductCategoryDTO> SelectProductCommand { get; private set; }
-        private bool _firstPopupIsOpen;
-        public  RelayCommand OpenFirstPopupCommand { get; private set; }
-        private bool _OpenLooseCatPopupIsOpen;
+        /// <summary>
+        /// To open the product popup
+        /// </summary>
+        public RelayCommand ShowProductCommand { get; private set; }
+        public RelayCommand OpenFirstPopupCommand { get; private set; }
         public RelayCommand OpenLooseCatPopupCommand { get; private set; }
+        public RelayCommand<ProductCategoryDTO> SelectProductCommand { get; private set; }
         public RelayCommand RefershListBoxCommand { get; private set; }
-     
-        public IList<ProductDTO> LstSearchProduct { get; private set; }
 
-        private bool _IsProductPopupOpen;
-      
+        public IList<ProductDTO> LstSearchProduct { get; private set; }
+        public ObservableCollection<ProductCategoryDTO> lstLooseCategories { get; private set; }
+
+        private ObservableCollection<ProductCategoryDTO> _lstCategories;        
+        private ObservableCollection<ProductDTO> _lstProduct;
         private ProductDTO _selectedProduct;
 
+        private bool _firstPopupIsOpen;
+        private bool _OpenLooseCatPopupIsOpen;
+        private bool _IsProductPopupOpen;
 
-        private string _productName;
-        private string _productCode;
-        private decimal _productPrice;
-        private int _productQuantity;
-        private string _productDescription;
-        private int _id;
+        #endregion
 
-       
+        #region Public Properties
 
-        public ObservableCollection<ProductCategoryDTO> lstLooseCategories { get; private set; }
+        public ProductDTO SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                _selectedProduct = value;
+                RaisePropertyChanged("SelectedProduct");
+            }
+        }
 
         public ObservableCollection<ProductCategoryDTO> lstCategories
         {
@@ -50,14 +56,14 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("lstCategories");
             }
         }
-        
-        public ObservableCollection<ProductDTO> lstProduct
+
+        public ObservableCollection<ProductDTO> LstProduct
         {
             get { return _lstProduct; }
             set
             {
                 _lstProduct = value;
-                RaisePropertyChanged("lstProduct");
+                RaisePropertyChanged("LstProduct");
             }
         }
 
@@ -81,72 +87,6 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public int Id
-        {
-            get { return _id; }
-            set
-            {
-                _id = value;
-                RaisePropertyChanged("Id");
-            }
-        }
-
-        public string ProductName
-        {
-            get { return _productName; }
-            set
-            {
-                _productName = value;
-                RaisePropertyChanged("ProductName");
-            }
-        }
-
-        public string ProductCode
-        {
-            get { return _productCode; }
-            set
-            {
-                _productCode = value;
-                RaisePropertyChanged("ProductCode");
-            }
-        }
-
-        public decimal ProductPrice
-        {
-            get { return _productPrice; }
-            set
-            {
-                _productPrice = value;
-                RaisePropertyChanged("ProductPrice");
-            }
-        }
-
-        public int ProductQuantity
-        {
-            get { return _productQuantity; }
-            set
-            {
-                _productQuantity = value;
-                RaisePropertyChanged("ProductQuantity");
-
-                if (ProductQuantity > 0)
-                {
-                    BindProduct();
-                }
-            }
-        }
-
-        public string ProductDescription
-        {
-            get { return _productDescription; }
-            set
-            {
-                _productDescription = value;
-                RaisePropertyChanged("ProductDescription");
-            }
-        }
-
-
         #endregion
 
         #region Constructor
@@ -157,7 +97,7 @@ namespace RetailPOS.ViewModel
         {           
             lstCategories = new ObservableCollection<ProductCategoryDTO>();
             lstLooseCategories = new ObservableCollection<ProductCategoryDTO>();
-            lstProduct = new ObservableCollection<ProductDTO>();
+            LstProduct = new ObservableCollection<ProductDTO>();
               LstSearchProduct = new List<ProductDTO>();
             
             AddCategories();
@@ -171,14 +111,8 @@ namespace RetailPOS.ViewModel
             OpenFirstPopupCommand = new RelayCommand(OpenFirstPopupClick);
             OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
             RefershListBoxCommand = new RelayCommand(RefereshListBox);
-            ShowProduct = new RelayCommand(OpenProductPopUp);
-        
+            ShowProductCommand = new RelayCommand(OnOpenProductPopUp);
         }
-
-       
-
-       
-
 
         public bool IsProductPopupOpen
         {
@@ -210,7 +144,6 @@ namespace RetailPOS.ViewModel
         {
             lstCategories.Clear();
             AddCategories();
-
         }
 
         /// <summary>
@@ -219,7 +152,7 @@ namespace RetailPOS.ViewModel
         /// <param name="productCategory">The product category.</param>
         private void FillProducts(ProductCategoryDTO productCategory)
         {
-            lstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetProductByCategory(productCategory.Id)
+            LstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetProductByCategory(productCategory.Id)
                                                                          select item);
         }
 
@@ -229,7 +162,7 @@ namespace RetailPOS.ViewModel
         /// <returns>returns list of all Commonly Used  products present in database</returns>
         private void FillCommonProducts()
         {
-            lstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetCommonProduct() 
+            LstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetCommonProduct() 
                                                                           select item);
         }
 
@@ -265,9 +198,6 @@ namespace RetailPOS.ViewModel
             }
         }
 
-       
-      
-
         /// <summary>
         /// Fills the list search.
         /// </summary>
@@ -275,7 +205,6 @@ namespace RetailPOS.ViewModel
         {
             LstSearchProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
                                                                     select item).ToList();
-
         }
 
         #endregion
@@ -284,59 +213,21 @@ namespace RetailPOS.ViewModel
 
         private ProductDTO _product;
 
-        /// <summary>
-        /// To open the product popup
-        /// </summary>
-        public RelayCommand ShowProduct { get;private set; }
-
         public ProductDTO Product
         {
             get { return _product; }
             set
             {
                 _product = value;
-
-                //if (Product != null)
-                //{
-                //    //IsProductPopupOpen = true;
-                //    SelectedProduct = Product;
-                //}
             }
         }
 
-        public ProductDTO SelectedProduct
+        private void OnOpenProductPopUp(object selectedProduct)
         {
-            get { return _selectedProduct; }
-            set
-            {
-                _selectedProduct = value;
-                RaisePropertyChanged("SelectedProduct");
-                
-                    BindProduct();
-                
-            }
-        }
-
-        private void OpenProductPopUp()
-        {           
-                                                       
             IsProductPopupOpen = true;
-           //SelectedProduct = Product;
-          
+            Product = SelectedProduct;   
+            //SelectedProduct = (ProductDTO)selectedProduct;
         }
-
-        private void BindProduct()
-        {
-            Id = SelectedProduct.Id;
-            ProductName = SelectedProduct.Name;
-            ProductCode = SelectedProduct.BarCode;
-            ProductPrice = SelectedProduct.Retail_Price.HasValue ? SelectedProduct.Retail_Price.Value : 0;
-            SelectedProduct.Quantity = ProductQuantity;
-            ProductDescription = SelectedProduct.Description;
-
-            Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
-        }
-
 
         #endregion
     }

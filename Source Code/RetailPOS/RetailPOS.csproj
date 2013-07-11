@@ -149,20 +149,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddCategoryWindow.xaml.cs">
-      <DependentUpon>AddCategoryWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddProductWindow.xaml.cs">
-      <DependentUpon>AddProductWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CategorySettingWindow.xaml.cs">
-      <DependentUpon>CategorySettingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\AppConstants.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
-    <Compile Include="CustomerWindow.xaml.cs">
-      <DependentUpon>CustomerWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -174,9 +162,6 @@
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShopSettingWindow.xaml.cs">
-      <DependentUpon>ShopSettingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\MaskedTextBoxBehaviour.cs" />
     <Compile Include="Utility\Mediator.cs" />
@@ -185,6 +170,7 @@
     <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\AddProductViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MainWindow\ShowProductViewModel.cs" />
     <Compile Include="ViewModel\MenuControlViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
     <Compile Include="ViewModel\PromotionalOfferViewModel.cs" />
@@ -194,6 +180,9 @@
     <Compile Include="ViewModel\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
     <Compile Include="ViewModel\WasteManagementViewModel.cs" />
+    <Compile Include="View\Usercontrols\MainWindow\ShowProduct.xaml.cs">
+      <DependentUpon>ShowProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Usercontrols\Settings\Category.xaml.cs">
       <DependentUpon>Category.xaml</DependentUpon>
     </Compile>
@@ -245,8 +234,8 @@
     <Compile Include="View\Usercontrols\Settings\ShopSetting.xaml.cs">
       <DependentUpon>ShopSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Usercontrols\MainWindow\ShowProduct.xaml.cs">
-      <DependentUpon>ShowProduct.xaml</DependentUpon>
+    <Compile Include="View\Usercontrols\MainWindow\Products.xaml.cs">
+      <DependentUpon>Products.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\MainWindow\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
@@ -258,23 +247,7 @@
     <Compile Include="View\Usercontrols\Settings\WasteManagement.xaml.cs">
       <DependentUpon>WasteManagement.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddCategoryWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddProductWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CategorySettingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Dashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -282,8 +255,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="LoginWindow.xaml">
@@ -302,7 +275,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ShopSettingWindow.xaml">
+    <Page Include="View\Usercontrols\MainWindow\ShowProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -402,7 +375,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Usercontrols\MainWindow\ShowProduct.xaml">
+    <Page Include="View\Usercontrols\MainWindow\Products.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -634,6 +607,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

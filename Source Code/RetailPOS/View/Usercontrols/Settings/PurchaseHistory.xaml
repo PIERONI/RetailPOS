@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-                   xmlns:Utility="clr-namespace:RetailPOS.Utility"
-              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                   xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DesignHeight="450" d:DesignWidth="700">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>

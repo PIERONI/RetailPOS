@@ -183,7 +183,7 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private void OpenMainWindow()
        {
-           MainWindow MW = new MainWindow();
+           Dashboard MW = new Dashboard();
            MW.Show();
            SettingsWindow.SettingWindow.Close();
        }
@@ -224,7 +224,7 @@ namespace RetailPOS.ViewModel
        {
            SettingsWindow set = new SettingsWindow();
            set.Show();
-           MainWindow._MainWindow.Close();
+           Dashboard._Dashboard.Close();
        }
 
        /// <summary>

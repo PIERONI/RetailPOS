@@ -132,7 +132,7 @@ namespace RetailPOS.ViewModel
         {  
             var loginWindow = new LoginWindow();
             loginWindow.Show();
-            MainWindow._MainWindow.Close();
+            Dashboard._Dashboard.Close();
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void CloseApplication()
         {
-            MainWindow._MainWindow.Close();
+            Dashboard._Dashboard.Close();
         }
 
         /// <summary>

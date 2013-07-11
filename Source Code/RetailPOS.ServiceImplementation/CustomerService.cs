@@ -24,6 +24,19 @@ namespace RetailPOS.ServiceImplementation
             return CustomerService.SaveCustomerDetail(customerDetails);
         }
 
+        /// Update Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be updated</param>
+        /// <returns>returns boolean value indicating if the records are updated in database</returns>
+        /// <summary>
+
+        public bool UpdateCustomerDetail(CustomerDTO customerDetail)
+        {
+            return CustomerService.UpdateCustomerDetail(customerDetail);
+        }
+       
+
+
         /// <summary>
         /// Get customer status from database
         /// </summary>

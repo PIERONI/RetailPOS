@@ -2137,6 +2137,9 @@ namespace RetailPOS.RetailPOSService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveCustomerDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveCustomerDetailResponse")]
         bool SaveCustomerDetail(RetailPOS.RetailPOSService.CustomerDTO customerDetails);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/UpdateCustomerDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/UpdateCustomerDetailResponse")]
+        bool UpdateCustomerDetail(RetailPOS.RetailPOSService.CustomerDTO customerDetail);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCustomerStatus", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCustomerStatusResponse")]
         RetailPOS.RetailPOSService.CustomerStatusDTO[] GetCustomerStatus();
         
@@ -2243,6 +2246,10 @@ namespace RetailPOS.RetailPOSService {
         
         public bool SaveCustomerDetail(RetailPOS.RetailPOSService.CustomerDTO customerDetails) {
             return base.Channel.SaveCustomerDetail(customerDetails);
+        }
+        
+        public bool UpdateCustomerDetail(RetailPOS.RetailPOSService.CustomerDTO customerDetail) {
+            return base.Channel.UpdateCustomerDetail(customerDetail);
         }
         
         public RetailPOS.RetailPOSService.CustomerStatusDTO[] GetCustomerStatus() {

@@ -33,5 +33,14 @@ namespace RetailPOS.BusinessLayer.Service.Customer
         /// </summary>
         /// <returns>returns list of all customer types present in database</returns>
         IList<CustomerTypeDTO> GetCustomerTypes();
+
+        /// <summary>
+        /// Update Customer details (Balance) in database based on Payment done
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be Updated</param>
+        /// <returns>returns boolean value indicating if the records are Updated in database</returns>
+        bool UpdateCustomerDetail(CustomerDTO customerDetails);
+
+       
     }
 }

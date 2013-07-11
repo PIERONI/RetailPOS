@@ -92,8 +92,8 @@
                             <ColumnDefinition Width="185*"></ColumnDefinition>
                             <ColumnDefinition Width="328*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,0" Width="142"  Grid.RowSpan="2" />
-                        <TextBlock Text="Duration" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="0,7,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
+                        <TextBlock Text="Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Margin="0,5,0,0" Width="142"  Grid.RowSpan="2" />
+                        <TextBlock Text="Duration" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="0,7,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
                         <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="0,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding LstSearchPromotionalOffer}"                        
                          Text="{Binding Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="False" 
@@ -136,7 +136,7 @@
                                 </Style>
                             </DatePicker.Resources>
                         </DatePicker>
-                        <Button Height="30" Margin="0,0,30,0" Canvas.Left="143" Command="{Binding SearchPromotionalOffer}" TextBlock.FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" Grid.Row="2" Grid.Column="0">
+                        <Button Height="30" Margin="0,0,30,0" Canvas.Left="143" Command="{Binding SearchPromotionalOffer}" TextBlock.FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Width="75" Grid.Row="2" Grid.Column="1">
                             <DockPanel>
                                 <Image Source="../../../Images/save-icon.png" Width="16" />
                                 <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">

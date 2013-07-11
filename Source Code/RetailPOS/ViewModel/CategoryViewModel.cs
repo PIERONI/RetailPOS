@@ -222,7 +222,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        private void OnOpenProductPopUp(object selectedProduct)
+        private void OnOpenProductPopUp()
         {
             IsProductPopupOpen = true;
             Product = SelectedProduct;   

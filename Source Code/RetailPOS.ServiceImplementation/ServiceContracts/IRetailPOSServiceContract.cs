@@ -95,11 +95,21 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         bool SaveCustomerDetail(CustomerDTO customerDetails);
 
+        /// Update Customer details in database
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be updated</param>
+        /// <returns>returns boolean value indicating if the records are updated in database</returns>
+        /// <summary>
+        [OperationContract]
+        bool UpdateCustomerDetail(CustomerDTO customerDetail);
+
+      
+
         /// <summary>
         /// Get customer status from database
         /// </summary>
         /// <returns>returns list of all customer status present in database else empty list</returns>
-        [OperationContract]
+      [OperationContract]
         IList<CustomerStatusDTO> GetCustomerStatus();
 
         /// <summary>

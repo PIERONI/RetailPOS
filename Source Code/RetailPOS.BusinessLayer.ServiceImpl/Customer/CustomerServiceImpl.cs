@@ -61,5 +61,18 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
 
             return lstCustomerType;
         }
+
+        /// <summary>
+        /// Update Customer details (Balance) in database based on Payment done
+        /// </summary>
+        /// <param name="shopSettingDetails">Customer object to be Updated</param>
+        /// <returns>returns boolean value indicating if the records are Updated in database</returns>
+        bool ICustomerService.UpdateCustomerDetail(CustomerDTO customerDetail)
+        {
+            customer customerEntity = new customer();
+
+            ObjectMapper.Map(customerDetail, customerEntity);
+            return CustomerRepository.Update(customerEntity);
+        }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"             
               xmlns:Utility="clr-namespace:RetailPOS.Utility"
-              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+               xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
               DataContext="{Binding Source={StaticResource Locator}, Path=CustomerVM}"
               xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              xmlns:my1="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit">
@@ -17,12 +17,12 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="715">
+        <TabControl Margin="3" Grid.Row="0" Height="350" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="615">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
             <TabItem Header="Customer Personal info">
-                <Grid>
+                <Grid  Width="400" Margin="0,30,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
@@ -58,7 +58,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Customer Address info">
-                <Grid>
+                <Grid  Width="380" Margin="0,30,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
@@ -68,10 +68,9 @@
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="35"></RowDefinition>
+                
+                      
+                    
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition >
@@ -79,25 +78,24 @@
                         <ColumnDefinition>
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Address" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Left" VerticalAlignment="Top" Width="142" Grid.Row="0" />
-                    <TextBlock Text="Building Name:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Row="1" MaxLength="255" Height="25" Text="{Binding BuildingName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Row="2" MaxLength="255" Height="25" Text="{Binding HouseNo}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBlock Text="House Number:" FontSize="14" Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
-                    <TextBlock Text="Country:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-                    <ComboBox Grid.Row="3" ItemsSource="{Binding LstCountry}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding SelectedCountry,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
-                    <TextBlock Text="City/Town/Village:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
-                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstTownCity}" DisplayMemberPath="Town_City1" SelectedValuePath="Id" SelectedItem="{Binding SelectedTownCity,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />                    
-                    <TextBlock Text="City Area/District:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
-                    <ComboBox Grid.Row="5" ItemsSource="{Binding LstLocality}" DisplayMemberPath="Locality1" SelectedValuePath="Id" SelectedItem="{Binding SelectedLocality,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
-                    <TextBlock Text="Street:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
-                    <ComboBox Grid.Row="6" ItemsSource="{Binding LstStreet}" DisplayMemberPath="Street1" SelectedValuePath="Id" SelectedItem="{Binding SelectedStreet,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
-                    <TextBlock Text="Postal Code:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
-                    <ComboBox Grid.Row="7" ItemsSource="{Binding LstPostalCode}" DisplayMemberPath="PostCode1" SelectedValuePath="Id" SelectedItem="{Binding SelectedPostalCode,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="Building Name:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="0" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Row="0" MaxLength="255" Height="25" Text="{Binding BuildingName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Row="1" MaxLength="255" Height="25" Text="{Binding HouseNo}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBlock Text="House Number:" FontSize="14" Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
+                    <TextBlock Text="Country:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
+                    <ComboBox Grid.Row="2" ItemsSource="{Binding LstCountry}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedItem="{Binding SelectedCountry,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="City/Town/Village:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
+                    <ComboBox Grid.Row="3" ItemsSource="{Binding LstTownCity}" DisplayMemberPath="Town_City1" SelectedValuePath="Id" SelectedItem="{Binding SelectedTownCity,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />                    
+                    <TextBlock Text="City Area/District:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
+                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstLocality}" DisplayMemberPath="Locality1" SelectedValuePath="Id" SelectedItem="{Binding SelectedLocality,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="Street:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
+                    <ComboBox Grid.Row="5" ItemsSource="{Binding LstStreet}" DisplayMemberPath="Street1" SelectedValuePath="Id" SelectedItem="{Binding SelectedStreet,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
+                    <TextBlock Text="Postal Code:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
+                    <ComboBox Grid.Row="6" ItemsSource="{Binding LstPostalCode}" DisplayMemberPath="PostCode1" SelectedValuePath="Id" SelectedItem="{Binding SelectedPostalCode,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="148" />
                 </Grid>
             </TabItem>
             <TabItem Header="Open Account">
-                <Grid>
+                <Grid  Width="400" Margin="0,30,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="232*" />
@@ -113,10 +111,10 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Payment Details">
-                <Grid>
+                <Grid  Width="400" Margin="0,30,0,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="186*"></ColumnDefinition>
+                        <ColumnDefinition Width="214*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
@@ -124,13 +122,13 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Payment Period:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="0" />
                     <TextBlock Text="Credit Limit:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="25,13,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBox Text="{Binding PaymentPeriod}" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="15,1,0,0" Width="150" Height="30" />
+                    <TextBox Text="{Binding PaymentPeriod}" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="8,1,55,0" Width="150" Height="30" />
                     <TextBox Text="{Binding CreditLimit}" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Width="150" Grid.Column="1" Grid.Row="1" Height="30" Margin="8,1,55,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="View / Search Customer">
                 <StackPanel>
-                    <Grid>
+                    <Grid  Width="400" Margin="0,30,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height=" 40"></RowDefinition>
@@ -140,7 +138,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="192*"></ColumnDefinition>
                             <ColumnDefinition Width="185*"></ColumnDefinition>
-                            <ColumnDefinition Width="328*"></ColumnDefinition>
+                            <ColumnDefinition Width="28*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Customer Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
                         <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding LstSearchCustomer}" SelectedItem="{Binding SelectedCustomerName,Mode=TwoWay}"                        
@@ -163,7 +161,7 @@
                                 </DataTemplate>
                             </toolkit:AutoCompleteBox.ItemTemplate>
                         </toolkit:AutoCompleteBox>
-                        <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding CancelSearchCustomer}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                        <Button Height="30" Margin="24,22,0,8" Canvas.Left="143" Command="{Binding CancelSearchCustomer}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
                             <DockPanel>
                                 <Image Source="../../../Images/save-icon.png" Width="16" />
                                 <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
@@ -173,7 +171,7 @@
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCustomer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCustomer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="600" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*"/>
                                 <DataGridTextColumn Binding="{Binding Path=First_Name}" Header="First Name" Width="*" />
@@ -189,22 +187,32 @@
             </TabItem>
         </TabControl>
         <Canvas Grid.Row="2">
-            <Button Height="30" Margin="1" Canvas.Left="143" Command="{Binding SaveCustomer}" TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
-                <DockPanel>
-                    <Image Source="../../../Images/save-icon.png" Width="16" />
-                    <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
+            <Grid Width="600">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Height="30" Canvas.Left="143" Command="{Binding SaveCustomer}" TextBlock.FontSize="14"   HorizontalAlignment="Right" Width="75"  Margin="0,10,13,10">
+                    <DockPanel>
+                        <Image Source="../../../Images/save-icon.png" Width="16" />
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
                       <Bold>Save</Bold>
-                    </TextBlock>
-                </DockPanel>
-            </Button>
-            <Button Height="30" Canvas.Right="192" Margin="2" Command="{Binding CancelCustomerSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" >
-                <DockPanel>
-                    <Image Source="../../../Images/cancel-icon.png" Width="12" Height="29" />
-                    <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">
+                        </TextBlock>
+                    </DockPanel>
+                </Button>
+                <Button Height="30" Command="{Binding CancelCustomerSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" Grid.Row="0" Grid.Column="1" >
+                    <DockPanel>
+                        <Image Source="../../../Images/cancel-icon.png" Width="12" Height="29" />
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">
                       <Bold>Cancel</Bold>
-                    </TextBlock>
-                </DockPanel>
-            </Button>
+                        </TextBlock>
+                    </DockPanel>
+                </Button>
+            </Grid>
         </Canvas>
     </Grid>
 </UserControl>

@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Utility="clr-namespace:RetailPOS.Utility"
-             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              DataContext="{Binding Source={StaticResource Locator}, Path=WasteManagementVM}">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid Height="350">
-        <TabControl Margin="3" Grid.Row="0" Height="300" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="500">
+        <TabControl Margin="3" Grid.Row="0" Height="340" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="500">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
             <TabItem Header="Add Waste Items">
-                <Grid>
+                <Grid Width="400" Margin="0,30,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
@@ -30,7 +30,7 @@
                         <ColumnDefinition Width="192*"></ColumnDefinition>
                         <ColumnDefinition Width="185*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Content="Non Weighted Products" Height="16" HorizontalAlignment="Left" Command="{Binding SetWeightToInVisibile}" IsChecked="True" Margin="89,13,0,0" VerticalAlignment="Top" Foreground="#FF001904" />
+                    <RadioButton Content="Non Weighted Products" Height="16" HorizontalAlignment="Left" Command="{Binding SetWeightToInVisibile}" IsChecked="True" Margin="50,13,0,0" VerticalAlignment="Top" Foreground="#FF001904" />
                     <RadioButton Content="Weighted Products" Command="{Binding SetWeightToVisibile}" Grid.Column="1" Height="16" HorizontalAlignment="Left" Margin="19,13,0,0" Name="radioButton2" VerticalAlignment="Top" Foreground="#FF001904"/>
                     <TextBlock Text="Product Name:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="30,11,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
                     <TextBlock Text="Bar Code:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="30,11,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" Grid.RowSpan="2" />

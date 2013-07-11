@@ -16,7 +16,8 @@ namespace RetailPOS.ViewModel
         /// <summary>
         /// To open the product popup
         /// </summary>
-        public RelayCommand ShowProductCommand { get; private set; }
+        public RelayCommand<object> ShowProductCommand { get; private set; }
+        
         public RelayCommand OpenFirstPopupCommand { get; private set; }
         public RelayCommand OpenLooseCatPopupCommand { get; private set; }
         public RelayCommand<ProductCategoryDTO> SelectProductCommand { get; private set; }
@@ -94,24 +95,25 @@ namespace RetailPOS.ViewModel
         /// Initializes a new instance of the <see cref="CategoryViewModel"/> class.
         /// </summary>
         public CategoryViewModel()
-        {           
+        {
             lstCategories = new ObservableCollection<ProductCategoryDTO>();
             lstLooseCategories = new ObservableCollection<ProductCategoryDTO>();
             LstProduct = new ObservableCollection<ProductDTO>();
-              LstSearchProduct = new List<ProductDTO>();
-            
+            LstSearchProduct = new List<ProductDTO>();
+
+            Mediator.Register("ClosePopUpWindow", OnCloseProductPopUpWindow);
+
             AddCategories();
             AddLooseCategories();
             FillCommonProducts();
             GetSearchAttributes();
-            
 
+            ShowProductCommand = new RelayCommand<object>(OnOpenProductPopUp);
 
             SelectProductCommand = new RelayCommand<ProductCategoryDTO>(FillProducts);
             OpenFirstPopupCommand = new RelayCommand(OpenFirstPopupClick);
             OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
             RefershListBoxCommand = new RelayCommand(RefereshListBox);
-            ShowProductCommand = new RelayCommand(OnOpenProductPopUp);
         }
 
         public bool IsProductPopupOpen
@@ -127,6 +129,11 @@ namespace RetailPOS.ViewModel
         #endregion
 
         #region Private Methods
+        
+        private void OnCloseProductPopUpWindow(object args)
+        {
+            IsProductPopupOpen = false;
+        }
 
         /// <summary>
         /// Adds the loose categories.
@@ -211,22 +218,10 @@ namespace RetailPOS.ViewModel
 
         #region ShowProduct.xmal
 
-        private ProductDTO _product;
-
-        public ProductDTO Product
+        private void OnOpenProductPopUp(object selectedProduct)
         {
-            get { return _product; }
-            set
-            {
-                _product = value;
-            }
-        }
-
-        private void OnOpenProductPopUp()
-        {
+            Mediator.NotifyColleagues("ShowProductDetails", (ProductDTO)selectedProduct);
             IsProductPopupOpen = true;
-            Product = SelectedProduct;   
-            //SelectedProduct = (ProductDTO)selectedProduct;
         }
 
         #endregion

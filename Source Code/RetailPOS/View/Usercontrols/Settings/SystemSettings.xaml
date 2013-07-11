@@ -35,17 +35,17 @@
             </Button>
             <Button Height="53" Width="98" Margin="3" Command="{Binding OpenCategorySettingCmd}" HorizontalAlignment="Right">
                 <DockPanel>
-                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Category</Bold></TextBlock>
+                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Category</Bold></TextBlock>
                 </DockPanel>
             </Button>
             <Button Height="53" Width="98" Margin="3" Command="{Binding OpenProductWindowCmd}"  HorizontalAlignment="Right">
                 <DockPanel>
-                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Product</Bold></TextBlock>
+                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Product</Bold></TextBlock>
                 </DockPanel>
             </Button>
             <Button Height="53" Width="98" Margin="3" Command="{Binding OpenCustomerCmd}"  HorizontalAlignment="Right">
                 <DockPanel>
-                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Add Customer</Bold></TextBlock>
+                    <TextBlock Margin="5 0 0 0" TextWrapping="Wrap" VerticalAlignment="center"><Bold>Customer</Bold></TextBlock>
                 </DockPanel>
             </Button>
             <Button Height="53" Width="98" Margin="3"  HorizontalAlignment="Right" Command="{Binding OpenWasteManegment}">

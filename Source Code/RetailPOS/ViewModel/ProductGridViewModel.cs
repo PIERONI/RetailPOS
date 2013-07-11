@@ -28,11 +28,9 @@ namespace RetailPOS.ViewModel
         public RelayCommand ClearProduct { get; private set; }
         public RelayCommand DeleteSelectedItem { get; private set; }
 
-        private ICollectionView _productCollection;
         private ProductDTO _selectedProduct;
         private string _total;
         
-        //public static ClsProductUtility Product { get; set; }
         bool IsRefersh { get; set; }
 
         #endregion
@@ -122,10 +120,6 @@ namespace RetailPOS.ViewModel
         private void ClearGridProduct()
         {
             LstProductDetails.Clear(); 
-        }
-
-        void _productCollection_CurrentChanged(object sender, System.EventArgs e)
-        {
         }
 
         private void LogoutApplication()

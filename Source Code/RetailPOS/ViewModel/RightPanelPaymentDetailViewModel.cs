@@ -40,18 +40,25 @@ namespace RetailPOS.ViewModel
         private decimal _PaidAmount;
         private int _Id;
         private decimal _creditLimit;
-       
+        private decimal _amountToPay;
         
         #endregion
 
         #region Public Properties
 
+        public decimal AmountToPay
+        {
+            get { return _amountToPay; }
+            set
+            {
+                _amountToPay = value;
+                RaisePropertyChanged("AmountToPay");
+            }
+        }
+
         public decimal CustomerBalance
         {
-            get
-            {
-                return _customerBalance;
-            }
+            get { return _customerBalance; }
             set
             {
                 _customerBalance = value;
@@ -61,10 +68,7 @@ namespace RetailPOS.ViewModel
 
         public CustomerDTO SelectedCustomer
         {
-            get
-            {
-                return _selectedCustomer;
-            }
+            get { return _selectedCustomer; }
             set
             {
                 _selectedCustomer = value;
@@ -74,10 +78,7 @@ namespace RetailPOS.ViewModel
 
         public CustomerDTO Customer
         {
-            get
-            {
-                return _customer;
-            }
+            get { return _customer; }
             set
             {
                 _customer = value;
@@ -86,6 +87,7 @@ namespace RetailPOS.ViewModel
                 {
                     SelectedCustomer = null;
                 }
+
                 if (SelectedCustomer == null && Customer != null)
                 {
                     SelectedCustomer = Customer;
@@ -115,10 +117,7 @@ namespace RetailPOS.ViewModel
 
         public Visibility isVisibleCustomerInfo
         {
-            get
-            {
-                return _isVisibleCustomerInfo;
-            }
+            get { return _isVisibleCustomerInfo; }
             set
             {
                 _isVisibleCustomerInfo = value;
@@ -128,10 +127,7 @@ namespace RetailPOS.ViewModel
 
         public string CustomerName
         {
-            get
-            {
-                return _customerName;
-            }
+            get { return _customerName; }
             set
             {
                 _customerName = value;
@@ -238,11 +234,11 @@ namespace RetailPOS.ViewModel
         {
             IsPaymentEntryPopupOpen = true;           
 
-            CustomerName = null;
+            CustomerName = string.Empty;
             CustomerBalance = 0;
-            CustomerName1 = null;
-            Mobile = null;
-            Email = null;         
+            CustomerName1 = string.Empty;
+            Mobile = string.Empty;
+            Email = string.Empty;
         }
 
         private void OpenCardPopupclick()

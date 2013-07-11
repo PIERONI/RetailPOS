@@ -18,7 +18,7 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Product
         public string Image_Path { get; set; }
         public Nullable<decimal> Size { get; set; }
         public Nullable<decimal> Weight { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public decimal? Amount { get; set; }
         public bool IsSelected { get; set; }
     }

@@ -2,6 +2,10 @@
 using RetailPOS.Utility;
 using RetailPOS.RetailPOSService;
 using GalaSoft.MvvmLight.Command;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using RetailPOS.Core;
+using System.Linq;
 
 namespace RetailPOS.ViewModel.MainWindow
 {
@@ -9,12 +13,14 @@ namespace RetailPOS.ViewModel.MainWindow
     {
         #region Public and Private Data Member
 
+        public IList<ProductDTO> LstProduct { get; private set; }
+
         private int _id;
-        private string _productName;
-        private string _productCode;
-        private decimal _productPrice;
-        private int _productQuantity;
-        private string _productDescription;
+        private string _name;
+        private string _code;
+        private decimal _price;
+        private decimal _quantity;
+        private string _description;
 
         private ProductDTO _selectedProduct;
 
@@ -32,59 +38,59 @@ namespace RetailPOS.ViewModel.MainWindow
             }
         }
 
-        public string ProductName
+        public string Name
         {
-            get { return _productName; }
+            get { return _name; }
             set
             {
-                _productName = value;
-                RaisePropertyChanged("ProductName");
+                _name = value;
+                RaisePropertyChanged("Name");
             }
         }
 
-        public string ProductCode
+        public string Code
         {
-            get { return _productCode; }
+            get { return _code; }
             set
             {
-                _productCode = value;
-                RaisePropertyChanged("ProductCode");
+                _code = value;
+                RaisePropertyChanged("Code");
             }
         }
 
-        public decimal ProductPrice
+        public decimal Price
         {
-            get { return _productPrice; }
+            get { return _price; }
             set
             {
-                _productPrice = value;
-                RaisePropertyChanged("ProductPrice");
+                _price = value;
+                RaisePropertyChanged("Price");
             }
         }
 
-        public int ProductQuantity
+        public decimal Quantity
         {
-            get { return _productQuantity; }
+            get { return _quantity; }
             set
             {
-                _productQuantity = value;
-                RaisePropertyChanged("ProductQuantity");
+                _quantity = value;
+                RaisePropertyChanged("Quantity");
 
-                if (ProductQuantity > 0)
+                if (Quantity > 0)
                 {
-                    SelectedProduct.Quantity = ProductQuantity;
+                    SelectedProduct.Quantity = Quantity;
                     Mediator.NotifyColleagues("SetSelectedProduct", SelectedProduct);
                 }
             }
         }
 
-        public string ProductDescription
+        public string Description
         {
-            get { return _productDescription; }
+            get { return _description; }
             set
             {
-                _productDescription = value;
-                RaisePropertyChanged("ProductDescription");
+                _description = value;
+                RaisePropertyChanged("Description");
             }
         }
 
@@ -95,23 +101,42 @@ namespace RetailPOS.ViewModel.MainWindow
             {
                 _selectedProduct = value;
                 RaisePropertyChanged("SelectedProduct");
-
-                BindProduct();
             }
+        }
+
+        #endregion
+
+        #region Constructor
+
+        public ShowProductViewModel()
+        {
+            Mediator.Register("ShowProductDetails", ShowProductDetails);
         }
 
         #endregion
 
         #region Private Methods
 
-        private void BindProduct()
+        /// <summary>
+        /// Get all Commonly Used Products
+        /// </summary>
+        /// <returns>returns list of all Commonly Used  products present in database</returns>
+        private void GetCommonProducts()
         {
+            LstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetCommonProduct()
+                                                              select item);
+        }
+
+        private void ShowProductDetails(object selectedProduct)
+        {
+            SelectedProduct = (ProductDTO)selectedProduct;
+
             Id = SelectedProduct.Id;
-            ProductName = SelectedProduct.Name;
-            ProductCode = SelectedProduct.BarCode;
-            ProductPrice = SelectedProduct.Retail_Price.HasValue ? SelectedProduct.Retail_Price.Value : 0;
-            SelectedProduct.Quantity = ProductQuantity = 0;
-            ProductDescription = SelectedProduct.Description;
+            Name = SelectedProduct.Name;
+            Code = SelectedProduct.BarCode;
+            Price = SelectedProduct.Retail_Price.HasValue ? SelectedProduct.Retail_Price.Value : 0;
+            SelectedProduct.Quantity = Quantity = 0;
+            Description = SelectedProduct.Description;
         }
 
         #endregion

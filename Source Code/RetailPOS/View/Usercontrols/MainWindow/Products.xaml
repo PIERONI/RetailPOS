@@ -13,7 +13,7 @@
     <Grid Width="490" Height="360">
         <ListBox Name="LstProduct" ItemsSource="{Binding LstProduct}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemsPanel>
-            <ItemsPanelTemplate>
+                <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" Margin="0" Height="Auto" Width="490" >
                     </WrapPanel>
                 </ItemsPanelTemplate>
@@ -22,7 +22,7 @@
                 <DataTemplate>
                     <Button Margin="1" Content="{Binding Name}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right" Width="79" 
                             Command="{Binding DataContext.ShowProductCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" 
-                            CommandParameter="{Binding SelectedProduct}" />
+                            CommandParameter="{Binding}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

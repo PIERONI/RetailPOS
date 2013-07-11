@@ -1,5 +1,4 @@
-﻿<UserControl 
-     xmlns:my1="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+﻿<UserControl xmlns:my1="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
     x:Class="RetailPOS.View.Usercontrols.Settings.Product"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,20 +12,20 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
-    <Grid Height="550">
+    <Grid Height="540">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="575" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="655">
+        <TabControl Margin="3" Grid.Row="0" Height="510" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="655">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
             <TabItem Header="Product Info">
-                <Grid  Width="500" Margin="0,20,0,0">
+                <Grid Margin="0,20,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="35"></RowDefinition>
-                        <RowDefinition Height="45"></RowDefinition>
+                        <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
@@ -40,45 +39,43 @@
                         <RowDefinition Height="35"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="140*"></ColumnDefinition>
                         <ColumnDefinition Width="200*"></ColumnDefinition>
-                        <ColumnDefinition Width="176*"></ColumnDefinition>
-                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Select Category:" Grid.Row="0" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Bar Code:" Grid.Row="1" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Name:" Grid.Row="2" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Description:" Grid.Row="3" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Status:" Grid.Row="4" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Retail Price:" Grid.Row="5" Grid.Column="0"  Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Whole Sale Price:" Grid.Row="6" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Purchase Price:" Grid.Row="7" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Tax Rate:" Grid.Row="8" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Warranty:" Grid.Row="9" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Is Product sold loose:" Grid.Row="10" Grid.Column="0" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Size:" Grid.Row="11" Grid.Column="0" Visibility="{Binding SetVisibilityForLooseItems}"  Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <TextBlock Text="Weight:" Grid.Row="12" Grid.Column="0" Visibility="{Binding SetVisibilityForLooseItems}" Height="20" Foreground="Black" HorizontalAlignment="Left" Margin="35,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
-                    <ComboBox Grid.Row="0" ItemsSource="{Binding LstCategories}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedCategory,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Top" Width="148" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True"  Grid.Row="1"  MaxLength="15" Height="25" Text="{Binding BarCode}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-
-                    <Button Height="35" Command="{Binding}" TextBlock.FontSize="14" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" >
+                    <TextBlock Text="Select Category:" Grid.Row="0" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Bar Code:" Grid.Row="1" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Name:" Grid.Row="2" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Description:" Grid.Row="3" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Status:" Grid.Row="4" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Retail Price:" Grid.Row="5" Grid.Column="0"  Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Whole Sale Price:" Grid.Row="6" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Purchase Price:" Grid.Row="7" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Tax Rate:" Grid.Row="8" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Warranty:" Grid.Row="9" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Is Product sold loose:" Grid.Row="10" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Size:" Grid.Row="11" Grid.Column="0" Visibility="{Binding SetVisibilityForLooseItems}"  Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <TextBlock Text="Weight:" Grid.Row="12" Grid.Column="0" Visibility="{Binding SetVisibilityForLooseItems}" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                    <ComboBox Grid.Row="0" ItemsSource="{Binding LstCategories}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedCategory,Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,0,6,0" VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True"  Grid.Row="1"  MaxLength="15" Height="30" Text="{Binding BarCode}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
+                    <Button Height="35" Command="{Binding}" TextBlock.FontSize="14" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" >
                         <DockPanel>
-                           
-                            <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="69">
+                            <TextBlock VerticalAlignment="center" Margin="2 0 0 0" Width="130">
                       <Bold>Generate Bar Code</Bold>
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True"  Grid.Row="2"  MaxLength="15" Height="25" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True"  Grid.Row="3"  MaxLength="15" Height="25" Text="{Binding Description}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstStatus}" DisplayMemberPath="Status" SelectedValuePath="Id" SelectedItem="{Binding SelectedStatus,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Top" Width="148" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="5"  MaxLength="15" Height="25" Text="{Binding RetailPrice}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="6"  MaxLength="15" Height="25" Text="{Binding WholeSalePrice}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="7"  MaxLength="15" Height="25" Text="{Binding PurchasePrice}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="8"  MaxLength="15" Height="25" Text="{Binding TaxRate}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpacOnly="True"  Grid.Row="2"  MaxLength="15" Height="30" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True"  Grid.Row="3"  MaxLength="15" Height="30" Text="{Binding Description}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
+                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstStatus}" DisplayMemberPath="Status" SelectedValuePath="Id" SelectedItem="{Binding SelectedStatus,Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,0,6,0" VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="5"  MaxLength="15" Height="30" Text="{Binding RetailPrice}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="6"  MaxLength="15" Height="30" Text="{Binding WholeSalePrice}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="7"  MaxLength="15" Height="30" Text="{Binding PurchasePrice}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Row="8"  MaxLength="15" Height="30" Text="{Binding TaxRate}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
                     <CheckBox IsChecked="{Binding HasWarranty}" Grid.Row="9" Grid.Column="1" Margin="15,5,164,5" />
                     <CheckBox IsChecked="{Binding IsProductSoldLoose}" Grid.Row="10" Grid.Column="1" Margin="15,5,164,5" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Visibility="{Binding SetVisibilityForLooseItems}" Grid.Row="11"  MaxLength="15" Height="25" Text="{Binding Size}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Visibility="{Binding SetVisibilityForLooseItems}" Grid.Row="12"  MaxLength="15" Height="25" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="147" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Visibility="{Binding SetVisibilityForLooseItems}" Grid.Row="11"  MaxLength="15" Height="30" Text="{Binding Size}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Visibility="{Binding SetVisibilityForLooseItems}" Grid.Row="12"  MaxLength="15" Height="30" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" />
                 </Grid>
             </TabItem>
             <TabItem Header="Product Image">
@@ -88,29 +85,28 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" Grid.Row="0">
-                        <TextBlock Text="Product Pic :" TextAlignment="Right" FontWeight="Bold" FontSize="15" Width="150" Foreground="Black" Grid.Row="1" Margin="10,10,5,0"></TextBlock>
-                        <TextBox Height="25" Margin="0,1,0,0" Name="FileNameTextBox" Text="{Binding FilePath}" Width="150" />
+                        <TextBlock Text="Product Pic :" TextAlignment="Right" FontWeight="Bold" FontSize="15" Width="120" Foreground="Black" Grid.Row="1" Margin="0,5,5,0"></TextBlock>
+                        <TextBox Height="30" Margin="0,1,0,0" Name="FileNameTextBox" Text="{Binding FilePath}" Width="300" />
                         <Button Content="Browse" Height="32" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Margin="5,4,5,0"  Name="button1" VerticalAlignment="Top" Width="57"  />
                     </StackPanel>
-                    <Image Grid.Row="1" Height="242" HorizontalAlignment="Left" Margin="26,0,0,20" Name="imgUploaded" Stretch="Fill" VerticalAlignment="Bottom" Width="341" />
+                    <Image Grid.Row="1" Height="242" HorizontalAlignment="Center" Margin="26,0,0,20" Name="imgUploaded" Stretch="Fill" VerticalAlignment="Center" Width="341" />
                 </Grid>
             </TabItem>
-            <TabItem Header="View/Search Products">
+            <TabItem Header="View / Search Products">
                 <StackPanel>
-                    <Grid  Width="500" Margin="0,30,0,0">
+                    <Grid Margin="0,30,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height=" 40"></RowDefinition>
-                            <RowDefinition Height=" 60"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
                             <RowDefinition Height="180*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150*"></ColumnDefinition>
-                            <ColumnDefinition Width="185*"></ColumnDefinition>
-                            <ColumnDefinition Width="28*"></ColumnDefinition>
+                            <ColumnDefinition Width="80*"></ColumnDefinition>
+                            <ColumnDefinition Width="200*"></ColumnDefinition>
+                            <ColumnDefinition Width="100*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Product Name" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
-                        <toolkit:AutoCompleteBox Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" Name="autoCompleteTxtProduct"  ItemsSource="{Binding SearchProductList}" SelectedItem="{Binding SelectedProductName,Mode=TwoWay}"                       
+                        <TextBlock Text="Product Name" Height="30" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Left" VerticalAlignment="Top" Width="122" Margin="20,10,0,0" Grid.RowSpan="2" />
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="300" Name="autoCompleteTxtProduct"  ItemsSource="{Binding SearchProductList}" SelectedItem="{Binding SelectedProductName,Mode=TwoWay}"                       
                          Text="{Binding Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -126,9 +122,9 @@
                                 </DataTemplate>
                             </toolkit:AutoCompleteBox.ItemTemplate>
                         </toolkit:AutoCompleteBox>
-                        <Button Height="30" Margin="27,16,0,14" Canvas.Left="143" Command="{Binding CancelProduct}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                        <Button Height="30" Margin="20,0,0,0" Canvas.Left="143" Command="{Binding CancelProduct}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="0" Grid.Column="2">
                             <DockPanel>
-                                <Image Source="../../../Images/save-icon.png" Width="16" />
+                                <Image Source="../../../Images/cancel-icon.png" Width="16" />
                                 <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
                       <Bold>Cancel</Bold>
                                 </TextBlock>
@@ -136,7 +132,7 @@
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding SearchProductList}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="650" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding SearchProductList}" CanUserSortColumns="True" CanUserResizeColumns="True" Height="385" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="Id" Visibility="Hidden" Width="*"/>
                                 <DataGridTextColumn Binding="{Binding Path=BarCode}" Header="Bar Code" Width="*" />
@@ -159,10 +155,9 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
                 <Button Height="30" Command="{Binding SaveProduct}" TextBlock.FontSize="14"   HorizontalAlignment="Right" Width="75"  Margin="0,10,13,10" >
                     <DockPanel>
-                        <Image Source="../../Images/save-icon.png" Width="16" />
+                        <Image Source="../../../Images/save-icon.png" Width="16" />
                         <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
                       <Bold>Save</Bold>
                         </TextBlock>
@@ -170,7 +165,7 @@
                 </Button>
                 <Button Height="30" Canvas.Right="315" Margin="2" Command="{Binding CancelProductSetting}"  TextBlock.FontSize="14"   HorizontalAlignment="Left" Width="75" Grid.Row="0" Grid.Column="1" >
                     <DockPanel>
-                        <Image Source="../../Images/cancel-icon.png" Width="12" Height="29" />
+                        <Image Source="../../../Images/cancel-icon.png" Width="12" Height="29" />
                         <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">
                       <Bold>Cancel</Bold>
                         </TextBlock>

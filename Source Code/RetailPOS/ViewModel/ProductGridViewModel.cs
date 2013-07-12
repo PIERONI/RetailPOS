@@ -31,6 +31,10 @@ namespace RetailPOS.ViewModel
         public RelayCommand DeleteSelectedItem { get; private set; }
         public RelayCommand OpenEditProductEntryPopUp { get; private set; }
         public RelayCommand EditProductCommand { get; private set; }
+        /// <summary>
+        /// For SetAsideOrder Button
+        /// </summary>
+        public RelayCommand OpenSetAsideCustomerPopUp { get; private set; }
 
         private DiscountType _selectedDiscount;
         private ProductDTO _selectedProduct;
@@ -40,6 +44,10 @@ namespace RetailPOS.ViewModel
         private decimal _productDiscount;
         private bool _isEditProductEntryPopupOpen;
         private bool _isEditErrorMessage;
+        /// <summary>
+        /// To open SetAsideOrder Customer Popup
+        /// </summary>
+        private bool _isSetAsidePopUpOpen;
         
         bool IsRefersh { get; set; }
 
@@ -153,6 +161,16 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("ProductDiscount");
             }
         }
+
+        public bool IsSetAsdePopUpOpen
+        {
+            get { return _isSetAsidePopUpOpen; }
+            set
+            {
+                _isSetAsidePopUpOpen = value;
+                RaisePropertyChanged("IsSetAsdePopUpOpen");
+            }
+        }
         #endregion
 
         #region Private Methods
@@ -176,6 +194,7 @@ namespace RetailPOS.ViewModel
             DeleteSelectedItem = new RelayCommand(DeleteItem);
             OpenEditProductEntryPopUp = new RelayCommand(OpenEditProductPopUp);
             EditProductCommand = new RelayCommand(EditDataGridCommand);
+            OpenSetAsideCustomerPopUp = new RelayCommand(OpenSetAsidePopUp);
         }
 
         private void EditDataGridCommand()
@@ -260,6 +279,17 @@ namespace RetailPOS.ViewModel
             var loginWindow = new LoginWindow();
             loginWindow.Show();
             Dashboard._Dashboard.Close();
+        }
+
+        /// <summary>
+        /// Open PopUp for Searching Customer
+        /// </summary>
+        private void OpenSetAsidePopUp()
+        {
+            if (LstProductDetails != null)
+            {
+                IsSetAsdePopUpOpen = true;
+            }
         }
 
         /// <summary>

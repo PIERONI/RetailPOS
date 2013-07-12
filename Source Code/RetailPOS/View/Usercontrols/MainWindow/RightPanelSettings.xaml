@@ -16,7 +16,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0">
-            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="98" >
+            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="98" Command="{Binding OpenSetAsideCustomerPopUp}" >
                 <DockPanel>
                     <Image Source="../../../Images/color-set-icon.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
@@ -24,6 +24,61 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
+            <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsSetAsdePopUpOpen, Mode=TwoWay}" Title="Select Customer" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+                <my:ModalDialogPopup.HostedContent>
+                    <ContentControl>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="260"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Customer: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="0"  Width="79"></Label>
+                            <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
+                           IsTextCompletionEnabled="False"
+                         ValueMemberPath="First_Name"
+                          FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="0"    DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}">
+                                <toolkit:AutoCompleteBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="#DFF0D8">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="350"></TextBlock>
+                                            <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
+                                                <TextBlock Text="Type: "  Foreground="#47896B"  Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
+                                                <TextBlock Text="First Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding First_Name}" Foreground="#47896B"></TextBlock>
+                                                <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding Last_Name}" Foreground="#47896B"></TextBlock>
+                                                <TextBlock Text="Email: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="" Foreground="#47896B"></TextBlock>
+                                                <TextBlock Text="Credit Limit: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Text="{Binding Credit_Limit}" Foreground="#47896B"></TextBlock>
+                                            </WrapPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </toolkit:AutoCompleteBox.ItemTemplate>
+                            </toolkit:AutoCompleteBox>
+                            <StackPanel Grid.ColumnSpan="2" Grid.Row="1" Margin="12,12,0,0">
+                                <Button  Content="Update" Width="170" Height="40" Command="{Binding EditProductCommand}">
+                                    <!--<Button.CommandBindings>
+                                        <CommandBinding Command="Save"></CommandBinding>
+                                    </Button.CommandBindings>-->
+                                </Button>
+                            </StackPanel>
+
+                        </Grid>
+                    </ContentControl>
+                </my:ModalDialogPopup.HostedContent>
+            </my:ModalDialogPopup>
             <Button Height="53" Margin="1"  HorizontalAlignment="Right" Width="95" >
                 <DockPanel>
                     <Image Source="../../../Images/bulk-icon.png" Width="35" />

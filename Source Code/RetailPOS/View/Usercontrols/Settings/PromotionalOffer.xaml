@@ -149,9 +149,9 @@
                                 <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*" />
                                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name" Width="*" />
                                 <DataGridTextColumn Binding="{Binding Path=DateDuration}" Header="Duration" Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=PurchaseQuantityWithUnit}" Header="Purchase Quantity" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=OfferQuantityWithUnit}" Header="Offer Quantity"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Offer_Percentage}" Header="Offer Percentage"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=PurchaseQuantityWithUnit}" Header="Purchase Quantity" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=OfferQuantityWithUnit}" Header="Offer Quantity"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Offer_Percentage}" Header="Offer Percentage"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

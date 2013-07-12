@@ -164,15 +164,15 @@
                         </Button>
                     </Grid>
                     <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCustomer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="275" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="600" >
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True" CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstSearchCustomer}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="275" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="600" >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding}" Header="" Visibility="Hidden" Width="*" />
                                 <DataGridTextColumn Binding="{Binding Path=First_Name}" Header="First Name" Width="*" />
-                                <DataGridTextColumn Binding="{Binding  Path=Last_Name}" Header="Last Name" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding  Path=Last_Name}" Header="Last Name" Width="*" />
                                 <DataGridTextColumn Binding="{Binding Path=Mobile}" Header="Mobile" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=Email}" Header="Email"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=balance}" Header="Balance"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Credit_Limit}" Header="Credit Limit"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Email}" Header="Email"  Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=balance}" Header="Balance"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Credit_Limit}" Header="Credit Limit" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

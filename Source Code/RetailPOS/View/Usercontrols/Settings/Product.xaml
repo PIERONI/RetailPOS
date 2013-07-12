@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:Utility="clr-namespace:RetailPOS.Utility"
-              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              DataContext="{Binding Source={StaticResource Locator}, Path=ProductVM}" xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls">
     <UserControl.Resources>
@@ -136,10 +136,10 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="Id" Visibility="Hidden" Width="*"/>
                                 <DataGridTextColumn Binding="{Binding Path=BarCode}" Header="Bar Code" Width="*" />
-                                <DataGridTextColumn Binding="{Binding  Path=Name}" Header="Product Name" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding  Path=Name}" Header="Product Name" Width="*" />
                                 <DataGridTextColumn Binding="{Binding Path=Description}" Header="Description" Width="*" />
-                                <DataGridTextColumn Binding="{Binding Path=Retail_Price}" Header="Retail Price"  Width="*"/>
-                                <DataGridTextColumn Binding="{Binding Path=Wholesale_Price}" Header="Wholesale Price"  Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Retail_Price}" Header="Retail Price"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Wholesale_Price}" Header="Wholesale Price"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

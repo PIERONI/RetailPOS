@@ -176,6 +176,7 @@
     <Compile Include="ViewModel\PromotionalOfferViewModel.cs" />
     <Compile Include="ViewModel\RightPanelPaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\Settings\PurchaseHistoryViewModel.cs" />
     <Compile Include="ViewModel\SettingViewModel.cs" />
     <Compile Include="ViewModel\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
@@ -438,9 +439,6 @@
     <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Product.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Settings.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -481,6 +479,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PromotionalOfferDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PurchaseHistoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.StaffDTO.datasource">
@@ -608,9 +609,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

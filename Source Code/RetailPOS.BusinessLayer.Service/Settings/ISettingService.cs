@@ -1,12 +1,11 @@
 ﻿#region Using directives
 
 using System.Collections.Generic;
-using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.Service.Setting
+namespace RetailPOS.BusinessLayer.Service.Settings
 {
     public interface ISettingService
     {
@@ -36,5 +35,11 @@ namespace RetailPOS.BusinessLayer.Service.Setting
         /// <param name="promitonalOfferDetails">Promotional offer object to be saved</param>
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         bool SavePromotionalOffer(PromotionalOfferDTO promitonalOfferDetails);
+
+        /// <summary>
+        /// Retrieves available Purchase History details from database
+        /// </summary>
+        /// <returns>returns list of Purchase History else empty list</returns>
+        IList<PurchaseHistoryDTO> GetPurchaseHistoryDetails();
     }
 }

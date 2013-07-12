@@ -56,10 +56,11 @@
     <Compile Include="Masters\PostalCodeServiceImpl.cs" />
     <Compile Include="Masters\StreetServiceImpl.cs" />
     <Compile Include="Masters\TownCityServiceImpl.cs" />
-    <Compile Include="Setting\PromotionalOfferServiceImpl.cs" />
-    <Compile Include="Setting\SettingBaseService.cs" />
-    <Compile Include="Setting\ShopSettingServiceImpl.cs" />
-    <Compile Include="Setting\WasteManagementServiceImpl.cs" />
+    <Compile Include="Settings\PromotionalOfferServiceImpl.cs" />
+    <Compile Include="Settings\PurchaseHistoryServiceImpl.cs" />
+    <Compile Include="Settings\SettingBaseService.cs" />
+    <Compile Include="Settings\ShopSettingServiceImpl.cs" />
+    <Compile Include="Settings\WasteManagementServiceImpl.cs" />
     <Compile Include="User\UserBaseService.cs" />
     <Compile Include="User\StaffServiceImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

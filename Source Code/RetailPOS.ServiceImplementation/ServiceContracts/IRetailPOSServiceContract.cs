@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using RetailPOS.CommonLayer.DataTransferObjects.Category;
 using RetailPOS.CommonLayer.DataTransferObjects.Customer;
-using RetailPOS.CommonLayer.DataTransferObjects.Product;
-using RetailPOS.CommonLayer.DataTransferObjects.User;
-using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.Master;
-using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
+using RetailPOS.CommonLayer.DataTransferObjects.Product;
+using RetailPOS.CommonLayer.DataTransferObjects.Settings;
+using RetailPOS.CommonLayer.DataTransferObjects.User;
 
 #endregion
 
@@ -103,13 +102,11 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         bool UpdateCustomerDetail(CustomerDTO customerDetail);
 
-      
-
         /// <summary>
         /// Get customer status from database
         /// </summary>
         /// <returns>returns list of all customer status present in database else empty list</returns>
-      [OperationContract]
+        [OperationContract]
         IList<CustomerStatusDTO> GetCustomerStatus();
 
         /// <summary>
@@ -153,6 +150,13 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         [OperationContract]
         bool SavePromotionalOffer(PromotionalOfferDTO promotionalOfferDetails);
+
+        /// <summary>
+        /// Retrieves available Purchase History details from database
+        /// </summary>
+        /// <returns>returns list of Purchase History else empty list</returns>
+        [OperationContract]
+        IList<PurchaseHistoryDTO> GetPurchaseHistoryDetails();
 
         #endregion
 
@@ -201,6 +205,5 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         IList<MeasureUnitDTO> GetMeasureUnitDetails();
 
         #endregion
-
     }
 }

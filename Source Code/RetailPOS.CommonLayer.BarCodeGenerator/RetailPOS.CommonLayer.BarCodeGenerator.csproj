@@ -5,13 +5,21 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9FC1BCFC-2703-4287-AD46-CA4E2556B052}</ProjectGuid>
+    <ProjectGuid>{F2111022-A259-425E-89AB-A5C285136B09}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RetailPOS.BusinessLayer.Service</RootNamespace>
-    <AssemblyName>RetailPOS.BusinessLayer.Service</AssemblyName>
+    <RootNamespace>RetailPOS.CommonLayer.BarCodeGenerator</RootNamespace>
+    <AssemblyName>RetailPOS.CommonLayer.BarCodeGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,26 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\ICategoryService.cs" />
-    <Compile Include="Admin\IProductService.cs" />
-    <Compile Include="Customer\ICustomerService.cs" />
-    <Compile Include="Masters\IMasterService.cs" />
+    <Compile Include="BarcodeCommon.cs" />
+    <Compile Include="BarcodeLib.cs" />
+    <Compile Include="Symboloies\Blank.cs" />
+    <Compile Include="Symboloies\Code39.cs" />
+    <Compile Include="Symboloies\Ean13.cs" />
+    <Compile Include="IBarcode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\ISettingService.cs" />
-    <Compile Include="User\IStaffService.cs" />
-    <Compile Include="User\IUserService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RetailPOS.CommonLayer.DataTransferObjects\RetailPOS.CommonLayer.DataTransferObjects.csproj">
-      <Project>{40ACC2CE-A54F-4CDB-97DE-B011C17C616C}</Project>
-      <Name>RetailPOS.CommonLayer.DataTransferObjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RetailPOS.PersistenceLayer.Repository\RetailPOS.PersistenceLayer.Repository.csproj">
-      <Project>{58CD5F66-8558-4B4A-8986-B8B6CEBF9219}</Project>
-      <Name>RetailPOS.PersistenceLayer.Repository</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

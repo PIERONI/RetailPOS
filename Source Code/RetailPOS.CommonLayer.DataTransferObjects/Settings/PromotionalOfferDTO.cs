@@ -5,7 +5,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Master;
 
 #endregion
 
-namespace RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer
+namespace RetailPOS.CommonLayer.DataTransferObjects.Settings
 {
     public class PromotionalOfferDTO : BaseDTO
     {

@@ -50,11 +50,9 @@
     <Compile Include="CustomerService.cs" />
     <Compile Include="MasterService.cs" />
     <Compile Include="ProductService.cs" />
-    <Compile Include="PromotionalOfferService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WasteManagementService.cs" />
+    <Compile Include="SettingsService.cs" />
     <Compile Include="ServiceContracts\IRetailPOSServiceContract.cs" />
-    <Compile Include="ShopSettingService.cs" />
     <Compile Include="StaffService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>

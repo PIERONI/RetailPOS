@@ -1,14 +1,13 @@
 ﻿#region Using directives
 
-using RetailPOS.BusinessLayer.Service.Setting;
+using RetailPOS.BusinessLayer.Service.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.PersistenceLayer.Repository.Entities;
-using RetailPOS.CommonLayer.DataTransferObjects.Customer;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
+namespace RetailPOS.BusinessLayer.ServiceImpl.Settings
 {
     public partial class SettingServiceImpl : SettingBaseService, ISettingService
     {

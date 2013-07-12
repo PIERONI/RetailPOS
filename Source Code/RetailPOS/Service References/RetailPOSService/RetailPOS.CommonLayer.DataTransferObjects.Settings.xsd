@@ -21,9 +21,40 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ShopSettingDTO" nillable="true" type="tns:ShopSettingDTO" />
-  <xs:complexType name="WasteManagementDTO">
+  <xs:complexType name="ArrayOfPromotionalOfferDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PromotionalOfferDTO" nillable="true" type="tns:PromotionalOfferDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPromotionalOfferDTO" nillable="true" type="tns:ArrayOfPromotionalOfferDTO" />
+  <xs:complexType name="PromotionalOfferDTO">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DateDuration" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Duration" type="xs:double" />
+          <xs:element minOccurs="0" name="End_Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="Measure_Unit" nillable="true" type="q4:MeasureUnitDTO" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="Measure_Unit1" nillable="true" type="q5:MeasureUnitDTO" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OfferQuantityWithUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Offer_Percentage" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Offer_Quantity" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Oqty_Mu" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="Pqty_Mu" type="xs:int" />
+          <xs:element minOccurs="0" name="PurchaseQuantityWithUnit" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Purchase_Quantity" type="xs:int" />
+          <xs:element minOccurs="0" name="Start_Date" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PromotionalOfferDTO" nillable="true" type="tns:PromotionalOfferDTO" />
+  <xs:complexType name="WasteManagementDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q6:BaseDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="Id" type="xs:int" />
           <xs:element minOccurs="0" name="ProductId" type="xs:int" />
@@ -34,4 +65,29 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="WasteManagementDTO" nillable="true" type="tns:WasteManagementDTO" />
+  <xs:complexType name="ArrayOfPurchaseHistoryDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PurchaseHistoryDTO" nillable="true" type="tns:PurchaseHistoryDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPurchaseHistoryDTO" nillable="true" type="tns:ArrayOfPurchaseHistoryDTO" />
+  <xs:complexType name="PurchaseHistoryDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q7="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q7:BaseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Cash" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Credit" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Grand_Total" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Invoice_No" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Purchase_Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Shop_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SubTotal" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PurchaseHistoryDTO" nillable="true" type="tns:PurchaseHistoryDTO" />
 </xs:schema>

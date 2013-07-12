@@ -6,7 +6,7 @@ using RetailPOS.PersistenceLayer.Repository.Interfaces;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
+namespace RetailPOS.BusinessLayer.ServiceImpl.Settings
 {
     public class SettingBaseService
     {
@@ -27,5 +27,8 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
         /// </summary>
         [Dependency]
         public IGenericRepository<WasteManagement> WasteManagementRepository { get; set; }
+
+        [Dependency]
+        public IGenericRepository<product_purchase_history_master> PurchaseHistoryRepository { get; set; }
     }
 }

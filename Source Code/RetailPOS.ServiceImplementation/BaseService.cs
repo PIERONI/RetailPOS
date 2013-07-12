@@ -5,7 +5,7 @@ using Microsoft.Practices.Unity;
 using RetailPOS.BusinessLayer.Service.Admin;
 using RetailPOS.BusinessLayer.Service.Customer;
 using RetailPOS.BusinessLayer.Service.Masters;
-using RetailPOS.BusinessLayer.Service.Setting;
+using RetailPOS.BusinessLayer.Service.Settings;
 using RetailPOS.BusinessLayer.Service.User;
 using RetailPOS.CommonLayer.Unity;
 using RetailPOS.ServiceImplementation.ServiceContracts;

@@ -4,48 +4,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-                   xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             d:DesignHeight="450" d:DesignWidth="700">
+             xmlns:Utility="clr-namespace:RetailPOS.Utility"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             DataContext="{Binding Source={StaticResource Locator}, Path=PurchaseHistoryVM}">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
-    <TabControl Margin="3" Grid.Row="0" Height="450" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="715">
+    <TabControl Margin="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="695">
         <TabControl.Resources>
             <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
         </TabControl.Resources>
-        <TabItem Header="Search/Filter">
+        <TabItem Header="View / Search Purchase History">
             <StackPanel>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height=" 40"></RowDefinition>
-                        <RowDefinition Height=" 60"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="180*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="192*"></ColumnDefinition>
-                        <ColumnDefinition Width="185*"></ColumnDefinition>
-                        <ColumnDefinition Width="328*"></ColumnDefinition>
+                        <ColumnDefinition Width="150*"></ColumnDefinition>
+                        <ColumnDefinition Width="485*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Purchase Date:" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="30,10,0,0" Grid.RowSpan="2" />
-                    <TextBlock Text="Invoice No:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="30,11,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
-                    <ComboBox ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Width="141">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <ComboBox Grid.Row="1" ItemsSource="{Binding lstype}" SelectedValuePath="TypeName" SelectedItem="{Binding SelectedType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" Margin="22,7,0,0" VerticalAlignment="Top" Width="141" >
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding TypeName}"></TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <TextBox Grid.Column="2" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="13,9,0,0"  VerticalAlignment="Top" Width="147" />
-                    <TextBox Grid.Column="2"  Grid.Row="1" MaxLength="255" Height="25" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="13,8,0,0"  VerticalAlignment="Top" Width="147" />
-                    <Button Height="30" Margin="90,22,0,8" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="Purchase Date:" Height="30" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="0,5,0,0" Grid.RowSpan="2" />
+                    <DatePicker Grid.Column="1" Grid.Row="0" Width="250" Height="36" HorizontalAlignment="Left">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Control.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <TextBox x:Name="PART_TextBox" Height="30" Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat=d}" />
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                    <TextBlock Text="Invoice No:" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
+                    <TextBox Grid.Column="2"  Grid.Row="1" MaxLength="255" Height="30" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="0,5,0,0"  VerticalAlignment="Top" Width="250" />
+                    <Button Height="30" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Center" Width="75" Grid.Row="2" Grid.Column="0">
                         <DockPanel>
                             <Image Source="../../../Images/save-icon.png" Width="16" />
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
@@ -55,17 +53,17 @@
                     </Button>
                 </Grid>
                 <Grid>
-                    <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding lstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="400" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="700" >
+                    <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstPurchaseHistory}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="300" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Path=ProductName}" Header="PurchaseDate" Width="90"/>
-                            <DataGridTextColumn Binding="{Binding Path=ProductQuantity}" Header="Supplier" Width="*"/>
-                            <DataGridTextColumn Binding="{Binding Path=Rate}" Header="Shop Code" Width="*" />
-                            <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Invoice"  Width="*"/>
-                            <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Sub Total"  Width="*"/>
-                            <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Discount"  Width="*"/>
-                            <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Grand Total"  Width="*"/>
-                            <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Cash"  Width="*"/>
-                            <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Credit"  Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Path=Purchase_Date}" Header="PurchaseDate" Width="90"  />
+                            <DataGridTextColumn Binding="{Binding Path=Supplier_Id}" Header="Supplier" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Path=Shop_Code}" Header="Shop Code" Width="*" />
+                            <DataGridTextColumn Binding="{Binding Path=Invoice_No}" Header="Invoice"  Width="*" />
+                            <DataGridTextColumn Binding="{Binding Path=Sub_Total}" Header="Sub Total"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                            <DataGridTextColumn Binding="{Binding Path=Discount}" Header="Discount"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                            <DataGridTextColumn Binding="{Binding Path=Grand_Total}" Header="Grand Total"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                            <DataGridTextColumn Binding="{Binding Path=Cash}" Header="Cash"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                            <DataGridTextColumn Binding="{Binding Path=Credit}" Header="Credit"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

@@ -8,12 +8,11 @@
 
 using RetailPOS.CommonLayer.DataTransferObjects.Category;
 using RetailPOS.CommonLayer.DataTransferObjects.Customer;
+using RetailPOS.CommonLayer.DataTransferObjects.Master;
 using RetailPOS.CommonLayer.DataTransferObjects.Product;
+using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
 using RetailPOS.PersistenceLayer.Repository.Entities;
-using RetailPOS.CommonLayer.DataTransferObjects.Settings;
-using RetailPOS.CommonLayer.DataTransferObjects.Master;
-using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
 
 #endregion
 
@@ -69,6 +68,10 @@ namespace RetailPOS.CommonLayer.Mapper
             //Maps WasteManagement object with WasteManagementDTO object
             AutoMapper.Mapper.CreateMap<WasteManagement, WasteManagementDTO>();
             AutoMapper.Mapper.CreateMap<WasteManagementDTO, WasteManagement>();
+
+            //Maps product_purchase_history_master object with PurchaseHistoryDTO object
+            AutoMapper.Mapper.CreateMap<PurchaseHistoryDTO, product_purchase_history_master>();
+            AutoMapper.Mapper.CreateMap<product_purchase_history_master, PurchaseHistoryDTO>();
         }
 
         private void MapObjectForCustomers()

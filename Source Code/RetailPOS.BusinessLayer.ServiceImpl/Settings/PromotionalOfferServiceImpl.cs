@@ -2,16 +2,14 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using RetailPOS.BusinessLayer.Service.Setting;
-using RetailPOS.BusinessLayer.ServiceImpl.Setting;
-using RetailPOS.CommonLayer.CommonLibrary;
-using RetailPOS.CommonLayer.DataTransferObjects.PromotionalOffer;
+using RetailPOS.BusinessLayer.Service.Settings;
+using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.PersistenceLayer.Repository.Entities;
 
 #endregion
 
-namespace RetailPOS.BusinessLayer.ServiceImpl.Setting
+namespace RetailPOS.BusinessLayer.ServiceImpl.Settings
 {
     public partial class SettingServiceImpl
     {

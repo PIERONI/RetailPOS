@@ -277,6 +277,7 @@ namespace RetailPOS.ViewModel
            ProductCode = SelectedProduct.BarCode;
            ProductPrice = SelectedProduct.Retail_Price.HasValue ? SelectedProduct.Retail_Price.Value : 0;
            SelectedProduct.Quantity = ProductQuantity = 0;
+           SelectedProduct.Discount = 0;
            ProductDescription = SelectedProduct.Description;
        }
 

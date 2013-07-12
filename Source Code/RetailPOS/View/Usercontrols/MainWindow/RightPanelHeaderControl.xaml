@@ -14,7 +14,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Column="0">
-            <TextBlock Height="28" TextBlock.FontWeight="Bold" TextBlock.TextAlignment="Left" FontSize="22" TextBlock.Foreground="Red" Name="textBlock1" Margin="0 3 0 0" Text="{Binding Total}" />
+            <TextBlock Height="28" TextBlock.FontWeight="Bold" TextBlock.TextAlignment="Left" FontSize="22" TextBlock.Foreground="Red" Margin="0 3 0 0" Text="{Binding Total}" />
             <TextBlock Height="28" TextBlock.FontWeight="Bold" TextBlock.TextAlignment="Left" FontSize="10" TextBlock.Foreground="Red"  Margin="0 3 0 0" Text="{Binding Total}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Column="1">

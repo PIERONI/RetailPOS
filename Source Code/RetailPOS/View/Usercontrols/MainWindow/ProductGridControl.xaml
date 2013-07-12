@@ -10,7 +10,7 @@
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DataGrid helpers:RowDoubleClickHandler.MethodName="" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="200" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="500"  >
+        <DataGrid helpers:RowDoubleClickHandler.MethodName="" SelectedItem="{Binding SelectedProduct,Mode=TwoWay}" VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstProductDetails}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="200" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="500">
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
                     <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
@@ -18,9 +18,10 @@
             </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="" />
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Products" Width="300"/>
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Products" Width="280"/>
                 <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Qty." Width="50" />
                 <DataGridTextColumn Binding="{Binding Path=Retail_Price}" Header="Rate" />
+                <DataGridTextColumn Binding="{Binding Path=Discount, Mode=TwoWay}" Header="Discount"></DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" />               
             </DataGrid.Columns>
         </DataGrid>

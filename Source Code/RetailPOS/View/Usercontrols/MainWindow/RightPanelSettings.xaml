@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+               xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls"
+              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+              DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"             
              mc:Ignorable="d" 
              d:DesignHeight="0" d:DesignWidth="507">
     <UserControl.Resources>
@@ -29,14 +32,68 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="95" >
+            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="95" Command="{Binding OpenEditProductEntryPopUp}" >
                 <DockPanel>
                     <Image Source="../../../Images/discount-icon.png" Width="37" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="0 0 0 0">
-                      <Bold>Product Discount</Bold>
+                      <Bold>Edit Product</Bold>
                     </TextBlock>
                 </DockPanel>
             </Button>
+            <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsEditProductEntryPopupOpen, Mode=TwoWay}" Title="Payment Detail" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+                <my:ModalDialogPopup.HostedContent>
+                    <ContentControl>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="260"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>                               
+                            </Grid.RowDefinitions>
+                            <Label Content="Product Name: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="0"  Width="79"></Label>
+                            <TextBlock  Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="8,12,0,0"  VerticalAlignment="Top" Width="107" Grid.Row="0" Text="{Binding ProductName,Mode=TwoWay}" />
+                           
+                            <Label Content="Quantity: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="1"  Width="69"></Label>
+                            <TextBox Name="txtquantity" Grid.Column="1" Grid.Row="1" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding ProductQuantity,Mode=TwoWay}"></TextBox>
+
+                            <Label Content="Enter Discount: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="2"  Width="85"></Label>
+                            <TextBox Name="txtamount" Grid.Column="1" Grid.Row="2" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding ProductDiscount}"></TextBox>
+                            <ComboBox Grid.Row="2" ItemsSource="{Binding LstDiscountType}" SelectedValuePath="Id" SelectedItem="{Binding SelectedDiscountType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="180,12,0,0">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TypeName}"></TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Margin="12,12,0,0">
+                                <Button  Content="Update" Width="170" Height="40" Command="{Binding EditProductCommand}">
+                                    <!--<Button.CommandBindings>
+                                        <CommandBinding Command="Save"></CommandBinding>
+                                    </Button.CommandBindings>-->
+                                </Button>
+                            </StackPanel>
+
+                        </Grid>
+                    </ContentControl>
+                </my:ModalDialogPopup.HostedContent>
+            </my:ModalDialogPopup>
+            <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsEditErrorMessage, Mode=TwoWay}" Title="Attention" FontWeight="Bold" FontStyle="Normal"  ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="True" >
+                <my:ModalDialogPopup.HostedContent>
+                    <ContentControl>
+                        <Grid>                           
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Content="Please Select Any Product" Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Background="#FFF50000"></Label>
+                        </Grid>
+                    </ContentControl>
+                </my:ModalDialogPopup.HostedContent>
+            </my:ModalDialogPopup>
             <Button Height="53" Margin="0"  HorizontalAlignment="Right" Width="95" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Command="{Binding DeleteSelectedItem}">
                 <DockPanel>
                     <Image Source="../../../Images/edit-delete-icon.png" Width="28" />

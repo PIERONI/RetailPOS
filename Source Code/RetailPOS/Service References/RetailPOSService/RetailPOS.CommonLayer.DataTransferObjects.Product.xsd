@@ -15,6 +15,7 @@
           <xs:element minOccurs="0" name="BarCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Category_Id" nillable="true" type="xs:short" />
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
           <xs:element minOccurs="0" name="Has_Warranty" nillable="true" type="xs:boolean" />
           <xs:element minOccurs="0" name="Id" type="xs:int" />
           <xs:element minOccurs="0" name="Image_Path" nillable="true" type="xs:string" />

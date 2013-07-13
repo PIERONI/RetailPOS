@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="RetailPOS.View.Usercontrols.Settings.GenerateBarCode"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+    <UserControl.Resources>
+        <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
+    </UserControl.Resources>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+           
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"></ColumnDefinition>
+           
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Barcode Generator" Height="288" HorizontalAlignment="Left" Margin="12,0,0,0" Name="groupBox1" VerticalAlignment="Top" Width="219">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    
+                </Grid.ColumnDefinitions>
+                <xctk:WatermarkTextBox Height="34" Watermark="Value To Encdoe" Grid.Row="0" MaxLength="15" HorizontalAlignment="Left"  Margin="6,6,0,0" Name="txtValueToEncode" VerticalAlignment="Top" Width="194" />
+                <xctk:WatermarkTextBox Height="34" Watermark="Width" Grid.Row="1" MaxLength="3" HorizontalAlignment="Left"  Margin="6,6,0,0" Name="txtWidth" VerticalAlignment="Top" Width="89" />
+                <xctk:WatermarkTextBox Height="34" Watermark="Height" Grid.Row="1" MaxLength="3" HorizontalAlignment="Right"  Margin="0,6,6,0" Name="txtHeight" VerticalAlignment="Top" Width="89" />
+                <StackPanel Grid.Row="2" Grid.RowSpan="2">
+                    <Label Content="Encoded Value "></Label>
+                    <xctk:RichTextBox  Height="90" HorizontalAlignment="Center" Name="txtEncodedValue" VerticalAlignment="Top" Width="200" />
+                </StackPanel>
+                <Button Content="Encode" Grid.Row="4" Height="40" HorizontalAlignment="Left" Margin="6,6,0,0" VerticalAlignment="Top" Width="95" />
+                <Button Content="Save As" Height="40" HorizontalAlignment="Left" Margin="112,6,0,0" VerticalAlignment="Top" Width="88" Grid.Row="4" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Barcode Image" Height="288" HorizontalAlignment="Left" Margin="9,0,0,0" Name="groupBox2" VerticalAlignment="Top" Width="335">
+            <Grid>
+                <WindowsFormsHost Height="175" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Width="255" >
+                    <wf:PictureBox x:Name="pictureBox1"  />
+                </WindowsFormsHost>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

@@ -112,6 +112,7 @@
     <Reference Include="System.Windows.Controls.Layout.Toolkit">
       <HintPath>..\Binaries\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -126,6 +127,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
     <Reference Include="WpfControls">
       <HintPath>..\Binaries\WpfControls.dll</HintPath>
     </Reference>
@@ -189,6 +191,9 @@
     </Compile>
     <Compile Include="View\Usercontrols\Settings\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\Settings\GenerateBarCode.xaml.cs">
+      <DependentUpon>GenerateBarCode.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\Settings\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
@@ -285,6 +290,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\Settings\Customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\Settings\GenerateBarCode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -609,7 +618,12 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\RetailPOS.CommonLayer.BarCodeGenerator\RetailPOS.CommonLayer.BarCodeGenerator.csproj">
+      <Project>{F2111022-A259-425E-89AB-A5C285136B09}</Project>
+      <Name>RetailPOS.CommonLayer.BarCodeGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

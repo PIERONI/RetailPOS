@@ -23,6 +23,7 @@ namespace RetailPOS.ViewModel
         public RelayCommand SaveProduct { get; set; }
         public RelayCommand CancelProductSetting { get; set; }
         public RelayCommand CancelProduct { get; set; }
+        public RelayCommand GenerateBarCode { get; private set; }
         
         private ProductCategoryDTO _selectedCategory;
         private IList<ProductDTO> _lstSearchProduct;
@@ -40,6 +41,7 @@ namespace RetailPOS.ViewModel
         private decimal _size;
         private decimal _weight;
         private string _imagePath;
+
         private ProductDTO _productName;
 
         #endregion
@@ -285,11 +287,20 @@ namespace RetailPOS.ViewModel
             SearchProductList = new List<ProductDTO>();
             GetProducts(string.Empty);
             CancelProduct = new RelayCommand(CamcelProducts);
+            GenerateBarCode = new RelayCommand(GenerateBarCodeFunc);
         }
 
         #endregion
 
         #region Private Methods
+
+        /// <summary>
+        /// Generates the bar code.
+        /// </summary>
+        private void GenerateBarCodeFunc()
+        {
+            
+        }
 
         private void SaveProductSetting()
         {

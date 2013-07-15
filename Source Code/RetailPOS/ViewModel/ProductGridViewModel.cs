@@ -10,6 +10,7 @@ using GalaSoft.MvvmLight.Command;
 using RetailPOS.Utility;
 using RetailPOS.View;
 using RetailPOS.RetailPOSService;
+using RetailPOS.Core;
 
 #endregion
 
@@ -31,6 +32,10 @@ namespace RetailPOS.ViewModel
         public RelayCommand DeleteSelectedItem { get; private set; }
         public RelayCommand OpenEditProductEntryPopUp { get; private set; }
         public RelayCommand EditProductCommand { get; private set; }
+        /// <summary>
+        /// To save The Data for Order Detail in OrderMaster
+        /// </summary>
+        public RelayCommand SaveSetAsideOrderDetail { get; private set; }
         /// <summary>
         /// For SetAsideOrder Button
         /// </summary>
@@ -195,7 +200,18 @@ namespace RetailPOS.ViewModel
             OpenEditProductEntryPopUp = new RelayCommand(OpenEditProductPopUp);
             EditProductCommand = new RelayCommand(EditDataGridCommand);
             OpenSetAsideCustomerPopUp = new RelayCommand(OpenSetAsidePopUp);
+            //SaveSetAsideOrderDetail = new RelayCommand(SaveOrderDetail);
         }
+
+        /// <summary>
+        /// To Save Set aside product detail and customer detail in ordermaster
+        /// </summary>
+        //private void SaveOrderDetail()
+        //{
+        //    var orderdetail = InitializeSaveOrderDetail();
+        //    ServiceFactory.ServiceClient.(orderdetail);      
+        
+        //}
 
         private void EditDataGridCommand()
         {

@@ -52,6 +52,8 @@
     <Compile Include="Master\PostCodeDTO.cs" />
     <Compile Include="Master\StreetDTO.cs" />
     <Compile Include="Master\TownCityDTO.cs" />
+    <Compile Include="Order\OrderChildDTO.cs" />
+    <Compile Include="Order\OrderMasterDTO.cs" />
     <Compile Include="Product\ProductDTO.cs" />
     <Compile Include="Product\ProductStatusDTO.cs" />
     <Compile Include="Settings\PromotionalOfferDTO.cs" />

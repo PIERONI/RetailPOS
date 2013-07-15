@@ -21,12 +21,20 @@ namespace RetailPOS.ViewModel
 
        public List<ProductDTO> LstSearchProduct { get; private set; }
        public IList<CustomerDTO> LstSearchCustomer { get; private set; }
+       /// <summary>
+       /// Detail Of New Customer To be Saved
+       /// </summary>
+       public RelayCommand AddNewCustomer { get; private set; }
        
        private bool _IsProductPopupOpen;
      
        private string _customerName;
+       private string _customerFirstName;
+       private string _customerLastName;
+       private string _email;
        private string _mobileNumber;
-       private string _customerBalance;
+       private decimal _customerBalance;
+       private string _customerCode;
        private Visibility _isVisibleCustomerInfo;
        
        private CustomerDTO _selectedCustomer;
@@ -127,6 +135,7 @@ namespace RetailPOS.ViewModel
            set
            {
                _selectedCustomer = value;
+               RaisePropertyChanged("SelectedCustomer");
                BindCustomer();
            }
        }
@@ -195,6 +204,36 @@ namespace RetailPOS.ViewModel
            }
        }
 
+       public string CustomerFirstName
+       {
+           get { return _customerFirstName; }
+           set
+           {
+               _customerFirstName = value;
+               RaisePropertyChanged("CustomerFirstName");
+           }
+       }
+
+       public string CustomerLastName
+       {
+           get { return _customerLastName; }
+           set
+           {
+               _customerLastName = value;
+               RaisePropertyChanged("CustomerLastName");
+           }
+       }
+
+       public string CustomerEmail
+       {
+           get { return _email; }
+           set
+           {
+               _email = value;
+               RaisePropertyChanged("CustomerEmail");
+           }
+       }
+
        public string MobileNumber
        {
            get { return _mobileNumber; }
@@ -205,13 +244,23 @@ namespace RetailPOS.ViewModel
            }
        }
 
-       public string CustomerBalance
+       public decimal CustomerBalance
        {
            get { return _customerBalance; }
            set
            {
                _customerBalance = value;
                RaisePropertyChanged("CustomerBalance");
+           }
+       }
+
+       public string CustomerCode
+       {
+           get { return _customerCode; }
+           set
+           {
+               _customerCode = value;
+               RaisePropertyChanged("CustomerCode");
            }
        }
 
@@ -226,6 +275,7 @@ namespace RetailPOS.ViewModel
        {
            LstSearchProduct = new List<ProductDTO>();
            LstSearchCustomer = new List<CustomerDTO>();
+           AddNewCustomer = new RelayCommand(AddNewCustomerDetail);
 
            Mediator.Register("ClosePopUpWindow", CloseProductPopUpWindow);
 
@@ -254,7 +304,7 @@ namespace RetailPOS.ViewModel
        /// Binds the customer.
        /// </summary>
        private void BindCustomer()
-       {
+     {
            if (SelectedCustomer == null)
            {
                isVisibleCustomerInfo = Visibility.Collapsed;
@@ -262,9 +312,10 @@ namespace RetailPOS.ViewModel
            }
           
            isVisibleCustomerInfo = Visibility.Visible;
+           CustomerBalance = SelectedCustomer.balance;
+           MobileNumber = SelectedCustomer.Mobile;
            CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
-           CustomerBalance = SelectedCustomer.Credit_Limit.ToString();
-           MobileNumber = SelectedCustomer.Mobile;           
+           
        }
 
        /// <summary>
@@ -281,6 +332,33 @@ namespace RetailPOS.ViewModel
            ProductDescription = SelectedProduct.Description;
        }
 
+       /// <summary>
+       /// Initialize customer details to be saved to database
+       /// </summary>
+       /// <returns></returns>
+       
+       private void AddNewCustomerDetail()
+       {
+           var customerDetail = InitializwSaveCustomerDetail();
+           ServiceFactory.ServiceClient.SaveCustomerDetail(customerDetail);
+       }
+
+       ///
+       private CustomerDTO InitializwSaveCustomerDetail()
+       {
+           return new CustomerDTO
+           {
+               Code = CustomerCode,              
+               First_Name = CustomerFirstName,
+               Last_Name = CustomerLastName,
+               Email = CustomerEmail,
+               Mobile = MobileNumber,
+               Status_Id = 1,
+               Payment_Period = 0,
+               Credit_Limit = 0,
+               balance = 0
+           };
+       }
        #endregion
     }
 }

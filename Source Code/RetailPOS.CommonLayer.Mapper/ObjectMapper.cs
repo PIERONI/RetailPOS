@@ -13,6 +13,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
 using RetailPOS.PersistenceLayer.Repository.Entities;
+using RetailPOS.CommonLayer.DataTransferObjects.Order;
 
 #endregion
 
@@ -116,6 +117,18 @@ namespace RetailPOS.CommonLayer.Mapper
             ////Maps PostCodeDTO object with address object
             AutoMapper.Mapper.CreateMap<measure_unit, MeasureUnitDTO>();
             AutoMapper.Mapper.CreateMap<MeasureUnitDTO, measure_unit>();
+        }
+
+        private void MapObjectForOrders()
+        {
+            ///Maps OrderMasterDTO object with ordermaster object
+            AutoMapper.Mapper.CreateMap<ordermaster, OrderMasterDTO>();
+            AutoMapper.Mapper.CreateMap<OrderMasterDTO, ordermaster>();
+
+            ///Maps OrderChildDTO object with orderchild object
+            AutoMapper.Mapper.CreateMap<orderchild, OrderChildDTO>();
+            AutoMapper.Mapper.CreateMap<OrderChildDTO, orderchild>();
+
         }
 
         #endregion

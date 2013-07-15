@@ -56,6 +56,8 @@
     <Compile Include="Masters\PostalCodeServiceImpl.cs" />
     <Compile Include="Masters\StreetServiceImpl.cs" />
     <Compile Include="Masters\TownCityServiceImpl.cs" />
+    <Compile Include="Order\OrderBaseService.cs" />
+    <Compile Include="Order\OrderServiceImpl.cs" />
     <Compile Include="Settings\PromotionalOfferServiceImpl.cs" />
     <Compile Include="Settings\PurchaseHistoryServiceImpl.cs" />
     <Compile Include="Settings\SettingBaseService.cs" />

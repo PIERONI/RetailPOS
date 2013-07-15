@@ -15,6 +15,8 @@ using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.CommonLayer.Unity;
 using RetailPOS.PersistenceLayer.EF.Impl;
 using RetailPOS.PersistenceLayer.Repository.Interfaces;
+using RetailPOS.BusinessLayer.Service.Order;
+using RetailPOS.BusinessLayer.ServiceImpl.Order;
 
 #endregion
 
@@ -78,6 +80,12 @@ namespace RetailPOS.CommonLayer.UnityExtension
             #region Master Services
 
             RetailPOSUnityContainer.Register<IMasterService, MasterServiceImpl>();
+
+            #endregion
+
+            #region Order Services
+
+            RetailPOSUnityContainer.Register<IOrderService, OrderServiceImpl>();
 
             #endregion
 

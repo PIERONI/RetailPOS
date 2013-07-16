@@ -8,7 +8,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -31,6 +33,7 @@
     <MetadataFile FileName="RetailPOS.CommonLayer.DataTransferObjects.Customer.xsd" MetadataType="Schema" ID="86e36a20-97be-47d8-9fce-6ef21b385a6a" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
     <MetadataFile FileName="RetailPOS.CommonLayer.DataTransferObjects.Master.xsd" MetadataType="Schema" ID="febc9ebf-2381-48b7-9250-b6abc5dd0cda" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
     <MetadataFile FileName="RetailPOS.CommonLayer.DataTransferObjects.Settings.xsd" MetadataType="Schema" ID="cec95695-3f16-4473-a2bf-e6607d631e42" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
+    <MetadataFile FileName="RetailPOS.CommonLayer.DataTransferObjects.Order.xsd" MetadataType="Schema" ID="baad03dc-426a-41fd-ac8b-933eff25800e" SourceId="1" SourceUrl="http://localhost/RetailPOSService/RetailPOSService.svc/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

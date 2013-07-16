@@ -4,12 +4,12 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Product
 {
     public class ProductDTO : BaseDTO
     {
-        public int Id { get; set; }
+        public short Id { get; set; }
         public Nullable<short> Category_Id { get; set; }
         public string BarCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Status_Id { get; set; }
+        public short Status_Id { get; set; }
         public Nullable<Decimal> Retail_Price { get; set; }
         public Nullable<Decimal> Wholesale_Price { get; set; }
         public Nullable<Decimal> PurchasePrice { get; set; }

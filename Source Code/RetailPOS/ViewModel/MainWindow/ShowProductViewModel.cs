@@ -19,7 +19,7 @@ namespace RetailPOS.ViewModel.MainWindow
         private string _name;
         private string _code;
         private decimal _price;
-        private decimal _quantity;
+        private short _quantity;
         private string _description;
 
         private ProductDTO _selectedProduct;
@@ -68,7 +68,7 @@ namespace RetailPOS.ViewModel.MainWindow
             }
         }
 
-        public decimal Quantity
+        public short Quantity
         {
             get { return _quantity; }
             set

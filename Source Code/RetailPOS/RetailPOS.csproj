@@ -445,6 +445,9 @@
     <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Master.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Order.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\RetailPOSService\RetailPOS.CommonLayer.DataTransferObjects.Product.xsd">
       <SubType>Designer</SubType>
     </None>

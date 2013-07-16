@@ -27,7 +27,7 @@ namespace RetailPOS.ViewModel
 
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand LogOutCommand { get; private set; }
-        public RelayCommand<object> SelectProductCommand { get; private set; }
+        public RelayCommand<CustomerDTO> SelectProductCommand { get; private set; }
         public RelayCommand ClearProduct { get; private set; }
         public RelayCommand DeleteSelectedItem { get; private set; }
         public RelayCommand OpenEditProductEntryPopUp { get; private set; }
@@ -41,14 +41,23 @@ namespace RetailPOS.ViewModel
         /// </summary>
         public RelayCommand OpenSetAsideCustomerPopUp { get; private set; }
 
+        /// <summary>
+        /// To save Order Detail with Items in Database
+        /// </summary>
+        public RelayCommand<object> SaveNewOrder { get; private set; }
+
+      
         private DiscountType _selectedDiscount;
-        private ProductDTO _selectedProduct;
+        private ProductDTO _selectedProduct;  
         private string _total;
         private string _productName;
         private decimal _productQuantity;
         private decimal _productDiscount;
         private bool _isEditProductEntryPopupOpen;
         private bool _isEditErrorMessage;
+
+        private CustomerDTO _selectedCustomer;
+
         /// <summary>
         /// To open SetAsideOrder Customer Popup
         /// </summary>
@@ -59,6 +68,16 @@ namespace RetailPOS.ViewModel
         #endregion
 
         #region Public Properties
+
+        public CustomerDTO SelectedCustomer
+        {
+            get { return _selectedCustomer; }
+            set
+            {
+                _selectedCustomer = value;
+                RaisePropertyChanged("SelectedCustomer");
+            }
+        }
 
         public DiscountType SelectedDiscountType
         {
@@ -97,7 +116,7 @@ namespace RetailPOS.ViewModel
 
                 UpdateProduct();
             }
-        }
+        }     
 
         private void UpdateProduct()
         {
@@ -195,13 +214,65 @@ namespace RetailPOS.ViewModel
             ExitCommand = new RelayCommand(CloseApplication);
             LogOutCommand = new RelayCommand(LogoutApplication);
             ClearProduct = new RelayCommand(ClearGridProduct);
-            SelectProductCommand = new RelayCommand<object>(BindProductDetails);
+            SelectProductCommand = new RelayCommand<CustomerDTO>(BindProductDetails);
             DeleteSelectedItem = new RelayCommand(DeleteItem);
             OpenEditProductEntryPopUp = new RelayCommand(OpenEditProductPopUp);
             EditProductCommand = new RelayCommand(EditDataGridCommand);
             OpenSetAsideCustomerPopUp = new RelayCommand(OpenSetAsidePopUp);
+            SaveNewOrder = new RelayCommand <object>(SaveOrderWithItems);           
+
             //SaveSetAsideOrderDetail = new RelayCommand(SaveOrderDetail);
         }
+
+
+        /// <summary>
+        /// To Save Set aside order detail and customer detail in ordermaster and orderchild
+        /// </summary>      
+        private void SaveOrderWithItems(object args)
+        {
+            CustomerDTO selectedCustomer = (CustomerDTO)args;
+
+            if (selectedCustomer != null)
+            {
+                var OrderDetail = InitializeSaveOrderWithItems(selectedCustomer);
+                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+            }
+        }
+
+        private OrderMasterDTO InitializeSaveOrderWithItems(CustomerDTO selectedCustomer)
+        {
+            return new OrderMasterDTO
+            {
+                Order_no="0001",
+                Order_date= System.DateTime.Now,
+                Customer_id = selectedCustomer.Id,
+                Shop_code="0",
+                Invoice_id=0,
+                Print_receipt_copies=0,                
+                LstOrderItem=InitializeOrderChildDetail()
+            
+            };
+        }
+
+        /// <summary>
+        /// Initialized order child details to be saved to database
+        /// </summary>
+        /// <returns></returns>
+        private List<OrderChildDTO> InitializeOrderChildDetail()
+        {
+            List<OrderChildDTO> lstOrderChildDetail=(from item in LstProductDetails select
+                                                       new OrderChildDTO
+                                                           {
+                                                              Order_id=0,
+                                                              Product_id=item.Id,
+                                                              Quantity=1,
+                                                              Measure_unit_id=3,
+                                                              Amount=(decimal)item.Retail_Price,
+                                                              Taxed=1                                                           
+                                                           }).ToList();
+            return lstOrderChildDetail;
+        }
+
 
         /// <summary>
         /// To Save Set aside product detail and customer detail in ordermaster

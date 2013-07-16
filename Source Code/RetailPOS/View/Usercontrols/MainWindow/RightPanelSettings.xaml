@@ -24,7 +24,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsSetAsdePopUpOpen, Mode=TwoWay}" Title="Select Customer" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+            <my:ModalDialogPopup Width="auto" MaxWidth="700" IsOpen="{Binding IsSetAsdePopUpOpen, Mode=TwoWay}" Title="Select Customer" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
                 <my:ModalDialogPopup.HostedContent>
                     <ContentControl>
                         <Grid>
@@ -42,13 +42,10 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
-
-
-
                             </Grid.RowDefinitions>
                             <Label Content="Customer Name: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="0"  Width="79"></Label>
                            
-                                <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
+                            <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
                            IsTextCompletionEnabled="False" SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}" Text="{Binding CustomerName}"
                          ValueMemberPath="First_Name"  DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}"
                           FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="0">
@@ -129,22 +126,21 @@
 
                             <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerFirstName}" Grid.Column="1" Grid.Row="3" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" />
                             <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerLastName}" Grid.Column="1" Grid.Row="4" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" />
-                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding MobileNumber}" Grid.Column="1" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" />
+                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding MobileNumberNewCustomer}" Grid.Column="1" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" />
                             <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerEmail}" Grid.Column="1" Grid.Row="6" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" />
                             <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerCode}" Grid.Column="1" Grid.Row="7" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" />
 
-                            <StackPanel Grid.ColumnSpan="2" Grid.Row="8" Margin="12,12,0,0">
-                                <Button  Content="Select Customer" Width="150" Height="40" Command="{Binding SaveSetAsideOrderDetail}">
+                            <StackPanel Grid.ColumnSpan="2" Grid.Row="8" Margin="12,12,0,0" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}">
+                                <Button CommandParameter="{Binding ElementName=SelectedCustomer}" Content="Select Customer" Width="150" Height="40" Command="{Binding SaveNewOrder}">
                                     <!--<Button.CommandBindings>
                                         <CommandBinding Command="Save"></CommandBinding>
                                     </Button.CommandBindings>-->
                                 </Button>
                             </StackPanel>
-                            <StackPanel Grid.ColumnSpan="2" Grid.Row="8" Margin="62,12,0,0">
+                            <StackPanel Grid.ColumnSpan="2" Grid.Row="8" Margin="162,12,0,0">
                                 <Button  Content="Add New Customer" Width="150" Height="40" Command="{Binding AddNewCustomer}" DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}">                               
                                 </Button>
-                            </StackPanel>
-                           
+                            </StackPanel>                         
 
                         </Grid>
                     </ContentControl>
@@ -197,10 +193,7 @@
                             </ComboBox>
 
                             <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Margin="12,12,0,0">
-                                <Button  Content="Update" Width="170" Height="40" Command="{Binding EditProductCommand}">
-                                    <!--<Button.CommandBindings>
-                                        <CommandBinding Command="Save"></CommandBinding>
-                                    </Button.CommandBindings>-->
+                                <Button  Content="Update" Width="170" Height="40" Command="{Binding EditProductCommand}">                                  
                                 </Button>
                             </StackPanel>
 

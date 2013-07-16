@@ -8,6 +8,7 @@ using RetailPOS.CommonLayer.DataTransferObjects.Master;
 using RetailPOS.CommonLayer.DataTransferObjects.Product;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.User;
+using RetailPOS.CommonLayer.DataTransferObjects.Order;
 
 #endregion
 
@@ -204,6 +205,17 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<MeasureUnitDTO> GetMeasureUnitDetails();
 
+        #endregion
+
+        #region Order
+        [OperationContract]
+        /// <summary>
+        /// Save Order details in database
+        /// </summary>
+        /// <param name="orderDetails">ordermaster object to be saved</param>
+        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        bool SaveOrderDetail(OrderMasterDTO orderDetail);
+     
         #endregion
     }
 }

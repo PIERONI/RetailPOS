@@ -6,6 +6,7 @@
   <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Settings" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" />
   <xs:element name="GetCategories">
     <xs:complexType>
       <xs:sequence />
@@ -330,6 +331,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="GetMeasureUnitDetailsResult" nillable="true" type="q24:ArrayOfMeasureUnitDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveOrderDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="orderDetail" nillable="true" type="q25:OrderMasterDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveOrderDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SaveOrderDetailResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

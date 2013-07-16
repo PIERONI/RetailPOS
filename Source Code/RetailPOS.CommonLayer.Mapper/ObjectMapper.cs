@@ -36,6 +36,8 @@ namespace RetailPOS.CommonLayer.Mapper
             MapObjectForSettings();
 
             MapObjectForMasters();
+
+            MapObjectForOrders();
         }
 
         #region Map Object

@@ -24,7 +24,7 @@ namespace RetailPOS.ViewModel
        /// <summary>
        /// Detail Of New Customer To be Saved
        /// </summary>
-       public RelayCommand AddNewCustomer { get; private set; }
+       public RelayCommand AddNewCustomer { get; private set; }    
        
        private bool _IsProductPopupOpen;
      
@@ -33,6 +33,7 @@ namespace RetailPOS.ViewModel
        private string _customerLastName;
        private string _email;
        private string _mobileNumber;
+       private string _mobileNumberNewCustomer;
        private decimal _customerBalance;
        private string _customerCode;
        private Visibility _isVisibleCustomerInfo;
@@ -244,6 +245,16 @@ namespace RetailPOS.ViewModel
            }
        }
 
+       public string MobileNumberNewCustomer
+       {
+           get { return _mobileNumberNewCustomer; }
+           set
+           {
+               _mobileNumberNewCustomer = value;
+               RaisePropertyChanged("MobileNumberNewCustomer");
+           }
+       }
+
        public decimal CustomerBalance
        {
            get { return _customerBalance; }
@@ -275,14 +286,13 @@ namespace RetailPOS.ViewModel
        {
            LstSearchProduct = new List<ProductDTO>();
            LstSearchCustomer = new List<CustomerDTO>();
-           AddNewCustomer = new RelayCommand(AddNewCustomerDetail);
-
+           AddNewCustomer = new RelayCommand(AddNewCustomerDetail);          
            Mediator.Register("ClosePopUpWindow", CloseProductPopUpWindow);
-
            GetSearchAttributes();
            isVisibleCustomerInfo = Visibility.Collapsed;
-       }  
+       }
 
+     
        /// <summary>
        /// Fills the list search.
        /// </summary>
@@ -352,7 +362,7 @@ namespace RetailPOS.ViewModel
                First_Name = CustomerFirstName,
                Last_Name = CustomerLastName,
                Email = CustomerEmail,
-               Mobile = MobileNumber,
+               Mobile = MobileNumberNewCustomer,
                Status_Id = 1,
                Payment_Period = 0,
                Credit_Limit = 0,

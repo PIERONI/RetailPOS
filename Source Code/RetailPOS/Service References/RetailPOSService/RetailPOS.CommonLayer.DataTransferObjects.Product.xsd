@@ -17,7 +17,7 @@
           <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Discount" type="xs:decimal" />
           <xs:element minOccurs="0" name="Has_Warranty" nillable="true" type="xs:boolean" />
-          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:short" />
           <xs:element minOccurs="0" name="Image_Path" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
@@ -25,7 +25,7 @@
           <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
           <xs:element minOccurs="0" name="Retail_Price" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Size" nillable="true" type="xs:decimal" />
-          <xs:element minOccurs="0" name="Status_Id" type="xs:int" />
+          <xs:element minOccurs="0" name="Status_Id" type="xs:short" />
           <xs:element minOccurs="0" name="Tax_Rate" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Wholesale_Price" nillable="true" type="xs:decimal" />

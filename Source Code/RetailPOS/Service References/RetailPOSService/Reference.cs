@@ -107,6 +107,8 @@ namespace RetailPOS.RetailPOSService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PromotionalOfferDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.WasteManagementDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.PurchaseHistoryDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.OrderMasterDTO))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.OrderChildDTO))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(RetailPOS.RetailPOSService.ProductCategoryDTO))]
     public partial class BaseDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -233,7 +235,7 @@ namespace RetailPOS.RetailPOSService {
         private System.Nullable<bool> Has_WarrantyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private short IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Image_PathField;
@@ -257,7 +259,7 @@ namespace RetailPOS.RetailPOSService {
         private System.Nullable<decimal> SizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Status_IdField;
+        private short Status_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> Tax_RateField;
@@ -347,7 +349,7 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public short Id {
             get {
                 return this.IdField;
             }
@@ -451,7 +453,7 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Status_Id {
+        public short Status_Id {
             get {
                 return this.Status_IdField;
             }
@@ -2225,6 +2227,246 @@ namespace RetailPOS.RetailPOSService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderMasterDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Order")]
+    [System.SerializableAttribute()]
+    public partial class OrderMasterDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Customer_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> Invoice_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> LstOrderItemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime Order_dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Order_noField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short Print_receipt_copiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Shop_codeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Customer_id {
+            get {
+                return this.Customer_idField;
+            }
+            set {
+                if ((this.Customer_idField.Equals(value) != true)) {
+                    this.Customer_idField = value;
+                    this.RaisePropertyChanged("Customer_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<long> Invoice_id {
+            get {
+                return this.Invoice_idField;
+            }
+            set {
+                if ((this.Invoice_idField.Equals(value) != true)) {
+                    this.Invoice_idField = value;
+                    this.RaisePropertyChanged("Invoice_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> LstOrderItem {
+            get {
+                return this.LstOrderItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LstOrderItemField, value) != true)) {
+                    this.LstOrderItemField = value;
+                    this.RaisePropertyChanged("LstOrderItem");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Order_date {
+            get {
+                return this.Order_dateField;
+            }
+            set {
+                if ((this.Order_dateField.Equals(value) != true)) {
+                    this.Order_dateField = value;
+                    this.RaisePropertyChanged("Order_date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Order_no {
+            get {
+                return this.Order_noField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Order_noField, value) != true)) {
+                    this.Order_noField = value;
+                    this.RaisePropertyChanged("Order_no");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Print_receipt_copies {
+            get {
+                return this.Print_receipt_copiesField;
+            }
+            set {
+                if ((this.Print_receipt_copiesField.Equals(value) != true)) {
+                    this.Print_receipt_copiesField = value;
+                    this.RaisePropertyChanged("Print_receipt_copies");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Shop_code {
+            get {
+                return this.Shop_codeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Shop_codeField, value) != true)) {
+                    this.Shop_codeField = value;
+                    this.RaisePropertyChanged("Shop_code");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="OrderChildDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
+        ".Order")]
+    [System.SerializableAttribute()]
+    public partial class OrderChildDTO : RetailPOS.RetailPOSService.BaseDTO {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short Measure_unit_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long Order_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short Product_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short QuantityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TaxedField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Measure_unit_id {
+            get {
+                return this.Measure_unit_idField;
+            }
+            set {
+                if ((this.Measure_unit_idField.Equals(value) != true)) {
+                    this.Measure_unit_idField = value;
+                    this.RaisePropertyChanged("Measure_unit_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Order_id {
+            get {
+                return this.Order_idField;
+            }
+            set {
+                if ((this.Order_idField.Equals(value) != true)) {
+                    this.Order_idField = value;
+                    this.RaisePropertyChanged("Order_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Product_id {
+            get {
+                return this.Product_idField;
+            }
+            set {
+                if ((this.Product_idField.Equals(value) != true)) {
+                    this.Product_idField = value;
+                    this.RaisePropertyChanged("Product_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Quantity {
+            get {
+                return this.QuantityField;
+            }
+            set {
+                if ((this.QuantityField.Equals(value) != true)) {
+                    this.QuantityField = value;
+                    this.RaisePropertyChanged("Quantity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Taxed {
+            get {
+                return this.TaxedField;
+            }
+            set {
+                if ((this.TaxedField.Equals(value) != true)) {
+                    this.TaxedField = value;
+                    this.RaisePropertyChanged("Taxed");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="LocalityDTO", Namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" +
         ".Master")]
     [System.SerializableAttribute()]
@@ -2290,34 +2532,34 @@ namespace RetailPOS.RetailPOSService {
     public interface IRetailPOSServiceContract {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCategories", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCategoriesResponse")]
-        RetailPOS.RetailPOSService.ProductCategoryDTO[] GetCategories();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductCategoryDTO> GetCategories();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveCategoryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveCategoryDetailsResponse")]
         bool SaveCategoryDetails(RetailPOS.RetailPOSService.ProductCategoryDTO categoryDetails);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetProductByCategory", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetProductByCategoryResponse")]
-        RetailPOS.RetailPOSService.ProductDTO[] GetProductByCategory(int categoryId);
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductDTO> GetProductByCategory(int categoryId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetAllProducts", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetAllProductsResponse")]
-        RetailPOS.RetailPOSService.ProductDTO[] GetAllProducts();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductDTO> GetAllProducts();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCommonProduct", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCommonProductResponse")]
-        RetailPOS.RetailPOSService.ProductDTO[] GetCommonProduct();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductDTO> GetCommonProduct();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetProductStatus", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetProductStatusResponse")]
-        RetailPOS.RetailPOSService.ProductStatusDTO[] GetProductStatus();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductStatusDTO> GetProductStatus();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveProductDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveProductDetailsResponse")]
         bool SaveProductDetails(RetailPOS.RetailPOSService.ProductDTO productDetails);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetStaffDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetStaffDetailsResponse")]
-        RetailPOS.RetailPOSService.StaffDTO[] GetStaffDetails();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.StaffDTO> GetStaffDetails();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentials", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/ValidateUserCredentialsResponse")]
         bool ValidateUserCredentials(string userName, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomers", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetAllCustomersResponse")]
-        RetailPOS.RetailPOSService.CustomerDTO[] GetAllCustomers();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.CustomerDTO> GetAllCustomers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveCustomerDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveCustomerDetailResponse")]
         bool SaveCustomerDetail(RetailPOS.RetailPOSService.CustomerDTO customerDetails);
@@ -2326,16 +2568,16 @@ namespace RetailPOS.RetailPOSService {
         bool UpdateCustomerDetail(RetailPOS.RetailPOSService.CustomerDTO customerDetail);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCustomerStatus", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCustomerStatusResponse")]
-        RetailPOS.RetailPOSService.CustomerStatusDTO[] GetCustomerStatus();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.CustomerStatusDTO> GetCustomerStatus();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCustomerTypes", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCustomerTypesResponse")]
-        RetailPOS.RetailPOSService.CustomerTypeDTO[] GetCustomerTypes();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.CustomerTypeDTO> GetCustomerTypes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveShopSetting", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveShopSettingResponse")]
         bool SaveShopSetting(RetailPOS.RetailPOSService.ShopSettingDTO shopSettingDetails);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPromotionalOfferDetailResponse")]
-        RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.PromotionalOfferDTO> GetPromotionalOfferDetail();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagement", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveWasteManagementResponse")]
         bool SaveWasteManagement(RetailPOS.RetailPOSService.WasteManagementDTO wasteManagementDetails);
@@ -2344,25 +2586,28 @@ namespace RetailPOS.RetailPOSService {
         bool SavePromotionalOffer(RetailPOS.RetailPOSService.PromotionalOfferDTO promotionalOfferDetails);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPurchaseHistoryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPurchaseHistoryDetailsResponse")]
-        RetailPOS.RetailPOSService.PurchaseHistoryDTO[] GetPurchaseHistoryDetails();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.PurchaseHistoryDTO> GetPurchaseHistoryDetails();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetCountryDetailsResponse")]
-        RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.CountryDTO> GetCountryDetails();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetTownCityDetailsResponse")]
-        RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryId);
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.TownCityDTO> GetTownCityDetails(int countryId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetLocalityDetailsResponse")]
-        RetailPOS.RetailPOSService.LocalityDTO[] GetLocalityDetails(int townCityId);
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.LocalityDTO> GetLocalityDetails(int townCityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetStreetDetailsResponse")]
-        RetailPOS.RetailPOSService.StreetDTO[] GetStreetDetails(int localityId);
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.StreetDTO> GetStreetDetails(int localityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetPostalCodeDetailsResponse")]
-        RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetails(int localityId);
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.PostCodeDTO> GetPostalCodeDetails(int localityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetMeasureUnitDetails", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetMeasureUnitDetailsResponse")]
-        RetailPOS.RetailPOSService.MeasureUnitDTO[] GetMeasureUnitDetails();
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.MeasureUnitDTO> GetMeasureUnitDetails();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveOrderDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveOrderDetailResponse")]
+        bool SaveOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2392,7 +2637,7 @@ namespace RetailPOS.RetailPOSService {
                 base(binding, remoteAddress) {
         }
         
-        public RetailPOS.RetailPOSService.ProductCategoryDTO[] GetCategories() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductCategoryDTO> GetCategories() {
             return base.Channel.GetCategories();
         }
         
@@ -2400,19 +2645,19 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.SaveCategoryDetails(categoryDetails);
         }
         
-        public RetailPOS.RetailPOSService.ProductDTO[] GetProductByCategory(int categoryId) {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductDTO> GetProductByCategory(int categoryId) {
             return base.Channel.GetProductByCategory(categoryId);
         }
         
-        public RetailPOS.RetailPOSService.ProductDTO[] GetAllProducts() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductDTO> GetAllProducts() {
             return base.Channel.GetAllProducts();
         }
         
-        public RetailPOS.RetailPOSService.ProductDTO[] GetCommonProduct() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductDTO> GetCommonProduct() {
             return base.Channel.GetCommonProduct();
         }
         
-        public RetailPOS.RetailPOSService.ProductStatusDTO[] GetProductStatus() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.ProductStatusDTO> GetProductStatus() {
             return base.Channel.GetProductStatus();
         }
         
@@ -2420,7 +2665,7 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.SaveProductDetails(productDetails);
         }
         
-        public RetailPOS.RetailPOSService.StaffDTO[] GetStaffDetails() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.StaffDTO> GetStaffDetails() {
             return base.Channel.GetStaffDetails();
         }
         
@@ -2428,7 +2673,7 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.ValidateUserCredentials(userName, password);
         }
         
-        public RetailPOS.RetailPOSService.CustomerDTO[] GetAllCustomers() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.CustomerDTO> GetAllCustomers() {
             return base.Channel.GetAllCustomers();
         }
         
@@ -2440,11 +2685,11 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.UpdateCustomerDetail(customerDetail);
         }
         
-        public RetailPOS.RetailPOSService.CustomerStatusDTO[] GetCustomerStatus() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.CustomerStatusDTO> GetCustomerStatus() {
             return base.Channel.GetCustomerStatus();
         }
         
-        public RetailPOS.RetailPOSService.CustomerTypeDTO[] GetCustomerTypes() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.CustomerTypeDTO> GetCustomerTypes() {
             return base.Channel.GetCustomerTypes();
         }
         
@@ -2452,7 +2697,7 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.SaveShopSetting(shopSettingDetails);
         }
         
-        public RetailPOS.RetailPOSService.PromotionalOfferDTO[] GetPromotionalOfferDetail() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.PromotionalOfferDTO> GetPromotionalOfferDetail() {
             return base.Channel.GetPromotionalOfferDetail();
         }
         
@@ -2464,32 +2709,36 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.SavePromotionalOffer(promotionalOfferDetails);
         }
         
-        public RetailPOS.RetailPOSService.PurchaseHistoryDTO[] GetPurchaseHistoryDetails() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.PurchaseHistoryDTO> GetPurchaseHistoryDetails() {
             return base.Channel.GetPurchaseHistoryDetails();
         }
         
-        public RetailPOS.RetailPOSService.CountryDTO[] GetCountryDetails() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.CountryDTO> GetCountryDetails() {
             return base.Channel.GetCountryDetails();
         }
         
-        public RetailPOS.RetailPOSService.TownCityDTO[] GetTownCityDetails(int countryId) {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.TownCityDTO> GetTownCityDetails(int countryId) {
             return base.Channel.GetTownCityDetails(countryId);
         }
         
-        public RetailPOS.RetailPOSService.LocalityDTO[] GetLocalityDetails(int townCityId) {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.LocalityDTO> GetLocalityDetails(int townCityId) {
             return base.Channel.GetLocalityDetails(townCityId);
         }
         
-        public RetailPOS.RetailPOSService.StreetDTO[] GetStreetDetails(int localityId) {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.StreetDTO> GetStreetDetails(int localityId) {
             return base.Channel.GetStreetDetails(localityId);
         }
         
-        public RetailPOS.RetailPOSService.PostCodeDTO[] GetPostalCodeDetails(int localityId) {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.PostCodeDTO> GetPostalCodeDetails(int localityId) {
             return base.Channel.GetPostalCodeDetails(localityId);
         }
         
-        public RetailPOS.RetailPOSService.MeasureUnitDTO[] GetMeasureUnitDetails() {
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.MeasureUnitDTO> GetMeasureUnitDetails() {
             return base.Channel.GetMeasureUnitDetails();
+        }
+        
+        public bool SaveOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail) {
+            return base.Channel.SaveOrderDetail(orderDetail);
         }
     }
 }

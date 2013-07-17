@@ -49,6 +49,10 @@ namespace RetailPOS.ViewModel
        private int _productQuantity;
        private string _productDescription;
        private int _id;
+       /// <summary>
+       /// To make textblock visibility true or false on add new customer button click
+       /// </summary>
+       private string _isTextBoxVisible;
 
        #endregion
 
@@ -274,6 +278,20 @@ namespace RetailPOS.ViewModel
                RaisePropertyChanged("CustomerCode");
            }
        }
+
+       /// <summary>
+       /// To make textblock visibility true or false on add new customer button click
+       /// </summary>
+       public string IsTextBoxVisible
+       {
+           get { return _isTextBoxVisible; }
+           set
+           {
+               _isTextBoxVisible = value;
+               RaisePropertyChanged("IsTextBoxVisible");
+           }
+       }
+
 
        #endregion
 

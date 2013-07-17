@@ -2242,13 +2242,13 @@ namespace RetailPOS.RetailPOSService {
         private System.Nullable<long> Invoice_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> LstOrderItemField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime Order_dateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Order_noField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> OrderchildsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private short Print_receipt_copiesField;
@@ -2296,19 +2296,6 @@ namespace RetailPOS.RetailPOSService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> LstOrderItem {
-            get {
-                return this.LstOrderItemField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LstOrderItemField, value) != true)) {
-                    this.LstOrderItemField = value;
-                    this.RaisePropertyChanged("LstOrderItem");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.DateTime Order_date {
             get {
                 return this.Order_dateField;
@@ -2330,6 +2317,19 @@ namespace RetailPOS.RetailPOSService {
                 if ((object.ReferenceEquals(this.Order_noField, value) != true)) {
                     this.Order_noField = value;
                     this.RaisePropertyChanged("Order_no");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> Orderchilds {
+            get {
+                return this.OrderchildsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderchildsField, value) != true)) {
+                    this.OrderchildsField = value;
+                    this.RaisePropertyChanged("Orderchilds");
                 }
             }
         }

@@ -184,7 +184,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>    
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>

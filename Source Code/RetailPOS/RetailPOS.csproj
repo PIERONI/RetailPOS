@@ -164,6 +164,9 @@
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Testing.xaml.cs">
+      <DependentUpon>Testing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\MaskedTextBoxBehaviour.cs" />
     <Compile Include="Utility\Mediator.cs" />
@@ -278,6 +281,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Testing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

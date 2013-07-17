@@ -33,6 +33,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<AddCategoryViewModel>();
             SimpleIoc.Default.Register<ShowProductViewModel>();
             SimpleIoc.Default.Register<PurchaseHistoryViewModel>();
+            SimpleIoc.Default.Register<GenerateBarCodeViewModel>();
         }
 
         /// <summary>
@@ -169,6 +170,12 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        /// <summary>
+        /// Gets the menu control VM.
+        /// </summary>
+        /// <value>
+        /// The menu control VM.
+        /// </value>
         public MenuControlViewModel MenuControlVM
         {
             get
@@ -247,6 +254,21 @@ namespace RetailPOS.ViewModel
             }
         }
 
+
+        /// <summary>
+        /// Gets the bar code VM.
+        /// </summary>
+        /// <value>
+        /// The bar code VM.
+        /// </value>
+        public GenerateBarCodeViewModel BarCodeVM
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<GenerateBarCodeViewModel>();
+            }
+        }
+
         /// <summary>
         /// Cleanups this instance.
         /// </summary>
@@ -260,15 +282,16 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<SettingViewModel>();
             SimpleIoc.Default.Unregister<ShopSettingViewModel>();
             SimpleIoc.Default.Unregister<RightPanelPaymentDetailViewModel>();
-            SimpleIoc.Default.Register<CustomerViewModel>();
-            SimpleIoc.Default.Register<AddProductViewModel>();
-            SimpleIoc.Default.Register<MenuControlViewModel>();
-            SimpleIoc.Default.Register<WasteManagementViewModel>();
-            SimpleIoc.Default.Register<PromotionalOfferViewModel>();
-            SimpleIoc.Default.Register<MenuControlViewModel>();
-            SimpleIoc.Default.Register<AddProductViewModel>();
-            SimpleIoc.Default.Register<ShowProductViewModel>();
-            SimpleIoc.Default.Register<PurchaseHistoryViewModel>();
+            SimpleIoc.Default.Unregister<CustomerViewModel>();
+            SimpleIoc.Default.Unregister<AddProductViewModel>();
+            SimpleIoc.Default.Unregister<MenuControlViewModel>();
+            SimpleIoc.Default.Unregister<WasteManagementViewModel>();
+            SimpleIoc.Default.Unregister<PromotionalOfferViewModel>();
+            SimpleIoc.Default.Unregister<MenuControlViewModel>();
+            SimpleIoc.Default.Unregister<AddProductViewModel>();
+            SimpleIoc.Default.Unregister<ShowProductViewModel>();
+            SimpleIoc.Default.Unregister<PurchaseHistoryViewModel>();
+            SimpleIoc.Default.Unregister<GenerateBarCodeViewModel>();
         }
     }
 }

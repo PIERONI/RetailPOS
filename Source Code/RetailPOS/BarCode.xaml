@@ -1,0 +1,10 @@
+﻿<Window x:Class="RetailPOS.View.Usercontrols.MainWindow.BarCode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BarCode" Height="340" Width="600"  xmlns:Child="clr-namespace:RetailPOS.View.Usercontrols.Settings"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Child:GenerateBarCode x:Name="GenerateBarCode" ></Child:GenerateBarCode>
+    </Grid>
+</Window>

@@ -17,7 +17,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="400" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="615">
+        <TabControl Margin="3" Grid.Row="0" Height="400" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="800">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
@@ -173,6 +173,99 @@
                                 <DataGridTextColumn Binding="{Binding Path=Email}" Header="Email"  Width="*" />
                                 <DataGridTextColumn Binding="{Binding Path=balance}" Header="Balance"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
                                 <DataGridTextColumn Binding="{Binding Path=Credit_Limit}" Header="Credit Limit" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="View / Search Purchase History">
+                <StackPanel  DataContext="{Binding Source={StaticResource Locator}, Path=PurchaseHistoryVM}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="180*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150*"></ColumnDefinition>
+                            <ColumnDefinition Width="485*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Purchase Date:" Height="30" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="0,5,0,0" Grid.RowSpan="2" />
+                        <DatePicker Grid.Column="1" Grid.Row="0" Width="250" Height="36" HorizontalAlignment="Left">
+                            <DatePicker.Resources>
+                                <Style TargetType="{x:Type DatePickerTextBox}">
+                                    <Setter Property="Control.Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <TextBox x:Name="PART_TextBox" Height="30" Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat=d}" />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
+                        <TextBlock Text="Invoice No:" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
+                        <toolkit:AutoCompleteBox Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Width="250" Name="autoCompleteTxtInvoiceNo"  ItemsSource="{Binding LstPurchaseHistory}" Grid.Row="1"                       
+                         Text="{Binding Invoice_No, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Invoice_No" >
+                            <toolkit:AutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#DFF0D8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="{Binding Invoice_No}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </toolkit:AutoCompleteBox.ItemTemplate>
+                        </toolkit:AutoCompleteBox>
+                        <TextBlock Text="Customer Name:" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" Grid.RowSpan="2" />
+                        <toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Width="250" Name="autoCompleteTxtCustomer"  ItemsSource="{Binding LstSearchCustomer}"
+                                      
+                         Text="{Binding First_Name, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="First_Name" >
+                            <toolkit:AutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#DFF0D8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <WrapPanel Grid.Row="0" Margin="0 3 0 0"  Width="350">
+                                            <TextBlock Grid.Row="0" Text="{Binding First_Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                            <TextBlock Grid.Row="0" Text="{Binding Last_Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                            <TextBlock Grid.Row="0" Text="{Binding Mobile}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                        </WrapPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </toolkit:AutoCompleteBox.ItemTemplate>
+                        </toolkit:AutoCompleteBox>
+                        <Button Height="30" Command="{Binding SearchPurchaseHistory}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="3" Grid.Column="1">
+                            <DockPanel>
+                                <Image Source="../../../Images/save-icon.png" Width="16" />
+                                <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
+                      <Bold>Search</Bold>
+                                </TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </Grid>
+                    <Grid>
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstPurchaseHistory}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="300" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=Purchase_Date}" Header="PurchaseDate" Width="90"  />
+                                <DataGridTextColumn Binding="{Binding Path=Supplier_Id}" Header="Supplier" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding Path=Shop_Code}" Header="Shop Code" Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=Invoice_No}" Header="Invoice"  Width="*" />
+                                <DataGridTextColumn Binding="{Binding Path=Sub_Total}" Header="Sub Total"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Discount}" Header="Discount"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Grand_Total}" Header="Grand Total"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Cash}" Header="Cash"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Credit}" Header="Credit"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>

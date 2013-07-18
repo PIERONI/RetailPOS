@@ -6,7 +6,9 @@
              mc:Ignorable="d" 
              xmlns:Utility="clr-namespace:RetailPOS.Utility"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             DataContext="{Binding Source={StaticResource Locator}, Path=PurchaseHistoryVM}">
+             DataContext="{Binding Source={StaticResource Locator}, Path=PurchaseHistoryVM}"
+              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit">
+             
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -42,8 +44,24 @@
                         </DatePicker.Resources>
                     </DatePicker>
                     <TextBlock Text="Invoice No:" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
-                    <TextBox Grid.Column="2"  Grid.Row="1" MaxLength="255" Height="30" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="0,5,0,0"  VerticalAlignment="Top" Width="250" />
-                    <Button Height="30" Canvas.Left="143" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Center" Width="75" Grid.Row="2" Grid.Column="0">
+                    <toolkit:AutoCompleteBox Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Width="250" Name="autoCompleteTxtProduct"  ItemsSource="{Binding LstPurchaseHistory}" Grid.Row="1"                       
+                         Text="{Binding Invoice_No, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Invoice_No" >
+                        <toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="#DFF0D8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Invoice_No}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </toolkit:AutoCompleteBox.ItemTemplate>
+                    </toolkit:AutoCompleteBox>
+                    <!--<TextBox Grid.Column="2"  Grid.Row="1" MaxLength="255" Height="30" Text="{Binding InvoiceNo}" HorizontalAlignment="Left" Margin="0,5,0,0"  VerticalAlignment="Top" Width="250" />-->
+                    <Button Height="30" Canvas.Left="143" Command="{Binding SearchPurchaseHistory}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
                         <DockPanel>
                             <Image Source="../../../Images/save-icon.png" Width="16" />
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">

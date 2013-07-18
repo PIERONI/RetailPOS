@@ -266,7 +266,7 @@ namespace RetailPOS.ViewModel
         /// <summary>
         /// Get Promotional offer details from database
         /// </summary>
-        private ObservableCollection<PromotionalOfferDTO> GetPromotionalOfer()
+        private ObservableCollection<PromotionalOfferDTO>  GetPromotionalOfer()
         {
             ObservableCollection<PromotionalOfferDTO> lstPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(
                 from item in ServiceFactory.ServiceClient.GetPromotionalOfferDetail()

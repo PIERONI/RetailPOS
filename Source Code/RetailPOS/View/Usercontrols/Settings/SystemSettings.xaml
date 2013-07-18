@@ -89,7 +89,7 @@
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsWastemengmentVisible}"
                      Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:WasteManagement x:Name="ctrlWasteManagent" Margin="15" Width="722"></ctrl:WasteManagement>
+            <ctrl:WasteManagement x:Name="ctrlWasteManagent" Margin="15" Width="842"></ctrl:WasteManagement>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -65,8 +65,7 @@ namespace RetailPOS.ViewModel
         private string _productName;
         private decimal _productQuantity;
         private decimal _productDiscount;
-        private bool _isEditProductEntryPopupOpen;
-        private bool _isEditErrorMessage;
+        private bool _isEditProductEntryPopupOpen;      
         private string _mobileNumberNewCustomer;
         /// <summary>
         /// To make textblock visibility true or false on add new customer button click
@@ -245,17 +244,7 @@ namespace RetailPOS.ViewModel
                 _isVisibleOnAddNewCustomerClick = value;
                 RaisePropertyChanged("IsVisibleOnAddNewCustomerClick");
             }
-        }
-
-        public bool IsEditErrorMessage
-        {
-            get { return _isEditErrorMessage; }
-            set
-            {
-                _isEditErrorMessage = value;
-                RaisePropertyChanged("IsEditErrorMessage");
-            }
-        }
+        }              
 
         public string ProductName
         {
@@ -374,6 +363,7 @@ namespace RetailPOS.ViewModel
             AddNewCustomer = new RelayCommand(AddNewCustomerDetail);
             GetSearchAttributes();
             IsVisibleCustomerField = new RelayCommand(VisibleCustomerField);
+            IsVisibleOnAddNewCustomerClick = "Visible";
             //SaveSetAsideOrderDetail = new RelayCommand(SaveOrderDetail);
         }
 
@@ -512,10 +502,7 @@ namespace RetailPOS.ViewModel
                 ProductQuantity = SelectedProduct.Quantity;
                 ProductDiscount = 0;
             }
-            else
-            {
-                IsEditErrorMessage = true;
-            }            
+                     
         }
 
         private void SetSelectedProduct(object args)
@@ -548,10 +535,11 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void OpenSetAsidePopUp()
         {
-            if (LstProductDetails != null)
+            if (LstProductDetails.Count>0)
             {
                 IsSetAsdePopUpOpen = true;
                 IsTextBoxVisible="Collapsed";
+                IsVisibleOnAddNewCustomerClick = "Visible";
             }
         }
 

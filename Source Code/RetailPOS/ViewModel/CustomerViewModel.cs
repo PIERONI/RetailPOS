@@ -51,6 +51,7 @@ namespace RetailPOS.ViewModel
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
         private CustomerDTO _customerName;
+     
 
         #endregion
 
@@ -360,7 +361,7 @@ namespace RetailPOS.ViewModel
                 }
             }
         }
-        #endregion
+#endregion
 
         #region Constructor
 

@@ -193,7 +193,7 @@
                             <ColumnDefinition Width="485*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="Purchase Date:" Height="30" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="0,5,0,0" Grid.RowSpan="2" />
-                        <DatePicker Grid.Column="1" Grid.Row="0" Width="250" Height="36" HorizontalAlignment="Left">
+                        <DatePicker Grid.Column="1" Grid.Row="0" Width="250" Height="36" HorizontalAlignment="Left" SelectedDate="{Binding SelectedDate,Mode=TwoWay}">
                             <DatePicker.Resources>
                                 <Style TargetType="{x:Type DatePickerTextBox}">
                                     <Setter Property="Control.Template">
@@ -224,8 +224,7 @@
                             </toolkit:AutoCompleteBox.ItemTemplate>
                         </toolkit:AutoCompleteBox>
                         <TextBlock Text="Customer Name:" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" Grid.RowSpan="2" />
-                        <toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Width="250" Name="autoCompleteTxtCustomer"  ItemsSource="{Binding LstSearchCustomer}"
-                                      
+                        <toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="2" Height="30" HorizontalAlignment="Left" Margin="3,5,0,0" VerticalAlignment="Top" Width="250" Name="autoCompleteTxtCustomer"  ItemsSource="{Binding LstSearchCustomer}" SelectedItem="{Binding SelectedCustomer,Mode=TwoWay}"                                   
                          Text="{Binding First_Name, Mode=TwoWay}" 
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -239,7 +238,7 @@
                                         <WrapPanel Grid.Row="0" Margin="0 3 0 0"  Width="350">
                                             <TextBlock Grid.Row="0" Text="{Binding First_Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
                                             <TextBlock Grid.Row="0" Text="{Binding Last_Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
-                                            <TextBlock Grid.Row="0" Text="{Binding Mobile}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
+                                            <TextBlock Grid.Row="0" Text="{Binding Id}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150" Margin='10,0,0,0'></TextBlock>
                                         </WrapPanel>
                                     </Grid>
                                 </DataTemplate>

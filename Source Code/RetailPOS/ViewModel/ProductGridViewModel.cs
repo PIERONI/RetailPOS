@@ -24,6 +24,7 @@ namespace RetailPOS.ViewModel
         public IList<DiscountType> LstDiscountType { get; private set; }
 
         private ObservableCollection<ProductDTO> _productDetails;
+        private ObservableCollection <CustomerDTO> _customerDetail;
         public static List<int> LstSelectedItem { get; set; }
 
         public RelayCommand ExitCommand { get; private set; }
@@ -120,6 +121,18 @@ namespace RetailPOS.ViewModel
             {
                 _productDetails = value;
                 RaisePropertyChanged("LstProductDetails");
+            }
+        }
+        /// <summary>
+        /// For entering customerId in ordermaster table
+        /// </summary>
+        public ObservableCollection<CustomerDTO> LstCustomerDetail
+        {
+            get { return _customerDetail; }
+            set
+            {
+                _customerDetail = value;
+                RaisePropertyChanged("LstCustomerDetail");
             }
         }
 
@@ -345,6 +358,7 @@ namespace RetailPOS.ViewModel
         public ProductGridViewModel()
         {
             LstProductDetails = new ObservableCollection<ProductDTO>();
+            LstCustomerDetail = new ObservableCollection<CustomerDTO>();
             LstDiscountType = new ObservableCollection<DiscountType>();
             LstSearchCustomer = new List<CustomerDTO>();
             Mediator.Register("SetSelectedProduct", SetSelectedProduct);
@@ -425,6 +439,7 @@ namespace RetailPOS.ViewModel
         /// <returns></returns>
         private List<OrderChildDTO> InitializeOrderChildDetail()
         {
+
             List<OrderChildDTO> lstOrderChildDetail=(from item in LstProductDetails select
                                                        new OrderChildDTO
                                                            {
@@ -613,30 +628,78 @@ namespace RetailPOS.ViewModel
 
         private void AddNewCustomerDetail()
         {
-            var customerDetail = InitializwSaveCustomerDetail();
-            ServiceFactory.ServiceClient.SaveCustomerDetail(customerDetail);
-            IsVisibleOnAddNewCustomerClick = "Visible";
-            IsTextBoxVisible = "Collapsed";
-        }
-
-        ///
-        private CustomerDTO InitializwSaveCustomerDetail()
-        {
-            return new CustomerDTO
+            if (SelectedCustomer1 == null)
             {
-                Code = CustomerCode,
-                First_Name = CustomerFirstName,
-                Last_Name = CustomerLastName,
-                Email = CustomerEmail,
-                Mobile = MobileNumberNewCustomer,
-                Status_Id = 1,
-                Payment_Period = 0,
-                Credit_Limit = 0,
-                balance = 0
-            };
+                var customerDetail = InitializwSaveCustomerDetail();
+                ServiceFactory.ServiceClient.SaveCustomerDetail(customerDetail);
+                var OrderDetail = InitializeSaveOrderWithItemsWithNewCustomer();
+                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+           
+                IsVisibleOnAddNewCustomerClick = "Visible";
+                IsTextBoxVisible = "Collapsed";
+            }
         }
 
+        ///To save new customer detail
+        private CustomerDTO InitializwSaveCustomerDetail()
+        {         
+            
+                return new CustomerDTO
+                {
+                    Code = CustomerCode,
+                    First_Name = CustomerFirstName,
+                    Last_Name = CustomerLastName,
+                    Email = CustomerEmail,
+                    Mobile = MobileNumberNewCustomer,
+                    Status_Id = 1,
+                    Payment_Period = 0,
+                    Credit_Limit = 0,
+                    balance = 0
+                };
+            
+        }
+        /// <summary>
+        /// To save new order detail
+        /// </summary>
+        /// <returns>
+        /// New order master DTO
+        /// </returns>
+        private OrderMasterDTO InitializeSaveOrderWithItemsWithNewCustomer()
+        {
+            return new OrderMasterDTO
+            {
+                Order_no = "0001",
+                Order_date = System.DateTime.Now,
+                Customer_id = 4,
+                Shop_code = "PSD-01",
+                Invoice_id = 64,
+                Print_receipt_copies = 0,
+                Orderchilds = InitializeOrderChildDetailWithNewCustomer()
 
+            };         
+           
+        }
+        /// <summary>
+        /// Initialized order child details to be saved to database wuth new customer detail
+        /// </summary>
+        /// <returns></returns>
+        private List<OrderChildDTO> InitializeOrderChildDetailWithNewCustomer()
+        {
+            List<OrderChildDTO> lstOrderChildDetail = (from item in LstProductDetails
+                                                       select
+                                                           new OrderChildDTO
+                                                           {
+                                                               Order_id = 0,
+                                                               Product_id = item.Id,
+                                                               Quantity = 1,
+                                                               Measure_unit_id = 3,
+                                                               Amount = (decimal)item.Retail_Price,
+                                                               Taxed = 1
+                                                           }).ToList();
+            return lstOrderChildDetail;
+        }
+
+      
         #endregion
     }
 

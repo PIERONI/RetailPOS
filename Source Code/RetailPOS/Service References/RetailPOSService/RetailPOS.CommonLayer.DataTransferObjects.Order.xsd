@@ -39,4 +39,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="OrderChildDTO" nillable="true" type="tns:OrderChildDTO" />
+  <xs:complexType name="ArrayOfOrderMasterDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderMasterDTO" nillable="true" type="tns:OrderMasterDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderMasterDTO" nillable="true" type="tns:ArrayOfOrderMasterDTO" />
 </xs:schema>

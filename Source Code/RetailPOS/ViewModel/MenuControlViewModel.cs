@@ -31,17 +31,28 @@ namespace RetailPOS.ViewModel
             get;
             private set;
         }
-
-        public RelayCommand OpenSetAsideOrderPopup { get; private set; }
+         public RelayCommand OpenSetAsideOrderPopup { get; private set; }
         private bool _IsOrderPopupOpen;
         private Visibility _isVisibleCustomerInfo;
         private string _Mobile;
         private bool _IsSetAsideOrderPopupOpen;
         private CustomerDTO     _customer;       
-        private CustomerDTO _selectedCustomer;        
+        private CustomerDTO _selectedCustomer;
+        private CustomerDTO _setAsideOrderCustomer;
         private string _customerName;
+
         #endregion      
         #region Public Properties
+
+        public CustomerDTO SetAsideOrderCustomer
+        {
+            get { return _setAsideOrderCustomer; }
+            set
+            {
+                _setAsideOrderCustomer = value;
+                RaisePropertyChanged("SetAsideOrderCustomer");
+            }
+        }
 
         public string CustomerName
         {
@@ -90,6 +101,7 @@ namespace RetailPOS.ViewModel
             {
                 _selectedCustomer = value;
                 RaisePropertyChanged("SelectedCustomer");
+                SetAsideOrderCustomer = value;
                 BindCustomer();
             }
         }
@@ -162,7 +174,7 @@ namespace RetailPOS.ViewModel
             CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
             isVisibleCustomerInfo = Visibility.Visible;
         }
-    
+      
 
         private void ClearText()
         {

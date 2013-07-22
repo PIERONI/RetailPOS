@@ -14,7 +14,18 @@ namespace RetailPOS.BusinessLayer.Service.Order
         /// <param name="orderDetails">ordermaster object to be saved</param>
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
        bool SaveOrderDetail(OrderMasterDTO orderDetail);
-       //bool SaveOrderDetailWithCustomerId(IList<OrderMasterDTO> orderDetailWithCustomerId);
-     
+      
+       /// <summary>
+       /// Get orderMasterDetail By customer Id
+       /// </summary>
+       /// <returns>returns list of orderMasterDetail by customerId</returns>
+       IList<OrderMasterDTO> GetOrderByCustomerId(int customerId);
+
+        /// <summary>
+        /// Get orderChildDetail By Order Id
+        /// </summary>
+        /// <returns>returns list of orderChildDetail by Order Id</returns>
+       IList<OrderChildDTO> GetOrderChildByOrderId(int orderId);
+    
     }
 }

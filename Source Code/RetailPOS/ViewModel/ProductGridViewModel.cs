@@ -22,14 +22,15 @@ namespace RetailPOS.ViewModel
         #region Declare Public and private Data member
 
         public IList<DiscountType> LstDiscountType { get; private set; }
-
+        private IList<OrderMasterDTO> _lstOrderMasterType;
+        private IList<OrderChildDTO> _lstOrderChildType;
         private ObservableCollection<ProductDTO> _productDetails;
         private ObservableCollection <CustomerDTO> _customerDetail;
         public static List<int> LstSelectedItem { get; set; }
 
         public RelayCommand ExitCommand { get; private set; }
         public RelayCommand LogOutCommand { get; private set; }
-        public RelayCommand<CustomerDTO> SelectProductCommand { get; private set; }
+        public RelayCommand<object> SelectProductCommand { get; private set; }
         public RelayCommand ClearProduct { get; private set; }
         public RelayCommand DeleteSelectedItem { get; private set; }
         public RelayCommand OpenEditProductEntryPopUp { get; private set; }
@@ -55,9 +56,12 @@ namespace RetailPOS.ViewModel
         /// Detail Of New Customer To be Saved
         /// </summary>
      
-        public RelayCommand AddNewCustomer { get; private set; }    
-    
-
+        public RelayCommand AddNewCustomer { get; private set; }
+        /// <summary>
+        /// To Bind the product grid on selecting the customer for Open Order
+        /// </summary>
+        public RelayCommand<CustomerDTO> BindProductGridForOpenOrder { get; private set; }
+     
       
         private DiscountType _selectedDiscount;
         private ProductDTO _selectedProduct;
@@ -347,7 +351,36 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("CustomerEmail");
             }
         }
-
+        /// <summary>
+        /// Gets or sets list of ordermaster to bind the datagrid
+        /// </summary>
+        /// <value>
+        /// The list of ordermaster.
+        /// </value>
+        public IList<OrderMasterDTO> LstOrderMasterType
+        {
+            get { return _lstOrderMasterType; }
+            set
+            {
+                _lstOrderMasterType = value;
+                RaisePropertyChanged("LstOrderMasterType");
+            }
+        }
+        /// <summary>
+        /// Gets or sets list of orderchild to bind the datagrid
+        /// </summary>
+        /// <value>
+        /// The list of orderchild.
+        /// </value>
+        public IList<OrderChildDTO> LstOrderChildType
+        {
+            get { return _lstOrderChildType; }
+            set
+            {
+                _lstOrderChildType = value;
+                RaisePropertyChanged("LstOrderChildType");
+            }
+        }
         #endregion
 
         #region Private Methods
@@ -361,6 +394,8 @@ namespace RetailPOS.ViewModel
             LstCustomerDetail = new ObservableCollection<CustomerDTO>();
             LstDiscountType = new ObservableCollection<DiscountType>();
             LstSearchCustomer = new List<CustomerDTO>();
+            LstOrderMasterType = new List<OrderMasterDTO>();
+            LstOrderChildType = new List<OrderChildDTO>();
             Mediator.Register("SetSelectedProduct", SetSelectedProduct);
 
             GetDiscountType();
@@ -368,7 +403,7 @@ namespace RetailPOS.ViewModel
             ExitCommand = new RelayCommand(CloseApplication);
             LogOutCommand = new RelayCommand(LogoutApplication);
             ClearProduct = new RelayCommand(ClearGridProduct);
-            SelectProductCommand = new RelayCommand<CustomerDTO>(BindProductDetails);
+            SelectProductCommand = new RelayCommand<object>(BindProductDetails);
             DeleteSelectedItem = new RelayCommand(DeleteItem);
             OpenEditProductEntryPopUp = new RelayCommand(OpenEditProductPopUp);
             EditProductCommand = new RelayCommand(EditDataGridCommand);
@@ -378,6 +413,8 @@ namespace RetailPOS.ViewModel
             GetSearchAttributes();
             IsVisibleCustomerField = new RelayCommand(VisibleCustomerField);
             IsVisibleOnAddNewCustomerClick = "Visible";
+            BindProductGridForOpenOrder = new RelayCommand<CustomerDTO>(BindProductGridOnSelectCustomer);
+           
             //SaveSetAsideOrderDetail = new RelayCommand(SaveOrderDetail);
         }
 
@@ -698,7 +735,19 @@ namespace RetailPOS.ViewModel
                                                            }).ToList();
             return lstOrderChildDetail;
         }
-
+      
+        /// <summary>
+        /// To bind product grid on selecting customer in open order
+        /// </summary>
+        private void BindProductGridOnSelectCustomer(object customerDetails)
+        {
+            if (customerDetails != null)
+            {
+                //LstOrderMasterType = new ObservableCollection<OrderMasterDTO>(from item in ServiceFactory.ServiceClient.GetOrderByCustomerId(((CustomerDTO)selectedCustomer).Id)
+                //                                                              select item).ToList();
+                //LstOrderChildType = LstOrderMasterType[0].Orderchilds;
+            }
+        }
       
         #endregion
     }

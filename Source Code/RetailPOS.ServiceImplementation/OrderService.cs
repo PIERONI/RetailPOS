@@ -17,5 +17,21 @@ namespace RetailPOS.ServiceImplementation
       {
           return OrderService.SaveOrderDetail(orderDetail);
       }
+        /// <summary>
+        /// Get orderMasterDetail By customer Id
+        /// </summary>
+        /// <returns>returns list of orderMasterDetail by customerId</returns>  
+      public IList<OrderMasterDTO> GetOrderByCustomerId(int customerId)
+      {
+          return OrderService.GetOrderByCustomerId(customerId);
+      }
+        /// <summary>
+        /// Get orderChildDetail By Order Id
+        /// </summary>
+        /// <returns>returns list of orderChildDetail by Order Id</returns>
+      public IList<OrderChildDTO> GetOrderChildByOrderId(int orderId)
+      {
+          return OrderService.GetOrderChildByOrderId(orderId);
+      }
     }
 }

@@ -22,5 +22,26 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
            ObjectMapper.Map(orderDetail, orderEntity);
            return OrderMasterRepository.Save(orderEntity);
        }
+        /// <summary>
+        /// Get orderMasterDetail By customer Id
+        /// </summary>
+        /// <returns>returns list of orderMasterDetail by customerId</returns>  
+       IList<OrderMasterDTO> IOrderService.GetOrderByCustomerId(int customerId)
+       {
+           IList < OrderMasterDTO > lstOrderMaster= new List<OrderMasterDTO>();
+           ObjectMapper.Map(base.OrderMasterRepository.GetList(item=>item.customer_id==customerId),lstOrderMaster);
+           return lstOrderMaster;
+       }
+        /// <summary>
+        /// Get orderChildDetail By Order Id
+        /// </summary>
+        /// <returns>returns list of orderChildDetail by Order Id</returns>
+       IList<OrderChildDTO> IOrderService.GetOrderChildByOrderId(int orderId)
+       {
+           IList<OrderChildDTO> lstOrderChild = new List<OrderChildDTO>();
+           ObjectMapper.Map(base.OrderChildRepository.GetList(item=>item.order_id==orderId), lstOrderChild);
+           return lstOrderChild;
+       }
+     
     }
 }

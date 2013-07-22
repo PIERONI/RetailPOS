@@ -2608,6 +2608,12 @@ namespace RetailPOS.RetailPOSService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveOrderDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveOrderDetailResponse")]
         bool SaveOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetOrderByCustomerId", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetOrderByCustomerIdResponse")]
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderMasterDTO> GetOrderByCustomerId(int customerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetOrderChildByOrderId", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetOrderChildByOrderIdResponse")]
+        System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> GetOrderChildByOrderId(int orderId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2739,6 +2745,14 @@ namespace RetailPOS.RetailPOSService {
         
         public bool SaveOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail) {
             return base.Channel.SaveOrderDetail(orderDetail);
+        }
+        
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderMasterDTO> GetOrderByCustomerId(int customerId) {
+            return base.Channel.GetOrderByCustomerId(customerId);
+        }
+        
+        public System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderChildDTO> GetOrderChildByOrderId(int orderId) {
+            return base.Channel.GetOrderChildByOrderId(orderId);
         }
     }
 }

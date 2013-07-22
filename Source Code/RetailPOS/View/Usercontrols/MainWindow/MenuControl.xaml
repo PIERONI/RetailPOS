@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="507"
-              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
+             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
              xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls"
+             xmlns:ctrl="clr-namespace:RetailPOS.ViewModel"
              DataContext="{Binding Source={StaticResource Locator},Path=MenuControlVM}">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
@@ -126,7 +127,11 @@
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <Button Content="Select Customer" Command="{Binding}" Width="100" Height="40" Grid.Row="2"  HorizontalAlignment="Left" Margin="35,12,0,0" Grid.Column="0"></Button>
+                                    <Button CommandParameter="{Binding SelectedCustomer}" Command="{Binding BindProductGridForOpenOrder}"
+                                            DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Content="Select Customer" 
+                                             Width="100" Height="40" Grid.Row="2"  HorizontalAlignment="Left" Margin="35,12,0,0" 
+                                            Grid.Column="0">
+                                    </Button>
                                     <Button Content="Clear" Command="{Binding Clear}" Width="100" Height="40" Grid.Row="2"  Margin="25,12,0,0"  HorizontalAlignment="Left" Grid.Column="1">
                                     </Button>
                                 </Grid>
@@ -151,7 +156,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="5"  DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}"  HorizontalAlignment="Right" Width="95"  Command="{Binding OpenSettingWindowCmd}">
+            <Button Height="53" Margin="5"  DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}"  HorizontalAlignment="Right" Width="95"  Command="{Binding OpenSettingWindowCmd}" >
                 <DockPanel>
                     <Image Source="../../../Images/settings.png" Width="34" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">

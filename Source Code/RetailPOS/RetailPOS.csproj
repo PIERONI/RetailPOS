@@ -165,6 +165,7 @@
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\DataContextSpy.cs" />
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\MaskedTextBoxBehaviour.cs" />
     <Compile Include="Utility\Mediator.cs" />
@@ -485,6 +486,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.MeasureUnitDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.OrderChildDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.OrderMasterDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.PostCodeDTO.datasource">

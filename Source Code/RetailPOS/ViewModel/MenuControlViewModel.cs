@@ -37,7 +37,7 @@ namespace RetailPOS.ViewModel
         private Visibility _isVisibleCustomerInfo;
         private string _Mobile;
         private bool _IsSetAsideOrderPopupOpen;
-        private CustomerDTO _customer;       
+        private CustomerDTO     _customer;       
         private CustomerDTO _selectedCustomer;        
         private string _customerName;
         #endregion      
@@ -89,6 +89,7 @@ namespace RetailPOS.ViewModel
             set
             {
                 _selectedCustomer = value;
+                RaisePropertyChanged("SelectedCustomer");
                 BindCustomer();
             }
         }
@@ -138,14 +139,15 @@ namespace RetailPOS.ViewModel
         private void OpeOrderPopup()
         {
             IsOrderPopupOpen=true;
+            CustomerMobile = "";
+            CustomerName = "";
         }
 
         private void OpenSetAsideOrderpopupClick()
         {
             IsOrderPopupOpen = false;
             IsSetAsidePopupOpen = true;
-            CustomerMobile = null;
-            CustomerName = null;
+            ClearText();
         }
 
         private void BindCustomer()
@@ -157,14 +159,17 @@ namespace RetailPOS.ViewModel
             }
             isVisibleCustomerInfo = Visibility.Visible;
             CustomerMobile = SelectedCustomer.Mobile;
-            CustomerName = SelectedCustomer.First_Name;            
+            CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
+            isVisibleCustomerInfo = Visibility.Visible;
         }
+    
 
         private void ClearText()
         {
             Customer = null;
-            CustomerMobile = string.Empty;
             CustomerName = string.Empty;
+            CustomerMobile = string.Empty;
+         
         }
     }
 }

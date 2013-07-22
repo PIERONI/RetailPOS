@@ -183,7 +183,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public string MobileNumber
+        public string   MobileNumber
         {
             get { return _mobileNumber; }
             set

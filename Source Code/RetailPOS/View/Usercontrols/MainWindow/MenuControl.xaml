@@ -69,7 +69,7 @@
                                     <Label Content="Customer Name: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="0"></Label>
                                     <Label Content="Mobile No: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="1"></Label>
                                     <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="11,8,0,0" Text="{Binding CustomerName}" Name="autoCompleteTxtName"  ItemsSource="{Binding lstSearchCustomer}"                        
-                        SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"
+                        SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}"
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
                                      ValueMemberPath="First_Name" VerticalAlignment="Top" Width="150" Height="25" >
@@ -98,7 +98,7 @@
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
                                     <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1"  Margin="11,8,0,0" Text="{Binding CustomerMobile}"  Name="autoCompleteTxtMobile"  ItemsSource="{Binding lstSearchCustomer}"                        
-                        SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"
+                        SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}"
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
                                      ValueMemberPath="Mobile" VerticalAlignment="Top" Width="150" Height="25" >

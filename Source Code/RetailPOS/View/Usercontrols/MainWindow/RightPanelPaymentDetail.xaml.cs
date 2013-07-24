@@ -11,5 +11,9 @@ namespace RetailPOS.View.Usercontrols.MainWindow
         {
             InitializeComponent();
         }
+
+    
+
+      
     }
 }

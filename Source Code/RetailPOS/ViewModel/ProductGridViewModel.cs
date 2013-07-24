@@ -76,6 +76,7 @@ namespace RetailPOS.ViewModel
         private ObservableCollection<CustomerDTO> _customerDetail;
         
         private string _total;
+        private decimal _totalDiscount;
         private string _productName;
         private decimal _productQuantity;
         private decimal _productDiscount;
@@ -233,6 +234,18 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("Total");
             }
         }
+
+        public decimal TotalDiscount
+        {
+            get { return _totalDiscount; }
+            set
+            {
+                _totalDiscount = value;
+                RaisePropertyChanged("TotalDiscount");
+            }
+        }
+
+     
 
         public bool IsEditProductEntryPopupOpen
         {
@@ -488,8 +501,9 @@ namespace RetailPOS.ViewModel
             SelectedProduct.Amount = amount;
 
             var totalAmount = LstProductDetails.Select(u => u.Amount).Sum();
-            Total = "Total : " + totalAmount.ToString();
-
+            var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();
+            Total = totalAmount.ToString();
+            TotalDiscount = (decimal)totalDiscount;
             IsEditProductEntryPopupOpen = false;
         }
 
@@ -608,7 +622,9 @@ namespace RetailPOS.ViewModel
             }
 
             var amount = LstProductDetails.Select(u => u.Amount).Sum();
-            Total = "Total : " + amount.ToString();
+             var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();          
+            TotalDiscount = (decimal)totalDiscount;
+            Total = amount.ToString();
 
             Mediator.NotifyColleagues("CloseProductPopUpWindow", false);
         }
@@ -645,7 +661,8 @@ namespace RetailPOS.ViewModel
 
         private void ClearControls()
         {
-            Total = "Total : " + 0;
+            Total = string.Empty+"0";         
+            TotalDiscount = (decimal)0.0;
         }
 
         /// <summary>
@@ -764,8 +781,9 @@ namespace RetailPOS.ViewModel
                                                                          });
 
                 var amount = LstProductDetails.Select(u => u.Amount).Sum();
-                Total = "Total : " + amount.ToString();
-
+                Total = amount.ToString();
+                var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();          
+                TotalDiscount = (decimal)totalDiscount;
                 Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
             }
         }
@@ -792,8 +810,9 @@ namespace RetailPOS.ViewModel
             }
 
             var amount = LstProductDetails.Select(u => u.Amount).Sum();
-            Total = "Total : " + amount.ToString();
-
+            Total =  amount.ToString();
+            var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();         
+            TotalDiscount = (decimal)totalDiscount;
             Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
         }
 

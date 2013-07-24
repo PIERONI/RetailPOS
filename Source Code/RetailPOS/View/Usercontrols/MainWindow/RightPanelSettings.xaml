@@ -133,7 +133,7 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="95" Command="{Binding OpenEditProductEntryPopUp}" >
+            <Button Height="53" Margin="3"  HorizontalAlignment="Right" Width="95" Command="{Binding OpenEditProductEntryPopUp}">
                 <DockPanel>
                     <Image Source="../../../Images/discount-icon.png" Width="37" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="0 0 0 0">

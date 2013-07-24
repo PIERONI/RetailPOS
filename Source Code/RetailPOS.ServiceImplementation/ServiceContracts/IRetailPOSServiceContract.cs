@@ -245,6 +245,13 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         [OperationContract]
         IList<OrderChildDTO> GetOrderItemsByOrderId(long orderId);
 
+        /// <summary>
+        /// Get all order items whose status is 3
+        /// </summary>
+        /// <returns>returns list of  order items whose status is 3</returns>
+      [OperationContract]
+        IList<OrderMasterDTO> GetOrderItemByStatus();
+    
         #endregion
     }
 }

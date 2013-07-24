@@ -39,32 +39,376 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual int street_id
         {
-            get;
-            set;
+            get { return _street_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_street_id != value)
+                    {
+                        if (street != null && street.id != value)
+                        {
+                            street = null;
+                        }
+                        _street_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private int _street_id;
     
         public virtual Nullable<long> locality_id
         {
-            get;
-            set;
+            get { return _locality_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_locality_id != value)
+                    {
+                        if (locality != null && locality.id != value)
+                        {
+                            locality = null;
+                        }
+                        _locality_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private Nullable<long> _locality_id;
     
         public virtual Nullable<short> town_city_id
         {
-            get;
-            set;
+            get { return _town_city_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_town_city_id != value)
+                    {
+                        if (town_city != null && town_city.id != value)
+                        {
+                            town_city = null;
+                        }
+                        _town_city_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private Nullable<short> _town_city_id;
     
         public virtual Nullable<short> country_id
         {
-            get;
-            set;
+            get { return _country_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_country_id != value)
+                    {
+                        if (country != null && country.id != value)
+                        {
+                            country = null;
+                        }
+                        _country_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private Nullable<short> _country_id;
     
         public virtual int postcode_id
         {
-            get;
-            set;
+            get { return _postcode_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_postcode_id != value)
+                    {
+                        if (postcode != null && postcode.id != value)
+                        {
+                            postcode = null;
+                        }
+                        _postcode_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
+        }
+        private int _postcode_id;
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual postcode postcode
+        {
+            get { return _postcode; }
+            set
+            {
+                if (!ReferenceEquals(_postcode, value))
+                {
+                    var previousValue = _postcode;
+                    _postcode = value;
+                    Fixuppostcode(previousValue);
+                }
+            }
+        }
+        private postcode _postcode;
+    
+        public virtual town_city town_city
+        {
+            get { return _town_city; }
+            set
+            {
+                if (!ReferenceEquals(_town_city, value))
+                {
+                    var previousValue = _town_city;
+                    _town_city = value;
+                    Fixuptown_city(previousValue);
+                }
+            }
+        }
+        private town_city _town_city;
+    
+        public virtual country country
+        {
+            get { return _country; }
+            set
+            {
+                if (!ReferenceEquals(_country, value))
+                {
+                    var previousValue = _country;
+                    _country = value;
+                    Fixupcountry(previousValue);
+                }
+            }
+        }
+        private country _country;
+    
+        public virtual street street
+        {
+            get { return _street; }
+            set
+            {
+                if (!ReferenceEquals(_street, value))
+                {
+                    var previousValue = _street;
+                    _street = value;
+                    Fixupstreet(previousValue);
+                }
+            }
+        }
+        private street _street;
+    
+        public virtual locality locality
+        {
+            get { return _locality; }
+            set
+            {
+                if (!ReferenceEquals(_locality, value))
+                {
+                    var previousValue = _locality;
+                    _locality = value;
+                    Fixuplocality(previousValue);
+                }
+            }
+        }
+        private locality _locality;
+    
+        public virtual ICollection<customer> customers
+        {
+            get
+            {
+                if (_customers == null)
+                {
+                    var newCollection = new FixupCollection<customer>();
+                    newCollection.CollectionChanged += Fixupcustomers;
+                    _customers = newCollection;
+                }
+                return _customers;
+            }
+            set
+            {
+                if (!ReferenceEquals(_customers, value))
+                {
+                    var previousValue = _customers as FixupCollection<customer>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupcustomers;
+                    }
+                    _customers = value;
+                    var newValue = value as FixupCollection<customer>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupcustomers;
+                    }
+                }
+            }
+        }
+        private ICollection<customer> _customers;
+
+        #endregion
+        #region Association Fixup
+    
+        private bool _settingFK = false;
+    
+        private void Fixuppostcode(postcode previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (postcode != null)
+            {
+                if (!postcode.addresses.Contains(this))
+                {
+                    postcode.addresses.Add(this);
+                }
+                if (postcode_id != postcode.id)
+                {
+                    postcode_id = postcode.id;
+                }
+            }
+        }
+    
+        private void Fixuptown_city(town_city previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (town_city != null)
+            {
+                if (!town_city.addresses.Contains(this))
+                {
+                    town_city.addresses.Add(this);
+                }
+                if (town_city_id != town_city.id)
+                {
+                    town_city_id = town_city.id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                town_city_id = null;
+            }
+        }
+    
+        private void Fixupcountry(country previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (country != null)
+            {
+                if (!country.addresses.Contains(this))
+                {
+                    country.addresses.Add(this);
+                }
+                if (country_id != country.id)
+                {
+                    country_id = country.id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                country_id = null;
+            }
+        }
+    
+        private void Fixupstreet(street previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (street != null)
+            {
+                if (!street.addresses.Contains(this))
+                {
+                    street.addresses.Add(this);
+                }
+                if (street_id != street.id)
+                {
+                    street_id = street.id;
+                }
+            }
+        }
+    
+        private void Fixuplocality(locality previousValue)
+        {
+            if (previousValue != null && previousValue.addresses.Contains(this))
+            {
+                previousValue.addresses.Remove(this);
+            }
+    
+            if (locality != null)
+            {
+                if (!locality.addresses.Contains(this))
+                {
+                    locality.addresses.Add(this);
+                }
+                if (locality_id != locality.id)
+                {
+                    locality_id = locality.id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                locality_id = null;
+            }
+        }
+    
+        private void Fixupcustomers(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (customer item in e.NewItems)
+                {
+                    item.address = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (customer item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.address, this))
+                    {
+                        item.address = null;
+                    }
+                }
+            }
         }
 
         #endregion

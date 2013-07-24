@@ -165,9 +165,6 @@
     <Compile Include="Entities\supplier_contact_person.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\supplier_products.cs">
-      <DependentUpon>POSEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\town_city.cs">
       <DependentUpon>POSEntities.tt</DependentUpon>
     </Compile>

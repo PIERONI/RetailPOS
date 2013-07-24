@@ -27,9 +27,20 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual int customer_id
         {
-            get;
-            set;
+            get { return _customer_id; }
+            set
+            {
+                if (_customer_id != value)
+                {
+                    if (customer != null && customer.id != value)
+                    {
+                        customer = null;
+                    }
+                    _customer_id = value;
+                }
+            }
         }
+        private int _customer_id;
     
         public virtual string invoicenum
         {
@@ -143,6 +154,263 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         {
             get;
             set;
+        }
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual ICollection<account> accounts
+        {
+            get
+            {
+                if (_accounts == null)
+                {
+                    var newCollection = new FixupCollection<account>();
+                    newCollection.CollectionChanged += Fixupaccounts;
+                    _accounts = newCollection;
+                }
+                return _accounts;
+            }
+            set
+            {
+                if (!ReferenceEquals(_accounts, value))
+                {
+                    var previousValue = _accounts as FixupCollection<account>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupaccounts;
+                    }
+                    _accounts = value;
+                    var newValue = value as FixupCollection<account>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupaccounts;
+                    }
+                }
+            }
+        }
+        private ICollection<account> _accounts;
+    
+        public virtual customer customer
+        {
+            get { return _customer; }
+            set
+            {
+                if (!ReferenceEquals(_customer, value))
+                {
+                    var previousValue = _customer;
+                    _customer = value;
+                    Fixupcustomer(previousValue);
+                }
+            }
+        }
+        private customer _customer;
+    
+        public virtual ICollection<invoicecredit> invoicecredits
+        {
+            get
+            {
+                if (_invoicecredits == null)
+                {
+                    var newCollection = new FixupCollection<invoicecredit>();
+                    newCollection.CollectionChanged += Fixupinvoicecredits;
+                    _invoicecredits = newCollection;
+                }
+                return _invoicecredits;
+            }
+            set
+            {
+                if (!ReferenceEquals(_invoicecredits, value))
+                {
+                    var previousValue = _invoicecredits as FixupCollection<invoicecredit>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupinvoicecredits;
+                    }
+                    _invoicecredits = value;
+                    var newValue = value as FixupCollection<invoicecredit>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupinvoicecredits;
+                    }
+                }
+            }
+        }
+        private ICollection<invoicecredit> _invoicecredits;
+    
+        public virtual ICollection<invoiceitem> invoiceitems
+        {
+            get
+            {
+                if (_invoiceitems == null)
+                {
+                    var newCollection = new FixupCollection<invoiceitem>();
+                    newCollection.CollectionChanged += Fixupinvoiceitems;
+                    _invoiceitems = newCollection;
+                }
+                return _invoiceitems;
+            }
+            set
+            {
+                if (!ReferenceEquals(_invoiceitems, value))
+                {
+                    var previousValue = _invoiceitems as FixupCollection<invoiceitem>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupinvoiceitems;
+                    }
+                    _invoiceitems = value;
+                    var newValue = value as FixupCollection<invoiceitem>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupinvoiceitems;
+                    }
+                }
+            }
+        }
+        private ICollection<invoiceitem> _invoiceitems;
+    
+        public virtual ICollection<ordermaster> ordermasters
+        {
+            get
+            {
+                if (_ordermasters == null)
+                {
+                    var newCollection = new FixupCollection<ordermaster>();
+                    newCollection.CollectionChanged += Fixupordermasters;
+                    _ordermasters = newCollection;
+                }
+                return _ordermasters;
+            }
+            set
+            {
+                if (!ReferenceEquals(_ordermasters, value))
+                {
+                    var previousValue = _ordermasters as FixupCollection<ordermaster>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupordermasters;
+                    }
+                    _ordermasters = value;
+                    var newValue = value as FixupCollection<ordermaster>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupordermasters;
+                    }
+                }
+            }
+        }
+        private ICollection<ordermaster> _ordermasters;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupcustomer(customer previousValue)
+        {
+            if (previousValue != null && previousValue.invoices.Contains(this))
+            {
+                previousValue.invoices.Remove(this);
+            }
+    
+            if (customer != null)
+            {
+                if (!customer.invoices.Contains(this))
+                {
+                    customer.invoices.Add(this);
+                }
+                if (customer_id != customer.id)
+                {
+                    customer_id = customer.id;
+                }
+            }
+        }
+    
+        private void Fixupaccounts(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (account item in e.NewItems)
+                {
+                    item.invoice = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (account item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.invoice, this))
+                    {
+                        item.invoice = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupinvoicecredits(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (invoicecredit item in e.NewItems)
+                {
+                    item.invoice = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (invoicecredit item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.invoice, this))
+                    {
+                        item.invoice = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupinvoiceitems(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (invoiceitem item in e.NewItems)
+                {
+                    item.invoice = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (invoiceitem item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.invoice, this))
+                    {
+                        item.invoice = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupordermasters(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (ordermaster item in e.NewItems)
+                {
+                    item.invoice = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (ordermaster item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.invoice, this))
+                    {
+                        item.invoice = null;
+                    }
+                }
+            }
         }
 
         #endregion

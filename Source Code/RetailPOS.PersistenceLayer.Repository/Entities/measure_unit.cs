@@ -38,5 +38,335 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
 
         #endregion
+        #region Navigation Properties
+    
+        public virtual ICollection<measure_unit_conversion> measure_unit_conversion
+        {
+            get
+            {
+                if (_measure_unit_conversion == null)
+                {
+                    var newCollection = new FixupCollection<measure_unit_conversion>();
+                    newCollection.CollectionChanged += Fixupmeasure_unit_conversion;
+                    _measure_unit_conversion = newCollection;
+                }
+                return _measure_unit_conversion;
+            }
+            set
+            {
+                if (!ReferenceEquals(_measure_unit_conversion, value))
+                {
+                    var previousValue = _measure_unit_conversion as FixupCollection<measure_unit_conversion>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupmeasure_unit_conversion;
+                    }
+                    _measure_unit_conversion = value;
+                    var newValue = value as FixupCollection<measure_unit_conversion>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupmeasure_unit_conversion;
+                    }
+                }
+            }
+        }
+        private ICollection<measure_unit_conversion> _measure_unit_conversion;
+    
+        public virtual ICollection<measure_unit_conversion> measure_unit_conversion1
+        {
+            get
+            {
+                if (_measure_unit_conversion1 == null)
+                {
+                    var newCollection = new FixupCollection<measure_unit_conversion>();
+                    newCollection.CollectionChanged += Fixupmeasure_unit_conversion1;
+                    _measure_unit_conversion1 = newCollection;
+                }
+                return _measure_unit_conversion1;
+            }
+            set
+            {
+                if (!ReferenceEquals(_measure_unit_conversion1, value))
+                {
+                    var previousValue = _measure_unit_conversion1 as FixupCollection<measure_unit_conversion>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupmeasure_unit_conversion1;
+                    }
+                    _measure_unit_conversion1 = value;
+                    var newValue = value as FixupCollection<measure_unit_conversion>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupmeasure_unit_conversion1;
+                    }
+                }
+            }
+        }
+        private ICollection<measure_unit_conversion> _measure_unit_conversion1;
+    
+        public virtual ICollection<orderchild> orderchilds
+        {
+            get
+            {
+                if (_orderchilds == null)
+                {
+                    var newCollection = new FixupCollection<orderchild>();
+                    newCollection.CollectionChanged += Fixuporderchilds;
+                    _orderchilds = newCollection;
+                }
+                return _orderchilds;
+            }
+            set
+            {
+                if (!ReferenceEquals(_orderchilds, value))
+                {
+                    var previousValue = _orderchilds as FixupCollection<orderchild>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuporderchilds;
+                    }
+                    _orderchilds = value;
+                    var newValue = value as FixupCollection<orderchild>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuporderchilds;
+                    }
+                }
+            }
+        }
+        private ICollection<orderchild> _orderchilds;
+    
+        public virtual ICollection<product_purchase_history_child> product_purchase_history_child
+        {
+            get
+            {
+                if (_product_purchase_history_child == null)
+                {
+                    var newCollection = new FixupCollection<product_purchase_history_child>();
+                    newCollection.CollectionChanged += Fixupproduct_purchase_history_child;
+                    _product_purchase_history_child = newCollection;
+                }
+                return _product_purchase_history_child;
+            }
+            set
+            {
+                if (!ReferenceEquals(_product_purchase_history_child, value))
+                {
+                    var previousValue = _product_purchase_history_child as FixupCollection<product_purchase_history_child>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupproduct_purchase_history_child;
+                    }
+                    _product_purchase_history_child = value;
+                    var newValue = value as FixupCollection<product_purchase_history_child>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupproduct_purchase_history_child;
+                    }
+                }
+            }
+        }
+        private ICollection<product_purchase_history_child> _product_purchase_history_child;
+    
+        public virtual ICollection<promotional_offer> promotional_offer
+        {
+            get
+            {
+                if (_promotional_offer == null)
+                {
+                    var newCollection = new FixupCollection<promotional_offer>();
+                    newCollection.CollectionChanged += Fixuppromotional_offer;
+                    _promotional_offer = newCollection;
+                }
+                return _promotional_offer;
+            }
+            set
+            {
+                if (!ReferenceEquals(_promotional_offer, value))
+                {
+                    var previousValue = _promotional_offer as FixupCollection<promotional_offer>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuppromotional_offer;
+                    }
+                    _promotional_offer = value;
+                    var newValue = value as FixupCollection<promotional_offer>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuppromotional_offer;
+                    }
+                }
+            }
+        }
+        private ICollection<promotional_offer> _promotional_offer;
+    
+        public virtual ICollection<promotional_offer> promotional_offer1
+        {
+            get
+            {
+                if (_promotional_offer1 == null)
+                {
+                    var newCollection = new FixupCollection<promotional_offer>();
+                    newCollection.CollectionChanged += Fixuppromotional_offer1;
+                    _promotional_offer1 = newCollection;
+                }
+                return _promotional_offer1;
+            }
+            set
+            {
+                if (!ReferenceEquals(_promotional_offer1, value))
+                {
+                    var previousValue = _promotional_offer1 as FixupCollection<promotional_offer>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuppromotional_offer1;
+                    }
+                    _promotional_offer1 = value;
+                    var newValue = value as FixupCollection<promotional_offer>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuppromotional_offer1;
+                    }
+                }
+            }
+        }
+        private ICollection<promotional_offer> _promotional_offer1;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupmeasure_unit_conversion(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (measure_unit_conversion item in e.NewItems)
+                {
+                    item.measure_unit = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (measure_unit_conversion item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit, this))
+                    {
+                        item.measure_unit = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupmeasure_unit_conversion1(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (measure_unit_conversion item in e.NewItems)
+                {
+                    item.measure_unit1 = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (measure_unit_conversion item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit1, this))
+                    {
+                        item.measure_unit1 = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (orderchild item in e.NewItems)
+                {
+                    item.measure_unit = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (orderchild item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit, this))
+                    {
+                        item.measure_unit = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixupproduct_purchase_history_child(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (product_purchase_history_child item in e.NewItems)
+                {
+                    item.measure_unit = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (product_purchase_history_child item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit, this))
+                    {
+                        item.measure_unit = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuppromotional_offer(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (promotional_offer item in e.NewItems)
+                {
+                    item.measure_unit = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (promotional_offer item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit, this))
+                    {
+                        item.measure_unit = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuppromotional_offer1(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (promotional_offer item in e.NewItems)
+                {
+                    item.measure_unit1 = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (promotional_offer item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit1, this))
+                    {
+                        item.measure_unit1 = null;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

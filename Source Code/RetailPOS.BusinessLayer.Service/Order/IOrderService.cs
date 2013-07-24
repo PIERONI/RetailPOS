@@ -32,5 +32,11 @@ namespace RetailPOS.BusinessLayer.Service.Order
         /// </summary>
         /// <returns>returns list of child order items by order Id</returns>
         IList<OrderChildDTO> GetOrderItemsByOrderId(long orderId);
+
+        /// <summary>
+        /// Get all order items whose status is 3
+        /// </summary>
+        /// <returns>returns list of  order items whose status is 3</returns>
+        IList<OrderMasterDTO> GetOrderItemByStatus();
     }
 }

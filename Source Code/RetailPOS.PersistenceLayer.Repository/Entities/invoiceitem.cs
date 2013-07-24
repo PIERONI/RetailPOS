@@ -27,15 +27,53 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual long invoice_id
         {
-            get;
-            set;
+            get { return _invoice_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_invoice_id != value)
+                    {
+                        if (invoice != null && invoice.id != value)
+                        {
+                            invoice = null;
+                        }
+                        _invoice_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private long _invoice_id;
     
         public virtual int customer_id
         {
-            get;
-            set;
+            get { return _customer_id; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_customer_id != value)
+                    {
+                        if (customer != null && customer.id != value)
+                        {
+                            customer = null;
+                        }
+                        _customer_id = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private int _customer_id;
     
         public virtual string type
         {
@@ -45,9 +83,28 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual Nullable<long> relid
         {
-            get;
-            set;
+            get { return _relid; }
+            set
+            {
+                try
+                {
+                    _settingFK = true;
+                    if (_relid != value)
+                    {
+                        if (invoiceitem1 != null && invoiceitem1.id != value)
+                        {
+                            invoiceitem1 = null;
+                        }
+                        _relid = value;
+                    }
+                }
+                finally
+                {
+                    _settingFK = false;
+                }
+            }
         }
+        private Nullable<long> _relid;
     
         public virtual string description
         {
@@ -65,6 +122,177 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         {
             get;
             set;
+        }
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual customer customer
+        {
+            get { return _customer; }
+            set
+            {
+                if (!ReferenceEquals(_customer, value))
+                {
+                    var previousValue = _customer;
+                    _customer = value;
+                    Fixupcustomer(previousValue);
+                }
+            }
+        }
+        private customer _customer;
+    
+        public virtual invoice invoice
+        {
+            get { return _invoice; }
+            set
+            {
+                if (!ReferenceEquals(_invoice, value))
+                {
+                    var previousValue = _invoice;
+                    _invoice = value;
+                    Fixupinvoice(previousValue);
+                }
+            }
+        }
+        private invoice _invoice;
+    
+        public virtual ICollection<invoiceitem> invoiceitems1
+        {
+            get
+            {
+                if (_invoiceitems1 == null)
+                {
+                    var newCollection = new FixupCollection<invoiceitem>();
+                    newCollection.CollectionChanged += Fixupinvoiceitems1;
+                    _invoiceitems1 = newCollection;
+                }
+                return _invoiceitems1;
+            }
+            set
+            {
+                if (!ReferenceEquals(_invoiceitems1, value))
+                {
+                    var previousValue = _invoiceitems1 as FixupCollection<invoiceitem>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupinvoiceitems1;
+                    }
+                    _invoiceitems1 = value;
+                    var newValue = value as FixupCollection<invoiceitem>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupinvoiceitems1;
+                    }
+                }
+            }
+        }
+        private ICollection<invoiceitem> _invoiceitems1;
+    
+        public virtual invoiceitem invoiceitem1
+        {
+            get { return _invoiceitem1; }
+            set
+            {
+                if (!ReferenceEquals(_invoiceitem1, value))
+                {
+                    var previousValue = _invoiceitem1;
+                    _invoiceitem1 = value;
+                    Fixupinvoiceitem1(previousValue);
+                }
+            }
+        }
+        private invoiceitem _invoiceitem1;
+
+        #endregion
+        #region Association Fixup
+    
+        private bool _settingFK = false;
+    
+        private void Fixupcustomer(customer previousValue)
+        {
+            if (previousValue != null && previousValue.invoiceitems.Contains(this))
+            {
+                previousValue.invoiceitems.Remove(this);
+            }
+    
+            if (customer != null)
+            {
+                if (!customer.invoiceitems.Contains(this))
+                {
+                    customer.invoiceitems.Add(this);
+                }
+                if (customer_id != customer.id)
+                {
+                    customer_id = customer.id;
+                }
+            }
+        }
+    
+        private void Fixupinvoice(invoice previousValue)
+        {
+            if (previousValue != null && previousValue.invoiceitems.Contains(this))
+            {
+                previousValue.invoiceitems.Remove(this);
+            }
+    
+            if (invoice != null)
+            {
+                if (!invoice.invoiceitems.Contains(this))
+                {
+                    invoice.invoiceitems.Add(this);
+                }
+                if (invoice_id != invoice.id)
+                {
+                    invoice_id = invoice.id;
+                }
+            }
+        }
+    
+        private void Fixupinvoiceitem1(invoiceitem previousValue)
+        {
+            if (previousValue != null && previousValue.invoiceitems1.Contains(this))
+            {
+                previousValue.invoiceitems1.Remove(this);
+            }
+    
+            if (invoiceitem1 != null)
+            {
+                if (!invoiceitem1.invoiceitems1.Contains(this))
+                {
+                    invoiceitem1.invoiceitems1.Add(this);
+                }
+                if (relid != invoiceitem1.id)
+                {
+                    relid = invoiceitem1.id;
+                }
+            }
+            else if (!_settingFK)
+            {
+                relid = null;
+            }
+        }
+    
+        private void Fixupinvoiceitems1(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (invoiceitem item in e.NewItems)
+                {
+                    item.invoiceitem1 = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (invoiceitem item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.invoiceitem1, this))
+                    {
+                        item.invoiceitem1 = null;
+                    }
+                }
+            }
         }
 
         #endregion

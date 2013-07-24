@@ -27,15 +27,37 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual long history_master_id
         {
-            get;
-            set;
+            get { return _history_master_id; }
+            set
+            {
+                if (_history_master_id != value)
+                {
+                    if (product_purchase_history_master != null && product_purchase_history_master.id != value)
+                    {
+                        product_purchase_history_master = null;
+                    }
+                    _history_master_id = value;
+                }
+            }
         }
+        private long _history_master_id;
     
         public virtual short product_id
         {
-            get;
-            set;
+            get { return _product_id; }
+            set
+            {
+                if (_product_id != value)
+                {
+                    if (product != null && product.id != value)
+                    {
+                        product = null;
+                    }
+                    _product_id = value;
+                }
+            }
         }
+        private short _product_id;
     
         public virtual decimal quantity
         {
@@ -45,9 +67,20 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual short measure_unit_id
         {
-            get;
-            set;
+            get { return _measure_unit_id; }
+            set
+            {
+                if (_measure_unit_id != value)
+                {
+                    if (measure_unit != null && measure_unit.id != value)
+                    {
+                        measure_unit = null;
+                    }
+                    _measure_unit_id = value;
+                }
+            }
         }
+        private short _measure_unit_id;
     
         public virtual decimal rate
         {
@@ -71,6 +104,117 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         {
             get;
             set;
+        }
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual measure_unit measure_unit
+        {
+            get { return _measure_unit; }
+            set
+            {
+                if (!ReferenceEquals(_measure_unit, value))
+                {
+                    var previousValue = _measure_unit;
+                    _measure_unit = value;
+                    Fixupmeasure_unit(previousValue);
+                }
+            }
+        }
+        private measure_unit _measure_unit;
+    
+        public virtual product product
+        {
+            get { return _product; }
+            set
+            {
+                if (!ReferenceEquals(_product, value))
+                {
+                    var previousValue = _product;
+                    _product = value;
+                    Fixupproduct(previousValue);
+                }
+            }
+        }
+        private product _product;
+    
+        public virtual product_purchase_history_master product_purchase_history_master
+        {
+            get { return _product_purchase_history_master; }
+            set
+            {
+                if (!ReferenceEquals(_product_purchase_history_master, value))
+                {
+                    var previousValue = _product_purchase_history_master;
+                    _product_purchase_history_master = value;
+                    Fixupproduct_purchase_history_master(previousValue);
+                }
+            }
+        }
+        private product_purchase_history_master _product_purchase_history_master;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupmeasure_unit(measure_unit previousValue)
+        {
+            if (previousValue != null && previousValue.product_purchase_history_child.Contains(this))
+            {
+                previousValue.product_purchase_history_child.Remove(this);
+            }
+    
+            if (measure_unit != null)
+            {
+                if (!measure_unit.product_purchase_history_child.Contains(this))
+                {
+                    measure_unit.product_purchase_history_child.Add(this);
+                }
+                if (measure_unit_id != measure_unit.id)
+                {
+                    measure_unit_id = measure_unit.id;
+                }
+            }
+        }
+    
+        private void Fixupproduct(product previousValue)
+        {
+            if (previousValue != null && previousValue.product_purchase_history_child.Contains(this))
+            {
+                previousValue.product_purchase_history_child.Remove(this);
+            }
+    
+            if (product != null)
+            {
+                if (!product.product_purchase_history_child.Contains(this))
+                {
+                    product.product_purchase_history_child.Add(this);
+                }
+                if (product_id != product.id)
+                {
+                    product_id = product.id;
+                }
+            }
+        }
+    
+        private void Fixupproduct_purchase_history_master(product_purchase_history_master previousValue)
+        {
+            if (previousValue != null && previousValue.product_purchase_history_child.Contains(this))
+            {
+                previousValue.product_purchase_history_child.Remove(this);
+            }
+    
+            if (product_purchase_history_master != null)
+            {
+                if (!product_purchase_history_master.product_purchase_history_child.Contains(this))
+                {
+                    product_purchase_history_master.product_purchase_history_child.Add(this);
+                }
+                if (history_master_id != product_purchase_history_master.id)
+                {
+                    history_master_id = product_purchase_history_master.id;
+                }
+            }
         }
 
         #endregion

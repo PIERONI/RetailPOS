@@ -69,5 +69,16 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
             
             return lstOrderChild;
         }
+
+        /// <summary>
+        /// Get all order items whose status is 3
+        /// </summary>
+        /// <returns>returns list of  order items whose status is 3</returns>
+        IList<OrderMasterDTO> IOrderService.GetOrderItemByStatus()
+        {
+            IList<OrderMasterDTO> lstOrder = new List<OrderMasterDTO>();
+            ObjectMapper.Map(base.OrderMasterRepository.GetList(item => item.Status == 3).ToList(),lstOrder);
+            return lstOrder;
+        }
     }
 }

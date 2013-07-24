@@ -44,5 +44,14 @@ namespace RetailPOS.ServiceImplementation
         {
             return OrderService.GetOrderItemsByOrderId(orderId);
         }
+
+        /// <summary>
+        /// Get all order items whose status is 3
+        /// </summary>
+        /// <returns>returns list of  order items whose status is 3</returns>
+        public IList<OrderMasterDTO> GetOrderItemByStatus()
+        {
+            return OrderService.GetOrderItemByStatus();
+        }
     }
 }

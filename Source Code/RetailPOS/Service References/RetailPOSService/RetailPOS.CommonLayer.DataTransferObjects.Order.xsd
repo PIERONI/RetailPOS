@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
   <xs:complexType name="OrderMasterDTO">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q1:BaseDTO">
         <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerFirstName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Customer_Id" nillable="true" type="xs:int" />
           <xs:element minOccurs="0" name="Id" type="xs:long" />
           <xs:element minOccurs="0" name="Invoice_Id" nillable="true" type="xs:long" />
@@ -17,6 +20,7 @@
           <xs:element minOccurs="0" name="Status" nillable="true" type="xs:short" />
           <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
           <xs:element minOccurs="0" name="TotalQuantity" type="xs:decimal" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Customer" minOccurs="0" name="customer" nillable="true" type="q2:CustomerDTO" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -30,7 +34,7 @@
   <xs:element name="ArrayOfOrderChildDTO" nillable="true" type="tns:ArrayOfOrderChildDTO" />
   <xs:complexType name="OrderChildDTO">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q2:BaseDTO">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q3:BaseDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
           <xs:element minOccurs="0" name="Discount" nillable="true" type="xs:decimal" />
@@ -40,7 +44,7 @@
           <xs:element minOccurs="0" name="Product_Id" type="xs:short" />
           <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
           <xs:element minOccurs="0" name="Taxed" type="xs:int" />
-          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="product" nillable="true" type="q3:ProductDTO" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="product" nillable="true" type="q4:ProductDTO" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

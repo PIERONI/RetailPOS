@@ -20,6 +20,7 @@ namespace RetailPOS.ViewModel.Settings
        private Visibility _issearchPromotionalOfferVisible;
        private Visibility _issearchPurchaseHistory;
        private Visibility _isWasteManegementVisible;
+       private Visibility _isSetAsideOrderVisible;
        #endregion
 
        #region Public Properties
@@ -33,6 +34,7 @@ namespace RetailPOS.ViewModel.Settings
        public RelayCommand OpenSearchPromotionalOffer { get; private set; }
        public RelayCommand OpenSearchPurchaseHistory { get; private set; }
        public RelayCommand OpenWasteManegment { get; private set; }
+       public RelayCommand OpenSetAsideOrder { get; private set; }
 
        public Visibility IsCategoryVisible
        {
@@ -123,7 +125,20 @@ namespace RetailPOS.ViewModel.Settings
                _isWasteManegementVisible = value;
                RaisePropertyChanged("IsWastemengmentVisible");
            }
-       }       
+       }
+       public Visibility IsSetAsideVisible
+       {
+           get
+           {
+               return _isSetAsideOrderVisible;
+           }
+           set
+           {
+               _isSetAsideOrderVisible = value;
+               RaisePropertyChanged("IsSetAsideVisible");
+           }
+       }
+
        #endregion
 
        /// <summary>
@@ -140,7 +155,8 @@ namespace RetailPOS.ViewModel.Settings
            OpenProductWindowCmd = new RelayCommand(OpenProduct);
            OpenSearchPromotionalOffer = new RelayCommand(OpenSearchPromotionalWindow);
            OpenSearchPurchaseHistory = new RelayCommand(OpenSearchPurchasehistory);
-
+           ///To open setasideorderview.xaml
+           OpenSetAsideOrder = new RelayCommand(OpensetAsideOrder);
            BackToMainWindow = new RelayCommand(OpenMainWindow);
        }
 
@@ -156,6 +172,7 @@ namespace RetailPOS.ViewModel.Settings
            IsCategoryVisible = Visibility.Collapsed;
            IsCustomerVisible = Visibility.Collapsed;
            IsSearchPurchaseHistoryVisible = Visibility.Collapsed;
+           IsSetAsideVisible = Visibility.Collapsed;
        }
 
        /// <summary>
@@ -212,12 +229,11 @@ namespace RetailPOS.ViewModel.Settings
        /// Opens the main window.
        /// </summary>
        private void OpenMainWindow()
-       {
+       {           
+           SettingsWindow.SettingWindow.Close();
+           ViewModelLocator.Cleanup(ViewModelType.Settings);
            Dashboard MW = new Dashboard();
            MW.Show();
-           SettingsWindow.SettingWindow.Close();
-
-           ViewModelLocator.Cleanup(ViewModelType.Settings);
        }
 
        /// <summary>
@@ -251,6 +267,12 @@ namespace RetailPOS.ViewModel.Settings
        {
            HideSettings();
            IsWastemengmentVisible = Visibility.Visible;
+       }
+       ///To open setasideorderview.xaml
+       private void OpensetAsideOrder()
+       {
+           HideSettings();
+           IsSetAsideVisible = Visibility.Visible;
        }
     }
 }

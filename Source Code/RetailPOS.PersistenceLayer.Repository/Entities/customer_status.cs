@@ -38,5 +38,65 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
 
         #endregion
+        #region Navigation Properties
+    
+        public virtual ICollection<customer> customers
+        {
+            get
+            {
+                if (_customers == null)
+                {
+                    var newCollection = new FixupCollection<customer>();
+                    newCollection.CollectionChanged += Fixupcustomers;
+                    _customers = newCollection;
+                }
+                return _customers;
+            }
+            set
+            {
+                if (!ReferenceEquals(_customers, value))
+                {
+                    var previousValue = _customers as FixupCollection<customer>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixupcustomers;
+                    }
+                    _customers = value;
+                    var newValue = value as FixupCollection<customer>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixupcustomers;
+                    }
+                }
+            }
+        }
+        private ICollection<customer> _customers;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupcustomers(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (customer item in e.NewItems)
+                {
+                    item.customer_status = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (customer item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.customer_status, this))
+                    {
+                        item.customer_status = null;
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }

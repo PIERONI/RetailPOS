@@ -27,9 +27,20 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual int customer_id
         {
-            get;
-            set;
+            get { return _customer_id; }
+            set
+            {
+                if (_customer_id != value)
+                {
+                    if (customer != null && customer.id != value)
+                    {
+                        customer = null;
+                    }
+                    _customer_id = value;
+                }
+            }
         }
+        private int _customer_id;
     
         public virtual System.DateTime date
         {
@@ -51,8 +62,95 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual long relid
         {
-            get;
-            set;
+            get { return _relid; }
+            set
+            {
+                if (_relid != value)
+                {
+                    if (invoice != null && invoice.id != value)
+                    {
+                        invoice = null;
+                    }
+                    _relid = value;
+                }
+            }
+        }
+        private long _relid;
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual customer customer
+        {
+            get { return _customer; }
+            set
+            {
+                if (!ReferenceEquals(_customer, value))
+                {
+                    var previousValue = _customer;
+                    _customer = value;
+                    Fixupcustomer(previousValue);
+                }
+            }
+        }
+        private customer _customer;
+    
+        public virtual invoice invoice
+        {
+            get { return _invoice; }
+            set
+            {
+                if (!ReferenceEquals(_invoice, value))
+                {
+                    var previousValue = _invoice;
+                    _invoice = value;
+                    Fixupinvoice(previousValue);
+                }
+            }
+        }
+        private invoice _invoice;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupcustomer(customer previousValue)
+        {
+            if (previousValue != null && previousValue.invoicecredits.Contains(this))
+            {
+                previousValue.invoicecredits.Remove(this);
+            }
+    
+            if (customer != null)
+            {
+                if (!customer.invoicecredits.Contains(this))
+                {
+                    customer.invoicecredits.Add(this);
+                }
+                if (customer_id != customer.id)
+                {
+                    customer_id = customer.id;
+                }
+            }
+        }
+    
+        private void Fixupinvoice(invoice previousValue)
+        {
+            if (previousValue != null && previousValue.invoicecredits.Contains(this))
+            {
+                previousValue.invoicecredits.Remove(this);
+            }
+    
+            if (invoice != null)
+            {
+                if (!invoice.invoicecredits.Contains(this))
+                {
+                    invoice.invoicecredits.Add(this);
+                }
+                if (relid != invoice.id)
+                {
+                    relid = invoice.id;
+                }
+            }
         }
 
         #endregion

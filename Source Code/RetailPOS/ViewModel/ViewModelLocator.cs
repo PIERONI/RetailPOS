@@ -39,6 +39,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Register<ShowProductViewModel>();
             SimpleIoc.Default.Register<PurchaseHistoryViewModel>();
             SimpleIoc.Default.Register<AddressViewModel>();
+            SimpleIoc.Default.Register<SetAsideOrderViewModel>();
         }
 
         /// <summary>
@@ -327,6 +328,23 @@ namespace RetailPOS.ViewModel
                 return ServiceLocator.Current.GetInstance<AddressViewModel>();
             }
         }
+        /// <summary>
+        /// Gets the SetAsideOrderViewModel View Model.
+        /// </summary>
+        /// <value>
+        /// The SetAsideOrderViewModel view model.
+        /// </value>
+        public SetAsideOrderViewModel SetAsideVM
+        {
+            get
+            {
+                if (!((SimpleIoc)(ServiceLocator.Current)).IsRegistered<SetAsideOrderViewModel>())
+                {
+                    SimpleIoc.Default.Register<SetAsideOrderViewModel>();
+                }
+                return ServiceLocator.Current.GetInstance<SetAsideOrderViewModel>();
+            }
+        }
 
         /// <summary>
         /// Cleanups this instance.
@@ -336,6 +354,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<UserInfoViewModel>();
             SimpleIoc.Default.Unregister<LoginViewModel>();
             SimpleIoc.Default.Unregister<SettingViewModel>();
+            SimpleIoc.Default.Unregister<SetAsideOrderViewModel>();
             
         }
 
@@ -376,6 +395,7 @@ namespace RetailPOS.ViewModel
             SimpleIoc.Default.Unregister<PromotionalOfferViewModel>();
             SimpleIoc.Default.Unregister<PurchaseHistoryViewModel>();
             SimpleIoc.Default.Unregister<AddressViewModel>();
+            SimpleIoc.Default.Unregister<SetAsideOrderViewModel>();
         }
     }
 }

@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\RightPanelPaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\Settings\PurchaseHistoryViewModel.cs" />
+    <Compile Include="ViewModel\Settings\SetAsideOrderViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingViewModel.cs" />
     <Compile Include="ViewModel\Settings\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
@@ -243,6 +244,9 @@
     </Compile>
     <Compile Include="View\Usercontrols\Settings\PurchaseHistory.xaml.cs">
       <DependentUpon>PurchaseHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\Settings\SetAsideOrderView.xaml.cs">
+      <DependentUpon>SetAsideOrderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\Settings\SystemSettings.xaml.cs">
       <DependentUpon>SystemSettings.xaml</DependentUpon>
@@ -392,6 +396,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\Settings\PurchaseHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\Settings\SetAsideOrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

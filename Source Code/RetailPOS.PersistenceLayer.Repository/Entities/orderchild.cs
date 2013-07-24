@@ -61,17 +61,22 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual short measure_unit_id
         {
-            get;
-            set;
+            get { return _measure_unit_id; }
+            set
+            {
+                if (_measure_unit_id != value)
+                {
+                    if (measure_unit != null && measure_unit.id != value)
+                    {
+                        measure_unit = null;
+                    }
+                    _measure_unit_id = value;
+                }
+            }
         }
+        private short _measure_unit_id;
     
         public virtual decimal amount
-        {
-            get;
-            set;
-        }
-    
-        public virtual Nullable<decimal> Discount
         {
             get;
             set;
@@ -82,24 +87,30 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             get;
             set;
         }
+    
+        public virtual Nullable<decimal> Discount
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Navigation Properties
     
-        public virtual product product
+        public virtual measure_unit measure_unit
         {
-            get { return _product; }
+            get { return _measure_unit; }
             set
             {
-                if (!ReferenceEquals(_product, value))
+                if (!ReferenceEquals(_measure_unit, value))
                 {
-                    var previousValue = _product;
-                    _product = value;
-                    Fixupproduct(previousValue);
+                    var previousValue = _measure_unit;
+                    _measure_unit = value;
+                    Fixupmeasure_unit(previousValue);
                 }
             }
         }
-        private product _product;
+        private measure_unit _measure_unit;
     
         public virtual ordermaster ordermaster
         {
@@ -115,26 +126,41 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ordermaster _ordermaster;
+    
+        public virtual product product
+        {
+            get { return _product; }
+            set
+            {
+                if (!ReferenceEquals(_product, value))
+                {
+                    var previousValue = _product;
+                    _product = value;
+                    Fixupproduct(previousValue);
+                }
+            }
+        }
+        private product _product;
 
         #endregion
         #region Association Fixup
     
-        private void Fixupproduct(product previousValue)
+        private void Fixupmeasure_unit(measure_unit previousValue)
         {
             if (previousValue != null && previousValue.orderchilds.Contains(this))
             {
                 previousValue.orderchilds.Remove(this);
             }
     
-            if (product != null)
+            if (measure_unit != null)
             {
-                if (!product.orderchilds.Contains(this))
+                if (!measure_unit.orderchilds.Contains(this))
                 {
-                    product.orderchilds.Add(this);
+                    measure_unit.orderchilds.Add(this);
                 }
-                if (product_id != product.id)
+                if (measure_unit_id != measure_unit.id)
                 {
-                    product_id = product.id;
+                    measure_unit_id = measure_unit.id;
                 }
             }
         }
@@ -155,6 +181,26 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                 if (order_id != ordermaster.id)
                 {
                     order_id = ordermaster.id;
+                }
+            }
+        }
+    
+        private void Fixupproduct(product previousValue)
+        {
+            if (previousValue != null && previousValue.orderchilds.Contains(this))
+            {
+                previousValue.orderchilds.Remove(this);
+            }
+    
+            if (product != null)
+            {
+                if (!product.orderchilds.Contains(this))
+                {
+                    product.orderchilds.Add(this);
+                }
+                if (product_id != product.id)
+                {
+                    product_id = product.id;
                 }
             }
         }

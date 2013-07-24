@@ -162,6 +162,18 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<openid_server> _openid_server;
     
+        public ObjectSet<orderchild> orderchilds
+        {
+            get { return _orderchilds  ?? (_orderchilds = CreateObjectSet<orderchild>("orderchilds")); }
+        }
+        private ObjectSet<orderchild> _orderchilds;
+    
+        public ObjectSet<ordermaster> ordermasters
+        {
+            get { return _ordermasters  ?? (_ordermasters = CreateObjectSet<ordermaster>("ordermasters")); }
+        }
+        private ObjectSet<ordermaster> _ordermasters;
+    
         public ObjectSet<payment_gateways> payment_gateways
         {
             get { return _payment_gateways  ?? (_payment_gateways = CreateObjectSet<payment_gateways>("payment_gateways")); }
@@ -270,12 +282,6 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<supplier_contact_person> _supplier_contact_person;
     
-        public ObjectSet<supplier_products> supplier_products
-        {
-            get { return _supplier_products  ?? (_supplier_products = CreateObjectSet<supplier_products>("supplier_products")); }
-        }
-        private ObjectSet<supplier_products> _supplier_products;
-    
         public ObjectSet<town_city> town_city
         {
             get { return _town_city  ?? (_town_city = CreateObjectSet<town_city>("town_city")); }
@@ -288,29 +294,17 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<warranty> _warranties;
     
-        public ObjectSet<working_record> working_record
-        {
-            get { return _working_record  ?? (_working_record = CreateObjectSet<working_record>("working_record")); }
-        }
-        private ObjectSet<working_record> _working_record;
-    
-        public ObjectSet<orderchild> orderchilds
-        {
-            get { return _orderchilds  ?? (_orderchilds = CreateObjectSet<orderchild>("orderchilds")); }
-        }
-        private ObjectSet<orderchild> _orderchilds;
-    
-        public ObjectSet<ordermaster> ordermasters
-        {
-            get { return _ordermasters  ?? (_ordermasters = CreateObjectSet<ordermaster>("ordermasters")); }
-        }
-        private ObjectSet<ordermaster> _ordermasters;
-    
         public ObjectSet<wastemanagement> wastemanagements
         {
             get { return _wastemanagements  ?? (_wastemanagements = CreateObjectSet<wastemanagement>("wastemanagements")); }
         }
         private ObjectSet<wastemanagement> _wastemanagements;
+    
+        public ObjectSet<working_record> working_record
+        {
+            get { return _working_record  ?? (_working_record = CreateObjectSet<working_record>("working_record")); }
+        }
+        private ObjectSet<working_record> _working_record;
 
         #endregion
     }

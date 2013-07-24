@@ -21,9 +21,20 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual short product_id
         {
-            get;
-            set;
+            get { return _product_id; }
+            set
+            {
+                if (_product_id != value)
+                {
+                    if (product != null && product.id != value)
+                    {
+                        product = null;
+                    }
+                    _product_id = value;
+                }
+            }
         }
+        private short _product_id;
     
         public virtual string text_color
         {
@@ -47,6 +58,44 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         {
             get;
             set;
+        }
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual product product
+        {
+            get { return _product; }
+            set
+            {
+                if (!ReferenceEquals(_product, value))
+                {
+                    var previousValue = _product;
+                    _product = value;
+                    Fixupproduct(previousValue);
+                }
+            }
+        }
+        private product _product;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupproduct(product previousValue)
+        {
+            if (previousValue != null && ReferenceEquals(previousValue.display_properties, this))
+            {
+                previousValue.display_properties = null;
+            }
+    
+            if (product != null)
+            {
+                product.display_properties = this;
+                if (product_id != product.id)
+                {
+                    product_id = product.id;
+                }
+            }
         }
 
         #endregion

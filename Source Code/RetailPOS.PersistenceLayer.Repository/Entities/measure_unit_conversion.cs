@@ -21,20 +21,118 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual short from_unit_id
         {
-            get;
-            set;
+            get { return _from_unit_id; }
+            set
+            {
+                if (_from_unit_id != value)
+                {
+                    if (measure_unit != null && measure_unit.id != value)
+                    {
+                        measure_unit = null;
+                    }
+                    _from_unit_id = value;
+                }
+            }
         }
+        private short _from_unit_id;
     
         public virtual short to_unit_id
         {
-            get;
-            set;
+            get { return _to_unit_id; }
+            set
+            {
+                if (_to_unit_id != value)
+                {
+                    if (measure_unit1 != null && measure_unit1.id != value)
+                    {
+                        measure_unit1 = null;
+                    }
+                    _to_unit_id = value;
+                }
+            }
         }
+        private short _to_unit_id;
     
         public virtual decimal conversion_rate
         {
             get;
             set;
+        }
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual measure_unit measure_unit
+        {
+            get { return _measure_unit; }
+            set
+            {
+                if (!ReferenceEquals(_measure_unit, value))
+                {
+                    var previousValue = _measure_unit;
+                    _measure_unit = value;
+                    Fixupmeasure_unit(previousValue);
+                }
+            }
+        }
+        private measure_unit _measure_unit;
+    
+        public virtual measure_unit measure_unit1
+        {
+            get { return _measure_unit1; }
+            set
+            {
+                if (!ReferenceEquals(_measure_unit1, value))
+                {
+                    var previousValue = _measure_unit1;
+                    _measure_unit1 = value;
+                    Fixupmeasure_unit1(previousValue);
+                }
+            }
+        }
+        private measure_unit _measure_unit1;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupmeasure_unit(measure_unit previousValue)
+        {
+            if (previousValue != null && previousValue.measure_unit_conversion.Contains(this))
+            {
+                previousValue.measure_unit_conversion.Remove(this);
+            }
+    
+            if (measure_unit != null)
+            {
+                if (!measure_unit.measure_unit_conversion.Contains(this))
+                {
+                    measure_unit.measure_unit_conversion.Add(this);
+                }
+                if (from_unit_id != measure_unit.id)
+                {
+                    from_unit_id = measure_unit.id;
+                }
+            }
+        }
+    
+        private void Fixupmeasure_unit1(measure_unit previousValue)
+        {
+            if (previousValue != null && previousValue.measure_unit_conversion1.Contains(this))
+            {
+                previousValue.measure_unit_conversion1.Remove(this);
+            }
+    
+            if (measure_unit1 != null)
+            {
+                if (!measure_unit1.measure_unit_conversion1.Contains(this))
+                {
+                    measure_unit1.measure_unit_conversion1.Add(this);
+                }
+                if (to_unit_id != measure_unit1.id)
+                {
+                    to_unit_id = measure_unit1.id;
+                }
+            }
         }
 
         #endregion

@@ -7,10 +7,11 @@ using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 #endregion
 
-namespace RetailPOS.ViewModel
+namespace RetailPOS.ViewModel.Settings
 {
     public class CustomerViewModel : ViewModelBase
     {
@@ -20,9 +21,10 @@ namespace RetailPOS.ViewModel
         public ObservableCollection<CustomerTypeDTO> LstType { get; private set; }
         public ObservableCollection<CountryDTO> LstCountry { get; private set; }
 
-        public RelayCommand SaveCustomer { get; set; }
-        public RelayCommand CancelCustomerSetting { get; set; }
-        public RelayCommand CancelSearchCustomer { get; private set; }
+        public RelayCommand SaveCustomerCommand { get; set; }
+        public RelayCommand CancelCustomerCommand { get; set; }
+        public RelayCommand SearchCustomerCommand { get; set; }
+        public RelayCommand CancelSearchCommand { get; private set; }
 
         private ObservableCollection<TownCityDTO> _lstTownCity;
         private ObservableCollection<LocalityDTO> _lstLocality;
@@ -31,10 +33,14 @@ namespace RetailPOS.ViewModel
 
         private CustomerTypeDTO _selectedType;
         private CustomerStatusDTO _selectedStatus;
-        private IList<CustomerDTO> _lstSearchCustomer;
+        private IList<CustomerDTO> _lstCustomer;
+
+        private Nullable<DateTime> _selectedDate;
+        private string _invoiceNo;
+        private int _id;
 
         private string _customerCode;
-        private string _firstName;
+        private string _first_Name;
         private string _lastName;
         private string _phone;
         private string _mobile;
@@ -51,7 +57,6 @@ namespace RetailPOS.ViewModel
         private TownCityDTO _selectedTownCity;
         private PostCodeDTO _selectedPostalCode;
         private CustomerDTO _customerName;
-     
 
         #endregion
 
@@ -59,10 +64,7 @@ namespace RetailPOS.ViewModel
 
         public string CustomerCode
         {
-            get
-            {
-                return _customerCode;
-            }
+            get{return _customerCode;}
             set
             {
                 _customerCode = value;
@@ -72,10 +74,7 @@ namespace RetailPOS.ViewModel
 
         public CustomerTypeDTO SelectedType
         {
-            get
-            {
-                return _selectedType;
-            }
+            get{return _selectedType;}
             set
             {
                 _selectedType = value;
@@ -83,25 +82,19 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public string FirstName
+        public string First_Name
         {
-            get
-            {
-                return _firstName;
-            }
+            get{return _first_Name;}
             set
             {
-                _firstName = value;
-                RaisePropertyChanged("FirstName");
+                _first_Name = value;
+                RaisePropertyChanged("First_Name");
             }
         }
 
         public string LastName
         {
-            get
-            {
-                return _lastName;
-            }
+            get{return _lastName;}
             set
             {
                 _lastName = value;
@@ -111,22 +104,17 @@ namespace RetailPOS.ViewModel
 
         public string Email
         {
-            get
-            {
-                return _email;
-            }
+            get{return _email;}
             set
             {
                 _email = value;
+                RaisePropertyChanged("Email");
             }
         }
 
         public string Phone
         {
-            get
-            {
-                return _phone;
-            }
+            get{return _phone;}
             set
             {
                 _phone = value;
@@ -136,10 +124,7 @@ namespace RetailPOS.ViewModel
 
         public string Mobile
         {
-            get
-            {
-                return _mobile;
-            }
+            get{return _mobile;}
             set
             {
                 _mobile = value;
@@ -149,10 +134,7 @@ namespace RetailPOS.ViewModel
 
         public CustomerStatusDTO SelectedStatus
         {
-            get
-            {
-                return _selectedStatus;
-            }
+            get{return _selectedStatus;}
             set
             {
                 _selectedStatus = value;
@@ -214,10 +196,7 @@ namespace RetailPOS.ViewModel
 
         public LocalityDTO SelectedLocality
         {
-            get
-            {
-                return _selectedLocality;
-            }
+            get{return _selectedLocality;}
             set
             {
                 _selectedLocality = value;
@@ -330,13 +309,13 @@ namespace RetailPOS.ViewModel
         /// <value>
         /// The list of customer.
         /// </value>
-        public IList<CustomerDTO> LstSearchCustomer
+        public IList<CustomerDTO> LstCustomer
         {
-            get { return _lstSearchCustomer; }
+            get { return _lstCustomer; }
             set
             {
-                _lstSearchCustomer = value;
-                RaisePropertyChanged("LstSearchCustomer");
+                _lstCustomer = value;
+                RaisePropertyChanged("LstCustomer");
             }
         }
 
@@ -346,22 +325,52 @@ namespace RetailPOS.ViewModel
         /// <value>
         /// The List of customerdetail.
         /// </value>
-        public CustomerDTO SelectedCustomerName
+        public CustomerDTO SelectedCustomer
         {
             get { return _customerName; }
             set
             {
                 _customerName = value;
-                RaisePropertyChanged("SelectedCategoryName");
+                RaisePropertyChanged("SelectedCustomer");
 
-                if (SelectedCustomerName != null)
+                if (SelectedCustomer != null)
                 {
-                    GetCustomer(SelectedCustomerName.First_Name);
-
+                    GetCustomer(SelectedCustomer.First_Name);
                 }
             }
         }
-#endregion
+
+        public Nullable<DateTime> SelectedDate
+        {
+            get { return _selectedDate; }
+            set
+            {
+                _selectedDate = value;
+                RaisePropertyChanged("SelectedDate");
+            }
+        }
+
+        public string Invoice_No
+        {
+            get { return _invoiceNo; }
+            set
+            {
+                _invoiceNo = value;
+                RaisePropertyChanged("InvoiceNo");
+            }
+        }
+
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                RaisePropertyChanged("Id");
+            }
+        }
+        
+        #endregion
 
         #region Constructor
 
@@ -377,16 +386,27 @@ namespace RetailPOS.ViewModel
             LstLocality = new ObservableCollection<LocalityDTO>();
             LstStreet = new ObservableCollection<StreetDTO>();
             LstPostalCode = new ObservableCollection<PostCodeDTO>();
-            LstSearchCustomer = new List<CustomerDTO>();
+            LstCustomer = new ObservableCollection<CustomerDTO>();
 
             ////Get all active country details
             GetCountryDetails();
-            BindLists();
 
-            SaveCustomer = new RelayCommand(SaveCustomerDetail);
-            CancelCustomerSetting = new RelayCommand(CancelSetting);
+            ////Get available customer status from database
+            GetCustomerStatus();
+
+            ////Get available customer types from database
+            GetCustomerType();
+
+            ////Get available customer from database
             GetCustomer(string.Empty);
-            CancelSearchCustomer = new RelayCommand(CancelCustomer);
+
+            ////Clear the controls
+            ClearControls();
+
+            SaveCustomerCommand = new RelayCommand(SaveCustomerDetail);
+            CancelCustomerCommand = new RelayCommand(CancelSetting);
+            SearchCustomerCommand = new RelayCommand(SearchCustomer);
+            CancelSearchCommand = new RelayCommand(CancelSearch);
         }
 
         #endregion
@@ -398,14 +418,28 @@ namespace RetailPOS.ViewModel
             CustomerViewModel viewModel = new CustomerViewModel();
         }
 
+        private void CancelPurchaseHistorySearch()
+        {
+            SelectedDate = null;
+            Invoice_No = string.Empty;
+            Id = 0;
+        }
+
+        private void SearchCustomer()
+        {
+            ////Get available customer from database filtered by first name
+            GetCustomer(First_Name);
+        }
+
         /// <summary>
         /// Cancel Customer for Search/view customer
         /// </summary>
-        private void CancelCustomer()
+        private void CancelSearch()
         {
-            FirstName = string.Empty;
+            First_Name = string.Empty;
+            
+            ////Get available customer from database
             GetCustomer(string.Empty);
-            //AddCategoryViewModel viewModel = new AddCategoryViewModel();
         }
 
         /// <summary>
@@ -415,6 +449,11 @@ namespace RetailPOS.ViewModel
         {
             var customerdetail = InitializeSaveCustomerDetail();
             ServiceFactory.ServiceClient.SaveCustomerDetail(customerdetail);
+
+            GetCustomer(string.Empty);
+
+            ////Clear the controls
+            ClearControls();
         }
 
         /// <summary>
@@ -427,7 +466,7 @@ namespace RetailPOS.ViewModel
             {
                 Code = CustomerCode,
                 Type_Id = SelectedType.Id,
-                First_Name = FirstName,
+                First_Name = First_Name,
                 Last_Name = LastName,
                 Email = Email,
                 Phone = Phone,
@@ -459,6 +498,30 @@ namespace RetailPOS.ViewModel
         }
 
         /// <summary>
+        /// Clear the controls
+        /// </summary>
+        private void ClearControls()
+        {
+            CustomerCode = string.Empty;
+            SelectedType = null;
+            First_Name = string.Empty;
+            LastName = string.Empty;
+            Email = string.Empty;
+            Phone = string.Empty;
+            Mobile = string.Empty;
+            SelectedStatus = null;
+            PaymentPeriod = 0;
+            CreditLimit = 0;
+            BuildingName = string.Empty;
+            HouseNo = string.Empty;
+            SelectedCountry = null;
+            SelectedTownCity = null;
+            SelectedLocality = null;
+            SelectedStreet = null;
+            SelectedPostalCode = null;
+        }
+
+        /// <summary>
         /// Get all active country details
         /// </summary>
         private void GetCountryDetails()
@@ -480,11 +543,6 @@ namespace RetailPOS.ViewModel
         private void GetLocalityByTownCity()
         {
             LstLocality = new ObservableCollection<LocalityDTO>(ServiceFactory.ServiceClient.GetLocalityDetails(SelectedTownCity.Id));
-
-            if (LstLocality.Count > 0)
-            {
-                SelectedLocality = LstLocality[0];
-            }
         }
 
         /// <summary>
@@ -493,11 +551,6 @@ namespace RetailPOS.ViewModel
         private void GetStreetByLocality()
         {
             LstStreet = new ObservableCollection<StreetDTO>(ServiceFactory.ServiceClient.GetStreetDetails(SelectedLocality.Id));
-
-            if (LstStreet.Count > 0)
-            {
-                SelectedStreet = LstStreet[0];
-            }
         }
 
         /// <summary>
@@ -506,23 +559,6 @@ namespace RetailPOS.ViewModel
         private void GetPostalCodeByLocality()
         {
             LstPostalCode = new ObservableCollection<PostCodeDTO>(ServiceFactory.ServiceClient.GetPostalCodeDetails(SelectedLocality.Id));
-
-            if (LstLocality.Count > 0)
-            {
-                SelectedPostalCode = LstPostalCode[0];
-            }
-        }
-
-        /// <summary>
-        /// Binds the lists.
-        /// </summary>
-        private void BindLists()
-        {
-            ////Get available customer status from database
-            GetCustomerStatus();
-
-            ////Get available customer types from database
-            GetCustomerType();
         }
 
         /// <summary>
@@ -531,11 +567,6 @@ namespace RetailPOS.ViewModel
         private void GetCustomerStatus()
         {
             LstStatus = new ObservableCollection<CustomerStatusDTO>(ServiceFactory.ServiceClient.GetCustomerStatus());
-
-            if (LstStatus.Count > 0)
-            {
-                SelectedStatus = LstStatus[0];
-            }
         }
 
         /// <summary>
@@ -544,11 +575,6 @@ namespace RetailPOS.ViewModel
         private void GetCustomerType()
         {
             LstType = new ObservableCollection<CustomerTypeDTO>(ServiceFactory.ServiceClient.GetCustomerTypes());
-
-            if (LstType.Count > 0)
-            {
-                SelectedType = LstType[0];
-            }
         }
 
         /// <summary>
@@ -556,14 +582,13 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void GetCustomer(string customername)
         {
-            LstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
-                                                                                 select item).ToList();
-            LstSearchCustomer = LstSearchCustomer.Where(item => (customername == "" || customername == null ? item.First_Name == item.First_Name : item.First_Name == customername)).ToList();
+            LstCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
+                                                                select item).ToList();
 
-            //if (!string.IsNullOrEmpty(categoryName))
-            //{
-            //    LstSearchCategoryName = LstSearchCategoryName.Where(item => item.Name.Contains(categoryName)).ToList();
-            //}
+            if (!string.IsNullOrEmpty(customername))
+            {
+                LstCustomer = LstCustomer.Where(item => item.First_Name.Contains(customername)).ToList();
+            }
         }
 
         #endregion

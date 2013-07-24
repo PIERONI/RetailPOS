@@ -21,6 +21,7 @@ namespace RetailPOS.ViewModel
 
        public List<ProductDTO> LstSearchProduct { get; private set; }
        public IList<CustomerDTO> LstSearchCustomer { get; private set; }
+       
        /// <summary>
        /// Detail Of New Customer To be Saved
        /// </summary>
@@ -295,7 +296,7 @@ namespace RetailPOS.ViewModel
 
        #endregion
 
-       #region Deaclare Constructor
+       #region Declare Constructor
       
        /// <summary>
        /// Initializes a new instance of the <see cref="SearchViewModel"/> class.
@@ -309,7 +310,6 @@ namespace RetailPOS.ViewModel
            GetSearchAttributes();
            isVisibleCustomerInfo = Visibility.Collapsed;
        }
-
      
        /// <summary>
        /// Fills the list search.
@@ -340,7 +340,7 @@ namespace RetailPOS.ViewModel
            }
           
            isVisibleCustomerInfo = Visibility.Visible;
-           CustomerBalance = SelectedCustomer.balance;
+           CustomerBalance = SelectedCustomer.Balance;
            MobileNumber = SelectedCustomer.Mobile;
            CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
            
@@ -384,7 +384,7 @@ namespace RetailPOS.ViewModel
                Status_Id = 1,
                Payment_Period = 0,
                Credit_Limit = 0,
-               balance = 0
+               Balance = 0
            };
        }
        #endregion

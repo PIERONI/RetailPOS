@@ -15,7 +15,7 @@ using System.Collections.Specialized;
 
 namespace RetailPOS.PersistenceLayer.Repository.Entities
 {
-    public partial class WasteManagement : EntityBase
+    public partial class wastemanagement : EntityBase
     {
         #region Primitive Properties
     
@@ -25,13 +25,24 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual int ProductId
+        public virtual short ProductId
         {
-            get;
-            set;
+            get { return _productId; }
+            set
+            {
+                if (_productId != value)
+                {
+                    if (product != null && product.id != value)
+                    {
+                        product = null;
+                    }
+                    _productId = value;
+                }
+            }
         }
+        private short _productId;
     
-        public virtual int Quantity
+        public virtual decimal Quantity
         {
             get;
             set;
@@ -41,6 +52,53 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         {
             get;
             set;
+        }
+    
+        public virtual System.DateTime CreatedDate
+        {
+            get;
+            set;
+        }
+
+        #endregion
+        #region Navigation Properties
+    
+        public virtual product product
+        {
+            get { return _product; }
+            set
+            {
+                if (!ReferenceEquals(_product, value))
+                {
+                    var previousValue = _product;
+                    _product = value;
+                    Fixupproduct(previousValue);
+                }
+            }
+        }
+        private product _product;
+
+        #endregion
+        #region Association Fixup
+    
+        private void Fixupproduct(product previousValue)
+        {
+            if (previousValue != null && previousValue.wastemanagements.Contains(this))
+            {
+                previousValue.wastemanagements.Remove(this);
+            }
+    
+            if (product != null)
+            {
+                if (!product.wastemanagements.Contains(this))
+                {
+                    product.wastemanagements.Add(this);
+                }
+                if (ProductId != product.id)
+                {
+                    ProductId = product.id;
+                }
+            }
         }
 
         #endregion

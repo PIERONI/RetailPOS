@@ -6,12 +6,13 @@
              mc:Ignorable="d" 
              xmlns:Utility="clr-namespace:RetailPOS.Utility"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             DataContext="{Binding Source={StaticResource Locator}, Path=WasteManagementVM}">
+             DataContext="{Binding Source={StaticResource Locator}, Path=WasteManagementVM}"
+             xmlns:Toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
     <Grid Height="370">
-        <TabControl Margin="3" Grid.Row="0" Height="360" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="515">
+        <TabControl Margin="3" Grid.Row="0" Height="360" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="605">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
@@ -32,17 +33,31 @@
                     </Grid.ColumnDefinitions>
                     <RadioButton Content="Non Weighted Products" Height="20" HorizontalAlignment="Left" Command="{Binding SetWeightToInVisibile}" IsChecked="True" Margin="15,10,0,0" VerticalAlignment="Top" Foreground="#FF001904" />
                     <RadioButton Content="Weighted Products" Command="{Binding SetWeightToVisibile}" Grid.Column="1" Height="16" HorizontalAlignment="Left" Margin="15,10,0,0" Name="radioButton2" VerticalAlignment="Top" Foreground="#FF001904"/>
-                    <TextBlock Text="Product Name:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
-                    <TextBlock Text="Bar Code:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" Grid.RowSpan="2" />
-                    <TextBlock Text="Product Code:" Height="28" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="0,5,0,0" Grid.RowSpan="2" Grid.Row="3" />
-                    <TextBlock Text="Enter Quantity:" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" Grid.RowSpan="2" />
-                    <TextBlock Text="Enter Weight:" Visibility="{Binding IsWeightVisible}" Height="28" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" Grid.RowSpan="2" />
-                    <TextBox Grid.Column="1" MaxLength="255" Height="30" Text="{Binding ProductName}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="1" />
+                    <TextBlock Text="Product Name:" Height="28" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Grid.RowSpan="2" />
+                    <TextBlock Text="Bar Code:" Height="28" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" Grid.RowSpan="2" />
+                    <TextBlock Text="Product Code:" Height="28" Foreground="Black" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Margin="0,5,0,0" Grid.RowSpan="2" Grid.Row="3" />
+                    <TextBlock Text="Enter Quantity:" Height="28" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" Grid.RowSpan="2" />
+                    <TextBlock Text="Enter Weight:" Visibility="{Binding IsWeightVisible}" Height="28" Foreground="Black" HorizontalAlignment="Center" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" Grid.RowSpan="2" />
+                    <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" SelectedItem="{Binding SelecteegdProduct, Mode=TwoWay}" Margin="15,6,0,0"
+                                 ItemsSource="{Binding LstProduct}" Text="{Binding Name, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
+                                     ValueMemberPath="Name" VerticalAlignment="Top" Width="250" Height="30" >
+                        <Toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Width="180"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </Toolkit:AutoCompleteBox.ItemTemplate>
+                    </Toolkit:AutoCompleteBox>
                     <TextBox Grid.Column="1"  Grid.Row="2" MaxLength="255" Height="30" Text="{Binding BarCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" />
                     <TextBox Grid.Column="1" MaxLength="255" Height="30" Text="{Binding ProductCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="3" />
                     <TextBox Grid.Column="1" MaxLength="255" Height="30" Text="{Binding Quantity}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="4" />
                     <TextBox Grid.Column="1" MaxLength="255" Height="30" Visibility="{Binding IsWeightVisible}" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="5" />
-                    <Button Grid.Column="0" Grid.Row="6" Height="30" Canvas.Left="143" Margin="0,0,25,0" Command="{Binding SaveWasteManagement}" TextBlock.FontSize="14" HorizontalAlignment="Right" Width="75">
+                    <Button Grid.Column="0" Grid.Row="6" Height="30" Canvas.Left="143" Margin="0,0,25,0" Command="{Binding SaveWasteManagementCommand}" TextBlock.FontSize="14" HorizontalAlignment="Right" Width="75">
                         <DockPanel>
                             <Image Source="../../../Images/save-icon.png" Width="16" />
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
@@ -50,7 +65,7 @@
                             </TextBlock>
                         </DockPanel>
                     </Button>
-                    <Button Grid.Column="1" Grid.Row="6" Height="30" Canvas.Right="192" Margin="25,0,0,0" Command="{Binding CancelWasteManagementSetting}"  TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" >
+                    <Button Grid.Column="1" Grid.Row="6" Height="30" Canvas.Right="192" Margin="25,0,0,0" Command="{Binding CancelWasteManagementCommand}"  TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" >
                         <DockPanel>
                             <Image Source="../../../Images/cancel-icon.png" Width="12" Height="29" />
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">
@@ -59,6 +74,65 @@
                         </DockPanel>
                     </Button>
                 </Grid>
+            </TabItem>
+            <TabItem Header="View / Search Waste Items">
+                <StackPanel>
+                    <Grid Margin="0,30,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="180*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120*"></ColumnDefinition>
+                            <ColumnDefinition Width="300*"></ColumnDefinition>
+                            <ColumnDefinition Width="190*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Product Name" Height="30" Foreground="Black" HorizontalAlignment="Left" FontSize="14" FontWeight="Bold" TextAlignment="Left" VerticalAlignment="Top" Width="122" Margin="20,10,0,0" Grid.RowSpan="2" />
+                        <Toolkit:AutoCompleteBox Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" Name="autoCompleteTxtProduct" ItemsSource="{Binding LstProduct}"                     
+                         Text="{Binding Name, Mode=TwoWay}" 
+                                     IsTextCompletionEnabled="False" 
+                                     FilterMode="StartsWith"
+                                     ValueMemberPath="Name" >
+                            <Toolkit:AutoCompleteBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="#DFF0D8">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="150"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </Toolkit:AutoCompleteBox.ItemTemplate>
+                        </Toolkit:AutoCompleteBox>
+                        <Button Height="30" Margin="0,5,0,0" Canvas.Left="143" Command="{Binding SearchCommand}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="85" Grid.Row="0" Grid.Column="2">
+                            <DockPanel>
+                                <Image Source="../../../Images/cancel-icon.png" Width="12" Height="29" />
+                                <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="60">
+                                <Bold>Search</Bold>
+                                </TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button Height="30" Margin="0,5,10,0" Canvas.Left="191" Command="{Binding CancelSearchCommand}" TextBlock.FontSize="14" HorizontalAlignment="right" Width="75" Grid.Row="0" Grid.Column="2">
+                            <DockPanel>
+                                <Image Source="../../../Images/cancel-icon.png" Width="16" />
+                                <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">
+                      <Bold>Cancel</Bold>
+                                </TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </Grid>
+                    <Grid>
+                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True" CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstWasteManagement}" CanUserSortColumns="True" CanUserResizeColumns="True" Height="385" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Path=Id}" Header="Id" Visibility="Hidden" Width="*"/>
+                                <DataGridTextColumn Binding="{Binding  Path=ProductName}" Header="Product Name" Width="300" />
+                                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Quantity"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                <DataGridTextColumn Binding="{Binding Path=Weight}" Header="Weight"  Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>

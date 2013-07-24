@@ -69,8 +69,8 @@ namespace RetailPOS.CommonLayer.Mapper
             AutoMapper.Mapper.CreateMap<PromotionalOfferDTO, promotional_offer>();
 
             //Maps WasteManagement object with WasteManagementDTO object
-            AutoMapper.Mapper.CreateMap<WasteManagement, WasteManagementDTO>();
-            AutoMapper.Mapper.CreateMap<WasteManagementDTO, WasteManagement>();
+            AutoMapper.Mapper.CreateMap<wastemanagement, WasteManagementDTO>();
+            AutoMapper.Mapper.CreateMap<WasteManagementDTO, wastemanagement>();
 
             //Maps product_purchase_history_master object with PurchaseHistoryDTO object
             AutoMapper.Mapper.CreateMap<PurchaseHistoryDTO, product_purchase_history_master>();

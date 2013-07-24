@@ -20,7 +20,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Admin
         IList<ProductCategoryDTO> ICategoryService.GetCategories()
         {
             IList<ProductCategoryDTO> lstCategories = new List<ProductCategoryDTO>();
-            ObjectMapper.Map(base.CategoryRepository.GetList().ToList(), lstCategories);
+            ObjectMapper.Map(base.CategoryRepository.GetList().ToList().OrderBy(item => item.name), lstCategories);
             return lstCategories;
         }
 

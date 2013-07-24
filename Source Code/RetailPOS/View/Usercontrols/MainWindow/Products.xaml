@@ -20,16 +20,16 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Margin="1" Content="{Binding Name}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right" Width="79" 
+                    <Button Margin="1" Content="{Binding Name}" Height="53" Background="{Binding Color}" HorizontalAlignment="Right" Width="79" 
                             Command="{Binding DataContext.ShowProductCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" 
                             CommandParameter="{Binding}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}" Title="Product" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+        <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsProductPopupOpen, Mode=TwoWay}" Title="Product Details" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
             <my:ModalDialogPopup.HostedContent>
                 <ContentControl>
-                    <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=ShowProductVM}" >
+                    <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=ShowProductVM}">
                         <ctrl:ShowProduct x:Name="ctrlShowProduct" />
                     </StackPanel>
                 </ContentControl>

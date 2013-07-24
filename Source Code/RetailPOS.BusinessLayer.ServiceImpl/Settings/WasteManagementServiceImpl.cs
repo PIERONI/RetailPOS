@@ -1,5 +1,7 @@
 ﻿#region Using directives
 
+using System.Collections.Generic;
+using System.Linq;
 using RetailPOS.BusinessLayer.Service.Settings;
 using RetailPOS.CommonLayer.DataTransferObjects.Settings;
 using RetailPOS.CommonLayer.Mapper;
@@ -18,9 +20,20 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Settings
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         bool ISettingService.SaveWasteManagement(WasteManagementDTO wasteManagementDetails)
         {
-            WasteManagement wasteManagementEntity = new WasteManagement();
+            wastemanagement wasteManagementEntity = new wastemanagement();
             ObjectMapper.Map(wasteManagementDetails, wasteManagementEntity);
             return WasteManagementRepository.Save(wasteManagementEntity);
+        }
+
+        /// <summary>
+        /// Get waste management details from database
+        /// </summary>
+        /// <returns>returns list of Waste management details else empty list</returns>
+        IList<WasteManagementDTO> ISettingService.GetWasteManagementDetails()
+        {
+            IList<WasteManagementDTO> lstWasteManagementDetails = new List<WasteManagementDTO>();
+            ObjectMapper.Map(base.WasteManagementRepository.GetList().OrderByDescending(item => item.CreatedDate).ToList(), lstWasteManagementDetails);
+            return lstWasteManagementDetails;
         }
     }
 }

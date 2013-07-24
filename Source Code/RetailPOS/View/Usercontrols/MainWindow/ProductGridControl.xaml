@@ -18,11 +18,11 @@
             </DataGrid.RowStyle>
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="" />
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Products" Width="280"/>
-                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Qty." Width="50" />
-                <DataGridTextColumn Binding="{Binding Path=Retail_Price}" Header="Rate" />
-                <DataGridTextColumn Binding="{Binding Path=Discount, Mode=TwoWay}" Header="Discount"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" />               
+                <DataGridTextColumn Binding="{Binding Path=Name}" Header="Products" Width="250"/>
+                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="Quantity" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                <DataGridTextColumn Binding="{Binding Path=Retail_Price}" Header="Rate" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                <DataGridTextColumn Binding="{Binding Path=Discount, Mode=TwoWay}" Header="Discount" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                <DataGridTextColumn Binding="{Binding Path=Amount}" Header="Amount" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

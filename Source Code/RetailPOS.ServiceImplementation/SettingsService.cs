@@ -58,6 +58,15 @@ namespace RetailPOS.ServiceImplementation
             return SettingService.SaveWasteManagement(wasteManagementDetails);
         }
 
+        /// <summary>
+        /// Get waste management details from database
+        /// </summary>
+        /// <returns>returns list of Waste management details else empty list</returns>
+        public IList<WasteManagementDTO> GetWasteManagementDetails()
+        {
+            return SettingService.GetWasteManagementDetails();
+        }
+
         #endregion
 
         #region Purchase History Settings

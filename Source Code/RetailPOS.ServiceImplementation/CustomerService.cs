@@ -19,7 +19,7 @@ namespace RetailPOS.ServiceImplementation
         /// <param name="shopSettingDetails">Customer object to be saved</param>
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         /// <summary>
-        public bool SaveCustomerDetail(CustomerDTO customerDetails)
+        public int SaveCustomerDetail(CustomerDTO customerDetails)
         {
             return CustomerService.SaveCustomerDetail(customerDetails);
         }

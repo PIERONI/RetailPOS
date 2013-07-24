@@ -1,65 +1,87 @@
-﻿using System;
+﻿#region Using directives
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using RetailPOS.RetailPOSService;
-using System.Linq;
 using System.Windows;
-using System.Text;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using RetailPOS.RetailPOSService;
 using RetailPOS.Core;
+using RetailPOS.Utility;
+using System.Linq;
+
+#endregion
 
 namespace RetailPOS.ViewModel
 {
     public class MenuControlViewModel : ViewModelBase
-    {
+    {   
+        #region Declare Public and Private Data member
+
+        public RelayCommand OpenOrderPopupCommand { get; private set; }
+        public RelayCommand ClearCommand { get; private set; }
+        public RelayCommand OpenSetAsideOrderPopUpCommand { get; private set; }
+        public RelayCommand OpenOrdersInQueuePopUpCommand { get; private set; }
+
+        private IList<CustomerDTO> _lstCustomer;
+        private IList<OrderMasterDTO> _lstOrderMaster;
+
+        private bool _isOrderPopUpOpen;
+        private Visibility _isVisibleCustomerInfo;
+        private bool _isSetAsideOrderPopUpOpen;
+        private bool _isOrdersInQueuePopUpOpen;
+        
+        private string _customerName;
+        private string _customerMobile;
+        
+        //private CustomerDTO _customer;       
+        private CustomerDTO _selectedCustomer;
+        private OrderMasterDTO _selectedOrder;
+        
+        #endregion      
+
+        #region Constructor
+
         public MenuControlViewModel()
         {
-            OpenOrderPopup = new RelayCommand(OpeOrderPopup);
-            OpenSetAsideOrderPopup = new RelayCommand(OpenSetAsideOrderpopupClick);
-            lstSearchCustomer = new List<CustomerDTO>();
-            lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
-                                                                      select item).ToList();
-            Clear = new RelayCommand(ClearText);
+            LstCustomer = new ObservableCollection<CustomerDTO>();
+
+            Mediator.Register("CloseSetAsideOrderPopUpWindow", CloseAllPopUpWindow);
+            Mediator.Register("CloseOrderInQueuePopUpWindow", CloseAllPopUpWindow);
+
+            OpenOrderPopupCommand = new RelayCommand(OpenOrderPopup);
+            OpenSetAsideOrderPopUpCommand = new RelayCommand(OpenSetAsideOrders);
+            OpenOrdersInQueuePopUpCommand = new RelayCommand(OpenOrdersInQueue);
+            ClearCommand = new RelayCommand(ClearControls);
         }
 
-        #region Declare Public and private Data member
-        public IList<CustomerDTO> lstSearchCustomer { get; private set; }
-        public RelayCommand OpenOrderPopup { get; private set; }
-        public RelayCommand Clear
-        {
-            get;
-            private set;
-        }
-         public RelayCommand OpenSetAsideOrderPopup { get; private set; }
-        private bool _IsOrderPopupOpen;
-        private Visibility _isVisibleCustomerInfo;
-        private string _Mobile;
-        private bool _IsSetAsideOrderPopupOpen;
-        private CustomerDTO     _customer;       
-        private CustomerDTO _selectedCustomer;
-        private CustomerDTO _setAsideOrderCustomer;
-        private string _customerName;
+        #endregion
 
-        #endregion      
         #region Public Properties
 
-        public CustomerDTO SetAsideOrderCustomer
+        public IList<CustomerDTO> LstCustomer 
         {
-            get { return _setAsideOrderCustomer; }
+            get { return _lstCustomer; }
             set
             {
-                _setAsideOrderCustomer = value;
-                RaisePropertyChanged("SetAsideOrderCustomer");
+                _lstCustomer = value;
+                RaisePropertyChanged("LstCustomer");
+            }
+        }
+
+        public IList<OrderMasterDTO> LstOrderMaster
+        {
+            get { return _lstOrderMaster; }
+            set
+            {
+                _lstOrderMaster = value;
+                RaisePropertyChanged("LstOrderMaster");
             }
         }
 
         public string CustomerName
         {
-            get
-            {
-                return _customerName;
-            }
+            get { return _customerName; }
             set
             {
                 _customerName = value;
@@ -69,97 +91,162 @@ namespace RetailPOS.ViewModel
 
         public Visibility isVisibleCustomerInfo
         {
-            get
-            {
-                return _isVisibleCustomerInfo;
-            }
+            get { return _isVisibleCustomerInfo; }
             set
             {
                 _isVisibleCustomerInfo = value;
                 RaisePropertyChanged("isVisibleCustomerInfo");
             }
         }
+
         public string CustomerMobile
         {
-            get
-            {
-                return _Mobile;
-            }
+            get { return _customerMobile; }
             set
             {
-                _Mobile = value;
+                _customerMobile = value;
                 RaisePropertyChanged("CustomerMobile");
             }
         }
+
         public CustomerDTO SelectedCustomer
         {
-            get
-            {
-                return _selectedCustomer;
-            }
+            get { return _selectedCustomer; }
             set
             {
-                _selectedCustomer = value;
-                RaisePropertyChanged("SelectedCustomer");
-                SetAsideOrderCustomer = value;
-                BindCustomer();
-            }
-        }
-
-        public CustomerDTO Customer
-        {
-            get
-            {
-                return _customer;
-            }
-            set
-            {
-                _customer = value;
-
-                if (Customer == null)
+                if (value != null)
                 {
-                    SelectedCustomer = null;
-                }
-                if (SelectedCustomer == null && Customer != null)
-                {
-                    SelectedCustomer = Customer;
+                    _selectedCustomer = value;
+                    RaisePropertyChanged("SelectedCustomer");
+                    BindCustomer();
+
+                    Mediator.NotifyColleagues("SetSelectedCustomer", value);
                 }
             }
-        }     
+        }
 
-        public bool IsOrderPopupOpen
+        public OrderMasterDTO SelectedOrder
         {
-            get { return _IsOrderPopupOpen; }
+            get { return _selectedOrder; }
             set
             {
-                _IsOrderPopupOpen = value;
-                RaisePropertyChanged("IsOrderPopupOpen");
+                if (value != null)
+                {
+                    _selectedOrder = value;
+                    RaisePropertyChanged("SelectedOrder");
+
+                    Mediator.NotifyColleagues("SetSelectedOrder", value);
+                }
             }
         }
 
-        public bool IsSetAsidePopupOpen
+        //public CustomerDTO Customer
+        //{
+        //    get { return _customer; }
+        //    set
+        //    {
+        //        _customer = value;
+
+        //        if (Customer == null)
+        //        {
+        //            SelectedCustomer = null;
+        //        }
+
+        //        if (SelectedCustomer == null && Customer != null)
+        //        {
+        //            SelectedCustomer = Customer;
+        //        }
+        //    }
+        //}
+
+        public bool IsOrderPopUpOpen
         {
-            get { return _IsSetAsideOrderPopupOpen; }
+            get { return _isOrderPopUpOpen; }
             set
             {
-                _IsSetAsideOrderPopupOpen = value;
-                RaisePropertyChanged("IsSetAsidePopupOpen");
+                _isOrderPopUpOpen = value;
+                RaisePropertyChanged("IsOrderPopUpOpen");
             }
         }
+
+        public bool IsSetAsidePopUpOpen
+        {
+            get { return _isSetAsideOrderPopUpOpen; }
+            set
+            {
+                _isSetAsideOrderPopUpOpen = value;
+                RaisePropertyChanged("IsSetAsidePopUpOpen");
+            }
+        }
+
+        public bool IsOrdersInQueuePopUpOpen
+        {
+            get { return _isOrdersInQueuePopUpOpen; }
+            set
+            {
+                _isOrdersInQueuePopUpOpen = value;
+                RaisePropertyChanged("IsOrdersInQueuePopUpOpen");
+            }
+        }
+
         #endregion
 
-        private void OpeOrderPopup()
+        #region Private Methods
+
+        private void CloseAllPopUpWindow(object args)
         {
-            IsOrderPopupOpen=true;
-            CustomerMobile = "";
-            CustomerName = "";
+            IsSetAsidePopUpOpen = false;
+            IsOrderPopUpOpen = false;
+            IsOrdersInQueuePopUpOpen = false;
         }
 
-        private void OpenSetAsideOrderpopupClick()
+        /// <summary>
+        /// Get all active customer details from database
+        /// </summary>
+        private void GetCustomerDetails()
         {
-            IsOrderPopupOpen = false;
-            IsSetAsidePopupOpen = true;
-            ClearText();
+            LstCustomer = ServiceFactory.ServiceClient.GetAllCustomers();
+        }
+
+        private void OpenOrderPopup()
+        {   
+            IsOrdersInQueuePopUpOpen = false;
+            IsSetAsidePopUpOpen = false;
+            IsOrderPopUpOpen = true;
+
+            ////Clear the controls
+            ClearControls();
+        }
+
+        private void OpenSetAsideOrders()
+        {
+            ////Get all active customer details from database
+            GetCustomerDetails();
+
+            IsOrderPopUpOpen = false;
+            IsOrdersInQueuePopUpOpen = false;
+            IsSetAsidePopUpOpen = true;
+            
+            ////Clear the controls
+            ClearControls();
+        }
+
+        private void OpenOrdersInQueue()
+        {
+            ////Get all active orders in queue from database
+            GetOrdersInQueue();
+
+            IsOrderPopUpOpen = false;
+            IsSetAsidePopUpOpen = false;
+            IsOrdersInQueuePopUpOpen = true;
+
+            ////Clear the controls
+            ClearControls();
+        }
+
+        private void GetOrdersInQueue()
+        {
+            LstOrderMaster = ServiceFactory.ServiceClient.GetOrdersInQueue();
         }
 
         private void BindCustomer()
@@ -169,19 +256,24 @@ namespace RetailPOS.ViewModel
                 isVisibleCustomerInfo = Visibility.Collapsed;
                 return;
             }
+
+            CustomerDTO selectedCustomer = SelectedCustomer;
+
             isVisibleCustomerInfo = Visibility.Visible;
-            CustomerMobile = SelectedCustomer.Mobile;
-            CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
+            CustomerMobile = selectedCustomer.Mobile;
+            CustomerName = selectedCustomer.First_Name + " " + selectedCustomer.Last_Name;
             isVisibleCustomerInfo = Visibility.Visible;
         }
-      
 
-        private void ClearText()
+        /// <summary>
+        /// Clear the controls
+        /// </summary>
+        private void ClearControls()
         {
-            Customer = null;
             CustomerName = string.Empty;
             CustomerMobile = string.Empty;
-         
         }
+
+        #endregion
     }
 }

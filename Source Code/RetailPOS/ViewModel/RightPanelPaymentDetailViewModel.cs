@@ -260,7 +260,7 @@ namespace RetailPOS.ViewModel
             isVisibleCustomerInfo = Visibility.Visible;
             Id = SelectedCustomer.Id;
             CustomerName = SelectedCustomer.First_Name;
-            CustomerBalance =  SelectedCustomer.balance;
+            CustomerBalance =  SelectedCustomer.Balance;
             CustomerName1 = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
             CreditLimit = SelectedCustomer.Credit_Limit;            
             Mobile = SelectedCustomer.Mobile;
@@ -283,7 +283,7 @@ namespace RetailPOS.ViewModel
 
         private CustomerDTO InitializeCustomerPaymentDetail()
         {
-            SelectedCustomer.balance = CustomerBalance - PaidAmount;
+            SelectedCustomer.Balance = CustomerBalance - PaidAmount;
             return SelectedCustomer;
         }
     }

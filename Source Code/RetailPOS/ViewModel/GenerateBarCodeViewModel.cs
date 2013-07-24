@@ -19,7 +19,7 @@ namespace RetailPOS.ViewModel
        private int _width;
        private int _height;
        private string _encodedValue;
-       Barcode b = new Barcode();
+       //Barcode b = new Barcode();
 
        public string EncodedValue
        {
@@ -90,7 +90,7 @@ namespace RetailPOS.ViewModel
                    case 5: /* TIFF */ savetype = SaveTypes.TIFF; break;
                    default: break;
                }//switch
-               b.SaveImage(sfd.FileName, savetype);
+               //b.SaveImage(sfd.FileName, savetype);
            }//if
        }
 

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region Using directives
+
 using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
+using RetailPOS.Constants;
 using RetailPOS.Core;
+
+#endregion
 
 namespace RetailPOS
 {

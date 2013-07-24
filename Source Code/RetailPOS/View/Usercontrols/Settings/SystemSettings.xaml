@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols.Settings"
-            Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
+             Height="768" Width="1024" DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}">
     <UserControl.Resources>
             <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
       </UserControl.Resources>
@@ -69,7 +69,7 @@
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsCustomerVisible}"
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
-            <ctrl:Customer x:Name="ctrlCustomer"  Margin="15" Width="722"></ctrl:Customer>
+            <ctrl:Customer x:Name="ctrlCustomer"  Margin="15" Width="812"></ctrl:Customer>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsProductVisible}" 
                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
@@ -88,7 +88,7 @@
             <ctrl:PurchaseHistory x:Name="ctrlPurchaseHistory" Margin="15" Width="722"></ctrl:PurchaseHistory>
         </StackPanel>
         <StackPanel DataContext="{Binding Source={StaticResource Locator}, Path=SettingVM}" Visibility="{Binding IsWastemengmentVisible}"
-                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" >
+                     Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center">
             <ctrl:WasteManagement x:Name="ctrlWasteManagent" Margin="15" Width="842"></ctrl:WasteManagement>
         </StackPanel>
     </Grid>

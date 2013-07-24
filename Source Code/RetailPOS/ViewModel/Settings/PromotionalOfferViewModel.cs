@@ -11,24 +11,24 @@ using System;
 
 #endregion
 
-namespace RetailPOS.ViewModel
+namespace RetailPOS.ViewModel.Settings
 {
     public class PromotionalOfferViewModel : ViewModelBase
     {
-        #region Declare Public and private Data member
+        #region Declare Public and Private Data member
 
-        public IList<PromotionalOfferDTO> LstSearchPromotionalOffer { get; private set; }
         public IList<MeasureUnitDTO> LstMeasureUnit { get; private set; }
         
-        public RelayCommand SavePromotionalOffer { get; private set; }
-        public RelayCommand CancelPromotionalOfferSetting { get; private set; }
-        public RelayCommand SearchPromotionalOffer { get; private set; }
+        public RelayCommand SavePromotionalOfferCommand { get; private set; }
+        public RelayCommand CancelPromotionalOfferCommand { get; private set; }
+        public RelayCommand SearchPromotionalOfferCommand { get; private set; }
+        public RelayCommand CancelSearchPromotionalOfferCommand { get; private set; }
 
         private IList<PromotionalOfferDTO> _lstPromotionalOffer { get; set; }
         
-        private DateTime _startDuration;
-        private DateTime _endDuration;
-
+        private Nullable<DateTime> _startDuration;
+        private Nullable<DateTime> _endDuration;
+        
         private string _name;
         private string _description;
         private DateTime _startDate;
@@ -99,7 +99,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public DateTime StartDuration
+        public Nullable<DateTime> StartDuration
         {
             get { return _startDuration; }
             set
@@ -109,7 +109,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public DateTime EndDuration
+        public Nullable<DateTime> EndDuration
         {
             get { return _endDuration; }
             set
@@ -185,29 +185,42 @@ namespace RetailPOS.ViewModel
 
         public PromotionalOfferViewModel()
         {
-            LstSearchPromotionalOffer = new List<PromotionalOfferDTO>();
+            LstPromotionalOffer = new List<PromotionalOfferDTO>();
             LstMeasureUnit = new ObservableCollection<MeasureUnitDTO>();
 
-            SavePromotionalOffer = new RelayCommand(SavePromotionalOfferDetail);
-            CancelPromotionalOfferSetting = new RelayCommand(CancelSetting);
-            SearchPromotionalOffer = new RelayCommand(SearchDetails);
+            SavePromotionalOfferCommand = new RelayCommand(SavePromotionalOfferDetail);
+            CancelPromotionalOfferCommand = new RelayCommand(CancelSetting);
+            SearchPromotionalOfferCommand = new RelayCommand(SearchPromotionalOffer);
+            CancelSearchPromotionalOfferCommand = new RelayCommand(CancelSearchPromotionalOffer);
 
             ////Get Promotional offer details from database
-            LstPromotionalOffer = GetPromotionalOfer();
-            LstSearchPromotionalOffer = GetPromotionalOfer();
-
+            GetPromotionalOfer();
+            
             ////Get all active measure units from database
             GetMeasureUnit();
 
-            StartDate = DateTime.Now;
-            EndDate = DateTime.Now;
+            ////Clear the controls
+            ClearControls();
         }
 
         #endregion
 
-        private void SearchDetails()
+        /// <summary>
+        /// Search promotional offers from database
+        /// </summary>
+        private void SearchPromotionalOffer()
         {
-            LstPromotionalOffer = GetPromotionalOfer();
+            ////Get Promotional offer details from database
+            GetPromotionalOfer();
+        }
+
+        private void CancelSearchPromotionalOffer()
+        {
+            ////Clear the controls
+            ClearControls();
+
+            ////Get Promotional offer details from database
+            GetPromotionalOfer();
         }
 
         private void CancelSetting()
@@ -220,6 +233,7 @@ namespace RetailPOS.ViewModel
             var promotionalOfferDetail = InitializePromotionalOfferDetails();
             ServiceFactory.ServiceClient.SavePromotionalOffer(promotionalOfferDetail);
 
+            ////Clear the controls
             ClearControls();
         }
 
@@ -240,6 +254,9 @@ namespace RetailPOS.ViewModel
             };
         }
 
+        /// <summary>
+        /// Clear the controls
+        /// </summary>
         private void ClearControls()
         {
             Name = string.Empty;
@@ -248,10 +265,12 @@ namespace RetailPOS.ViewModel
             EndDate = DateTime.Now;
             Duration = 0;
             PurchaseQuantity = 0;
-            SelectedMeasureUnitForPurchaseQuantity.Id = 0;
-            SelectedMeasureUnitForOfferQuantity.Id = 0;
+            SelectedMeasureUnitForPurchaseQuantity = null;
+            SelectedMeasureUnitForOfferQuantity = null;
             OfferQuantity = 0;
             OfferPercentage = 0;
+            StartDuration = null;
+            EndDuration = null;
         }
 
         /// <summary>
@@ -266,17 +285,17 @@ namespace RetailPOS.ViewModel
         /// <summary>
         /// Get Promotional offer details from database
         /// </summary>
-        private ObservableCollection<PromotionalOfferDTO>  GetPromotionalOfer()
+        private void  GetPromotionalOfer()
         {
-            ObservableCollection<PromotionalOfferDTO> lstPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(
-                from item in ServiceFactory.ServiceClient.GetPromotionalOfferDetail()
+            LstPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(from item in 
+                ServiceFactory.ServiceClient.GetPromotionalOfferDetail()
                 select new PromotionalOfferDTO
                 {
                     Id = item.Id,
                     Name = item.Name,
-                    Start_Date = StartDate,
-                    End_Date = EndDate,
-                    DateDuration = item.Start_Date.ToShortDateString() + "TO" + item.End_Date.ToShortDateString(),
+                    Start_Date = item.Start_Date,
+                    End_Date = item.End_Date,
+                    DateDuration = item.Start_Date.ToShortDateString() + " TO " + item.End_Date.ToShortDateString(),
                     PurchaseQuantityWithUnit = item.Purchase_Quantity.ToString() + " " + (item.Measure_Unit1 == null ? string.Empty : item.Measure_Unit1.Name),
                     OfferQuantityWithUnit = item.Offer_Quantity.ToString() + " " + (item.Measure_Unit == null ? string.Empty : item.Measure_Unit.Name),
                     Offer_Percentage = item.Offer_Percentage
@@ -284,11 +303,17 @@ namespace RetailPOS.ViewModel
 
             if(!string.IsNullOrEmpty(Name))
             {
-                lstPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(from item in lstPromotionalOffer
-                                                                                    where item.Name.ToLower().Contains(Name.ToLower())
+                LstPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(from item in LstPromotionalOffer
+                                                                                    where item.Name.ToLower().Contains(Name.ToLower()) 
                                                                                     select item);
             }
-            return lstPromotionalOffer;
+
+            if (StartDuration != null && EndDuration != null)
+            {
+                LstPromotionalOffer = new ObservableCollection<PromotionalOfferDTO>(from item in LstPromotionalOffer
+                                                                                    where item.Start_Date.Date >= StartDuration && item.End_Date.Date <= EndDuration
+                                                                                    select item);
+            }
         }
     }
 }

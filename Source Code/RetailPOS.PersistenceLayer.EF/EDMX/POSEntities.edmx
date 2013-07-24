@@ -4,31 +4,31 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="POSModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="POSModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="POSModelStoreContainer">
-          <EntitySet Name="accounts" EntityType="POSModel.Store.accounts" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="address" EntityType="POSModel.Store.address" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="country" EntityType="POSModel.Store.country" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="customer" EntityType="POSModel.Store.customer" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="customer_status" EntityType="POSModel.Store.customer_status" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="customer_type" EntityType="POSModel.Store.customer_type" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="department" EntityType="POSModel.Store.department" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="designation" EntityType="POSModel.Store.designation" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="display_properties" EntityType="POSModel.Store.display_properties" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="email_history" EntityType="POSModel.Store.email_history" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="email_templates" EntityType="POSModel.Store.email_templates" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="general_settings" EntityType="POSModel.Store.general_settings" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="invoicecredit" EntityType="POSModel.Store.invoicecredit" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="invoiceitems" EntityType="POSModel.Store.invoiceitems" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="invoices" EntityType="POSModel.Store.invoices" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="locality" EntityType="POSModel.Store.locality" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="login_history" EntityType="POSModel.Store.login_history" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="measure_unit" EntityType="POSModel.Store.measure_unit" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="measure_unit_conversion" EntityType="POSModel.Store.measure_unit_conversion" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="openid_server" EntityType="POSModel.Store.openid_server" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="orderchild" EntityType="POSModel.Store.orderchild" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="ordermaster" EntityType="POSModel.Store.ordermaster" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="payment_gateways" EntityType="POSModel.Store.payment_gateways" store:Type="Tables" store:Schema="zadmin_webpos" store:Name="payment_gateways">
+          <EntitySet Name="accounts" EntityType="POSModel.Store.accounts" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="address" EntityType="POSModel.Store.address" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="country" EntityType="POSModel.Store.country" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer" EntityType="POSModel.Store.customer" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_status" EntityType="POSModel.Store.customer_status" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="customer_type" EntityType="POSModel.Store.customer_type" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="department" EntityType="POSModel.Store.department" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="designation" EntityType="POSModel.Store.designation" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="display_properties" EntityType="POSModel.Store.display_properties" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="email_history" EntityType="POSModel.Store.email_history" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="email_templates" EntityType="POSModel.Store.email_templates" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="general_settings" EntityType="POSModel.Store.general_settings" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="invoicecredit" EntityType="POSModel.Store.invoicecredit" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="invoiceitems" EntityType="POSModel.Store.invoiceitems" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="invoices" EntityType="POSModel.Store.invoices" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="locality" EntityType="POSModel.Store.locality" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="login_history" EntityType="POSModel.Store.login_history" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="measure_unit" EntityType="POSModel.Store.measure_unit" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="measure_unit_conversion" EntityType="POSModel.Store.measure_unit_conversion" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="openid_server" EntityType="POSModel.Store.openid_server" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="orderchild" EntityType="POSModel.Store.orderchild" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="ordermaster" EntityType="POSModel.Store.ordermaster" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="payment_gateways" EntityType="POSModel.Store.payment_gateways" store:Type="Tables" store:Schema="webpos" store:Name="payment_gateways">
             <DefiningQuery>SELECT
       `payment_gateways`.`gateway`, 
       `payment_gateways`.`setting`, 
@@ -36,187 +36,39 @@
       `payment_gateways`.`sortorder`
       FROM `payment_gateways` AS `payment_gateways`</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="postcode" EntityType="POSModel.Store.postcode" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="product" EntityType="POSModel.Store.product" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="product_category" EntityType="POSModel.Store.product_category" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="product_promotional_offer" EntityType="POSModel.Store.product_promotional_offer" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="product_purchase_history_child" EntityType="POSModel.Store.product_purchase_history_child" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="product_purchase_history_master" EntityType="POSModel.Store.product_purchase_history_master" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="product_status" EntityType="POSModel.Store.product_status" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="promotional_offer" EntityType="POSModel.Store.promotional_offer" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="queries" EntityType="POSModel.Store.queries" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="security_group" EntityType="POSModel.Store.security_group" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="shop_info" EntityType="POSModel.Store.shop_info" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="shop_product" EntityType="POSModel.Store.shop_product" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="staff" EntityType="POSModel.Store.staff" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="staff_status" EntityType="POSModel.Store.staff_status" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="street" EntityType="POSModel.Store.street" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="supplier" EntityType="POSModel.Store.supplier" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="supplier_contact_person" EntityType="POSModel.Store.supplier_contact_person" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="supplier_products" EntityType="POSModel.Store.supplier_products" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="town_city" EntityType="POSModel.Store.town_city" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="warranty" EntityType="POSModel.Store.warranty" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="WasteManagement" EntityType="POSModel.Store.WasteManagement" store:Type="Tables" Schema="zadmin_webpos" />
-          <EntitySet Name="working_record" EntityType="POSModel.Store.working_record" store:Type="Tables" Schema="zadmin_webpos" />
-          <AssociationSet Name="accounts_ibfk_1" Association="POSModel.Store.accounts_ibfk_1">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="accounts" EntitySet="accounts" />
-          </AssociationSet>
-          <AssociationSet Name="accounts_ibfk_2" Association="POSModel.Store.accounts_ibfk_2">
-            <End Role="invoices" EntitySet="invoices" />
-            <End Role="accounts" EntitySet="accounts" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_10" Association="POSModel.Store.address_ibfk_10">
-            <End Role="postcode" EntitySet="postcode" />
-            <End Role="address" EntitySet="address" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_6" Association="POSModel.Store.address_ibfk_6">
-            <End Role="town_city" EntitySet="town_city" />
-            <End Role="address" EntitySet="address" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_7" Association="POSModel.Store.address_ibfk_7">
-            <End Role="country" EntitySet="country" />
-            <End Role="address" EntitySet="address" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_8" Association="POSModel.Store.address_ibfk_8">
-            <End Role="street" EntitySet="street" />
-            <End Role="address" EntitySet="address" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_9" Association="POSModel.Store.address_ibfk_9">
-            <End Role="locality" EntitySet="locality" />
-            <End Role="address" EntitySet="address" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_3" Association="POSModel.Store.customer_ibfk_3">
-            <End Role="customer_type" EntitySet="customer_type" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_4" Association="POSModel.Store.customer_ibfk_4">
-            <End Role="address" EntitySet="address" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_5" Association="POSModel.Store.customer_ibfk_5">
-            <End Role="customer_status" EntitySet="customer_status" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_6" Association="POSModel.Store.customer_ibfk_6">
-            <End Role="openid_server" EntitySet="openid_server" />
-            <End Role="customer" EntitySet="customer" />
-          </AssociationSet>
-          <AssociationSet Name="display_properties_ibfk_1" Association="POSModel.Store.display_properties_ibfk_1">
-            <End Role="product" EntitySet="product" />
-            <End Role="display_properties" EntitySet="display_properties" />
-          </AssociationSet>
-          <AssociationSet Name="email_history_ibfk_1" Association="POSModel.Store.email_history_ibfk_1">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="email_history" EntitySet="email_history" />
-          </AssociationSet>
-          <AssociationSet Name="email_history_ibfk_2" Association="POSModel.Store.email_history_ibfk_2">
-            <End Role="staff" EntitySet="staff" />
-            <End Role="email_history" EntitySet="email_history" />
-          </AssociationSet>
-          <AssociationSet Name="invoicecredit_ibfk_1" Association="POSModel.Store.invoicecredit_ibfk_1">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="invoicecredit" EntitySet="invoicecredit" />
-          </AssociationSet>
-          <AssociationSet Name="invoicecredit_ibfk_2" Association="POSModel.Store.invoicecredit_ibfk_2">
-            <End Role="invoices" EntitySet="invoices" />
-            <End Role="invoicecredit" EntitySet="invoicecredit" />
-          </AssociationSet>
-          <AssociationSet Name="invoiceitems_ibfk_2" Association="POSModel.Store.invoiceitems_ibfk_2">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="invoiceitems" EntitySet="invoiceitems" />
-          </AssociationSet>
-          <AssociationSet Name="invoiceitems_ibfk_4" Association="POSModel.Store.invoiceitems_ibfk_4">
-            <End Role="invoices" EntitySet="invoices" />
-            <End Role="invoiceitems" EntitySet="invoiceitems" />
-          </AssociationSet>
-          <AssociationSet Name="invoiceitems_ibfk_5" Association="POSModel.Store.invoiceitems_ibfk_5">
-            <End Role="invoiceitems" EntitySet="invoiceitems" />
-            <End Role="invoiceitems1" EntitySet="invoiceitems" />
-          </AssociationSet>
-          <AssociationSet Name="invoices_ibfk_1" Association="POSModel.Store.invoices_ibfk_1">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="invoices" EntitySet="invoices" />
-          </AssociationSet>
-          <AssociationSet Name="login_history_ibfk_2" Association="POSModel.Store.login_history_ibfk_2">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="login_history" EntitySet="login_history" />
-          </AssociationSet>
-          <AssociationSet Name="login_history_ibfk_3" Association="POSModel.Store.login_history_ibfk_3">
-            <End Role="staff" EntitySet="staff" />
-            <End Role="login_history" EntitySet="login_history" />
-          </AssociationSet>
-          <AssociationSet Name="measure_unit_conversion_ibfk_1" Association="POSModel.Store.measure_unit_conversion_ibfk_1">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
-          </AssociationSet>
-          <AssociationSet Name="measure_unit_conversion_ibfk_2" Association="POSModel.Store.measure_unit_conversion_ibfk_2">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
-          </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_1" Association="POSModel.Store.orderchild_ibfk_1">
+          <EntitySet Name="postcode" EntityType="POSModel.Store.postcode" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product" EntityType="POSModel.Store.product" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_category" EntityType="POSModel.Store.product_category" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_promotional_offer" EntityType="POSModel.Store.product_promotional_offer" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_purchase_history_child" EntityType="POSModel.Store.product_purchase_history_child" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_purchase_history_master" EntityType="POSModel.Store.product_purchase_history_master" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="product_status" EntityType="POSModel.Store.product_status" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="promotional_offer" EntityType="POSModel.Store.promotional_offer" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="queries" EntityType="POSModel.Store.queries" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="security_group" EntityType="POSModel.Store.security_group" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="shop_info" EntityType="POSModel.Store.shop_info" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="shop_product" EntityType="POSModel.Store.shop_product" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="staff" EntityType="POSModel.Store.staff" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="staff_status" EntityType="POSModel.Store.staff_status" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="street" EntityType="POSModel.Store.street" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="supplier" EntityType="POSModel.Store.supplier" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="supplier_contact_person" EntityType="POSModel.Store.supplier_contact_person" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="supplier_products" EntityType="POSModel.Store.supplier_products" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="town_city" EntityType="POSModel.Store.town_city" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="warranty" EntityType="POSModel.Store.warranty" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="wastemanagement" EntityType="POSModel.Store.wastemanagement" store:Type="Tables" Schema="webpos" />
+          <EntitySet Name="working_record" EntityType="POSModel.Store.working_record" store:Type="Tables" Schema="webpos" />
+          <AssociationSet Name="FK_OrderMaster_OrderChild" Association="POSModel.Store.FK_OrderMaster_OrderChild">
             <End Role="ordermaster" EntitySet="ordermaster" />
             <End Role="orderchild" EntitySet="orderchild" />
           </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_2" Association="POSModel.Store.orderchild_ibfk_2">
+          <AssociationSet Name="FK_Product_OrderChild" Association="POSModel.Store.FK_Product_OrderChild">
             <End Role="product" EntitySet="product" />
             <End Role="orderchild" EntitySet="orderchild" />
           </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_3" Association="POSModel.Store.orderchild_ibfk_3">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="orderchild" EntitySet="orderchild" />
-          </AssociationSet>
-          <AssociationSet Name="ordermaster_ibfk_1" Association="POSModel.Store.ordermaster_ibfk_1">
-            <End Role="customer" EntitySet="customer" />
-            <End Role="ordermaster" EntitySet="ordermaster" />
-          </AssociationSet>
-          <AssociationSet Name="ordermaster_ibfk_2" Association="POSModel.Store.ordermaster_ibfk_2">
-            <End Role="shop_info" EntitySet="shop_info" />
-            <End Role="ordermaster" EntitySet="ordermaster" />
-          </AssociationSet>
-          <AssociationSet Name="ordermaster_ibfk_3" Association="POSModel.Store.ordermaster_ibfk_3">
-            <End Role="invoices" EntitySet="invoices" />
-            <End Role="ordermaster" EntitySet="ordermaster" />
-          </AssociationSet>
-          <AssociationSet Name="PostalCode_TownCity_FK" Association="POSModel.Store.PostalCode_TownCity_FK">
-            <End Role="town_city" EntitySet="town_city" />
-            <End Role="postcode" EntitySet="postcode" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_child_ibfk_1" Association="POSModel.Store.product_purchase_history_child_ibfk_1">
-            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
-            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_child_ibfk_2" Association="POSModel.Store.product_purchase_history_child_ibfk_2">
+          <AssociationSet Name="FK_Product_WasteManagement" Association="POSModel.Store.FK_Product_WasteManagement">
             <End Role="product" EntitySet="product" />
-            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_child_ibfk_3" Association="POSModel.Store.product_purchase_history_child_ibfk_3">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_master_ibfk_1" Association="POSModel.Store.product_purchase_history_master_ibfk_1">
-            <End Role="supplier" EntitySet="supplier" />
-            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_master_ibfk_2" Association="POSModel.Store.product_purchase_history_master_ibfk_2">
-            <End Role="shop_info" EntitySet="shop_info" />
-            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
-          </AssociationSet>
-          <AssociationSet Name="promotional_offer_ibfk_1" Association="POSModel.Store.promotional_offer_ibfk_1">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="promotional_offer" EntitySet="promotional_offer" />
-          </AssociationSet>
-          <AssociationSet Name="promotional_offer_ibfk_2" Association="POSModel.Store.promotional_offer_ibfk_2">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="promotional_offer" EntitySet="promotional_offer" />
-          </AssociationSet>
-          <AssociationSet Name="supplier_products_ibfk_1" Association="POSModel.Store.supplier_products_ibfk_1">
-            <End Role="supplier" EntitySet="supplier" />
-            <End Role="supplier_products" EntitySet="supplier_products" />
-          </AssociationSet>
-          <AssociationSet Name="supplier_products_ibfk_2" Association="POSModel.Store.supplier_products_ibfk_2">
-            <End Role="product" EntitySet="product" />
-            <End Role="supplier_products" EntitySet="supplier_products" />
+            <End Role="wastemanagement" EntitySet="wastemanagement" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="accounts">
@@ -409,8 +261,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TownCityId" Type="int" />
           <Property Name="locality" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="TownCityId" Type="int" />
         </EntityType>
         <EntityType Name="login_history">
           <Key>
@@ -454,9 +306,10 @@
           </Key>
           <Property Name="order_id" Type="bigint" Nullable="false" />
           <Property Name="product_id" Type="smallint" Nullable="false" />
-          <Property Name="quantity" Type="smallint" Nullable="false" />
+          <Property Name="quantity" Type="decimal" Nullable="false" />
           <Property Name="measure_unit_id" Type="smallint" Nullable="false" />
           <Property Name="amount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="Discount" Type="decimal" />
           <Property Name="taxed" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ordermaster">
@@ -470,9 +323,10 @@
           <Property Name="shop_code" Type="varchar" MaxLength="10" />
           <Property Name="invoice_id" Type="bigint" />
           <Property Name="print_receipt_copies" Type="smallint" Nullable="false" />
+          <Property Name="Status" Type="smallint" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'zadmin_webpos.payment_gateways' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      warning 6002: The table/view 'def.webpos.payment_gateways' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
       -->
         <EntityType Name="payment_gateways">
           <Key>
@@ -491,8 +345,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="LocalityId" Type="smallint" Nullable="false" />
           <Property Name="postcode" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="LocalityId" Type="smallint" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -595,7 +449,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="permissions" Type="text" Nullable="false" />
+          <Property Name="permissions" Type="varchar" Nullable="false" MaxLength="5000" />
           <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="description" Type="varchar" />
         </EntityType>
@@ -646,7 +500,6 @@
           <Property Name="openid_id" Type="varchar" MaxLength="100" />
           <Property Name="openid_server_id" Type="smallint" />
           <Property Name="password" Type="varchar" MaxLength="40" />
-          <Property Name="apikey" Type="varchar" MaxLength="40" />
           <Property Name="security_group_id" Type="smallint" />
         </EntityType>
         <EntityType Name="staff_status">
@@ -662,8 +515,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="LocalityId" Type="int" />
           <Property Name="street" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="LocalityId" Type="int" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -701,8 +554,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="smallint" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CountryId" Type="smallint" Nullable="false" />
           <Property Name="town_city" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CountryId" Type="smallint" />
         </EntityType>
         <EntityType Name="warranty">
           <Key>
@@ -714,14 +567,15 @@
           <Property Name="start_time" Type="datetime" Nullable="false" />
           <Property Name="end_time" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="WasteManagement">
+        <EntityType Name="wastemanagement">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="int" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-          <Property Name="Weight" Type="decimal" Scale="2" />
+          <Property Name="ProductId" Type="smallint" Nullable="false" />
+          <Property Name="Quantity" Type="decimal" Nullable="false" />
+          <Property Name="Weight" Type="decimal" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="working_record">
           <Key>
@@ -734,314 +588,8 @@
           <Property Name="work_date" Type="date" Nullable="false" />
           <Property Name="staff_id" Type="smallint" Nullable="false" />
         </EntityType>
-        <Association Name="accounts_ibfk_1">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="1" />
-          <End Role="accounts" Type="POSModel.Store.accounts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="accounts">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="accounts_ibfk_2">
-          <End Role="invoices" Type="POSModel.Store.invoices" Multiplicity="0..1" />
-          <End Role="accounts" Type="POSModel.Store.accounts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoices">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="accounts">
-              <PropertyRef Name="invoice_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_10">
-          <End Role="postcode" Type="POSModel.Store.postcode" Multiplicity="1" />
-          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="postcode">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="postcode_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_6">
-          <End Role="town_city" Type="POSModel.Store.town_city" Multiplicity="0..1" />
-          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="town_city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_7">
-          <End Role="country" Type="POSModel.Store.country" Multiplicity="0..1" />
-          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="country">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="country_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_8">
-          <End Role="street" Type="POSModel.Store.street" Multiplicity="1" />
-          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="street">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="street_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_9">
-          <End Role="locality" Type="POSModel.Store.locality" Multiplicity="0..1" />
-          <End Role="address" Type="POSModel.Store.address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="locality">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="locality_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_3">
-          <End Role="customer_type" Type="POSModel.Store.customer_type" Multiplicity="0..1" />
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer_type">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="type_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_4">
-          <End Role="address" Type="POSModel.Store.address" Multiplicity="0..1" />
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="address_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_5">
-          <End Role="customer_status" Type="POSModel.Store.customer_status" Multiplicity="1" />
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer_status">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_6">
-          <End Role="openid_server" Type="POSModel.Store.openid_server" Multiplicity="0..1" />
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="openid_server">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="openid_server_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="display_properties_ibfk_1">
-          <End Role="product" Type="POSModel.Store.product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="display_properties" Type="POSModel.Store.display_properties" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="display_properties">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="email_history_ibfk_1">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="email_history" Type="POSModel.Store.email_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="email_history">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="email_history_ibfk_2">
-          <End Role="staff" Type="POSModel.Store.staff" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="email_history" Type="POSModel.Store.email_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="email_history">
-              <PropertyRef Name="staff_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoicecredit_ibfk_1">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="1" />
-          <End Role="invoicecredit" Type="POSModel.Store.invoicecredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoicecredit">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoicecredit_ibfk_2">
-          <End Role="invoices" Type="POSModel.Store.invoices" Multiplicity="1" />
-          <End Role="invoicecredit" Type="POSModel.Store.invoicecredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoices">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoicecredit">
-              <PropertyRef Name="relid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoiceitems_ibfk_2">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="1" />
-          <End Role="invoiceitems" Type="POSModel.Store.invoiceitems" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoiceitems">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoiceitems_ibfk_4">
-          <End Role="invoices" Type="POSModel.Store.invoices" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="invoiceitems" Type="POSModel.Store.invoiceitems" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoices">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoiceitems">
-              <PropertyRef Name="invoice_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoiceitems_ibfk_5">
-          <End Role="invoiceitems" Type="POSModel.Store.invoiceitems" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="invoiceitems1" Type="POSModel.Store.invoiceitems" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoiceitems">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoiceitems1">
-              <PropertyRef Name="relid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoices_ibfk_1">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="1" />
-          <End Role="invoices" Type="POSModel.Store.invoices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoices">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="login_history_ibfk_2">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="login_history" Type="POSModel.Store.login_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="login_history">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="login_history_ibfk_3">
-          <End Role="staff" Type="POSModel.Store.staff" Multiplicity="0..1" />
-          <End Role="login_history" Type="POSModel.Store.login_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="login_history">
-              <PropertyRef Name="staff_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="measure_unit_conversion_ibfk_1">
-          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="measure_unit_conversion" Type="POSModel.Store.measure_unit_conversion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="measure_unit_conversion">
-              <PropertyRef Name="from_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="measure_unit_conversion_ibfk_2">
-          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="measure_unit_conversion" Type="POSModel.Store.measure_unit_conversion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="measure_unit_conversion">
-              <PropertyRef Name="to_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orderchild_ibfk_1">
-          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_OrderMaster_OrderChild">
+          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="1" />
           <End Role="orderchild" Type="POSModel.Store.orderchild" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ordermaster">
@@ -1052,7 +600,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="orderchild_ibfk_2">
+        <Association Name="FK_Product_OrderChild">
           <End Role="product" Type="POSModel.Store.product" Multiplicity="1" />
           <End Role="orderchild" Type="POSModel.Store.orderchild" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1064,171 +612,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="orderchild_ibfk_3">
-          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1" />
-          <End Role="orderchild" Type="POSModel.Store.orderchild" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderchild">
-              <PropertyRef Name="measure_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ordermaster_ibfk_1">
-          <End Role="customer" Type="POSModel.Store.customer" Multiplicity="0..1" />
-          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ordermaster">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ordermaster_ibfk_2">
-          <End Role="shop_info" Type="POSModel.Store.shop_info" Multiplicity="0..1" />
-          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="shop_info">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="ordermaster">
-              <PropertyRef Name="shop_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ordermaster_ibfk_3">
-          <End Role="invoices" Type="POSModel.Store.invoices" Multiplicity="0..1" />
-          <End Role="ordermaster" Type="POSModel.Store.ordermaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoices">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ordermaster">
-              <PropertyRef Name="invoice_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PostalCode_TownCity_FK">
-          <End Role="town_city" Type="POSModel.Store.town_city" Multiplicity="1" />
-          <End Role="postcode" Type="POSModel.Store.postcode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="postcode">
-              <PropertyRef Name="LocalityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_child_ibfk_1">
-          <End Role="product_purchase_history_master" Type="POSModel.Store.product_purchase_history_master" Multiplicity="1" />
-          <End Role="product_purchase_history_child" Type="POSModel.Store.product_purchase_history_child" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product_purchase_history_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_child">
-              <PropertyRef Name="history_master_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_child_ibfk_2">
+        <Association Name="FK_Product_WasteManagement">
           <End Role="product" Type="POSModel.Store.product" Multiplicity="1" />
-          <End Role="product_purchase_history_child" Type="POSModel.Store.product_purchase_history_child" Multiplicity="*" />
+          <End Role="wastemanagement" Type="POSModel.Store.wastemanagement" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="product_purchase_history_child">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_child_ibfk_3">
-          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1" />
-          <End Role="product_purchase_history_child" Type="POSModel.Store.product_purchase_history_child" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_child">
-              <PropertyRef Name="measure_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_master_ibfk_1">
-          <End Role="supplier" Type="POSModel.Store.supplier" Multiplicity="0..1" />
-          <End Role="product_purchase_history_master" Type="POSModel.Store.product_purchase_history_master" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="supplier">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_master">
-              <PropertyRef Name="supplier_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_master_ibfk_2">
-          <End Role="shop_info" Type="POSModel.Store.shop_info" Multiplicity="1" />
-          <End Role="product_purchase_history_master" Type="POSModel.Store.product_purchase_history_master" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="shop_info">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="product_purchase_history_master">
-              <PropertyRef Name="shop_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="promotional_offer_ibfk_1">
-          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="0..1" />
-          <End Role="promotional_offer" Type="POSModel.Store.promotional_offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="promotional_offer">
-              <PropertyRef Name="oqty_mu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="promotional_offer_ibfk_2">
-          <End Role="measure_unit" Type="POSModel.Store.measure_unit" Multiplicity="1" />
-          <End Role="promotional_offer" Type="POSModel.Store.promotional_offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="promotional_offer">
-              <PropertyRef Name="pqty_mu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="supplier_products_ibfk_1">
-          <End Role="supplier" Type="POSModel.Store.supplier" Multiplicity="1" />
-          <End Role="supplier_products" Type="POSModel.Store.supplier_products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="supplier">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="supplier_products">
-              <PropertyRef Name="supplier_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="supplier_products_ibfk_2">
-          <End Role="product" Type="POSModel.Store.product" Multiplicity="1" />
-          <End Role="supplier_products" Type="POSModel.Store.supplier_products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="supplier_products">
-              <PropertyRef Name="product_id" />
+            <Dependent Role="wastemanagement">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1252,13 +644,13 @@
           <EntitySet Name="invoicecredits" EntityType="POSModel.invoicecredit" />
           <EntitySet Name="invoiceitems" EntityType="POSModel.invoiceitem" />
           <EntitySet Name="invoices" EntityType="POSModel.invoice" />
+          <EntitySet Name="localities" EntityType="POSModel.locality" />
           <EntitySet Name="login_history" EntityType="POSModel.login_history" />
           <EntitySet Name="measure_unit" EntityType="POSModel.measure_unit" />
           <EntitySet Name="measure_unit_conversion" EntityType="POSModel.measure_unit_conversion" />
           <EntitySet Name="openid_server" EntityType="POSModel.openid_server" />
-          <EntitySet Name="orderchilds" EntityType="POSModel.orderchild" />
-          <EntitySet Name="ordermasters" EntityType="POSModel.ordermaster" />
           <EntitySet Name="payment_gateways" EntityType="POSModel.payment_gateways" />
+          <EntitySet Name="postcodes" EntityType="POSModel.postcode" />
           <EntitySet Name="products" EntityType="POSModel.product" />
           <EntitySet Name="product_category" EntityType="POSModel.product_category" />
           <EntitySet Name="product_promotional_offer" EntityType="POSModel.product_promotional_offer" />
@@ -1272,171 +664,28 @@
           <EntitySet Name="shop_product" EntityType="POSModel.shop_product" />
           <EntitySet Name="staffs" EntityType="POSModel.staff" />
           <EntitySet Name="staff_status" EntityType="POSModel.staff_status" />
+          <EntitySet Name="streets" EntityType="POSModel.street" />
           <EntitySet Name="suppliers" EntityType="POSModel.supplier" />
           <EntitySet Name="supplier_contact_person" EntityType="POSModel.supplier_contact_person" />
+          <EntitySet Name="supplier_products" EntityType="POSModel.supplier_products" />
+          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
           <EntitySet Name="warranties" EntityType="POSModel.warranty" />
           <EntitySet Name="working_record" EntityType="POSModel.working_record" />
-          <AssociationSet Name="accounts_ibfk_1" Association="POSModel.accounts_ibfk_1">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="account" EntitySet="accounts" />
-          </AssociationSet>
-          <AssociationSet Name="accounts_ibfk_2" Association="POSModel.accounts_ibfk_2">
-            <End Role="invoice" EntitySet="invoices" />
-            <End Role="account" EntitySet="accounts" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_7" Association="POSModel.address_ibfk_7">
-            <End Role="country" EntitySet="countries" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_4" Association="POSModel.customer_ibfk_4">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_3" Association="POSModel.customer_ibfk_3">
-            <End Role="customer_type" EntitySet="customer_type" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_5" Association="POSModel.customer_ibfk_5">
-            <End Role="customer_status" EntitySet="customer_status" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="customer_ibfk_6" Association="POSModel.customer_ibfk_6">
-            <End Role="openid_server" EntitySet="openid_server" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="email_history_ibfk_1" Association="POSModel.email_history_ibfk_1">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="email_history" EntitySet="email_history" />
-          </AssociationSet>
-          <AssociationSet Name="invoicecredit_ibfk_1" Association="POSModel.invoicecredit_ibfk_1">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="invoicecredit" EntitySet="invoicecredits" />
-          </AssociationSet>
-          <AssociationSet Name="invoiceitems_ibfk_2" Association="POSModel.invoiceitems_ibfk_2">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="invoiceitem" EntitySet="invoiceitems" />
-          </AssociationSet>
-          <AssociationSet Name="invoices_ibfk_1" Association="POSModel.invoices_ibfk_1">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="invoice" EntitySet="invoices" />
-          </AssociationSet>
-          <AssociationSet Name="login_history_ibfk_2" Association="POSModel.login_history_ibfk_2">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="login_history" EntitySet="login_history" />
-          </AssociationSet>
-          <AssociationSet Name="ordermaster_ibfk_1" Association="POSModel.ordermaster_ibfk_1">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="ordermaster" EntitySet="ordermasters" />
-          </AssociationSet>
-          <AssociationSet Name="display_properties_ibfk_1" Association="POSModel.display_properties_ibfk_1">
-            <End Role="product" EntitySet="products" />
-            <End Role="display_properties" EntitySet="display_properties" />
-          </AssociationSet>
-          <AssociationSet Name="email_history_ibfk_2" Association="POSModel.email_history_ibfk_2">
-            <End Role="staff" EntitySet="staffs" />
-            <End Role="email_history" EntitySet="email_history" />
-          </AssociationSet>
-          <AssociationSet Name="invoicecredit_ibfk_2" Association="POSModel.invoicecredit_ibfk_2">
-            <End Role="invoice" EntitySet="invoices" />
-            <End Role="invoicecredit" EntitySet="invoicecredits" />
-          </AssociationSet>
-          <AssociationSet Name="invoiceitems_ibfk_4" Association="POSModel.invoiceitems_ibfk_4">
-            <End Role="invoice" EntitySet="invoices" />
-            <End Role="invoiceitem" EntitySet="invoiceitems" />
-          </AssociationSet>
-          <AssociationSet Name="invoiceitems_ibfk_5" Association="POSModel.invoiceitems_ibfk_5">
-            <End Role="invoiceitem" EntitySet="invoiceitems" />
-            <End Role="invoiceitem1" EntitySet="invoiceitems" />
-          </AssociationSet>
-          <AssociationSet Name="ordermaster_ibfk_3" Association="POSModel.ordermaster_ibfk_3">
-            <End Role="invoice" EntitySet="invoices" />
-            <End Role="ordermaster" EntitySet="ordermasters" />
-          </AssociationSet>
-          <AssociationSet Name="login_history_ibfk_3" Association="POSModel.login_history_ibfk_3">
-            <End Role="staff" EntitySet="staffs" />
-            <End Role="login_history" EntitySet="login_history" />
-          </AssociationSet>
-          <AssociationSet Name="measure_unit_conversion_ibfk_1" Association="POSModel.measure_unit_conversion_ibfk_1">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
-          </AssociationSet>
-          <AssociationSet Name="measure_unit_conversion_ibfk_2" Association="POSModel.measure_unit_conversion_ibfk_2">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
-          </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_3" Association="POSModel.orderchild_ibfk_3">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="orderchild" EntitySet="orderchilds" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_child_ibfk_3" Association="POSModel.product_purchase_history_child_ibfk_3">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
-          </AssociationSet>
-          <AssociationSet Name="promotional_offer_ibfk_1" Association="POSModel.promotional_offer_ibfk_1">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="promotional_offer" EntitySet="promotional_offer" />
-          </AssociationSet>
-          <AssociationSet Name="promotional_offer_ibfk_2" Association="POSModel.promotional_offer_ibfk_2">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="promotional_offer" EntitySet="promotional_offer" />
-          </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_1" Association="POSModel.orderchild_ibfk_1">
-            <End Role="ordermaster" EntitySet="ordermasters" />
-            <End Role="orderchild" EntitySet="orderchilds" />
-          </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_2" Association="POSModel.orderchild_ibfk_2">
+          <EntitySet Name="orderchilds" EntityType="POSModel.orderchild" />
+          <AssociationSet Name="FK_Product_OrderChild" Association="POSModel.FK_Product_OrderChild">
             <End Role="product" EntitySet="products" />
             <End Role="orderchild" EntitySet="orderchilds" />
           </AssociationSet>
-          <AssociationSet Name="ordermaster_ibfk_2" Association="POSModel.ordermaster_ibfk_2">
-            <End Role="shop_info" EntitySet="shop_info" />
+          <EntitySet Name="ordermasters" EntityType="POSModel.ordermaster" />
+          <AssociationSet Name="FK_OrderMaster_OrderChild" Association="POSModel.FK_OrderMaster_OrderChild">
             <End Role="ordermaster" EntitySet="ordermasters" />
+            <End Role="orderchild" EntitySet="orderchilds" />
           </AssociationSet>
-          <AssociationSet Name="product_purchase_history_child_ibfk_2" Association="POSModel.product_purchase_history_child_ibfk_2">
+          <EntitySet Name="wastemanagements" EntityType="POSModel.wastemanagement" />
+          <AssociationSet Name="FK_Product_WasteManagement" Association="POSModel.FK_Product_WasteManagement">
             <End Role="product" EntitySet="products" />
-            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
+            <End Role="wastemanagement" EntitySet="wastemanagements" />
           </AssociationSet>
-          <AssociationSet Name="product_purchase_history_child_ibfk_1" Association="POSModel.product_purchase_history_child_ibfk_1">
-            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
-            <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_master_ibfk_1" Association="POSModel.product_purchase_history_master_ibfk_1">
-            <End Role="supplier" EntitySet="suppliers" />
-            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
-          </AssociationSet>
-          <AssociationSet Name="product_purchase_history_master_ibfk_2" Association="POSModel.product_purchase_history_master_ibfk_2">
-            <End Role="shop_info" EntitySet="shop_info" />
-            <End Role="product_purchase_history_master" EntitySet="product_purchase_history_master" />
-          </AssociationSet>
-          <AssociationSet Name="supplier_products" Association="POSModel.supplier_products">
-            <End Role="supplier" EntitySet="suppliers" />
-            <End Role="product" EntitySet="products" />
-          </AssociationSet>
-          <EntitySet Name="postcodes" EntityType="POSModel.postcode" />
-          <EntitySet Name="streets" EntityType="POSModel.street" />
-          <EntitySet Name="town_city" EntityType="POSModel.town_city" />
-          <AssociationSet Name="address_ibfk_10" Association="POSModel.address_ibfk_10">
-            <End Role="postcode" EntitySet="postcodes" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_6" Association="POSModel.address_ibfk_6">
-            <End Role="town_city" EntitySet="town_city" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="address_ibfk_8" Association="POSModel.address_ibfk_8">
-            <End Role="street" EntitySet="streets" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <AssociationSet Name="PostalCode_TownCity_FK" Association="POSModel.PostalCode_TownCity_FK">
-            <End Role="town_city" EntitySet="town_city" />
-            <End Role="postcode" EntitySet="postcodes" />
-          </AssociationSet>
-          <EntitySet Name="localities" EntityType="POSModel.locality" />
-          <AssociationSet Name="address_ibfk_9" Association="POSModel.address_ibfk_9">
-            <End Role="locality" EntitySet="localities" />
-            <End Role="address" EntitySet="addresses" />
-          </AssociationSet>
-          <EntitySet Name="WasteManagements" EntityType="POSModel.WasteManagement" />
         </EntityContainer>
         <EntityType Name="account">
           <Key>
@@ -1451,8 +700,6 @@
           <Property Type="Decimal" Name="fees" Nullable="false" />
           <Property Type="String" Name="transid" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="invoice_id" />
-          <NavigationProperty Name="customer" Relationship="POSModel.accounts_ibfk_1" FromRole="account" ToRole="customer" />
-          <NavigationProperty Name="invoice" Relationship="POSModel.accounts_ibfk_2" FromRole="account" ToRole="invoice" />
         </EntityType>
         <EntityType Name="address">
           <Key>
@@ -1466,12 +713,6 @@
           <Property Type="Int16" Name="town_city_id" />
           <Property Type="Int16" Name="country_id" />
           <Property Type="Int32" Name="postcode_id" Nullable="false" />
-          <NavigationProperty Name="country" Relationship="POSModel.address_ibfk_7" FromRole="address" ToRole="country" />
-          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_4" FromRole="address" ToRole="customer" />
-          <NavigationProperty Name="postcode" Relationship="POSModel.address_ibfk_10" FromRole="address" ToRole="postcode" />
-          <NavigationProperty Name="town_city" Relationship="POSModel.address_ibfk_6" FromRole="address" ToRole="town_city" />
-          <NavigationProperty Name="street" Relationship="POSModel.address_ibfk_8" FromRole="address" ToRole="street" />
-          <NavigationProperty Name="locality" Relationship="POSModel.address_ibfk_9" FromRole="address" ToRole="locality" />
         </EntityType>
         <EntityType Name="country">
           <Key>
@@ -1479,7 +720,6 @@
           </Key>
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_7" FromRole="country" ToRole="address" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -1503,17 +743,6 @@
           <Property Type="String" Name="gateway" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="image_path" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="address_id" />
-          <NavigationProperty Name="accounts" Relationship="POSModel.accounts_ibfk_1" FromRole="customer" ToRole="account" />
-          <NavigationProperty Name="address" Relationship="POSModel.customer_ibfk_4" FromRole="customer" ToRole="address" />
-          <NavigationProperty Name="customer_type" Relationship="POSModel.customer_ibfk_3" FromRole="customer" ToRole="customer_type" />
-          <NavigationProperty Name="customer_status" Relationship="POSModel.customer_ibfk_5" FromRole="customer" ToRole="customer_status" />
-          <NavigationProperty Name="openid_server" Relationship="POSModel.customer_ibfk_6" FromRole="customer" ToRole="openid_server" />
-          <NavigationProperty Name="email_history" Relationship="POSModel.email_history_ibfk_1" FromRole="customer" ToRole="email_history" />
-          <NavigationProperty Name="invoicecredits" Relationship="POSModel.invoicecredit_ibfk_1" FromRole="customer" ToRole="invoicecredit" />
-          <NavigationProperty Name="invoiceitems" Relationship="POSModel.invoiceitems_ibfk_2" FromRole="customer" ToRole="invoiceitem" />
-          <NavigationProperty Name="invoices" Relationship="POSModel.invoices_ibfk_1" FromRole="customer" ToRole="invoice" />
-          <NavigationProperty Name="login_history" Relationship="POSModel.login_history_ibfk_2" FromRole="customer" ToRole="login_history" />
-          <NavigationProperty Name="ordermasters" Relationship="POSModel.ordermaster_ibfk_1" FromRole="customer" ToRole="ordermaster" />
         </EntityType>
         <EntityType Name="customer_status">
           <Key>
@@ -1522,7 +751,6 @@
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="status" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_5" FromRole="customer_status" ToRole="customer" />
         </EntityType>
         <EntityType Name="customer_type">
           <Key>
@@ -1531,7 +759,6 @@
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_3" FromRole="customer_type" ToRole="customer" />
         </EntityType>
         <EntityType Name="department">
           <Key>
@@ -1558,7 +785,6 @@
           <Property Type="Int16" Name="font_size" Nullable="false" />
           <Property Type="Boolean" Name="text_bold" Nullable="false" />
           <Property Type="Boolean" Name="display_in_screen" Nullable="false" />
-          <NavigationProperty Name="product" Relationship="POSModel.display_properties_ibfk_1" FromRole="display_properties" ToRole="product" />
         </EntityType>
         <EntityType Name="email_history">
           <Key>
@@ -1571,8 +797,6 @@
           <Property Type="String" Name="to_email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="subject" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="message" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="customer" Relationship="POSModel.email_history_ibfk_1" FromRole="email_history" ToRole="customer" />
-          <NavigationProperty Name="staff" Relationship="POSModel.email_history_ibfk_2" FromRole="email_history" ToRole="staff" />
         </EntityType>
         <EntityType Name="email_templates">
           <Key>
@@ -1608,8 +832,6 @@
           <Property Type="String" Name="description" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Decimal" Name="amount" Nullable="false" />
           <Property Type="Int64" Name="relid" Nullable="false" />
-          <NavigationProperty Name="customer" Relationship="POSModel.invoicecredit_ibfk_1" FromRole="invoicecredit" ToRole="customer" />
-          <NavigationProperty Name="invoice" Relationship="POSModel.invoicecredit_ibfk_2" FromRole="invoicecredit" ToRole="invoice" />
         </EntityType>
         <EntityType Name="invoiceitem">
           <Key>
@@ -1623,10 +845,6 @@
           <Property Type="String" Name="description" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Decimal" Name="amount" Nullable="false" />
           <Property Type="Int32" Name="taxed" Nullable="false" />
-          <NavigationProperty Name="customer" Relationship="POSModel.invoiceitems_ibfk_2" FromRole="invoiceitem" ToRole="customer" />
-          <NavigationProperty Name="invoice" Relationship="POSModel.invoiceitems_ibfk_4" FromRole="invoiceitem" ToRole="invoice" />
-          <NavigationProperty Name="invoiceitems1" Relationship="POSModel.invoiceitems_ibfk_5" FromRole="invoiceitem" ToRole="invoiceitem1" />
-          <NavigationProperty Name="invoiceitem1" Relationship="POSModel.invoiceitems_ibfk_5" FromRole="invoiceitem1" ToRole="invoiceitem" />
         </EntityType>
         <EntityType Name="invoice">
           <Key>
@@ -1653,11 +871,14 @@
           <Property Type="String" Name="status" Nullable="false" MaxLength="65531" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="paymentmethod" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="notes" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="accounts" Relationship="POSModel.accounts_ibfk_2" FromRole="invoice" ToRole="account" />
-          <NavigationProperty Name="customer" Relationship="POSModel.invoices_ibfk_1" FromRole="invoice" ToRole="customer" />
-          <NavigationProperty Name="invoicecredits" Relationship="POSModel.invoicecredit_ibfk_2" FromRole="invoice" ToRole="invoicecredit" />
-          <NavigationProperty Name="invoiceitems" Relationship="POSModel.invoiceitems_ibfk_4" FromRole="invoice" ToRole="invoiceitem" />
-          <NavigationProperty Name="ordermasters" Relationship="POSModel.ordermaster_ibfk_3" FromRole="invoice" ToRole="ordermaster" />
+        </EntityType>
+        <EntityType Name="locality">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="locality1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TownCityId" />
         </EntityType>
         <EntityType Name="login_history">
           <Key>
@@ -1669,8 +890,6 @@
           <Property Type="DateTime" Name="login_date" Nullable="false" />
           <Property Type="String" Name="ip" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="host" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="customer" Relationship="POSModel.login_history_ibfk_2" FromRole="login_history" ToRole="customer" />
-          <NavigationProperty Name="staff" Relationship="POSModel.login_history_ibfk_3" FromRole="login_history" ToRole="staff" />
         </EntityType>
         <EntityType Name="measure_unit">
           <Key>
@@ -1679,12 +898,6 @@
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="measure_unit_conversion" Relationship="POSModel.measure_unit_conversion_ibfk_1" FromRole="measure_unit" ToRole="measure_unit_conversion" />
-          <NavigationProperty Name="measure_unit_conversion1" Relationship="POSModel.measure_unit_conversion_ibfk_2" FromRole="measure_unit" ToRole="measure_unit_conversion" />
-          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_3" FromRole="measure_unit" ToRole="orderchild" />
-          <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_3" FromRole="measure_unit" ToRole="product_purchase_history_child" />
-          <NavigationProperty Name="promotional_offer" Relationship="POSModel.promotional_offer_ibfk_1" FromRole="measure_unit" ToRole="promotional_offer" />
-          <NavigationProperty Name="promotional_offer1" Relationship="POSModel.promotional_offer_ibfk_2" FromRole="measure_unit" ToRole="promotional_offer" />
         </EntityType>
         <EntityType Name="measure_unit_conversion">
           <Key>
@@ -1694,8 +907,6 @@
           <Property Type="Int16" Name="from_unit_id" Nullable="false" />
           <Property Type="Int16" Name="to_unit_id" Nullable="false" />
           <Property Type="Decimal" Name="conversion_rate" Nullable="false" />
-          <NavigationProperty Name="measure_unit" Relationship="POSModel.measure_unit_conversion_ibfk_1" FromRole="measure_unit_conversion" ToRole="measure_unit" />
-          <NavigationProperty Name="measure_unit1" Relationship="POSModel.measure_unit_conversion_ibfk_2" FromRole="measure_unit_conversion" ToRole="measure_unit" />
         </EntityType>
         <EntityType Name="openid_server">
           <Key>
@@ -1703,38 +914,6 @@
           </Key>
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="server" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_6" FromRole="openid_server" ToRole="customer" />
-        </EntityType>
-        <EntityType Name="orderchild">
-          <Key>
-            <PropertyRef Name="order_id" />
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Type="Int64" Name="order_id" Nullable="false" />
-          <Property Type="Int16" Name="product_id" Nullable="false" />
-          <Property Type="Int16" Name="quantity" Nullable="false" />
-          <Property Type="Int16" Name="measure_unit_id" Nullable="false" />
-          <Property Type="Decimal" Name="amount" Nullable="false" />
-          <Property Type="Int32" Name="taxed" Nullable="false" />
-          <NavigationProperty Name="measure_unit" Relationship="POSModel.orderchild_ibfk_3" FromRole="orderchild" ToRole="measure_unit" />
-          <NavigationProperty Name="ordermaster" Relationship="POSModel.orderchild_ibfk_1" FromRole="orderchild" ToRole="ordermaster" />
-          <NavigationProperty Name="product" Relationship="POSModel.orderchild_ibfk_2" FromRole="orderchild" ToRole="product" />
-        </EntityType>
-        <EntityType Name="ordermaster">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="order_no" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="order_date" Nullable="false" />
-          <Property Type="Int32" Name="customer_id" />
-          <Property Type="String" Name="shop_code" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="Int64" Name="invoice_id" />
-          <Property Type="Int16" Name="print_receipt_copies" Nullable="false" />
-          <NavigationProperty Name="customer" Relationship="POSModel.ordermaster_ibfk_1" FromRole="ordermaster" ToRole="customer" />
-          <NavigationProperty Name="invoice" Relationship="POSModel.ordermaster_ibfk_3" FromRole="ordermaster" ToRole="invoice" />
-          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_1" FromRole="ordermaster" ToRole="orderchild" />
-          <NavigationProperty Name="shop_info" Relationship="POSModel.ordermaster_ibfk_2" FromRole="ordermaster" ToRole="shop_info" />
         </EntityType>
         <EntityType Name="payment_gateways">
           <Key>
@@ -1747,6 +926,14 @@
           <Property Type="String" Name="setting" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="value" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="sortorder" Nullable="false" />
+        </EntityType>
+        <EntityType Name="postcode">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="postcode1" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="LocalityId" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -1765,10 +952,8 @@
           <Property Type="Int16" Name="category_id" />
           <Property Type="Decimal" Name="size" />
           <Property Type="Decimal" Name="weight" />
-          <NavigationProperty Name="display_properties" Relationship="POSModel.display_properties_ibfk_1" FromRole="product" ToRole="display_properties" />
-          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_2" FromRole="product" ToRole="orderchild" />
-          <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_2" FromRole="product" ToRole="product_purchase_history_child" />
-          <NavigationProperty Name="suppliers" Relationship="POSModel.supplier_products" FromRole="product" ToRole="supplier" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.FK_Product_OrderChild" FromRole="product" ToRole="orderchild" />
+          <NavigationProperty Name="wastemanagements" Relationship="POSModel.FK_Product_WasteManagement" FromRole="product" ToRole="wastemanagement" />
         </EntityType>
         <EntityType Name="product_category">
           <Key>
@@ -1800,9 +985,6 @@
           <Property Type="String" Name="discount_type" Nullable="false" MaxLength="65531" FixedLength="false" Unicode="false" />
           <Property Type="Decimal" Name="raw_discount" Nullable="false" />
           <Property Type="Decimal" Name="discount" Nullable="false" />
-          <NavigationProperty Name="measure_unit" Relationship="POSModel.product_purchase_history_child_ibfk_3" FromRole="product_purchase_history_child" ToRole="measure_unit" />
-          <NavigationProperty Name="product" Relationship="POSModel.product_purchase_history_child_ibfk_2" FromRole="product_purchase_history_child" ToRole="product" />
-          <NavigationProperty Name="product_purchase_history_master" Relationship="POSModel.product_purchase_history_child_ibfk_1" FromRole="product_purchase_history_child" ToRole="product_purchase_history_master" />
         </EntityType>
         <EntityType Name="product_purchase_history_master">
           <Key>
@@ -1818,9 +1000,6 @@
           <Property Type="Decimal" Name="grand_total" Nullable="false" />
           <Property Type="Decimal" Name="cash" Nullable="false" />
           <Property Type="Decimal" Name="credit" Nullable="false" />
-          <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_1" FromRole="product_purchase_history_master" ToRole="product_purchase_history_child" />
-          <NavigationProperty Name="supplier" Relationship="POSModel.product_purchase_history_master_ibfk_1" FromRole="product_purchase_history_master" ToRole="supplier" />
-          <NavigationProperty Name="shop_info" Relationship="POSModel.product_purchase_history_master_ibfk_2" FromRole="product_purchase_history_master" ToRole="shop_info" />
         </EntityType>
         <EntityType Name="product_status">
           <Key>
@@ -1844,8 +1023,6 @@
           <Property Type="Decimal" Name="offer_quantity" />
           <Property Type="Int16" Name="oqty_mu" />
           <Property Type="Decimal" Name="offer_percentage" />
-          <NavigationProperty Name="measure_unit" Relationship="POSModel.promotional_offer_ibfk_1" FromRole="promotional_offer" ToRole="measure_unit" />
-          <NavigationProperty Name="measure_unit1" Relationship="POSModel.promotional_offer_ibfk_2" FromRole="promotional_offer" ToRole="measure_unit" />
         </EntityType>
         <EntityType Name="query">
           <Key>
@@ -1861,7 +1038,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="permissions" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="permissions" Nullable="false" MaxLength="5000" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -1878,8 +1055,6 @@
           <Property Type="Decimal" Name="tax_rate" Nullable="false" />
           <Property Type="String" Name="currency" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="address_id" />
-          <NavigationProperty Name="ordermasters" Relationship="POSModel.ordermaster_ibfk_2" FromRole="shop_info" ToRole="ordermaster" />
-          <NavigationProperty Name="product_purchase_history_master" Relationship="POSModel.product_purchase_history_master_ibfk_2" FromRole="shop_info" ToRole="product_purchase_history_master" />
         </EntityType>
         <EntityType Name="shop_product">
           <Key>
@@ -1914,10 +1089,7 @@
           <Property Type="String" Name="openid_id" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int16" Name="openid_server_id" />
           <Property Type="String" Name="password" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="apikey" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Type="Int16" Name="security_group_id" />
-          <NavigationProperty Name="email_history" Relationship="POSModel.email_history_ibfk_2" FromRole="staff" ToRole="email_history" />
-          <NavigationProperty Name="login_history" Relationship="POSModel.login_history_ibfk_3" FromRole="staff" ToRole="login_history" />
         </EntityType>
         <EntityType Name="staff_status">
           <Key>
@@ -1926,6 +1098,14 @@
           <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="status" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="street">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="street1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LocalityId" />
         </EntityType>
         <EntityType Name="supplier">
           <Key>
@@ -1937,8 +1117,6 @@
           <Property Type="String" Name="mobile" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="address_id" />
-          <NavigationProperty Name="product_purchase_history_master" Relationship="POSModel.product_purchase_history_master_ibfk_1" FromRole="supplier" ToRole="product_purchase_history_master" />
-          <NavigationProperty Name="products" Relationship="POSModel.supplier_products" FromRole="supplier" ToRole="product" />
         </EntityType>
         <EntityType Name="supplier_contact_person">
           <Key>
@@ -1951,6 +1129,22 @@
           <Property Type="String" Name="mobile" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="email" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="address_id" />
+        </EntityType>
+        <EntityType Name="supplier_products">
+          <Key>
+            <PropertyRef Name="supplier_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Type="Int16" Name="supplier_id" Nullable="false" />
+          <Property Type="Int16" Name="product_id" Nullable="false" />
+        </EntityType>
+        <EntityType Name="town_city">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="town_city1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="CountryId" />
         </EntityType>
         <EntityType Name="warranty">
           <Key>
@@ -1973,319 +1167,48 @@
           <Property Type="DateTime" Name="work_date" Nullable="false" />
           <Property Type="Int16" Name="staff_id" Nullable="false" />
         </EntityType>
-        <Association Name="accounts_ibfk_1">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="1" />
-          <End Type="POSModel.account" Role="account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="account">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="accounts_ibfk_2">
-          <End Type="POSModel.invoice" Role="invoice" Multiplicity="0..1" />
-          <End Type="POSModel.account" Role="account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoice">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="account">
-              <PropertyRef Name="invoice_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_7">
-          <End Type="POSModel.country" Role="country" Multiplicity="0..1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="country">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="country_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_4">
-          <End Type="POSModel.address" Role="address" Multiplicity="0..1" />
-          <End Type="POSModel.customer" Role="customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="address_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_3">
-          <End Type="POSModel.customer_type" Role="customer_type" Multiplicity="0..1" />
-          <End Type="POSModel.customer" Role="customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer_type">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="type_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_5">
-          <End Type="POSModel.customer_status" Role="customer_status" Multiplicity="1" />
-          <End Type="POSModel.customer" Role="customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer_status">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="customer_ibfk_6">
-          <End Type="POSModel.openid_server" Role="openid_server" Multiplicity="0..1" />
-          <End Type="POSModel.customer" Role="customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="openid_server">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="openid_server_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="email_history_ibfk_1">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="0..1" />
-          <End Type="POSModel.email_history" Role="email_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="email_history">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoicecredit_ibfk_1">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="1" />
-          <End Type="POSModel.invoicecredit" Role="invoicecredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoicecredit">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoiceitems_ibfk_2">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="1" />
-          <End Type="POSModel.invoiceitem" Role="invoiceitem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoiceitem">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoices_ibfk_1">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="1" />
-          <End Type="POSModel.invoice" Role="invoice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoice">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="login_history_ibfk_2">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="0..1" />
-          <End Type="POSModel.login_history" Role="login_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="login_history">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ordermaster_ibfk_1">
-          <End Type="POSModel.customer" Role="customer" Multiplicity="0..1" />
-          <End Type="POSModel.ordermaster" Role="ordermaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="customer">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ordermaster">
-              <PropertyRef Name="customer_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="display_properties_ibfk_1">
+        <EntityType Name="orderchild">
+          <Key>
+            <PropertyRef Name="order_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Type="Int64" Name="order_id" Nullable="false" />
+          <Property Type="Int16" Name="product_id" Nullable="false" />
+          <Property Type="Decimal" Name="quantity" Nullable="false" />
+          <Property Type="Int16" Name="measure_unit_id" Nullable="false" />
+          <Property Type="Decimal" Name="amount" Nullable="false" />
+          <Property Type="Decimal" Name="Discount" />
+          <Property Type="Int32" Name="taxed" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="POSModel.FK_Product_OrderChild" FromRole="orderchild" ToRole="product" />
+          <NavigationProperty Name="ordermaster" Relationship="POSModel.FK_OrderMaster_OrderChild" FromRole="orderchild" ToRole="ordermaster" />
+        </EntityType>
+        <Association Name="FK_Product_OrderChild">
           <End Type="POSModel.product" Role="product" Multiplicity="1" />
-          <End Type="POSModel.display_properties" Role="display_properties" Multiplicity="0..1" />
+          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="product">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="display_properties">
+            <Dependent Role="orderchild">
               <PropertyRef Name="product_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="email_history_ibfk_2">
-          <End Type="POSModel.staff" Role="staff" Multiplicity="0..1" />
-          <End Type="POSModel.email_history" Role="email_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="email_history">
-              <PropertyRef Name="staff_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoicecredit_ibfk_2">
-          <End Type="POSModel.invoice" Role="invoice" Multiplicity="1" />
-          <End Type="POSModel.invoicecredit" Role="invoicecredit" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoice">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoicecredit">
-              <PropertyRef Name="relid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoiceitems_ibfk_4">
-          <End Type="POSModel.invoice" Role="invoice" Multiplicity="1" />
-          <End Type="POSModel.invoiceitem" Role="invoiceitem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoice">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoiceitem">
-              <PropertyRef Name="invoice_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="invoiceitems_ibfk_5">
-          <End Type="POSModel.invoiceitem" Role="invoiceitem" Multiplicity="0..1" />
-          <End Type="POSModel.invoiceitem" Role="invoiceitem1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoiceitem">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="invoiceitem1">
-              <PropertyRef Name="relid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ordermaster_ibfk_3">
-          <End Type="POSModel.invoice" Role="invoice" Multiplicity="0..1" />
-          <End Type="POSModel.ordermaster" Role="ordermaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="invoice">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ordermaster">
-              <PropertyRef Name="invoice_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="login_history_ibfk_3">
-          <End Type="POSModel.staff" Role="staff" Multiplicity="0..1" />
-          <End Type="POSModel.login_history" Role="login_history" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="staff">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="login_history">
-              <PropertyRef Name="staff_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="measure_unit_conversion_ibfk_1">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
-          <End Type="POSModel.measure_unit_conversion" Role="measure_unit_conversion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="measure_unit_conversion">
-              <PropertyRef Name="from_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="measure_unit_conversion_ibfk_2">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
-          <End Type="POSModel.measure_unit_conversion" Role="measure_unit_conversion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="measure_unit_conversion">
-              <PropertyRef Name="to_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orderchild_ibfk_3">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
-          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderchild">
-              <PropertyRef Name="measure_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_child_ibfk_3">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
-          <End Type="POSModel.product_purchase_history_child" Role="product_purchase_history_child" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_child">
-              <PropertyRef Name="measure_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="promotional_offer_ibfk_1">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="0..1" />
-          <End Type="POSModel.promotional_offer" Role="promotional_offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="promotional_offer">
-              <PropertyRef Name="oqty_mu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="promotional_offer_ibfk_2">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
-          <End Type="POSModel.promotional_offer" Role="promotional_offer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="promotional_offer">
-              <PropertyRef Name="pqty_mu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orderchild_ibfk_1">
+        <EntityType Name="ordermaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="order_no" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="order_date" Nullable="false" />
+          <Property Type="Int32" Name="customer_id" />
+          <Property Type="String" Name="shop_code" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int64" Name="invoice_id" />
+          <Property Type="Int16" Name="print_receipt_copies" Nullable="false" />
+          <Property Type="Int16" Name="Status" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.FK_OrderMaster_OrderChild" FromRole="ordermaster" ToRole="orderchild" />
+        </EntityType>
+        <Association Name="FK_OrderMaster_OrderChild">
           <End Type="POSModel.ordermaster" Role="ordermaster" Multiplicity="1" />
           <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2297,189 +1220,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="orderchild_ibfk_2">
-          <End Type="POSModel.product" Role="product" Multiplicity="1" />
-          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderchild">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ordermaster_ibfk_2">
-          <End Type="POSModel.shop_info" Role="shop_info" Multiplicity="0..1" />
-          <End Type="POSModel.ordermaster" Role="ordermaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="shop_info">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="ordermaster">
-              <PropertyRef Name="shop_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_child_ibfk_2">
-          <End Type="POSModel.product" Role="product" Multiplicity="1" />
-          <End Type="POSModel.product_purchase_history_child" Role="product_purchase_history_child" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_child">
-              <PropertyRef Name="product_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_child_ibfk_1">
-          <End Type="POSModel.product_purchase_history_master" Role="product_purchase_history_master" Multiplicity="1" />
-          <End Type="POSModel.product_purchase_history_child" Role="product_purchase_history_child" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product_purchase_history_master">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_child">
-              <PropertyRef Name="history_master_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_master_ibfk_1">
-          <End Type="POSModel.supplier" Role="supplier" Multiplicity="0..1" />
-          <End Type="POSModel.product_purchase_history_master" Role="product_purchase_history_master" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="supplier">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="product_purchase_history_master">
-              <PropertyRef Name="supplier_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="product_purchase_history_master_ibfk_2">
-          <End Type="POSModel.shop_info" Role="shop_info" Multiplicity="1" />
-          <End Type="POSModel.product_purchase_history_master" Role="product_purchase_history_master" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="shop_info">
-              <PropertyRef Name="code" />
-            </Principal>
-            <Dependent Role="product_purchase_history_master">
-              <PropertyRef Name="shop_code" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="supplier_products">
-          <End Type="POSModel.supplier" Role="supplier" Multiplicity="*" />
-          <End Type="POSModel.product" Role="product" Multiplicity="*" />
-        </Association>
-        <EntityType Name="postcode">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int16" Name="LocalityId" Nullable="false" />
-          <Property Type="String" Name="postcode1" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_10" FromRole="postcode" ToRole="address" />
-          <NavigationProperty Name="town_city" Relationship="POSModel.PostalCode_TownCity_FK" FromRole="postcode" ToRole="town_city" />
-        </EntityType>
-        <EntityType Name="street">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="LocalityId" />
-          <Property Type="String" Name="street1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_8" FromRole="street" ToRole="address" />
-        </EntityType>
-        <EntityType Name="town_city">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int16" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int16" Name="CountryId" Nullable="false" />
-          <Property Type="String" Name="town_city1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_6" FromRole="town_city" ToRole="address" />
-          <NavigationProperty Name="postcodes" Relationship="POSModel.PostalCode_TownCity_FK" FromRole="town_city" ToRole="postcode" />
-        </EntityType>
-        <Association Name="address_ibfk_10">
-          <End Type="POSModel.postcode" Role="postcode" Multiplicity="1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="postcode">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="postcode_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_6">
-          <End Type="POSModel.town_city" Role="town_city" Multiplicity="0..1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="town_city_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="address_ibfk_8">
-          <End Type="POSModel.street" Role="street" Multiplicity="1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="street">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="street_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PostalCode_TownCity_FK">
-          <End Type="POSModel.town_city" Role="town_city" Multiplicity="1" />
-          <End Type="POSModel.postcode" Role="postcode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="town_city">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="postcode">
-              <PropertyRef Name="LocalityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="locality">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int64" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="TownCityId" />
-          <Property Type="String" Name="locality1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="addresses" Relationship="POSModel.address_ibfk_9" FromRole="locality" ToRole="address" />
-        </EntityType>
-        <Association Name="address_ibfk_9">
-          <End Type="POSModel.locality" Role="locality" Multiplicity="0..1" />
-          <End Type="POSModel.address" Role="address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="locality">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="address">
-              <PropertyRef Name="locality_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="WasteManagement">
+        <EntityType Name="wastemanagement">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="ProductId" Nullable="false" />
-          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <Property Type="Int16" Name="ProductId" Nullable="false" />
+          <Property Type="Decimal" Name="Quantity" Nullable="false" />
           <Property Type="Decimal" Name="Weight" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="POSModel.FK_Product_WasteManagement" FromRole="wastemanagement" ToRole="product" />
         </EntityType>
+        <Association Name="FK_Product_WasteManagement">
+          <End Type="POSModel.product" Role="product" Multiplicity="1" />
+          <End Type="POSModel.wastemanagement" Role="wastemanagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="wastemanagement">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2686,6 +1449,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="localities">
+            <EntityTypeMapping TypeName="POSModel.locality">
+              <MappingFragment StoreEntitySet="locality">
+                <ScalarProperty Name="TownCityId" ColumnName="TownCityId" />
+                <ScalarProperty Name="locality1" ColumnName="locality" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="login_history">
             <EntityTypeMapping TypeName="POSModel.login_history">
               <MappingFragment StoreEntitySet="login_history">
@@ -2724,31 +1496,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="orderchilds">
-            <EntityTypeMapping TypeName="POSModel.orderchild">
-              <MappingFragment StoreEntitySet="orderchild">
-                <ScalarProperty Name="taxed" ColumnName="taxed" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ordermasters">
-            <EntityTypeMapping TypeName="POSModel.ordermaster">
-              <MappingFragment StoreEntitySet="ordermaster">
-                <ScalarProperty Name="print_receipt_copies" ColumnName="print_receipt_copies" />
-                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
-                <ScalarProperty Name="shop_code" ColumnName="shop_code" />
-                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
-                <ScalarProperty Name="order_date" ColumnName="order_date" />
-                <ScalarProperty Name="order_no" ColumnName="order_no" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="payment_gateways">
             <EntityTypeMapping TypeName="POSModel.payment_gateways">
               <MappingFragment StoreEntitySet="payment_gateways">
@@ -2756,6 +1503,15 @@
                 <ScalarProperty Name="value" ColumnName="value" />
                 <ScalarProperty Name="setting" ColumnName="setting" />
                 <ScalarProperty Name="gateway" ColumnName="gateway" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="postcodes">
+            <EntityTypeMapping TypeName="POSModel.postcode">
+              <MappingFragment StoreEntitySet="postcode">
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="postcode1" ColumnName="postcode" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2902,7 +1658,6 @@
             <EntityTypeMapping TypeName="POSModel.staff">
               <MappingFragment StoreEntitySet="staff">
                 <ScalarProperty Name="security_group_id" ColumnName="security_group_id" />
-                <ScalarProperty Name="apikey" ColumnName="apikey" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="openid_server_id" ColumnName="openid_server_id" />
                 <ScalarProperty Name="openid_id" ColumnName="openid_id" />
@@ -2933,6 +1688,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="streets">
+            <EntityTypeMapping TypeName="POSModel.street">
+              <MappingFragment StoreEntitySet="street">
+                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+                <ScalarProperty Name="street1" ColumnName="street" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="suppliers">
             <EntityTypeMapping TypeName="POSModel.supplier">
               <MappingFragment StoreEntitySet="supplier">
@@ -2954,6 +1718,23 @@
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="supplier_products">
+            <EntityTypeMapping TypeName="POSModel.supplier_products">
+              <MappingFragment StoreEntitySet="supplier_products">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="town_city">
+            <EntityTypeMapping TypeName="POSModel.town_city">
+              <MappingFragment StoreEntitySet="town_city">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="town_city1" ColumnName="town_city" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2981,53 +1762,37 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="supplier_products" TypeName="POSModel.supplier_products" StoreEntitySet="supplier_products">
-            <EndProperty Name="product">
-              <ScalarProperty Name="id" ColumnName="product_id" />
-            </EndProperty>
-            <EndProperty Name="supplier">
-              <ScalarProperty Name="id" ColumnName="supplier_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="postcodes">
-            <EntityTypeMapping TypeName="POSModel.postcode">
-              <MappingFragment StoreEntitySet="postcode">
-                <ScalarProperty Name="postcode1" ColumnName="postcode" />
-                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
+          <EntitySetMapping Name="orderchilds">
+            <EntityTypeMapping TypeName="POSModel.orderchild">
+              <MappingFragment StoreEntitySet="orderchild">
+                <ScalarProperty Name="taxed" ColumnName="taxed" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordermasters">
+            <EntityTypeMapping TypeName="POSModel.ordermaster">
+              <MappingFragment StoreEntitySet="ordermaster">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="print_receipt_copies" ColumnName="print_receipt_copies" />
+                <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
+                <ScalarProperty Name="shop_code" ColumnName="shop_code" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="streets">
-            <EntityTypeMapping TypeName="POSModel.street">
-              <MappingFragment StoreEntitySet="street">
-                <ScalarProperty Name="street1" ColumnName="street" />
-                <ScalarProperty Name="LocalityId" ColumnName="LocalityId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="town_city">
-            <EntityTypeMapping TypeName="POSModel.town_city">
-              <MappingFragment StoreEntitySet="town_city">
-                <ScalarProperty Name="town_city1" ColumnName="town_city" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="localities">
-            <EntityTypeMapping TypeName="POSModel.locality">
-              <MappingFragment StoreEntitySet="locality">
-                <ScalarProperty Name="locality1" ColumnName="locality" />
-                <ScalarProperty Name="TownCityId" ColumnName="TownCityId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="WasteManagements">
-            <EntityTypeMapping TypeName="POSModel.WasteManagement">
-              <MappingFragment StoreEntitySet="WasteManagement">
+          <EntitySetMapping Name="wastemanagements">
+            <EntityTypeMapping TypeName="POSModel.wastemanagement">
+              <MappingFragment StoreEntitySet="wastemanagement">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -3057,273 +1822,72 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="POSEntities" ZoomLevel="95">
-        <EntityTypeShape EntityType="POSModel.account" Width="1.5" PointX="14.25" PointY="23.625" Height="3.1340950520833388" />
-        <EntityTypeShape EntityType="POSModel.address" Width="1.5" PointX="7.5" PointY="16.125" Height="3.710999348958353" />
-        <EntityTypeShape EntityType="POSModel.country" Width="1.5" PointX="0.75" PointY="14.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.customer" Width="1.5" PointX="9.75" PointY="14.75" Height="6.595520833333353" />
-        <EntityTypeShape EntityType="POSModel.customer_status" Width="1.5" PointX="7.5" PointY="12.625" Height="1.7879850260416106" />
-        <EntityTypeShape EntityType="POSModel.customer_type" Width="1.5" PointX="7.5" PointY="21.25" Height="1.7879850260416106" />
-        <EntityTypeShape EntityType="POSModel.department" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.designation" Width="1.5" PointX="2.75" PointY="0.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.display_properties" Width="1.5" PointX="16.5" PointY="37.875" Height="2.1725878906249818" />
-        <EntityTypeShape EntityType="POSModel.email_history" Width="1.5" PointX="12" PointY="16.625" Height="2.7494921874999818" />
-        <EntityTypeShape EntityType="POSModel.email_templates" Width="1.5" PointX="0.75" PointY="3.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="POSModel.general_settings" Width="1.5" PointX="2.75" PointY="3.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="POSModel.invoicecredit" Width="1.5" PointX="17.25" PointY="24" Height="2.557190755208353" />
-        <EntityTypeShape EntityType="POSModel.invoiceitem" Width="1.5" PointX="14.25" PointY="27.625" Height="3.3263964843749818" />
-        <EntityTypeShape EntityType="POSModel.invoice" Width="1.5" PointX="12" PointY="29.75" Height="6.018616536458353" />
-        <EntityTypeShape EntityType="POSModel.login_history" Width="1.5" PointX="15" PointY="15.75" Height="2.557190755208353" />
-        <EntityTypeShape EntityType="POSModel.measure_unit" Width="1.5" PointX="14.25" PointY="6.375" Height="2.7494921874999818" />
-        <EntityTypeShape EntityType="POSModel.measure_unit_conversion" Width="1.5" PointX="16.5" PointY="4.75" Height="1.980286458333353" />
-        <EntityTypeShape EntityType="POSModel.openid_server" Width="1.5" PointX="7.5" PointY="23.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.orderchild" Width="1.5" PointX="16.5" PointY="19.875" Height="2.7494921874999818" />
-        <EntityTypeShape EntityType="POSModel.ordermaster" Width="1.5" PointX="14.25" PointY="19.625" Height="3.134095052083353" />
-        <EntityTypeShape EntityType="POSModel.payment_gateways" Width="1.5" PointX="4.75" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.product" Width="1.5" PointX="14.25" PointY="36.875" Height="4.287903645833353" />
-        <EntityTypeShape EntityType="POSModel.product_category" Width="1.5" PointX="4.75" PointY="3.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.product_promotional_offer" Width="1.5" PointX="6.75" PointY="0.75" Height="1.403382161458353" />
-        <EntityTypeShape EntityType="POSModel.product_purchase_history_child" Width="1.5" PointX="19.5" PointY="24.125" Height="3.3263964843749818" />
-        <EntityTypeShape EntityType="POSModel.product_purchase_history_master" Width="1.5" PointX="14.25" PointY="31.75" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="POSModel.product_status" Width="1.5" PointX="6.75" PointY="3.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.promotional_offer" Width="1.5" PointX="16.5" PointY="7.375" Height="3.3263964843749818" />
-        <EntityTypeShape EntityType="POSModel.query" Width="1.5" PointX="4.75" PointY="6.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.security_group" Width="1.5" PointX="6.75" PointY="6.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.shop_info" Width="1.5" PointX="12" PointY="20.625" Height="3.134095052083353" />
-        <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="0.75" PointY="7.75" Height="1.980286458333353" />
-        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="12.75" PointY="10.375" Height="5.2494108072916674" />
-        <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="8.75" PointY="0.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="12" PointY="37.75" Height="2.557190755208353" />
-        <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="8.75" PointY="3.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="8.75" PointY="7.75" Height="1.980286458333353" />
-        <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="2.75" PointY="9.75" Height="2.1725878906249818" />
-        <AssociationConnector Association="POSModel.accounts_ibfk_1" >
-          <ConnectorPoint PointX="10.5" PointY="21.345520833333353" />
-          <ConnectorPoint PointX="10.5" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="10.619792916666667" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="10.786459583333334" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="11.026045416666667" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="11.192712083333335" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="13.791666666666666" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="14.114583333333334" PointY="25.290345052083346" />
-          <ConnectorPoint PointX="14.25" PointY="25.290345052083346" />
+        <EntityTypeShape EntityType="POSModel.account" Width="1.5" PointX="0.75" PointY="0.75" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="POSModel.address" Width="1.5" PointX="2.75" PointY="0.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="POSModel.country" Width="1.5" PointX="4.75" PointY="0.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="POSModel.customer" Width="1.5" PointX="0.75" PointY="4.75" Height="4.4802050781249818" />
+        <EntityTypeShape EntityType="POSModel.customer_status" Width="1.5" PointX="2.75" PointY="4.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.customer_type" Width="1.5" PointX="4.75" PointY="3.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.department" Width="1.5" PointX="6.75" PointY="0.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.designation" Width="1.5" PointX="6.75" PointY="3.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.display_properties" Width="1.5" PointX="4.75" PointY="6.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="POSModel.email_history" Width="1.5" PointX="6.75" PointY="6.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="POSModel.email_templates" Width="1.5" PointX="8.75" PointY="0.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="POSModel.general_settings" Width="1.5" PointX="8.75" PointY="4.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="POSModel.invoicecredit" Width="1.5" PointX="8.75" PointY="8.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="POSModel.invoiceitem" Width="1.5" PointX="2.75" PointY="9.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="POSModel.invoice" Width="1.5" PointX="10.75" PointY="0.75" Height="5.0571093749999818" />
+        <EntityTypeShape EntityType="POSModel.locality" Width="1.5" PointX="4.75" PointY="10.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.login_history" Width="1.5" PointX="10.75" PointY="6.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="POSModel.measure_unit" Width="1.5" PointX="10.75" PointY="9.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.measure_unit_conversion" Width="1.5" PointX="6.75" PointY="11.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.openid_server" Width="1.5" PointX="12.75" PointY="0.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="POSModel.payment_gateways" Width="1.5" PointX="8.75" PointY="12.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.postcode" Width="1.5" PointX="12.75" PointY="10.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.product" Width="1.5" PointX="0.75" PointY="13.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="POSModel.product_category" Width="1.5" PointX="2.75" PointY="13.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.product_promotional_offer" Width="1.5" PointX="10.75" PointY="13.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="POSModel.product_purchase_history_child" Width="1.5" PointX="12.75" PointY="13.75" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="POSModel.product_purchase_history_master" Width="1.5" PointX="14.75" PointY="0.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="POSModel.product_status" Width="1.5" PointX="14.75" PointY="4.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.promotional_offer" Width="1.5" PointX="4.75" PointY="14.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="POSModel.query" Width="1.5" PointX="14.75" PointY="7.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.security_group" Width="1.5" PointX="14.75" PointY="10.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.shop_info" Width="1.5" PointX="14.75" PointY="13.75" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="6.75" PointY="15.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="16.75" PointY="0.75" Height="4.6725065104166674" />
+        <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="16.75" PointY="6.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="8.75" PointY="16.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="16.75" PointY="9.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="16.75" PointY="12.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="POSModel.supplier_products" Width="1.5" PointX="16.75" PointY="16.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="10.75" PointY="17.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="12.75" PointY="17.75" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="18.75" PointY="0.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="POSModel.orderchild" Width="1.5" PointX="19" PointY="10.75" Height="2.7494921874999818" />
+        <AssociationConnector Association="POSModel.FK_Product_OrderChild" >
+          <ConnectorPoint PointX="1.5" PointY="13.75" />
+          <ConnectorPoint PointX="1.5" PointY="12.595683593749982" />
+          <ConnectorPoint PointX="6.5" PointY="12.595683593749982" />
+          <ConnectorPoint PointX="6.5" PointY="11.5" />
+          <ConnectorPoint PointX="12.5" PointY="11.5" />
+          <ConnectorPoint PointX="12.5" PointY="12.787985026041667" />
+          <ConnectorPoint PointX="16.5" PointY="12.787985026041667" />
+          <ConnectorPoint PointX="16.5" PointY="12.336293945312491" />
+          <ConnectorPoint PointX="19" PointY="12.336293945312491" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.accounts_ibfk_2" >
-          <ConnectorPoint PointX="13.5" PointY="29.806537461538461" />
-          <ConnectorPoint PointX="13.87857443490112" PointY="29.42796302663734" />
-          <ConnectorPoint PointX="13.996425565098878" PointY="29.310111896439583" />
-          <ConnectorPoint PointX="14.03125" PointY="29.275287461538461" />
-          <ConnectorPoint PointX="14.03125" PointY="24.426420526041682" />
-          <ConnectorPoint PointX="14.25" PointY="24.426420526041682" />
+        <EntityTypeShape EntityType="POSModel.ordermaster" Width="1.5" PointX="3.375" PointY="19" Height="2.7494921874999818" />
+        <AssociationConnector Association="POSModel.FK_OrderMaster_OrderChild" >
+          <ConnectorPoint PointX="4.875" PointY="20.771139322916667" />
+          <ConnectorPoint PointX="19.75" PointY="20.771139322916667" />
+          <ConnectorPoint PointX="19.75" PointY="13.4994921875" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_7" >
-          <ConnectorPoint PointX="2.25" PointY="15.4374995" />
-          <ConnectorPoint PointX="6.760416666666667" PointY="15.4374995" />
-          <ConnectorPoint PointX="6.927083333333333" PointY="15.4374995" />
-          <ConnectorPoint PointX="8.25" PointY="15.4374995" />
-          <ConnectorPoint PointX="8.25" PointY="16.125" />
+        <EntityTypeShape EntityType="POSModel.wastemanagement" Width="1.5" PointX="3" PointY="22.625" Height="2.1725878906249818" />
+        <AssociationConnector Association="POSModel.FK_Product_WasteManagement" >
+          <ConnectorPoint PointX="1.5" PointY="17.65330078125" />
+          <ConnectorPoint PointX="1.5" PointY="23.711293945312491" />
+          <ConnectorPoint PointX="3" PointY="23.711293945312491" />
         </AssociationConnector>
-        <AssociationConnector Association="POSModel.customer_ibfk_4" >
-          <ConnectorPoint PointX="9" PointY="17.980499674479169" />
-          <ConnectorPoint PointX="9.75" PointY="17.980499674479169" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.customer_ibfk_3" >
-          <ConnectorPoint PointX="9" PointY="22.223005429687419" />
-          <ConnectorPoint PointX="10.0937475" PointY="22.223005429687419" />
-          <ConnectorPoint PointX="10.0937475" PointY="21.345520833333353" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.customer_ibfk_5" >
-          <ConnectorPoint PointX="9" PointY="13.518992513020805" />
-          <ConnectorPoint PointX="10.5" PointY="13.518992513020805" />
-          <ConnectorPoint PointX="10.5" PointY="14.75" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.customer_ibfk_6" >
-          <ConnectorPoint PointX="9" PointY="24.520172526041673" />
-          <ConnectorPoint PointX="10.416666666666666" PointY="24.520172526041673" />
-          <ConnectorPoint PointX="10.583333333333334" PointY="24.520172526041673" />
-          <ConnectorPoint PointX="10.619792916666667" PointY="24.520172526041673" />
-          <ConnectorPoint PointX="10.786459583333334" PointY="24.520172526041673" />
-          <ConnectorPoint PointX="10.9062525" PointY="24.520172526041673" />
-          <ConnectorPoint PointX="10.9062525" PointY="21.345520833333353" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.email_history_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="17.999746093749991" />
-          <ConnectorPoint PointX="12" PointY="17.999746093749991" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.invoicecredit_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="19.499746093749991" />
-          <ConnectorPoint PointX="17.166666666666668" PointY="19.499746093749991" />
-          <ConnectorPoint PointX="17.333333333333332" PointY="19.499746093749991" />
-          <ConnectorPoint PointX="18.40625" PointY="19.499746093749991" />
-          <ConnectorPoint PointX="18.40625" PointY="24" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.invoiceitems_ibfk_2" >
-          <ConnectorPoint PointX="11.109378750000001" PointY="21.345520833333353" />
-          <ConnectorPoint PointX="11.109378750000001" PointY="28.65625" />
-          <ConnectorPoint PointX="13.791666666666666" PointY="28.65625" />
-          <ConnectorPoint PointX="14.114583333333334" PointY="28.65625" />
-          <ConnectorPoint PointX="14.25" PointY="28.65625" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.invoices_ibfk_1" >
-          <ConnectorPoint PointX="10.70312625" PointY="21.345520833333353" />
-          <ConnectorPoint PointX="10.70312625" PointY="32.759308268229177" />
-          <ConnectorPoint PointX="12" PointY="32.759308268229177" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.login_history_ibfk_2" >
-          <ConnectorPoint PointX="11.25" PointY="16.15625" />
-          <ConnectorPoint PointX="13.041666666666666" PointY="16.15625" />
-          <ConnectorPoint PointX="13.208333333333334" PointY="16.15625" />
-          <ConnectorPoint PointX="15" PointY="16.15625" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.ordermaster_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="20.09375" />
-          <ConnectorPoint PointX="14.25" PointY="20.09375" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.display_properties_ibfk_1" >
-          <ConnectorPoint PointX="15.75" PointY="38.961293945312491" />
-          <ConnectorPoint PointX="16.5" PointY="38.961293945312491" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.email_history_ibfk_2" >
-          <ConnectorPoint PointX="13.125" PointY="15.624410807291667" />
-          <ConnectorPoint PointX="13.125" PointY="16.625" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.invoicecredit_ibfk_2" >
-          <ConnectorPoint PointX="13.5" PointY="31.350698242187491" />
-          <ConnectorPoint PointX="13.854166666666666" PointY="31.350698242187491" />
-          <ConnectorPoint PointX="14.020833333333334" PointY="31.350698242187491" />
-          <ConnectorPoint PointX="16.041666666666668" PointY="31.350698242187491" />
-          <ConnectorPoint PointX="16.208333333333332" PointY="31.350698242187491" />
-          <ConnectorPoint PointX="18" PointY="31.350698242187491" />
-          <ConnectorPoint PointX="18" PointY="26.557190755208353" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.invoiceitems_ibfk_4" >
-          <ConnectorPoint PointX="13.5" PointY="30.381950742187428" />
-          <ConnectorPoint PointX="13.854166666666666" PointY="30.381950742187428" />
-          <ConnectorPoint PointX="14.020833333333334" PointY="30.381950742187428" />
-          <ConnectorPoint PointX="14.25" PointY="30.381950742187428" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.invoiceitems_ibfk_5" >
-          <ConnectorPoint PointX="14.781923076923077" PointY="30.951396484374982" />
-          <ConnectorPoint PointX="14.781923076923077" PointY="31.201396484374982" />
-          <ConnectorPoint PointX="15.228461538461538" PointY="31.201396484374982" />
-          <ConnectorPoint PointX="15.228461538461538" PointY="30.951396484374982" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.ordermaster_ibfk_3" >
-          <ConnectorPoint PointX="13.475769230769231" PointY="29.75" />
-          <ConnectorPoint PointX="13.875" PointY="29.350769230769231" />
-          <ConnectorPoint PointX="13.875" PointY="21.457674526041728" />
-          <ConnectorPoint PointX="14.25" PointY="21.457674526041728" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.login_history_ibfk_3" >
-          <ConnectorPoint PointX="14.25" PointY="12.999705403645834" />
-          <ConnectorPoint PointX="15.71875" PointY="12.999705403645834" />
-          <ConnectorPoint PointX="15.71875" PointY="15.75" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_1" >
-          <ConnectorPoint PointX="15.75" PointY="6.5526432291666765" />
-          <ConnectorPoint PointX="16.5" PointY="6.5526432291666765" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_2" >
-          <ConnectorPoint PointX="15.75" PointY="6.4013216145833383" />
-          <ConnectorPoint PointX="16.5" PointY="6.4013216145833383" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.orderchild_ibfk_3" >
-          <ConnectorPoint PointX="15.75" PointY="7.8698197083333232" />
-          <ConnectorPoint PointX="16.25" PointY="7.8698197083333232" />
-          <ConnectorPoint PointX="16.25" PointY="10.951396484374982" />
-          <ConnectorPoint PointX="17.25" PointY="10.951396484374982" />
-          <ConnectorPoint PointX="17.25" PointY="19.875" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_3" >
-          <ConnectorPoint PointX="15.75" PointY="7.0526432291666765" />
-          <ConnectorPoint PointX="20.25" PointY="7.0526432291666765" />
-          <ConnectorPoint PointX="20.25" PointY="24.125" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.promotional_offer_ibfk_1" >
-          <ConnectorPoint PointX="15.75" PointY="8.559655947916653" />
-          <ConnectorPoint PointX="16.166666666666668" PointY="8.559655947916653" />
-          <ConnectorPoint PointX="16.333333333333332" PointY="8.559655947916653" />
-          <ConnectorPoint PointX="16.5" PointY="8.559655947916653" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.promotional_offer_ibfk_2" >
-          <ConnectorPoint PointX="15.75" PointY="8.2147378281249885" />
-          <ConnectorPoint PointX="16.166666666666668" PointY="8.2147378281249885" />
-          <ConnectorPoint PointX="16.333333333333332" PointY="8.2147378281249885" />
-          <ConnectorPoint PointX="16.5" PointY="8.2147378281249885" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.orderchild_ibfk_1" >
-          <ConnectorPoint PointX="15.75" PointY="21.249746093749991" />
-          <ConnectorPoint PointX="16.5" PointY="21.249746093749991" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.orderchild_ibfk_2" >
-          <ConnectorPoint PointX="15.750000000000002" PointY="36.875" />
-          <ConnectorPoint PointX="16.125" PointY="36.5" />
-          <ConnectorPoint PointX="16.125" PointY="21.968371140624981" />
-          <ConnectorPoint PointX="16.5" PointY="21.968371140624981" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.ordermaster_ibfk_2" >
-          <ConnectorPoint PointX="13.5" PointY="22.170884789062541" />
-          <ConnectorPoint PointX="13.791666666666666" PointY="22.170884789062541" />
-          <ConnectorPoint PointX="13.958333333333334" PointY="22.170884789062541" />
-          <ConnectorPoint PointX="14.25" PointY="22.170884789062541" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_2" >
-          <ConnectorPoint PointX="15.75" PointY="40.636495768229167" />
-          <ConnectorPoint PointX="20.25" PointY="40.636495768229167" />
-          <ConnectorPoint PointX="20.25" PointY="27.451396484374982" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_1" >
-          <ConnectorPoint PointX="15.75" PointY="33.509348958333334" />
-          <ConnectorPoint PointX="16.041666666666668" PointY="33.509348958333334" />
-          <ConnectorPoint PointX="16.208333333333332" PointY="33.509348958333334" />
-          <ConnectorPoint PointX="19.8437475" PointY="33.509348958333334" />
-          <ConnectorPoint PointX="19.8437475" PointY="27.451396484374982" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_1" >
-          <ConnectorPoint PointX="13.500000000000002" PointY="37.75" />
-          <ConnectorPoint PointX="13.875" PointY="37.375" />
-          <ConnectorPoint PointX="13.875" PointY="33.509348958333334" />
-          <ConnectorPoint PointX="14.25" PointY="33.509348958333334" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_2" >
-          <ConnectorPoint PointX="13.5" PointY="23.696786359775661" />
-          <ConnectorPoint PointX="13.816074434901122" PointY="24.012860794676783" />
-          <ConnectorPoint PointX="13.933925565098878" PointY="24.130711924874539" />
-          <ConnectorPoint PointX="13.9375" PointY="24.134286359775661" />
-          <ConnectorPoint PointX="13.9375" PointY="32.598422479166615" />
-          <ConnectorPoint PointX="14.25" PointY="32.598422479166615" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.supplier_products" >
-          <ConnectorPoint PointX="13.5" PointY="39.05984787760417" />
-          <ConnectorPoint PointX="14.25" PointY="39.05984787760417" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="POSModel.postcode" Width="1.5" PointX="5.25" PointY="16.875" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="5.25" PointY="19.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="3" PointY="17" Height="1.9802864583333246" />
-        <AssociationConnector Association="POSModel.address_ibfk_10" >
-          <ConnectorPoint PointX="6.75" PointY="17.865143229166662" />
-          <ConnectorPoint PointX="7.5" PointY="17.865143229166662" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_6" >
-          <ConnectorPoint PointX="4.5" PointY="18.949036458333325" />
-          <ConnectorPoint PointX="7.5" PointY="18.949036458333325" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.address_ibfk_8" >
-          <ConnectorPoint PointX="6.75" PointY="19.626152846153843" />
-          <ConnectorPoint PointX="7.125" PointY="19.251152846153843" />
-          <ConnectorPoint PointX="7.125" PointY="20.212152195112186" />
-          <ConnectorPoint PointX="7.5011528461538495" PointY="19.835999348958335" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.PostalCode_TownCity_FK" >
-          <ConnectorPoint PointX="4.5" PointY="17.927643229166662" />
-          <ConnectorPoint PointX="5.25" PointY="17.927643229166662" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="POSModel.locality" Width="1.5" PointX="5.375" PointY="9.875" Height="1.7879850260416674" />
-        <AssociationConnector Association="POSModel.address_ibfk_9" >
-          <ConnectorPoint PointX="6.84375" PointY="11.662985026041667" />
-          <ConnectorPoint PointX="6.84375" PointY="16.46875" />
-          <ConnectorPoint PointX="7.5" PointY="16.46875" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="POSModel.WasteManagement" Width="1.5" PointX="11.375" PointY="0.75" Height="1.7879850260416674" />
       </Diagram>
     </Diagrams>
   </Designer>

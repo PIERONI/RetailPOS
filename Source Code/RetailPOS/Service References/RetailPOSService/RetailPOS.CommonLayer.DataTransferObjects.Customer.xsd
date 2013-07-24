@@ -14,6 +14,7 @@
         <xs:sequence>
           <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Master" minOccurs="0" name="Address" nillable="true" type="q2:AddressDTO" />
           <xs:element minOccurs="0" name="Address_Id" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
           <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Credit_Limit" type="xs:decimal" />
           <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
@@ -29,7 +30,6 @@
           <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Status_Id" type="xs:int" />
           <xs:element minOccurs="0" name="Type_Id" nillable="true" type="xs:short" />
-          <xs:element minOccurs="0" name="balance" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

@@ -9,7 +9,7 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Settings
         public Nullable<short> Supplier_Id { get; set; }
         public string Shop_Code { get; set; }
         public string Invoice_No { get; set; }
-        public decimal SubTotal { get; set; }
+        public decimal Sub_Total { get; set; }
         public decimal Discount { get; set; }
         public decimal Grand_Total { get; set; }
         public decimal Cash { get; set; }

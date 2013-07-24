@@ -60,8 +60,7 @@
                             </DataTemplate>
                         </toolkit:AutoCompleteBox.ItemTemplate>
                     </toolkit:AutoCompleteBox>
-                    <!--<TextBox Grid.Column="2"  Grid.Row="1" MaxLength="255" Height="30" Text="{Binding InvoiceNo}" HorizontalAlignment="Left" Margin="0,5,0,0"  VerticalAlignment="Top" Width="250" />-->
-                    <Button Height="30" Canvas.Left="143" Command="{Binding SearchPurchaseHistory}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
+                    <Button Height="30" Canvas.Left="143" Command="{Binding SearchPurchaseHistoryCommand}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75" Grid.Row="2" Grid.Column="1">
                         <DockPanel>
                             <Image Source="../../../Images/save-icon.png" Width="16" />
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="51">

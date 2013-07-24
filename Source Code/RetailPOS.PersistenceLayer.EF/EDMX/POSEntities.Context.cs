@@ -132,6 +132,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<invoice> _invoices;
     
+        public ObjectSet<locality> localities
+        {
+            get { return _localities  ?? (_localities = CreateObjectSet<locality>("localities")); }
+        }
+        private ObjectSet<locality> _localities;
+    
         public ObjectSet<login_history> login_history
         {
             get { return _login_history  ?? (_login_history = CreateObjectSet<login_history>("login_history")); }
@@ -156,23 +162,17 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<openid_server> _openid_server;
     
-        public ObjectSet<orderchild> orderchilds
-        {
-            get { return _orderchilds  ?? (_orderchilds = CreateObjectSet<orderchild>("orderchilds")); }
-        }
-        private ObjectSet<orderchild> _orderchilds;
-    
-        public ObjectSet<ordermaster> ordermasters
-        {
-            get { return _ordermasters  ?? (_ordermasters = CreateObjectSet<ordermaster>("ordermasters")); }
-        }
-        private ObjectSet<ordermaster> _ordermasters;
-    
         public ObjectSet<payment_gateways> payment_gateways
         {
             get { return _payment_gateways  ?? (_payment_gateways = CreateObjectSet<payment_gateways>("payment_gateways")); }
         }
         private ObjectSet<payment_gateways> _payment_gateways;
+    
+        public ObjectSet<postcode> postcodes
+        {
+            get { return _postcodes  ?? (_postcodes = CreateObjectSet<postcode>("postcodes")); }
+        }
+        private ObjectSet<postcode> _postcodes;
     
         public ObjectSet<product> products
         {
@@ -252,6 +252,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<staff_status> _staff_status;
     
+        public ObjectSet<street> streets
+        {
+            get { return _streets  ?? (_streets = CreateObjectSet<street>("streets")); }
+        }
+        private ObjectSet<street> _streets;
+    
         public ObjectSet<supplier> suppliers
         {
             get { return _suppliers  ?? (_suppliers = CreateObjectSet<supplier>("suppliers")); }
@@ -263,6 +269,18 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _supplier_contact_person  ?? (_supplier_contact_person = CreateObjectSet<supplier_contact_person>("supplier_contact_person")); }
         }
         private ObjectSet<supplier_contact_person> _supplier_contact_person;
+    
+        public ObjectSet<supplier_products> supplier_products
+        {
+            get { return _supplier_products  ?? (_supplier_products = CreateObjectSet<supplier_products>("supplier_products")); }
+        }
+        private ObjectSet<supplier_products> _supplier_products;
+    
+        public ObjectSet<town_city> town_city
+        {
+            get { return _town_city  ?? (_town_city = CreateObjectSet<town_city>("town_city")); }
+        }
+        private ObjectSet<town_city> _town_city;
     
         public ObjectSet<warranty> warranties
         {
@@ -276,35 +294,23 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<working_record> _working_record;
     
-        public ObjectSet<postcode> postcodes
+        public ObjectSet<orderchild> orderchilds
         {
-            get { return _postcodes  ?? (_postcodes = CreateObjectSet<postcode>("postcodes")); }
+            get { return _orderchilds  ?? (_orderchilds = CreateObjectSet<orderchild>("orderchilds")); }
         }
-        private ObjectSet<postcode> _postcodes;
+        private ObjectSet<orderchild> _orderchilds;
     
-        public ObjectSet<street> streets
+        public ObjectSet<ordermaster> ordermasters
         {
-            get { return _streets  ?? (_streets = CreateObjectSet<street>("streets")); }
+            get { return _ordermasters  ?? (_ordermasters = CreateObjectSet<ordermaster>("ordermasters")); }
         }
-        private ObjectSet<street> _streets;
+        private ObjectSet<ordermaster> _ordermasters;
     
-        public ObjectSet<town_city> town_city
+        public ObjectSet<wastemanagement> wastemanagements
         {
-            get { return _town_city  ?? (_town_city = CreateObjectSet<town_city>("town_city")); }
+            get { return _wastemanagements  ?? (_wastemanagements = CreateObjectSet<wastemanagement>("wastemanagements")); }
         }
-        private ObjectSet<town_city> _town_city;
-    
-        public ObjectSet<locality> localities
-        {
-            get { return _localities  ?? (_localities = CreateObjectSet<locality>("localities")); }
-        }
-        private ObjectSet<locality> _localities;
-    
-        public ObjectSet<WasteManagement> WasteManagements
-        {
-            get { return _wasteManagements  ?? (_wasteManagements = CreateObjectSet<WasteManagement>("WasteManagements")); }
-        }
-        private ObjectSet<WasteManagement> _wasteManagements;
+        private ObjectSet<wastemanagement> _wastemanagements;
 
         #endregion
     }

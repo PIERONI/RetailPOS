@@ -17,10 +17,12 @@ namespace RetailPOS.ViewModel
     {
         #region Declare Public and Private Data member
 
-        public RelayCommand SaveCategory { get; private set; }
-        public RelayCommand CancelCategorySetting { get; private set; }
+        public RelayCommand SaveCategoryCommand { get; private set; }
+        public RelayCommand CancelCategoryCommand { get; private set; }
+        public RelayCommand SearchCategoryCommand { get; private set; }
+        public RelayCommand CancelSearchCommand { get; private set; }
 
-        private IList<ProductCategoryDTO> _lstSearchCategoryName { get; set; }
+        private IList<ProductCategoryDTO> _lstCategoryName { get; set; }
 
         /// <summary>
         /// The _staff name
@@ -41,7 +43,6 @@ namespace RetailPOS.ViewModel
         /// The _sort order
         /// </summary>
         private int _sortOrder;
-        private ProductCategoryDTO _categname;
 
         #endregion
 
@@ -53,13 +54,13 @@ namespace RetailPOS.ViewModel
         /// <value>
         /// The list of categories.
         /// </value>
-        public IList<ProductCategoryDTO> LstSearchCategoryName
+        public IList<ProductCategoryDTO> LstCategoryName
         {
-            get { return _lstSearchCategoryName; }
+            get { return _lstCategoryName; }
             set
             {
-                _lstSearchCategoryName = value;
-                RaisePropertyChanged("LstSearchCategoryName");
+                _lstCategoryName = value;
+                RaisePropertyChanged("LstCategoryName");
             }
         }
 
@@ -130,39 +131,23 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        /// <summary>
-        ///Bind the data grid according to selected category from autoextender
-        /// </summary>
-        /// <value>
-        /// The List of category.
-        /// </value>
-        public ProductCategoryDTO SelectedCategoryName
-        {
-            get { return _categname; }
-            set
-            {
-                _categname = value;
-                RaisePropertyChanged("SelectedCategoryName");
-
-                if (SelectedCategoryName != null)
-                {
-                    GetSearchAttributes(SelectedCategoryName.Name);
-                }
-            }
-        }
-
         #endregion
 
         #region Constructor
 
         public AddCategoryViewModel()
         {
-            LstSearchCategoryName = new List<ProductCategoryDTO>();
+            LstCategoryName = new List<ProductCategoryDTO>();
 
-            SaveCategory = new RelayCommand(SaveCategorySetting);
-            CancelCategorySetting = new RelayCommand(CancelSetting);            
-            
-            GetSearchAttributes(string.Empty);  
+            SaveCategoryCommand = new RelayCommand(SaveCategory);
+            CancelCategoryCommand = new RelayCommand(CancelCategorySetting);
+            SearchCategoryCommand = new RelayCommand(SearchCategoryByName);
+            CancelSearchCommand = new RelayCommand(CancelSearch);
+
+            GetCategoryDetails(string.Empty);
+
+            ////Clear the controls
+            ClearControls();
         }
 
         #endregion
@@ -170,12 +155,27 @@ namespace RetailPOS.ViewModel
         #region Private Methods
 
         /// <summary>
+        /// Clear the controls
+        /// </summary>
+        private void ClearControls()
+        {
+            Name = string.Empty;
+            Description = string.Empty;
+            SelectedColor = string.Empty;
+        }
+
+        /// <summary>
         /// Save category deatils in database
         /// </summary>
-        private void SaveCategorySetting()
+        private void SaveCategory()
         {
             var categoryDetails = InitializeCategoryDetails();
             ServiceFactory.ServiceClient.SaveCategoryDetails(categoryDetails);
+
+            GetCategoryDetails(string.Empty);
+
+            ////Clear the controls
+            ClearControls();
         }
 
         /// <summary>
@@ -192,29 +192,36 @@ namespace RetailPOS.ViewModel
             };
         }
 
-        /// <summary>
-        /// Cancels the current operation
-        /// </summary>
-        private void CancelSetting()
+        private void SearchCategoryByName()
         {
-            Name = string.Empty;
-            GetSearchAttributes(string.Empty);  
-            //AddCategoryViewModel viewModel = new AddCategoryViewModel();
+            GetCategoryDetails(Name);
         }
 
         /// <summary>
-        /// Search the current operation
+        /// Cancels the current operation
         /// </summary>
-        private void GetSearchAttributes(string categoryName)
+        private void CancelSearch()
         {
-            LstSearchCategoryName = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
-                                                                      select item).ToList();
-            LstSearchCategoryName = LstSearchCategoryName.Where(item => (categoryName == "" || categoryName == null ? item.Name == item.Name : item.Name == categoryName)).ToList();
+            Name = string.Empty;
+            GetCategoryDetails(string.Empty); 
+        }
 
-            //if (!string.IsNullOrEmpty(categoryName))
-            //{
-            //    LstSearchCategoryName = LstSearchCategoryName.Where(item => item.Name.Contains(categoryName)).ToList();
-            //}
+        private void CancelCategorySetting()
+        {
+        }
+
+        /// <summary>
+        /// Get category details from database
+        /// </summary>
+        /// <param name="categoryName">Category name to filter records</param>
+        private void GetCategoryDetails(string categoryName)
+        {
+            LstCategoryName = new ObservableCollection<ProductCategoryDTO>(from item in ServiceFactory.ServiceClient.GetCategories()
+                                                                      select item).ToList();
+            if (!string.IsNullOrEmpty(categoryName))
+            {
+                LstCategoryName = LstCategoryName.Where(item => item.Name.Contains(categoryName)).ToList();
+            }
         }
 
         #endregion

@@ -23,7 +23,7 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Customer
         public string Password { get; set; }
         public int Payment_Period { get; set; }
         public decimal Credit_Limit { get; set; }
-        public decimal balance { get; set; }
+        public decimal Balance { get; set; }
         public string Image_Path { get; set; }
         public Nullable<long> Address_Id { get; set; }
         public AddressDTO Address { get; set; }

@@ -88,6 +88,16 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public bool IsProductPopupOpen
+        {
+            get { return _IsProductPopupOpen; }
+            set
+            {
+                _IsProductPopupOpen = value;
+                RaisePropertyChanged("IsProductPopupOpen");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -101,7 +111,7 @@ namespace RetailPOS.ViewModel
             LstProduct = new ObservableCollection<ProductDTO>();
             LstSearchProduct = new List<ProductDTO>();
 
-            Mediator.Register("ClosePopUpWindow", OnCloseProductPopUpWindow);
+            Mediator.Register("CloseProductPopUpWindow", OnCloseProductPopUpWindow);
 
             AddCategories();
             AddLooseCategories();
@@ -114,16 +124,6 @@ namespace RetailPOS.ViewModel
             OpenFirstPopupCommand = new RelayCommand(OpenFirstPopupClick);
             OpenLooseCatPopupCommand = new RelayCommand(OpenLooseCatPopupClick);
             RefershListBoxCommand = new RelayCommand(RefereshListBox);
-        }
-
-        public bool IsProductPopupOpen
-        {
-            get { return _IsProductPopupOpen; }
-            set
-            {
-                _IsProductPopupOpen = value;
-                RaisePropertyChanged("IsProductPopupOpen");
-            }
         }
 
         #endregion

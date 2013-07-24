@@ -1,20 +1,24 @@
-﻿using System;
+﻿#region Using directives
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
+
+#endregion
 
 namespace RetailPOS.CommonLayer.DataTransferObjects.Order
 {
-  public  class OrderMasterDTO:BaseDTO
+    public class OrderMasterDTO : BaseDTO
     {
-      public short Id { get; set; }
-      public string Order_no { get; set; }
-      public DateTime Order_date { get; set; }
-      public Nullable<int> Customer_id { get; set; }
-      public string Shop_code { get; set; }
-      public Nullable<long> Invoice_id { get; set; }
-      public short Print_receipt_copies { get; set; }
-      public IList<OrderChildDTO> Orderchilds { get; set; }
+        public long Id { get; set; }
+        public string Order_No { get; set; }
+        public DateTime Order_Date { get; set; }
+        public Nullable<int> Customer_Id { get; set; }
+        public string Shop_Code { get; set; }
+        public Nullable<long> Invoice_Id { get; set; }
+        public short Print_Receipt_Copies { get; set; }
+        public Nullable<short> Status { get; set; }
+        public decimal TotalQuantity { get; set; }
+        public decimal TotalAmount { get; set; }
+        public IList<OrderChildDTO> OrderChilds { get; set; }
     }
 }

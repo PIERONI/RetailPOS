@@ -93,7 +93,7 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         /// <summary>
         [OperationContract]
-        bool SaveCustomerDetail(CustomerDTO customerDetails);
+        int SaveCustomerDetail(CustomerDTO customerDetails);
 
         /// Update Customer details in database
         /// </summary>
@@ -143,6 +143,13 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
         [OperationContract]
         bool SaveWasteManagement(WasteManagementDTO wasteManagementDetails);
+
+        /// <summary>
+        /// Get waste management details from database
+        /// </summary>
+        /// <returns>returns list of Waste management details else empty list</returns>
+        [OperationContract]
+        IList<WasteManagementDTO> GetWasteManagementDetails();
 
         /// <summary>
         /// Save Promotional offer details in database
@@ -207,28 +214,37 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
 
         #endregion
 
-        #region Order
-        [OperationContract]
+        #region Orders
+
         /// <summary>
         /// Save Order details in database
         /// </summary>
         /// <param name="orderDetails">ordermaster object to be saved</param>
         /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        [OperationContract]
         bool SaveOrderDetail(OrderMasterDTO orderDetail);
-    
-          /// <summary>
-        /// Get orderMasterDetail By customer Id
+
+        /// <summary>
+        /// Get set aside orders by customer Id
         /// </summary>
-        /// <returns>returns list of orderMasterDetail by customerId</returns>  
+        /// <returns>returns list of set aside orders by customer Id</returns>
         [OperationContract]
-        IList<OrderMasterDTO> GetOrderByCustomerId(int customerId);
-         /// <summary>
-        /// Get orderChildDetail By Order Id
+        IList<OrderMasterDTO> GetSetAsideOrders(int customerId);
+
+        /// <summary>
+        /// Get all orders in queue from database
         /// </summary>
-        /// <returns>returns list of orderChildDetail by Order Id</returns>
+        /// <returns>returns list of orders in queue</returns>
         [OperationContract]
-        IList<OrderChildDTO> GetOrderChildByOrderId(int orderId);
-     
+        IList<OrderMasterDTO> GetOrdersInQueue();
+
+        /// <summary>
+        /// Get all order items contained within an order Id
+        /// </summary>
+        /// <returns>returns list of child order items by order Id</returns>
+        [OperationContract]
+        IList<OrderChildDTO> GetOrderItemsByOrderId(long orderId);
+
         #endregion
     }
 }

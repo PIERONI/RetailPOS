@@ -28,14 +28,15 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Customer
         /// Save Customer details in database
         /// </summary>
         /// <param name="shopSettingDetails">Customer object to be saved</param>
-        /// <returns>returns boolean value indicating if the records are saved in database</returns>
+        /// <returns>returns integer value as identity value for the new customer record entered in database</returns>
         /// <summary>
-        bool ICustomerService.SaveCustomerDetail(CustomerDTO customerDetails)
+        int ICustomerService.SaveCustomerDetail(CustomerDTO customerDetails)
         {
             customer customerEntity = new customer();
 
             ObjectMapper.Map(customerDetails, customerEntity);
-            return CustomerRepository.Save(customerEntity);
+            CustomerRepository.Save(customerEntity);
+            return customerEntity.id;
         }
 
         /// <summary>

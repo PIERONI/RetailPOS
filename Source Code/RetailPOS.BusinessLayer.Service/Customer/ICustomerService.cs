@@ -19,8 +19,8 @@ namespace RetailPOS.BusinessLayer.Service.Customer
         /// Save Customer details in database
         /// </summary>
         /// <param name="shopSettingDetails">Customer object to be saved</param>
-        /// <returns>returns boolean value indicating if the records are saved in database</returns>
-        bool SaveCustomerDetail(CustomerDTO customerDetails);
+        /// <returns>returns integer value as identity value for the new customer record entered in database</returns>
+        int SaveCustomerDetail(CustomerDTO customerDetails);
 
         /// <summary>
         /// Get customer status from database

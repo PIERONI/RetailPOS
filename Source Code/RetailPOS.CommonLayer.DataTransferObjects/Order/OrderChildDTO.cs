@@ -1,17 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using RetailPOS.CommonLayer.DataTransferObjects.Product;
 
 namespace RetailPOS.CommonLayer.DataTransferObjects.Order
 {
-   public  class OrderChildDTO:BaseDTO
+    public class OrderChildDTO : BaseDTO
     {
-       public long Order_id { get; set; }
-       public short Product_id { get; set; }
-       public short Quantity { get; set; }
-       public short Measure_unit_id { get; set; }
-       public decimal Amount { get; set; }
-       public int Taxed { get; set; }
+        #region Primitive Properties
+
+        public long Order_Id { get; set; }
+        public short Product_Id { get; set; }
+        public string ProductName { get; set; }
+        public decimal Quantity { get; set; }
+        public short Measure_Unit_Id { get; set; }
+        public decimal Amount { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public int Taxed { get; set; }
+
+        #endregion
+
+        #region Navigational Properties
+
+        private ProductDTO _product;
+
+        public ProductDTO product
+        {
+            get { return _product; }
+            set
+            {
+                if (!ReferenceEquals(_product, value))
+                {
+                    var previousValue = _product;
+                    _product = null;
+                    ProductName = value.Name;
+                }
+            }
+        }
+
+        #endregion
     }
 }

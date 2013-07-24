@@ -152,7 +152,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\AppConstants.cs" />
+    <Compile Include="Constants\AppConstants.cs" />
+    <Compile Include="Constants\AppVariables.cs" />
     <Compile Include="Core\ServiceFactory.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -171,26 +172,29 @@
     <Compile Include="Utility\Mediator.cs" />
     <Compile Include="Utility\RowDoubleClickHandler.cs" />
     <Compile Include="Utility\SelectedItemBehaviour.cs" />
-    <Compile Include="ViewModel\CustomerViewModel.cs" />
-    <Compile Include="ViewModel\AddProductViewModel.cs" />
-    <Compile Include="ViewModel\GenerateBarCodeViewModel.cs" />
+    <Compile Include="ViewModel\Settings\AddressViewModel.cs" />
+    <Compile Include="ViewModel\Settings\CustomerViewModel.cs" />
+    <Compile Include="ViewModel\Settings\ProductViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainWindow\ShowProductViewModel.cs" />
     <Compile Include="ViewModel\MenuControlViewModel.cs" />
     <Compile Include="ViewModel\ProductGridViewModel.cs" />
-    <Compile Include="ViewModel\PromotionalOfferViewModel.cs" />
+    <Compile Include="ViewModel\Settings\PromotionalOfferViewModel.cs" />
     <Compile Include="ViewModel\RightPanelPaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\Settings\PurchaseHistoryViewModel.cs" />
-    <Compile Include="ViewModel\SettingViewModel.cs" />
-    <Compile Include="ViewModel\ShopSettingViewModel.cs" />
+    <Compile Include="ViewModel\Settings\SettingViewModel.cs" />
+    <Compile Include="ViewModel\Settings\ShopSettingViewModel.cs" />
     <Compile Include="ViewModel\UserInfoViewModel.cs" />
-    <Compile Include="ViewModel\WasteManagementViewModel.cs" />
+    <Compile Include="ViewModel\Settings\WasteManagementViewModel.cs" />
     <Compile Include="BarCode.xaml.cs">
       <DependentUpon>BarCode.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\MainWindow\ShowProduct.xaml.cs">
       <DependentUpon>ShowProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usercontrols\Settings\AddressView.xaml.cs">
+      <DependentUpon>AddressView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Usercontrols\Settings\Category.xaml.cs">
       <DependentUpon>Category.xaml</DependentUpon>
@@ -252,7 +256,7 @@
     <Compile Include="View\Usercontrols\MainWindow\UserInfo.xaml.cs">
       <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AddCategoryViewModel.cs" />
+    <Compile Include="ViewModel\Settings\AddCategoryViewModel.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
@@ -292,6 +296,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Usercontrols\MainWindow\ShowProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Usercontrols\Settings\AddressView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -519,6 +527,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.TownCityDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\RetailPOSService\RetailPOS.RetailPOSService.WasteManagementDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RetailPOSService\service.wsdl" />

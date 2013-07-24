@@ -13,23 +13,28 @@ namespace RetailPOS.ViewModel.Settings
     public class PurchaseHistoryViewModel : ViewModelBase
     {
         #region Public and Private Data Members
+
         private IList<PurchaseHistoryDTO> _lstPurchaseHistory { get; set; }
+        
         /// <summary>
         /// To filter the datalist on searchbutton click
         /// </summary>
-        public RelayCommand SearchPurchaseHistory { get; private set; }      
+        public RelayCommand SearchPurchaseHistoryCommand { get; private set; }
+        public RelayCommand CancelPurchaseHistorySearchCommand { get; private set; }
 
         private string _invoiceNo;
         private string _firstName;
         private int _id;
         private Nullable<DateTime> _selectedDate;
-        private IList<CustomerDTO> _lstSearchCustomer;
+
+        private IList<CustomerDTO> _lstCustomer;
         private CustomerDTO _selectedcustomer;
+
         #endregion
 
         #region Public Properties
 
-        public Nullable<DateTime>  SelectedDate
+        public Nullable<DateTime> SelectedDate
         {
             get { return _selectedDate; }
             set
@@ -45,9 +50,10 @@ namespace RetailPOS.ViewModel.Settings
             set
             {
                 _invoiceNo = value;
-                RaisePropertyChanged("InvoiceNo");
+                RaisePropertyChanged("Invoice_No");
             }
         }
+
         public int Id
         {
             get { return _id; }
@@ -57,6 +63,7 @@ namespace RetailPOS.ViewModel.Settings
                 RaisePropertyChanged("Id");
             }
         }
+
         /// <summary>
         /// For Fetching Customer Id
         /// </summary>
@@ -68,9 +75,8 @@ namespace RetailPOS.ViewModel.Settings
                 _firstName = value;
                 RaisePropertyChanged("First_Name");
             }
-        }          
-        
-        
+        }
+
         public IList<PurchaseHistoryDTO> LstPurchaseHistory
         {
             get { return _lstPurchaseHistory; }
@@ -87,13 +93,13 @@ namespace RetailPOS.ViewModel.Settings
         /// <value>
         /// The list of customer.
         /// </value>
-        public IList<CustomerDTO> LstSearchCustomer
+        public IList<CustomerDTO> LstCustomer
         {
-            get { return _lstSearchCustomer; }
+            get { return _lstCustomer; }
             set
             {
-                _lstSearchCustomer = value;
-                RaisePropertyChanged("LstSearchCustomer");
+                _lstCustomer = value;
+                RaisePropertyChanged("LstCustomer");
             }
         }
 
@@ -110,6 +116,7 @@ namespace RetailPOS.ViewModel.Settings
             {
                 _selectedcustomer = value;
                 RaisePropertyChanged("SelectedCustomer");
+
                 if (SelectedCustomer != null)
                 {
                     Id = SelectedCustomer.Id;
@@ -120,22 +127,27 @@ namespace RetailPOS.ViewModel.Settings
                 }
             }
         }
-        
-    
+
         #endregion
 
         #region Constructor
 
         public PurchaseHistoryViewModel()
         {
-            LstPurchaseHistory = new List<PurchaseHistoryDTO>();
-            SearchPurchaseHistory = new RelayCommand(GetPurchaseHistoryDetailsOnclick);
-            LstPurchaseHistory = GetPurchaseHistoryDetails();
-            LstSearchCustomer = new List<CustomerDTO>();
+            LstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>();
+            LstCustomer = new ObservableCollection<CustomerDTO>();
 
-            //get all invoices
+            SearchPurchaseHistoryCommand = new RelayCommand(SearchPurchaseHistory);
+            CancelPurchaseHistorySearchCommand = new RelayCommand(CancelPurchaseHistorySearch);
+            
+            ////Get all invoices
             GetPurchaseHistoryDetails();
-            SelectedDate = null;
+
+            ////Get all active customer details from database
+            GetCustomerDetails();
+            
+            ////Clear all controls
+            ClearControls();
         }
 
         #endregion
@@ -145,43 +157,66 @@ namespace RetailPOS.ViewModel.Settings
         /// <summary>
         /// Get Purchase history details from database
         /// </summary>
-        private void GetPurchaseHistoryDetailsOnclick()
+        private void SearchPurchaseHistory()
         {
-            LstPurchaseHistory = GetPurchaseHistoryDetails();
-            //LstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
-            //                                                          select item).ToList();
+            ////Get Purchase History details from database
+            GetPurchaseHistoryDetails();
         }
 
-
-        private ObservableCollection<PurchaseHistoryDTO>  GetPurchaseHistoryDetails()
+        private void CancelPurchaseHistorySearch()
         {
-            LstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
+            ////Clear the controls
+            ClearControls();
+
+            GetPurchaseHistoryDetails();
+        }
+
+        /// <summary>
+        /// Clear the controls
+        /// </summary>
+        private void ClearControls()
+        {
+            First_Name = string.Empty;
+            Invoice_No = string.Empty;
+            SelectedDate = null;
+        }
+
+        /// <summary>
+        /// Get all active customer details from database
+        /// </summary>
+        private void GetCustomerDetails()
+        {
+            LstCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                       select item).ToList();
-           
-          ObservableCollection<PurchaseHistoryDTO>  lstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in ServiceFactory.ServiceClient.GetPurchaseHistoryDetails()
+        }
+
+        /// <summary>
+        /// Get Purchase History details from database
+        /// </summary>
+        private void GetPurchaseHistoryDetails()
+        {
+            LstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in ServiceFactory.ServiceClient.GetPurchaseHistoryDetails()
                                                                               select item);
-          if (SelectedDate != null)
-          {
-              lstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in LstPurchaseHistory
-                                                                                where item.Purchase_Date.Date == SelectedDate.Value.Date
-                                                                                select item);
-          }           
-          
+            if (SelectedDate != null)
+            {
+                LstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in LstPurchaseHistory
+                                                                                  where item.Purchase_Date.Date == SelectedDate.Value.Date
+                                                                                  select item);
+            }
 
             if (!string.IsNullOrEmpty(Invoice_No))
             {
-                lstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in LstPurchaseHistory
+                LstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in LstPurchaseHistory
                                                                                   where item.Invoice_No == Invoice_No
                                                                                   select item);
             }
 
-            if (Id!=0)
+            if (Id != 0)
             {
-                lstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in LstPurchaseHistory
+                LstPurchaseHistory = new ObservableCollection<PurchaseHistoryDTO>(from item in LstPurchaseHistory
                                                                                   where item.Supplier_Id == Id
                                                                                   select item);
             }
-            return lstPurchaseHistory;
         }
 
         #endregion

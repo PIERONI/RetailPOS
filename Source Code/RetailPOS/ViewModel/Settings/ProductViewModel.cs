@@ -8,10 +8,11 @@ using RetailPOS.RetailPOSService;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
+using RetailPOS.Constants;
 
 #endregion
 
-namespace RetailPOS.ViewModel
+namespace RetailPOS.ViewModel.Settings
 {
     public class AddProductViewModel : ViewModelBase
     {
@@ -20,15 +21,16 @@ namespace RetailPOS.ViewModel
         public ObservableCollection<ProductStatusDTO> LstStatus { get; private set; }
         public ObservableCollection<ProductCategoryDTO> LstCategories { get; private set; }
 
-        public RelayCommand SaveProduct { get; set; }
-        public RelayCommand CancelProductSetting { get; set; }
-        public RelayCommand CancelProduct { get; set; }
-        public RelayCommand GenerateBarCode { get; private set; }
+        public RelayCommand SaveProductCommand { get; set; }
+        public RelayCommand CancelProductCommand { get; set; }
+        public RelayCommand SearchProductCommand { get; set; }
+        public RelayCommand CancelSearchCommand { get; set; }
+        public RelayCommand GenerateBarCodeCommand { get; private set; }
         
         private ProductCategoryDTO _selectedCategory;
-        private IList<ProductDTO> _lstSearchProduct;
+        private IList<ProductDTO> _lstProducts;
         private string _barCode;
-        private string _name;
+        private string _productName;
         private string _description;
         private ProductStatusDTO _selectedStatus;
         private decimal _retailPrice;
@@ -41,8 +43,9 @@ namespace RetailPOS.ViewModel
         private decimal _size;
         private decimal _weight;
         private string _imagePath;
+        private string _name;
 
-        private ProductDTO _productName;
+        private ProductDTO _selectedProduct;
 
         #endregion
 
@@ -68,13 +71,13 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public string Name
+        public string ProductName
         {
-            get { return _name; }
+            get { return _productName; }
             set
             {
-                _name = value;
-                RaisePropertyChanged("Name");
+                _productName = value;
+                RaisePropertyChanged("ProductName");
             }
         }
 
@@ -208,56 +211,29 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        /// <summary>
-        /// binding the datagrid after produc selectiont
-        /// </summary>
-        ///<value>
-        ///Returns product detail
-        /// </value>
-        public ProductDTO SelectProductSetail
+        public string Name
         {
-
-            get { return _productName; }
+            get { return _name; }
             set
             {
-                _productName = value;
-                RaisePropertyChanged("SelectProductSetail");
-
-                if (SelectProductSetail != null)
-                {
-
-                    GetProducts(SelectProductSetail.Name);
-
-                }
+                _name = value;
+                RaisePropertyChanged("Name");
             }
         }
+
         /// <summary>
         /// Search for product by product name
         /// </summary>
         ///<value>
         ///Returns product detail
         /// </value>
-        public IList<ProductDTO> SearchProductList
+        public IList<ProductDTO> LstProducts
         {
-            get { return _lstSearchProduct; }
+            get { return _lstProducts; }
             set
             {
-                _lstSearchProduct = value;
-                RaisePropertyChanged("SearchProductList");
-            }
-        }
-
-        public ProductDTO SelectedProductName
-        {
-            get { return _productName; }
-            set
-            {
-                _productName = value;
-                RaisePropertyChanged("SelectedProductName");
-                if (SelectedProductName != null)
-                {
-                    GetProducts(SelectedProductName.Name);
-                }
+                _lstProducts = value;
+                RaisePropertyChanged("LstProducts");
             }
         }
         
@@ -281,13 +257,16 @@ namespace RetailPOS.ViewModel
             ////Get all active Product categories from database
             GetCategories();
 
-            SaveProduct = new RelayCommand(SaveProductSetting);
-            CancelProductSetting = new RelayCommand(CancelSetting);
+            SaveProductCommand = new RelayCommand(SaveProductSetting);
+            CancelProductCommand = new RelayCommand(CancelSetting);
+            SearchProductCommand = new RelayCommand(SearchProducts);
+            CancelSearchCommand = new RelayCommand(CancelSearch);
+            GenerateBarCodeCommand = new RelayCommand(GenerateBarCode);
+
+            LstProducts = new List<ProductDTO>();
+
             ///Get all products
-            SearchProductList = new List<ProductDTO>();
             GetProducts(string.Empty);
-            CancelProduct = new RelayCommand(CamcelProducts);
-            GenerateBarCode = new RelayCommand(GenerateBarCodeFunc);
         }
 
         #endregion
@@ -297,15 +276,26 @@ namespace RetailPOS.ViewModel
         /// <summary>
         /// Generates the bar code.
         /// </summary>
-        private void GenerateBarCodeFunc()
+        private void GenerateBarCode()
         {
-            
+            BarCode = AppConstants.COUNTRY_CODE + AppConstants.MANUFACTURER_CODE;
+        }
+
+        private void SearchProducts()
+        {
+            GetProducts(Name);
         }
 
         private void SaveProductSetting()
         {
             var productDetails = InitializeProductDetails();
             ServiceFactory.ServiceClient.SaveProductDetails(productDetails);
+
+            ////Get all product by name
+            GetProducts(string.Empty);
+
+            ////Clear the controls
+            ClearControls();
         }
 
         private ProductDTO InitializeProductDetails()
@@ -314,7 +304,7 @@ namespace RetailPOS.ViewModel
             {
                 Category_Id = SelectedCategory.Id,
                 BarCode = BarCode,
-                Name = Name,
+                Name = ProductName,
                 Description = Description,
                 Status_Id = SelectedStatus.Id,
                 Retail_Price = RetailPrice,
@@ -328,6 +318,26 @@ namespace RetailPOS.ViewModel
             };
         }
 
+        /// <summary>
+        /// Clear the controls
+        /// </summary>
+        private void ClearControls()
+        {
+            SelectedCategory = null;
+            BarCode = string.Empty;
+            ProductName = string.Empty;
+            Description = string.Empty;
+            SelectedStatus = null;
+            RetailPrice = 0;
+            WholeSalePrice = 0;
+            PurchasePrice = 0;
+            TaxRate = 0;
+            HasWarranty = false;
+            IsProductSoldLoose = false;
+            Size = 0;
+            Weight = 0;
+        }
+        
         private void CancelSetting()
         {
             AddProductViewModel viewModel = new AddProductViewModel();
@@ -359,22 +369,25 @@ namespace RetailPOS.ViewModel
                                                                          select item);
         }
 
-        ///Get all product by name
+        /// <summary>
+        /// Get all product by name
+        /// </summary>
+        /// <param name="productName"></param>
         private void GetProducts(string productName)
         {
-            SearchProductList = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
+            LstProducts = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
                                                                      select item).ToList();
-            SearchProductList = SearchProductList.Where(item => (productName == "" || productName == null ? item.Name == item.Name : item.Name == productName)).ToList();
 
+            if (!string.IsNullOrEmpty(productName))
+            {
+                LstProducts = LstProducts.Where(item => item.Name.Contains(productName)).ToList();
+            }
         }
 
-        private void CamcelProducts()
+        private void CancelSearch()
         {
-            {
-                Name = string.Empty;
-                GetProducts(string.Empty);
-                //AddCategoryViewModel viewModel = new AddCategoryViewModel();
-            }
+            Name = string.Empty;
+            GetProducts(string.Empty);
         }
 
         #endregion

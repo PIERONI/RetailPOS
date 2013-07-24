@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" />
   <xs:complexType name="OrderMasterDTO">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q1:BaseDTO">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Customer_id" nillable="true" type="xs:int" />
-          <xs:element minOccurs="0" name="Id" type="xs:short" />
-          <xs:element minOccurs="0" name="Invoice_id" nillable="true" type="xs:long" />
-          <xs:element minOccurs="0" name="Order_date" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Order_no" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Orderchilds" nillable="true" type="tns:ArrayOfOrderChildDTO" />
-          <xs:element minOccurs="0" name="Print_receipt_copies" type="xs:short" />
-          <xs:element minOccurs="0" name="Shop_code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Customer_Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Id" type="xs:long" />
+          <xs:element minOccurs="0" name="Invoice_Id" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="OrderChilds" nillable="true" type="tns:ArrayOfOrderChildDTO" />
+          <xs:element minOccurs="0" name="Order_Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Order_No" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Print_Receipt_Copies" type="xs:short" />
+          <xs:element minOccurs="0" name="Shop_Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="TotalAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TotalQuantity" type="xs:decimal" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -29,11 +33,14 @@
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects" base="q2:BaseDTO">
         <xs:sequence>
           <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
-          <xs:element minOccurs="0" name="Measure_unit_id" type="xs:short" />
-          <xs:element minOccurs="0" name="Order_id" type="xs:long" />
-          <xs:element minOccurs="0" name="Product_id" type="xs:short" />
-          <xs:element minOccurs="0" name="Quantity" type="xs:short" />
+          <xs:element minOccurs="0" name="Discount" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Measure_Unit_Id" type="xs:short" />
+          <xs:element minOccurs="0" name="Order_Id" type="xs:long" />
+          <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Product_Id" type="xs:short" />
+          <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
           <xs:element minOccurs="0" name="Taxed" type="xs:int" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="product" nillable="true" type="q3:ProductDTO" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

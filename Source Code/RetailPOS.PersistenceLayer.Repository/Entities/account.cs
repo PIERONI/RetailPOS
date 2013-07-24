@@ -27,28 +27,9 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual int customer_id
         {
-            get { return _customer_id; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_customer_id != value)
-                    {
-                        if (customer != null && customer.id != value)
-                        {
-                            customer = null;
-                        }
-                        _customer_id = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
+            get;
+            set;
         }
-        private int _customer_id;
     
         public virtual string gateway
         {
@@ -88,109 +69,8 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual Nullable<long> invoice_id
         {
-            get { return _invoice_id; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_invoice_id != value)
-                    {
-                        if (invoice != null && invoice.id != value)
-                        {
-                            invoice = null;
-                        }
-                        _invoice_id = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
-        }
-        private Nullable<long> _invoice_id;
-
-        #endregion
-        #region Navigation Properties
-    
-        public virtual customer customer
-        {
-            get { return _customer; }
-            set
-            {
-                if (!ReferenceEquals(_customer, value))
-                {
-                    var previousValue = _customer;
-                    _customer = value;
-                    Fixupcustomer(previousValue);
-                }
-            }
-        }
-        private customer _customer;
-    
-        public virtual invoice invoice
-        {
-            get { return _invoice; }
-            set
-            {
-                if (!ReferenceEquals(_invoice, value))
-                {
-                    var previousValue = _invoice;
-                    _invoice = value;
-                    Fixupinvoice(previousValue);
-                }
-            }
-        }
-        private invoice _invoice;
-
-        #endregion
-        #region Association Fixup
-    
-        private bool _settingFK = false;
-    
-        private void Fixupcustomer(customer previousValue)
-        {
-            if (previousValue != null && previousValue.accounts.Contains(this))
-            {
-                previousValue.accounts.Remove(this);
-            }
-    
-            if (customer != null)
-            {
-                if (!customer.accounts.Contains(this))
-                {
-                    customer.accounts.Add(this);
-                }
-                if (customer_id != customer.id)
-                {
-                    customer_id = customer.id;
-                }
-            }
-        }
-    
-        private void Fixupinvoice(invoice previousValue)
-        {
-            if (previousValue != null && previousValue.accounts.Contains(this))
-            {
-                previousValue.accounts.Remove(this);
-            }
-    
-            if (invoice != null)
-            {
-                if (!invoice.accounts.Contains(this))
-                {
-                    invoice.accounts.Add(this);
-                }
-                if (invoice_id != invoice.id)
-                {
-                    invoice_id = invoice.id;
-                }
-            }
-            else if (!_settingFK)
-            {
-                invoice_id = null;
-            }
+            get;
+            set;
         }
 
         #endregion

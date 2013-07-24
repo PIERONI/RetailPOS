@@ -23,6 +23,12 @@ namespace RetailPOS.BusinessLayer.Service.Settings
         IList<PromotionalOfferDTO> GetPromotionalOfferDetail();
 
         /// <summary>
+        /// Get waste management details from database
+        /// </summary>
+        /// <returns>returns list of Waste management details else empty list</returns>
+        IList<WasteManagementDTO> GetWasteManagementDetails();
+
+        /// <summary>
         /// Save Waste management details in database
         /// </summary>
         /// <param name="wasteManagementDetails">WasteManagement object to be saved</param>

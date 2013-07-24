@@ -6,8 +6,7 @@
                xmlns:my="clr-namespace:WpfLab.Controls;assembly=WpfLab.Controls"
               xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
               DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"             
-             mc:Ignorable="d" 
-             d:DesignHeight="0" d:DesignWidth="507">
+             mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -24,13 +23,14 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsSetAsdePopUpOpen, Mode=TwoWay}" Title="Select Customer" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+            <my:ModalDialogPopup Width="auto" IsOpen="{Binding IsSetAsidePopUpOpen, Mode=TwoWay}" Title="Select Customer" ShowCancelButton="False" FontWeight="Bold" Grid.ColumnSpan="2" ShowOKButton="False" >
                 <my:ModalDialogPopup.HostedContent>
                     <ContentControl>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="230"></ColumnDefinition>
-                                <ColumnDefinition Width="350"></ColumnDefinition>
+                                <ColumnDefinition Width="180"></ColumnDefinition>
+                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
@@ -43,11 +43,11 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="Customer Name:" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Visibility="{Binding IsVisibleOnAddNewCustomerClick}" />
-                            <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
-                           IsTextCompletionEnabled="False" SelectedItem="{Binding SelectedCustomer1,Mode=TwoWay,UpdateSourceTrigger=Default}" Text="{Binding CustomerName}"
+                            <TextBlock Text="Customer Name :" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" Visibility="{Binding IsVisibleOnAddNewCustomerClick}" />
+                            <toolkit:AutoCompleteBox Height="30" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
+                           IsTextCompletionEnabled="False" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=Default}" Text="{Binding CustomerName}"
                          ValueMemberPath="First_Name" Visibility="{Binding IsVisibleOnAddNewCustomerClick}"
-                          FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="0">
+                          FilterMode="StartsWith" VerticalAlignment="Top" Width="250" Grid.Column="1" Grid.Row="0">
                                 <toolkit:AutoCompleteBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Background="#DFF0D8">
@@ -57,39 +57,31 @@
                                             </Grid.RowDefinitions>
                                             <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="350"></TextBlock>
                                             <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
-                                                <TextBlock Text="Type: "  Foreground="#47896B"  Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
-                                                <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
                                                 <TextBlock Text="First Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                 <TextBlock Text="{Binding First_Name}" Foreground="#47896B"></TextBlock>
                                                 <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                 <TextBlock Text="{Binding Last_Name}" Foreground="#47896B"></TextBlock>
                                                 <TextBlock Text="Mobile: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                 <TextBlock Text="{Binding Mobile}" Foreground="#47896B"></TextBlock>
-
-                                                <TextBlock Text="Credit Limit: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
-                                                <TextBlock Text="{Binding Credit_Limit}" Foreground="#47896B"></TextBlock>
-                                                <TextBlock Text="Balance: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
-                                                <TextBlock Text="{Binding balance}" Foreground="#47896B"></TextBlock>
-
                                             </WrapPanel>
                                         </Grid>
                                     </DataTemplate>
                                 </toolkit:AutoCompleteBox.ItemTemplate>
                             </toolkit:AutoCompleteBox>
-                            <StackPanel Orientation="Horizontal" Grid.Column="1">
-                                <Button Height="30" Margin="190 0 0 0"  HorizontalAlignment="Right" Width="100" Command="{Binding IsVisibleCustomerField}" Visibility="{Binding IsVisibleOnAddNewCustomerClick}" >
+                            <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                <Button Height="53" Margin="0 0 0 0" HorizontalAlignment="Right" Width="100" Command="{Binding ShowHideAddCustomerCommand}" Visibility="{Binding IsVisibleOnAddNewCustomerClick}" >
                                     <DockPanel>
-                                        <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="15 0 0 0" Width="57">
-                            <Bold>Add New Customer</Bold>
+                                        <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="15 0 0 0" Width="65">
+                                            <Bold>Add New Customer</Bold>
                                         </TextBlock>
                                     </DockPanel>
                                 </Button>
                             </StackPanel>
                             <TextBlock Text="Customer Mobile :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" Visibility="{Binding IsVisibleOnAddNewCustomerClick}" />
-                            <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomermobile" ItemsSource="{Binding LstSearchCustomer}"
-                           IsTextCompletionEnabled="False" SelectedItem="{Binding SelectedCustomer1,Mode=TwoWay,UpdateSourceTrigger=Default}"
+                            <toolkit:AutoCompleteBox Height="30" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomermobile" ItemsSource="{Binding LstSearchCustomer}"
+                           IsTextCompletionEnabled="False" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=Default}"
                          ValueMemberPath="Mobile" Visibility="{Binding IsVisibleOnAddNewCustomerClick}"
-                          FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" Text="{Binding MobileNumber}">
+                          FilterMode="StartsWith" VerticalAlignment="Top" Width="250" Grid.Column="1" Grid.Row="1" Text="{Binding MobileNumber}">
                                 <toolkit:AutoCompleteBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Background="#DFF0D8">
@@ -99,39 +91,34 @@
                                             </Grid.RowDefinitions>
                                             <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="350"></TextBlock>
                                             <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="350">
-                                                <TextBlock Text="Type: "  Foreground="#47896B"  Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
-                                                <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
                                                 <TextBlock Text="First Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                 <TextBlock Text="{Binding First_Name}" Foreground="#47896B"></TextBlock>
                                                 <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                 <TextBlock Text="{Binding Last_Name}" Foreground="#47896B"></TextBlock>
                                                 <TextBlock Text="Mobile: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
                                                 <TextBlock Text="{Binding Mobile}" Foreground="#47896B"></TextBlock>
-                                                <TextBlock Text="Credit Limit: "  Foreground="#47896B" Margin="0 0 0 0" FontWeight="Bold"></TextBlock>
-                                                <TextBlock Text="{Binding Credit_Limit}" Foreground="#47896B"></TextBlock>
                                             </WrapPanel>
                                         </Grid>
                                     </DataTemplate>
                                 </toolkit:AutoCompleteBox.ItemTemplate>
                             </toolkit:AutoCompleteBox>
-                            <TextBlock Text="Enter Customer Detail :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBlock Text="Customer First Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBlock Text="Customer Last Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBlock Text="Customer Mobile :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBlock Text="Customer Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBlock Text="Customer Code :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" Visibility="{Binding IsTextBoxVisible}"/>
-                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerFirstName}" Grid.Column="1" Grid.Row="3" Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerLastName}" Grid.Column="1" Grid.Row="4"  Visibility="{Binding IsTextBoxVisible}"/>
-                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding MobileNumberNewCustomer}" Grid.Column="1" Grid.Row="5"  Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerEmail}" Grid.Column="1" Grid.Row="6"  Visibility="{Binding IsTextBoxVisible}" />
-                            <TextBox  HorizontalAlignment="Left" Margin="11,8,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding CustomerCode}" Grid.Column="1" Grid.Row="7"  Visibility="{Binding IsTextBoxVisible}" />
-
+                            <TextBlock Text="Enter Customer Detail" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="160" Grid.Row="2" Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBlock Text="Code :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" Visibility="{Binding IsTextBoxVisible}"/>
+                            <TextBlock Text="First Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBlock Text="Last Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBlock Text="Mobile :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBlock Text="Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBox  HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" Height="30" Text="{Binding Code}" Grid.Column="1" Grid.Row="3"  Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBox  HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" Height="30" Text="{Binding FirstName}" Grid.Column="1" Grid.Row="4" Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBox  HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" Height="30" Text="{Binding LastName}" Grid.Column="1" Grid.Row="5"  Visibility="{Binding IsTextBoxVisible}"/>
+                            <TextBox  HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" Height="30" Text="{Binding NewMobileNumber}" Grid.Column="1" Grid.Row="6"  Visibility="{Binding IsTextBoxVisible}" />
+                            <TextBox  HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" Height="30" Text="{Binding Email}" Grid.Column="1" Grid.Row="7" Visibility="{Binding IsTextBoxVisible}" />
                             <StackPanel Grid.ColumnSpan="2" Grid.Row="8" Margin="12,12,0,0" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}">
-                                <Button Content="Select Customer" Width="150" Height="40" Command="{Binding SaveNewOrder}" Visibility="{Binding IsVisibleOnAddNewCustomerClick}">
+                                <Button Content="Select Customer" Width="150" Height="40" Command="{Binding SaveSetAsideOrderCommand}" Visibility="{Binding IsVisibleOnAddNewCustomerClick}">
                                 </Button>
                             </StackPanel>
                             <StackPanel Grid.ColumnSpan="2" Grid.Row="8" Margin="162,12,0,0">
-                                <Button  Content="Add New Customer" Width="150" Height="40" Command="{Binding AddNewCustomer}" Visibility="{Binding IsTextBoxVisible}">
+                                <Button Content="Add New Customer" Width="150" Height="40" Command="{Binding AddNewCustomerCommand}" Visibility="{Binding IsTextBoxVisible}">
                                 </Button>
                             </StackPanel>
                         </Grid>
@@ -170,10 +157,8 @@
                             </Grid.RowDefinitions>
                             <Label Content="Product Name: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="0"  Width="79"></Label>
                             <TextBlock  Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="8,12,0,0"  VerticalAlignment="Top" Width="107" Grid.Row="0" Text="{Binding ProductName,Mode=TwoWay}" />
-
                             <Label Content="Quantity: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="1"  Width="69"></Label>
                             <TextBox Name="txtquantity" Grid.Column="1" Grid.Row="1" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding ProductQuantity,Mode=TwoWay}"></TextBox>
-
                             <Label Content="Enter Discount: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="2"  Width="85"></Label>
                             <TextBox Name="txtamount" Grid.Column="1" Grid.Row="2" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding ProductDiscount}"></TextBox>
                             <ComboBox Grid.Row="2" ItemsSource="{Binding LstDiscountType}" SelectedValuePath="Id" SelectedItem="{Binding SelectedDiscountType,Mode=TwoWay}" Grid.Column="1" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="180,12,0,0">
@@ -183,28 +168,14 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
-
                             <StackPanel Grid.ColumnSpan="2" Grid.Row="3" Margin="12,12,0,0">
-                                <Button  Content="Update" Width="170" Height="40" Command="{Binding EditProductCommand}">                                  
+                                <Button  Content="Update" Width="170" Height="40" Command="{Binding EditProductCommand}">
                                 </Button>
                             </StackPanel>
-
                         </Grid>
                     </ContentControl>
                 </my:ModalDialogPopup.HostedContent>
             </my:ModalDialogPopup>
-            <!--<my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsEditErrorMessage, Mode=TwoWay}" Title="Attention" FontWeight="Bold" FontStyle="Normal"  ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="True" >
-                <my:ModalDialogPopup.HostedContent>
-                    <ContentControl>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Label Content="Please Select Any Product" Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="69" Background="#FFF50000"></Label>
-                        </Grid>
-                    </ContentControl>
-                </my:ModalDialogPopup.HostedContent>
-            </my:ModalDialogPopup>-->
             <Button Height="53" Margin="0"  HorizontalAlignment="Right" Width="95" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Command="{Binding DeleteSelectedItem}">
                 <DockPanel>
                     <Image Source="../../../Images/edit-delete-icon.png" Width="28" />
@@ -222,6 +193,5 @@
                 </DockPanel>
             </Button>
         </StackPanel>
-       
     </Grid>
 </UserControl>

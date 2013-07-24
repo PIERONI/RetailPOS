@@ -1,17 +1,18 @@
 ﻿#region Using directives
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
 using RetailPOS.Utility;
 using RetailPOS.View;
-using RetailPOS.RetailPOSService;
-using RetailPOS.Core;
-using System.Windows;
+using RetailPOS.Constants;
 
 #endregion
 
@@ -19,13 +20,11 @@ namespace RetailPOS.ViewModel
 {
     public class ProductGridViewModel : ViewModelBase
     {
-        #region Declare Public and private Data member
+        #region Declare Public and Private Data member
 
         public IList<DiscountType> LstDiscountType { get; private set; }
-        private IList<OrderMasterDTO> _lstOrderMasterType;
-        private IList<OrderChildDTO> _lstOrderChildType;
-        private ObservableCollection<ProductDTO> _productDetails;
-        private ObservableCollection <CustomerDTO> _customerDetail;
+        public IList<CustomerDTO> LstSearchCustomer { get; private set; }
+
         public static List<int> LstSelectedItem { get; set; }
 
         public RelayCommand ExitCommand { get; private set; }
@@ -35,78 +34,97 @@ namespace RetailPOS.ViewModel
         public RelayCommand DeleteSelectedItem { get; private set; }
         public RelayCommand OpenEditProductEntryPopUp { get; private set; }
         public RelayCommand EditProductCommand { get; private set; }
+        public RelayCommand NewOrderCommand { get; private set; }
+        public RelayCommand SaveOrderInQueueCommand { get; private set; }
+        
         /// <summary>
         /// To Make New Customer Field Visible For Creating New User
         /// </summary>
-        public RelayCommand IsVisibleCustomerField { get; private set; }
+        public RelayCommand ShowHideAddCustomerCommand { get; private set; }
+
         /// <summary>
         /// To save The Data for Order Detail in OrderMaster
         /// </summary>
-        public RelayCommand SaveSetAsideOrderDetail { get; private set; }
+        public RelayCommand SaveSetAsideOrderCommand { get; private set; }
+
         /// <summary>
         /// For SetAsideOrder Button
         /// </summary>
         public RelayCommand OpenSetAsideCustomerPopUp { get; private set; }
 
         /// <summary>
-        /// To save Order Detail with Items in Database
-        /// </summary>
-        public RelayCommand SaveNewOrder { get; private set; }
-        /// <summary>
         /// Detail Of New Customer To be Saved
         /// </summary>
-     
-        public RelayCommand AddNewCustomer { get; private set; }
+        public RelayCommand AddNewCustomerCommand { get; private set; }
+
         /// <summary>
         /// To Bind the product grid on selecting the customer for Open Order
         /// </summary>
         public RelayCommand<CustomerDTO> BindProductGridForOpenOrder { get; private set; }
-     
-      
+
+        /// <summary>
+        /// To Bind the product grid on selecting the orders saved in queue
+        /// </summary>
+        public RelayCommand<OrderMasterDTO> OrderInQueueCommand { get; private set; }
+
         private DiscountType _selectedDiscount;
         private ProductDTO _selectedProduct;
-        public IList<CustomerDTO> LstSearchCustomer { get; private set; }
+
+        private IList<OrderMasterDTO> _lstOrderMasterType;
+        private IList<OrderChildDTO> _lstOrderItems;
+        private ObservableCollection<ProductDTO> _productDetails;
+        private ObservableCollection<CustomerDTO> _customerDetail;
+        
         private string _total;
         private string _productName;
         private decimal _productQuantity;
         private decimal _productDiscount;
-        private bool _isEditProductEntryPopupOpen;      
-        private string _mobileNumberNewCustomer;
+        private bool _isEditProductEntryPopupOpen;
+        
         /// <summary>
         /// To make textblock visibility true or false on add new customer button click
         /// </summary>
-        private string  _isTextBoxVisible;
-        private string _isVisibleOnAddNewCustomerClick;
-        //private CustomerDTO _selectedCustomer;
-        private CustomerDTO _selectedCustomer1;
+        private Visibility _isTextBoxVisible;
+        private Visibility _isVisibleOnAddNewCustomerClick;
         private decimal _customerBalance;
-        private string _customerCode;
+        
         private string _mobileNumber;
-        private Visibility _isVisibleCustomerInfo;
         private string _customerName;
-        private string _customerFirstName;
-        private string _customerLastName;
+        private Visibility _isVisibleCustomerInfo;
+        
+        private string _code;
+        private string _firstName;
+        private string _lastName;
         private string _email;
+        private string _newMobileNumber;
+
+        private CustomerDTO _selectedCustomer;
+
         /// <summary>
         /// To open SetAsideOrder Customer Popup
         /// </summary>
         private bool _isSetAsidePopUpOpen;
-        
+
         bool IsRefersh { get; set; }
 
         #endregion
 
         #region Public Properties
 
-        ////public CustomerDTO SelectedCustomer
-        ////{
-        ////    get { return _selectedCustomer; }
-        ////    set
-        ////    {
-        ////        _selectedCustomer = value;
-        ////        RaisePropertyChanged("SelectedCustomer");
-        ////    }
-        ////}
+        public OrderMasterDTO SelectedOrder { get; set; }
+        public ProductDTO CurrentProduct { get; set; }
+
+        public CustomerDTO SelectedCustomer
+        {
+            get { return _selectedCustomer; }
+            set
+            {
+                _selectedCustomer = value;
+                RaisePropertyChanged("SelectedCustomer");
+                
+                BindCustomer();
+            }
+        }
 
         public DiscountType SelectedDiscountType
         {
@@ -127,6 +145,7 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("LstProductDetails");
             }
         }
+
         /// <summary>
         /// For entering customerId in ordermaster table
         /// </summary>
@@ -139,8 +158,6 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("LstCustomerDetail");
             }
         }
-
-        public ProductDTO CurrentProduct { get; set; }
 
         public ProductDTO SelectedProduct
         {
@@ -157,7 +174,7 @@ namespace RetailPOS.ViewModel
 
                 UpdateProduct();
             }
-        }     
+        }
 
         private void UpdateProduct()
         {
@@ -187,7 +204,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public string   MobileNumber
+        public string MobileNumber
         {
             get { return _mobileNumber; }
             set
@@ -206,7 +223,6 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("CustomerName");
             }
         }
-
 
         public string Total
         {
@@ -228,20 +244,20 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public string MobileNumberNewCustomer
+        public string NewMobileNumber
         {
-            get { return _mobileNumberNewCustomer; }
+            get { return _newMobileNumber; }
             set
             {
-                _mobileNumberNewCustomer = value;
-                RaisePropertyChanged("MobileNumberNewCustomer");
+                _newMobileNumber = value;
+                RaisePropertyChanged("NewMobileNumber");
             }
         }
 
         /// <summary>
         /// To make textblock visibility true or false on add new customer button click
         /// </summary>
-        public string IsTextBoxVisible
+        public Visibility IsTextBoxVisible
         {
             get { return _isTextBoxVisible; }
             set
@@ -250,10 +266,11 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("IsTextBoxVisible");
             }
         }
+
         /// <summary>
         /// To make Fields visibility true or false on add new customer button click
         /// </summary>
-        public string IsVisibleOnAddNewCustomerClick
+        public Visibility IsVisibleOnAddNewCustomerClick
         {
             get { return _isVisibleOnAddNewCustomerClick; }
             set
@@ -261,7 +278,7 @@ namespace RetailPOS.ViewModel
                 _isVisibleOnAddNewCustomerClick = value;
                 RaisePropertyChanged("IsVisibleOnAddNewCustomerClick");
             }
-        }              
+        }
 
         public string ProductName
         {
@@ -275,7 +292,7 @@ namespace RetailPOS.ViewModel
 
         public decimal ProductQuantity
         {
-            get{return _productQuantity;}
+            get { return _productQuantity; }
             set
             {
                 _productQuantity = value;
@@ -293,64 +310,56 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public bool IsSetAsdePopUpOpen
+        public bool IsSetAsidePopUpOpen
         {
             get { return _isSetAsidePopUpOpen; }
             set
             {
                 _isSetAsidePopUpOpen = value;
-                RaisePropertyChanged("IsSetAsdePopUpOpen");
+                RaisePropertyChanged("IsSetAsidePopUpOpen");
             }
         }
 
-        public CustomerDTO SelectedCustomer1
+        public string Code
         {
-            get { return _selectedCustomer1; }
+            get { return _code; }
             set
             {
-                _selectedCustomer1 = value;
-                RaisePropertyChanged("SelectedCustomer1");
-                BindCustomer();
-            }
-        }
-        public string CustomerCode
-        {
-            get { return _customerCode; }
-            set
-            {
-                _customerCode = value;
-                RaisePropertyChanged("CustomerCode");
-            }
-        }
-        public string CustomerFirstName
-        {
-            get { return _customerFirstName; }
-            set
-            {
-                _customerFirstName = value;
-                RaisePropertyChanged("CustomerFirstName");
+                _code = value;
+                RaisePropertyChanged("Code");
             }
         }
 
-        public string CustomerLastName
+        public string FirstName
         {
-            get { return _customerLastName; }
+            get { return _firstName; }
             set
             {
-                _customerLastName = value;
-                RaisePropertyChanged("CustomerLastName");
+                _firstName = value;
+                RaisePropertyChanged("FirstName");
             }
         }
 
-        public string CustomerEmail
+        public string LastName
+        {
+            get { return _lastName; }
+            set
+            {
+                _lastName = value;
+                RaisePropertyChanged("LastName");
+            }
+        }
+
+        public string Email
         {
             get { return _email; }
             set
             {
                 _email = value;
-                RaisePropertyChanged("CustomerEmail");
+                RaisePropertyChanged("Email");
             }
         }
+
         /// <summary>
         /// Gets or sets list of ordermaster to bind the datagrid
         /// </summary>
@@ -366,24 +375,26 @@ namespace RetailPOS.ViewModel
                 RaisePropertyChanged("LstOrderMasterType");
             }
         }
+
         /// <summary>
         /// Gets or sets list of orderchild to bind the datagrid
         /// </summary>
         /// <value>
         /// The list of orderchild.
         /// </value>
-        public IList<OrderChildDTO> LstOrderChildType
+        public IList<OrderChildDTO> LstOrderItems
         {
-            get { return _lstOrderChildType; }
+            get { return _lstOrderItems; }
             set
             {
-                _lstOrderChildType = value;
-                RaisePropertyChanged("LstOrderChildType");
+                _lstOrderItems = value;
+                RaisePropertyChanged("LstOrderItems");
             }
         }
+
         #endregion
 
-        #region Private Methods
+        #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductGridViewModel"/> class.
@@ -395,8 +406,11 @@ namespace RetailPOS.ViewModel
             LstDiscountType = new ObservableCollection<DiscountType>();
             LstSearchCustomer = new List<CustomerDTO>();
             LstOrderMasterType = new List<OrderMasterDTO>();
-            LstOrderChildType = new List<OrderChildDTO>();
+            LstOrderItems = new List<OrderChildDTO>();
+
             Mediator.Register("SetSelectedProduct", SetSelectedProduct);
+            Mediator.Register("SetSelectedCustomer", SetSelectedCustomer);
+            Mediator.Register("SetSelectedOrder", SetSelectedOrder);
 
             GetDiscountType();
 
@@ -408,98 +422,48 @@ namespace RetailPOS.ViewModel
             OpenEditProductEntryPopUp = new RelayCommand(OpenEditProductPopUp);
             EditProductCommand = new RelayCommand(EditDataGridCommand);
             OpenSetAsideCustomerPopUp = new RelayCommand(OpenSetAsidePopUp);
-            SaveNewOrder = new RelayCommand (SaveOrderWithItems);
-            AddNewCustomer = new RelayCommand(AddNewCustomerDetail);
-            GetSearchAttributes();
-            IsVisibleCustomerField = new RelayCommand(VisibleCustomerField);
-            IsVisibleOnAddNewCustomerClick = "Visible";
+            SaveSetAsideOrderCommand = new RelayCommand(SaveOrderWithItems);
+            AddNewCustomerCommand = new RelayCommand(AddNewCustomer);
             BindProductGridForOpenOrder = new RelayCommand<CustomerDTO>(BindProductGridOnSelectCustomer);
-           
-            //SaveSetAsideOrderDetail = new RelayCommand(SaveOrderDetail);
+            ShowHideAddCustomerCommand = new RelayCommand(ShowHideAddCustomerFields);
+            NewOrderCommand = new RelayCommand(ResetControls);
+            SaveOrderInQueueCommand = new RelayCommand(SaveOrderInQueue);
+            OrderInQueueCommand = new RelayCommand<OrderMasterDTO>(BindProductGridWithOrdersInQueue);
+
+            GetSearchAttributes();
+
+            IsVisibleOnAddNewCustomerClick = Visibility.Visible;
+            
+            ClearControls();
         }
+
+        #endregion
+
+        #region Private Methods
 
         /// <summary>
         /// To Make New Customer Field Visible For Creating New User
         /// </summary>
-
-        private void VisibleCustomerField()
+        private void ShowHideAddCustomerFields()
         {
+            IsTextBoxVisible = Visibility.Visible;
+            IsVisibleOnAddNewCustomerClick = Visibility.Collapsed;
 
-            IsTextBoxVisible = "Visible";
-            IsVisibleOnAddNewCustomerClick = "Collapsed";
-        }       
-    
+            Code = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            NewMobileNumber = string.Empty;
+            Email = string.Empty;
+        }
+
         /// <summary>
         /// Fills the list search.
         /// </summary>
         private void GetSearchAttributes()
         {
-           
             LstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                       select item).ToList();
         }
-
-
-
-        /// <summary>
-        /// To Save Set aside order detail and customer detail in ordermaster and orderchild
-        /// </summary>      
-        private void SaveOrderWithItems()
-        {
-           // CustomerDTO selectedCustomer = (CustomerDTO)args;
-
-            if (SelectedCustomer1 != null)
-            {
-                var OrderDetail = InitializeSaveOrderWithItems(SelectedCustomer1);
-                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
-            }
-        }
-
-        private OrderMasterDTO InitializeSaveOrderWithItems(CustomerDTO SelectedCustomer1)
-        {
-            return new OrderMasterDTO
-            {
-                Order_no="0001",
-                Order_date= System.DateTime.Now,
-                Customer_id = SelectedCustomer1.Id,
-                Shop_code = "PSD-01",
-                Invoice_id=64,
-                Print_receipt_copies=0,
-                Orderchilds = InitializeOrderChildDetail()
-            
-            };
-        }
-
-        /// <summary>
-        /// Initialized order child details to be saved to database
-        /// </summary>
-        /// <returns></returns>
-        private List<OrderChildDTO> InitializeOrderChildDetail()
-        {
-
-            List<OrderChildDTO> lstOrderChildDetail=(from item in LstProductDetails select
-                                                       new OrderChildDTO
-                                                           {
-                                                              Order_id=0,
-                                                              Product_id=item.Id,
-                                                              Quantity=1,
-                                                              Measure_unit_id=3,
-                                                              Amount=(decimal)item.Retail_Price,
-                                                              Taxed=1                                                           
-                                                           }).ToList();
-            return lstOrderChildDetail;
-        }
-
-
-        /// <summary>
-        /// To Save Set aside product detail and customer detail in ordermaster
-        /// </summary>
-        //private void SaveOrderDetail()
-        //{
-        //    var orderdetail = InitializeSaveOrderDetail();
-        //    ServiceFactory.ServiceClient.(orderdetail);      
-        
-        //}
 
         private void EditDataGridCommand()
         {
@@ -554,12 +518,21 @@ namespace RetailPOS.ViewModel
                 ProductQuantity = SelectedProduct.Quantity;
                 ProductDiscount = 0;
             }
-                     
         }
 
         private void SetSelectedProduct(object args)
         {
             CurrentProduct = (ProductDTO)args;
+        }
+
+        private void SetSelectedCustomer(object args)
+        {
+            SelectedCustomer = (CustomerDTO)args;
+        }
+
+        private void SetSelectedOrder(object args)
+        {
+            SelectedOrder = (OrderMasterDTO)args;
         }
 
         private void DeleteItem()
@@ -572,11 +545,11 @@ namespace RetailPOS.ViewModel
 
         private void ClearGridProduct()
         {
-            LstProductDetails.Clear(); 
+            LstProductDetails.Clear();
         }
 
         private void LogoutApplication()
-        {  
+        {
             var loginWindow = new LoginWindow();
             loginWindow.Show();
             Dashboard._Dashboard.Close();
@@ -587,11 +560,11 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void OpenSetAsidePopUp()
         {
-            if (LstProductDetails.Count>0)
+            if (LstProductDetails.Count > 0)
             {
-                IsSetAsdePopUpOpen = true;
-                IsTextBoxVisible="Collapsed";
-                IsVisibleOnAddNewCustomerClick = "Visible";
+                IsSetAsidePopUpOpen = true;
+                IsTextBoxVisible = Visibility.Collapsed;
+                IsVisibleOnAddNewCustomerClick = Visibility.Visible;
             }
         }
 
@@ -613,7 +586,7 @@ namespace RetailPOS.ViewModel
 
             if (isExist == null)
             {
-                LstProductDetails.Add(new ProductDTO 
+                LstProductDetails.Add(new ProductDTO
                 {
                     Id = CurrentProduct.Id,
                     Name = CurrentProduct.Name,
@@ -633,122 +606,197 @@ namespace RetailPOS.ViewModel
                 LstProductDetails[i].Amount = (found.Retail_Price * quantity) - found.Discount;
                 CollectionViewSource.GetDefaultView(this.LstProductDetails).Refresh();
             }
-            
+
             var amount = LstProductDetails.Select(u => u.Amount).Sum();
             Total = "Total : " + amount.ToString();
 
-            Mediator.NotifyColleagues("ClosePopUpWindow", false);
+            Mediator.NotifyColleagues("CloseProductPopUpWindow", false);
         }
+
         /// <summary>
         /// Binds the customer.
         /// </summary>
         private void BindCustomer()
         {
-            if (SelectedCustomer1 == null)
+            if (SelectedCustomer == null)
             {
                 isVisibleCustomerInfo = Visibility.Collapsed;
                 return;
             }
 
             isVisibleCustomerInfo = Visibility.Visible;
-            CustomerBalance = SelectedCustomer1.balance;
-            MobileNumber = SelectedCustomer1.Mobile;
-            CustomerName = SelectedCustomer1.First_Name + " " + SelectedCustomer1.Last_Name;
-
+            CustomerBalance = SelectedCustomer.Balance;
+            MobileNumber = SelectedCustomer.Mobile;
+            CustomerName = SelectedCustomer.First_Name + " " + SelectedCustomer.Last_Name;
         }
 
+        /// <summary>
+        /// Reset Controls to their original position    
+        /// </summary>
+        private void ResetControls()
+        {
+            IsSetAsidePopUpOpen = false;
+            LstProductDetails.Clear();
+
+            ClearControls();
+
+            ViewModelLocator.Cleanup(ViewModelType.MenuControl);
+        }
+
+        private void ClearControls()
+        {
+            Total = "Total : " + 0;
+        }
 
         /// <summary>
         /// Initialize customer details to be saved to database
         /// </summary>
         /// <returns></returns>
-
-        private void AddNewCustomerDetail()
+        private void AddNewCustomer()
         {
-            if (SelectedCustomer1 == null)
+            if (SelectedCustomer == null)
             {
                 var customerDetail = InitializwSaveCustomerDetail();
-                ServiceFactory.ServiceClient.SaveCustomerDetail(customerDetail);
-                var OrderDetail = InitializeSaveOrderWithItemsWithNewCustomer();
+                int customerId = ServiceFactory.ServiceClient.SaveCustomerDetail(customerDetail);
+
+                var OrderDetail = InitializeOrderItems(customerId, OrderStatus.SetAsideOrder);
                 ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
-           
-                IsVisibleOnAddNewCustomerClick = "Visible";
-                IsTextBoxVisible = "Collapsed";
+
+                ////Reset Controls to their original position
+                ResetControls();
             }
+        }
+
+        /// <summary>
+        /// To Save order in Queue and process next order
+        /// </summary>
+        private void SaveOrderInQueue()
+        {
+            var OrderDetail = InitializeOrderItems(0, OrderStatus.OrderInQueue);
+            ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+
+            ////Reset Controls to their original position
+            ResetControls();
+        }
+
+        /// <summary>
+        /// To Save Set aside order detail and customer detail in ordermaster and orderchild
+        /// </summary>
+        private void SaveOrderWithItems()
+        {
+            if (SelectedCustomer != null)
+            {
+                var OrderDetail = InitializeOrderItems(SelectedCustomer.Id, OrderStatus.SetAsideOrder);
+                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+
+                ////Reset Controls to their original position
+                ResetControls();
+            }
+        }
+
+        private OrderMasterDTO InitializeOrderItems(int customerId, OrderStatus orderStatus)
+        {
+            return new OrderMasterDTO
+            {
+                Order_No = "0001",
+                Order_Date = DateTime.Now,
+                Customer_Id = customerId,
+                Shop_Code = "PSD-01",
+                Invoice_Id = 0,
+                Print_Receipt_Copies = 0,
+                Status = (short)orderStatus,
+                OrderChilds = InitializeOrderItemDetails()
+            };
+        }
+
+        /// <summary>
+        /// Initialized order child details to be saved to database
+        /// </summary>
+        /// <returns></returns>
+        private List<OrderChildDTO> InitializeOrderItemDetails()
+        {
+            List<OrderChildDTO> lstOrderChildDetail = (from item in LstProductDetails
+                                                       select new OrderChildDTO
+                                                       {
+                                                           Order_Id = 0,
+                                                           Product_Id = item.Id,
+                                                           Quantity = item.Quantity,
+                                                           Measure_Unit_Id = 3,
+                                                           Amount = (decimal)item.Amount,
+                                                           Discount = item.Discount,
+                                                           Taxed = 1
+                                                       }).ToList();
+            return lstOrderChildDetail;
         }
 
         ///To save new customer detail
         private CustomerDTO InitializwSaveCustomerDetail()
-        {         
-            
-                return new CustomerDTO
-                {
-                    Code = CustomerCode,
-                    First_Name = CustomerFirstName,
-                    Last_Name = CustomerLastName,
-                    Email = CustomerEmail,
-                    Mobile = MobileNumberNewCustomer,
-                    Status_Id = 1,
-                    Payment_Period = 0,
-                    Credit_Limit = 0,
-                    balance = 0
-                };
-            
-        }
-        /// <summary>
-        /// To save new order detail
-        /// </summary>
-        /// <returns>
-        /// New order master DTO
-        /// </returns>
-        private OrderMasterDTO InitializeSaveOrderWithItemsWithNewCustomer()
         {
-            return new OrderMasterDTO
+            return new CustomerDTO
             {
-                Order_no = "0001",
-                Order_date = System.DateTime.Now,
-                Customer_id = 4,
-                Shop_code = "PSD-01",
-                Invoice_id = 64,
-                Print_receipt_copies = 0,
-                Orderchilds = InitializeOrderChildDetailWithNewCustomer()
+                Code = Code,
+                First_Name = FirstName,
+                Last_Name = LastName,
+                Email = Email,
+                Mobile = NewMobileNumber,
+                Status_Id = 1,
+                Payment_Period = 0,
+                Credit_Limit = 0,
+                Balance = 0
+            };
+        }
 
-            };         
-           
-        }
-        /// <summary>
-        /// Initialized order child details to be saved to database wuth new customer detail
-        /// </summary>
-        /// <returns></returns>
-        private List<OrderChildDTO> InitializeOrderChildDetailWithNewCustomer()
+        private void BindProductGridWithOrdersInQueue(object orderDetails)
         {
-            List<OrderChildDTO> lstOrderChildDetail = (from item in LstProductDetails
-                                                       select
-                                                           new OrderChildDTO
-                                                           {
-                                                               Order_id = 0,
-                                                               Product_id = item.Id,
-                                                               Quantity = 1,
-                                                               Measure_unit_id = 3,
-                                                               Amount = (decimal)item.Retail_Price,
-                                                               Taxed = 1
-                                                           }).ToList();
-            return lstOrderChildDetail;
+            if (SelectedOrder != null)
+            {
+                LstOrderItems = ServiceFactory.ServiceClient.GetOrderItemsByOrderId(((OrderMasterDTO)SelectedOrder).Id);
+
+                LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderItems
+                                                                         select new ProductDTO
+                                                                         {
+                                                                             Id = item.Product_Id,
+                                                                             Name = item.ProductName,
+                                                                             Quantity = item.Quantity,
+                                                                             Retail_Price = item.Amount,
+                                                                             Discount = item.Discount ?? 0,
+                                                                             Amount = item.Amount - (item.Discount ?? 0)
+                                                                         });
+
+                var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                Total = "Total : " + amount.ToString();
+
+                Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
+            }
         }
-      
+
         /// <summary>
         /// To bind product grid on selecting customer in open order
         /// </summary>
         private void BindProductGridOnSelectCustomer(object customerDetails)
         {
-            if (customerDetails != null)
+            if (SelectedCustomer != null)
             {
-                //LstOrderMasterType = new ObservableCollection<OrderMasterDTO>(from item in ServiceFactory.ServiceClient.GetOrderByCustomerId(((CustomerDTO)selectedCustomer).Id)
-                //                                                              select item).ToList();
-                //LstOrderChildType = LstOrderMasterType[0].Orderchilds;
+                LstOrderMasterType = ServiceFactory.ServiceClient.GetSetAsideOrders(((CustomerDTO)SelectedCustomer).Id);
+                
+                LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderMasterType[0].OrderChilds
+                                                                         select new ProductDTO
+                                                                         {
+                                                                             Id = item.Product_Id,
+                                                                             Name = item.ProductName,
+                                                                             Quantity = item.Quantity,
+                                                                             Retail_Price = item.Amount,
+                                                                             Discount = item.Discount ?? 0,
+                                                                             Amount = item.Amount - (item.Discount ?? 0)
+                                                                         });
             }
+
+            var amount = LstProductDetails.Select(u => u.Amount).Sum();
+            Total = "Total : " + amount.ToString();
+
+            Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
         }
-      
+
         #endregion
     }
 

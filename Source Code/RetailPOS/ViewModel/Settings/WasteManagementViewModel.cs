@@ -5,22 +5,32 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
+using System.Collections.Generic;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 #endregion
 
-namespace RetailPOS.ViewModel
+namespace RetailPOS.ViewModel.Settings
 {
     public class WasteManagementViewModel : ViewModelBase
     {
         #region Declare Public and Private Data member
 
+        public ObservableCollection<ProductDTO> LstProduct { get; set; }
+
         public RelayCommand SetWeightToVisibile { get; private set; }
         public RelayCommand SetWeightToInVisibile { get; private set; }
-        public RelayCommand SaveWasteManagement { get; private set; }
-        public RelayCommand CancelWasteManagement { get; private set; }
+        public RelayCommand SaveWasteManagementCommand { get; private set; }
+        public RelayCommand CancelWasteManagementCommand { get; private set; }
+        public RelayCommand SearchCommand { get; private set; }
+        public RelayCommand CancelSearchCommand { get; private set; }
+
+        private IList<WasteManagementDTO> _lstWasteManagement;
+        private ProductDTO _selectedProduct;
 
         private Visibility _isWeightVisible;
-        private string _productName;
+        private string _name;
         private string _barCode;
         private decimal _weight;
         private int _quantity;
@@ -30,13 +40,23 @@ namespace RetailPOS.ViewModel
 
         #region Public Properties
 
-        public string ProductName
+        public IList<WasteManagementDTO> LstWasteManagement
         {
-            get { return _productName; }
+            get { return _lstWasteManagement; }
             set
             {
-                _productName = value;
-                RaisePropertyChanged("ProductName");
+                _lstWasteManagement = value;
+                RaisePropertyChanged("LstWasteManagement");
+            }
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
             }
         }
 
@@ -90,31 +110,85 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public ProductDTO SelectedProduct
+        {
+            get { return _selectedProduct; }
+            set
+            {
+                _selectedProduct = value;
+                RaisePropertyChanged("SelectedProduct");
+            }
+        }
+
         #endregion
         
         #region Constructor
 
         public WasteManagementViewModel()
         {
+            LstProduct = new ObservableCollection<ProductDTO>();
+
             SetWeightToVisibile = new RelayCommand(ShowWeight);
             SetWeightToInVisibile = new RelayCommand(HideWeight);
-            SaveWasteManagement = new RelayCommand(SaveWasteManagementSetting);
-            CancelWasteManagement = new RelayCommand(CancelSetting);
+            SaveWasteManagementCommand = new RelayCommand(SaveWasteManagement);
+            CancelWasteManagementCommand = new RelayCommand(CancelSetting);
+            SearchCommand = new RelayCommand(SearchWasteManagement);
+            CancelSearchCommand = new RelayCommand(CancelSearch);
+
+            ////Get waste management details from database
+            GetWasteManagementDetails(string.Empty);
+
+            GetProductDetails();
 
             HideWeight();
         }
 
         #endregion
 
+        private void GetProductDetails()
+        {
+            LstProduct = new ObservableCollection<ProductDTO>(ServiceFactory.ServiceClient.GetAllProducts());
+        }
+
         private void CancelSetting()
         {
             WasteManagementViewModel viewModel = new WasteManagementViewModel();
         }
 
-        private void SaveWasteManagementSetting()
+        private void CancelSearch()
+        {
+            ClearControls();
+
+            ////Get waste management details from database
+            GetWasteManagementDetails(string.Empty);
+        }
+
+        private void SearchWasteManagement()
+        {
+            ////Get waste management details from database
+            GetWasteManagementDetails(Name);
+        }
+
+        ////Get waste management details from database
+        private void GetWasteManagementDetails(string name)
+        {
+            LstWasteManagement = ServiceFactory.ServiceClient.GetWasteManagementDetails();
+
+            if(!string.IsNullOrEmpty(name))
+            {
+                LstWasteManagement = (from item in LstWasteManagement
+                                      where item.ProductName == name
+                                      select item).ToList();
+            }
+        }
+
+        private void SaveWasteManagement()
         {
             var wasteManagementDetails = InitializeWasteManagementDetails();
             ServiceFactory.ServiceClient.SaveWasteManagement(wasteManagementDetails);
+
+            ////Get waste management details from database
+            GetWasteManagementDetails(string.Empty);
 
             ClearControls();
         }
@@ -124,7 +198,7 @@ namespace RetailPOS.ViewModel
             return new WasteManagementDTO
             {
                 Id = 0,
-                ProductId = 1,
+                ProductId = SelectedProduct.Id,
                 Quantity = Quantity,
                 Weight = Weight
             };
@@ -135,10 +209,11 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void ClearControls()
         {
+            SelectedProduct = null;
             Quantity = 0;
             Weight = 0;
             BarCode = string.Empty;
-            ProductName = string.Empty;
+            Name = string.Empty;
         }
 
         private void ShowWeight()

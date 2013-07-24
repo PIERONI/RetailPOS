@@ -39,80 +39,29 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual Nullable<int> customer_id
         {
-            get { return _customer_id; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_customer_id != value)
-                    {
-                        if (customer != null && customer.id != value)
-                        {
-                            customer = null;
-                        }
-                        _customer_id = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
+            get;
+            set;
         }
-        private Nullable<int> _customer_id;
     
         public virtual string shop_code
         {
-            get { return _shop_code; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_shop_code != value)
-                    {
-                        if (shop_info != null && shop_info.code != value)
-                        {
-                            shop_info = null;
-                        }
-                        _shop_code = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
+            get;
+            set;
         }
-        private string _shop_code;
     
         public virtual Nullable<long> invoice_id
         {
-            get { return _invoice_id; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_invoice_id != value)
-                    {
-                        if (invoice != null && invoice.id != value)
-                        {
-                            invoice = null;
-                        }
-                        _invoice_id = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
+            get;
+            set;
         }
-        private Nullable<long> _invoice_id;
     
         public virtual short print_receipt_copies
+        {
+            get;
+            set;
+        }
+    
+        public virtual Nullable<short> Status
         {
             get;
             set;
@@ -120,36 +69,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
 
         #endregion
         #region Navigation Properties
-    
-        public virtual customer customer
-        {
-            get { return _customer; }
-            set
-            {
-                if (!ReferenceEquals(_customer, value))
-                {
-                    var previousValue = _customer;
-                    _customer = value;
-                    Fixupcustomer(previousValue);
-                }
-            }
-        }
-        private customer _customer;
-    
-        public virtual invoice invoice
-        {
-            get { return _invoice; }
-            set
-            {
-                if (!ReferenceEquals(_invoice, value))
-                {
-                    var previousValue = _invoice;
-                    _invoice = value;
-                    Fixupinvoice(previousValue);
-                }
-            }
-        }
-        private invoice _invoice;
     
         public virtual ICollection<orderchild> orderchilds
         {
@@ -182,98 +101,9 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<orderchild> _orderchilds;
-    
-        public virtual shop_info shop_info
-        {
-            get { return _shop_info; }
-            set
-            {
-                if (!ReferenceEquals(_shop_info, value))
-                {
-                    var previousValue = _shop_info;
-                    _shop_info = value;
-                    Fixupshop_info(previousValue);
-                }
-            }
-        }
-        private shop_info _shop_info;
 
         #endregion
         #region Association Fixup
-    
-        private bool _settingFK = false;
-    
-        private void Fixupcustomer(customer previousValue)
-        {
-            if (previousValue != null && previousValue.ordermasters.Contains(this))
-            {
-                previousValue.ordermasters.Remove(this);
-            }
-    
-            if (customer != null)
-            {
-                if (!customer.ordermasters.Contains(this))
-                {
-                    customer.ordermasters.Add(this);
-                }
-                if (customer_id != customer.id)
-                {
-                    customer_id = customer.id;
-                }
-            }
-            else if (!_settingFK)
-            {
-                customer_id = null;
-            }
-        }
-    
-        private void Fixupinvoice(invoice previousValue)
-        {
-            if (previousValue != null && previousValue.ordermasters.Contains(this))
-            {
-                previousValue.ordermasters.Remove(this);
-            }
-    
-            if (invoice != null)
-            {
-                if (!invoice.ordermasters.Contains(this))
-                {
-                    invoice.ordermasters.Add(this);
-                }
-                if (invoice_id != invoice.id)
-                {
-                    invoice_id = invoice.id;
-                }
-            }
-            else if (!_settingFK)
-            {
-                invoice_id = null;
-            }
-        }
-    
-        private void Fixupshop_info(shop_info previousValue)
-        {
-            if (previousValue != null && previousValue.ordermasters.Contains(this))
-            {
-                previousValue.ordermasters.Remove(this);
-            }
-    
-            if (shop_info != null)
-            {
-                if (!shop_info.ordermasters.Contains(this))
-                {
-                    shop_info.ordermasters.Add(this);
-                }
-                if (shop_code != shop_info.code)
-                {
-                    shop_code = shop_info.code;
-                }
-            }
-            else if (!_settingFK)
-            {
-                shop_code = null;
-            }
-        }
     
         private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
         {

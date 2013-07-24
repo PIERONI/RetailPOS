@@ -25,122 +25,16 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual short LocalityId
-        {
-            get { return _localityId; }
-            set
-            {
-                if (_localityId != value)
-                {
-                    if (town_city != null && town_city.id != value)
-                    {
-                        town_city = null;
-                    }
-                    _localityId = value;
-                }
-            }
-        }
-        private short _localityId;
-    
         public virtual string postcode1
         {
             get;
             set;
         }
-
-        #endregion
-        #region Navigation Properties
     
-        public virtual ICollection<address> addresses
+        public virtual Nullable<short> LocalityId
         {
-            get
-            {
-                if (_addresses == null)
-                {
-                    var newCollection = new FixupCollection<address>();
-                    newCollection.CollectionChanged += Fixupaddresses;
-                    _addresses = newCollection;
-                }
-                return _addresses;
-            }
-            set
-            {
-                if (!ReferenceEquals(_addresses, value))
-                {
-                    var previousValue = _addresses as FixupCollection<address>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixupaddresses;
-                    }
-                    _addresses = value;
-                    var newValue = value as FixupCollection<address>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixupaddresses;
-                    }
-                }
-            }
-        }
-        private ICollection<address> _addresses;
-    
-        public virtual town_city town_city
-        {
-            get { return _town_city; }
-            set
-            {
-                if (!ReferenceEquals(_town_city, value))
-                {
-                    var previousValue = _town_city;
-                    _town_city = value;
-                    Fixuptown_city(previousValue);
-                }
-            }
-        }
-        private town_city _town_city;
-
-        #endregion
-        #region Association Fixup
-    
-        private void Fixuptown_city(town_city previousValue)
-        {
-            if (previousValue != null && previousValue.postcodes.Contains(this))
-            {
-                previousValue.postcodes.Remove(this);
-            }
-    
-            if (town_city != null)
-            {
-                if (!town_city.postcodes.Contains(this))
-                {
-                    town_city.postcodes.Add(this);
-                }
-                if (LocalityId != town_city.id)
-                {
-                    LocalityId = town_city.id;
-                }
-            }
-        }
-    
-        private void Fixupaddresses(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (address item in e.NewItems)
-                {
-                    item.postcode = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (address item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.postcode, this))
-                    {
-                        item.postcode = null;
-                    }
-                }
-            }
+            get;
+            set;
         }
 
         #endregion

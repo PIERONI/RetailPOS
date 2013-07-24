@@ -17,7 +17,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0">
-            <Button Height="53" Margin="5"  HorizontalAlignment="Right" Width="98" >
+            <Button Height="53" Margin="5" Command="{Binding NewOrderCommand}" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" HorizontalAlignment="Right" Width="98" >
                 <DockPanel>
                     <Image Source="../../../Images/new.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="5 0 0 0">
@@ -25,13 +25,13 @@
                     </TextBlock>
                 </DockPanel>
             </Button>
-            <Button Height="53" Margin="1"  HorizontalAlignment="Right" Width="95" Command="{Binding OpenOrderPopup}" >
+            <Button Height="53" Margin="1"  HorizontalAlignment="Right" Width="95" Command="{Binding OpenOrderPopupCommand}" >
                 <DockPanel>
                     <Image Source="../../../Images/open.png" Width="35" />
                     <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">
                       <Bold>Open Order</Bold>
                     </TextBlock>
-                    <my:ModalDialogPopup Width="auto"  IsOpen="{Binding IsOrderPopupOpen, Mode=TwoWay}" Title="Open Order Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+                    <my:ModalDialogPopup Width="auto" IsOpen="{Binding IsOrderPopUpOpen, Mode=TwoWay}" Title="Open Order Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
                         <my:ModalDialogPopup.HostedContent>
                             <ContentControl>
                                 <Grid>
@@ -43,18 +43,46 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <StackPanel Grid.ColumnSpan="2" Grid.Row="0"  Margin="12,12,0,0">
-                                        <Button  Content="Set Aside Orders" Command="{Binding OpenSetAsideOrderPopup}" Width="200" Height="40">
+                                        <Button  Content="Set Aside Orders" Command="{Binding OpenSetAsideOrderPopUpCommand}" Width="200" Height="40">
                                         </Button>
                                     </StackPanel>
                                     <StackPanel Grid.ColumnSpan="2" Grid.Row="1"  Margin="12,12,0,0">
-                                        <Button CommandParameter="{Binding}" Content="Orders In Queue" Command="{Binding}" Width="200" Height="40">
+                                        <Button Content="Orders In Queue" Command="{Binding OpenOrdersInQueuePopUpCommand}" Width="200" Height="40">
                                         </Button>
                                     </StackPanel>
                                 </Grid>
                             </ContentControl>
                         </my:ModalDialogPopup.HostedContent>
                     </my:ModalDialogPopup>
-                    <my:ModalDialogPopup Width="auto" IsOpen="{Binding IsSetAsidePopupOpen, Mode=TwoWay}" Title="Enter Customer Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+                    <my:ModalDialogPopup Width="auto" IsOpen="{Binding IsOrdersInQueuePopUpOpen, Mode=TwoWay}" Title="Select Order Number" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
+                        <my:ModalDialogPopup.HostedContent>
+                            <ContentControl>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <DataGrid SelectedItem="{Binding SelectedOrder, Mode=TwoWay}" Grid.Row="0" VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True" CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstOrderMaster}" CanUserSortColumns="True" CanUserResizeColumns="True"  Height="200" HorizontalAlignment="Left" Name="dataGrid1" VerticalAlignment="Top" Width="300">
+                                        <DataGrid.RowStyle>
+                                            <Style TargetType="{x:Type DataGridRow}">
+                                                <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
+                                            </Style>
+                                        </DataGrid.RowStyle>
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding Path=Id}" Header="" Visibility="Hidden" />
+                                            <DataGridTextColumn Binding="{Binding Path=TotalQuantity}" Header="Total Quantity" Width="*" ElementStyle="{StaticResource CellRightAlign}"/>
+                                            <DataGridTextColumn Binding="{Binding Path=TotalAmount}" Header="Total Amount" Width="*" ElementStyle="{StaticResource CellRightAlign}" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button CommandParameter="{Binding ElementName=SelectedOrder}" Command="{Binding OrderInQueueCommand}"
+                                            DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Content="Select Order" 
+                                             Width="100" Height="40" Grid.Row="1"  HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    </Button>
+                                </Grid>
+                            </ContentControl>
+                        </my:ModalDialogPopup.HostedContent>
+                    </my:ModalDialogPopup>
+                    <my:ModalDialogPopup Width="auto" IsOpen="{Binding IsSetAsidePopUpOpen, Mode=TwoWay}" Title="Enter Customer Detail" FontWeight="Bold" ShowCancelButton="False" ShowOKButton="False" Grid.ColumnSpan="1">
                         <my:ModalDialogPopup.HostedContent>
                             <ContentControl>
                                 <Grid>
@@ -69,7 +97,7 @@
                                     </Grid.RowDefinitions>
                                     <Label Content="Customer Name: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="0"></Label>
                                     <Label Content="Mobile No: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="1"></Label>
-                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="11,8,0,0" Text="{Binding CustomerName}" Name="autoCompleteTxtName"  ItemsSource="{Binding lstSearchCustomer}"                        
+                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="11,8,0,0" Text="{Binding CustomerName, Mode=TwoWay}" Name="autoCompleteTxtName"  ItemsSource="{Binding LstCustomer}"                        
                         SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}"
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -83,8 +111,6 @@
                                                     </Grid.RowDefinitions>
                                                     <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="180" ></TextBlock>
                                                     <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="180">
-                                                        <TextBlock Text="Type: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
-                                                        <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
                                                         <TextBlock Text="First Name: "  Foreground="#47896B" FontWeight="Bold"  Margin="10 0 0 0"></TextBlock>
                                                         <TextBlock Text="{Binding  First_Name}" Foreground="#47896B" ></TextBlock>
                                                         <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
@@ -98,7 +124,7 @@
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1"  Margin="11,8,0,0" Text="{Binding CustomerMobile}"  Name="autoCompleteTxtMobile"  ItemsSource="{Binding lstSearchCustomer}"                        
+                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1"  Margin="11,8,0,0" Text="{Binding CustomerMobile,Mode=TwoWay}"  Name="autoCompleteTxtMobile"  ItemsSource="{Binding LstCustomer}"
                         SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}"
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
@@ -112,8 +138,6 @@
                                                     </Grid.RowDefinitions>
                                                     <TextBlock Grid.Row="0" Text="{Binding Code}" TextBlock.FontWeight="Bold" Foreground="#8DACD1" Width="180" ></TextBlock>
                                                     <WrapPanel Grid.Row="1" Margin="0 3 0 0"  Width="180">
-                                                        <TextBlock Text="Type: "  Foreground="#47896B" FontWeight="Bold"></TextBlock>
-                                                        <TextBlock Text="{Binding  Type_Id}" Foreground="#47896B" ></TextBlock>
                                                         <TextBlock Text="First Name: "  Foreground="#47896B" FontWeight="Bold"  Margin="10 0 0 0"></TextBlock>
                                                         <TextBlock Text="{Binding  First_Name}" Foreground="#47896B" ></TextBlock>
                                                         <TextBlock Text="Last Name: "  Foreground="#47896B" Margin="10 0 0 0" FontWeight="Bold"></TextBlock>
@@ -127,12 +151,12 @@
                                             </DataTemplate>
                                         </toolkit:AutoCompleteBox.ItemTemplate>
                                     </toolkit:AutoCompleteBox>
-                                    <Button CommandParameter="{Binding SelectedCustomer}" Command="{Binding BindProductGridForOpenOrder}"
+                                    <Button CommandParameter="{Binding ElementName=SelectedCustomer}" Command="{Binding BindProductGridForOpenOrder}"
                                             DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Content="Select Customer" 
                                              Width="100" Height="40" Grid.Row="2"  HorizontalAlignment="Left" Margin="35,12,0,0" 
                                             Grid.Column="0">
                                     </Button>
-                                    <Button Content="Clear" Command="{Binding Clear}" Width="100" Height="40" Grid.Row="2"  Margin="25,12,0,0"  HorizontalAlignment="Left" Grid.Column="1">
+                                    <Button Content="Clear" Command="{Binding ClearCommand}" Width="100" Height="40" Grid.Row="2"  Margin="25,12,0,0"  HorizontalAlignment="Left" Grid.Column="1">
                                     </Button>
                                 </Grid>
                             </ContentControl>

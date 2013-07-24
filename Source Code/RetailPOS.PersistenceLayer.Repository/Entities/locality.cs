@@ -25,76 +25,16 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual Nullable<int> TownCityId
-        {
-            get;
-            set;
-        }
-    
         public virtual string locality1
         {
             get;
             set;
         }
-
-        #endregion
-        #region Navigation Properties
     
-        public virtual ICollection<address> addresses
+        public virtual Nullable<int> TownCityId
         {
-            get
-            {
-                if (_addresses == null)
-                {
-                    var newCollection = new FixupCollection<address>();
-                    newCollection.CollectionChanged += Fixupaddresses;
-                    _addresses = newCollection;
-                }
-                return _addresses;
-            }
-            set
-            {
-                if (!ReferenceEquals(_addresses, value))
-                {
-                    var previousValue = _addresses as FixupCollection<address>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixupaddresses;
-                    }
-                    _addresses = value;
-                    var newValue = value as FixupCollection<address>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixupaddresses;
-                    }
-                }
-            }
-        }
-        private ICollection<address> _addresses;
-
-        #endregion
-        #region Association Fixup
-    
-        private void Fixupaddresses(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (address item in e.NewItems)
-                {
-                    item.locality = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (address item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.locality, this))
-                    {
-                        item.locality = null;
-                    }
-                }
-            }
+            get;
+            set;
         }
 
         #endregion

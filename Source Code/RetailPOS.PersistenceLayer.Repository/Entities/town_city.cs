@@ -25,130 +25,16 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             set;
         }
     
-        public virtual short CountryId
-        {
-            get;
-            set;
-        }
-    
         public virtual string town_city1
         {
             get;
             set;
         }
-
-        #endregion
-        #region Navigation Properties
     
-        public virtual ICollection<address> addresses
+        public virtual Nullable<short> CountryId
         {
-            get
-            {
-                if (_addresses == null)
-                {
-                    var newCollection = new FixupCollection<address>();
-                    newCollection.CollectionChanged += Fixupaddresses;
-                    _addresses = newCollection;
-                }
-                return _addresses;
-            }
-            set
-            {
-                if (!ReferenceEquals(_addresses, value))
-                {
-                    var previousValue = _addresses as FixupCollection<address>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixupaddresses;
-                    }
-                    _addresses = value;
-                    var newValue = value as FixupCollection<address>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixupaddresses;
-                    }
-                }
-            }
-        }
-        private ICollection<address> _addresses;
-    
-        public virtual ICollection<postcode> postcodes
-        {
-            get
-            {
-                if (_postcodes == null)
-                {
-                    var newCollection = new FixupCollection<postcode>();
-                    newCollection.CollectionChanged += Fixuppostcodes;
-                    _postcodes = newCollection;
-                }
-                return _postcodes;
-            }
-            set
-            {
-                if (!ReferenceEquals(_postcodes, value))
-                {
-                    var previousValue = _postcodes as FixupCollection<postcode>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixuppostcodes;
-                    }
-                    _postcodes = value;
-                    var newValue = value as FixupCollection<postcode>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixuppostcodes;
-                    }
-                }
-            }
-        }
-        private ICollection<postcode> _postcodes;
-
-        #endregion
-        #region Association Fixup
-    
-        private void Fixupaddresses(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (address item in e.NewItems)
-                {
-                    item.town_city = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (address item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.town_city, this))
-                    {
-                        item.town_city = null;
-                    }
-                }
-            }
-        }
-    
-        private void Fixuppostcodes(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (postcode item in e.NewItems)
-                {
-                    item.town_city = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (postcode item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.town_city, this))
-                    {
-                        item.town_city = null;
-                    }
-                }
-            }
+            get;
+            set;
         }
 
         #endregion

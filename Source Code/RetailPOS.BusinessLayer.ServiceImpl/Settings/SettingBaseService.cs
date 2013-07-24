@@ -26,7 +26,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Settings
         /// Property to inject the persistence layer implementation class for waste management
         /// </summary>
         [Dependency]
-        public IGenericRepository<WasteManagement> WasteManagementRepository { get; set; }
+        public IGenericRepository<wastemanagement> WasteManagementRepository { get; set; }
 
         [Dependency]
         public IGenericRepository<product_purchase_history_master> PurchaseHistoryRepository { get; set; }

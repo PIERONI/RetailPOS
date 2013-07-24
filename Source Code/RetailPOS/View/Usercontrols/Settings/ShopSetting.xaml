@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"             
              DataContext="{Binding Source={StaticResource Locator}, Path=ShopSettingVM}"
-             xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+             xmlns:ctrl="clr-namespace:RetailPOS.View.Usercontrols.Settings"
+             xmlns:Utility="clr-namespace:RetailPOS.Utility" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:Toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit">
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
@@ -14,7 +16,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="340" HorizontalAlignment="Left" Name="tabCtrlSetting" VerticalAlignment="Top" Width="515" Grid.RowSpan="2">
+        <TabControl Margin="3" Grid.Row="0" Height="340" HorizontalAlignment="Left" VerticalAlignment="Top" Width="515" Grid.RowSpan="2">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
@@ -35,7 +37,7 @@
                     <TextBlock Text="Shop Code :" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="0,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
                     <TextBox Utility:MaskedTextBoxBehaviour.IsAlphaNumerichyphenOnly="True" Grid.Column="1"  Grid.Row="0" MaxLength="255" Height="30" Text="{Binding Code}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" />
                     <TextBlock Text="Shop Name :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
-                    <TextBox Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Column="1" MaxLength="255" Height="30" Text="{Binding Name}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="1" />
+                    <TextBox Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Column="1" MaxLength="255" Height="30" Text="{Binding ShopName}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="1" />
                     <TextBlock Text="Telephone No:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
                     <TextBlock Text="Email :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
                     <TextBlock Text="Fax:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
@@ -47,13 +49,8 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Shop Address Info" Name="tabShopAddressSetting">
-                <Grid  Margin="0 30 0 0 ">
+                <Grid Margin="0 30 0 0 ">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
@@ -71,15 +68,85 @@
                     <TextBox Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" Grid.Column="1" Grid.Row="1" MaxLength="255" Height="30" Text="{Binding HouseNo}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" />
                     <TextBlock Text="House Number:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="1" />
                     <TextBlock Text="Country:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="2" />
-                    <ComboBox Grid.Row="2" ItemsSource="{Binding LstCountry}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedCountry,Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" />
+                    <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" Margin="15,6,0,0"
+                                 ItemsSource="{Binding LstCountry}" Text="{Binding Name, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
+                                     ValueMemberPath="Name" VerticalAlignment="Top" Width="250" Height="30" >
+                        <Toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Name}" TextBlock.FontWeight="Bold" Width="180"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </Toolkit:AutoCompleteBox.ItemTemplate>
+                    </Toolkit:AutoCompleteBox>
                     <TextBlock Text="City/Town/Village:" FontSize="14" Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="3" />
-                    <ComboBox Grid.Row="3" ItemsSource="{Binding LstTownCity}" DisplayMemberPath="Town_City1" SelectedValuePath="Id" SelectedItem="{Binding SelectedTownCity,Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" />
+                    <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" SelectedItem="{Binding SelectedTownCity, Mode=TwoWay}" Margin="15,6,0,0"
+                                 ItemsSource="{Binding LstTownCity}" Text="{Binding Town_City1, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
+                                     ValueMemberPath="Town_City1" VerticalAlignment="Top" Width="250" Height="30" >
+                        <Toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Town_City1}" TextBlock.FontWeight="Bold" Width="180"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </Toolkit:AutoCompleteBox.ItemTemplate>
+                    </Toolkit:AutoCompleteBox>
                     <TextBlock Text="City Area/District:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="4" />
-                    <ComboBox Grid.Row="4" ItemsSource="{Binding LstLocality}" DisplayMemberPath="Locality1" SelectedValuePath="Id" SelectedItem="{Binding SelectedLocality, Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" />
+                    <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Left" SelectedItem="{Binding SelectedLocality, Mode=TwoWay}" Margin="15,6,0,0"
+                                 ItemsSource="{Binding LstLocality}" Text="{Binding Locality1, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
+                                     ValueMemberPath="Locality1" VerticalAlignment="Top" Width="250" Height="30" >
+                        <Toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Locality1}" TextBlock.FontWeight="Bold" Width="180"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </Toolkit:AutoCompleteBox.ItemTemplate>
+                    </Toolkit:AutoCompleteBox>
                     <TextBlock Text="Street:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
-                    <ComboBox Grid.Row="5" ItemsSource="{Binding LstStreet}" DisplayMemberPath="Street1" SelectedValuePath="Id" SelectedItem="{Binding SelectedStreet,Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" />
+                    <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="5" HorizontalAlignment="Left" SelectedItem="{Binding SelectedStreet, Mode=TwoWay}" Margin="15,6,0,0"
+                                 ItemsSource="{Binding LstStreet}" Text="{Binding Street1, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
+                                     ValueMemberPath="Street1" VerticalAlignment="Top" Width="250" Height="30" >
+                        <Toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding Street1}" TextBlock.FontWeight="Bold" Width="180"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </Toolkit:AutoCompleteBox.ItemTemplate>
+                    </Toolkit:AutoCompleteBox>
                     <TextBlock Text="Postal Code:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="0,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
-                    <ComboBox Grid.Row="6" ItemsSource="{Binding LstPostalCode}" DisplayMemberPath="PostCode1" SelectedValuePath="Id" SelectedItem="{Binding SelectedPostalCode, Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="250" />
+                    <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="6" HorizontalAlignment="Left" SelectedItem="{Binding SelectedPostalCode, Mode=TwoWay}" Margin="15,6,0,0"
+                                 ItemsSource="{Binding LstPostalCode}" Text="{Binding PostCode1, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
+                                     ValueMemberPath="PostCode1" VerticalAlignment="Top" Width="250" Height="30" >
+                        <Toolkit:AutoCompleteBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding PostCode1}" TextBlock.FontWeight="Bold"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </Toolkit:AutoCompleteBox.ItemTemplate>
+                    </Toolkit:AutoCompleteBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Tax Or Rate Setting" Name="tabTaxSetting">
@@ -130,7 +197,7 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Height="30" Command="{Binding SaveShopSetting}" TextBlock.FontSize="14" HorizontalAlignment="Right" Width="75" Margin="0,10,13,10">
+                <Button Height="30" CommandParameter="{}" Command="{Binding SaveShopSettingCommand}" TextBlock.FontSize="14" HorizontalAlignment="Right" Width="75" Margin="0,10,13,10">
                     <DockPanel>
                         <Image Source="../../../Images/save-icon.png" Width="16" />
                         <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0" Width="31">
@@ -138,7 +205,7 @@
                         </TextBlock>
                     </DockPanel>
                 </Button>
-                <Button Height="30" Command="{Binding CancelShopSetting}"  TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75"  Grid.Row="0" Grid.Column="1">
+                <Button Height="30" Command="{Binding CancelShopSettingCommand}" TextBlock.FontSize="14" HorizontalAlignment="Left" Width="75"  Grid.Row="0" Grid.Column="1">
                     <DockPanel>
                         <Image Source="../../../Images/cancel-icon.png" Width="12" Height="29" />
                         <TextBlock TextWrapping="Wrap" VerticalAlignment="center" Margin="2 0 0 0">

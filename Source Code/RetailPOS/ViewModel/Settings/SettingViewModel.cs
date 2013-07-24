@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿#region Using directives
+
+using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using System.Windows;
+using RetailPOS.Constants;
 
-namespace RetailPOS.ViewModel
+#endregion
+
+namespace RetailPOS.ViewModel.Settings
 {
    public class SettingViewModel : ViewModelBase
    {
@@ -179,16 +180,6 @@ namespace RetailPOS.ViewModel
        }
 
        /// <summary>
-       /// Opens the main window.
-       /// </summary>
-       private void OpenMainWindow()
-       {
-           Dashboard MW = new Dashboard();
-           MW.Show();
-           SettingsWindow.SettingWindow.Close();
-       }
-
-       /// <summary>
        /// Checks for setting win close.
        /// </summary>
        private void CheckForSettingWinClose()
@@ -218,6 +209,18 @@ namespace RetailPOS.ViewModel
        }
 
        /// <summary>
+       /// Opens the main window.
+       /// </summary>
+       private void OpenMainWindow()
+       {
+           Dashboard MW = new Dashboard();
+           MW.Show();
+           SettingsWindow.SettingWindow.Close();
+
+           ViewModelLocator.Cleanup(ViewModelType.Settings);
+       }
+
+       /// <summary>
        /// Opens the setting window.
        /// </summary>
        private void OpenSettingWindow()
@@ -225,6 +228,8 @@ namespace RetailPOS.ViewModel
            SettingsWindow set = new SettingsWindow();
            set.Show();
            Dashboard._Dashboard.Close();
+
+           ViewModelLocator.Cleanup(ViewModelType.MainWindow);
        }
 
        /// <summary>

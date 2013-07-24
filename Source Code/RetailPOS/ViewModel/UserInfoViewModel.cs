@@ -28,6 +28,10 @@ namespace RetailPOS.ViewModel
        /// </summary>
        private string _dateTime;
 
+       #endregion
+
+       #region Public Properties
+
        /// <summary>
        /// Gets or sets the name of the staff.
        /// </summary>

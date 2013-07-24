@@ -33,53 +33,15 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
     
         public virtual Nullable<short> supplier_id
         {
-            get { return _supplier_id; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_supplier_id != value)
-                    {
-                        if (supplier != null && supplier.id != value)
-                        {
-                            supplier = null;
-                        }
-                        _supplier_id = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
+            get;
+            set;
         }
-        private Nullable<short> _supplier_id;
     
         public virtual string shop_code
         {
-            get { return _shop_code; }
-            set
-            {
-                try
-                {
-                    _settingFK = true;
-                    if (_shop_code != value)
-                    {
-                        if (shop_info != null && shop_info.code != value)
-                        {
-                            shop_info = null;
-                        }
-                        _shop_code = value;
-                    }
-                }
-                finally
-                {
-                    _settingFK = false;
-                }
-            }
+            get;
+            set;
         }
-        private string _shop_code;
     
         public virtual string invoice_no
         {
@@ -115,142 +77,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         {
             get;
             set;
-        }
-
-        #endregion
-        #region Navigation Properties
-    
-        public virtual ICollection<product_purchase_history_child> product_purchase_history_child
-        {
-            get
-            {
-                if (_product_purchase_history_child == null)
-                {
-                    var newCollection = new FixupCollection<product_purchase_history_child>();
-                    newCollection.CollectionChanged += Fixupproduct_purchase_history_child;
-                    _product_purchase_history_child = newCollection;
-                }
-                return _product_purchase_history_child;
-            }
-            set
-            {
-                if (!ReferenceEquals(_product_purchase_history_child, value))
-                {
-                    var previousValue = _product_purchase_history_child as FixupCollection<product_purchase_history_child>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixupproduct_purchase_history_child;
-                    }
-                    _product_purchase_history_child = value;
-                    var newValue = value as FixupCollection<product_purchase_history_child>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixupproduct_purchase_history_child;
-                    }
-                }
-            }
-        }
-        private ICollection<product_purchase_history_child> _product_purchase_history_child;
-    
-        public virtual supplier supplier
-        {
-            get { return _supplier; }
-            set
-            {
-                if (!ReferenceEquals(_supplier, value))
-                {
-                    var previousValue = _supplier;
-                    _supplier = value;
-                    Fixupsupplier(previousValue);
-                }
-            }
-        }
-        private supplier _supplier;
-    
-        public virtual shop_info shop_info
-        {
-            get { return _shop_info; }
-            set
-            {
-                if (!ReferenceEquals(_shop_info, value))
-                {
-                    var previousValue = _shop_info;
-                    _shop_info = value;
-                    Fixupshop_info(previousValue);
-                }
-            }
-        }
-        private shop_info _shop_info;
-
-        #endregion
-        #region Association Fixup
-    
-        private bool _settingFK = false;
-    
-        private void Fixupsupplier(supplier previousValue)
-        {
-            if (previousValue != null && previousValue.product_purchase_history_master.Contains(this))
-            {
-                previousValue.product_purchase_history_master.Remove(this);
-            }
-    
-            if (supplier != null)
-            {
-                if (!supplier.product_purchase_history_master.Contains(this))
-                {
-                    supplier.product_purchase_history_master.Add(this);
-                }
-                if (supplier_id != supplier.id)
-                {
-                    supplier_id = supplier.id;
-                }
-            }
-            else if (!_settingFK)
-            {
-                supplier_id = null;
-            }
-        }
-    
-        private void Fixupshop_info(shop_info previousValue)
-        {
-            if (previousValue != null && previousValue.product_purchase_history_master.Contains(this))
-            {
-                previousValue.product_purchase_history_master.Remove(this);
-            }
-    
-            if (shop_info != null)
-            {
-                if (!shop_info.product_purchase_history_master.Contains(this))
-                {
-                    shop_info.product_purchase_history_master.Add(this);
-                }
-                if (shop_code != shop_info.code)
-                {
-                    shop_code = shop_info.code;
-                }
-            }
-        }
-    
-        private void Fixupproduct_purchase_history_child(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (product_purchase_history_child item in e.NewItems)
-                {
-                    item.product_purchase_history_master = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (product_purchase_history_child item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.product_purchase_history_master, this))
-                    {
-                        item.product_purchase_history_master = null;
-                    }
-                }
-            }
         }
 
         #endregion

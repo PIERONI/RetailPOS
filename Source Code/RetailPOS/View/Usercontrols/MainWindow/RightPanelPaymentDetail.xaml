@@ -71,7 +71,7 @@
                             </Grid.RowDefinitions>
                             <Label Content="Customer: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="0"  Width="69"></Label>
                             <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left"  Margin="11,8,0,0"  Name="autoCompleteTxtFirstName"  ItemsSource="{Binding lstSearchCustomer}"                        
-                        SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}"
+                        SelectedItem="{Binding Customer,Mode=TwoWay,UpdateSourceTrigger=Default}" Text="First_Name"
                                      IsTextCompletionEnabled="False" 
                                      FilterMode="StartsWith"
                                      ValueMemberPath="First_Name" VerticalAlignment="Top" Width="180" Height="25" >
@@ -119,7 +119,7 @@
                             <Label Content="Balance: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="5"  Width="69"></Label>
                             <TextBlock Height="23" HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="205" Grid.Column="1" Grid.Row="5" Text="{Binding CustomerBalance}" />
                             <Label Content="AmountPaid: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="6"  Width="75"></Label>
-                            <TextBox Name="txtamount" Grid.Column="1" Grid.Row="6" Height="25"  Width="175"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding PaidAmount}"></TextBox>
+                            <TextBox Name="txtamount" Grid.Column="1" Grid.Row="6" Height="25"  Width="175"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding AmountPaid}"></TextBox>
                             <StackPanel Grid.ColumnSpan="2" Grid.Row="7" Margin="12,12,0,0">
                                 <Button  Content="Accept Payment" Width="200" Height="40" Command="{Binding UpdateCustomerPaymentDetail}">
                                     <!--<Button.CommandBindings>

@@ -229,11 +229,12 @@ namespace RetailPOS.ViewModel.Settings
        /// Opens the main window.
        /// </summary>
        private void OpenMainWindow()
-       {           
-           SettingsWindow.SettingWindow.Close();
-           ViewModelLocator.Cleanup(ViewModelType.Settings);
+       {
            Dashboard MW = new Dashboard();
            MW.Show();
+           SettingsWindow.SettingWindow.Close();
+           ViewModelLocator.Cleanup(ViewModelType.Settings);
+         
        }
 
        /// <summary>

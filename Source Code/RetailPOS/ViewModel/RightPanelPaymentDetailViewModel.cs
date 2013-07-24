@@ -34,6 +34,7 @@ namespace RetailPOS.ViewModel
         private decimal _customerBalance;
         private string _customerName;
         private string _customerName1;
+        private string _firstName;
         private string _Mobile;
         private string _Email;   
         private int _CardAmount;
@@ -41,6 +42,7 @@ namespace RetailPOS.ViewModel
         private int _Id;
         private decimal _creditLimit;
         private decimal _amountToPay;
+        private decimal _amountPaid;
         
         #endregion
 
@@ -145,6 +147,16 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        public string First_Name
+        {
+            get { return _firstName; }
+            set
+            {
+                _firstName = value;
+                RaisePropertyChanged("First_Name");
+            }
+        }
+
         public string Mobile
         {
             get
@@ -188,6 +200,16 @@ namespace RetailPOS.ViewModel
             {
                 _PaidAmount = value;
                 RaisePropertyChanged("PaidAmount");
+            }
+        }
+
+        public decimal AmountPaid
+        {
+            get { return _amountPaid; }
+            set
+            {
+                _amountPaid = value;
+                RaisePropertyChanged("AmountPaid");
             }
         }
 
@@ -278,13 +300,28 @@ namespace RetailPOS.ViewModel
         {
             var updatecustomerdetail = InitializeCustomerPaymentDetail();
             ServiceFactory.ServiceClient.UpdateCustomerDetail(updatecustomerdetail);
-            IsPaymentEntryPopupOpen = false;  
+            IsPaymentEntryPopupOpen = false;
+            CancelPaymentEntryField();
+
         }
 
         private CustomerDTO InitializeCustomerPaymentDetail()
         {
-            SelectedCustomer.Balance = CustomerBalance - PaidAmount;
+            SelectedCustomer.Balance = CustomerBalance - AmountPaid;
             return SelectedCustomer;
+        }
+        /// <summary>
+        /// To clear the payment entry field
+        /// </summary>
+        private void CancelPaymentEntryField()
+        {
+            Id = 0;
+            CustomerName1 = string.Empty;
+            Mobile = string.Empty;
+            Email = string.Empty;
+            CreditLimit = 0;
+            AmountPaid = 0;
+            First_Name = string.Empty;
         }
     }
 }

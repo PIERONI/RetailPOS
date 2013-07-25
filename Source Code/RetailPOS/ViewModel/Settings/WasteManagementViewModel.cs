@@ -8,6 +8,7 @@ using RetailPOS.RetailPOSService;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections.ObjectModel;
+using System;
 
 #endregion
 
@@ -32,8 +33,9 @@ namespace RetailPOS.ViewModel.Settings
         private Visibility _isWeightVisible;
         private string _name;
         private string _barCode;
+        private string _description;
         private decimal _weight;
-        private int _quantity;
+        private decimal _quantity;
         private int _productId;
 
         #endregion
@@ -70,6 +72,16 @@ namespace RetailPOS.ViewModel.Settings
             }
         }
 
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                RaisePropertyChanged("Description");
+            }
+        }
+
         public int ProductId
         {
             get { return _productId; }
@@ -80,7 +92,7 @@ namespace RetailPOS.ViewModel.Settings
             }
         }
 
-        public int Quantity
+        public decimal Quantity
         {
             get { return _quantity; }
             set
@@ -115,8 +127,13 @@ namespace RetailPOS.ViewModel.Settings
             get { return _selectedProduct; }
             set
             {
-                _selectedProduct = value;
-                RaisePropertyChanged("SelectedProduct");
+                if (value != null)
+                {
+                    _selectedProduct = value;
+                    RaisePropertyChanged("SelectedProduct");
+
+                    BindProductDetails();
+                }
             }
         }
 
@@ -144,6 +161,13 @@ namespace RetailPOS.ViewModel.Settings
         }
 
         #endregion
+
+        private void BindProductDetails()
+        {
+            ProductDTO selectedProduct = SelectedProduct;
+            BarCode = selectedProduct.BarCode;
+            Description = selectedProduct.Description;
+        }
 
         private void GetProductDetails()
         {
@@ -200,7 +224,8 @@ namespace RetailPOS.ViewModel.Settings
                 Id = 0,
                 ProductId = SelectedProduct.Id,
                 Quantity = Quantity,
-                Weight = Weight
+                Weight = Weight,
+                CreatedDate = DateTime.Now
             };
         }
 
@@ -214,6 +239,7 @@ namespace RetailPOS.ViewModel.Settings
             Weight = 0;
             BarCode = string.Empty;
             Name = string.Empty;
+            Description = string.Empty;
         }
 
         private void ShowWeight()

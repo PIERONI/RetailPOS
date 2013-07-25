@@ -27,7 +27,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"></RowDefinition>
                             <RowDefinition Height="40"></RowDefinition>
-                            <RowDefinition Height="180*" />
+                            <RowDefinition Height="40" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="120*"></ColumnDefinition>
@@ -87,8 +87,8 @@
                             </DockPanel>
                         </Button>
                     </Grid>
-                    <Grid>
-                        <DataGrid VerticalScrollBarVisibility="Auto"  IsSynchronizedWithCurrentItem="True"  CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstOrder}" CanUserSortColumns="True" CanUserResizeColumns="True" Height="385" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid Margin="0,10,0,0">
+                        <DataGrid VerticalScrollBarVisibility="Auto" IsSynchronizedWithCurrentItem="True" CanUserAddRows="False" AutoGenerateColumns="False" AreRowDetailsFrozen="True" IsReadOnly="True" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding LstOrder}" CanUserSortColumns="True" CanUserResizeColumns="True" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Hidden" Width="*"/>
                                 <DataGridTextColumn Binding="{Binding CustomerName}" Header="Customer Name" Width="*" />

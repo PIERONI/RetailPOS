@@ -46,12 +46,13 @@ namespace RetailPOS.ServiceImplementation
         }
 
         /// <summary>
-        /// Get all order items whose status is 3
+        /// Get all order items matched with status parameter
         /// </summary>
-        /// <returns>returns list of  order items whose status is 3</returns>
-        public IList<OrderMasterDTO> GetOrderItemByStatus()
+        /// <param name="status">status to get order items</param>
+        /// <returns>returns list of  order items with the selected status</returns>
+        public IList<OrderMasterDTO> GetOrderItemByStatus(int status)
         {
-            return OrderService.GetOrderItemByStatus();
+            return OrderService.GetOrderItemByStatus(status);
         }
     }
 }

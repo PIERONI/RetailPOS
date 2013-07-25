@@ -1,12 +1,16 @@
-﻿using System;
+﻿#region Using directives
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GalaSoft.MvvmLight;
-using RetailPOS.RetailPOSService;
-using RetailPOS.Core;
 using System.Collections.ObjectModel;
+using System.Linq;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using RetailPOS.Core;
+using RetailPOS.RetailPOSService;
+using RetailPOS.Constants;
+
+#endregion
 
 namespace RetailPOS.ViewModel.Settings
 {
@@ -16,6 +20,7 @@ namespace RetailPOS.ViewModel.Settings
 
         private IList<CustomerDTO> _LstCustomer;
         private IList<OrderMasterDTO> _lstOrder;
+
         /// <summary>
         /// To filter the datalist on searchbutton click
         /// </summary>
@@ -24,7 +29,8 @@ namespace RetailPOS.ViewModel.Settings
 
         private string _name;
         private Nullable<DateTime> _selectedDate;
-       #endregion
+        
+        #endregion
 
         #region Declare Public properties
 
@@ -36,8 +42,8 @@ namespace RetailPOS.ViewModel.Settings
             get { return _LstCustomer; }
             set
             {
-                   _LstCustomer = value;
-                    RaisePropertyChanged("LstCustomer");                
+                _LstCustomer = value;
+                RaisePropertyChanged("LstCustomer");
             }
         }
 
@@ -80,8 +86,6 @@ namespace RetailPOS.ViewModel.Settings
             }
         }
 
-
-           
         #endregion
 
         #region Constructor
@@ -92,15 +96,20 @@ namespace RetailPOS.ViewModel.Settings
         public SetAsideOrderViewModel()
         {
             LstCustomer = new List<CustomerDTO>();
-            GetCustomer();
             LstOrder = new ObservableCollection<OrderMasterDTO>();
+
+            ////Get available order detail from database
             GetOrder();
+
+            ////Get available customer from database
+            GetCustomer();
+            
             SearchOrderCommand = new RelayCommand(GetOrder);
             CancelSearchOrderCommand = new RelayCommand(ClearField);
         }
 
-
         #endregion
+
         #region Private Variables
 
         /// <summary>
@@ -109,8 +118,7 @@ namespace RetailPOS.ViewModel.Settings
         private void GetCustomer()
         {
             LstCustomer = new List<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
-                                                                select item).ToList();
-            
+                                                select item).ToList();
         }
 
         /// <summary>
@@ -118,33 +126,34 @@ namespace RetailPOS.ViewModel.Settings
         /// </summary>
         private void GetOrder()
         {
-            LstOrder = new ObservableCollection<OrderMasterDTO>(from item in ServiceFactory.ServiceClient.GetOrderItemByStatus()
-                                             select item).ToList();
+            LstOrder = new ObservableCollection<OrderMasterDTO>(from item in ServiceFactory.ServiceClient.GetOrderItemByStatus((int)OrderStatus.SetAsideOrder)
+                                                                select item).ToList();
             if (!string.IsNullOrEmpty(Name))
             {
                 LstOrder = new ObservableCollection<OrderMasterDTO>(from item in LstOrder
-                                                                    where item.CustomerFirstName==Name
+                                                                    where item.CustomerName.ToLower().Contains(Name.ToLower())
                                                                     select item);
             }
+
             if (SelectedDate != null)
             {
-                  LstOrder = new ObservableCollection<OrderMasterDTO>(from item in LstOrder
+                LstOrder = new ObservableCollection<OrderMasterDTO>(from item in LstOrder
                                                                     where item.Order_Date.Date == SelectedDate.Value.Date
                                                                     select item);
-            
             }
-
         }
 
-        ///To clear the field
+        /// <summary>
+        /// To clear the field
+        /// </summary>
         private void ClearField()
         {
             Name = string.Empty;
             SelectedDate = null;
+            
             GetOrder();
         }
 
         #endregion
-
     }
 }

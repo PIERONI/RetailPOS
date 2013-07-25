@@ -71,13 +71,29 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
         }
 
         /// <summary>
-        /// Get all order items whose status is 3
+        /// Get all order items matched with status parameter
         /// </summary>
-        /// <returns>returns list of  order items whose status is 3</returns>
-        IList<OrderMasterDTO> IOrderService.GetOrderItemByStatus()
+        /// <param name="status">status to get order items</param>
+        /// <returns>returns list of  order items with the selected status</returns>
+        IList<OrderMasterDTO> IOrderService.GetOrderItemByStatus(int status)
         {
             IList<OrderMasterDTO> lstOrder = new List<OrderMasterDTO>();
-            ObjectMapper.Map(base.OrderMasterRepository.GetList(item => item.Status == 3).ToList(),lstOrder);
+            lstOrder = (from orderMaster in base.OrderMasterRepository.GetList().ToList()
+                        join customerItem in base.CustomerRepository.GetList().ToList()
+                        on orderMaster.customer_id equals customerItem.id
+                        where orderMaster.Status == status
+                        select new OrderMasterDTO
+                        {
+                            Id = orderMaster.id,
+                            Order_No = orderMaster.order_no,
+                            Order_Date = orderMaster.order_date,
+                            Customer_Id = orderMaster.customer_id,
+                            CustomerName = customerItem.first_name + " " + customerItem.last_name,
+                            Shop_Code = orderMaster.shop_code,
+                            Invoice_Id = orderMaster.invoice_id,
+                            Print_Receipt_Copies = orderMaster.print_receipt_copies
+                        }).ToList();
+
             return lstOrder;
         }
     }

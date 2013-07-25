@@ -14,7 +14,7 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Settings
         public int Id { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public int Quantity { get; set; }
+        public decimal Quantity { get; set; }
         public Nullable<decimal> Weight { get; set; }
         public DateTime CreatedDate { get; set; }
 

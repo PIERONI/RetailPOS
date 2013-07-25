@@ -8,7 +8,7 @@ using Microsoft.Practices.Unity;
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Order
 {
-   public  class OrderBaseService
+    public class OrderBaseService
     {
         /// <summary>
         /// Property to inject the persistence layer implementation class for OrderMaster
@@ -22,5 +22,10 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
         [Dependency]
         public IGenericRepository<orderchild> OrderChildRepository { get; set; }
 
+        /// <summary>
+        /// Property to inject the persistence layer implementation class for customers
+        /// </summary>
+        [Dependency]
+        public IGenericRepository<customer> CustomerRepository { get; set; }
     }
 }

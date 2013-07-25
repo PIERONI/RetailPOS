@@ -156,9 +156,9 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Label Content="Discount can't be greater than total amount" Foreground="Red"  HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Visibility="{Binding IsErrorMessageVisible}" ></Label>
+                            <Label Content="Discount can't be greater than total amount" Foreground="Red"  HorizontalAlignment="Left" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Visibility="{Binding IsErrorMessageVisible}" Grid.ColumnSpan="2" ></Label>
                             <Label Content="Product Name: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="1"  Width="79"></Label>
-                            <TextBlock  Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="8,12,0,0"  VerticalAlignment="Top" Width="107" Grid.Row="1" Text="{Binding ProductName,Mode=TwoWay}" />
+                            <TextBlock  Grid.Column="1" Height="23" HorizontalAlignment="Left" Margin="28,12,0,0"  VerticalAlignment="Top" Width="107" Grid.Row="1" Text="{Binding ProductName,Mode=TwoWay}" />
                             <Label Content="Quantity: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="2"  Width="69"></Label>
                             <TextBox Name="txtquantity" Grid.Column="1" Grid.Row="2" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding ProductQuantity,Mode=TwoWay}"></TextBox>
                             <Label Content="Enter Discount: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="3"  Width="85"></Label>

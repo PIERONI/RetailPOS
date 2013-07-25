@@ -235,20 +235,20 @@
                         </TextBlock>
                     </StackPanel>
                 </Button>
-                <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsDiscountPopupOpen,Mode=TwoWay}" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+                <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsDiscountPopupOpen,Mode=TwoWay}" FontWeight="Bold" Title="Discount" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
                     <my:ModalDialogPopup.HostedContent>
                         <ContentControl>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"></ColumnDefinition>
-                                    <ColumnDefinition Width="260"></ColumnDefinition>
+                                    <ColumnDefinition Width="230"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Label Content="Discount can't be greater than total amount" Foreground="Red" HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Visibility="{Binding IsErrorMessageVisible}" ></Label>
+                                <Label Grid.ColumnSpan="2" Content="Discount can't be greater than total amount" Foreground="Red" HorizontalAlignment="Left" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Visibility="{Binding IsErrorMessageVisible}" ></Label>
                                 <Label Content="Enter Discount: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="1"  Width="85"></Label>
                                 <TextBox Name="txtEnterDiscount" Grid.Column="1" Grid.Row="1" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding Discount,Mode=TwoWay}"></TextBox>                            
 

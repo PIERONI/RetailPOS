@@ -12,18 +12,19 @@
     <UserControl.Resources>
         <ResourceDictionary Source="../../../Themes/BureauBlue.xaml"></ResourceDictionary>
     </UserControl.Resources>
-    <Grid Height="540">
+    <Grid Height="590">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
-        <TabControl Margin="3" Grid.Row="0" Height="510" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="675">
+        <TabControl Margin="3" Grid.Row="0" Height="540" HorizontalAlignment="Left" Name="tabCtrlCustomerInfo" VerticalAlignment="Top" Width="675">
             <TabControl.Resources>
                 <ResourceDictionary Source="../../../Themes/ShinyBlue.xaml"></ResourceDictionary>
             </TabControl.Resources>
             <TabItem Header="Product Info">
                 <Grid Margin="0,20,0,0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
                         <RowDefinition Height="35"></RowDefinition>
@@ -72,6 +73,8 @@
                             </DataTemplate>
                         </Toolkit:AutoCompleteBox.ItemTemplate>
                     </Toolkit:AutoCompleteBox>
+                    <TextBlock Text="Quantity:" Grid.Row="13" Grid.Column="0" Height="30" Foreground="Black" HorizontalAlignment="Left" Margin="5,5,0,0" FontSize="14" FontWeight="Bold" TextAlignment="Right" VerticalAlignment="Top" Width="142" />
+                   
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True"  Grid.Row="1"  MaxLength="15" Height="30" Text="{Binding BarCode, Mode=TwoWay}" HorizontalAlignment="Left" Margin="15,0,6,0"  VerticalAlignment="Top" Width="250" />
                     <Button Height="35" Command="{Binding GenerateBarCodeCommand}" TextBlock.FontSize="14" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" >
                         <DockPanel>
@@ -105,6 +108,9 @@
                     <CheckBox IsChecked="{Binding IsProductSoldLoose}" Grid.Row="10" Grid.Column="1" Margin="15,5,164,5" />
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Visibility="{Binding SetVisibilityForLooseItems}" Grid.Row="11"  MaxLength="15" Height="30" Text="{Binding Size}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" />
                     <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Visibility="{Binding SetVisibilityForLooseItems}" Grid.Row="12"  MaxLength="15" Height="30" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Grid.Row="13"  MaxLength="15" Height="30" Text="{Binding PurchaseQuantity}" HorizontalAlignment="Left" Margin="15,1,0,0"  VerticalAlignment="Top" Width="150" />
+                    <ComboBox Grid.Row="13" ItemsSource="{Binding LstMeasureUnit}" DisplayMemberPath="Name"  SelectedValuePath="Id" SelectedItem="{Binding SelectedMeasureUnitForPurchaseQuantity,Mode=TwoWay}" Grid.Column="1" Height="30" HorizontalAlignment="Left" Margin="175,2,0,0" Width="90" />
+
                 </Grid>
             </TabItem>
             <TabItem Header="Product Image">

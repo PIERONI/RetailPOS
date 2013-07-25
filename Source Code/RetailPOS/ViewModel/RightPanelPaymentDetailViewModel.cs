@@ -19,13 +19,15 @@ namespace RetailPOS.ViewModel
         #region Declare Public and private Data member
 
         public IList<CustomerDTO> lstSearchCustomer { get; private set; }
+        public IList<DiscountType> LstDiscountType { get; private set; }
         public RelayCommand OpenPayEntryBalancePopUp { get; private set; }
         public RelayCommand OpenCardEntryBalancePopUp { get; private set; }
         public RelayCommand SelectCardCommand { get; private set; }
-        public RelayCommand UpdateCustomerPaymentDetail { get; private set; }
-       
+        public RelayCommand UpdateCustomerPaymentDetail { get; private set; }    
+        
+
         private bool _isPaymentEntryPopupOpen;
-        private bool _IsCardPopupOpen;
+        private bool _IsCardPopupOpen;     
         
         private CustomerDTO _selectedCustomer;
         private CustomerDTO _customer;
@@ -43,6 +45,7 @@ namespace RetailPOS.ViewModel
         private decimal _creditLimit;
         private decimal _amountToPay;
         private decimal _amountPaid;
+      
         
         #endregion
 
@@ -117,6 +120,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
+       
         public Visibility isVisibleCustomerInfo
         {
             get { return _isVisibleCustomerInfo; }
@@ -233,7 +237,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-
+       
         #endregion
 
         #region Constructor
@@ -241,13 +245,14 @@ namespace RetailPOS.ViewModel
         public RightPanelPaymentDetailViewModel()
         {
             OpenPayEntryBalancePopUp = new RelayCommand(OpenPayEntryBalancePopUpClick);
-            OpenCardEntryBalancePopUp = new RelayCommand(OpenCardPopupclick);
+            OpenCardEntryBalancePopUp = new RelayCommand(OpenCardPopupclick);        
             SelectCardCommand = new RelayCommand(BindCardAmount);
             lstSearchCustomer = new List<CustomerDTO>();
-
+            LstDiscountType = new ObservableCollection<DiscountType>();
             lstSearchCustomer = new ObservableCollection<CustomerDTO>(from item in ServiceFactory.ServiceClient.GetAllCustomers()
                                                                       select item).ToList();
             UpdateCustomerPaymentDetail = new RelayCommand(UpdateCustomerBalanceDetail);
+           
         }
 
         #endregion
@@ -268,6 +273,7 @@ namespace RetailPOS.ViewModel
             IsCardPopupOpen = true;
         }
 
+      
         /// <summary>
         /// Binds the customer.
         /// </summary>
@@ -323,5 +329,8 @@ namespace RetailPOS.ViewModel
             AmountPaid = 0;
             First_Name = string.Empty;
         }
+     
+      
+       
     }
 }

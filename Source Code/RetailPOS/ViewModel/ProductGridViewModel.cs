@@ -36,7 +36,8 @@ namespace RetailPOS.ViewModel
         public RelayCommand EditProductCommand { get; private set; }
         public RelayCommand NewOrderCommand { get; private set; }
         public RelayCommand SaveOrderInQueueCommand { get; private set; }
-        
+        public RelayCommand AddDiscount { get; private set; }
+        public RelayCommand OpenDiscountentryPopUp { get; private set; }
         /// <summary>
         /// To Make New Customer Field Visible For Creating New User
         /// </summary>
@@ -75,18 +76,19 @@ namespace RetailPOS.ViewModel
         private ObservableCollection<ProductDTO> _productDetails;
         private ObservableCollection<CustomerDTO> _customerDetail;
         
-        private string _total;
+        private decimal _total;
         private decimal _totalDiscount;
         private string _productName;
         private decimal _productQuantity;
         private decimal _productDiscount;
         private bool _isEditProductEntryPopupOpen;
-        
+        private bool _isDiscountEntryPopUp;
         /// <summary>
         /// To make textblock visibility true or false on add new customer button click
         /// </summary>
         private Visibility _isTextBoxVisible;
         private Visibility _isVisibleOnAddNewCustomerClick;
+        private Visibility _isErrorForDiscountVisible;
         private decimal _customerBalance;
         
         private string _mobileNumber;
@@ -98,6 +100,7 @@ namespace RetailPOS.ViewModel
         private string _lastName;
         private string _email;
         private string _newMobileNumber;
+        private decimal _discount;
 
         private CustomerDTO _selectedCustomer;
 
@@ -225,7 +228,7 @@ namespace RetailPOS.ViewModel
             }
         }
 
-        public string Total
+        public decimal Total
         {
             get { return _total; }
             set
@@ -277,6 +280,19 @@ namespace RetailPOS.ViewModel
             {
                 _isTextBoxVisible = value;
                 RaisePropertyChanged("IsTextBoxVisible");
+            }
+        }
+
+        /// <summary>
+        /// To make Error visibility true or false if discount is greater than total
+        /// </summary>
+        public Visibility IsErrorMessageVisible
+        {
+            get { return _isErrorForDiscountVisible; }
+            set
+            {
+                _isErrorForDiscountVisible = value;
+                RaisePropertyChanged("IsErrorMessageVisible");
             }
         }
 
@@ -405,6 +421,32 @@ namespace RetailPOS.ViewModel
             }
         }
 
+        /// <summary>
+        /// To bind discount text box
+        /// </summary>
+        public decimal Discount
+        {
+            get { return _discount; }
+            set
+            {
+                _discount = value;
+                RaisePropertyChanged("Discount");
+            }
+        }
+
+        /// <summary>
+        /// True for opening discount pop up
+        /// </summary>
+        public bool IsDiscountPopupOpen
+        {
+            get { return _isDiscountEntryPopUp; }
+            set
+            {
+                _isDiscountEntryPopUp = value;
+                RaisePropertyChanged("IsDiscountPopupOpen");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -442,11 +484,12 @@ namespace RetailPOS.ViewModel
             NewOrderCommand = new RelayCommand(ResetControls);
             SaveOrderInQueueCommand = new RelayCommand(SaveOrderInQueue);
             OrderInQueueCommand = new RelayCommand<OrderMasterDTO>(BindProductGridWithOrdersInQueue);
-
+            AddDiscount = new RelayCommand(addDiscount);
+            OpenDiscountentryPopUp = new RelayCommand(OpenDiscountentryPopUpClick);
             GetSearchAttributes();
 
             IsVisibleOnAddNewCustomerClick = Visibility.Visible;
-            
+            IsErrorMessageVisible = Visibility.Hidden;
             ClearControls();
         }
 
@@ -482,10 +525,11 @@ namespace RetailPOS.ViewModel
         {
             SelectedProduct.Quantity = ProductQuantity;
             decimal amount = (decimal)(SelectedProduct.Quantity * SelectedProduct.Retail_Price);
+            bool showErrorMessage = false;
 
             if (SelectedDiscountType != null)
             {
-                if (SelectedDiscountType.Id == 1)
+                if (SelectedDiscountType.Id == 1 && ProductDiscount < amount)
                 {
                     SelectedProduct.Discount = ProductDiscount;
                     amount -= ProductDiscount;
@@ -493,18 +537,36 @@ namespace RetailPOS.ViewModel
                 else if (SelectedDiscountType.Id == 2)
                 {
                     decimal discountAmount = (decimal)(SelectedProduct.Amount * (ProductDiscount / 100));
-                    SelectedProduct.Discount = discountAmount;
-                    amount -= discountAmount;
+                    if (discountAmount < amount)
+                    {
+                        SelectedProduct.Discount = discountAmount;
+                        amount -= discountAmount;
+                    }
+                    else
+                    {
+                        showErrorMessage = true;
+                        
+                    }
+                }
+                else
+                {
+                    showErrorMessage = true;
                 }
             }
 
-            SelectedProduct.Amount = amount;
-
-            var totalAmount = LstProductDetails.Select(u => u.Amount).Sum();
-            var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();
-            Total = totalAmount.ToString();
-            TotalDiscount = (decimal)totalDiscount;
-            IsEditProductEntryPopupOpen = false;
+            if (!showErrorMessage)
+            {
+                var totalAmount = LstProductDetails.Select(u => u.Amount).Sum();
+                var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();
+                Total = (decimal)totalAmount;
+                TotalDiscount = (decimal)totalDiscount;
+                IsEditProductEntryPopupOpen = false;
+            }
+            else
+            {
+                IsErrorMessageVisible = Visibility.Visible;
+            }
+            //SelectedProduct.Amount = Amount
         }
 
         private void GetDiscountType()
@@ -624,7 +686,7 @@ namespace RetailPOS.ViewModel
             var amount = LstProductDetails.Select(u => u.Amount).Sum();
              var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();          
             TotalDiscount = (decimal)totalDiscount;
-            Total = amount.ToString();
+            Total = (decimal)amount;
 
             Mediator.NotifyColleagues("CloseProductPopUpWindow", false);
         }
@@ -661,7 +723,7 @@ namespace RetailPOS.ViewModel
 
         private void ClearControls()
         {
-            Total = string.Empty+"0";         
+            Total = (decimal)0.0;         
             TotalDiscount = (decimal)0.0;
         }
 
@@ -781,11 +843,30 @@ namespace RetailPOS.ViewModel
                                                                          });
 
                 var amount = LstProductDetails.Select(u => u.Amount).Sum();
-                Total = amount.ToString();
+                Total = (decimal)amount;
                 var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();          
                 TotalDiscount = (decimal)totalDiscount;
                 Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
             }
+        }
+
+        ///To add discount on Payment detail
+        private void addDiscount()
+        {
+            if (Total > Discount)
+            {
+                TotalDiscount += Discount;
+                Total -= TotalDiscount;
+                IsErrorMessageVisible = Visibility.Collapsed;
+                IsDiscountPopupOpen = false;
+            }
+            else
+
+                {
+                    IsDiscountPopupOpen = true;
+                    IsErrorMessageVisible = Visibility.Visible;
+                    return;
+                }               
         }
 
         /// <summary>
@@ -810,11 +891,21 @@ namespace RetailPOS.ViewModel
             }
 
             var amount = LstProductDetails.Select(u => u.Amount).Sum();
-            Total =  amount.ToString();
+            Total =  (decimal)amount;
             var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();         
             TotalDiscount = (decimal)totalDiscount;
             Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
         }
+
+        ///To open popup for entering discount
+        private void OpenDiscountentryPopUpClick()
+        {
+            if (Total > 0)
+            {
+                IsDiscountPopupOpen = true;
+            }
+        }
+
 
         #endregion
     }
@@ -824,4 +915,6 @@ namespace RetailPOS.ViewModel
         public int Id { get; set; }
         public string TypeName { get; set; }
     }
+
+    
 }

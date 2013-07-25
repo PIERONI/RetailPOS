@@ -226,8 +226,8 @@
                 <Button Height="53" Margin="2" Content="00" TextBlock.FontSize="22" FontWeight="Bold"   HorizontalAlignment="left" Width="65" ></Button>
                 <Button Height="53" Margin="2" Content="10" TextBlock.FontSize="22" FontWeight="Bold"  HorizontalAlignment="left" Width="65" ></Button>
             </WrapPanel>
-            <StackPanel Grid.Column="1">
-                <Button Height="70" Margin="5 6 0 0"  HorizontalAlignment="left" Width="80" >
+            <StackPanel Grid.Column="1"  DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}">
+                <Button Height="70" Margin="5 6 0 0"  HorizontalAlignment="left" Width="80" Command="{Binding OpenDiscountentryPopUp}" >
                     <StackPanel>
                         <Image Source="../../../Images/discount1-icon.png" Width="58" Height="40" />
                         <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="center" Margin="2 0 0 0">
@@ -235,6 +235,31 @@
                         </TextBlock>
                     </StackPanel>
                 </Button>
+                <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsDiscountPopupOpen,Mode=TwoWay}" FontWeight="Bold" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+                    <my:ModalDialogPopup.HostedContent>
+                        <ContentControl>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="260"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Content="Discount can't be greater than total amount" Foreground="Red" HorizontalAlignment="Right" FontWeight="Bold" Grid.Column="0" Grid.Row="0" Visibility="{Binding IsErrorMessageVisible}" ></Label>
+                                <Label Content="Enter Discount: " Height="28" HorizontalAlignment="Right" FontWeight="Bold" Margin="12,12,0,0" Grid.Column="0" Grid.Row="1"  Width="85"></Label>
+                                <TextBox Name="txtEnterDiscount" Grid.Column="1" Grid.Row="1" Height="25"  Width="70"  VerticalAlignment="Top"  Margin="8,12,0,0" Text="{Binding Discount,Mode=TwoWay}"></TextBox>                            
+
+                                <StackPanel Grid.ColumnSpan="2" Grid.Row="2" Margin="12,12,0,0">
+                                    <Button  Content="Add" Width="170" Height="40" Command="{Binding AddDiscount}">
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </ContentControl>
+                    </my:ModalDialogPopup.HostedContent>
+                </my:ModalDialogPopup>
                 <Button Height="70" Margin="5 6 0 0"  HorizontalAlignment="left" Width="80" >
                     <StackPanel>
                         <Image Source="../../../Images/money1-icon.png" Width="58" Height="42" />
@@ -244,7 +269,7 @@
                         </TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Height="70" Margin="5 6 0 0"  HorizontalAlignment="left" Width="80" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Command="{Binding ClearProduct}">
+                <Button Height="70" Margin="5 6 0 0"  HorizontalAlignment="left" Width="80" Command="{Binding ClearProduct}">
                     <StackPanel>
                         <Image Source="../../../Images/edit-clear-icon.png" Width="58" Height="40" />
                         <TextBlock TextWrapping="Wrap"  HorizontalAlignment="Center" VerticalAlignment="center" Margin="2 0 0 0">

@@ -11,5 +11,7 @@ namespace RetailPOS.View.Usercontrols.Settings
         {
             InitializeComponent();
         }
+
+       
     }
 }

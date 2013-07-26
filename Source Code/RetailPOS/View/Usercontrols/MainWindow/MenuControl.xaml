@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:Utility="clr-namespace:RetailPOS.Utility"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="507"
              xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
@@ -97,9 +98,8 @@
                                     </Grid.RowDefinitions>
                                     <Label Content="Customer Name: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="0"></Label>
                                     <Label Content="Mobile No: " Height="28" HorizontalAlignment="Left" FontWeight="Bold" Margin="12,12,0,0"  Width="90" Grid.Column="0" Grid.Row="1"></Label>
-                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="11,8,0,0" Text="{Binding CustomerName, Mode=TwoWay}" Name="autoCompleteTxtName"  ItemsSource="{Binding LstCustomer}"                        
-                        SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}"
-                                     IsTextCompletionEnabled="False" 
+                                    <toolkit:AutoCompleteBox Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" Margin="11,8,0,0" Text="{Binding CustomerName, Mode=TwoWay}" Name="autoCompleteTxtName"  ItemsSource="{Binding LstCustomer}"                     
+                        SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=Default}" IsTextCompletionEnabled="False"
                                      FilterMode="StartsWith"
                                      ValueMemberPath="First_Name" VerticalAlignment="Top" Width="150" Height="25" >
                                         <toolkit:AutoCompleteBox.ItemTemplate>

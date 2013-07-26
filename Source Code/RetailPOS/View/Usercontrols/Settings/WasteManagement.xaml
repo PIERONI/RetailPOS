@@ -53,10 +53,10 @@
                             </DataTemplate>
                         </Toolkit:AutoCompleteBox.ItemTemplate>
                     </Toolkit:AutoCompleteBox>
-                    <TextBox Grid.Column="1"  Grid.Row="2" MaxLength="255" Height="30" Text="{Binding BarCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" />
-                    <TextBox Grid.Column="1" MaxLength="255" Height="60"  Text="{Binding Description}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="3" />
-                    <TextBox Grid.Column="1" MaxLength="255" Height="30" Text="{Binding Quantity}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="4" />
-                    <TextBox Grid.Column="1" MaxLength="255" Height="30" Visibility="{Binding IsWeightVisible}" Text="{Binding Weight}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="5" />
+                    <TextBox Grid.Column="1"  Grid.Row="2" MaxLength="255" Height="30" Text="{Binding BarCode}"  Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" MaxLength="255" Height="60"  Text="{Binding Description}"  Utility:MaskedTextBoxBehaviour.IsStringSpaceNumOnly="True" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="3" />
+                    <TextBox Grid.Column="1" MaxLength="255" Height="30" Text="{Binding Quantity}" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="4" />
+                    <TextBox Grid.Column="1" MaxLength="255" Height="30" Visibility="{Binding IsWeightVisible}" Text="{Binding Weight}" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" Grid.Row="5" />
                     <Button Grid.Column="0" Grid.Row="6" Height="30" Canvas.Left="143" Margin="0,0,25,0" Command="{Binding SaveWasteManagementCommand}" TextBlock.FontSize="14" HorizontalAlignment="Right" Width="75">
                         <DockPanel>
                             <Image Source="../../../Images/save-icon.png" Width="16" />

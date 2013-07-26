@@ -4,6 +4,7 @@ using System.Windows;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using RetailPOS.Constants;
+using RetailPOS.View.Usercontrols.MainWindow;
 
 #endregion
 
@@ -230,11 +231,16 @@ namespace RetailPOS.ViewModel.Settings
        /// </summary>
        private void OpenMainWindow()
        {
+          // ViewModelLocator.Cleanup(ViewModelType.MainWindow);
+          // ViewModelLocator.Cleanup(ViewModelType.MenuControl);
+         
            Dashboard MW = new Dashboard();
-           MW.Show();
+           MW.Show();        
+           //Dashboard._Dashboard.Show();    
            SettingsWindow.SettingWindow.Close();
            ViewModelLocator.Cleanup(ViewModelType.Settings);
-         
+
+      
        }
 
        /// <summary>
@@ -245,8 +251,7 @@ namespace RetailPOS.ViewModel.Settings
            SettingsWindow set = new SettingsWindow();
            set.Show();
            Dashboard._Dashboard.Close();
-
-           ViewModelLocator.Cleanup(ViewModelType.MainWindow);
+          ViewModelLocator.Cleanup(ViewModelType.MainWindow);
        }
 
        /// <summary>

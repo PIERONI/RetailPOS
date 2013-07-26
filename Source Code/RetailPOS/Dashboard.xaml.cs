@@ -15,8 +15,11 @@ namespace RetailPOS
 
         public Dashboard()
         {
-            _Dashboard = this;
+          
             InitializeComponent();
+            _Dashboard = this;
         }
+
+       
     }
 }

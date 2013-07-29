@@ -67,7 +67,7 @@ namespace RetailPOS.ViewModel
         /// To Bind the product grid on selecting the orders saved in queue
         /// </summary>
         public RelayCommand<OrderMasterDTO> OrderInQueueCommand { get; private set; }
-
+      
         private DiscountType _selectedDiscount;
         private ProductDTO _selectedProduct;
 
@@ -485,7 +485,7 @@ namespace RetailPOS.ViewModel
             SaveOrderInQueueCommand = new RelayCommand(SaveOrderInQueue);
             OrderInQueueCommand = new RelayCommand<OrderMasterDTO>(BindProductGridWithOrdersInQueue);
             AddDiscount = new RelayCommand(addDiscount);
-            OpenDiscountentryPopUp = new RelayCommand(OpenDiscountentryPopUpClick);
+            OpenDiscountentryPopUp = new RelayCommand(OpenDiscountentryPopUpClick);      
             GetSearchAttributes();
 
             IsVisibleOnAddNewCustomerClick = Visibility.Visible;
@@ -495,8 +495,7 @@ namespace RetailPOS.ViewModel
 
         #endregion
 
-        #region Private Methods
-
+        #region Private Methods     
         /// <summary>
         /// To Make New Customer Field Visible For Creating New User
         /// </summary>
@@ -857,7 +856,9 @@ namespace RetailPOS.ViewModel
             {
                 TotalDiscount += Discount;
                 Total -= TotalDiscount;
-                IsErrorMessageVisible = Visibility.Collapsed;
+
+                IsErrorMessageVisible = Visibility.Hidden;
+                Discount = (Decimal)0.0;
                 IsDiscountPopupOpen = false;
             }
             else
@@ -903,6 +904,9 @@ namespace RetailPOS.ViewModel
             if (Total > 0)
             {
                 IsDiscountPopupOpen = true;
+                IsErrorMessageVisible = Visibility.Hidden;
+                Discount = (Decimal)0.0;
+              
             }
         }
 

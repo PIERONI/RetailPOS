@@ -239,7 +239,6 @@ namespace RetailPOS.ViewModel.Settings
            //Dashboard._Dashboard.Show();    
            SettingsWindow.SettingWindow.Close();
            ViewModelLocator.Cleanup(ViewModelType.Settings);
-
       
        }
 

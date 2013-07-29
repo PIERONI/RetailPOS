@@ -236,10 +236,10 @@
                         </TextBlock>
                     </StackPanel>
                 </Button>
-                <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsDiscountPopupOpen,Mode=TwoWay}" FontWeight="Bold" Title="Discount" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" >
+                <my:ModalDialogPopup Width="auto" MaxWidth="500" IsOpen="{Binding IsDiscountPopupOpen,Mode=TwoWay}" FontWeight="Bold" Title="Discount" ShowCancelButton="False" Grid.ColumnSpan="2" ShowOKButton="False" ShowCloseButton="True">
                     <my:ModalDialogPopup.HostedContent>
                         <ContentControl>
-                            <Grid>
+                            <Grid>                                
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"></ColumnDefinition>
                                     <ColumnDefinition Width="230"></ColumnDefinition>

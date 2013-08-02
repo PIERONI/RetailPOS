@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:Utility="clr-namespace:RetailPOS.Utility"
              d:DesignHeight="150" d:DesignWidth="282"
             DataContext="{Binding Source={StaticResource Locator}, Path=SearchVM}" 
             xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
@@ -70,7 +71,7 @@
                     </toolkit:AutoCompleteBox.ItemTemplate>
                 </toolkit:AutoCompleteBox>
                 <toolkit:AutoCompleteBox Height="25" HorizontalAlignment="Left" Margin="11,8,0,0" Name="autoCompleteTxtCustomer" ItemsSource="{Binding LstSearchCustomer}"
-                         SelectedItem="{Binding Customer, Mode=TwoWay,UpdateSourceTrigger=Default}" IsTextCompletionEnabled="False"
+                         SelectedItem="{Binding SelectedCustomer, Mode=TwoWay,UpdateSourceTrigger=Default}" IsTextCompletionEnabled="False"
                          ValueMemberPath="First_Name"
                           FilterMode="StartsWith" VerticalAlignment="Top" Width="177" Grid.Column="1" Grid.Row="1" >
                     <toolkit:AutoCompleteBox.ItemTemplate>
@@ -123,7 +124,7 @@
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductName}" Grid.Column="1" Grid.Row="0" ></TextBlock>
                         <TextBlock HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductCode}" Grid.Column="1" Grid.Row="1" ></TextBlock>
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductPrice}" Grid.Column="1" Grid.Row="2" ></TextBlock>
-                        <TextBox  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="3" ></TextBox>
+                        <TextBox  HorizontalAlignment="Left" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductQuantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="3" ></TextBox>
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductDescription}" Grid.Column="1" Grid.Row="4" ></TextBlock>
                         <TextBlock Visibility="Collapsed" Text="{Binding Id}" Name="HiddenTxtProductId" ></TextBlock>
                         <StackPanel Grid.ColumnSpan="2" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"  Margin="12,12,0,0">

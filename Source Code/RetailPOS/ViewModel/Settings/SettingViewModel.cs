@@ -6,11 +6,12 @@ using GalaSoft.MvvmLight.Command;
 using RetailPOS.Constants;
 using RetailPOS.View.Usercontrols.MainWindow;
 
+using Microsoft.Practices.Unity;
 #endregion
 
 namespace RetailPOS.ViewModel.Settings
 {
-   public class SettingViewModel : ViewModelBase
+    public class SettingViewModel : ViewModelBase
    {
        #region Declare Public and Private Data member
        
@@ -233,13 +234,13 @@ namespace RetailPOS.ViewModel.Settings
        {
           // ViewModelLocator.Cleanup(ViewModelType.MainWindow);
           // ViewModelLocator.Cleanup(ViewModelType.MenuControl);
-         
            Dashboard MW = new Dashboard();
-           MW.Show();        
+          // MW.Activate();
+           MW.Show();
            //Dashboard._Dashboard.Show();    
            SettingsWindow.SettingWindow.Close();
            ViewModelLocator.Cleanup(ViewModelType.Settings);
-      
+          // ViewModelLocator.Cleanup(ViewModelType.MainWindow);
        }
 
        /// <summary>
@@ -250,7 +251,7 @@ namespace RetailPOS.ViewModel.Settings
            SettingsWindow set = new SettingsWindow();
            set.Show();
            Dashboard._Dashboard.Close();
-          ViewModelLocator.Cleanup(ViewModelType.MainWindow);
+          //ViewModelLocator.Cleanup(ViewModelType.MainWindow);
        }
 
        /// <summary>

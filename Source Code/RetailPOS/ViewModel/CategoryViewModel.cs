@@ -6,6 +6,7 @@ using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
 using System.Collections.Generic;
 using RetailPOS.Utility;
+using System.Windows;
 
 namespace RetailPOS.ViewModel
 {
@@ -161,6 +162,8 @@ namespace RetailPOS.ViewModel
         {
             LstProduct = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetProductByCategory(productCategory.Id)
                                                                          select item);
+            OpenLooseCatPopupIsOpen = false;
+            FirstPopupIsOpen = false;
         }
 
         /// <summary>

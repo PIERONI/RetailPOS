@@ -6,10 +6,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using RetailPOS.Core;
 using System.Linq;
+using System.ComponentModel;
+using System;
 
 namespace RetailPOS.ViewModel.MainWindow
 {
-    public class ShowProductViewModel : ViewModelBase
+    public class ShowProductViewModel : ViewModelBase, IDataErrorInfo
     {
         #region Public and Private Data Member
 
@@ -140,5 +142,39 @@ namespace RetailPOS.ViewModel.MainWindow
         }
 
         #endregion
+
+        #region IData Error Info Member
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+
+                if (columnName == "Quantity")
+                {
+                    if (Quantity<=0)
+                        result = "Quantity has to be Entered!";
+                    //else if (Quantity.Length < 5)
+                    //    result = "Quantity's length has to be at least 5 characters!";
+                }
+                //else if (columnName == "LastName")
+                //{
+                //    if (String.IsNullOrEmpty(LastName))
+                //        result = "LastName has to be set!";
+                //    else if (LastName.Length < 5)
+                //        result = "LastName's length has to be at least 5 characters!";
+                //}
+
+                return result;
+            }
+        }
+
+
+#endregion
     }
 }

@@ -8,12 +8,13 @@ using RetailPOS.RetailPOSService;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.ComponentModel;
 
 #endregion
 
 namespace RetailPOS.ViewModel.Settings
 {
-    public class CustomerViewModel : ViewModelBase
+    public class CustomerViewModel : ViewModelBase,IDataErrorInfo
     {
         #region Declare Public and Private Data member
 
@@ -590,6 +591,41 @@ namespace RetailPOS.ViewModel.Settings
                 LstCustomer = LstCustomer.Where(item => item.First_Name.Contains(customername)).ToList();
             }
         }
+
+        #endregion
+
+        #region IData Error Info Member
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string result = null;
+
+                if (columnName == "CustomerCode")
+                {
+                    if (string.IsNullOrEmpty(CustomerCode))
+                        result = "CustomerCode has to be Entered!";
+                    //else if (Quantity.Length < 5)
+                    //    result = "Quantity's length has to be at least 5 characters!";
+                }
+                //else if (columnName == "LastName")
+                //{
+                //    if (String.IsNullOrEmpty(LastName))
+                //        result = "LastName has to be set!";
+                //    else if (LastName.Length < 5)
+                //        result = "LastName's length has to be at least 5 characters!";
+                //}
+
+                return result;
+            }
+        }
+
 
         #endregion
     }

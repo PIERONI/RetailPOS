@@ -14,7 +14,7 @@
         <ListBox  Name="LstCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,2,100,2">          
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                    <WrapPanel  Orientation="Horizontal"  Margin="0,2,100,2"   Height="Auto" Width="335" >                       
+                    <WrapPanel  Orientation="Horizontal"  Margin="0,2,100,2"   Height="Auto" Width="365" >                       
                         </WrapPanel>        
                    </ItemsPanelTemplate>
                  </ListBox.ItemsPanel>
@@ -37,7 +37,7 @@
                             <RowDefinition></RowDefinition>                          
                         </Grid.RowDefinitions>                  
                     <Grid Grid.Row="1" Height="auto" Width="1000">
-                            <ListBox  Name="lstAllCategories" ItemsSource="{Binding lstCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0" >
+                            <ListBox  Name="lstAllCategories" ItemsSource="{Binding lstLooseCategories}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0" >
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel  Orientation="Horizontal"  Margin="0" HorizontalAlignment="Left"   Height="Auto">
@@ -46,7 +46,7 @@
                             </ListBox.ItemsPanel>
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Button Margin="1"  Content="{Binding Name}" Command="{Binding DataContext.SelectProductCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}"  Height="53" Background="{Binding Color}" HorizontalAlignment="Right"  Width="79" />
+                                    <Button Margin="1"  Content="{Binding Name}" Command="{Binding DataContext.SelectProductCommand,RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Height="53" Background="{Binding Color}" HorizontalAlignment="Right"  Width="79" />
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>

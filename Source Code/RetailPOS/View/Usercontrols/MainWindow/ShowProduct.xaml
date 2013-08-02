@@ -26,7 +26,7 @@
         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding Name}" Grid.Column="1" Grid.Row="0" />
         <TextBlock HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding Code}" Grid.Column="1" Grid.Row="1" />
         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding Price}" Grid.Column="1" Grid.Row="2" />
-        <TextBox  HorizontalAlignment="Left" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Margin="8,12,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding Quantity,Mode=TwoWay}" Grid.Column="1" Grid.Row="3" />
+        <TextBox  HorizontalAlignment="Left" Utility:MaskedTextBoxBehaviour.IsNumericOnly="True" Margin="8,12,0,0" VerticalAlignment="Top" Width="170" Height="25" Text="{Binding Quantity,Mode=TwoWay,ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="3" />
         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="170" Height="50" Text="{Binding Description}" Grid.Column="1" Grid.Row="4" />
         <TextBlock Visibility="Collapsed" Text="{Binding Id}" Name="HiddenTxtProductId" ></TextBlock>
         <StackPanel Grid.ColumnSpan="2" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" >

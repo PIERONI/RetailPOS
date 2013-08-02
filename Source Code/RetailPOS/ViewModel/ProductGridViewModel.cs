@@ -13,6 +13,7 @@ using RetailPOS.RetailPOSService;
 using RetailPOS.Utility;
 using RetailPOS.View;
 using RetailPOS.Constants;
+using System.ComponentModel;
 
 #endregion
 
@@ -621,6 +622,8 @@ namespace RetailPOS.ViewModel
         private void ClearGridProduct()
         {
             LstProductDetails.Clear();
+            TotalDiscount = (decimal) 0.0;
+            Total = (decimal)0.0;           
         }
 
         private void LogoutApplication()

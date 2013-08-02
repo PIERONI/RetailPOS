@@ -45,7 +45,7 @@
                     <TextBlock Text="Phone :" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="50,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="5" />
                     <TextBlock Text="Mobile:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="50,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="6" />
                     <TextBlock Text="Status:" FontSize="14"  Foreground="Black" FontWeight="Bold" Height="30" HorizontalAlignment="Left" Margin="50,5,0,0" TextBlock.TextAlignment="Right" VerticalAlignment="Top" Width="142" Grid.Row="7" />
-                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True" Grid.Row="0" MaxLength="255" Height="30" Text="{Binding CustomerCode}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" />
+                    <TextBox Grid.Column="1" Utility:MaskedTextBoxBehaviour.IsAlphaNumericOnly="True" Grid.Row="0" MaxLength="255" Height="30" Text="{Binding CustomerCode,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" HorizontalAlignment="Left" Margin="15,6,0,0"  VerticalAlignment="Top" Width="250" />
                     <Toolkit:AutoCompleteBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" SelectedItem="{Binding SelectedType, Mode=TwoWay}" Margin="15,6,0,0"
                                  ItemsSource="{Binding LstType}" Text="{Binding Name, Mode=TwoWay}" IsTextCompletionEnabled="False" FilterMode="StartsWith"
                                      ValueMemberPath="Name" VerticalAlignment="Top" Width="250" Height="30" >

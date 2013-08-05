@@ -181,7 +181,7 @@ namespace RetailPOS.ViewModel
            set
            {
                _selectedProduct = value;
-               BindProduct();
+               BindProduct();               
            }
        }
 
@@ -358,6 +358,7 @@ namespace RetailPOS.ViewModel
            SelectedProduct.Quantity = ProductQuantity = 0;
            SelectedProduct.Discount = 0;
            ProductDescription = SelectedProduct.Description;
+
        }
 
        /// <summary>

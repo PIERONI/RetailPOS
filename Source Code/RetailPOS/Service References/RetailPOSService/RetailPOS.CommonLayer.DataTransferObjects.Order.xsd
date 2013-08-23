@@ -8,6 +8,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Customer_Id" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Discount_total" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Id" type="xs:long" />
           <xs:element minOccurs="0" name="Invoice_Id" nillable="true" type="xs:long" />
           <xs:element minOccurs="0" name="OrderChilds" nillable="true" type="tns:ArrayOfOrderChildDTO" />
@@ -40,6 +41,7 @@
           <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Product_Id" type="xs:short" />
           <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Retail_price" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Taxed" type="xs:int" />
           <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="product" nillable="true" type="q3:ProductDTO" />
         </xs:sequence>

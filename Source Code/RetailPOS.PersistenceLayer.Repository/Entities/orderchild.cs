@@ -93,6 +93,12 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             get;
             set;
         }
+    
+        public virtual Nullable<decimal> Retail_price
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Navigation Properties

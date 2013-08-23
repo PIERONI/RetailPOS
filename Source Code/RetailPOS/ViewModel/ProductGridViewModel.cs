@@ -799,6 +799,7 @@ namespace RetailPOS.ViewModel
                 Invoice_Id = 64,
                 Print_Receipt_Copies = 0,
                 Status = (short)orderStatus,
+                Discount_total=TotalDiscount,
                 OrderChilds = InitializeOrderItemDetails()
             };
         }
@@ -818,7 +819,8 @@ namespace RetailPOS.ViewModel
                                                            Measure_Unit_Id = 3,
                                                            Amount = (decimal)item.Amount,
                                                            Discount = item.Discount,
-                                                           Taxed = 1
+                                                           Taxed = 1,
+                                                           Retail_price=item.Retail_Price
                                                        }).ToList();
             return lstOrderChildDetail;
         }
@@ -846,6 +848,7 @@ namespace RetailPOS.ViewModel
             if (SelectedOrder != null)
             {
                 LstOrderItems = ServiceFactory.ServiceClient.GetOrderItemsByOrderId(((OrderMasterDTO)SelectedOrder).Id);
+
 
                 LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderItems
                                                                          select new ProductDTO

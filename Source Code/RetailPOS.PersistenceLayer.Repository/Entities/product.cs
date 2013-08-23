@@ -115,38 +115,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private display_properties _display_properties;
     
-        public virtual ICollection<orderchild> orderchilds
-        {
-            get
-            {
-                if (_orderchilds == null)
-                {
-                    var newCollection = new FixupCollection<orderchild>();
-                    newCollection.CollectionChanged += Fixuporderchilds;
-                    _orderchilds = newCollection;
-                }
-                return _orderchilds;
-            }
-            set
-            {
-                if (!ReferenceEquals(_orderchilds, value))
-                {
-                    var previousValue = _orderchilds as FixupCollection<orderchild>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixuporderchilds;
-                    }
-                    _orderchilds = value;
-                    var newValue = value as FixupCollection<orderchild>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixuporderchilds;
-                    }
-                }
-            }
-        }
-        private ICollection<orderchild> _orderchilds;
-    
         public virtual ICollection<product_purchase_history_child> product_purchase_history_child
         {
             get
@@ -210,6 +178,38 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<supplier> _suppliers;
+    
+        public virtual ICollection<orderchild> orderchilds
+        {
+            get
+            {
+                if (_orderchilds == null)
+                {
+                    var newCollection = new FixupCollection<orderchild>();
+                    newCollection.CollectionChanged += Fixuporderchilds;
+                    _orderchilds = newCollection;
+                }
+                return _orderchilds;
+            }
+            set
+            {
+                if (!ReferenceEquals(_orderchilds, value))
+                {
+                    var previousValue = _orderchilds as FixupCollection<orderchild>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuporderchilds;
+                    }
+                    _orderchilds = value;
+                    var newValue = value as FixupCollection<orderchild>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuporderchilds;
+                    }
+                }
+            }
+        }
+        private ICollection<orderchild> _orderchilds;
 
         #endregion
         #region Association Fixup
@@ -224,28 +224,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             if (display_properties != null)
             {
                 display_properties.product = this;
-            }
-        }
-    
-        private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (orderchild item in e.NewItems)
-                {
-                    item.product = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (orderchild item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.product, this))
-                    {
-                        item.product = null;
-                    }
-                }
             }
         }
     
@@ -291,6 +269,28 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                     if (item.products.Contains(this))
                     {
                         item.products.Remove(this);
+                    }
+                }
+            }
+        }
+    
+        private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (orderchild item in e.NewItems)
+                {
+                    item.product = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (orderchild item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.product, this))
+                    {
+                        item.product = null;
                     }
                 }
             }

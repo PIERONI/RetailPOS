@@ -15,7 +15,8 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Order
         public decimal Amount { get; set; }
         public Nullable<decimal> Discount { get; set; }
         public int Taxed { get; set; }
-
+       // public Nullable<int> Discount { get; set; }
+        public Nullable<decimal> Retail_price { get; set; }
         #endregion
 
         #region Navigational Properties

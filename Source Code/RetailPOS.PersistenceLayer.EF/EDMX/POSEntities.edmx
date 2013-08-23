@@ -455,6 +455,7 @@
           <Property Name="amount" Type="decimal" Nullable="false" Precision="15" Scale="2" />
           <Property Name="taxed" Type="int" Nullable="false" />
           <Property Name="Discount" Type="decimal" />
+          <Property Name="Retail_price" Type="decimal" Precision="19" />
         </EntityType>
         <EntityType Name="ordermaster">
           <Key>
@@ -468,6 +469,7 @@
           <Property Name="invoice_id" Type="bigint" />
           <Property Name="print_receipt_copies" Type="smallint" Nullable="false" />
           <Property Name="Status" Type="smallint" />
+          <Property Name="Discount_total" Type="decimal" />
         </EntityType>
         <!--Errors Found During Generation:
       warning 6002: The table/view 'def.webpos.payment_gateways' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
@@ -1239,7 +1241,6 @@
           <EntitySet Name="measure_unit" EntityType="POSModel.measure_unit" />
           <EntitySet Name="measure_unit_conversion" EntityType="POSModel.measure_unit_conversion" />
           <EntitySet Name="openid_server" EntityType="POSModel.openid_server" />
-          <EntitySet Name="orderchilds" EntityType="POSModel.orderchild" />
           <EntitySet Name="ordermasters" EntityType="POSModel.ordermaster" />
           <EntitySet Name="payment_gateways" EntityType="POSModel.payment_gateways" />
           <EntitySet Name="postcodes" EntityType="POSModel.postcode" />
@@ -1367,10 +1368,6 @@
             <End Role="measure_unit" EntitySet="measure_unit" />
             <End Role="measure_unit_conversion" EntitySet="measure_unit_conversion" />
           </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_3" Association="POSModel.orderchild_ibfk_3">
-            <End Role="measure_unit" EntitySet="measure_unit" />
-            <End Role="orderchild" EntitySet="orderchilds" />
-          </AssociationSet>
           <AssociationSet Name="product_purchase_history_child_ibfk_3" Association="POSModel.product_purchase_history_child_ibfk_3">
             <End Role="measure_unit" EntitySet="measure_unit" />
             <End Role="product_purchase_history_child" EntitySet="product_purchase_history_child" />
@@ -1382,14 +1379,6 @@
           <AssociationSet Name="promotional_offer_ibfk_2" Association="POSModel.promotional_offer_ibfk_2">
             <End Role="measure_unit" EntitySet="measure_unit" />
             <End Role="promotional_offer" EntitySet="promotional_offer" />
-          </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_1" Association="POSModel.orderchild_ibfk_1">
-            <End Role="ordermaster" EntitySet="ordermasters" />
-            <End Role="orderchild" EntitySet="orderchilds" />
-          </AssociationSet>
-          <AssociationSet Name="orderchild_ibfk_2" Association="POSModel.orderchild_ibfk_2">
-            <End Role="product" EntitySet="products" />
-            <End Role="orderchild" EntitySet="orderchilds" />
           </AssociationSet>
           <AssociationSet Name="ordermaster_ibfk_2" Association="POSModel.ordermaster_ibfk_2">
             <End Role="shop_info" EntitySet="shop_info" />
@@ -1414,6 +1403,19 @@
           <AssociationSet Name="supplier_products" Association="POSModel.supplier_products">
             <End Role="supplier" EntitySet="suppliers" />
             <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <EntitySet Name="orderchilds" EntityType="POSModel.orderchild" />
+          <AssociationSet Name="orderchild_ibfk_3" Association="POSModel.orderchild_ibfk_3">
+            <End Role="measure_unit" EntitySet="measure_unit" />
+            <End Role="orderchild" EntitySet="orderchilds" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_1" Association="POSModel.orderchild_ibfk_1">
+            <End Role="ordermaster" EntitySet="ordermasters" />
+            <End Role="orderchild" EntitySet="orderchilds" />
+          </AssociationSet>
+          <AssociationSet Name="orderchild_ibfk_2" Association="POSModel.orderchild_ibfk_2">
+            <End Role="product" EntitySet="products" />
+            <End Role="orderchild" EntitySet="orderchilds" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="account">
@@ -1668,10 +1670,10 @@
           <Property Type="String" Name="description" MaxLength="1000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="measure_unit_conversion" Relationship="POSModel.measure_unit_conversion_ibfk_1" FromRole="measure_unit" ToRole="measure_unit_conversion" />
           <NavigationProperty Name="measure_unit_conversion1" Relationship="POSModel.measure_unit_conversion_ibfk_2" FromRole="measure_unit" ToRole="measure_unit_conversion" />
-          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_3" FromRole="measure_unit" ToRole="orderchild" />
           <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_3" FromRole="measure_unit" ToRole="product_purchase_history_child" />
           <NavigationProperty Name="promotional_offer" Relationship="POSModel.promotional_offer_ibfk_1" FromRole="measure_unit" ToRole="promotional_offer" />
           <NavigationProperty Name="promotional_offer1" Relationship="POSModel.promotional_offer_ibfk_2" FromRole="measure_unit" ToRole="promotional_offer" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_3" FromRole="measure_unit" ToRole="orderchild" />
         </EntityType>
         <EntityType Name="measure_unit_conversion">
           <Key>
@@ -1692,22 +1694,6 @@
           <Property Type="String" Name="server" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="customers" Relationship="POSModel.customer_ibfk_6" FromRole="openid_server" ToRole="customer" />
         </EntityType>
-        <EntityType Name="orderchild">
-          <Key>
-            <PropertyRef Name="order_id" />
-            <PropertyRef Name="product_id" />
-          </Key>
-          <Property Type="Int64" Name="order_id" Nullable="false" />
-          <Property Type="Int16" Name="product_id" Nullable="false" />
-          <Property Type="Decimal" Name="quantity" Nullable="false" />
-          <Property Type="Int16" Name="measure_unit_id" Nullable="false" />
-          <Property Type="Decimal" Name="amount" Nullable="false" />
-          <Property Type="Int32" Name="taxed" Nullable="false" />
-          <Property Type="Decimal" Name="Discount" />
-          <NavigationProperty Name="measure_unit" Relationship="POSModel.orderchild_ibfk_3" FromRole="orderchild" ToRole="measure_unit" />
-          <NavigationProperty Name="ordermaster" Relationship="POSModel.orderchild_ibfk_1" FromRole="orderchild" ToRole="ordermaster" />
-          <NavigationProperty Name="product" Relationship="POSModel.orderchild_ibfk_2" FromRole="orderchild" ToRole="product" />
-        </EntityType>
         <EntityType Name="ordermaster">
           <Key>
             <PropertyRef Name="id" />
@@ -1720,10 +1706,11 @@
           <Property Type="Int64" Name="invoice_id" />
           <Property Type="Int16" Name="print_receipt_copies" Nullable="false" />
           <Property Type="Int16" Name="Status" />
+          <Property Type="Decimal" Name="Discount_total" />
           <NavigationProperty Name="customer" Relationship="POSModel.ordermaster_ibfk_1" FromRole="ordermaster" ToRole="customer" />
           <NavigationProperty Name="invoice" Relationship="POSModel.ordermaster_ibfk_3" FromRole="ordermaster" ToRole="invoice" />
-          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_1" FromRole="ordermaster" ToRole="orderchild" />
           <NavigationProperty Name="shop_info" Relationship="POSModel.ordermaster_ibfk_2" FromRole="ordermaster" ToRole="shop_info" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_1" FromRole="ordermaster" ToRole="orderchild" />
         </EntityType>
         <EntityType Name="payment_gateways">
           <Key>
@@ -1764,9 +1751,9 @@
           <Property Type="Decimal" Name="size" />
           <Property Type="Decimal" Name="weight" />
           <NavigationProperty Name="display_properties" Relationship="POSModel.display_properties_ibfk_1" FromRole="product" ToRole="display_properties" />
-          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_2" FromRole="product" ToRole="orderchild" />
           <NavigationProperty Name="product_purchase_history_child" Relationship="POSModel.product_purchase_history_child_ibfk_2" FromRole="product" ToRole="product_purchase_history_child" />
           <NavigationProperty Name="suppliers" Relationship="POSModel.supplier_products" FromRole="product" ToRole="supplier" />
+          <NavigationProperty Name="orderchilds" Relationship="POSModel.orderchild_ibfk_2" FromRole="product" ToRole="orderchild" />
         </EntityType>
         <EntityType Name="product_category">
           <Key>
@@ -2310,18 +2297,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="orderchild_ibfk_3">
-          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
-          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="measure_unit">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderchild">
-              <PropertyRef Name="measure_unit_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="product_purchase_history_child_ibfk_3">
           <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
           <End Type="POSModel.product_purchase_history_child" Role="product_purchase_history_child" Multiplicity="*" />
@@ -2355,30 +2330,6 @@
             </Principal>
             <Dependent Role="promotional_offer">
               <PropertyRef Name="pqty_mu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orderchild_ibfk_1">
-          <End Type="POSModel.ordermaster" Role="ordermaster" Multiplicity="1" />
-          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ordermaster">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderchild">
-              <PropertyRef Name="order_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="orderchild_ibfk_2">
-          <End Type="POSModel.product" Role="product" Multiplicity="1" />
-          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="product">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="orderchild">
-              <PropertyRef Name="product_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2445,6 +2396,59 @@
         <Association Name="supplier_products">
           <End Type="POSModel.supplier" Role="supplier" Multiplicity="*" />
           <End Type="POSModel.product" Role="product" Multiplicity="*" />
+        </Association>
+        <EntityType Name="orderchild">
+          <Key>
+            <PropertyRef Name="order_id" />
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Type="Int64" Name="order_id" Nullable="false" />
+          <Property Type="Int16" Name="product_id" Nullable="false" />
+          <Property Type="Decimal" Name="quantity" Nullable="false" />
+          <Property Type="Int16" Name="measure_unit_id" Nullable="false" />
+          <Property Type="Decimal" Name="amount" Nullable="false" />
+          <Property Type="Int32" Name="taxed" Nullable="false" />
+          <Property Type="Decimal" Name="Discount" />
+          <Property Type="Decimal" Name="Retail_price" />
+          <NavigationProperty Name="measure_unit" Relationship="POSModel.orderchild_ibfk_3" FromRole="orderchild" ToRole="measure_unit" />
+          <NavigationProperty Name="ordermaster" Relationship="POSModel.orderchild_ibfk_1" FromRole="orderchild" ToRole="ordermaster" />
+          <NavigationProperty Name="product" Relationship="POSModel.orderchild_ibfk_2" FromRole="orderchild" ToRole="product" />
+        </EntityType>
+        <Association Name="orderchild_ibfk_3">
+          <End Type="POSModel.measure_unit" Role="measure_unit" Multiplicity="1" />
+          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="measure_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="measure_unit_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_1">
+          <End Type="POSModel.ordermaster" Role="ordermaster" Multiplicity="1" />
+          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordermaster">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="orderchild_ibfk_2">
+          <End Type="POSModel.product" Role="product" Multiplicity="1" />
+          <End Type="POSModel.orderchild" Role="orderchild" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orderchild">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -2699,22 +2703,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="orderchilds">
-            <EntityTypeMapping TypeName="POSModel.orderchild">
-              <MappingFragment StoreEntitySet="orderchild">
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="taxed" ColumnName="taxed" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="product_id" ColumnName="product_id" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ordermasters">
             <EntityTypeMapping TypeName="POSModel.ordermaster">
               <MappingFragment StoreEntitySet="ordermaster">
+                <ScalarProperty Name="Discount_total" ColumnName="Discount_total" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="print_receipt_copies" ColumnName="print_receipt_copies" />
                 <ScalarProperty Name="invoice_id" ColumnName="invoice_id" />
@@ -3003,6 +2995,20 @@
               <ScalarProperty Name="id" ColumnName="supplier_id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="orderchilds">
+            <EntityTypeMapping TypeName="POSModel.orderchild">
+              <MappingFragment StoreEntitySet="orderchild">
+                <ScalarProperty Name="Retail_price" ColumnName="Retail_price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="taxed" ColumnName="taxed" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="measure_unit_id" ColumnName="measure_unit_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3033,60 +3039,52 @@
         <EntityTypeShape EntityType="POSModel.customer_type" Width="1.5" PointX="3" PointY="17.25" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="POSModel.department" Width="1.5" PointX="0.75" PointY="0.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="POSModel.designation" Width="1.5" PointX="2.75" PointY="0.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.display_properties" Width="1.5" PointX="12" PointY="34" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="POSModel.display_properties" Width="1.5" PointX="15" PointY="35" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="POSModel.email_history" Width="1.5" PointX="7.5" PointY="12.75" Height="2.7494921874999818" />
         <EntityTypeShape EntityType="POSModel.email_templates" Width="1.5" PointX="0.75" PointY="3.75" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="POSModel.general_settings" Width="1.5" PointX="2.75" PointY="3.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="POSModel.general_settings" Width="1.5" PointX="4.75" PointY="0.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="POSModel.invoicecredit" Width="1.5" PointX="12.75" PointY="20" Height="2.5571907552083246" />
         <EntityTypeShape EntityType="POSModel.invoiceitem" Width="1.5" PointX="9.75" PointY="23.625" Height="3.3263964843749818" />
         <EntityTypeShape EntityType="POSModel.invoice" Width="1.5" PointX="7.5" PointY="25.875" Height="6.0186165364583246" />
         <EntityTypeShape EntityType="POSModel.locality" Width="1.5" PointX="0.75" PointY="9.375" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.login_history" Width="1.5" PointX="10.5" PointY="11.75" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="POSModel.measure_unit" Width="1.5" PointX="9.75" PointY="2.375" Height="2.7494921874999818" />
-        <EntityTypeShape EntityType="POSModel.measure_unit_conversion" Width="1.5" PointX="12" PointY="0.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="POSModel.login_history" Width="1.5" PointX="10.5" PointY="12.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="POSModel.measure_unit" Width="1.5" PointX="12.75" PointY="16.375" Height="2.7494921874999818" />
+        <EntityTypeShape EntityType="POSModel.measure_unit_conversion" Width="1.5" PointX="15" PointY="14.75" Height="1.9802864583333246" />
         <EntityTypeShape EntityType="POSModel.openid_server" Width="1.5" PointX="3" PointY="19.875" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.orderchild" Width="1.5" PointX="12" PointY="15.875" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="POSModel.ordermaster" Width="1.5" PointX="9.75" PointY="15.625" Height="3.3263964843749818" />
-        <EntityTypeShape EntityType="POSModel.payment_gateways" Width="1.5" PointX="4.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.ordermaster" Width="1.5" PointX="12.75" PointY="23.5" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="POSModel.payment_gateways" Width="1.5" PointX="6.75" PointY="0.75" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="POSModel.postcode" Width="1.5" PointX="0.75" PointY="15.875" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.product" Width="1.5" PointX="9.75" PointY="32.875" Height="4.287903645833353" />
-        <EntityTypeShape EntityType="POSModel.product_category" Width="1.5" PointX="4.75" PointY="3.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.product_promotional_offer" Width="1.5" PointX="6.75" PointY="0.75" Height="1.4033821614583246" />
-        <EntityTypeShape EntityType="POSModel.product_purchase_history_child" Width="1.5" PointX="15" PointY="20.125" Height="3.3263964843749818" />
-        <EntityTypeShape EntityType="POSModel.product_purchase_history_master" Width="1.5" PointX="9.75" PointY="27.75" Height="3.5186979166666674" />
-        <EntityTypeShape EntityType="POSModel.product_status" Width="1.5" PointX="6.75" PointY="3.75" Height="1.5956835937499818" />
-        <EntityTypeShape EntityType="POSModel.promotional_offer" Width="1.5" PointX="12" PointY="3.5" Height="3.3263964843749818" />
-        <EntityTypeShape EntityType="POSModel.query" Width="1.5" PointX="10.75" PointY="7.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.security_group" Width="1.5" PointX="12.75" PointY="7.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.shop_info" Width="1.5" PointX="7.5" PointY="16.75" Height="3.1340950520833246" />
-        <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="12.75" PointY="10.75" Height="1.9802864583333246" />
-        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="8.25" PointY="6.5" Height="5.0571093749999818" />
-        <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="14.75" PointY="0.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.product" Width="1.5" PointX="12.75" PointY="31.875" Height="4.287903645833353" />
+        <EntityTypeShape EntityType="POSModel.product_category" Width="1.5" PointX="7.75" PointY="3.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.product_promotional_offer" Width="1.5" PointX="7.75" PointY="6.75" Height="1.4033821614583246" />
+        <EntityTypeShape EntityType="POSModel.product_purchase_history_child" Width="1.5" PointX="18" PointY="24.625" Height="3.3263964843749818" />
+        <EntityTypeShape EntityType="POSModel.product_purchase_history_master" Width="1.5" PointX="15.75" PointY="29.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="POSModel.product_status" Width="1.5" PointX="8.75" PointY="0.75" Height="1.5956835937499818" />
+        <EntityTypeShape EntityType="POSModel.promotional_offer" Width="1.5" PointX="15" PointY="17.5" Height="3.3263964843749818" />
+        <EntityTypeShape EntityType="POSModel.query" Width="1.5" PointX="9.75" PointY="3.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.security_group" Width="1.5" PointX="9.75" PointY="6.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="POSModel.shop_info" Width="1.5" PointX="10.5" PointY="27.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="POSModel.shop_product" Width="1.5" PointX="7.75" PointY="9.75" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="POSModel.staff" Width="1.5" PointX="5.25" PointY="4.5" Height="5.0571093749999818" />
+        <EntityTypeShape EntityType="POSModel.staff_status" Width="1.5" PointX="9.75" PointY="9.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="POSModel.street" Width="1.5" PointX="0.75" PointY="18.5" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="7.5" PointY="33.75" Height="2.5571907552083246" />
-        <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="14.75" PointY="3.75" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="POSModel.supplier" Width="1.5" PointX="10.5" PointY="32.75" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="POSModel.supplier_contact_person" Width="1.5" PointX="11.75" PointY="0.75" Height="2.3648893229166674" />
         <EntityTypeShape EntityType="POSModel.town_city" Width="1.5" PointX="0.75" PointY="21" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="14.75" PointY="7.75" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="POSModel.wastemanagement" Width="1.5" PointX="14.75" PointY="10.75" Height="1.980286458333353" />
-        <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="14.75" PointY="13.75" Height="2.1725878906249818" />
+        <EntityTypeShape EntityType="POSModel.warranty" Width="1.5" PointX="11.75" PointY="4.75" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="POSModel.wastemanagement" Width="1.5" PointX="11.75" PointY="7.75" Height="1.980286458333353" />
+        <EntityTypeShape EntityType="POSModel.working_record" Width="1.5" PointX="12.75" PointY="10.75" Height="2.1725878906249818" />
         <AssociationConnector Association="POSModel.accounts_ibfk_1" >
           <ConnectorPoint PointX="6" PointY="17.345520833333325" />
-          <ConnectorPoint PointX="6" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="6.1197929166666674" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="6.2864595833333334" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="6.5260454166666664" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="6.6927120833333325" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="9.6145833333333339" PointY="21.415345052083325" />
-          <ConnectorPoint PointX="9.75" PointY="21.415345052083325" />
+          <ConnectorPoint PointX="6" PointY="21.317047526041662" />
+          <ConnectorPoint PointX="6.1197929166666674" PointY="21.317047526041662" />
+          <ConnectorPoint PointX="6.2864595833333334" PointY="21.317047526041662" />
+          <ConnectorPoint PointX="9.75" PointY="21.317047526041662" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.accounts_ibfk_2" >
-          <ConnectorPoint PointX="9" PointY="25.931537461538461" />
-          <ConnectorPoint PointX="9.37857443490112" PointY="25.55296302663734" />
-          <ConnectorPoint PointX="9.4964255650988783" PointY="25.435111896439583" />
-          <ConnectorPoint PointX="9.53125" PointY="25.400287461538461" />
-          <ConnectorPoint PointX="9.53125" PointY="20.551420526041667" />
-          <ConnectorPoint PointX="9.75" PointY="20.551420526041667" />
+          <ConnectorPoint PointX="8.25" PointY="25.875" />
+          <ConnectorPoint PointX="8.25" PointY="22.131823789062487" />
+          <ConnectorPoint PointX="9.75" PointY="22.131823789062487" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.address_ibfk_10" >
           <ConnectorPoint PointX="2.25" PointY="15.876152846153847" />
@@ -3128,185 +3126,195 @@
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_3" >
           <ConnectorPoint PointX="4.5" PointY="18.223005429687547" />
+          <ConnectorPoint PointX="5.3072879166666675" PointY="18.223005429687547" />
+          <ConnectorPoint PointX="5.4739545833333336" PointY="18.223005429687547" />
           <ConnectorPoint PointX="5.5937475" PointY="18.223005429687547" />
           <ConnectorPoint PointX="5.5937475" PointY="17.345520833333325" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_5" >
-          <ConnectorPoint PointX="4.5" PointY="9.6439925130208337" />
-          <ConnectorPoint PointX="6" PointY="9.6439925130208337" />
-          <ConnectorPoint PointX="6" PointY="10.75" />
+          <ConnectorPoint PointX="4.5" PointY="10.537985026041667" />
+          <ConnectorPoint PointX="4.875" PointY="10.912985026041667" />
+          <ConnectorPoint PointX="4.875" PointY="10.373847153846153" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="10.75" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.customer_ibfk_6" >
-          <ConnectorPoint PointX="4.5" PointY="20.645172526041662" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="20.645172526041662" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="20.645172526041662" />
-          <ConnectorPoint PointX="6.1197929166666674" PointY="20.645172526041662" />
-          <ConnectorPoint PointX="6.2864595833333334" PointY="20.645172526041662" />
-          <ConnectorPoint PointX="6.4062525" PointY="20.645172526041662" />
+          <ConnectorPoint PointX="4.5" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="5.3072879166666675" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="5.4739545833333336" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="6.1197929166666674" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="6.2864595833333334" PointY="20.596023763020831" />
+          <ConnectorPoint PointX="6.4062525" PointY="20.596023763020831" />
           <ConnectorPoint PointX="6.4062525" PointY="17.345520833333325" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.email_history_ibfk_1" >
           <ConnectorPoint PointX="6.75" PointY="14.124746093749991" />
-          <ConnectorPoint PointX="7.166666666666667" PointY="14.124746093749991" />
-          <ConnectorPoint PointX="7.333333333333333" PointY="14.124746093749991" />
           <ConnectorPoint PointX="7.5" PointY="14.124746093749991" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoicecredit_ibfk_1" >
-          <ConnectorPoint PointX="6.75" PointY="12.406121046874944" />
-          <ConnectorPoint PointX="7.25" PointY="12.406121046874944" />
-          <ConnectorPoint PointX="7.25" PointY="15.749492187499982" />
-          <ConnectorPoint PointX="9.5" PointY="15.749492187499982" />
-          <ConnectorPoint PointX="9.5" PointY="19.201396484374982" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="19.201396484374982" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="19.201396484374982" />
-          <ConnectorPoint PointX="13.5" PointY="19.201396484374982" />
-          <ConnectorPoint PointX="13.5" PointY="20" />
+          <ConnectorPoint PointX="6.75" PointY="17.345520833333325" />
+          <ConnectorPoint PointX="7.125" PointY="17.720520833333325" />
+          <ConnectorPoint PointX="12.375" PointY="17.720520833333325" />
+          <ConnectorPoint PointX="12.375" PointY="19.625" />
+          <ConnectorPoint PointX="12.75" PointY="20" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoiceitems_ibfk_2" >
-          <ConnectorPoint PointX="6.6093787499999994" PointY="17.345520833333325" />
-          <ConnectorPoint PointX="6.6093787499999994" PointY="24.71875" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="24.71875" />
-          <ConnectorPoint PointX="9.6145833333333339" PointY="24.71875" />
+          <ConnectorPoint PointX="6.20312625" PointY="17.345520833333325" />
+          <ConnectorPoint PointX="6.20312625" PointY="24.71875" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="24.71875" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="24.71875" />
+          <ConnectorPoint PointX="8.5729191666666669" PointY="24.71875" />
+          <ConnectorPoint PointX="8.7395858333333347" PointY="24.71875" />
           <ConnectorPoint PointX="9.75" PointY="24.71875" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoices_ibfk_1" >
-          <ConnectorPoint PointX="6.20312625" PointY="17.345520833333325" />
-          <ConnectorPoint PointX="6.20312625" PointY="28.884308268229162" />
+          <ConnectorPoint PointX="5.79687375" PointY="17.345520833333325" />
+          <ConnectorPoint PointX="5.79687375" PointY="28.884308268229162" />
           <ConnectorPoint PointX="7.5" PointY="28.884308268229162" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.login_history_ibfk_2" >
-          <ConnectorPoint PointX="6.75" PointY="12.015560523437472" />
-          <ConnectorPoint PointX="8.5416666666666661" PointY="12.015560523437472" />
-          <ConnectorPoint PointX="8.7083333333333339" PointY="12.015560523437472" />
-          <ConnectorPoint PointX="10.5" PointY="12.015560523437472" />
+          <ConnectorPoint PointX="6.75" PointY="16.422504010416603" />
+          <ConnectorPoint PointX="11.25" PointY="16.422504010416603" />
+          <ConnectorPoint PointX="11.25" PointY="15.307190755208325" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.ordermaster_ibfk_1" >
-          <ConnectorPoint PointX="6.75" PointY="16.280996093749991" />
-          <ConnectorPoint PointX="9.4166666666666661" PointY="16.280996093749991" />
-          <ConnectorPoint PointX="9.5833333333333339" PointY="16.280996093749991" />
-          <ConnectorPoint PointX="9.75" PointY="16.280996093749991" />
+          <ConnectorPoint PointX="5.3906212500000006" PointY="17.345520833333325" />
+          <ConnectorPoint PointX="5.3906212500000006" PointY="23.53125" />
+          <ConnectorPoint PointX="5.7135404166666666" PointY="23.53125" />
+          <ConnectorPoint PointX="5.8802070833333326" PointY="23.53125" />
+          <ConnectorPoint PointX="6.1197929166666674" PointY="23.53125" />
+          <ConnectorPoint PointX="6.2864595833333334" PointY="23.53125" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="23.53125" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="23.53125" />
+          <ConnectorPoint PointX="12.416666666666666" PointY="23.53125" />
+          <ConnectorPoint PointX="12.583333333333334" PointY="23.53125" />
+          <ConnectorPoint PointX="12.75" PointY="23.53125" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.display_properties_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="35.086293945312491" />
-          <ConnectorPoint PointX="12" PointY="35.086293945312491" />
+          <ConnectorPoint PointX="14.25" PointY="35.581451822916662" />
+          <ConnectorPoint PointX="15" PointY="35.581451822916662" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.email_history_ibfk_2" >
-          <ConnectorPoint PointX="8.625" PointY="11.557109374999982" />
-          <ConnectorPoint PointX="8.625" PointY="12.75" />
+          <ConnectorPoint PointX="6.75" PointY="8.8864957682291532" />
+          <ConnectorPoint PointX="7.59375" PointY="8.8864957682291532" />
+          <ConnectorPoint PointX="7.59375" PointY="12.75" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoicecredit_ibfk_2" >
-          <ConnectorPoint PointX="9" PointY="27.350698242187491" />
-          <ConnectorPoint PointX="9.3541666666666661" PointY="27.350698242187491" />
-          <ConnectorPoint PointX="9.5208333333333339" PointY="27.350698242187491" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="27.350698242187491" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="27.350698242187491" />
-          <ConnectorPoint PointX="13.5" PointY="27.350698242187491" />
+          <ConnectorPoint PointX="9" PointY="28.884308268229162" />
+          <ConnectorPoint PointX="10.25" PointY="28.884308268229162" />
+          <ConnectorPoint PointX="10.25" PointY="27.5" />
+          <ConnectorPoint PointX="11.572916666666666" PointY="27.5" />
+          <ConnectorPoint PointX="11.739583333333334" PointY="27.5" />
+          <ConnectorPoint PointX="12.5" PointY="27.5" />
+          <ConnectorPoint PointX="12.5" PointY="22.932190755208325" />
+          <ConnectorPoint PointX="13.5" PointY="22.932190755208325" />
           <ConnectorPoint PointX="13.5" PointY="22.557190755208325" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoiceitems_ibfk_1" >
-          <ConnectorPoint PointX="9" PointY="26.444450742187541" />
-          <ConnectorPoint PointX="9.3541666666666661" PointY="26.444450742187541" />
-          <ConnectorPoint PointX="9.5208333333333339" PointY="26.444450742187541" />
-          <ConnectorPoint PointX="9.75" PointY="26.444450742187541" />
+          <ConnectorPoint PointX="9" PointY="26.413198242187491" />
+          <ConnectorPoint PointX="9.75" PointY="26.413198242187491" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.invoiceitems_ibfk_3" >
-          <ConnectorPoint PointX="10.281923076923077" PointY="26.951396484374982" />
-          <ConnectorPoint PointX="10.281923076923077" PointY="27.201396484374982" />
-          <ConnectorPoint PointX="10.728461538461538" PointY="27.201396484374982" />
+          <ConnectorPoint PointX="10.406538461538462" PointY="26.951396484374982" />
+          <ConnectorPoint PointX="10.406538461538462" PointY="27.076396484374982" />
+          <ConnectorPoint PointX="10.728461538461538" PointY="27.076396484374982" />
           <ConnectorPoint PointX="10.728461538461538" PointY="26.951396484374982" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.ordermaster_ibfk_3" >
-          <ConnectorPoint PointX="8.9757692307692309" PointY="25.875" />
-          <ConnectorPoint PointX="9.375" PointY="25.475769230769231" />
-          <ConnectorPoint PointX="9.375" PointY="17.647448289062481" />
-          <ConnectorPoint PointX="9.4166666666666661" PointY="17.647448289062481" />
-          <ConnectorPoint PointX="9.5833333333333339" PointY="17.647448289062481" />
-          <ConnectorPoint PointX="9.75" PointY="17.647448289062481" />
+          <ConnectorPoint PointX="8.6562525" PointY="25.875" />
+          <ConnectorPoint PointX="8.6562525" PointY="23.546875" />
+          <ConnectorPoint PointX="12.416666666666666" PointY="23.546875" />
+          <ConnectorPoint PointX="12.583333333333334" PointY="23.546875" />
+          <ConnectorPoint PointX="12.75" PointY="23.546875" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.login_history_ibfk_3" >
-          <ConnectorPoint PointX="9.75" PointY="10.578797200520825" />
-          <ConnectorPoint PointX="10.59375" PointY="10.578797200520825" />
-          <ConnectorPoint PointX="10.59375" PointY="11.75" />
+          <ConnectorPoint PointX="6.75" PointY="9.5571093749999818" />
+          <ConnectorPoint PointX="7.125" PointY="9.9321093749999818" />
+          <ConnectorPoint PointX="7.125" PointY="12.375" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="12.375" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="12.375" />
+          <ConnectorPoint PointX="10.125" PointY="12.375" />
+          <ConnectorPoint PointX="10.5" PointY="12.75" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="2.5526432291666623" />
-          <ConnectorPoint PointX="12" PointY="2.5526432291666623" />
+          <ConnectorPoint PointX="14.25" PointY="16.647219238281245" />
+          <ConnectorPoint PointX="15" PointY="16.647219238281245" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.measure_unit_conversion_ibfk_2" >
-          <ConnectorPoint PointX="11.25" PointY="2.4013216145833312" />
-          <ConnectorPoint PointX="12" PointY="2.4013216145833312" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.orderchild_ibfk_3" >
-          <ConnectorPoint PointX="11.25" PointY="3.8698197083333157" />
-          <ConnectorPoint PointX="11.75" PointY="3.8698197083333157" />
-          <ConnectorPoint PointX="11.75" PointY="7.5" />
-          <ConnectorPoint PointX="12.5" PointY="7.5" />
-          <ConnectorPoint PointX="12.5" PointY="15.5" />
-          <ConnectorPoint PointX="12.75" PointY="15.5" />
-          <ConnectorPoint PointX="12.75" PointY="15.875" />
+          <ConnectorPoint PointX="14.25" PointY="16.448609619140623" />
+          <ConnectorPoint PointX="15" PointY="16.448609619140623" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_3" >
-          <ConnectorPoint PointX="11.25" PointY="3.1151432291666623" />
-          <ConnectorPoint PointX="16.40625" PointY="3.1151432291666623" />
-          <ConnectorPoint PointX="16.40625" PointY="20.125" />
+          <ConnectorPoint PointX="14.25" PointY="17.115143229166662" />
+          <ConnectorPoint PointX="18.75" PointY="17.115143229166662" />
+          <ConnectorPoint PointX="18.75" PointY="24.625" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.promotional_offer_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="4.5596559479166485" />
-          <ConnectorPoint PointX="11.666666666666666" PointY="4.5596559479166476" />
-          <ConnectorPoint PointX="11.833333333333334" PointY="4.5596559479166485" />
-          <ConnectorPoint PointX="12" PointY="4.5596559479166485" />
+          <ConnectorPoint PointX="14.25" PointY="17.965421487630209" />
+          <ConnectorPoint PointX="15" PointY="17.965421487630209" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.promotional_offer_ibfk_2" >
-          <ConnectorPoint PointX="11.25" PointY="4.2147378281249823" />
-          <ConnectorPoint PointX="11.666666666666666" PointY="4.2147378281249814" />
-          <ConnectorPoint PointX="11.833333333333334" PointY="4.2147378281249823" />
-          <ConnectorPoint PointX="12" PointY="4.2147378281249823" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.orderchild_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="17.345896809895834" />
-          <ConnectorPoint PointX="12" PointY="17.345896809895834" />
-        </AssociationConnector>
-        <AssociationConnector Association="POSModel.orderchild_ibfk_2" >
-          <ConnectorPoint PointX="11.250000000000002" PointY="32.875" />
-          <ConnectorPoint PointX="11.625" PointY="32.5" />
-          <ConnectorPoint PointX="11.625" PointY="18.112597214843746" />
-          <ConnectorPoint PointX="12" PointY="18.112597214843746" />
+          <ConnectorPoint PointX="14.25" PointY="18.607456837565106" />
+          <ConnectorPoint PointX="15" PointY="18.607456837565106" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.ordermaster_ibfk_2" >
-          <ConnectorPoint PointX="9" PointY="18.361922386718732" />
-          <ConnectorPoint PointX="9.2916666666666661" PointY="18.361922386718732" />
-          <ConnectorPoint PointX="9.5833333333333339" PointY="18.361922386718732" />
-          <ConnectorPoint PointX="9.75" PointY="18.361922386718732" />
+          <ConnectorPoint PointX="11.65625" PointY="27.75" />
+          <ConnectorPoint PointX="11.65625" PointY="23.515625" />
+          <ConnectorPoint PointX="12.416666666666666" PointY="23.515625" />
+          <ConnectorPoint PointX="12.583333333333334" PointY="23.515625" />
+          <ConnectorPoint PointX="12.75" PointY="23.515625" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_2" >
-          <ConnectorPoint PointX="11.25" PointY="33.437502499999994" />
-          <ConnectorPoint PointX="15.75" PointY="33.437502499999994" />
-          <ConnectorPoint PointX="15.75" PointY="23.451396484374982" />
+          <ConnectorPoint PointX="14.25" PointY="34.134348958333334" />
+          <ConnectorPoint PointX="18.75" PointY="34.134348958333334" />
+          <ConnectorPoint PointX="18.75" PointY="27.951396484374982" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_child_ibfk_1" >
-          <ConnectorPoint PointX="11.25" PointY="29.509348958333334" />
-          <ConnectorPoint PointX="11.541666666666666" PointY="29.509348958333334" />
-          <ConnectorPoint PointX="11.708333333333334" PointY="29.509348958333334" />
-          <ConnectorPoint PointX="15.3437475" PointY="29.509348958333334" />
-          <ConnectorPoint PointX="15.3437475" PointY="23.451396484374982" />
+          <ConnectorPoint PointX="16.90625" PointY="29.75" />
+          <ConnectorPoint PointX="16.90625" PointY="24.65625" />
+          <ConnectorPoint PointX="18" PointY="24.65625" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_1" >
-          <ConnectorPoint PointX="9.0000000000000018" PointY="33.75" />
-          <ConnectorPoint PointX="9.375" PointY="33.375" />
-          <ConnectorPoint PointX="9.375" PointY="29.509348958333334" />
-          <ConnectorPoint PointX="9.75" PointY="29.509348958333334" />
+          <ConnectorPoint PointX="12" PointY="34.3482462220052" />
+          <ConnectorPoint PointX="12.375" PointY="34.3482462220052" />
+          <ConnectorPoint PointX="12.375" PointY="30.7812505" />
+          <ConnectorPoint PointX="14.604166666666666" PointY="30.7812505" />
+          <ConnectorPoint PointX="14.770833333333334" PointY="30.7812505" />
+          <ConnectorPoint PointX="15.75" PointY="30.7812505" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.product_purchase_history_master_ibfk_2" >
-          <ConnectorPoint PointX="9" PointY="19.821786359775633" />
-          <ConnectorPoint PointX="9.3160744349011217" PointY="20.137860794676754" />
-          <ConnectorPoint PointX="9.4339255650988783" PointY="20.255711924874511" />
-          <ConnectorPoint PointX="9.4375" PointY="20.259286359775633" />
-          <ConnectorPoint PointX="9.4375" PointY="28.598422479166672" />
-          <ConnectorPoint PointX="9.75" PointY="28.598422479166672" />
+          <ConnectorPoint PointX="12" PointY="30.20312525" />
+          <ConnectorPoint PointX="14.604166666666666" PointY="30.20312525" />
+          <ConnectorPoint PointX="14.770833333333334" PointY="30.20312525" />
+          <ConnectorPoint PointX="15.75" PointY="30.20312525" />
         </AssociationConnector>
         <AssociationConnector Association="POSModel.supplier_products" >
-          <ConnectorPoint PointX="9" PointY="35.059847877604156" />
-          <ConnectorPoint PointX="9.75" PointY="35.059847877604156" />
+          <ConnectorPoint PointX="12" PointY="33.4866231110026" />
+          <ConnectorPoint PointX="12.291666666666666" PointY="33.4866231110026" />
+          <ConnectorPoint PointX="12.458333333333334" PointY="33.4866231110026" />
+          <ConnectorPoint PointX="12.75" PointY="33.4866231110026" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="POSModel.orderchild" Width="1.5" PointX="15" PointY="24.75" Height="3.1340950520833246" />
+        <AssociationConnector Association="POSModel.orderchild_ibfk_3" >
+          <ConnectorPoint PointX="14.25" PointY="19.124492187500003" />
+          <ConnectorPoint PointX="14.625" PointY="19.499492187500003" />
+          <ConnectorPoint PointX="14.625" PointY="26.317047526041662" />
+          <ConnectorPoint PointX="15" PointY="26.317047526041662" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.orderchild_ibfk_1" >
+          <ConnectorPoint PointX="14.25" PointY="25.471023763020831" />
+          <ConnectorPoint PointX="14.541666666666666" PointY="25.471023763020831" />
+          <ConnectorPoint PointX="14.708333333333334" PointY="25.471023763020831" />
+          <ConnectorPoint PointX="15" PointY="25.471023763020831" />
+        </AssociationConnector>
+        <AssociationConnector Association="POSModel.orderchild_ibfk_2" >
+          <ConnectorPoint PointX="14.25" PointY="31.937306692307693" />
+          <ConnectorPoint PointX="14.6875" PointY="31.499806692307693" />
+          <ConnectorPoint PointX="14.6875" PointY="27.131823289062488" />
+          <ConnectorPoint PointX="15" PointY="27.131823289062488" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

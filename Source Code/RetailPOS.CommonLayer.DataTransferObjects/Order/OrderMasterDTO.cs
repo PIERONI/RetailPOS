@@ -21,6 +21,7 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Order
         public Nullable<short> Status { get; set; }
         public decimal TotalQuantity { get; set; }
         public decimal TotalAmount { get; set; }
+        public Nullable<decimal> Discount_total { get; set; }
         public IList<OrderChildDTO> OrderChilds { get; set; }
     }
 }

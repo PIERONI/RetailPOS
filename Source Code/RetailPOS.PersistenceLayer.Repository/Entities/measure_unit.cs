@@ -104,38 +104,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private ICollection<measure_unit_conversion> _measure_unit_conversion1;
     
-        public virtual ICollection<orderchild> orderchilds
-        {
-            get
-            {
-                if (_orderchilds == null)
-                {
-                    var newCollection = new FixupCollection<orderchild>();
-                    newCollection.CollectionChanged += Fixuporderchilds;
-                    _orderchilds = newCollection;
-                }
-                return _orderchilds;
-            }
-            set
-            {
-                if (!ReferenceEquals(_orderchilds, value))
-                {
-                    var previousValue = _orderchilds as FixupCollection<orderchild>;
-                    if (previousValue != null)
-                    {
-                        previousValue.CollectionChanged -= Fixuporderchilds;
-                    }
-                    _orderchilds = value;
-                    var newValue = value as FixupCollection<orderchild>;
-                    if (newValue != null)
-                    {
-                        newValue.CollectionChanged += Fixuporderchilds;
-                    }
-                }
-            }
-        }
-        private ICollection<orderchild> _orderchilds;
-    
         public virtual ICollection<product_purchase_history_child> product_purchase_history_child
         {
             get
@@ -231,6 +199,38 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<promotional_offer> _promotional_offer1;
+    
+        public virtual ICollection<orderchild> orderchilds
+        {
+            get
+            {
+                if (_orderchilds == null)
+                {
+                    var newCollection = new FixupCollection<orderchild>();
+                    newCollection.CollectionChanged += Fixuporderchilds;
+                    _orderchilds = newCollection;
+                }
+                return _orderchilds;
+            }
+            set
+            {
+                if (!ReferenceEquals(_orderchilds, value))
+                {
+                    var previousValue = _orderchilds as FixupCollection<orderchild>;
+                    if (previousValue != null)
+                    {
+                        previousValue.CollectionChanged -= Fixuporderchilds;
+                    }
+                    _orderchilds = value;
+                    var newValue = value as FixupCollection<orderchild>;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += Fixuporderchilds;
+                    }
+                }
+            }
+        }
+        private ICollection<orderchild> _orderchilds;
 
         #endregion
         #region Association Fixup
@@ -274,28 +274,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                     if (ReferenceEquals(item.measure_unit1, this))
                     {
                         item.measure_unit1 = null;
-                    }
-                }
-            }
-        }
-    
-        private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-            {
-                foreach (orderchild item in e.NewItems)
-                {
-                    item.measure_unit = this;
-                }
-            }
-    
-            if (e.OldItems != null)
-            {
-                foreach (orderchild item in e.OldItems)
-                {
-                    if (ReferenceEquals(item.measure_unit, this))
-                    {
-                        item.measure_unit = null;
                     }
                 }
             }
@@ -362,6 +340,28 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
                     if (ReferenceEquals(item.measure_unit1, this))
                     {
                         item.measure_unit1 = null;
+                    }
+                }
+            }
+        }
+    
+        private void Fixuporderchilds(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (orderchild item in e.NewItems)
+                {
+                    item.measure_unit = this;
+                }
+            }
+    
+            if (e.OldItems != null)
+            {
+                foreach (orderchild item in e.OldItems)
+                {
+                    if (ReferenceEquals(item.measure_unit, this))
+                    {
+                        item.measure_unit = null;
                     }
                 }
             }

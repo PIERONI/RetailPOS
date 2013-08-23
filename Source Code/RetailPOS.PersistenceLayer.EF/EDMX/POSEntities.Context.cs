@@ -162,12 +162,6 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
         }
         private ObjectSet<openid_server> _openid_server;
     
-        public ObjectSet<orderchild> orderchilds
-        {
-            get { return _orderchilds  ?? (_orderchilds = CreateObjectSet<orderchild>("orderchilds")); }
-        }
-        private ObjectSet<orderchild> _orderchilds;
-    
         public ObjectSet<ordermaster> ordermasters
         {
             get { return _ordermasters  ?? (_ordermasters = CreateObjectSet<ordermaster>("ordermasters")); }
@@ -305,6 +299,12 @@ namespace RetailPOS.PersistenceLayer.EF.EDMX
             get { return _working_record  ?? (_working_record = CreateObjectSet<working_record>("working_record")); }
         }
         private ObjectSet<working_record> _working_record;
+    
+        public ObjectSet<orderchild> orderchilds
+        {
+            get { return _orderchilds  ?? (_orderchilds = CreateObjectSet<orderchild>("orderchilds")); }
+        }
+        private ObjectSet<orderchild> _orderchilds;
 
         #endregion
     }

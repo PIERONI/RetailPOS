@@ -123,6 +123,12 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             get;
             set;
         }
+    
+        public virtual Nullable<decimal> Discount_total
+        {
+            get;
+            set;
+        }
 
         #endregion
         #region Navigation Properties
@@ -157,6 +163,21 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
         }
         private invoice _invoice;
     
+        public virtual shop_info shop_info
+        {
+            get { return _shop_info; }
+            set
+            {
+                if (!ReferenceEquals(_shop_info, value))
+                {
+                    var previousValue = _shop_info;
+                    _shop_info = value;
+                    Fixupshop_info(previousValue);
+                }
+            }
+        }
+        private shop_info _shop_info;
+    
         public virtual ICollection<orderchild> orderchilds
         {
             get
@@ -188,21 +209,6 @@ namespace RetailPOS.PersistenceLayer.Repository.Entities
             }
         }
         private ICollection<orderchild> _orderchilds;
-    
-        public virtual shop_info shop_info
-        {
-            get { return _shop_info; }
-            set
-            {
-                if (!ReferenceEquals(_shop_info, value))
-                {
-                    var previousValue = _shop_info;
-                    _shop_info = value;
-                    Fixupshop_info(previousValue);
-                }
-            }
-        }
-        private shop_info _shop_info;
 
         #endregion
         #region Association Fixup

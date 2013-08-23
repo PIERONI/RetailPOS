@@ -9,14 +9,31 @@ using GalaSoft.MvvmLight.Command;
 using RetailPOS.Core;
 using RetailPOS.RetailPOSService;
 using RetailPOS.Utility;
+using System.Windows.Data;
+using System;
 
 
 #endregion
 
 namespace RetailPOS.ViewModel
 {
-   public class SearchViewModel : ViewModelBase
+    public class SearchViewModel : ViewModelBase//, IMultiValueConverter
     {
+        //public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        //{
+        //    SearchViewModel parameters = new SearchViewModel();
+        //    foreach (var obj in values)
+        //    {
+        //        if (obj is ProductDTO) parameters.SelectedProduct = (ProductDTO)obj;
+
+        //        //else if (obj is bool) parameters.IgnoreCase = (bool)obj;
+        //    }
+        //    return parameters;
+        //}
+        //public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
+        //{
+        //    throw new NotImplementedException();
+        //}
        #region Declare Public and Private Data member
 
        public List<ProductDTO> LstSearchProduct { get; private set; }

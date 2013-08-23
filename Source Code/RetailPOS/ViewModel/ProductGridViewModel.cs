@@ -20,7 +20,7 @@ using System.ComponentModel;
 namespace RetailPOS.ViewModel
 {
     public class ProductGridViewModel : ViewModelBase
-    {
+    {       
         #region Declare Public and Private Data member
 
         public IList<DiscountType> LstDiscountType { get; private set; }
@@ -524,23 +524,23 @@ namespace RetailPOS.ViewModel
         private void EditDataGridCommand()
         {
             SelectedProduct.Quantity = ProductQuantity;
-            decimal amount = (decimal)(SelectedProduct.Quantity * SelectedProduct.Retail_Price);
+            SelectedProduct.Amount = (decimal)(SelectedProduct.Quantity * SelectedProduct.Retail_Price);
             bool showErrorMessage = false;
 
             if (SelectedDiscountType != null)
             {
-                if (SelectedDiscountType.Id == 1 && ProductDiscount < amount)
+                if (SelectedDiscountType.Id == 1 && ProductDiscount < SelectedProduct.Amount)
                 {
                     SelectedProduct.Discount = ProductDiscount;
-                    amount -= ProductDiscount;
+                    SelectedProduct.Amount -= ProductDiscount;
                 }
                 else if (SelectedDiscountType.Id == 2)
                 {
                     decimal discountAmount = (decimal)(SelectedProduct.Amount * (ProductDiscount / 100));
-                    if (discountAmount < amount)
+                    if (discountAmount < SelectedProduct.Amount)
                     {
                         SelectedProduct.Discount = discountAmount;
-                        amount -= discountAmount;
+                        SelectedProduct.Amount -= discountAmount;
                     }
                     else
                     {
@@ -592,7 +592,8 @@ namespace RetailPOS.ViewModel
                 IsEditProductEntryPopupOpen = true;
                 ProductName = SelectedProduct.Name;
                 ProductQuantity = SelectedProduct.Quantity;
-                ProductDiscount = 0;
+                ProductDiscount = 0;  
+              
             }
         }
 
@@ -611,11 +612,20 @@ namespace RetailPOS.ViewModel
             SelectedOrder = (OrderMasterDTO)args;
         }
 
+        //To delete selected item from datagrid
+
         private void DeleteItem()
         {
             if (SelectedProduct != null)
             {
-                LstProductDetails.Remove(SelectedProduct);
+                Total = Total - (decimal)SelectedProduct.Amount;
+                if (SelectedProduct.Discount > 0)
+                {
+                    TotalDiscount -= SelectedProduct.Discount;
+                    //Discount -= (decimal)SelectedProduct.Discount;
+                }
+                LstProductDetails.Remove(SelectedProduct);           
+          
             }
         }
 
@@ -717,7 +727,7 @@ namespace RetailPOS.ViewModel
         {
             IsSetAsidePopUpOpen = false;
             LstProductDetails.Clear();
-
+            LstCustomerDetail.Clear();
             ClearControls();
 
             ViewModelLocator.Cleanup(ViewModelType.MenuControl);
@@ -727,7 +737,7 @@ namespace RetailPOS.ViewModel
         {
             Total = (decimal)0.0;         
             TotalDiscount = (decimal)0.0;
-        }
+          }
 
         /// <summary>
         /// Initialize customer details to be saved to database
@@ -753,11 +763,14 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void SaveOrderInQueue()
         {
-            var OrderDetail = InitializeOrderItems(0, OrderStatus.OrderInQueue);
-            ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+            if (LstProductDetails.Count>0)
+            {
+                var OrderDetail = InitializeOrderItems(0, OrderStatus.OrderInQueue);
+                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
 
-            ////Reset Controls to their original position
-            ResetControls();
+                ////Reset Controls to their original position
+                ResetControls();
+            }
         }
 
         /// <summary>
@@ -783,7 +796,7 @@ namespace RetailPOS.ViewModel
                 Order_Date = DateTime.Now,
                 Customer_Id = customerId,
                 Shop_Code = "PSD-01",
-                Invoice_Id = 0,
+                Invoice_Id = 64,
                 Print_Receipt_Copies = 0,
                 Status = (short)orderStatus,
                 OrderChilds = InitializeOrderItemDetails()
@@ -809,6 +822,7 @@ namespace RetailPOS.ViewModel
                                                        }).ToList();
             return lstOrderChildDetail;
         }
+
 
         ///To save new customer detail
         private CustomerDTO InitializwSaveCustomerDetail()
@@ -858,7 +872,7 @@ namespace RetailPOS.ViewModel
             if (Total > Discount)
             {
                 TotalDiscount += Discount;
-                Total -= TotalDiscount;
+                Total -= Discount;
 
                 IsErrorMessageVisible = Visibility.Hidden;
                 Discount = (Decimal)0.0;
@@ -881,25 +895,38 @@ namespace RetailPOS.ViewModel
             if (SelectedCustomer != null)
             {
                 LstOrderMasterType = ServiceFactory.ServiceClient.GetSetAsideOrders(((CustomerDTO)SelectedCustomer).Id);
-                
-                LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderMasterType[0].OrderChilds
-                                                                         select new ProductDTO
-                                                                         {
-                                                                             Id = item.Product_Id,
-                                                                             Name = item.ProductName,
-                                                                             Quantity = item.Quantity,
-                                                                             Retail_Price = item.Amount,
-                                                                             Discount = item.Discount ?? 0,
-                                                                             Amount = item.Amount - (item.Discount ?? 0)
-                                                                         });
-            }
+                if (LstOrderMasterType.Count > 0)
+                {
 
-            var amount = LstProductDetails.Select(u => u.Amount).Sum();
-            Total =  (decimal)amount;
-            var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();         
-            TotalDiscount = (decimal)totalDiscount;
-            Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
+                    LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderMasterType[0].OrderChilds
+                                                                             select new ProductDTO
+                                                                             {
+                                                                                 Id = item.Product_Id,
+                                                                                 Name = item.ProductName,
+                                                                                 Quantity = item.Quantity,
+                                                                                 Retail_Price = item.Amount,
+                                                                                 Discount = item.Discount ?? 0,
+                                                                                 Amount = item.Amount - (item.Discount ?? 0)
+                                                                             });
+                    var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                    Total = (decimal)amount;
+                    var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();
+                    TotalDiscount = (decimal)totalDiscount;
+                    Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
+
+                }
+                else
+                {
+                    Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
+                }
+            }
+            else
+            {
+                Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
+            }
         }
+
+            
 
         ///To open popup for entering discount
         private void OpenDiscountentryPopUpClick()

@@ -270,8 +270,9 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void ClearControls()
         {
-            CustomerName = string.Empty;
-            CustomerMobile = string.Empty;
+            CustomerName = null;
+            CustomerMobile = null;
+            //SelectedCustomer.Id = 0;
         }
 
         #endregion

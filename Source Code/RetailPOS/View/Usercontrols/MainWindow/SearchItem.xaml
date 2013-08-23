@@ -128,8 +128,14 @@
                         <TextBlock  HorizontalAlignment="Left" Margin="8,12,0,0" VerticalAlignment="Top" Width="107" Text="{Binding ProductDescription}" Grid.Column="1" Grid.Row="4" ></TextBlock>
                         <TextBlock Visibility="Collapsed" Text="{Binding Id}" Name="HiddenTxtProductId" ></TextBlock>
                         <StackPanel Grid.ColumnSpan="2" Grid.Row="5" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"  Margin="12,12,0,0">
-                            <Button CommandParameter="{Binding ElementName=SelectedProduct}" Content="Add Product" Command="{Binding SelectProductCommand}" Width="200" Height="40">
-                                <Button.CommandBindings>
+                            <Button Content="Add Product" Command="{Binding SelectProductCommand}"  CommandParameter="{Binding ElementName=SelectedProduct}" Width="200" Height="40">
+                                <!--<Button.CommandParameter>
+                                    <MultiBinding Converter="{StaticResource ProductGridVM}">
+                                        <Binding  ElementName="SelectedProduct"></Binding>
+                                        <Binding  ElementName="SelectedProduct"></Binding>
+                                    </MultiBinding>
+                                </Button.CommandParameter>-->
+                                    <Button.CommandBindings>
                                     <CommandBinding Command="Save"></CommandBinding>
                                 </Button.CommandBindings>
                             </Button>

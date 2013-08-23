@@ -47,6 +47,7 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
             lstOrderMaster = (from orderMaster in base.OrderMasterRepository.GetList(item => item.Status == 3).ToList()
                               join orderChild in base.OrderChildRepository.GetList().ToList()
                               on orderMaster.id equals orderChild.order_id
+                              orderby orderMaster.id descending
                               group orderChild by orderChild.order_id into groupByItem
                               select new OrderMasterDTO
                               {

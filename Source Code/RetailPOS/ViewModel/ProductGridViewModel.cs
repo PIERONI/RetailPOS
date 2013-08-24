@@ -856,7 +856,7 @@ namespace RetailPOS.ViewModel
                                                                              Id = item.Product_Id,
                                                                              Name = item.ProductName,
                                                                              Quantity = item.Quantity,
-                                                                             Retail_Price = item.Amount,
+                                                                             Retail_Price = item.Retail_price,
                                                                              Discount = item.Discount ?? 0,
                                                                              Amount = item.Amount - (item.Discount ?? 0)
                                                                          });

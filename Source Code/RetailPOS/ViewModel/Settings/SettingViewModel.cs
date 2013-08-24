@@ -23,6 +23,7 @@ namespace RetailPOS.ViewModel.Settings
        private Visibility _issearchPurchaseHistory;
        private Visibility _isWasteManegementVisible;
        private Visibility _isSetAsideOrderVisible;
+        private Visibility _isSystemSettingVisible;
        #endregion
 
        #region Public Properties
@@ -141,6 +142,20 @@ namespace RetailPOS.ViewModel.Settings
            }
        }
 
+        //To make system setting user control visible
+       public Visibility IsSystemSettingVisible
+       {
+           get
+           {
+               return _isSystemSettingVisible;
+           }
+           set
+           {
+               _isSystemSettingVisible = value;
+               RaisePropertyChanged("IsSystemSettingVisible");
+           }
+       }
+
        #endregion
 
        /// <summary>
@@ -232,25 +247,27 @@ namespace RetailPOS.ViewModel.Settings
        /// </summary>
        private void OpenMainWindow()
        {
-          // ViewModelLocator.Cleanup(ViewModelType.MainWindow);
-          // ViewModelLocator.Cleanup(ViewModelType.MenuControl);
-           Dashboard MW = new Dashboard();
-          // MW.Activate();
-           MW.Show();
-           //Dashboard._Dashboard.Show();    
            SettingsWindow.SettingWindow.Close();
-           ViewModelLocator.Cleanup(ViewModelType.Settings);
-          // ViewModelLocator.Cleanup(ViewModelType.MainWindow);
-       }
+           ViewModelLocator.Cleanup(ViewModelType.Settings);         
+      
+           //Dashboard MW = new Dashboard();
+           //          MW.Show();
+      }
 
        /// <summary>
        /// Opens the setting window.
        /// </summary>
        private void OpenSettingWindow()
        {
-           SettingsWindow set = new SettingsWindow();
+          // HideSettings();
+            SettingsWindow set = new SettingsWindow();
            set.Show();
-           Dashboard._Dashboard.Close();
+           //Dashboard MW = new Dashboard();
+           //MW.Close();
+         
+           //IsSystemSettingVisible = Visibility.Visible;
+                       
+           //Dashboard._Dashboard.Close();
           //ViewModelLocator.Cleanup(ViewModelType.MainWindow);
        }
 

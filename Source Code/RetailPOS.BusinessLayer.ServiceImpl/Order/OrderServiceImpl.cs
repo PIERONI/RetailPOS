@@ -6,12 +6,15 @@ using RetailPOS.BusinessLayer.Service.Order;
 using RetailPOS.CommonLayer.DataTransferObjects.Order;
 using RetailPOS.CommonLayer.Mapper;
 using RetailPOS.PersistenceLayer.Repository.Entities;
+using RetailPOS.BusinessLayer.ServiceImpl.Admin;
+using RetailPOS.BusinessLayer.Service.Admin;
+using RetailPOS.CommonLayer.DataTransferObjects.Product;
 
 #endregion
 
 namespace RetailPOS.BusinessLayer.ServiceImpl.Order
 {
-    public class OrderServiceImpl : OrderBaseService, IOrderService
+    public class OrderServiceImpl :  OrderBaseService, IOrderService
     {
         /// <summary>
         /// Save Order details in database
@@ -66,8 +69,24 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
         IList<OrderChildDTO> IOrderService.GetOrderItemsByOrderId(long orderId)
         {
             IList<OrderChildDTO> lstOrderChild = new List<OrderChildDTO>();
-            ObjectMapper.Map(base.OrderChildRepository.GetList(item => item.order_id == orderId).ToList(), lstOrderChild);
-            
+           // ObjectMapper.Map(base.OrderChildRepository.GetList(item => item.order_id == orderId).ToList(), lstOrderChild);
+            lstOrderChild = (from orderMaster in base.OrderMasterRepository.GetList(item=>item.id==orderId).ToList()
+                            join orderChild in base.OrderChildRepository.GetList().ToList()
+                             on orderMaster.id equals orderChild.order_id 
+                             join products in base.ProductRepository.GetList().ToList() 
+                            on orderChild.product_id equals products.id
+                                                   
+                             // group orderChild by orderChild.order_id into groupByItem
+                             select new OrderChildDTO
+                             {
+                                 Product_Id = orderChild.product_id,
+                                 ProductName = products.name,
+                                 Quantity = orderChild.quantity,
+                                 Amount=orderChild.amount,
+                                 Retail_price = orderChild.Retail_price,
+                                 Discount = orderChild.Discount,
+                                 TotalDiscount = orderMaster.Discount_total
+                             }).ToList();
             return lstOrderChild;
         }
 
@@ -97,5 +116,19 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
 
             return lstOrder;
         }
+
+        /// <summary>
+        /// Get All Products
+        /// </summary>
+        /// <returns>returns list of all products present in database</returns>
+        IList<ProductDTO> IOrderService.GetAllProducts()
+        {
+            IList<ProductDTO> lstProducts = new List<ProductDTO>();
+
+            ObjectMapper.Map(base.ProductRepository.GetList(item => item.status_id == 1
+                || item.status_id == 7).ToList(), lstProducts);
+            return lstProducts;
+        }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RetailPOS.CommonLayer.DataTransferObjects.Order;
+using RetailPOS.CommonLayer.DataTransferObjects.Product;
 
 namespace RetailPOS.BusinessLayer.Service.Order
 {
@@ -39,5 +40,13 @@ namespace RetailPOS.BusinessLayer.Service.Order
         /// <param name="status">status to get order items</param>
         /// <returns>returns list of  order items with the selected status</returns>
         IList<OrderMasterDTO> GetOrderItemByStatus(int status);
+
+        /// <summary>
+        /// Get all active Products
+        /// </summary>
+        /// <returns>returns list of all products present in database</returns>
+        IList<ProductDTO> GetAllProducts();
+
+    
     }
 }

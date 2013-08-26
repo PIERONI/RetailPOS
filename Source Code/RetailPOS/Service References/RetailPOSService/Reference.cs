@@ -2524,6 +2524,9 @@ namespace RetailPOS.RetailPOSService {
         private int TaxedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> TotalDiscountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private RetailPOS.RetailPOSService.ProductDTO productField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
@@ -2639,6 +2642,19 @@ namespace RetailPOS.RetailPOSService {
                 if ((this.TaxedField.Equals(value) != true)) {
                     this.TaxedField = value;
                     this.RaisePropertyChanged("Taxed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> TotalDiscount {
+            get {
+                return this.TotalDiscountField;
+            }
+            set {
+                if ((this.TotalDiscountField.Equals(value) != true)) {
+                    this.TotalDiscountField = value;
+                    this.RaisePropertyChanged("TotalDiscount");
                 }
             }
         }

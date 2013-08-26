@@ -737,7 +737,7 @@ namespace RetailPOS.ViewModel
         {
             Total = (decimal)0.0;         
             TotalDiscount = (decimal)0.0;
-          }
+        }
 
         /// <summary>
         /// Initialize customer details to be saved to database
@@ -857,15 +857,28 @@ namespace RetailPOS.ViewModel
                                                                              Name = item.ProductName,
                                                                              Quantity = item.Quantity,
                                                                              Retail_Price = item.Retail_price,
-                                                                             Discount = item.Discount ?? 0,
-                                                                             Amount = item.Amount - (item.Discount ?? 0)
+                                                                             Discount = item.Discount ?? 0,                                                                           
+                                                                             Amount = item.Amount                                                                            
                                                                          });
 
-                var amount = LstProductDetails.Select(u => u.Amount).Sum();
-                Total = (decimal)amount;
-                var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();          
-                TotalDiscount = (decimal)totalDiscount;
-                Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
+                if (LstOrderItems.Select(u => u.TotalDiscount).FirstOrDefault() > LstProductDetails.Select(u => u.Discount).Sum())
+                {
+                    var totalDiscount = LstOrderItems.Select(u => u.TotalDiscount).Sum() - LstProductDetails.Select(u => u.Discount).Sum();
+                    TotalDiscount = (decimal)totalDiscount;
+                    var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                    Total = (decimal)amount - TotalDiscount;
+                    Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
+                }
+                else
+                {
+                    var totalDiscount = LstOrderItems.Select(u => u.TotalDiscount).FirstOrDefault();
+                    TotalDiscount = (decimal)totalDiscount;
+                    var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                    Total = (decimal)amount;
+                    Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);             
+
+                }
+               
             }
         }
 

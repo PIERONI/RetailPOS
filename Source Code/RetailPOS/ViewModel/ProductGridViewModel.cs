@@ -863,10 +863,11 @@ namespace RetailPOS.ViewModel
 
                 if (LstOrderItems.Select(u => u.TotalDiscount).FirstOrDefault() > LstProductDetails.Select(u => u.Discount).Sum())
                 {
-                    var totalDiscount = LstOrderItems.Select(u => u.TotalDiscount).Sum() - LstProductDetails.Select(u => u.Discount).Sum();
+                    var totalDiscount = LstOrderItems.Select(u => u.TotalDiscount).FirstOrDefault(); // - LstProductDetails.Select(u => u.Discount).Sum();
                     TotalDiscount = (decimal)totalDiscount;
                     var amount = LstProductDetails.Select(u => u.Amount).Sum();
-                    Total = (decimal)amount - TotalDiscount;
+                    var totalamount = LstOrderItems.Select(u => u.TotalDiscount).FirstOrDefault() -LstProductDetails.Select(u => u.Discount).Sum();
+                    Total = (decimal)amount - (decimal)totalamount;
                     Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
                 }
                 else

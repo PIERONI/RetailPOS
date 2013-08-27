@@ -47,6 +47,14 @@ namespace RetailPOS.BusinessLayer.Service.Order
         /// <returns>returns list of all products present in database</returns>
         IList<ProductDTO> GetAllProducts();
 
+
+        /// <summary>
+        /// Update Order details  in database based on Order in queue Item
+        /// </summary>
+        /// <param name="OrderInqueueDetail">Customer object to be Updated</param>
+        /// <returns>returns boolean value indicating if the records are Updated in database</returns>
+        bool UpdateOrderDetail(OrderMasterDTO orderDetails);
+
     
     }
 }

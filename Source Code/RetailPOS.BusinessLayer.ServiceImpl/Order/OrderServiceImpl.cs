@@ -29,6 +29,18 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
         }
 
         /// <summary>
+        /// Update Order details in database
+        /// </summary>
+        /// <param name="orderDetails">ordermaster object to be updated</param>
+        /// <returns>returns boolean value indicating if the records are updated in database</returns>
+        bool IOrderService.UpdateOrderDetail(OrderMasterDTO orderDetail)
+        {
+            ordermaster orderEntity = new ordermaster();
+            ObjectMapper.Map(orderDetail, orderEntity);
+            return OrderMasterRepository.Update(orderEntity);
+        }
+
+        /// <summary>
         /// Get set aside orders by customer Id
         /// </summary>
         /// <returns>returns list of set aside orders by customer Id</returns>

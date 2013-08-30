@@ -21,6 +21,7 @@
           <xs:element minOccurs="0" name="Image_Path" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="IsSelected" type="xs:boolean" />
           <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Order_Id" type="xs:long" />
           <xs:element minOccurs="0" name="PurchasePrice" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
           <xs:element minOccurs="0" name="Retail_Price" nillable="true" type="xs:decimal" />

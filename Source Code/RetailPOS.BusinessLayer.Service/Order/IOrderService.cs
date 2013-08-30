@@ -20,7 +20,7 @@ namespace RetailPOS.BusinessLayer.Service.Order
         /// Get set aside orders by customer Id
         /// </summary>
         /// <returns>returns list of set aside orders by customer Id</returns>
-        IList<OrderMasterDTO> GetSetAsideOrders(int customerId);
+        OrderMasterDTO GetSetAsideOrders(int customerId);
 
         /// <summary>
         /// Get all orders in queue from database

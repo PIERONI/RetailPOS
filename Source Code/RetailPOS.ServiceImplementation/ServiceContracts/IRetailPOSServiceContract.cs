@@ -225,11 +225,19 @@ namespace RetailPOS.ServiceImplementation.ServiceContracts
         bool SaveOrderDetail(OrderMasterDTO orderDetail);
 
         /// <summary>
+        /// Update Order details in database
+        /// </summary>
+        /// <param name="orderDetails">ordermaster object to be updated</param>
+        /// <returns>returns boolean value indicating if the records are updated in database</returns>
+        [OperationContract]
+        bool UpdateOrderDetail(OrderMasterDTO orderDetail);
+
+        /// <summary>
         /// Get set aside orders by customer Id
         /// </summary>
         /// <returns>returns list of set aside orders by customer Id</returns>
         [OperationContract]
-        IList<OrderMasterDTO> GetSetAsideOrders(int customerId);
+        OrderMasterDTO GetSetAsideOrders(int customerId);
 
         /// <summary>
         /// Get all orders in queue from database

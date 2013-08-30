@@ -35,8 +35,24 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
         /// <returns>returns boolean value indicating if the records are updated in database</returns>
         bool IOrderService.UpdateOrderDetail(OrderMasterDTO orderDetail)
         {
+            bool isRecordUpdated = false;
             ordermaster orderEntity = new ordermaster();
             ObjectMapper.Map(orderDetail, orderEntity);
+
+            isRecordUpdated = OrderMasterRepository.Update(orderEntity);
+
+            foreach (orderchild item in orderEntity.orderchilds)
+            {
+                if (item.order_id == 0)
+                {
+                    item.order_id = orderEntity.id;
+                    isRecordUpdated = OrderChildRepository.Save(item);
+                }
+                else
+                {
+                    isRecordUpdated = OrderChildRepository.Update(item);
+                }
+            }
             return OrderMasterRepository.Update(orderEntity);
         }
 
@@ -44,11 +60,11 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
         /// Get set aside orders by customer Id
         /// </summary>
         /// <returns>returns list of set aside orders by customer Id</returns>
-        IList<OrderMasterDTO> IOrderService.GetSetAsideOrders(int customerId)
+        OrderMasterDTO IOrderService.GetSetAsideOrders(int customerId)
         {
-            IList<OrderMasterDTO> lstOrderMaster = new List<OrderMasterDTO>();
+            OrderMasterDTO lstOrderMaster = new OrderMasterDTO();
             ObjectMapper.Map(base.OrderMasterRepository.GetList(item => 
-                item.customer_id == customerId && item.Status == 2).ToList(), lstOrderMaster);
+                item.customer_id == customerId && item.Status == 2).FirstOrDefault(), lstOrderMaster);
             return lstOrderMaster;
         }
 
@@ -91,12 +107,14 @@ namespace RetailPOS.BusinessLayer.ServiceImpl.Order
                              // group orderChild by orderChild.order_id into groupByItem
                              select new OrderChildDTO
                              {
+                                 Order_Id = orderChild.order_id,
                                  Product_Id = orderChild.product_id,
                                  ProductName = products.name,
                                  Quantity = orderChild.quantity,
                                  Amount=orderChild.amount,
                                  Retail_price = orderChild.Retail_price,
                                  Discount = orderChild.Discount,
+                                 Taxed = orderChild.taxed,
                                  TotalDiscount = orderMaster.Discount_total
                              }).ToList();
             return lstOrderChild;

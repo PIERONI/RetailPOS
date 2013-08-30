@@ -22,5 +22,6 @@ namespace RetailPOS.CommonLayer.DataTransferObjects.Product
         public decimal Discount { get; set; }
         public decimal? Amount { get; set; }
         public bool IsSelected { get; set; }
+        public long Order_Id { get; set; }
     }
 }

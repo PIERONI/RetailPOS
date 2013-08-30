@@ -20,7 +20,9 @@ using System.ComponentModel;
 namespace RetailPOS.ViewModel
 {
     public class ProductGridViewModel : ViewModelBase
-    {       
+    {
+      
+
         #region Declare Public and Private Data member
 
         public IList<DiscountType> LstDiscountType { get; private set; }
@@ -72,7 +74,7 @@ namespace RetailPOS.ViewModel
         private DiscountType _selectedDiscount;
         private ProductDTO _selectedProduct;
 
-        private IList<OrderMasterDTO> _lstOrderMasterType;
+        private OrderMasterDTO _lstOrderMasterType;
         private IList<OrderChildDTO> _lstOrderItems;
         private ObservableCollection<ProductDTO> _productDetails;
         private ObservableCollection<CustomerDTO> _customerDetail;
@@ -244,6 +246,7 @@ namespace RetailPOS.ViewModel
             get { return _totalDiscount; }
             set
             {
+                
                 _totalDiscount = value;
                 RaisePropertyChanged("TotalDiscount");
             }
@@ -396,7 +399,7 @@ namespace RetailPOS.ViewModel
         /// <value>
         /// The list of ordermaster.
         /// </value>
-        public IList<OrderMasterDTO> LstOrderMasterType
+        public OrderMasterDTO LstOrderMasterType
         {
             get { return _lstOrderMasterType; }
             set
@@ -461,7 +464,7 @@ namespace RetailPOS.ViewModel
             LstCustomerDetail = new ObservableCollection<CustomerDTO>();
             LstDiscountType = new ObservableCollection<DiscountType>();
             LstSearchCustomer = new List<CustomerDTO>();
-            LstOrderMasterType = new List<OrderMasterDTO>();
+            LstOrderMasterType = new OrderMasterDTO();
             LstOrderItems = new List<OrderChildDTO>();
 
             Mediator.Register("SetSelectedProduct", SetSelectedProduct);
@@ -737,6 +740,7 @@ namespace RetailPOS.ViewModel
         {
             Total = (decimal)0.0;         
             TotalDiscount = (decimal)0.0;
+            SelectedOrder = null;
         }
 
         /// <summary>
@@ -750,7 +754,7 @@ namespace RetailPOS.ViewModel
                 var customerDetail = InitializwSaveCustomerDetail();
                 int customerId = ServiceFactory.ServiceClient.SaveCustomerDetail(customerDetail);
 
-                var OrderDetail = InitializeOrderItems(customerId, OrderStatus.SetAsideOrder);
+                var OrderDetail = InitializeOrderItems(customerId, OrderStatus.SetAsideOrder, null);
                 ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
 
                 ////Reset Controls to their original position
@@ -763,14 +767,23 @@ namespace RetailPOS.ViewModel
         /// </summary>
         private void SaveOrderInQueue()
         {
-            if (LstProductDetails.Count>0)
+            if (LstProductDetails.Count>0)               
             {
-                var OrderDetail = InitializeOrderItems(0, OrderStatus.OrderInQueue);
-                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+                if(SelectedOrder != null)               
+                {
+                    var OrderDetail = InitializeOrderItems(0, OrderStatus.OrderInQueue, SelectedOrder);
+                    ServiceFactory.ServiceClient.UpdateOrderDetail(OrderDetail);
+                }
+                else
+                {
+                    var OrderDetail = InitializeOrderItems(0, OrderStatus.OrderInQueue, null);
+                    ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+                }
 
                 ////Reset Controls to their original position
-                ResetControls();
+                ResetControls();                
             }
+            SelectedOrder = null;
         }
 
         /// <summary>
@@ -780,18 +793,27 @@ namespace RetailPOS.ViewModel
         {
             if (SelectedCustomer != null)
             {
-                var OrderDetail = InitializeOrderItems(SelectedCustomer.Id, OrderStatus.SetAsideOrder);
-                ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
-
-                ////Reset Controls to their original position
+                LstOrderMasterType = ServiceFactory.ServiceClient.GetSetAsideOrders(((CustomerDTO)SelectedCustomer).Id);
+                if (LstOrderMasterType.Id == 0)
+                {
+                    var OrderDetail = InitializeOrderItems(SelectedCustomer.Id, OrderStatus.SetAsideOrder, null);
+                    ServiceFactory.ServiceClient.SaveOrderDetail(OrderDetail);
+                }
+                else
+                {
+                    var OrderDetail = InitializeOrderItems(SelectedCustomer.Id, OrderStatus.SetAsideOrder, LstOrderMasterType);
+                    ServiceFactory.ServiceClient.UpdateOrderDetail(OrderDetail);
+                }
+                //Reset Controls to their original position
                 ResetControls();
             }
         }
 
-        private OrderMasterDTO InitializeOrderItems(int customerId, OrderStatus orderStatus)
+        private OrderMasterDTO InitializeOrderItems(int customerId, OrderStatus orderStatus, OrderMasterDTO orderDetails)
         {
             return new OrderMasterDTO
             {
+                Id = orderDetails == null ? 0 : orderDetails.Id,
                 Order_No = "0001",
                 Order_Date = DateTime.Now,
                 Customer_Id = customerId,
@@ -813,13 +835,13 @@ namespace RetailPOS.ViewModel
             List<OrderChildDTO> lstOrderChildDetail = (from item in LstProductDetails
                                                        select new OrderChildDTO
                                                        {
-                                                           Order_Id = 0,
+                                                           Order_Id = item.Order_Id,
                                                            Product_Id = item.Id,
                                                            Quantity = item.Quantity,
                                                            Measure_Unit_Id = 3,
                                                            Amount = (decimal)item.Amount,
                                                            Discount = item.Discount,
-                                                           Taxed = 1,
+                                                           Taxed = item.Tax_Rate > 0 ? 1 : 0,
                                                            Retail_price=item.Retail_Price
                                                        }).ToList();
             return lstOrderChildDetail;
@@ -853,11 +875,13 @@ namespace RetailPOS.ViewModel
                 LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderItems
                                                                          select new ProductDTO
                                                                          {
+                                                                             Order_Id = ((OrderMasterDTO)SelectedOrder).Id,
                                                                              Id = item.Product_Id,
                                                                              Name = item.ProductName,
                                                                              Quantity = item.Quantity,
                                                                              Retail_Price = item.Retail_price,
-                                                                             Discount = item.Discount ?? 0,                                                                           
+                                                                             Discount = item.Discount ?? 0,
+                                                                             Tax_Rate = item.TaxRate,
                                                                              Amount = item.Amount                                                                            
                                                                          });
 
@@ -912,30 +936,45 @@ namespace RetailPOS.ViewModel
             if (SelectedCustomer != null)
             {
                 LstOrderMasterType = ServiceFactory.ServiceClient.GetSetAsideOrders(((CustomerDTO)SelectedCustomer).Id);
-                if (LstOrderMasterType.Count > 0)
-                {
 
-                    LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderMasterType[0].OrderChilds
+                if (LstOrderMasterType!= null)
+                {
+                    LstProductDetails = new ObservableCollection<ProductDTO>(from item in LstOrderMasterType.OrderChilds
                                                                              select new ProductDTO
                                                                              {
+                                                                                 Order_Id = ((OrderMasterDTO)LstOrderMasterType).Id,
                                                                                  Id = item.Product_Id,
                                                                                  Name = item.ProductName,
                                                                                  Quantity = item.Quantity,
-                                                                                 Retail_Price = item.Amount,
+                                                                                 Retail_Price = item.Retail_price,
                                                                                  Discount = item.Discount ?? 0,
-                                                                                 Amount = item.Amount - (item.Discount ?? 0)
+                                                                                 Amount = item.Amount //- (item.Discount ?? 0)
                                                                              });
-                    var amount = LstProductDetails.Select(u => u.Amount).Sum();
-                    Total = (decimal)amount;
-                    var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();
-                    TotalDiscount = (decimal)totalDiscount;
-                    Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
+                    if (LstOrderMasterType.Discount_total > LstProductDetails.Select(u => u.Discount).Sum())
+                    {
+                        var totalDiscount = LstOrderMasterType.Discount_total; // - LstProductDetails.Select(u => u.Discount).Sum();
+                        TotalDiscount = (decimal)totalDiscount;
+                        var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                        var totalamount = LstOrderMasterType.Discount_total - LstProductDetails.Select(u => u.Discount).Sum();
+                        Total = (decimal)amount - (decimal)totalamount;
+                        Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);
+                    }
+                    else
+                    {
+                        var totalDiscount = LstOrderMasterType.Discount_total;
+                        TotalDiscount = (decimal)totalDiscount;
+                        var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                        Total = (decimal)amount;
+                        Mediator.NotifyColleagues("CloseOrderInQueuePopUpWindow", false);             
 
-                }
-                else
-                {
-                    Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
-                }
+                    }
+                    //var amount = LstProductDetails.Select(u => u.Amount).Sum();
+                    //Total = (decimal)amount;
+                    //var totalDiscount = LstProductDetails.Select(u => u.Discount).Sum();
+                    //TotalDiscount = (decimal)totalDiscount;
+                    //Mediator.NotifyColleagues("CloseSetAsideOrderPopUpWindow", false);
+
+                }               
             }
             else
             {

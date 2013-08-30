@@ -149,8 +149,8 @@
                 <TextBlock Text="To Pay :" FontWeight="Bold" FontSize="16" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
                 <TextBlock Text="Paid :" FontWeight="Bold" FontSize="16" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" ></TextBlock>
                 <TextBlock Text="Balance :"  FontWeight="Bold" FontSize="16" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
-                <TextBox Name="txtDiscount" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Column="1" Grid.Row="0" Height="30" Text="{Binding TotalDiscount}" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}"></TextBox>
-                <TextBox Name="txtToPay" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Grid.Column="1" Grid.Row="1" Height="30"  DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Text="{Binding Total}"></TextBox>
+                <TextBox Name="txtDiscount" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True"  Grid.Column="1" Grid.Row="0" Height="30" Text="{Binding TotalDiscount}" DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" IsReadOnlyCaretVisible="False" IsReadOnly="True"></TextBox>
+                <TextBox Name="txtToPay" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Grid.Column="1" Grid.Row="1" Height="30"  DataContext="{Binding Source={StaticResource Locator}, Path=ProductGridVM}" Text="{Binding Total}" IsReadOnly="True"></TextBox>
                 <TextBox Name="txtPaid" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Grid.Column="1" Grid.Row="2" Height="30" Text="{Binding PaidAmount}"></TextBox>
                 <TextBox Name="txtBalance" Utility:MaskedTextBoxBehaviour.IsDecimalOnly="True" Grid.Column="1" Grid.Row="3" Height="30"></TextBox>
             </Grid>

@@ -360,6 +360,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateOrderDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="orderDetail" nillable="true" type="q27:OrderMasterDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOrderDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateOrderDetailResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetSetAsideOrders">
     <xs:complexType>
       <xs:sequence>
@@ -370,7 +384,7 @@
   <xs:element name="GetSetAsideOrdersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetSetAsideOrdersResult" nillable="true" type="q27:ArrayOfOrderMasterDTO" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetSetAsideOrdersResult" nillable="true" type="q28:OrderMasterDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -382,7 +396,7 @@
   <xs:element name="GetOrdersInQueueResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetOrdersInQueueResult" nillable="true" type="q28:ArrayOfOrderMasterDTO" />
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetOrdersInQueueResult" nillable="true" type="q29:ArrayOfOrderMasterDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -396,7 +410,7 @@
   <xs:element name="GetOrderItemsByOrderIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetOrderItemsByOrderIdResult" nillable="true" type="q29:ArrayOfOrderChildDTO" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetOrderItemsByOrderIdResult" nillable="true" type="q30:ArrayOfOrderChildDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -410,7 +424,7 @@
   <xs:element name="GetOrderItemByStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetOrderItemByStatusResult" nillable="true" type="q30:ArrayOfOrderMasterDTO" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Order" minOccurs="0" name="GetOrderItemByStatusResult" nillable="true" type="q31:ArrayOfOrderMasterDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -42,6 +42,7 @@
           <xs:element minOccurs="0" name="Product_Id" type="xs:short" />
           <xs:element minOccurs="0" name="Quantity" type="xs:decimal" />
           <xs:element minOccurs="0" name="Retail_price" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TaxRate" nillable="true" type="xs:decimal" />
           <xs:element minOccurs="0" name="Taxed" type="xs:int" />
           <xs:element minOccurs="0" name="TotalDiscount" nillable="true" type="xs:decimal" />
           <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RetailPOS.CommonLayer.DataTransferObjects.Product" minOccurs="0" name="product" nillable="true" type="q3:ProductDTO" />

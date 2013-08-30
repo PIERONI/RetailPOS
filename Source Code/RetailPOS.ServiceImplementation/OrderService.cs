@@ -19,10 +19,20 @@ namespace RetailPOS.ServiceImplementation
         }
 
         /// <summary>
+        /// Update Order details in database
+        /// </summary>
+        /// <param name="orderDetails">ordermaster object to be updated</param>
+        /// <returns>returns boolean value indicating if the records are updated in database</returns>
+        public bool UpdateOrderDetail(OrderMasterDTO orderDetail)
+        {
+            return OrderService.UpdateOrderDetail(orderDetail);
+        }
+
+        /// <summary>
         /// Get orderMasterDetail By customer Id
         /// </summary>
         /// <returns>returns list of orderMasterDetail by customerId</returns>  
-        public IList<OrderMasterDTO> GetSetAsideOrders(int customerId)
+        public OrderMasterDTO GetSetAsideOrders(int customerId)
         {
             return OrderService.GetSetAsideOrders(customerId);
         }

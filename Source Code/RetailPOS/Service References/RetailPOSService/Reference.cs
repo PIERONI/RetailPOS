@@ -247,6 +247,9 @@ namespace RetailPOS.RetailPOSService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long Order_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> PurchasePriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -396,6 +399,19 @@ namespace RetailPOS.RetailPOSService {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Order_Id {
+            get {
+                return this.Order_IdField;
+            }
+            set {
+                if ((this.Order_IdField.Equals(value) != true)) {
+                    this.Order_IdField = value;
+                    this.RaisePropertyChanged("Order_Id");
                 }
             }
         }
@@ -2521,6 +2537,9 @@ namespace RetailPOS.RetailPOSService {
         private System.Nullable<decimal> Retail_priceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> TaxRateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TaxedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2629,6 +2648,19 @@ namespace RetailPOS.RetailPOSService {
                 if ((this.Retail_priceField.Equals(value) != true)) {
                     this.Retail_priceField = value;
                     this.RaisePropertyChanged("Retail_price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> TaxRate {
+            get {
+                return this.TaxRateField;
+            }
+            set {
+                if ((this.TaxRateField.Equals(value) != true)) {
+                    this.TaxRateField = value;
+                    this.RaisePropertyChanged("TaxRate");
                 }
             }
         }
@@ -2820,8 +2852,11 @@ namespace RetailPOS.RetailPOSService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/SaveOrderDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/SaveOrderDetailResponse")]
         bool SaveOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/UpdateOrderDetail", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/UpdateOrderDetailResponse")]
+        bool UpdateOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetSetAsideOrders", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetSetAsideOrdersResponse")]
-        System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderMasterDTO> GetSetAsideOrders(int customerId);
+        RetailPOS.RetailPOSService.OrderMasterDTO GetSetAsideOrders(int customerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetailPOSServiceContract/GetOrdersInQueue", ReplyAction="http://tempuri.org/IRetailPOSServiceContract/GetOrdersInQueueResponse")]
         System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderMasterDTO> GetOrdersInQueue();
@@ -2968,7 +3003,11 @@ namespace RetailPOS.RetailPOSService {
             return base.Channel.SaveOrderDetail(orderDetail);
         }
         
-        public System.Collections.Generic.List<RetailPOS.RetailPOSService.OrderMasterDTO> GetSetAsideOrders(int customerId) {
+        public bool UpdateOrderDetail(RetailPOS.RetailPOSService.OrderMasterDTO orderDetail) {
+            return base.Channel.UpdateOrderDetail(orderDetail);
+        }
+        
+        public RetailPOS.RetailPOSService.OrderMasterDTO GetSetAsideOrders(int customerId) {
             return base.Channel.GetSetAsideOrders(customerId);
         }
         

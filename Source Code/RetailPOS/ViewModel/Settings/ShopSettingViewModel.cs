@@ -394,13 +394,13 @@ namespace RetailPOS.ViewModel.Settings
         /// </summary>
         private void SaveSetting()
         {
-           if(IsValid())
+            if (IsValid())
             {
-            var shopSettingDetails = InitializeShopSettingDetails();
-            ServiceFactory.ServiceClient.SaveShopSetting(shopSettingDetails);
+                var shopSettingDetails = InitializeShopSettingDetails();
+                ServiceFactory.ServiceClient.SaveShopSetting(shopSettingDetails);
+                
+                ClearControls();
             }
-
-            ClearControls();
         }
 
         private ShopSettingDTO InitializeShopSettingDetails()
@@ -478,7 +478,6 @@ namespace RetailPOS.ViewModel.Settings
                 RaisePropertyChanged(() => ShopName);
                 RaisePropertyChanged(() => Phone);
             }
-
             finally
             {
                 if (Errors.Count > 0)
@@ -487,11 +486,9 @@ namespace RetailPOS.ViewModel.Settings
                     MessageBox.Show(element);
                     IsValidating = false;                  
                 }
-               
             }
             return (Errors.Count == 0);
         }
-        
 
         public string Error
         {

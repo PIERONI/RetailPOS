@@ -9,6 +9,7 @@ using System.Windows;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
 using RetailPOS.Constants;
+using System;
 
 #endregion
 
@@ -278,7 +279,14 @@ namespace RetailPOS.ViewModel.Settings
         /// </summary>
         private void GenerateBarCode()
         {
-            BarCode = AppConstants.COUNTRY_CODE + AppConstants.MANUFACTURER_CODE;
+          
+            LstProducts = new ObservableCollection<ProductDTO>(from item in ServiceFactory.ServiceClient.GetAllProducts()
+                                                               orderby item.Id descending
+                                                               select item).ToList();
+            var x =LstProducts.FirstOrDefault().BarCode;
+            var result = x.Substring(x.Length - Math.Min(5, x.Length));
+            int y = int.Parse(result) + 1;
+            BarCode = AppConstants.COUNTRY_CODE + AppConstants.MANUFACTURER_CODE + y.ToString();                                                        
         }
 
         private void SearchProducts()
@@ -293,10 +301,9 @@ namespace RetailPOS.ViewModel.Settings
 
             ////Get all product by name
             GetProducts(string.Empty);
+        }
 
             ////Clear the controls
-            ClearControls();
-        }
 
         private ProductDTO InitializeProductDetails()
         {

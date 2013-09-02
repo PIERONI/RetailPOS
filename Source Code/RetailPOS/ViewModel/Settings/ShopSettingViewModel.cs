@@ -12,12 +12,13 @@ using CountryDTO = RetailPOS.RetailPOSService.CountryDTO;
 using PostCodeDTO = RetailPOS.RetailPOSService.PostCodeDTO;
 using TownCityDTO = RetailPOS.RetailPOSService.TownCityDTO;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 #endregion
 
 namespace RetailPOS.ViewModel.Settings
 {
-    public class ShopSettingViewModel : ViewModelBase
+    public class ShopSettingViewModel : ViewModelBase,IDataErrorInfo
     {
         #region Declare Public and Private Memebers
 
@@ -82,7 +83,7 @@ namespace RetailPOS.ViewModel.Settings
             get { return _code; }
             set
             {
-                _code = value;
+                _code = value;           
                 RaisePropertyChanged("Code");
             }
         }
@@ -92,7 +93,7 @@ namespace RetailPOS.ViewModel.Settings
             get { return _shopName; }
             set
             {
-                _shopName = value;
+                _shopName = value;               
                 RaisePropertyChanged("ShopName");
             }
         }
@@ -393,8 +394,11 @@ namespace RetailPOS.ViewModel.Settings
         /// </summary>
         private void SaveSetting()
         {
+           if(IsValid())
+            {
             var shopSettingDetails = InitializeShopSettingDetails();
             ServiceFactory.ServiceClient.SaveShopSetting(shopSettingDetails);
+            }
 
             ClearControls();
         }
@@ -448,31 +452,7 @@ namespace RetailPOS.ViewModel.Settings
             SelectedTownCity = null;
             SelectedLocality = null;
             SelectedStreet = null;
-            SelectedPostalCode = null;
-            //if (SelectedCountry != null)
-            //{
-            //    SelectedCountry.Name = string.Empty;
-            //}
-
-            //if (SelectedTownCity != null)
-            //{
-            //    SelectedTownCity.Town_City1 = string.Empty;
-            //}
-            
-            //if (SelectedLocality != null)
-            //{
-            //    SelectedLocality.Locality1 = string.Empty;
-            //}
-            
-            //if (SelectedStreet != null)
-            //{
-            //    SelectedStreet.Street1 = string.Empty;
-            //}
-
-            //if (SelectedPostalCode != null)
-            //{
-            //    SelectedPostalCode.PostCode1 = string.Empty;
-            //}
+            SelectedPostalCode = null;          
 
             ////Clear Tax Controls
             TaxRate = 0;
@@ -480,6 +460,88 @@ namespace RetailPOS.ViewModel.Settings
 
             TabIndex = 0;
         }
+
+        #endregion
+
+        #region Validation
+
+        public bool IsValidating = false;
+     
+        public Dictionary<string,string> Errors = new Dictionary<string, string>();
+
+        public bool IsValid()
+        {
+            IsValidating = true;
+            try
+            {
+                RaisePropertyChanged(() => Code);
+                RaisePropertyChanged(() => ShopName);
+                RaisePropertyChanged(() => Phone);
+            }
+
+            finally
+            {
+                if (Errors.Count > 0)
+                {
+                    var element = string.Join(",", Errors);                  
+                    MessageBox.Show(element);
+                    IsValidating = false;                  
+                }
+               
+            }
+            return (Errors.Count == 0);
+        }
+        
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+           get
+            {
+               string result = string.Empty;
+                if (!IsValidating) return result;
+                Errors.Remove(columnName);
+                switch (columnName)
+                {
+                    case "Code": if (string.IsNullOrEmpty(Code)) result = "Code is required!"; break;
+                    case "ShopName": if (string.IsNullOrEmpty(Code)) result = "ShopName is required!"; break;
+                    case "Phone": if (string.IsNullOrEmpty(Code)) result = "Phone is required!"; break;
+                };
+                if (result != string.Empty) Errors.Add(columnName, result);
+                return result;
+            }
+        }
+
+        //string ValidateCode()
+        //    {
+        //        if (String.IsNullOrEmpty(this.Code))
+        //        {
+        //            string msg = "Product Code needs to be entered.";
+        //            MessageBox.Show(msg);
+        //            return msg;
+        //        }
+        //        else
+        //            return String.Empty;
+        //}
+        //string ValidateShopName()
+        //{
+        //    if (String.IsNullOrEmpty(this.ShopName))
+        //        return "ShopName needs to be entered.";
+        //    else
+        //        return String.Empty;
+        //}
+        //string ValidatePhone()
+        //{
+        //    if (String.IsNullOrEmpty(this.Phone))
+        //        return "Phone No needs to be entered.";
+        //    else
+        //        return String.Empty;
+        //}
+       
 
         #endregion
     }

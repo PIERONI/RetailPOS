@@ -469,6 +469,8 @@ namespace RetailPOS.ViewModel.Settings
      
         public Dictionary<string,string> Errors = new Dictionary<string, string>();
 
+        //To validate the field
+
         public bool IsValid()
         {
             IsValidating = true;
@@ -513,33 +515,7 @@ namespace RetailPOS.ViewModel.Settings
             }
         }
 
-        //string ValidateCode()
-        //    {
-        //        if (String.IsNullOrEmpty(this.Code))
-        //        {
-        //            string msg = "Product Code needs to be entered.";
-        //            MessageBox.Show(msg);
-        //            return msg;
-        //        }
-        //        else
-        //            return String.Empty;
-        //}
-        //string ValidateShopName()
-        //{
-        //    if (String.IsNullOrEmpty(this.ShopName))
-        //        return "ShopName needs to be entered.";
-        //    else
-        //        return String.Empty;
-        //}
-        //string ValidatePhone()
-        //{
-        //    if (String.IsNullOrEmpty(this.Phone))
-        //        return "Phone No needs to be entered.";
-        //    else
-        //        return String.Empty;
-        //}
        
-
         #endregion
     }
 }
